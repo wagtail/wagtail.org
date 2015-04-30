@@ -14,6 +14,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 CELERY_ALWAYS_EAGER = True
 
+FB_APP_ID = 0
+
 try:
     from .local import *
 except ImportError:

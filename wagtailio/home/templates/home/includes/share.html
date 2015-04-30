@@ -1,0 +1,4 @@
+{% load i18n wagtailcore_tags  %}
+
+<a href="https://twitter.com/intent/tweet?text={{ self.full_url }}" class="tw-btn"><i class="fa fa-twitter fa-lg"></i><span> {% trans "Tweet" %}</span></a>
+<a href="https://www.facebook.com/dialog/share?app_id={{ FB_APP_ID }}&display=popup&href={{ self.full_url }}" class="fb-btn"><i class="fa fa-facebook fa-lg"></i><span> {% trans "Share" %}</span></a>

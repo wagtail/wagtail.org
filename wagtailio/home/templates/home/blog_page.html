@@ -1,6 +1,6 @@
 {% extends "content.html" %}
 
-{% load static compress wagtailadmin_tags wagtailimages_tags %}
+{% load static compress wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -9,5 +9,7 @@
     {% if self.main_image %}
         {% responsiveimage self.main_image fill-1600x900 srcset="fill-320x180 320w, fill-480x270 480w, fill-600x337 600w, fill-1024x576 1024w, fill-1600x900 1600w" sizes="100vw" %}
     {% endif %}
+
+    {% include "home/includes/share.html" %}
 
 {% endblock %}

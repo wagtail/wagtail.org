@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar %}
+{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -13,15 +13,15 @@
         <meta name="twitter:site" content="@wagtailcms" />
         <meta name="twitter:creator" content="@wagtailcms" />
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta name="twitter:description" content="{% if self.search_description %}{{ self.search_description }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
-        <meta name="twitter:image:src" content="https://{{ request.site.hostname }}{% if self.listing_image %}{% image self.listing_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta name="twitter:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta name="twitter:image:src" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
         <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.listing_image %}{% image self.listing_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
-        <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta property="og:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
         <meta property="og:site_name" content="Wagtail CMS" />
 
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}"/>
@@ -49,7 +49,7 @@
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
         {% endcompress %}
         {% block extra_css %}{% endblock %}
-        
+
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% if not DEBUG %}

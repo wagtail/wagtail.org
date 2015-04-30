@@ -17,14 +17,8 @@ from wagtail.wagtailsnippets.models import register_snippet
 
 
 class SocialMediaMixin(models.Model):
-    social_text = models.CharField(max_length=255, blank=True, help_text="Description of this page as it should appear when shared on social networks, or in Google results")
-    social_image = models.ForeignKey(
-        'images.WagtailIOImage',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-        help_text="Image to appear alongside 'social text', particularly for sharing on social networks",
-    )
+    social_text = models.CharField("Meta description", max_length=255, blank=True, help_text="Description of this page as it should appear when shared on social networks, or in Google results")
+    social_image = models.ForeignKey('images.WagtailIOImage', verbose_name="Meta image", null=True, blank=True, on_delete=models.SET_NULL, related_name='+', help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks",)
 
     panels = [
         MultiFieldPanel([
@@ -38,8 +32,8 @@ class SocialMediaMixin(models.Model):
 
 
 class CrossPageMixin(models.Model):
-    listing_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
-    listing_intro = models.TextField(blank=True)
+    listing_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+', help_text="Image to display along with summary, when this page is linked from elsewhere in the site.")
+    listing_intro = models.TextField(blank=True, help_text="Summary of this page to display when this is linked from elsewhere in the site.")
 
     panels = [
         MultiFieldPanel([
