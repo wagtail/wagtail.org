@@ -37,9 +37,7 @@ class wagtail::site::production::wagtailiowagtail inherits wagtail::site::produc
             enabled       => true,
             hosts         => [ 'tbx' ],
             users         => {
-                # CHANGEME
-                # This is the credentials for HTTP authentication. Eg:
-                # 'username'  => 'password',
+                'wagtailio'  => 'newwagtailio',
             },
         },
     }

@@ -21,23 +21,23 @@ class wagtail::site::staging::wagtailiowagtail inherits wagtail::site::staging {
         deploy           => [ '@admin', '@wagtail', 'tomt', 'tom', 'karl', 'danb', 'chrisr', 'david' ],
         python_version   => '3.4',
         pg_version       => '9.4',
-        manade_daemons   => [
+        manage_daemons   => [
             'celery worker -C -c1 -A wagtailio',
             'celery beat -A wagtailio -C -s $TMPDIR/celerybeat.db --pidfile=',
         ],
         admins           => {
-            # CHANGEME
-            # List of users to send error emails to. Eg:
-            # 'Joe Bloggs' => 'joe.bloggs@torchbox.com',
+            'Tom Dyson' => 'tom@torchbox.com',
+            'Chris Rogers' => 'chris.rogers@torchbox.com',
+            'Dan Braghis' => 'dan.braghis@torchbox.com',
+            'Dave Cranwell' => 'david@torchbox.com',
+            'Karl Hobley' => 'karl.hobley@torchbox.com'
         },
         nagios_url       => '/',
         auth => {
             enabled       => true,
             hosts         => [ 'tbx' ],
             users         => {
-                # CHANGEME
-                # This is the credentials for HTTP authentication. Eg:
-                # 'username'  => 'password',
+                'wagtailio'  => 'newwagtailio',
             },
         },
     }

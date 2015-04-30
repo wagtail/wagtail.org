@@ -141,6 +141,7 @@ from django.conf import global_settings
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'context_processors.global_pages',
 )
 
 TEMPLATE_DIRS = (
@@ -168,6 +169,8 @@ LOGIN_URL = 'wagtailadmin_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 WAGTAIL_SITE_NAME = "wagtailio"
+
+WAGTAILIMAGES_IMAGE_MODEL = 'images.WagtailImage'
 
 # Use Elasticsearch as the search backend for extra performance and better search results
 WAGTAILSEARCH_BACKENDS = {
