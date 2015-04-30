@@ -1,2 +1,2 @@
-wagtailwagtail
+wagtailio
 ==================

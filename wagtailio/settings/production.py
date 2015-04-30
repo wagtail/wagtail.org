@@ -31,7 +31,7 @@ for key, value in os.environ.items():
 
 # Basic configuration
 
-APP_NAME = env.get('APP_NAME', 'wagtailwagtail')
+APP_NAME = env.get('APP_NAME', 'wagtailio')
 
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']

@@ -1,16 +1,16 @@
 # vim:ts=4 sw=4 et:
-class wagtail::site::production::wagtailwagtailwagtail inherits wagtail::site::production {
-    wagtail::app { 'wagtailwagtailwagtail':
+class wagtail::site::production::wagtailiowagtail inherits wagtail::site::production {
+    wagtail::app { 'wagtailiowagtail':
         ip               => $ipaddress,
         ip6              => $ipaddress6,
         manage_ip        => false,
         manage_db        => true,
         manage_user      => true,
         manage_settings  => false,
-        settings         => 'wagtailwagtail/settings',
-        wsgi_module      => 'wagtailwagtail.wsgi',
+        settings         => 'wagtailio/settings',
+        wsgi_module      => 'wagtailio.wsgi',
         requirements     => 'requirements.txt',
-        servername       => 'wagtailwagtail-production.torchboxapps.com',
+        servername       => 'wagtailio-production.torchboxapps.com',
         alias_redirect   => false,
         codebase_project => 'wagtailio',
         codebase_repo    => 'wagtailio',
@@ -22,8 +22,8 @@ class wagtail::site::production::wagtailwagtailwagtail inherits wagtail::site::p
         python_version   => '3.4',
         pg_version       => '9.4',
         manage_daemons   => [
-            'celery worker -C -c1 -A wagtailwagtail',
-            'celery beat -A wagtailwagtail -C -s $TMPDIR/celerybeat.db --pidfile=',
+            'celery worker -C -c1 -A wagtailio',
+            'celery beat -A wagtailio -C -s $TMPDIR/celerybeat.db --pidfile=',
         ],
         admins           => {
             'Tom Dyson' => 'tom@torchbox.com',

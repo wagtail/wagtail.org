@@ -1,5 +1,5 @@
 """
-Django settings for wagtailwagtail project.
+Django settings for wagtailio project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -62,8 +62,8 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
-    'wagtailwagtail.utils',
-    'wagtailwagtail.home',
+    'wagtailio.utils',
+    'wagtailio.home',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,8 +78,8 @@ MIDDLEWARE_CLASSES = (
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
 
-ROOT_URLCONF = 'wagtailwagtail.urls'
-WSGI_APPLICATION = 'wagtailwagtail.wsgi.application'
+ROOT_URLCONF = 'wagtailio.urls'
+WSGI_APPLICATION = 'wagtailio.wsgi.application'
 
 
 # Database
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'wagtailwagtail.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wagtailwagtail',
+        'NAME': 'wagtailio',
         'USER': '',
         'HOST': '',  # Set to empty string for localhost.
         'PORT': '',  # Set to empty string for default.
@@ -154,7 +154,7 @@ CACHES = {
     'default': {
         'BACKEND': 'redis_cache.cache.RedisCache',
         'LOCATION': '127.0.0.1:6379',
-        'KEY_PREFIX': 'wagtailwagtail',
+        'KEY_PREFIX': 'wagtailio',
         'OPTIONS': {
             'CLIENT_CLASS': 'redis_cache.client.DefaultClient',
         }
@@ -167,13 +167,13 @@ CACHES = {
 LOGIN_URL = 'wagtailadmin_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
-WAGTAIL_SITE_NAME = "wagtailwagtail"
+WAGTAIL_SITE_NAME = "wagtailio"
 
 # Use Elasticsearch as the search backend for extra performance and better search results
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'INDEX': 'wagtailwagtail',
+        'INDEX': 'wagtailio',
     },
 }
 
