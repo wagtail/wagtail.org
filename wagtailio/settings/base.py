@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtail.contrib.wagtailfrontendcache',
 
     'wagtailio.utils',
     'wagtailio.home',

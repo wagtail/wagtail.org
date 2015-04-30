@@ -88,6 +88,16 @@ if REDIS_LOCATION is not None:
     }
 
 
+# Caching
+
+WAGTAILFRONTENDCACHE = {
+    'default': {
+        'BACKEND': os.getenv('CFG_CACHE_PURGE_BACKEND'),
+        'LOCATION': os.getenv('CFG_CACHE_PURGE_URL'),
+    },
+}
+
+
 # Elasticsearch
 
 if 'ELASTICSEARCH_URL' in env:
