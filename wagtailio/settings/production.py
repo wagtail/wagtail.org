@@ -125,7 +125,7 @@ if 'MEDIA_URL' in env:
     MEDIA_URL = env['MEDIA_URL']
 
 if 'MEDIA_DIR' in env:
-    MEDIA_URL = env['MEDIA_DIR']
+    MEDIA_DIR = env['MEDIA_DIR']
 
 
 # Logging
