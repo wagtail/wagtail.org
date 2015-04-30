@@ -12,13 +12,13 @@ class wagtail::site::production::wagtailwagtailwagtail inherits wagtail::site::p
         requirements     => 'requirements.txt',
         servername       => 'wagtailwagtail-production.torchboxapps.com',
         alias_redirect   => false,
-        codebase_project => '', # CHANGEME
-        codebase_repo    => '', # CHANGEME
+        codebase_project => 'wagtailio',
+        codebase_repo    => 'wagtailio',
         git_uri          => 'CODEBASE',
         django_version   => '1.7',
         staticdir        => "static",
         mediadir         => "media",
-        deploy           => [ '@admin', '@wagtail' ], # CHANGEME
+        deploy           => [ '@admin', '@wagtail', 'tomt', 'tom', 'karl', 'danb', 'chrisr', 'david' ],
         python_version   => '3.4',
         pg_version       => '9.4',
         manage_daemons   => [
@@ -26,9 +26,11 @@ class wagtail::site::production::wagtailwagtailwagtail inherits wagtail::site::p
             'celery beat -A wagtailwagtail -C -s $TMPDIR/celerybeat.db --pidfile=',
         ],
         admins           => {
-            # CHANGEME
-            # List of users to send error emails to. Eg:
-            # 'Joe Bloggs' => 'joe.bloggs@torchbox.com',
+            'Tom Dyson' => 'tom@torchbox.com',
+            'Chris Rogers' => 'chris.rogers@torchbox.com',
+            'Dan Braghis' => 'dan.braghis@torchbox.com',
+            'Dave Cranwell' => 'david@torchbox.com',
+            'Karl Hobley' => 'karl.hobley@torchbox.com'
         },
         nagios_url       => '/',
         auth => {

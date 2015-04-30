@@ -12,13 +12,13 @@ class wagtail::site::staging::wagtailwagtailwagtail inherits wagtail::site::stag
         requirements     => 'requirements.txt',
         servername       => 'wagtailwagtail-staging.torchboxapps.com',
         alias_redirect   => false,
-        codebase_project => '', # CHANGEME
-        codebase_repo    => '', # CHANGEME
+        codebase_project => 'wagtailio',
+        codebase_repo    => 'wagtailio',
         git_uri          => 'CODEBASE',
         django_version   => '1.7',
         staticdir        => "static",
         mediadir         => "media",
-        deploy           => [ '@admin', '@wagtail' ], # CHANGEME
+        deploy           => [ '@admin', '@wagtail', 'tomt', 'tom', 'karl', 'danb', 'chrisr', 'david' ],
         python_version   => '3.4',
         pg_version       => '9.4',
         manade_daemons   => [
