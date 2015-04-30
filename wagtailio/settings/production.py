@@ -89,16 +89,6 @@ if REDIS_LOCATION is not None:
     }
 
 
-# Caching
-
-WAGTAILFRONTENDCACHE = {
-    'default': {
-        'BACKEND': os.getenv('CFG_CACHE_PURGE_BACKEND'),
-        'LOCATION': os.getenv('CFG_CACHE_PURGE_URL'),
-    },
-}
-
-
 # Elasticsearch
 
 if 'ELASTICSEARCH_URL' in env:
@@ -109,6 +99,33 @@ if 'ELASTICSEARCH_URL' in env:
             'INDEX': APP_NAME,
         },
     }
+
+
+# CACHING
+
+if 'CACHE_PURGE_URL' in env:
+    INSTALLED_APPS += ( 'wagtail.contrib.wagtailfrontendcache', )
+    WAGTAILFRONTENDCACHE = {
+        'default': {
+            'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.HTTPBackend',
+            'LOCATION': env['CACHE_PURGE_URL'],
+        },
+    }
+
+
+# CDN
+
+if 'STATIC_URL' in env:
+    STATIC_URL = env['STATIC_URL']
+
+if 'STATIC_DIR' in env:
+    STATIC_DIR = env['STATIC_DIR']
+
+if 'MEDIA_URL' in env:
+    MEDIA_URL = env['MEDIA_URL']
+
+if 'MEDIA_DIR' in env:
+    MEDIA_URL = env['MEDIA_DIR']
 
 
 # Logging
