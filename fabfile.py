@@ -25,9 +25,6 @@ def deploy_production():
 
 @roles('staging')
 def deploy_staging():
-    # Remove this line when you're happy that this task is correct
-    raise RuntimeError("Please check the fabfile before using it")
-
     run('git pull origin staging')
     run('pip install -r requirements.txt')
     run('django-admin migrate --noinput')
