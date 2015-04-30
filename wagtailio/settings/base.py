@@ -64,6 +64,7 @@ INSTALLED_APPS = (
 
     'wagtailio.utils',
     'wagtailio.home',
+    'wagtailio.images',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -170,7 +171,7 @@ LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 WAGTAIL_SITE_NAME = "wagtailio"
 
-WAGTAILIMAGES_IMAGE_MODEL = 'images.WagtailImage'
+WAGTAILIMAGES_IMAGE_MODEL = 'images.WagtailioImage'
 
 # Use Elasticsearch as the search backend for extra performance and better search results
 WAGTAILSEARCH_BACKENDS = {
