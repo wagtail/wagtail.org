@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title></title>
-        <meta name="description" content="" />
+        <meta name="description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -51,9 +51,9 @@
         {% block extra_css %}{% endblock %}
 
     </head>
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% if self %}template-{{ self.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %}">
         {% if not DEBUG %}
-            <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
             }
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -63,6 +63,25 @@
     })(window,document,'script','dataLayer','GTM-5XDDLH');</script>
         {% endif %}
         
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : {{ FB_APP_ID }},
+                    xfbml      : true,
+                    version    : 'v2.1'
+                });
+            };
+
+            (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
         {% wagtailuserbar %}
 
         <!--[if lt IE 9]>
@@ -70,6 +89,10 @@
         <![endif]-->
 
         {% block base_content %}{% endblock %}
+
+        Copyright &copy; {% now "Y" %} Torchbox Ltd
+
+        <script src="https://platform.twitter.com/widgets.js" async></script>
 
         {% compress js %}
             <script src="{% static 'js/vendor/jquery-2.1.3.min.js' %}"></script>

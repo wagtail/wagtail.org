@@ -19,6 +19,8 @@ from utils.models import (
     CrossPageMixin,
 )
 
+# Homepage
+
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     pass
 
@@ -29,6 +31,8 @@ HomePage.content_panels = Page.content_panels + [
 HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 
+# Blog index
+
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     pass
 
@@ -38,6 +42,8 @@ BlogIndexPage.content_panels = Page.content_panels + [
 
 BlogIndexPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
+
+# Blog page
 
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     main_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
@@ -52,6 +58,8 @@ BlogPage.content_panels = Page.content_panels + [
 
 BlogPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
+
+# Standard content page
 
 class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     main_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
