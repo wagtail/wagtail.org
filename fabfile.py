@@ -2,8 +2,8 @@ from fabric.api import *
 
 
 env.roledefs = {
-    'production': [],
-    'staging': [],
+    'production': ['wagtailio@by-web-4-a.torchbox.com', 'wagtailio@by-web-4-b.torchbox.com' ],
+    'staging': ['wagtailio@django-staging.torchbox.com'],
 }
 
 
