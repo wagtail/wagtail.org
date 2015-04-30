@@ -9,11 +9,47 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@wagtailcms" />
+        <meta name="twitter:creator" content="@wagtailcms" />
+        <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
+        <meta name="twitter:description" content="{% if self.search_description %}{{ self.search_description }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta name="twitter:image:src" content="https://{{ request.site.hostname }}{% if self.listing_image %}{% image self.listing_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+
+        <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
+        <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.listing_image %}{% image self.listing_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta property="og:site_name" content="Wagtail CMS" />
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}"/>
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicons/apple-touch-icon-60x60.png' %}"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicons/apple-touch-icon-72x72.png' %}"/>
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicons/apple-touch-icon-76x76.png' %}"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicons/apple-touch-icon-114x114.png' %}"/>
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicons/apple-touch-icon-120x120.png' %}"/>
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicons/apple-touch-icon-144x144.png' %}"/>
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicons/apple-touch-icon-152x152.png' %}"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon-180x180.png' %}"/>
+        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-32x32.png' %}" sizes="32x32"/>
+        <link rel="icon" type="image/png" href="{% static 'img/favicons/android-chrome-192x192.png' %}" sizes="192x192"/>
+        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-96x96.png' %}" sizes="96x96"/>
+        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-16x16.png' %}" sizes="16x16"/>
+        <link rel="manifest" href="{% static 'img/favicons/manifest.json' %}" />
+        <link rel="shortcut icon" href="{% static 'img/favicons/favicon.ico' %}" />
+        <meta name="msapplication-TileColor" content="#43b1b0"/>
+        <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-144x144.png' %}"/>
+        <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}" />
+        <meta name="theme-color" content="#43b1b0"/>
+
         {% compress css %}
             <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
         {% endcompress %}
         {% block extra_css %}{% endblock %}
+        
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% if not DEBUG %}
@@ -33,7 +69,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        {% block content %}{% endblock %}
+        {% block base_content %}{% endblock %}
 
         {% compress js %}
             <script src="{% static 'js/vendor/jquery-2.1.3.min.js' %}"></script>
