@@ -1,0 +1,10 @@
+<nav>
+    <h3>Network </h3>
+
+    {% for link in links %}
+        <a href="{{ link.link_url }}">
+            {{ link.link_text }}
+            <p>{{ link.link_description }}</p>
+        </a>
+    {% endfor %}
+</nav>

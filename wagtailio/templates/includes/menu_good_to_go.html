@@ -1,0 +1,8 @@
+<nav>
+    <h3>Good to go?</h3>
+    
+    {% for link in links %}
+        <a href="{{ link.link_url }}"><span class="fa {{ link.link_icon }}"></span> {{ link.link_text }}</a>
+        <p>{{ link.link_description }}</p>
+    {% endfor %}
+</nav>

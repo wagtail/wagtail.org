@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailio_utils %}
 
 {% block base_content %}
+    
+    <header>
+       {% menu_primary %}
+    </header>
 
     {% block content %}{% endblock %}
 
+    <footer>
+        {% menu_good_to_go %}
+
+        {% menu_network %}
+    </footer>
 {% endblock %}

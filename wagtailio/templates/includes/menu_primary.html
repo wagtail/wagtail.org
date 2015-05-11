@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+<nav>
+    {% for link in links %}
+        <a href="{% pageurl link.link_page %}">{{ link.link_text }}</a>
+    {% endfor %}
+</nav>

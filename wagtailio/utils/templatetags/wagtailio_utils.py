@@ -3,7 +3,42 @@ from django import template
 from wagtail.wagtailimages.templatetags.wagtailimages_tags import ImageNode
 from wagtail.wagtailimages.models import Filter, SourceImageIOError, InvalidFilterSpecError
 
+from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
+
 register = template.Library()
+
+@register.inclusion_tag('includes/menu_primary.html', takes_context=True)
+def menu_primary(context):
+    menu = MenuSnippet.objects.get(menu_name__iexact='primary')
+
+    return {
+        'links': menu.links.all(),
+        'request': context['request'],
+    }
+
+@register.inclusion_tag('includes/menu_good_to_go.html', takes_context=True)
+def menu_good_to_go(context):
+    try:
+        menu = LinkGroupSnippet.objects.get(name__iexact='good to go')
+    except LinkGroupSnippet.DoesNotExist:
+        return None
+
+    return {
+        'links': menu.links.all(),
+        'request': context['request'],
+    }
+
+@register.inclusion_tag('includes/menu_network.html', takes_context=True)
+def menu_network(context):
+    try:
+        menu = LinkGroupSnippet.objects.get(name__iexact='network')
+    except LinkGroupSnippet.DoesNotExist:
+        return None
+
+    return {
+        'links': menu.links.all(),
+        'request': context['request'],
+    }
 
 
 @register.tag(name="responsiveimage")
