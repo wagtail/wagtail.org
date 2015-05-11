@@ -4,5 +4,7 @@
     {% for link in links %}
         <a href="{{ link.link_url }}"><span class="fa {{ link.link_icon }}"></span> {{ link.link_text }}</a>
         <p>{{ link.link_description }}</p>
+    {% empty %}
+        No good to go links
     {% endfor %}
 </nav>

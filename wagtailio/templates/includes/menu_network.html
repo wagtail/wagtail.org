@@ -6,5 +6,7 @@
             {{ link.link_text }}
             <p>{{ link.link_description }}</p>
         </a>
+    {% empty %}
+        No network links
     {% endfor %}
 </nav>

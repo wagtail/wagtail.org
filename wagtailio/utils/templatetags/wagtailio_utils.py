@@ -3,6 +3,7 @@ from django import template
 from wagtail.wagtailimages.templatetags.wagtailimages_tags import ImageNode
 from wagtail.wagtailimages.models import Filter, SourceImageIOError, InvalidFilterSpecError
 
+from wagtailio.core.models import BlogPage
 from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
 
 register = template.Library()
@@ -13,6 +14,16 @@ def menu_primary(context):
 
     return {
         'links': menu.links.all(),
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('includes/latest_blog.html', takes_context=True)
+def latest_blog(context):
+    blog = BlogPage.objects.live().order_by('-date');
+
+    return {
+        'blog': blog,
         'request': context['request'],
     }
 
