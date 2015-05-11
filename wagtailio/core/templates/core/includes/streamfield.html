@@ -1,0 +1,69 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+
+<div class="stream-field">
+    {% for child in content %}
+        {% if child.block_type == 'h2' %}
+            <div class="aligned"><h2>{{ child }}</h2></div>
+        {% elif child.block_type == 'h3' %}
+            <div class="aligned"><h3>{{ child }}</h3></div>
+        {% elif child.block_type == 'h4' %}
+            <div class="aligned"><h4>{{ child }}</h4></div>
+        {% elif child.block_type == 'intro' %}
+            <div class="aligned intro">{{ child }}</div>
+        {% elif child.block_type == 'aligned_html' %}
+            {% if child.value.alignment == 'normal' %}
+                <div class="aligned">{{ child.value.bound_blocks.html.render }}</div>
+            {% else %}
+                {{ child.value.bound_blocks.html.render }}
+            {% endif %}
+        {% elif child.block_type == 'pullquote' %}
+            <div class="aligned">
+                <blockquote>
+                    {{ child.value.quote }}
+                    {% if child.value.attribution %}<span>- {{ child.value.attribution }}</span>{% endif %}
+                </blockquote>
+            </div>
+        {% elif child.block_type == 'paragraph' %}
+            <div class="aligned">{{ child.value|richtext }}</div>
+        {% elif child.block_type == 'aligned_image' %}
+            <div class="img-wrapper {{ child.value.alignment }}">
+                {% if child.value.alignment == "left" or child.value.alignment == "right" %}
+                    {% image child.value.image width-300 as theimage %}
+                {% else %}
+                    {% image child.value.image width-1280 as theimage %}
+                {% endif %}
+
+                <img src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
+
+                {% if child.value.caption %}
+                    <div class="caption">
+                        {{ child.value.caption|richtext }}
+                    </div>
+                {% endif %}
+            </div>
+        {% elif child.block_type == 'imagequote' %}
+            <div class="quote-image quote-image-{{ child.value.alignment }}">
+                {% image child.value.image width-800 class="image" %}
+
+                <blockquote>
+                    "{{ child.value.quote }}"
+                    <span>{{ child.value.attribution }}</span>
+                </blockquote>
+            </div>
+        {% elif child.block_type == 'slideshow' %}
+            <div class="img-wrapper {% if child.value.alignment %}{{ child.value.alignment }}{% else %}aligned{% endif %}">
+                <div class="carousel royalSlider rsDefault">
+                    {% for item in child.value.images.all %}
+                        <div>
+                            {% image item.image width-1280 as img %}
+                            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="" />
+                            {% if item.caption %}<div class="caption">{{ item.caption }}</div>{% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            {{ child }}
+        {% endif %}
+    {% endfor %}
+</div>

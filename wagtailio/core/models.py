@@ -13,8 +13,8 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsearch import index
 
 
-from utils.blocks import StoryBlock
-from utils.models import (
+from wagtailio.utils.blocks import StoryBlock
+from wagtailio.utils.models import (
     SocialMediaMixin,
     CrossPageMixin,
 )

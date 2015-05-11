@@ -9,18 +9,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 from os.path import abspath, basename, dirname, join, normpath
-from sys import path
 
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 
 # Absolute filesystem path to the top-level project folder:
 PROJECT_ROOT = dirname(DJANGO_ROOT)
-
-# Add our project to our pythonpath, this way we don't need to type our project
-# name in our dotted import paths:
-path.append(DJANGO_ROOT)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -63,7 +57,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
 
     'wagtailio.utils',
-    'wagtailio.home',
+    'wagtailio.core',
     'wagtailio.images',
 )
 
@@ -141,7 +135,7 @@ from django.conf import global_settings
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
-    'context_processors.global_pages',
+    'wagtailio.context_processors.global_pages',
 )
 
 TEMPLATE_DIRS = (

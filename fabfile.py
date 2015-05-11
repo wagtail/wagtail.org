@@ -31,6 +31,6 @@ def deploy_staging():
     run('django-admin collectstatic --noinput')
     run('django-admin compress')
     run('django-admin update_index')
-
+    run('cacheclear')
     # 'restart' should be an alias to a script that restarts the web server
     run('restart')
