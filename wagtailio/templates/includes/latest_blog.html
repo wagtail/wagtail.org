@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+<h3>Blog</h3>
+    
+{% if blog %}
+    <a href="{% pageurl blog %}">
+        {{ blog.date|date }}
+        <h4>{{ blog.title }}</h4>
+    </a>
+{% else %}
+    No blog posts
+{% endif %}

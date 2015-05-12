@@ -3,6 +3,16 @@
     max-width: 100%;
     height: auto;
 }
+
+.richtext-image.left{
+    float:left;
+    margin-right:1em;
+}
+.richtext-image.right{
+    float:right;
+    margin-left:1em;
+}
+
 .responsive-object {
     position: relative;
 }
