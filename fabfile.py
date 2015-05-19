@@ -34,3 +34,7 @@ def deploy_staging():
     run('cacheclear')
     # 'restart' should be an alias to a script that restarts the web server
     run('restart')
+
+@roles('staging')
+def createsuperuser_staging():
+    run('django-admin createsuperuser')
