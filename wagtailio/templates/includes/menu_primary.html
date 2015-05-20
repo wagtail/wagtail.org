@@ -1,8 +1,10 @@
 {% load wagtailcore_tags %}
+
 <nav>
     {% for link in links %}
         <a href="{% pageurl link.link_page %}">{{ link.link_text }}</a>
     {% empty %}
         No navigation links
     {% endfor %}
+    <a href="#" class="get_started">Get started</a>
 </nav>

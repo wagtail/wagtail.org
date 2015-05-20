@@ -1,0 +1,57 @@
+
+/* ============================================ 
+
+  Clearfix
+  
+*/
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+};
+
+/* ============================================ 
+
+  Border radius
+
+*/
+
+@mixin border-radius( $radius: 5px ) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+
+    -webkit-background-clip: padding-box; 
+    -moz-background-clip: padding; 
+    background-clip: padding-box;
+}
+
+
+/* ============================================ 
+
+  Custom underline
+
+*/
+
+@mixin custom-underline ( 
+  $underline-colour: $highlight-colour, 
+  $hover: true 
+) {
+  border-bottom: 1px solid $underline-colour;
+  text-decoration: none;
+
+  @include ceaser-transition( border-bottom-color, 250ms );
+
+  @if $hover {
+    &:hover {
+      // color: #fff; (colour state should not be set here)
+      border-bottom-color: rgba($underline-colour, 0);
+    }
+  }
+}
+
+
+

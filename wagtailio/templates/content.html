@@ -4,17 +4,24 @@
 
 {% block base_content %}
     
-    <header>
-       {% menu_primary %}
-    </header>
+    <div id="page">
 
-    {% block content %}{% endblock %}
+	    <header>
+	    	<!-- branding -->
+	       {% menu_primary %}
+	    </header>
 
-    <footer>
-        {% menu_good_to_go %}
+	    <section>
+	    {% block content %}{% endblock %}
+	   	</section>
 
-        {% menu_network %}
+	    <footer>
+	        {% menu_good_to_go %}
 
-        {% latest_blog %}
-    </footer>
+	        {% menu_network %}
+
+	        {% latest_blog %}
+	    </footer>
+	</div>
+
 {% endblock %}

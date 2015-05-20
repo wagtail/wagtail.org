@@ -1,3 +1,74 @@
+
+// Imports
+@import 'vendor/normalize';
+@import 'grid';
+
+// Variables
+
+$font-primary: "effra", sans-serif;
+
+$color-primary-dark: #333;
+$color-primary-highlight: #ff574a;
+
+// Mixins
+
+// Default element styling
+body {
+    font: 16px/1.5 normal $font-primary;
+}
+
+// structure
+#page {
+    header {}
+    section {}
+    footer {}
+}
+
+// Header
+
+header {
+
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+
+    border-bottom: solid 1px $color-primary-highlight;
+
+    nav {
+
+        overflow: hidden;
+        float: right;
+
+        a {
+
+            display: block;
+            float: left;
+            padding: 20px;
+
+            color: $color-primary-dark;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+
+            &:hover {
+                color: $color-primary-highlight;
+            }
+        }
+    }
+
+}
+
+section {
+    background: $color-primary-highlight;
+}
+
+footer {
+
+}
+
+
+
+
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;
