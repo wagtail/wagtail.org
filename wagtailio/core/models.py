@@ -82,7 +82,7 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     blockquote = models.CharField(max_length=511)
     author_name = models.CharField(max_length=255)
     author_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'images.WagtailIOImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
