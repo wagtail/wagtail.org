@@ -130,14 +130,51 @@ BlogIndexPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + C
 
 # Blog page
 
+class Author(models.Model):
+    name = models.CharField(max_length=255)
+    job_title = models.CharField(max_length=255, blank=True)
+    image = models.ForeignKey(
+        'images.WagtailIOImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    url = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('job_title'),
+        ImageChooserPanel('image'),
+        FieldPanel('url')
+    ]
+
+register_snippet(Author)
+
+
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
-    main_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
+    author = models.ForeignKey(
+        'core.Author',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
+    main_image = models.ForeignKey(
+        'images.WagtailIOImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     date = models.DateField()
+    introduction = models.CharField(max_length=511)
     body = StreamField(StoryBlock())
 
 BlogPage.content_panels = Page.content_panels + [
+    SnippetChooserPanel('author', Author),
     ImageChooserPanel('main_image'),
     FieldPanel('date'),
+    FieldPanel('introduction'),
     StreamFieldPanel('body')
 ]
 
@@ -207,7 +244,6 @@ class FeaturePage(Page):
     introduction = models.CharField(max_length=255)
 
 FeaturePage.content_panels = Page.content_panels + [
-    FieldPanel('title'),
     FieldPanel('introduction'),
     InlinePanel(FeaturePage, 'feature_aspects', label="Feature Aspects")
 ]
