@@ -108,7 +108,6 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     secondary_carousel_introduction = models.CharField(max_length=511)
 
 HomePage.content_panels = Page.content_panels + [
-    FieldPanel('title'),
     InlinePanel(HomePage, 'main_carousel_items', label="Main carousel items"),
     FieldPanel('secondary_carousel_introduction'),
     InlinePanel(HomePage, 'secondary_carousel_items', label="Secondary carousel items"),
