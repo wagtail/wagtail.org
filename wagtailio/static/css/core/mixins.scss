@@ -53,5 +53,53 @@
   }
 }
 
+/* ============================================ 
 
+  Opacity
 
+*/
+
+@mixin opacity( $opacity ) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/* ============================================ 
+
+  Transitions
+
+*/
+
+@mixin transition( $args... ) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/* ============================================ 
+
+  Button mixin
+
+*/
+
+@mixin button( $padding: 7px 15px ) {
+    
+    border: solid 1px rgba($color-primary-highlight, 0.2);
+    @include border-radius( 2px );
+    padding: $padding;
+
+    color: $color-primary-highlight;
+
+    // icon container
+    span {
+        margin-right: 7px;
+    }
+
+    &:hover {
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+    }
+}

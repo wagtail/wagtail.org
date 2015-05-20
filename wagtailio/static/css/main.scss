@@ -4,13 +4,14 @@
 @import 'grid';
 
 // Variables
-
 $font-primary: "effra", sans-serif;
 
 $color-primary-dark: #333;
+$color-primary-light: #fff;
 $color-primary-highlight: #ff574a;
 
 // Mixins
+@import 'core/mixins';
 
 // Default element styling
 body {
@@ -25,8 +26,9 @@ body {
 }
 
 // Header
-
 header {
+
+    $linkPadding: 7px 15px;
 
     width: 100%;
     background: #fff;
@@ -34,32 +36,77 @@ header {
 
     border-bottom: solid 1px $color-primary-highlight;
 
-    nav {
+    a[href="#primary_navigation"]{
+        display: none;
+    }
 
-        overflow: hidden;
+    #primary_navigation {
         float: right;
+        ul {
+            // reset default UL styling
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            // clear nested floats
+            overflow: hidden;
+            // Styling
+            padding: 10px;
 
-        a {
-
-            display: block;
-            float: left;
-            padding: 20px;
-
-            color: $color-primary-dark;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 14px;
-
+            // fade out links when hovering UL
             &:hover {
-                color: $color-primary-highlight;
+                a:not( .get_started ) {
+                    @include opacity( 0.5 );
+                }
+            }
+
+            li {
+                float: left;
+                a {
+
+                    display: block;
+                    padding: $linkPadding;
+
+                    color: $color-primary-dark;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    border: solid 1px transparent; // sits inline with button (that has border) without hacking heights etc...
+
+                    // @include transition( opacity 250ms linear );
+
+                    // 
+                    &:hover:not( .get_started ) {
+                        color: $color-primary-highlight;
+                        @include opacity( 1 );
+                    }
+
+                    &.get_started {
+                        @include button( $linkPadding );
+                    }
+                }
             }
         }
     }
 
+    // responsive breakpoints
+    @include gridle_state( tablet-landscape ){
+        #primary_navigation ul li a {
+            font-size: 12px; 
+        }
+    }
+
+    @include gridle_state( tablet-portrait mobile ){
+        #primary_navigation {
+            display: none;
+        }
+        a[href="#primary_navigation"] {
+            display: block;
+        }
+    }
 }
 
 section {
-    background: $color-primary-highlight;
+    
 }
 
 footer {
@@ -67,7 +114,7 @@ footer {
 }
 
 
-
+// left in from default CSS
 
 /* Responsive image/video classes */
 .rich-text img {
