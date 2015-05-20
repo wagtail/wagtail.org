@@ -1,5 +1,3 @@
-from itertools import cycle
-
 from django.db import models
 
 from modelcluster.models import ClusterableModel
