@@ -1,3 +1,5 @@
+from operator import attrgetter
+
 from django.db import models
 
 from modelcluster.models import ClusterableModel
@@ -169,6 +171,14 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     date = models.DateField()
     introduction = models.CharField(max_length=511)
     body = StreamField(StoryBlock())
+
+    @property
+    def siblings(self):
+        siblings = self.get_siblings(
+            inclusive=False
+        ).type(self.__class__)
+        siblings = [sibling.specific for sibling in siblings]
+        return sorted(siblings, key=attrgetter('date'), reverse=True)
 
 BlogPage.content_panels = Page.content_panels + [
     SnippetChooserPanel('author', Author),
