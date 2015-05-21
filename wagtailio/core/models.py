@@ -234,6 +234,7 @@ class FeatureAspect(ClusterableModel):
         return self.title
 
 FeatureAspect.panels = [
+    FieldPanel('title'),
     InlinePanel(FeatureAspect, 'bullets', label="Bullets"),
     ImageChooserPanel('screenshot')
 ]
