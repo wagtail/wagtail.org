@@ -1,35 +1,98 @@
 
-// Imports
+
+/* ============================================ 
+
+  Imports
+
+*/
 @import 'vendor/normalize';
 @import 'grid';
 
-// Variables
+/* ============================================ 
+
+  Vars
+
+*/
 $font-primary: "effra", sans-serif;
 
 $color-primary-dark: #333;
 $color-primary-light: #fff;
 $color-primary-highlight: #ff574a;
 
-// Mixins
+/* ============================================ 
+
+  Mixins
+
+*/
 @import 'core/mixins';
 
-// Default element styling
+/* ============================================ 
+
+  Default element styling
+
+*/
 body {
     font: 16px/1.5 normal $font-primary;
 }
 
-// structure
+/* ============================================ 
+
+  Structure
+
+*/
 #page {
     header {}
     section {}
     footer {}
 }
 
-// Header
+/* ============================================ 
+
+  Header
+
+*/
 header {
 
+    // Vars
     $linkPadding: 7px 15px;
+    $animationSpeedSlow: 500ms;
+    $animationSpeedFast: 250ms;
+    $outOpacity: 0.5;
 
+    // Mixins
+    @mixin linkStyling {
+
+        display: block;
+        padding: $linkPadding;
+
+        color: $color-primary-dark;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        border: solid 1px transparent;
+
+        @include transition( 
+            color $animationSpeedSlow linear, 
+            opacity $animationSpeedSlow linear
+        );
+
+        &:hover:not( .get_started ) {
+            @include transition( none );
+            @include opacity( 1 );
+            color: $color-primary-highlight;
+        }
+
+        &.get_started {
+            @include transition( 
+                background $animationSpeedFast linear,
+                border $animationSpeedFast linear,
+                color $animationSpeedFast linear
+            ); 
+            @include button( $linkPadding );
+        }
+    }
+
+    // Styling
     width: 100%;
     background: #fff;
     overflow: hidden;
@@ -37,7 +100,9 @@ header {
     border-bottom: solid 1px $color-primary-highlight;
 
     a[href="#primary_navigation"]{
-        display: none;
+        @include linkStyling;
+        float: right;
+        display: none; // default to hide
     }
 
     #primary_navigation {
@@ -55,43 +120,19 @@ header {
             // fade out links when hovering UL
             &:hover {
                 a:not( .get_started ) {
-                    @include opacity( 0.5 );
+                    @include opacity( $outOpacity );
                 }
             }
 
             li {
                 float: left;
                 a {
-
-                    display: block;
-                    padding: $linkPadding;
-
-                    color: $color-primary-dark;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    border: solid 1px transparent; // sits inline with button (that has border) without hacking heights etc...
-
-                    // @include transition( opacity 250ms linear );
-
-                    // 
-                    &:hover:not( .get_started ) {
-                        color: $color-primary-highlight;
-                        @include opacity( 1 );
-                    }
-
-                    &.get_started {
-                        @include button( $linkPadding );
+                    @include linkStyling;
+                    @include gridle_state( tablet-landscape ){
+                        font-size: 12px; 
                     }
                 }
             }
-        }
-    }
-
-    // responsive breakpoints
-    @include gridle_state( tablet-landscape ){
-        #primary_navigation ul li a {
-            font-size: 12px; 
         }
     }
 
@@ -105,16 +146,31 @@ header {
     }
 }
 
+
+/* ============================================ 
+
+  Section
+
+*/
 section {
     
 }
 
+/* ============================================ 
+
+  Footer
+
+*/
 footer {
 
 }
 
 
-// left in from default CSS
+/* ============================================ 
+
+  Legacy / Existing default styles found in starting CSS
+
+*/
 
 /* Responsive image/video classes */
 .rich-text img {
