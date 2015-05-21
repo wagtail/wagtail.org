@@ -56,7 +56,8 @@ header {
     // Vars
     $linkPadding: 7px 15px;
     $animationSpeedSlow: 500ms;
-    $animationSpeedFast: 250ms;
+    $animationSpeedFast: 150ms;
+    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715);
     $outOpacity: 0.5;
 
     // Mixins
@@ -72,8 +73,8 @@ header {
         border: solid 1px transparent;
 
         @include transition( 
-            color $animationSpeedSlow linear, 
-            opacity $animationSpeedSlow linear
+            color $animationSpeedSlow ease-out, 
+            opacity $animationSpeedSlow ease-out
         );
 
         &:hover:not( .get_started ) {
@@ -83,12 +84,15 @@ header {
         }
 
         &.get_started {
-            @include transition( 
-                background $animationSpeedFast linear,
-                border $animationSpeedFast linear,
-                color $animationSpeedFast linear
-            ); 
+            @include transition(
+                background $animationSpeedFast $easing,
+                border ($animationSpeedFast - 100) linear,
+                color $animationSpeedFast $easing $animationSpeedFast
+            );
             @include button( $linkPadding );
+            &:hover {
+                // @include transition( none );
+            }
         }
     }
 
@@ -96,6 +100,8 @@ header {
     width: 100%;
     background: #fff;
     overflow: hidden;
+
+    @include transition( all $animationSpeedFast linear );
 
     border-bottom: solid 1px $color-primary-highlight;
 
