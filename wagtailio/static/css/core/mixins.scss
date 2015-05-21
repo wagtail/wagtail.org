@@ -1,0 +1,105 @@
+
+/* ============================================ 
+
+  Clearfix
+  
+*/
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+};
+
+/* ============================================ 
+
+  Border radius
+
+*/
+
+@mixin border-radius( $radius: 5px ) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+
+    -webkit-background-clip: padding-box; 
+    -moz-background-clip: padding; 
+    background-clip: padding-box;
+}
+
+
+/* ============================================ 
+
+  Custom underline
+
+*/
+
+@mixin custom-underline ( 
+  $underline-colour: $highlight-colour, 
+  $hover: true 
+) {
+  border-bottom: 1px solid $underline-colour;
+  text-decoration: none;
+
+  @include ceaser-transition( border-bottom-color, 250ms );
+
+  @if $hover {
+    &:hover {
+      // color: #fff; (colour state should not be set here)
+      border-bottom-color: rgba($underline-colour, 0);
+    }
+  }
+}
+
+/* ============================================ 
+
+  Opacity
+
+*/
+
+@mixin opacity( $opacity ) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/* ============================================ 
+
+  Transitions
+
+*/
+
+@mixin transition( $args... ) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/* ============================================ 
+
+  Button mixin
+
+*/
+
+@mixin button( $padding: 7px 15px ) {
+    
+    border: solid 1px rgba( $color-primary-highlight, 0.2 );
+    padding: $padding;
+    color: $color-primary-highlight;
+    @include border-radius( 2px );
+
+    // icon container
+    span {
+        margin-right: 7px;
+    }
+
+    &:hover {
+        border-color: rgba( $color-primary-highlight, 1 );
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+    }
+}

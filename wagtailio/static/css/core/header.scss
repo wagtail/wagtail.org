@@ -1,0 +1,106 @@
+
+/* ============================================ 
+
+  Header
+
+*/
+header {
+
+    // Vars
+    $linkPadding: 7px 15px;
+    $animationSpeedSlow: 500ms;
+    $animationSpeedFast: 150ms;
+    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+    $outOpacity: 0.5;
+
+    // Mixins
+    @mixin linkStyling {
+
+        display: block;
+        padding: $linkPadding;
+
+        color: $color-primary-dark;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        border: solid 1px transparent;
+
+        @include transition( 
+            color $animationSpeedSlow ease-out, 
+            opacity $animationSpeedSlow ease-out
+        );
+
+        &:hover:not( .get_started ) {
+            @include transition( none );
+            @include opacity( 1 );
+            color: $color-primary-highlight;
+        }
+
+        &.get_started {
+            @include transition(
+                background $animationSpeedFast $easing,
+                border ($animationSpeedFast - 100) linear,
+                color $animationSpeedFast $easing $animationSpeedFast
+            );
+            @include button( $linkPadding );
+            &:hover {
+                // @include transition( none );
+            }
+        }
+    }
+
+    // Styling
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+
+    @include transition( all $animationSpeedFast linear );
+
+    border-bottom: solid 1px $color-primary-highlight;
+
+    a[href="#primary_navigation"]{
+        @include linkStyling;
+        float: right;
+        display: none; // default to hide
+    }
+
+    #primary_navigation {
+        float: right;
+        ul {
+            // reset default UL styling
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            // clear nested floats
+            overflow: hidden;
+            // Styling
+            padding: 10px;
+
+            // fade out links when hovering UL
+            &:hover {
+                a:not( .get_started ) {
+                    @include opacity( $outOpacity );
+                }
+            }
+
+            li {
+                float: left;
+                a {
+                    @include linkStyling;
+                    @include gridle_state( tablet-landscape ){
+                        font-size: 12px; 
+                    }
+                }
+            }
+        }
+    }
+
+    @include gridle_state( tablet-portrait mobile ){
+        #primary_navigation {
+            display: none;
+        }
+        a[href="#primary_navigation"] {
+            display: block;
+        }
+    }
+}

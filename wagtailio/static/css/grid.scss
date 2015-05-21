@@ -1,0 +1,27 @@
+// Import gridle :
+@import 'vendor/gridle/gridle';
+
+// setup the grid (required) :
+@include gridle_setup((
+	context : 12,
+	gutter-width : 40px
+));
+
+// register states :
+@include gridle_register_state(mobile, (
+	max-width : 480px
+));
+@include gridle_register_state(tablet-portrait, (
+	min-width : 481px,
+	max-width : 768px
+));
+@include gridle_register_state(tablet-landscape, (
+	min-width : 769px,
+	max-width : 1024px
+));
+@include gridle_register_state(desktop, (
+	min-width : 1025px
+));
+
+// Generate classes
+@include gridle_generate_classes();

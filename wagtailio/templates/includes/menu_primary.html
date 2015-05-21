@@ -1,8 +1,17 @@
 {% load wagtailcore_tags %}
-<nav>
+
+<a href="#primary_navigation">menu</a>
+<nav id="primary_navigation">
+	<ul>
     {% for link in links %}
-        <a href="{% pageurl link.link_page %}">{{ link.link_text }}</a>
+    	<li>
+        	<a href="{% pageurl link.link_page %}">{{ link.link_text }}</a>
+        </li>
     {% empty %}
         No navigation links
     {% endfor %}
+    	<li>
+    		<a href="#" class="get_started"><span class="fa fa-download icon"></span>Get started</a>
+    	</li>
+    </ul>
 </nav>

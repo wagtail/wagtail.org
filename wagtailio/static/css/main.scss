@@ -1,3 +1,84 @@
+
+
+/* ============================================ 
+
+  Imports
+
+*/
+@import "vendor/normalize";
+@import "grid";
+
+/* ============================================ 
+
+  Vars
+
+*/
+$font-primary: "effra", sans-serif;
+
+$color-primary-dark: #333;
+$color-primary-light: #fff;
+$color-primary-highlight: #ff574a;
+
+/* ============================================ 
+
+  Mixins
+
+*/
+@import "core/mixins";
+
+/* ============================================ 
+
+  Default element styling
+
+*/
+body {
+    font: 16px/1.5 normal $font-primary;
+}
+
+/* ============================================ 
+
+  Structure
+
+*/
+#page {
+    header {}
+    section {}
+    footer {}
+}
+
+/* ============================================ 
+
+  Header
+
+*/
+@import "core/header";
+
+
+/* ============================================ 
+
+  Section
+
+*/
+section {
+    
+}
+
+/* ============================================ 
+
+  Footer
+
+*/
+footer {
+
+}
+
+
+/* ============================================ 
+
+  Legacy / Existing default styles found in starting CSS
+
+*/
+
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;
