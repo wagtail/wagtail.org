@@ -74,11 +74,12 @@ class HomePageMainCarouselItem(Orderable, models.Model):
 class HomePageSecondaryCarouselItem(Orderable, models.Model):
     page = ParentalKey('core.HomePage', related_name='secondary_carousel_items')
     title = models.CharField(max_length=255)
-    image = models.ForeignKey(
+    desktop_image = models.ForeignKey(
         'images.WagtailIOImage',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    mobile_image = models.ForeignKey(
+        'images.WagtailIOImage',
         related_name='+'
     )
     blockquote = models.CharField(max_length=511)
@@ -95,7 +96,8 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
 
     panels = [
         FieldPanel('title'),
-        ImageChooserPanel('image'),
+        ImageChooserPanel('desktop_image'),
+        ImageChooserPanel('mobile_image'),
         FieldPanel('blockquote'),
         FieldPanel('author_name'),
         ImageChooserPanel('author_image'),
