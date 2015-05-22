@@ -195,12 +195,6 @@ BlogPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossP
 
 class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
-    main_image = models.ForeignKey(
-        'images.WagtailIOImage',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
     body = StreamField(StoryBlock())
 
 StandardPage.content_panels = Page.content_panels + [
