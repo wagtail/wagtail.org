@@ -198,7 +198,6 @@ class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     body = StreamField(StoryBlock())
 
 StandardPage.content_panels = Page.content_panels + [
-    ImageChooserPanel('main_image'),
     StreamFieldPanel('body')
 ]
 
