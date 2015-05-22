@@ -244,7 +244,7 @@ register_snippet(FeatureAspect)
 
 class FeaturePageFeatureAspect(Orderable, models.Model):
     page = ParentalKey('core.FeaturePage', related_name='feature_aspects')
-    feature_aspect = models.ForeignKey('core.FeaturePage', related_name='+')
+    feature_aspect = models.ForeignKey('core.FeatureAspect', related_name='+')
 
     panels = [
         SnippetChooserPanel('feature_aspect', FeatureAspect)
