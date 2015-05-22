@@ -194,7 +194,13 @@ BlogPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossP
 # Standard content page
 
 class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
-    main_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
+    introduction = models.CharField(max_length=511)
+    main_image = models.ForeignKey(
+        'images.WagtailIOImage',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     body = StreamField(StoryBlock())
 
 StandardPage.content_panels = Page.content_panels + [
@@ -206,8 +212,6 @@ StandardPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + Cr
 
 
 # Feature page
-
-# NOTE: have the snippet point to multiple bullets or something
 
 class Bullet(Orderable, models.Model):
     snippet = ParentalKey('core.FeatureAspect', related_name='bullets')
