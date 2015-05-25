@@ -33,7 +33,7 @@
 
   Placeholder text
   Allows for easy crossbrowser placeholder adjustment
-  
+
 */
 
 @mixin placeholder-text {
@@ -86,7 +86,7 @@
 
 */
 
-@mixin opacity( $opacity ) {
+@mixin opacity( $opacity ){
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
   filter: alpha(opacity=$opacity-ie); //IE8
@@ -98,7 +98,7 @@
 
 */
 
-@mixin transition( $args... ) {
+@mixin transition( $args... ){
   -webkit-transition: $args;
   -moz-transition: $args;
   -ms-transition: $args;
@@ -155,7 +155,9 @@
     margin-right: 7px;
   }
 
+  &:focus,
   &:hover {
+    outline: none;
     border-color: rgba( $color-primary-highlight, 1 );
     background: $color-primary-highlight;
     color: $color-primary-light;

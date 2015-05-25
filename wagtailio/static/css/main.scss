@@ -43,6 +43,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    &:focus {
+        outline-color: $color-primary-highlight;
+    }
+}
+
 /* ============================================ 
 
   Structure

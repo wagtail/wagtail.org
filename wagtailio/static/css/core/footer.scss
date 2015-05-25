@@ -132,8 +132,22 @@ footer {
                 padding: 13px 13px 14px;
                 font-weight: 500;
 
+                border: solid 2px #fff;
+
                 color: $color-primary-dark;
                 outline-color: $color-primary-highlight;
+
+                &:focus {
+                    outline: none;
+
+                    // Hard to find a good box-shadow mixin and not enough time to write my own:
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    box-shadow: none;
+                    -webkit-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                    -moz-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                    box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                }
 
             }
             button {
@@ -161,7 +175,8 @@ footer {
     }
     .copyright {
 
-        margin: 56px 0;
+        padding-top: 24px;
+        padding-bottom: 56px;
         overflow: hidden;
 
         p {
@@ -169,7 +184,17 @@ footer {
             margin: 0;
         }
         a {
+            display: inline-block;
             float: right;
+            @include opacity( 0.3 );
+            @include transition( opacity $anim-speed-primary linear );
+            img {
+                display: inline-block;
+                width: 110px;
+            }
+            &:hover {
+                @include opacity( 1 );
+            }
         }
     }
 }
