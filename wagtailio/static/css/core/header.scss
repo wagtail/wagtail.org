@@ -7,17 +7,17 @@
 header {
 
     // Vars
-    $linkPadding: 7px 15px;
-    $animationSpeedSlow: 500ms;
-    $animationSpeedFast: 150ms;
-    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+    $link-padding: 8px 15px;
+    $anim_speed-slow: 500ms;
+    $anim_speed-fast: 150ms;
+    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
     $outOpacity: 0.5;
 
     // Mixins
     @mixin linkStyling {
 
         display: block;
-        padding: $linkPadding;
+        padding: $link-padding;
 
         color: $color-primary-dark;
         text-decoration: none;
@@ -25,9 +25,9 @@ header {
         font-size: 14px;
         border: solid 1px transparent;
 
-        @include transition( 
-            color $animationSpeedSlow ease-out, 
-            opacity $animationSpeedSlow ease-out
+        @include transition(
+            color $anim_speed-slow ease-out, 
+            opacity $anim_speed-slow ease-out
         );
 
         &:hover:not( .get_started ) {
@@ -37,15 +37,7 @@ header {
         }
 
         &.get_started {
-            @include transition(
-                background $animationSpeedFast $easing,
-                border ($animationSpeedFast - 100) linear,
-                color $animationSpeedFast $easing $animationSpeedFast
-            );
-            @include button( $linkPadding );
-            &:hover {
-                // @include transition( none );
-            }
+            @include button( $link-padding );
         }
     }
 
@@ -53,11 +45,11 @@ header {
     width: 100%;
     background: #fff;
     overflow: hidden;
-
-    @include transition( all $animationSpeedFast linear );
-
     border-bottom: solid 1px $color-primary-highlight;
 
+    @include transition( all $anim_speed-fast linear );
+
+    // Mobile navigation anchor
     a[href="#primary_navigation"]{
         @include linkStyling;
         float: right;
@@ -65,12 +57,11 @@ header {
     }
 
     #primary_navigation {
+
         float: right;
+
         ul {
-            // reset default UL styling
-            padding: 0;
-            margin: 0;
-            list-style: none;
+            @include reset-list;
             // clear nested floats
             overflow: hidden;
             // Styling

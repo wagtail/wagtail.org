@@ -6,6 +6,7 @@
 
 */
 @import "vendor/normalize";
+@import "vendor/flexbox";
 @import "grid";
 
 /* ============================================ 
@@ -19,6 +20,11 @@ $color-primary-dark: #333;
 $color-primary-light: #fff;
 $color-primary-highlight: #ff574a;
 
+$color-secondary-light: rgba($color-primary-light, 0.7);
+$color-secondary-highlight: #43b1b0;
+
+$anim-speed-primary: 250ms;
+
 /* ============================================ 
 
   Mixins
@@ -31,8 +37,10 @@ $color-primary-highlight: #ff574a;
   Default element styling
 
 */
+html, 
 body {
-    font: 16px/1.5 normal $font-primary;
+    font: 400 16px/1.25 $font-primary;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ============================================ 
@@ -40,10 +48,36 @@ body {
   Structure
 
 */
+
 #page {
-    header {}
-    section {}
-    footer {}
+    header {
+        position: relative;
+        z-index: 10;
+        top: 0px;
+
+        @include gridle( 12 );
+    }
+    section {
+
+    }
+    footer {
+        width: 100%;
+    }
+    #menu_overlay {
+
+        @include transition( transform 550ms cubic-bezier(0.190, 1.000, 0.220, 1.000)  );
+
+        transform: translate3d( 0, -100%, 0 );
+        .mobile_nav-open & {
+            transform: translate3d( 0, 0, 0 );
+        }
+
+        position: fixed;
+        z-index: 9;
+        left: 0px; right: 0px;
+        top: 0px; bottom: 0px;
+        background: rgba( $color-primary-highlight, 0.95 );
+    }
 }
 
 /* ============================================ 
@@ -68,9 +102,8 @@ section {
   Footer
 
 */
-footer {
+@import "core/footer";
 
-}
 
 
 /* ============================================ 

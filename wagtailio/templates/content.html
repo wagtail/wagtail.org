@@ -17,11 +17,15 @@
 
 	    <footer>
 	        {% menu_good_to_go %}
-
 	        {% menu_network %}
-
 	        {% latest_blog %}
+	        {% include "includes/newsletter_signup.html" %}
+	        {% include "includes/follow.html" %}
+	        {% include "includes/copyright.html" %}
 	    </footer>
+
+	    <div id="menu_overlay"></div>
+
 	</div>
 
 {% endblock %}
