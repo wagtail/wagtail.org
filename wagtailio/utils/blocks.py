@@ -5,7 +5,12 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 
+
 ### Common Streamfield blocks ###
+
+class BackgroundColourChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(('red', 'Red'), ('white', 'White')))
+
 
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(('left','Wrap left'),('right','Wrap right'),('mid','Mid width'),('full','Full width'),))
@@ -18,42 +23,38 @@ class HTMLAlignmentChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(('normal','Normal'),('full','Full width'),))
 
 
-class PullQuoteImageBlock(StructBlock):
-    quote = CharBlock()
-    attribution = CharBlock()
-    image = ImageChooserBlock()
+# New blocks
 
-
-class PullQuoteBlock(StructBlock):
-    quote = CharBlock(classname="quote title")
-    attribution = CharBlock(required=False)
-
-    class Meta:
-        icon = "openquote"
-
-
-class ImageBlock(StructBlock):
+class ImageAndCaptionBlock(StructBlock):
     image = ImageChooserBlock()
     caption = RichTextBlock()
-    alignment = ImageFormatChoiceBlock()
 
-
-class ImageQuoteBlock(StructBlock):
-    quote = CharBlock(classname="quote title")
-    attribution = CharBlock(required=False)
+class TextAndImageBlock(StructBlock):
+    text = RichTextBlock()
     image = ImageChooserBlock()
+    background = BackgroundColourChoiceBlock()
     alignment = SimpleImageFormatChoiceBlock()
 
-    class Meta:
-        icon = "openquote"
+
+class BackgroundColourTextBlock(StructBlock):
+    text = RichTextBlock()
+    background = BackgroundColourChoiceBlock()
 
 
-class AlignedHTMLBlock(StructBlock):
-    html = RawHTMLBlock()
-    alignment = HTMLAlignmentChoiceBlock()
+class CallToActionBlock(BackgroundColourTextBlock):
+    pass
 
-    class Meta:
-        icon = "code"
+
+class TripleImageBlock(StructBlock):
+    first_image = ImageChooserBlock()
+    second_image = ImageChooserBlock()
+    third_image = ImageChooserBlock()
+
+
+class StatBlock(StructBlock):
+    image = ImageChooserBlock()
+    stat = CharBlock()
+    text = CharBlock()
 
 
 ### Main streamfield block to be inherited by Pages ###
@@ -64,8 +65,11 @@ class StoryBlock(StreamBlock):
     h4 = CharBlock(icon="title", classname="title")
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
-    aligned_image = ImageBlock(label="Aligned image", icon="image")
-    pullquote = PullQuoteBlock()
-    imagequote = ImageQuoteBlock(label="Image quote")
-    aligned_html = AlignedHTMLBlock(icon="code", label='Raw HTML')
+    image = ImageChooserBlock(icon="image")
     document = DocumentChooserBlock(icon="doc-full-inverse")
+    imagecaption = ImageAndCaptionBlock(label="Image caption")
+    textimage = TextAndImageBlock(icon="image")
+    colourtext = BackgroundColourTextBlock(icon="pilcrow")
+    calltoaction = CallToActionBlock(icon="pilcrow")
+    tripleimage = TripleImageBlock(icon="image")
+    stats = ListBlock(StatBlock(icon="code"))
