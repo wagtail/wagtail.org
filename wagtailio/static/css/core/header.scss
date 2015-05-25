@@ -70,7 +70,7 @@ header {
     }
 
     // Primary Navigation
-    #primary_navigation {
+    .primary_navigation {
 
         float: right;
 
@@ -101,7 +101,7 @@ header {
     }
 
     @include gridle_state( tablet-portrait mobile ){
-        #primary_navigation {
+        .primary_navigation {
             display: none;
         }
         a[href="#primary_navigation"] {
