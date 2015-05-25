@@ -7,7 +7,7 @@
 header {
 
     // Vars
-    $link-padding: 8px 15px;
+    $link-padding: 12px 15px;
     $anim_speed-slow: 500ms;
     $anim_speed-fast: 150ms;
     $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
@@ -42,12 +42,25 @@ header {
     }
 
     // Styling
-    width: 100%;
     background: #fff;
     overflow: hidden;
     border-bottom: solid 1px $color-primary-highlight;
 
     @include transition( all $anim_speed-fast linear );
+
+    // Branding
+    #branding {
+      display: inline-block;
+      img {
+        width: 110px;
+        @include gridle_state( tablet-landscape ){
+          width: 90px;
+        }
+        @include gridle_state( tablet-portrait mobile ){
+          width: 70px;
+        }
+      }
+    }
 
     // Mobile navigation anchor
     a[href="#primary_navigation"]{
@@ -56,6 +69,7 @@ header {
         display: none; // default to hide
     }
 
+    // Primary Navigation
     #primary_navigation {
 
         float: right;

@@ -56,6 +56,13 @@ body {
         top: 0px;
 
         @include gridle( 12 );
+
+        @include flexbox;
+        @include align-items( center );
+        @include justify-content( space-between );
+
+        padding-top: 4px;
+        padding-bottom: 2px;
     }
     section {
 
@@ -103,7 +110,6 @@ section {
 
 */
 @import "core/footer";
-
 
 
 /* ============================================ 
