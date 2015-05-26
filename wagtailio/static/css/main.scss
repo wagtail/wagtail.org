@@ -90,15 +90,6 @@ a {
         background: $color-primary-light;
     }
 
-    #sidebar {
-        @include gridle( 4 );
-        display: table-cell;
-        height: 100%;
-        background: $color-primary-highlight;
-        color: $color-primary-light;
-        overflow-y: scroll;
-    }
-
     #body {
 
         overflow-y: scroll;
@@ -159,12 +150,32 @@ section {
     position: relative;
     display: table;
 
+    // for blog template only (or maybe template with sidebar?)
+    #sidebar {
+
+        @include gridle( 4 );
+        // display: table-cell;
+
+        // position: absolute;
+        // z-index: 10;
+        height: 100%;
+
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+        overflow-y: scroll;
+
+        transform: translate3d( 0%, 0, 0 );
+        @include transition( transform $anim-speed-primary cubic-bezier(0.190, 1.000, 0.220, 1.000) );
+
+        .footer-in & {
+            // transform: translate3d( -100%, 0, 0 );
+        }
+    }
     
     .body-content {
         // @include gridle( 8 );
         @include gridle_set((
             grid : 8
-            // push : 4
         ), tablet-landscape desktop );
     }
 }
