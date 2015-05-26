@@ -176,11 +176,8 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
 
     @property
     def siblings(self):
-        siblings = self.get_siblings(
-            inclusive=False
-        ).type(self.__class__)
-        siblings = [sibling.specific for sibling in siblings]
-        return sorted(siblings, key=attrgetter('date'), reverse=True)
+        return self.__class__.objects.live(
+        ).sibling_of(self).order_by('-date')
 
 BlogPage.content_panels = Page.content_panels + [
     SnippetChooserPanel('author', Author),
