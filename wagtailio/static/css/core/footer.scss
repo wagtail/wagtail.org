@@ -48,9 +48,8 @@ footer {
     }
 
     .get_started_links {
-        @include gridle( 4, desktop );
+        @include gridle( 4, tablet-landscape desktop );
         padding-bottom: 10px;
-
         a {
             @include button( $link-padding, $border-opacity: 1 );
             // make buttons sit after each other without using display: block or <br />;
@@ -60,7 +59,7 @@ footer {
         }
     }
     .network_links {
-        @include gridle( 4, desktop );
+        @include gridle( 4, tablet-landscape desktop );
         ul {
             @include reset-list;
             li {
@@ -90,7 +89,7 @@ footer {
         }
     }
     .latest_blog {
-        @include gridle( 4, desktop );
+        @include gridle( 4, tablet-landscape desktop );
         ul {
             @include reset-list;
             li {
@@ -112,39 +111,40 @@ footer {
         }
     }
     .newsletter_signup {
-        @include gridle( 8, desktop );
-        
+        @include gridle_set((
+            grid : 8,
+            clear : both
+        ), tablet-landscape desktop );
         h3 {}
         fieldset {
-
             // reset fieldset styling
             border: 0;
             padding: 0;
             margin: 0;
-
+            // Clear floats
             overflow: hidden;
             padding: 0 0 20px;
-
             input {
-
                 float: left;
                 width: 60%;
                 @include input-text;
             }
             button {
-                float: left;
-                @include button( $border-opacity: 1, $padding: 14px 15px );
-                text-transform: uppercase;
-
+                // reset button styling
                 background: none;
+                // position
+                float: left;
+                // styling
+                @include button( $border-opacity: 1, $padding: 14px 15px );
                 @include border-radius( 0 );
+                text-transform: uppercase;
                 border-left: 0;
             }
         }
         
     }
     .follow_links {
-        @include gridle( 4, desktop );
+        @include gridle( 4, tablet-landscape desktop );
 
         a {
             font-size: 56px;
@@ -154,17 +154,15 @@ footer {
             }
         }
     }
-    .copyright {
-
+    .footnote {
         padding-top: 24px;
         padding-bottom: 56px;
         overflow: hidden;
-
-        p {
+        .copyright {
             float: left;
             margin: 0;
         }
-        a {
+        .logo {
             display: inline-block;
             float: right;
             @include opacity( 0.3 );
