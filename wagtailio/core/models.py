@@ -259,6 +259,38 @@ FeaturePage.content_panels = Page.content_panels + [
 ]
 
 
+# Feature Index Page
+
+class FeatureIndexPageMenuOption(models.Model):
+    page = ParentalKey('core.FeatureIndexPage',
+                       related_name='secondary_menu_options')
+    link = models.ForeignKey(
+        'wagtailcore.Page',
+        related_name='+'
+    )
+    label = models.CharField(max_length=255)
+
+    panels = [
+        PageChooserPanel('link'),
+        FieldPanel('label')
+    ]
+
+
+class FeatureIndexPage(Page):
+    introduction = models.CharField(max_length=255)
+
+    @property
+    def features(self):
+        return self.get_children().live()
+
+FeatureIndexPage.content_panels = Page.content_panels + [
+    FieldPanel('introduction'),
+    InlinePanel(FeatureIndexPage,
+                'secondary_menu_options',
+                label="Secondary Menu Options")
+]
+
+
 # Developers Page
 
 class DevelopersPageOptions(Orderable, models.Model):
