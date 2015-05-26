@@ -129,26 +129,7 @@ footer {
 
                 float: left;
                 width: 60%;
-                padding: 13px 13px 14px;
-                font-weight: 500;
-
-                border: solid 2px #fff;
-
-                color: $color-primary-dark;
-                outline-color: $color-primary-highlight;
-
-                &:focus {
-                    outline: none;
-
-                    // Hard to find a good box-shadow mixin and not enough time to write my own:
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    box-shadow: none;
-                    -webkit-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
-                    -moz-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
-                    box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
-                }
-
+                @include input-text;
             }
             button {
                 float: left;
