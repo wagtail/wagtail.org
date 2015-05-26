@@ -6,6 +6,7 @@
 
 */
 @import "vendor/normalize";
+@import "vendor/flexbox";
 @import "grid";
 
 /* ============================================ 
@@ -19,6 +20,15 @@ $color-primary-dark: #333;
 $color-primary-light: #fff;
 $color-primary-highlight: #ff574a;
 
+$color-secondary-light: rgba($color-primary-light, 0.7);
+$color-secondary-highlight: #43b1b0;
+
+$anim-speed-primary: 250ms;
+$anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+$mobile-nav-open_speed: 500ms;
+$mobile-header-height: 50px;
+
 /* ============================================ 
 
   Mixins
@@ -31,8 +41,22 @@ $color-primary-highlight: #ff574a;
   Default element styling
 
 */
+html, 
 body {
-    font: 16px/1.5 normal $font-primary;
+    // Font standard
+    font: 400 16px/1.25 $font-primary;
+    // Font smoothing
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    // Replace vertical scroll with nested one for better overlay behaviour
+    overflow: hidden;
+    height: 100%;
+}
+
+a {
+    &:focus {
+        outline-color: $color-primary-highlight;
+    }
 }
 
 /* ============================================ 
@@ -40,10 +64,69 @@ body {
   Structure
 
 */
+
 #page {
-    header {}
-    section {}
-    footer {}
+
+    @include clearfix;
+    height: 100%;
+
+    header {
+        position: relative;
+        z-index: 10;
+        top: 0px;
+
+        @include gridle( 12 );
+        float: none;
+
+        @include flexbox;
+        @include align-items( center );
+        @include justify-content( space-between );
+
+        padding-top: 4px;
+        padding-bottom: 2px;
+
+        background: $color-primary-light;
+    }
+
+    #page-content {
+
+        overflow-y: scroll;
+        height: 100%;
+        box-sizing: border-box;
+        padding-bottom: $mobile-header-height; // compensate for header height
+
+        // Fade out body content concept
+        // @include transition( opacity $anim-speed-primary linear );
+        // @include opacity( 1 );
+        // .mobile_nav-open & {
+        //     @include opacity( 0 );
+        // }
+
+        section {
+            
+        }
+        footer {
+            width: 100%;
+        }
+
+    }
+
+    #menu_overlay {
+
+        @include transition( transform $mobile-nav-open_speed $anim-ease-expo );
+
+        // closed state
+        transform: translate3d( 0, -100%, 0 );
+        // open state
+        .mobile_nav-open & {
+            transform: translate3d( 0, 0, 0 );
+        }
+
+        position: fixed;
+        z-index: 9;
+        left: 0px; right: 0px;
+        top: 0px; bottom: 0px;
+    }
 }
 
 /* ============================================ 
@@ -68,9 +151,14 @@ section {
   Footer
 
 */
-footer {
+@import "core/footer";
 
-}
+/* ============================================ 
+
+  Menu Overlay
+
+*/
+@import "core/menu_overlay";
 
 
 /* ============================================ 

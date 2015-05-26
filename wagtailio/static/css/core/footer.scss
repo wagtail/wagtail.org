@@ -1,0 +1,200 @@
+
+/* ============================================ 
+
+  Footer
+
+*/
+footer {
+
+    // Vars
+    $link-padding: 7px 15px;
+
+    // clear nested floats
+    overflow: hidden;
+
+    background: $color-primary-dark;
+    color: $color-secondary-light;
+
+    h3 {
+        font-size: 28px;
+        color: $color-primary-light;
+
+        @include gridle_state( tablet-landscape ){
+            font-size: 24px;
+        }
+        @include gridle_state( tablet-portrait mobile ){
+            font-size: 21px;
+        }
+    }
+    p {
+        font-size: 18px;
+        color: $color-secondary-light;
+        margin-top: 0px;
+    }
+    a {
+        text-decoration: none;
+        color: $color-secondary-highlight;
+        @include transition( color $anim-speed-primary linear );
+
+        &:hover {
+            color: $color-primary-highlight;
+        }
+    }
+
+    // Default immediately nested nodes to col-12
+    > * {
+        padding: 12px 0 0;
+        @include gridle( 12 );
+    }
+
+    .get_started_links {
+        @include gridle( 4, desktop );
+        padding-bottom: 10px;
+
+        a {
+            @include button( $link-padding, $border-opacity: 1 );
+            // make buttons sit after each other without using display: block or <br />;
+            float: left;
+            clear: left;
+            margin: 0 0 10px;
+        }
+    }
+    .network_links {
+        @include gridle( 4, desktop );
+        ul {
+            @include reset-list;
+            li {
+
+                border-top: solid 1px rgba( $color-primary-light, 0.05 );
+                padding: 16px 0;
+
+                a {
+                    position: relative;
+                    font-size: 18px;
+                    font-weight: 500;
+                    text-decoration: none;
+
+                    // download icon
+                    &:after {
+                        @include fa-icon();
+                        top: 0px;
+                        right: -25px;
+                        content: "\f08e";
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    margin: 4px 0;
+                }
+            }
+        }
+    }
+    .latest_blog {
+        @include gridle( 4, desktop );
+        ul {
+            @include reset-list;
+            li {
+                .date {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+                .title {
+                    display: block;
+                    font-size: 21px;
+                }
+                .author {
+                    @include author;
+                    margin: 20px 0;
+                }
+            }
+        }
+    }
+    .newsletter_signup {
+        @include gridle( 8, desktop );
+        
+        h3 {}
+        fieldset {
+
+            // reset fieldset styling
+            border: 0;
+            padding: 0;
+            margin: 0;
+
+            overflow: hidden;
+            padding: 0 0 20px;
+
+            input {
+
+                float: left;
+                width: 60%;
+                padding: 13px 13px 14px;
+                font-weight: 500;
+
+                border: solid 2px #fff;
+
+                color: $color-primary-dark;
+                outline-color: $color-primary-highlight;
+
+                &:focus {
+                    outline: none;
+
+                    // Hard to find a good box-shadow mixin and not enough time to write my own:
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    box-shadow: none;
+                    -webkit-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                    -moz-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                    box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, 1 );
+                }
+
+            }
+            button {
+                float: left;
+                @include button( $border-opacity: 1, $padding: 14px 15px );
+                text-transform: uppercase;
+
+                background: none;
+                @include border-radius( 0 );
+                border-left: 0;
+            }
+        }
+        
+    }
+    .follow_links {
+        @include gridle( 4, desktop );
+
+        a {
+            font-size: 56px;
+            color: $color-primary-light;
+            &:hover {
+                color: $color-primary-highlight;
+            }
+        }
+    }
+    .copyright {
+
+        padding-top: 24px;
+        padding-bottom: 56px;
+        overflow: hidden;
+
+        p {
+            float: left;
+            margin: 0;
+        }
+        a {
+            display: inline-block;
+            float: right;
+            @include opacity( 0.3 );
+            @include transition( opacity $anim-speed-primary linear );
+            img {
+                display: inline-block;
+                width: 110px;
+            }
+            &:hover {
+                @include opacity( 1 );
+            }
+        }
+    }
+}
