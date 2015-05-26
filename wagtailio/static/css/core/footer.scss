@@ -12,9 +12,11 @@ footer {
     // clear nested floats
     overflow: hidden;
 
+    // Styling
     background: $color-primary-dark;
     color: $color-secondary-light;
 
+    // Standard element styling
     h3 {
         font-size: 28px;
         color: $color-primary-light;
@@ -47,6 +49,29 @@ footer {
         @include gridle( 12 );
     }
 
+    // Sidebar
+    .component-sidebar & {
+
+        @include gridle_set((
+            grid : 8,
+            push : 4
+        ), tablet-landscape desktop );
+
+        .get_started_links {
+            @include gridle( 12, tablet-landscape desktop );
+        }
+
+        .network_links {
+            @include gridle( 6, tablet-landscape desktop );
+        }
+
+        .latest_blog {
+            @include gridle( 6, tablet-landscape desktop );
+        }
+
+    }
+
+    // Nested components
     .get_started_links {
         @include gridle( 4, tablet-landscape desktop );
         padding-bottom: 10px;
