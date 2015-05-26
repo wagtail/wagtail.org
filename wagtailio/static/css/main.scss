@@ -27,7 +27,7 @@ $anim-speed-primary: 250ms;
 $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 $mobile-nav-open_speed: 500ms;
-$mobile-header-height: 50px;
+$mobile-header-height: 70px;
 
 /* ============================================ 
 
@@ -69,9 +69,11 @@ a {
 
     @include clearfix;
     height: 100%;
+    box-sizing: border-box;
+    padding-top: $mobile-header-height;
 
     header {
-        position: relative;
+        position: absolute;
         z-index: 10;
         top: 0px;
 
@@ -88,12 +90,21 @@ a {
         background: $color-primary-light;
     }
 
-    #page-content {
+    #sidebar {
+        @include gridle( 4 );
+        display: table-cell;
+        height: 100%;
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+        overflow-y: scroll;
+    }
+
+    #body {
 
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-        padding-bottom: $mobile-header-height; // compensate for header height
+        
 
         // Fade out body content concept
         // @include transition( opacity $anim-speed-primary linear );
@@ -106,6 +117,7 @@ a {
             
         }
         footer {
+            position: relative;
             width: 100%;
         }
 
@@ -143,7 +155,18 @@ a {
 
 */
 section {
+
+    position: relative;
+    display: table;
+
     
+    .body-content {
+        // @include gridle( 8 );
+        @include gridle_set((
+            grid : 8
+            // push : 4
+        ), tablet-landscape desktop );
+    }
 }
 
 /* ============================================ 
