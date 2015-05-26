@@ -43,9 +43,8 @@
                 {% if self.main_image %}
                     {% responsiveimage self.main_image fill-1600x900 srcset="fill-320x180 320w, fill-480x270 480w, fill-600x337 600w, fill-1024x576 1024w, fill-1600x900 1600w" sizes="100vw" %}
                 {% endif %}
-                <div class="rich-text">
-                    {% include "core/includes/streamfield.html" with content=self.body %}
-                </div>
+
+                {% include "core/includes/streamfield.html" with content=self.body %}
             </div>
         </div>
     </div>
