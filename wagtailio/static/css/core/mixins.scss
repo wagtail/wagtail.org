@@ -4,7 +4,6 @@
   Clearfix
   
 */
-
 @mixin clearfix {
   &:after {
     content: "";
@@ -13,12 +12,12 @@
   }
 };
 
+
 /* ============================================ 
 
   Border radius
 
 */
-
 @mixin border-radius( $radius: 5px ) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -29,13 +28,13 @@
   background-clip: padding-box;
 }
 
+
 /* ============================================ 
 
   Placeholder text
   Allows for easy crossbrowser placeholder adjustment
 
 */
-
 @mixin placeholder-text {
   &.placeholder{ @content; }
   &:-moz-placeholder{ @content; }
@@ -44,12 +43,12 @@
   &::-webkit-input-placeholder{ @content; }
 };
 
+
 /* ============================================ 
 
   Reset list styling
 
 */
-
 @mixin reset-list {
   padding: 0;
   margin: 0;
@@ -62,7 +61,6 @@
   Custom underline
 
 */
-
 @mixin custom-underline ( 
   $underline-colour: $highlight-colour, 
   $hover: true 
@@ -80,24 +78,24 @@
   }
 }
 
+
 /* ============================================ 
 
   Opacity
 
 */
-
 @mixin opacity( $opacity ){
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
   filter: alpha(opacity=$opacity-ie); //IE8
 }
 
+
 /* ============================================ 
 
   Transitions
 
 */
-
 @mixin transition( $args... ){
   -webkit-transition: $args;
   -moz-transition: $args;
@@ -105,6 +103,7 @@
   -o-transition: $args;
   transition: $args;
 }
+
 
 /* ============================================ 
 
@@ -148,12 +147,12 @@
   }
 }
 
+
 /* ============================================ 
 
   Button mixin
 
 */
-
 @mixin button( 
   $padding: 7px 15px, 
   $border-color: $color-primary-highlight, 
@@ -200,8 +199,6 @@
   Author
 
 */
-
-
 @mixin author {
 
   overflow: hidden;
