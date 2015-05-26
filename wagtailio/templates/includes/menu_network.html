@@ -1,12 +1,20 @@
-<nav>
+<nav class="network_links">
     <h3>Network </h3>
-
+    <ul>
+        <li>
+            <a href="#">Torchbox</a>
+            <p>Talk to Torchbox, the creators of Wagtail.</p>
+        </li>
+        <li>
+            <a href="#">Made with Wagtail</a>
+            <p>A showcase of sites and apps made with Wagtail CMS.</p>
+        </li>
     {% for link in links %}
         <a href="{{ link.link_url }}">
             {{ link.link_text }}
-            <p>{{ link.link_description }}</p>
         </a>
-    {% empty %}
-        No network links
+        <p>{{ link.link_description }}</p>
     {% endfor %}
+    </ul>
+
 </nav>

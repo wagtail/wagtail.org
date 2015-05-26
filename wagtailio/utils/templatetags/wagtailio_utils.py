@@ -20,7 +20,7 @@ def menu_primary(context):
 
 @register.inclusion_tag('includes/latest_blog.html', takes_context=True)
 def latest_blog(context):
-    blog = BlogPage.objects.live().order_by('-date');
+    blog = BlogPage.objects.live().order_by('-date').first()
 
     return {
         'blog': blog,

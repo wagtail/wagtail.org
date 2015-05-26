@@ -1,0 +1,69 @@
+
+/* ============================================ 
+
+  Menu overlay
+
+*/
+#menu_overlay {
+
+    // Vars
+    $link-padding: 16px 0px;
+
+    // Mixins
+    @mixin linkStyling {
+
+        display: block;
+        padding: $link-padding;
+
+        color: $color-primary-light;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+        border: solid 1px transparent;
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        @include transition(
+            color $anim-speed-primary linear, 
+            opacity $anim-speed-primary linear
+        );
+
+        &:hover {
+            @include transition( none );
+            @include opacity( 1 );
+            color: $color-primary-dark;
+        }
+    }
+
+    // Styling
+    padding-top: $mobile-header-height; // start our content below the header
+    background: rgba( $color-primary-highlight, 0.95 );
+
+    .primary_navigation {
+
+        @include transition( opacity $mobile-nav-open_speed linear );
+        // closed state
+        @include opacity( 0 );
+        // open state
+        .mobile_nav-open & {
+            @include opacity( 1 );
+        }
+
+        ul {
+            @include reset-list;
+            li {
+
+                display: block;
+                border-bottom: solid 1px rgba( $color-primary-light, 0.1 );
+                text-align: center;
+
+                a {
+                    @include linkStyling;
+                }
+            }
+        }
+    }
+}

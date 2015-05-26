@@ -1,12 +1,26 @@
 {% load wagtailcore_tags %}
 
-<h3>Blog</h3>
-    
-{% if blog %}
-    <a href="{% pageurl blog %}">
-        {{ blog.date|date }}
-        <h4>{{ blog.title }}</h4>
-    </a>
-{% else %}
-    No blog posts
-{% endif %}
+<div class="latest_blog">
+	<h3>Blog</h3>
+	<ul>
+		<li>
+			<span class="date">12 March 2015</span>
+			<a class="title" href="#">Getting started in Wagtail, a newcomer's perspective</a>
+			<div class="author">
+				<span class="image">
+					<img src="http://www.fillmurray.com/g/100/100" alt="$author_name" />
+				</span>
+				<span class="details">
+					<a class="name" href="#">Glenn Barr</a>
+					<span class="role">Drupal Developer</span>
+				</span>
+			</div>
+		</li>
+	</ul>
+	{% if blog %}
+	    <a href="{% pageurl blog %}">
+	        {{ blog.date|date }}
+	        <h4>{{ blog.title }}</h4>
+	    </a>
+	{% endif %}
+</div>

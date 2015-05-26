@@ -1,0 +1,179 @@
+
+/* ============================================ 
+
+  Footer
+
+*/
+footer {
+
+    // Vars
+    $link-padding: 7px 15px;
+
+    // clear nested floats
+    overflow: hidden;
+
+    background: $color-primary-dark;
+    color: $color-secondary-light;
+
+    h3 {
+        font-size: 28px;
+        color: $color-primary-light;
+
+        @include gridle_state( tablet-landscape ){
+            font-size: 24px;
+        }
+        @include gridle_state( tablet-portrait mobile ){
+            font-size: 21px;
+        }
+    }
+    p {
+        font-size: 18px;
+        color: $color-secondary-light;
+        margin-top: 0px;
+    }
+    a {
+        text-decoration: none;
+        color: $color-secondary-highlight;
+        @include transition( color $anim-speed-primary linear );
+
+        &:hover {
+            color: $color-primary-highlight;
+        }
+    }
+
+    // Default immediately nested nodes to col-12
+    > * {
+        padding: 12px 0 0;
+        @include gridle( 12 );
+    }
+
+    .get_started_links {
+        @include gridle( 4, tablet-landscape desktop );
+        padding-bottom: 10px;
+        a {
+            @include button( $link-padding, $border-opacity: 1 );
+            // make buttons sit after each other without using display: block or <br />;
+            float: left;
+            clear: left;
+            margin: 0 0 10px;
+        }
+    }
+    .network_links {
+        @include gridle( 4, tablet-landscape desktop );
+        ul {
+            @include reset-list;
+            li {
+
+                border-top: solid 1px rgba( $color-primary-light, 0.05 );
+                padding: 16px 0;
+
+                a {
+                    position: relative;
+                    font-size: 18px;
+                    font-weight: 500;
+                    text-decoration: none;
+
+                    // download icon
+                    &:after {
+                        @include fa-icon();
+                        top: 0px;
+                        right: -25px;
+                        content: "\f08e";
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    margin: 4px 0;
+                }
+            }
+        }
+    }
+    .latest_blog {
+        @include gridle( 4, tablet-landscape desktop );
+        ul {
+            @include reset-list;
+            li {
+                .date {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+                .title {
+                    display: block;
+                    font-size: 21px;
+                }
+                .author {
+                    @include author;
+                    margin: 20px 0;
+                }
+            }
+        }
+    }
+    .newsletter_signup {
+        @include gridle_set((
+            grid : 8,
+            clear : both
+        ), tablet-landscape desktop );
+        h3 {}
+        fieldset {
+            // reset fieldset styling
+            border: 0;
+            padding: 0;
+            margin: 0;
+            // Clear floats
+            overflow: hidden;
+            padding: 0 0 20px;
+            input {
+                float: left;
+                width: 60%;
+                @include input-text;
+            }
+            button {
+                // reset button styling
+                background: none;
+                // position
+                float: left;
+                // styling
+                @include button( $border-opacity: 1, $padding: 14px 15px );
+                @include border-radius( 0 );
+                text-transform: uppercase;
+                border-left: 0;
+            }
+        }
+        
+    }
+    .follow_links {
+        @include gridle( 4, tablet-landscape desktop );
+
+        a {
+            font-size: 56px;
+            color: $color-primary-light;
+            &:hover {
+                color: $color-primary-highlight;
+            }
+        }
+    }
+    .footnote {
+        padding-top: 24px;
+        padding-bottom: 56px;
+        overflow: hidden;
+        .copyright {
+            float: left;
+            margin: 0;
+        }
+        .logo {
+            display: inline-block;
+            float: right;
+            @include opacity( 0.3 );
+            @include transition( opacity $anim-speed-primary linear );
+            img {
+                display: inline-block;
+                width: 110px;
+            }
+            &:hover {
+                @include opacity( 1 );
+            }
+        }
+    }
+}
