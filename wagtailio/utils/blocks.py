@@ -29,6 +29,7 @@ class ImageAndCaptionBlock(StructBlock):
     image = ImageChooserBlock()
     caption = RichTextBlock()
 
+
 class TextAndImageBlock(StructBlock):
     text = RichTextBlock()
     image = ImageChooserBlock()

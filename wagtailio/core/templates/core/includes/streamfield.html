@@ -12,6 +12,32 @@
             <div class="aligned intro">{{ child }}</div>
         {% elif child.block_type == 'paragraph' %}
             <div class="aligned">{{ child.value|richtext }}</div>
+        {% elif child.block_type == 'imagecaption' %}
+            {% image child.value.image original %}
+            {{ child.value.caption|richtext }}
+        {% elif child.block_type == 'textimage' %}
+            <div class="{{ child.value.alignment }} {{child.value.background }}">
+                {% image child.value.image original %}
+                {{ child.value.text|richtext }}
+            </div>
+        {% elif child.block_type == 'colourtext' %}
+            <div class="{{ child.value.background }}">
+                {{ child.value.text|richtext }}
+            </div>
+        {% elif child.block_type == 'calltoaction' %}
+            <div class="{{ child.value.background }}">
+                {{ child.value.text|richtext }}
+            </div>
+        {% elif child.block_type == 'tripleimage' %}
+            {% image child.value.first_image original %}
+            {% image child.value.second_image original %}
+            {% image child.value.third_image original %}
+        {% elif child.block_type == 'stats' %}
+            {% for v in child.value %}
+                {% image v.bound_blocks.image.value original %}
+                {{ v.bound_blocks.stat.value }}
+                {{ v.bound_blocks.text.value }}
+            {% endfor %}
         {% else %}
             {{ child }}
         {% endif %}
