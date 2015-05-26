@@ -12,94 +12,14 @@
            {% menu_primary %}
         </header>
 
-        <div id="sidebar">
-            <h1>Blog</h1>
-            <ul>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Wagtail 0.5: image is everything (but there’s more)</h3>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Getting started in Wagtail, a newcomer's perspective</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Wagtail 1.0... beta1</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Team meeting notes 3 Mar 2015</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Take a look at the Wagtail Launch Event</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Wagtail 0.5: image is everything (but there’s more)</h3>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Getting started in Wagtail, a newcomer's perspective</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Wagtail 1.0... beta1</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Team meeting notes 3 Mar 2015</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <p class="label">12 March 2015</p>
-                        <h3>Take a look at the Wagtail Launch Event</h3>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
         <div id="body">
 
-            <section>
+            {% block sidebar %}{% endblock %}
 
+            <section>
                 <div class="body-content">
                     {% block content %}{% endblock %}
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non urna in purus tincidunt semper. Curabitur consectetur risus arcu, vel molestie libero luctus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dignissim velit. Nam blandit hendrerit tincidunt. Duis non volutpat nisi. Nam sem metus, bibendum nec tempus nec, malesuada sit amet diam. Sed quis lorem non eros sodales volutpat. Nunc iaculis, libero a rhoncus venenatis, metus felis varius odio, at finibus purus arcu eu nisl. Pellentesque ac ultrices elit. Ut at eros eu odio ornare cursus ut nec libero. Integer magna diam, feugiat at metus et, venenatis ornare sapien. Pellentesque sit amet blandit sem, a ultrices nisi.</p>
                 </div>
-
             </section>
 
             <footer>
