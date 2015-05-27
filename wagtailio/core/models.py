@@ -81,6 +81,9 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     )
     mobile_image = models.ForeignKey(
         'images.WagtailIOImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
         related_name='+'
     )
     blockquote = models.TextField()
