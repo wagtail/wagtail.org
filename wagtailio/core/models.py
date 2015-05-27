@@ -1,6 +1,7 @@
 from operator import attrgetter
 
 from django.db import models
+from django.shortcuts import redirect
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -123,7 +124,10 @@ HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossP
 # Blog index
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
-    pass
+    def serve(self, request):
+        latest_blog = BlogPage.objects.all().order_by('-date').first()
+        return redirect(latest_blog.url)
+
 
 BlogIndexPage.content_panels = Page.content_panels + [
 
