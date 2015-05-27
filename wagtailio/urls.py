@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'', include(wagtail_urls)),
+    url(r'newsletter-signup', 'wagtailio.core.views.newsletter_signup', name='newsletter_signup'),
 )
 
 
