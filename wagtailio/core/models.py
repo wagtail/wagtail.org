@@ -251,6 +251,26 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
 class FeaturePage(Page):
     introduction = models.CharField(max_length=255)
 
+    @property
+    def feature_index(self):
+        return FeatureIndexPage.objects.ancestor_of(
+            self
+        ).order_by('-depth').first()
+
+    @property
+    def previous(self):
+        if self.get_prev_sibling():
+            return self.get_prev_sibling()
+        else:
+            return self.get_siblings().last()
+
+    @property
+    def next(self):
+        if self.get_next_sibling():
+            return self.get_next_sibling()
+        else:
+            return self.get_siblings().first()
+
 FeaturePage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
     InlinePanel(FeaturePage, 'feature_aspects', label="Feature Aspects")
