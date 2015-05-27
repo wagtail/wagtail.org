@@ -1,0 +1,11 @@
+{% extends "content.html" %}
+
+{% block content %}
+    {% if success %}
+        <h1>Thanks for signing up for our newsletter!</h1>
+        <h2>Now switch off your computer and go outside.</h2>
+    {% else %}
+        <h1>Call that an email address?</h1>
+        <h2>You're address didn't validate.</h2>
+    {% endif %}
+{% endblock %}

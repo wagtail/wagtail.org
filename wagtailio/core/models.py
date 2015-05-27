@@ -363,3 +363,9 @@ DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('body_heading'),
     InlinePanel(DevelopersPage, 'options', label="Options")
 ]
+
+
+# Newsletter signups
+
+class NewsletterEmailAddress(models.Model):
+    email = models.EmailField()
