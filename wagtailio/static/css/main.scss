@@ -1,14 +1,3 @@
-
-
-/* ============================================ 
-
-  Imports
-
-*/
-@import "vendor/normalize";
-@import "vendor/flexbox";
-@import "grid";
-
 /* ============================================ 
 
   Vars
@@ -28,6 +17,24 @@ $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 $mobile-nav-open_speed: 500ms;
 $header-height: 70px;
+
+// Carousel
+$carousel-fadeInSpeed: 1500ms;
+$carousel-fadeOutSpeed: 1500ms;
+$carousel-highlightColour: $color-primary-highlight;
+
+/* ============================================ 
+
+  Imports
+
+*/
+@import "vendor/normalize";
+@import "vendor/flexbox";
+@import "grid";
+
+@import "vendor/owl/_carousel";
+@import "vendor/owl/_carousel_theme";
+@import "vendor/owl/_transitions";
 
 /* ============================================ 
 
@@ -147,7 +154,6 @@ a {
 section {
 
     position: relative;
-    display: table;
 
     // for blog template only (or maybe template with sidebar?)
     .component-sidebar & {
