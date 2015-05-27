@@ -1,0 +1,52 @@
+{% extends "content.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+
+    <div class="row index">
+        <div class="container">
+            <div class="col-50">
+                <h1>{{ self.title }}</h1>
+                <p class="">{{ self.introduction }}</p>
+                <h3>{{ self.body_heading }}</h3>
+                <div class="code-window">
+                    <ol>
+                        <li>
+                            <p>Install Wagtail</p>
+                            <pre>pip install wagtail</pre>
+                        </li>
+                        <li>
+                            <p>Create new project</p>
+                            <pre>wagtail start project_name</pre>
+                        </li>
+                        <li>
+                            <p>Launch virtual machine and connect to it</p>
+                            <pre>cd project_name; vagrant up; vagrant ssh</pre>
+                        </li>
+                        <li>
+                            <p>Create superuser</p>
+                            <pre>dj createsuperuser (following the instructions), then djrun</pre>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-50">
+                <ul class="two-col-med-wide two-col-med features-list">
+                    {% for option in self.options.all %}
+                        <li>
+                            <a href="{{ option.link }}">
+                                <i class="fa {{ option.icon }} fa-3x"></i>
+                                <h3>{{ option.title }}</h3>
+                                <p>{{ option.summary }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

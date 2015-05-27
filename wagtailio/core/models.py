@@ -322,10 +322,10 @@ FeatureIndexPage.content_panels = Page.content_panels + [
 class DevelopersPageOptions(Orderable, models.Model):
     page = ParentalKey('core.DevelopersPage', related_name='options')
     icon = models.CharField(max_length=255,
-                            choices=(('\f09b', 'Github'),
-                                     ('\f1a0', 'Google'),
-                                     ('\f06e', 'Eye'),
-                                     ('\f233', 'Servers')))
+                            choices=(('fa-github', 'Github'),
+                                     ('fa-google', 'Google'),
+                                     ('fa-eye', 'Eye'),
+                                     ('fa-server', 'Servers')))
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
     internal_link = models.ForeignKey(
@@ -361,6 +361,5 @@ class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
 DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
     FieldPanel('body_heading'),
-    FieldPanel('body'),
     InlinePanel(DevelopersPage, 'options', label="Options")
 ]
