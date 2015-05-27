@@ -1,6 +1,7 @@
 from operator import attrgetter
 
 from django.db import models
+from django.shortcuts import redirect
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -80,6 +81,9 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     )
     mobile_image = models.ForeignKey(
         'images.WagtailIOImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
         related_name='+'
     )
     blockquote = models.TextField()
@@ -123,7 +127,10 @@ HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossP
 # Blog index
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
-    pass
+    def serve(self, request):
+        latest_blog = BlogPage.objects.all().order_by('-date').first()
+        return redirect(latest_blog.url)
+
 
 BlogIndexPage.content_panels = Page.content_panels + [
 
@@ -248,14 +255,35 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     ]
 
 
-class FeaturePage(Page):
+class FeaturePage(SocialMediaMixin, CrossPageMixin, Page):
     introduction = models.CharField(max_length=255)
+
+    @property
+    def feature_index(self):
+        return FeatureIndexPage.objects.ancestor_of(
+            self
+        ).order_by('-depth').first()
+
+    @property
+    def previous(self):
+        if self.get_prev_sibling():
+            return self.get_prev_sibling()
+        else:
+            return self.get_siblings().last()
+
+    @property
+    def next(self):
+        if self.get_next_sibling():
+            return self.get_next_sibling()
+        else:
+            return self.get_siblings().first()
 
 FeaturePage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
     InlinePanel(FeaturePage, 'feature_aspects', label="Feature Aspects")
 ]
 
+FeaturePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 # Feature Index Page
 
@@ -279,7 +307,7 @@ class FeatureIndexPage(Page):
 
     @property
     def features(self):
-        return self.get_children().live()
+        return self.get_children().live().type(FeaturePage)
 
 FeatureIndexPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
@@ -329,7 +357,6 @@ class DevelopersPageOptions(Orderable, models.Model):
 class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=255)
     body_heading = models.CharField(max_length=255)
-    body = RichTextField()
 
 DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
