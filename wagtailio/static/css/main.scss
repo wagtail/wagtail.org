@@ -200,15 +200,9 @@ section {
     padding: 20px 0;
 
     // Owl carousel styling (could go in owl carousel CSS files?)
-    .owl-wrapper-outer {
-        // pad top to allow for owl-controls
-        padding-top: 70px;
-    }
-
     .owl-controls {
-        position: absolute;
-        top: 0px;
         width: 100%;
+        margin: 0;
 
         .owl-page {
 
@@ -253,6 +247,10 @@ section {
 
 
         }
+    }
+
+    .owl-wrapper-outer {
+        padding-top: 14px;
     }
 
     // Slide styling
