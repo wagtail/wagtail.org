@@ -357,7 +357,6 @@ class DevelopersPageOptions(Orderable, models.Model):
 class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=255)
     body_heading = models.CharField(max_length=255)
-    body = RichTextField()
 
 DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
