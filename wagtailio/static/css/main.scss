@@ -1,15 +1,4 @@
-
-
-/* ============================================ 
-
-  Imports
-
-*/
-@import "vendor/normalize";
-@import "vendor/flexbox";
-@import "grid";
-
-/* ============================================ 
+/* ============================================
 
   Vars
 
@@ -29,20 +18,37 @@ $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 $mobile-nav-open_speed: 500ms;
 $header-height: 70px;
 
+// Carousel
+$carousel-fadeInSpeed: 1500ms;
+$carousel-fadeOutSpeed: 1500ms;
+$carousel-highlightColour: $color-primary-highlight;
 
-/* ============================================ 
+/* ============================================
+
+  Imports
+
+*/
+@import "vendor/normalize";
+@import "vendor/flexbox";
+@import "grid";
+
+@import "vendor/owl/_carousel";
+@import "vendor/owl/_carousel_theme";
+@import "vendor/owl/_transitions";
+
+/* ============================================
 
   Mixins
 
 */
 @import "core/mixins";
 
-/* ============================================ 
+/* ============================================
 
   Default element styling
 
 */
-html, 
+html,
 body {
     // Font standard
     font: 400 16px/1.25 $font-primary;
@@ -60,7 +66,7 @@ a {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Structure
 
@@ -94,7 +100,7 @@ a {
     #body {
         overflow-y: scroll;
         height: 100%;
-        box-sizing: border-box;        
+        box-sizing: border-box;
 
         // Fade out body content concept
         // @include transition( opacity $anim-speed-primary linear );
@@ -104,10 +110,10 @@ a {
         // }
 
         section {
-            
+
         }
         footer {
-            
+
         }
 
     }
@@ -130,7 +136,7 @@ a {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Header
 
@@ -138,7 +144,7 @@ a {
 @import "core/header";
 
 
-/* ============================================ 
+/* ============================================
 
   Section
 
@@ -146,7 +152,6 @@ a {
 section {
 
     position: relative;
-    display: table;
 
     // for blog template only (or maybe template with sidebar?)
     .component-sidebar & {
@@ -160,14 +165,14 @@ section {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Footer
 
 */
 @import "core/footer";
 
-/* ============================================ 
+/* ============================================
 
   Sidebar
 
@@ -176,7 +181,7 @@ section {
 #sidebar {
 
     @include gridle( 4 );
-    
+
     position: absolute;
     top: $header-height; bottom: 0px;
     z-index: 10;
@@ -193,21 +198,21 @@ section {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Menu Overlay
 
 */
 @import "core/menu_overlay";
 
-/* ============================================ 
+/* ============================================
 
   Page specific
 
 */
 
 
-/* ============================================ 
+/* ============================================
 
   Legacy / Existing default styles found in starting CSS
 

@@ -1,0 +1,53 @@
+{% extends "content.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+
+    <div class="row index-feature">
+        <div class="container">
+            <div class="col-25">
+                <h1>{{ self.feature_index.title }}</h1>
+                <p>{{ self.feature_index.introduction }}</p>
+
+                <ul class="subnav">
+                    {% for option in self.feature_index.secondary_menu_options.all %}
+                        <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                <div class="col-75 feature-container">
+                    <div class="feature">
+                        <a class="close" href="{% pageurl self.feature_index %}"><i class="fa fa-times"></i></a>
+                                <h1>{{ self.title }}</h1>
+                                <p class="intro">{{ self.introduction }}</p>
+                                {% for f in self.feature_aspects.all %}
+                                    <div class="row">
+                                        <div class="col-66 screenshot">
+                                            {% image f.feature_aspect.screenshot fill-505x370 %}
+                                        </div>
+                                        <div class="col-33 notes">
+                                            {% for bullet in f.feature_aspect.bullets.all %}
+                                                <i class="fa fa-eye fa-2x"></i>
+                                                <h4>{{ bullet.title }}</h4>
+                                                <p>{{ bullet.text|richtext }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                    </div>
+                </div>
+
+                <div class="features-nav">
+                    <a class="back" href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
+                </div>
+                <div class="features-nav bottom">
+                    <a class="back" href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
