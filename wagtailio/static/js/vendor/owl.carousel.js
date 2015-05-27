@@ -403,6 +403,7 @@ if (typeof Object.create !== "function") {
         },
 
         buildButtons : function () {
+
             var base = this,
                 buttonsWrapper = $("<div class=\"owl-buttons\"/>");
             base.owlControls.append(buttonsWrapper);
@@ -459,6 +460,12 @@ if (typeof Object.create !== "function") {
                 paginationButtonInner;
 
             if (base.options.pagination === false) {
+                return false;
+            }
+
+            //
+            // console.log( base.paginationWrapper.find(".owl-page").length !== 0 );
+            if (base.options.singleItem === true && base.paginationWrapper.find(".owl-page").length !== 0) {
                 return false;
             }
 
