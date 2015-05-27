@@ -12,16 +12,17 @@ $(function( ){
     });
 
     // Scroll behaviours
-    $( '#body' ).on( 'scroll', function( ){
+    // not currently used
+    // $( '#body' ).on( 'scroll', function( ){
 
-        var $footer = $( 'footer' );
+    //     var $footer = $( 'footer' );
 
-        if ( $footer.is( ':in-viewport' ) ) {
-            $( 'body' ).addClass( 'footer-in' );
-        } else {
-            $( 'body' ).removeClass( 'footer-in' );
-        }
+    //     if ( $footer.is( ':in-viewport' ) ) {
+    //         $( 'body' ).addClass( 'footer-in' );
+    //     } else {
+    //         $( 'body' ).removeClass( 'footer-in' );
+    //     }
 
-    });
+    // });
 
 });
