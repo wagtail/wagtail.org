@@ -6,3 +6,4 @@ django-redis==3.8.2
 celery==3.1.17
 libsass>=0.8.2
 Pillow>=2.6.1
+embedly==0.5.0
