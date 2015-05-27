@@ -81,6 +81,9 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     )
     mobile_image = models.ForeignKey(
         'images.WagtailIOImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
         related_name='+'
     )
     blockquote = models.TextField()
@@ -252,7 +255,7 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     ]
 
 
-class FeaturePage(Page):
+class FeaturePage(SocialMediaMixin, CrossPageMixin, Page):
     introduction = models.CharField(max_length=255)
 
     @property
@@ -280,6 +283,7 @@ FeaturePage.content_panels = Page.content_panels + [
     InlinePanel(FeaturePage, 'feature_aspects', label="Feature Aspects")
 ]
 
+FeaturePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 # Feature Index Page
 
