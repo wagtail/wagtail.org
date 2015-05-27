@@ -463,8 +463,6 @@ if (typeof Object.create !== "function") {
                 return false;
             }
 
-            //
-            // console.log( base.paginationWrapper.find(".owl-page").length !== 0 );
             if (base.options.singleItem === true && base.paginationWrapper.find(".owl-page").length !== 0) {
                 return false;
             }
