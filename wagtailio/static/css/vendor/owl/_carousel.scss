@@ -1,6 +1,9 @@
 /* 
  * 	Core Owl Carousel CSS File
  *	v1.3.2
+
+	 Resisting the urge to tidy this up and make it sassy
+
  */
 
 /* clearfix */
@@ -19,10 +22,21 @@
 	width: 100%;
 	-ms-touch-action: pan-y;
 }
-.owl-carousel .owl-wrapper{
+.owl-carousel .owl-wrapper {
 	display: none;
 	position: relative;
 	-webkit-transform: translate3d(0px, 0px, 0px);
+
+	cursor: -webkit-grab;
+	cursor: grab;
+
+	/* mouse grab icon */
+	&.grabbing {
+	    // cursor:url(grabbing.png) 8 8, move;
+	    cursor: -webkit-grabbing;
+	    cursor: grabbing;
+	}
+
 }
 .owl-carousel .owl-wrapper-outer{
 	overflow: hidden;
@@ -51,11 +65,6 @@
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-/* mouse grab icon */
-.grabbing { 
-    cursor:url(grabbing.png) 8 8, move;
 }
 
 /* fix */

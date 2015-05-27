@@ -176,10 +176,76 @@ section {
 
 /* ============================================ 
 
+  Carousel
+
+  Note: not exactly sure where to put these styles at the moment
+
+*/
+.carousel {
+    background: $color-primary-highlight;
+    color: $color-primary-light;
+
+
+    // Owl carousel styling (could go in owl carousel CSS files?)
+    .owl-wrapper-outer {
+        // pad top to allow for owl-controls
+        padding: 70px 0 0;
+    }
+
+    .owl-controls {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+
+        .owl-page {
+            width: 20%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            overflow: hidden;
+
+            // hide default owl carousel buttons
+            span {
+                display: none;
+            }
+        
+            .progressBar {
+                // default to hide progress bars
+                // display: none;
+
+                background: rgba( $color-primary-light, 0.2 );
+                width: 100%;
+                height: 4px;
+
+                @include transition( transform $anim-speed-primary linear );
+                transform: translate3d( 0, 100%, 0 );
+
+                .bar {
+                    background: $color-primary-light;
+                    height: 4px;
+                }
+            }
+            // Display active pagination items progress bar
+            &.active .progressBar {
+                // display: block;
+                transform: translate3d( 0, 0, 0 );
+            }
+
+
+        }
+    }
+
+    // Slide styling
+    .slide {
+
+    }
+
+}
+
+/* ============================================ 
+
   Sidebar
 
 */
-
 #sidebar {
 
     @include gridle( 4 );

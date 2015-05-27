@@ -28,6 +28,7 @@ $(function( ){
     /************************************************************
     *
     * Hero Carousel
+    * mostly hacked together for speed, can be tideid up (relaively) painlessly
     *
     */
 
@@ -35,8 +36,7 @@ $(function( ){
     var homePageCarousel = function( ){
 
         var time = 10, // time in seconds
-            $progressBar,
-            $bar,
+            $currentBar,
             $elem,
             isPause,
             tick,
@@ -49,31 +49,65 @@ $(function( ){
             slideSpeed      : 500,
             paginationSpeed : 500,
             singleItem      : true,
-            transitionStyle : "fade"
-            // afterInit       : progressBar,
-            // afterMove       : moved,
-            // startDragging   : pauseOnDragging
+            transitionStyle : "fade",
+            afterInit       : progressBar,
+            afterMove       : moved,
+            startDragging   : pauseOnDragging
           
         });
 
         //Init progressBar where elem is $("#owl-demo")
+        //Should chnage function name 
         function progressBar( elem ){
+
+            // Pointer for carousel (should really have a better name)
             $elem = elem;
+
+            // navigation stuff
+            // Add carousel titles to pagination items
+            var $items = $elem.find( '.owl-item' ),
+                $pagination = $elem.find( '.owl-page' );
+
+            $items.each(function( i ){
+                var $item = $( this ),
+                    $pageItem = $( $pagination[i] ),
+                    title = $item.find( 'h3' ).clone();
+
+                $pageItem.append( title );
+
+            });
+
             //build progress bar elements
-            buildProgressBar();
+            buildProgressBar( $pagination );
             //start counting
             start();
+
         }
 
         //create div#progressBar and div#bar then prepend to $("#owl-demo")
-        function buildProgressBar( ){
-            $progressBar = $("<div>",{
-                id:"progressBar"
+        function buildProgressBar( $pagination ){
+
+            var $container = $("<div>",{
+                    class:"progressBar"
+                }),
+                $bar = $("<div>",{
+                    class:"bar"
+                }),
+                progressBar;
+
+            // build it (could be neater to do this at the top TBH)
+            progressBar = $container.append($bar); //.prependTo($elem);
+
+            $pagination.each(function( ){
+                var $item = $( this ),
+                    $progressBar = progressBar.clone();
+
+                $item.append( $progressBar );
             });
-            $bar = $("<div>",{
-                id:"bar"
-            });
-            $progressBar.append($bar).prependTo($elem);
+
+            // set first bar as currentBar
+            $currentBar = $( $pagination[0] ).find( '.bar' );
+
         }
 
         function start( ){
@@ -85,9 +119,10 @@ $(function( ){
         }
 
         function interval( ){
+
           if(isPause === false){
             percentTime += 1 / time;
-            $bar.css({
+            $currentBar.css({
                 width: percentTime + "%"
             });
             //if percentTime is equal or greater than 100
@@ -96,6 +131,7 @@ $(function( ){
                 $elem.trigger('owl.next');
             }
           }
+
         }
 
         //pause while dragging 
@@ -107,6 +143,8 @@ $(function( ){
         function moved( ){
             //clear interval
             clearTimeout(tick);
+            // Set currentBar
+            $currentBar = $elem.find( '.owl-page.active .bar');
             //start again
             start();
         }
