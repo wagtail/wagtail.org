@@ -79,6 +79,15 @@ a {
     box-sizing: border-box;
     padding-top: $header-height;
 
+    @include gridle_state( tablet-landscape ){
+      padding-top: $header-height - 2px;
+    }
+    @include gridle_state( tablet-portrait mobile ){
+      padding-top: $header-height - 20px;
+    }
+
+    // perspective: 1000px;
+
     header {
         position: absolute;
         z-index: 10;
@@ -105,10 +114,14 @@ a {
         
 
         // Fade out body content concept
-        // @include transition( opacity $anim-speed-primary linear );
+        // @include transition( 
+        //     all $anim-speed-primary ease
+        // );
         // @include opacity( 1 );
+        // transform: translateZ( 0px );
         // .mobile_nav-open & {
         //     @include opacity( 0 );
+        //     transform: translateZ( -150px );
         // }
 
         section {
@@ -183,13 +196,13 @@ section {
 */
 .carousel {
     background: $color-primary-highlight;
-    color: $color-primary-light;
-
+    color: $color-primary-light; // ensure by default text is readable ontop of BG
+    padding: 20px 0;
 
     // Owl carousel styling (could go in owl carousel CSS files?)
     .owl-wrapper-outer {
         // pad top to allow for owl-controls
-        padding: 70px 0 0;
+        padding-top: 70px;
     }
 
     .owl-controls {
@@ -198,36 +211,45 @@ section {
         width: 100%;
 
         .owl-page {
-            width: 20%;
+
+            width: 15%;
             box-sizing: border-box;
             padding: 0 10px;
             overflow: hidden;
 
+            color: $color-primary-dark;
+
+            @include transition( color $anim-speed-primary linear );
+
             // hide default owl carousel buttons
-            span {
-                display: none;
+            span { display: none; }
+
+            h3 {
+                font-size: 14px;
+                font-weight: 400;
             }
         
             .progressBar {
-                // default to hide progress bars
-                // display: none;
-
                 background: rgba( $color-primary-light, 0.2 );
                 width: 100%;
                 height: 4px;
 
-                @include transition( transform $anim-speed-primary linear );
+                // Position progress bar outside of item by default
                 transform: translate3d( 0, 100%, 0 );
+                // Animate bar position in
+                @include transition( transform $anim-speed-primary linear );
 
                 .bar {
                     background: $color-primary-light;
                     height: 4px;
                 }
             }
-            // Display active pagination items progress bar
-            &.active .progressBar {
-                // display: block;
-                transform: translate3d( 0, 0, 0 );
+            
+            &.active {
+                color: $color-primary-light;
+                .progressBar {
+                    transform: translate3d( 0, 0, 0 );
+                }
             }
 
 
@@ -236,7 +258,49 @@ section {
 
     // Slide styling
     .slide {
+        text-align: center;
+        h3 {
+            font-size: 56px;
+            margin: 0;
+        }
+        p {
+            font-size: 24px;
+            font-weight: 300;
+            margin: 24px 0;
+        }
+        .cta {
+            @include button(
+                $padding: 8px 16px 10px,
+                $color: $color-primary-dark,
+                $color-hover: $color-primary-light
+            );
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            .icon {
+                font-size: 20px;
+            }
+        }
+        .image {
+            position: relative;
+            img {
+                width: 100%;
+            }
+            a {
+                position: absolute;
+                top: 50%;
+                left: 50%;
 
+                // negative margin to position item in the middle
+                margin: -10px -50px;
+
+                @include button(
+                    $color: $color-primary-dark,
+                    $color-hover: $color-primary-light
+                )                
+            }
+        }
     }
 
 }

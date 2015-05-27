@@ -46,6 +46,7 @@ header {
     overflow: hidden;
     border-bottom: solid 1px $color-primary-highlight;
 
+    // Transitions
     @include transition( all $anim_speed-fast linear );
 
     // Branding
