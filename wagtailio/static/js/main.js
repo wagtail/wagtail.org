@@ -28,12 +28,12 @@ $(function( ){
     /************************************************************
     *
     * Hero Carousel
-    * mostly hacked together for speed, can be tideid up (relaively) painlessly
+    * mostly hacked together for speed, can be tideid up (relatively) painlessly
     *
     */
 
-    // function is called imediately after definition
-    var homePageCarousel = function( ){
+    // function is called imediately after definition (should put this call in a page/component specific check...)
+    var heroCarousel = function( ){
 
         var time = 10, // time in seconds
             $currentBar,
@@ -111,26 +111,26 @@ $(function( ){
         }
 
         function start( ){
-          //reset timer
-          percentTime = 0;
-          isPause = false;
-          //run interval every 0.01 second
-          tick = setInterval(interval, 10);
+            //reset timer
+            percentTime = 0;
+            isPause = false;
+            //run interval every 0.01 second
+            tick = setInterval(interval, 10);
         }
 
         function interval( ){
 
-          if(isPause === false){
-            percentTime += 1 / time;
-            $currentBar.css({
-                width: percentTime + "%"
-            });
-            //if percentTime is equal or greater than 100
-            if( percentTime >= 100 ){
-                //slide to next item 
-                $elem.trigger('owl.next');
+            if(isPause === false){
+                percentTime += 1 / time
+                $currentBar.css({
+                    width: percentTime + "%"
+                });
+                //if percentTime is equal or greater than 100
+                if( percentTime >= 100 ){
+                    //slide to next item 
+                    $elem.trigger('owl.next');
+                }
             }
-          }
 
         }
 
@@ -158,5 +158,20 @@ $(function( ){
         // })
 
     }();
+
+    /************************************************************
+    *
+    * Examples Carousel
+    *
+    */
+    $("#examples .carousel").owlCarousel({
+
+        // navigation : true, // Show next and prev buttons
+        slideSpeed      : 500,
+        paginationSpeed : 500,
+        singleItem      : true,
+        transitionStyle : "fade"
+      
+    });
 
 });
