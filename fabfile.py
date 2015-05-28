@@ -68,11 +68,11 @@ def pull_staging_data():
 
 @roles('staging')
 def pull_staging_media():
-    media_filename = "flwagtail-%s-media.tar.gz" % uuid.uuid4()
+    media_filename = "wagtailio-%s-media.tar.gz" % uuid.uuid4()
     local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
     remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
 
-    with cd('/usr/local/django/flwagtail'):
+    with cd('/usr/local/django/wagtailio'):
         run('tar cvf - media | gzip -1 >%s' % remote_media_dump)
 
     get('%s' % remote_media_dump, '%s' % local_media_dump)
