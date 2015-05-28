@@ -7,7 +7,14 @@
 
 */
 #hero.carousel {
+
+
     background: $color-primary-highlight;
+    @include gridle_state( desktop ){
+        background: transparent;
+    }
+
+
     color: $color-primary-light; // ensure by default text is readable ontop of BG
     padding: 20px 0;
 
@@ -70,27 +77,27 @@
     }
 
     // Edge BG
-    @include gridle_state( desktop ){
-        &:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 0 400px 800px;
-            border-color: transparent transparent $color-primary-bg transparent;
-        }
-        .owl-controls {
-            position: relative;
-            z-index: 11;
-        }
-        .owl-wrapper-outer {
-            position: relative;
-            z-index: 10;
-        }
-    }
+    // @include gridle_state( desktop ){
+    //     &:after {
+    //         content: "";
+    //         position: absolute;
+    //         bottom: 0;
+    //         right: 0;
+    //         width: 0;
+    //         height: 0;
+    //         border-style: solid;
+    //         border-width: 0 0 400px 800px;
+    //         border-color: transparent transparent $color-primary-bg transparent;
+    //     }
+    //     .owl-controls {
+    //         position: relative;
+    //         z-index: 11;
+    //     }
+    //     .owl-wrapper-outer {
+    //         position: relative;
+    //         z-index: 10;
+    //     }
+    // }
 
     // Slide styling
     .slide {

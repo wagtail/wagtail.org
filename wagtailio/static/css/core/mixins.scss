@@ -200,18 +200,18 @@
 
 */
 @mixin external-link(){
-    position: relative;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
 
-    // download icon
-    &:after {
-        @include fa-icon();
-        top: 0px;
-        right: -25px;
-        content: "\f08e";
-    }
+  // download icon
+  &:after {
+    @include fa-icon();
+    top: 0px;
+    right: -25px;
+    content: "\f08e";
+  }
 }
 
 
@@ -220,16 +220,22 @@
   Author
 
 */
-@mixin author {
+@mixin author( $inline: true ) {
 
-  overflow: hidden;
-  @include flexbox;
-  @include align-items( center );
+  text-align: center;
+  
+  @if $inline { 
+    overflow: hidden;
+    @include flexbox;
+    @include align-items( center );
+    text-align: left;
+  }
 
   .image {
 
+    @if $inline { float: left; }
+
     overflow: hidden;
-    float: left;
     margin: 0 14px 0 0;
 
     img {
@@ -239,10 +245,13 @@
     }
   }
   .details {
-    float: left;
+
+    @if $inline { float: left; }
+
     > * {
       display: block;
     }
+
     .name {
       font-size: 18px;
       @include transition( color $anim-speed-primary linear );
