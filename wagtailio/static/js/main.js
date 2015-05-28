@@ -35,7 +35,7 @@ $(function( ){
     // function is called imediately after definition (should put this call in a page/component specific check...)
     var heroCarousel = function( ){
 
-        var time = 10, // time in seconds
+        var time = 3.5, // time in seconds
             $currentBar,
             $elem,
             isPause,
@@ -47,7 +47,7 @@ $(function( ){
 
             // navigation : true, // Show next and prev buttons
             slideSpeed      : 500,
-            paginationSpeed : 500,
+            paginationSpeed : 400,
             singleItem      : true,
             transitionStyle : "fade",
             afterInit       : progressBar,
