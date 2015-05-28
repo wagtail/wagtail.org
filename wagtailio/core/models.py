@@ -31,7 +31,6 @@ from wagtailio.utils.models import (
 
 class HomePageMainCarouselItem(Orderable, models.Model):
     page = ParentalKey('core.HomePage', related_name='main_carousel_items')
-    tab_title = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=511)
     image = models.ForeignKey(
@@ -59,7 +58,6 @@ class HomePageMainCarouselItem(Orderable, models.Model):
             return self.call_to_action_external_link
 
     panels = [
-        FieldPanel('tab_title'),
         FieldPanel('title'),
         FieldPanel('summary'),
         ImageChooserPanel('image'),
