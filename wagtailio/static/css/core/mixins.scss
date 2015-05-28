@@ -194,6 +194,26 @@
   }
 }
 
+/* ============================================ 
+
+  External link
+
+*/
+@mixin external-link(){
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+
+    // download icon
+    &:after {
+        @include fa-icon();
+        top: 0px;
+        right: -25px;
+        content: "\f08e";
+    }
+}
+
 
 /* ============================================ 
 

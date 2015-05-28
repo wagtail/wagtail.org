@@ -241,9 +241,44 @@ section {
         font-weight: 400;
     }
     .carousel {
+
+        @include clearfix;
+
+        .owl-controls {
+            // @include gridle( 1 );
+            @include gridle_set( (
+                grid : 1,
+                push : 11
+            ));
+
+        }
+        .owl-wrapper-outer {
+            @include gridle_set( (
+                grid : 11,
+                pull : 1
+            ));
+        }
+
         .slide {
-            img {
-                width: 100%;
+            .image {
+                img {
+                    width: 100%;
+                }
+            }
+            .text {
+                h3 {}
+                p {}
+                .author {
+                    text-align: left;
+                    @include author;
+                    a {
+                        color: $color-primary-highlight;
+                        text-decoration: none;
+                    }
+                }
+                > a {
+                    @include external-link;
+                }
             }
         }
     }

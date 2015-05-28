@@ -80,7 +80,27 @@
     <div id="examples">
         <h2>And it makes beautiful websites.</h2>
         <div class="carousel">
-            <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
+            <div class="slide">
+                <div class="image">
+                    <img src="{% static "img/tmp/example_placeholder.png" %}" alt="" />
+                </div>
+                <div class="text">
+                    <h3>Children's Investment Fund Foundation</h3>
+                    <p>"The Royal College of Art website needs to be innovative, creative and functional. We assessed a host of proprietary and open source CMSs, and couldn't find one that would deliver an RCA look and feel, and be easy to use.</p>
+                    <p>We asked Torchbox to design a new CMS, powered by Django. Wagtail is the result, and it's a perfect fit."</p>
+                    <div class="author">
+                        <span class="image">
+                            <img src="http://www.fillmurray.com/g/100/100" />
+                            {# {% image blog.author.image fill-55x55 alt=blog.author.name %} #}
+                        </span>
+                        <span class="details">
+                            <a class="name" href="#">Author name</a>
+                            <span class="role">Author role</span>
+                        </span>
+                    </div>
+                    <a href="#">View the site</a>
+                </div>
+            </div>
             <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
             <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
             <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
