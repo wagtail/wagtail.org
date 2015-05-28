@@ -6,106 +6,45 @@
 
 {% block content %}
     <div id="hero" class="carousel">
-        <div class="slide">
-            <div class="text">
-                <h3>Meet wagtail</h3>
-                <p>
-                    Elegant. Open source. Easy.<br />
-                    Wagtail is the new CMS from Torchbox.
-                </p>
-                <a class="cta" href="#"><span class="fa fa-eye icon"></span>Check out the features</a>
+        {% for item in self.main_carousel_items %}
+            <div class="slide">
+                <div class="text">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.summary }}</p>
+                    <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
+                </div>
+                <div class="image">
+                    <a href="#">{% image item.image fill-635x370 %}</a>
+                    <a href="{{ item.video }}"><span class="fa fa-play icon"></span>Watch demo</a>
+                </div>
             </div>
-            <div class="image">
-                <img src="{% static "img/tmp/carousel_placeholder.png" %}" alt="" />
-                <a href="#"><span class="fa fa-play icon"></span>Watch demo</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="text">
-                <h3>It's free</h3>
-                <p>
-                    Elegant. Open source. Easy.<br />
-                    Wagtail is the new CMS from Torchbox.
-                </p>
-                <a class="cta" href="#"><span class="fa fa-eye icon"></span>Check out the features</a>
-            </div>
-            <div class="image">
-                <img src="{% static "img/tmp/carousel_placeholder.png" %}" alt="" />
-                <a href="#"><span class="fa fa-play icon"></span>Watch demo</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="text">
-                <h3>It's beautiful</h3>
-                <p>
-                    Elegant. Open source. Easy.<br />
-                    Wagtail is the new CMS from Torchbox.
-                </p>
-                <a class="cta" href="#"><span class="fa fa-eye icon"></span>Check out the features</a>
-            </div>
-            <div class="image">
-                <img src="{% static "img/tmp/carousel_placeholder.png" %}" alt="" />
-                <a href="#"><span class="fa fa-play icon"></span>Watch demo</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="text">
-                <h3>It's versatile</h3>
-                <p>
-                    Elegant. Open source. Easy.<br />
-                    Wagtail is the new CMS from Torchbox.
-                </p>
-                <a class="cta" href="#"><span class="fa fa-eye icon"></span>Check out the features</a>
-            </div>
-            <div class="image">
-                <img src="{% static "img/tmp/carousel_placeholder.png" %}" alt="" />
-                <a href="#"><span class="fa fa-play icon"></span>Watch demo</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="text">
-                <h3>It's fast</h3>
-                <p>
-                    Elegant. Open source. Easy.<br />
-                    Wagtail is the new CMS from Torchbox.
-                </p>
-                <a class="cta" href="#"><span class="fa fa-eye icon"></span>Check out the features</a>
-            </div>
-            <div class="image">
-                <img src="{% static "img/tmp/carousel_placeholder.png" %}" alt="" />
-                <a href="#"><span class="fa fa-play icon"></span>Watch demo</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div id="examples">
-        <h2>And it makes beautiful websites.</h2>
+        <h2>{{ self.secondary_carousel_introduction }}</h2>
         <div class="carousel">
-            <div class="slide">
-                <div class="image">
-                    <img src="{% static "img/tmp/example_placeholder.png" %}" alt="" />
-                </div>
-                <div class="text">
-                    <h3>Children's Investment Fund Foundation</h3>
-                    <p>"The Royal College of Art website needs to be innovative, creative and functional. We assessed a host of proprietary and open source CMSs, and couldn't find one that would deliver an RCA look and feel, and be easy to use.</p>
-                    <p>We asked Torchbox to design a new CMS, powered by Django. Wagtail is the result, and it's a perfect fit."</p>
-                    <div class="author">
-                        <span class="image">
-                            <img src="http://www.fillmurray.com/g/100/100" />
-                            {# {% image blog.author.image fill-55x55 alt=blog.author.name %} #}
-                        </span>
-                        <span class="details">
-                            <a class="name" href="#">Author name</a>
-                            <span class="role">Author role</span>
-                        </span>
+            {% for item in secondary_carousel_items %}
+                <div class="slide">
+                    <div class="image">
+                        {% image item.desktop_image fill-1350x1020 %}
                     </div>
-                    <a href="#">View the site</a>
+                    <div class="text">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.blockquote }}</p>
+                        <div class="author">
+                            <span class="image">
+                                {% image item.author_image fill-55x55 %}
+                            </span>
+                            <span class="details">
+                                <a class="name" href="{{ item.website }}">{{ item.author_name }}</a>
+                                <span class="role">{{ item.author_role }}</span>
+                            </span>
+                        </div>
+                        <a href="{{ item.website }}">View the site</a>
+                    </div>
                 </div>
-            </div>
-            <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
-            <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
-            <div class="slide"><img src="{% static "img/tmp/example_placeholder.png" %}" alt="" /></div>
+            {% endfor %}
         </div>
     </div>
 
 {% endblock %}
-
