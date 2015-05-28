@@ -8,6 +8,7 @@ $font-primary: "effra", sans-serif;
 $color-primary-dark: #333;
 $color-primary-light: #fff;
 $color-primary-highlight: #ff574a;
+$color-primary-bg: #f6f2f2;
 
 $color-secondary-light: rgba($color-primary-light, 0.7);
 $color-secondary-highlight: #43b1b0;
@@ -79,6 +80,15 @@ a {
     box-sizing: border-box;
     padding-top: $header-height;
 
+    @include gridle_state( tablet-landscape ){
+      padding-top: $header-height - 2px;
+    }
+    @include gridle_state( tablet-portrait mobile ){
+      padding-top: $header-height - 20px;
+    }
+
+    // perspective: 1000px;
+
     header {
         position: absolute;
         z-index: 10;
@@ -102,13 +112,18 @@ a {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-        
+        background: $color-primary-bg;
+        color: $color-primary-dark;
 
         // Fade out body content concept
-        // @include transition( opacity $anim-speed-primary linear );
+        // @include transition( 
+        //     all $anim-speed-primary ease
+        // );
         // @include opacity( 1 );
+        // transform: translateZ( 0px );
         // .mobile_nav-open & {
         //     @include opacity( 0 );
+        //     transform: translateZ( -150px );
         // }
 
         section {
@@ -176,10 +191,17 @@ section {
 
 /* ============================================ 
 
+  Hero Carousel
+
+*/
+@import "core/hero";
+
+
+/* ============================================ 
+
   Sidebar
 
 */
-
 #sidebar {
 
     @include gridle( 4 );
@@ -212,7 +234,20 @@ section {
   Page specific
 
 */
-
+#examples {
+    text-align: center;
+    h2 {
+        font-size: 32px;
+        font-weight: 400;
+    }
+    .carousel {
+        .slide {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
 
 /* ============================================ 
 

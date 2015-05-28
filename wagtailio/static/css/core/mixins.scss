@@ -154,9 +154,10 @@
 
 */
 @mixin button( 
-  $padding: 7px 15px, 
-  $border-color: $color-primary-highlight, 
-  $border-opacity: 0.2 
+  $padding: 7px 15px,
+  $color: $color-primary-highlight,
+  $color-hover: $color-primary-light,
+  $border-opacity: 0.2
 ){
 
   // Vars
@@ -173,9 +174,9 @@
 
   // Styling
   display: inline-block; // Might be too much of an assumption, can make mixin argument
-  border: solid 1px rgba( $color-primary-highlight, $border-opacity );
+  border: solid 1px rgba( $color, $border-opacity );
   padding: $padding;
-  color: $color-primary-highlight;
+  color: $color;
   text-decoration: none;
   @include border-radius( 2px );
 
@@ -187,9 +188,9 @@
   &:focus,
   &:hover {
     outline: none;
-    border-color: rgba( $color-primary-highlight, 1 );
-    background: $color-primary-highlight;
-    color: $color-primary-light;
+    border-color: rgba( $color, 1 );
+    background: $color;
+    color: $color-hover;
   }
 }
 

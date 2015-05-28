@@ -1,5 +1,6 @@
 /*
- *  jQuery OwlCarousel v1.3.3
+ * Modified by Toby ~ 
+ * jQuery OwlCarousel v1.3.3
  *
  *  Copyright (c) 2013 Bartosz Wojciechowski
  *  http://www.owlgraphic.com/owlcarousel/
@@ -392,7 +393,7 @@ if (typeof Object.create !== "function") {
         buildControls : function () {
             var base = this;
             if (base.options.navigation === true || base.options.pagination === true) {
-                base.owlControls = $("<div class=\"owl-controls\"/>").toggleClass("clickable", !base.browser.isTouch).appendTo(base.$elem);
+                base.owlControls = $("<div class=\"owl-controls\"/>").toggleClass("clickable", !base.browser.isTouch).prependTo(base.$elem);
             }
             if (base.options.pagination === true) {
                 base.buildPagination();
@@ -403,6 +404,7 @@ if (typeof Object.create !== "function") {
         },
 
         buildButtons : function () {
+
             var base = this,
                 buttonsWrapper = $("<div class=\"owl-buttons\"/>");
             base.owlControls.append(buttonsWrapper);
@@ -459,6 +461,10 @@ if (typeof Object.create !== "function") {
                 paginationButtonInner;
 
             if (base.options.pagination === false) {
+                return false;
+            }
+
+            if (base.options.singleItem === true && base.paginationWrapper.find(".owl-page").length !== 0) {
                 return false;
             }
 
