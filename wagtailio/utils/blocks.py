@@ -4,6 +4,7 @@ from wagtail.wagtailcore.blocks import TextBlock, ChooserBlock, StructBlock, Lis
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.wagtailembeds.blocks import EmbedBlock
 
 
 ### Common Streamfield blocks ###
@@ -74,3 +75,4 @@ class StoryBlock(StreamBlock):
     calltoaction = CallToActionBlock(icon="pilcrow")
     tripleimage = TripleImageBlock(icon="image")
     stats = ListBlock(StatBlock(icon="code"))
+    embed = EmbedBlock(icon="code")
