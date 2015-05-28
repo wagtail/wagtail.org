@@ -14,7 +14,7 @@
 	color: #FFF;
 	display: inline-block;
 	zoom: 1;
-	*display: inline;/*IE7 life-saver */
+	*display: inline; /*IE7 life-saver */
 	margin: 5px;
 	padding: 3px 10px;
 	font-size: 12px;
@@ -22,7 +22,7 @@
 	-moz-border-radius: 30px;
 	border-radius: 30px;
 	background: #869791;
-	filter: Alpha(Opacity=50);/*IE7 fix*/
+	filter: Alpha(Opacity=50); /*IE7 fix*/
 	opacity: 0.5;
 }
 /* Clickable class fix problem with hover on touch devices */
@@ -48,7 +48,9 @@
 	filter: Alpha(Opacity=50);/*IE7 fix*/
 	opacity: 0.5;
 
-	border: 2px solid #fff;
+	background: rgba( 0,0,0, 0.1 );
+
+	// border: 2px solid rgba( 0,0,0, 0.1 );
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
