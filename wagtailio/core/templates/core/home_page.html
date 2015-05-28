@@ -14,7 +14,7 @@
                     <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
                 </div>
                 <div class="image">
-                    <a href="#">{% image item.image fill-635x370 %}</a>
+                    {% image item.image fill-635x370 %}
                     <a href="{{ item.video }}"><span class="fa fa-play icon"></span>Watch demo</a>
                 </div>
             </div>

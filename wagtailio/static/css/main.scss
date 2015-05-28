@@ -126,8 +126,12 @@ a {
         //     transform: translateZ( -150px );
         // }
 
+        // Trying this out for a moment, will need nested max width container
         section {
-            
+            // @include clearfix;
+            .body-content {
+                
+            }
         }
         footer {
             
@@ -249,12 +253,50 @@ section {
     .intro {}
     .paragraph {}
     .imagecaption {}
-    .textimage {}
+    .textimage {
+        @include gridle_set((
+            grid : 12,
+            desktop : (
+                grid : 12,
+                push : 0,
+                pull : 0,
+                no_gutter : (left right)
+            )
+        ));
+
+        background: $color-primary-highlight;
+
+        .text {
+            @include gridle_set((
+                grid : 12,
+                desktop : (
+                    grid : 7,
+                    push : 0,
+                    pull : 0
+                )
+            ));
+            
+        }
+        .image {
+            @include gridle_set((
+                grid : 12,
+                desktop : (
+                    grid : 5,
+                    push : 0,
+                    pull : 0
+                )
+            ));
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
     .colourtext {}
     .calltoaction {}
     .tripleimage {}
     .stats {}
-    
+
 }
 
 /* ============================================ 
