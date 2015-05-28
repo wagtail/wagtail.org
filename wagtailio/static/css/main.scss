@@ -1,4 +1,4 @@
-/* ============================================ 
+/* ============================================
 
   Vars
 
@@ -24,7 +24,7 @@ $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color-primary-highlight;
 
-/* ============================================ 
+/* ============================================
 
   Imports
 
@@ -37,19 +37,19 @@ $carousel-highlightColour: $color-primary-highlight;
 @import "vendor/owl/_carousel_theme";
 @import "vendor/owl/_transitions";
 
-/* ============================================ 
+/* ============================================
 
   Mixins
 
 */
 @import "core/mixins";
 
-/* ============================================ 
+/* ============================================
 
   Default element styling
 
 */
-html, 
+html,
 body {
     // Font standard
     font: 400 16px/1.25 $font-primary;
@@ -67,7 +67,7 @@ a {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Structure
 
@@ -116,7 +116,7 @@ a {
         color: $color-primary-dark;
 
         // Fade out body content concept
-        // @include transition( 
+        // @include transition(
         //     all $anim-speed-primary ease
         // );
         // @include opacity( 1 );
@@ -127,10 +127,10 @@ a {
         // }
 
         section {
-            
+
         }
         footer {
-            
+
         }
 
     }
@@ -153,7 +153,7 @@ a {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Header
 
@@ -161,7 +161,7 @@ a {
 @import "core/header";
 
 
-/* ============================================ 
+/* ============================================
 
   Section
 
@@ -182,14 +182,14 @@ section {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Footer
 
 */
 @import "core/footer";
 
-/* ============================================ 
+/* ============================================
 
   Hero Carousel
 
@@ -197,7 +197,7 @@ section {
 @import "core/hero";
 
 
-/* ============================================ 
+/* ============================================
 
   Sidebar
 
@@ -205,7 +205,7 @@ section {
 #sidebar {
 
     @include gridle( 4 );
-    
+
     position: absolute;
     top: $header-height; bottom: 0px;
     z-index: 10;
@@ -222,14 +222,14 @@ section {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Menu Overlay
 
 */
 @import "core/menu_overlay";
 
-/* ============================================ 
+/* ============================================
 
   Page specific
 
@@ -265,6 +265,12 @@ section {
     }
 }
 
+.template-404 {
+    .body-content {
+        padding: 5% 0% 5% 25%;
+    }
+}
+
 
 #examples {
 
@@ -297,7 +303,7 @@ section {
         .owl-wrapper-outer {
             @include gridle_set( (
                 grid : 12,
-                no_gutter : (left right) 
+                no_gutter : (left right)
             ));
 
             .owl-item {
@@ -349,7 +355,7 @@ section {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Legacy / Existing default styles found in starting CSS
 
