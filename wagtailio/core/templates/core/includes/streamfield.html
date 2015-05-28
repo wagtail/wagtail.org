@@ -3,68 +3,77 @@
 <div class="streamfield">
     {% for child in content %}
         {% if child.block_type == 'h2' %}
-            <div class="aligned"><h2>{{ child }}</h2></div>
+
+            <div class="heading"><h2>{{ child }}</h2></div>
+
         {% elif child.block_type == 'h3' %}
-            <div class="aligned"><h3>{{ child }}</h3></div>
+
+            <div class="heading"><h3>{{ child }}</h3></div>
+
         {% elif child.block_type == 'h4' %}
-            <div class="aligned"><h4>{{ child }}</h4></div>
+
+            <div class="heading"><h4>{{ child }}</h4></div>
+
         {% elif child.block_type == 'intro' %}
-            <div class="row">
-                <div class="container">
-                    <h2 class="intro dropcap">{{ child }}</h2>
-                </div>
+
+            <div class="intro">
+                <h2>{{ child }}</h2>
             </div>
+
         {% elif child.block_type == 'paragraph' %}
-            <div class="aligned">{{ child.value|richtext }}</div>
+
+            <div class="paragraph">{{ child.value|richtext }}</div>
+
         {% elif child.block_type == 'imagecaption' %}
-            <div class="row img-full-title">
-                {% image child.value.image fill-1600x700 %}
-                <div class="text-container">
-                    <div class="col-100">
-                        <h1>{{ child.value.caption|richtext }}</h1>
-                    </div>
+
+            <div class="imagecaption">
+                <div class="image">
+                    {% image child.value.image fill-1600x700 %}
+                </div>
+                <div class="caption">
+                    <p>{{ child.value.caption|richtext }}</p>
                 </div>
             </div>
+
         {% elif child.block_type == 'textimage' %}
-            <div class="row img-text">
-                <div class="col-12point5"></div>
-                <div class="col-33 text {{ child.value.alignment }} {{child.value.background }}">
+
+            <div class="textimage">
+                {# <div class="col-12point5"></div> #}
+                <div class="text {{ child.value.alignment }} {{child.value.background }}">
                     {{ child.value.text|richtext }}
                 </div>
-                <div class="col-50">
+                <div class="image">
                     {% image child.value.image fill-800x450 %}
                 </div>
             </div>
+
         {% elif child.block_type == 'colourtext' %}
-            <div class="row quote {{ child.value.background }}">
-                <div class="col-12point5"></div>
-                <div class="col-75">{{ child.value.text|richtext }}</div>
-                <div class="col-12point5"></div>
+
+            <div class="colourtext {{ child.value.background }}">
+                {# <div class="col-12point5"></div> #}
+                <div class="text">{{ child.value.text|richtext }}</div>
+                {# <div class="col-12point5"></div> #}
             </div>
+
         {% elif child.block_type == 'calltoaction' %}
-            <div class="row quote {{ child.value.background }}">
-                <div class="col-12point5"></div>
-                <div class="col-75">{{ child.value.text|richtext }}</div>
-                <div class="col-12point5"></div>
+
+            <div class="calltoaction {{ child.value.background }}">
+                {# <div class="col-12point5"></div> #}
+                <div class="text">{{ child.value.text|richtext }}</div>
+                {# <div class="col-12point5"></div> #}
             </div>
+
         {% elif child.block_type == 'tripleimage' %}
-            <div class="row">
-                <div class="col-100">
-                    <ul class="three-col-med">
-                        <li>
-                            {% image child.value.first_image fill-375x375 %}
-                        </li>
-                        <li>
-                            {% image child.value.second_image fill-375x375 %}
-                        </li>
-                        <li>
-                            {% image child.value.third_image fill-375x375 %}
-                        </li>
-                    </ul>
-                </div>
+
+            <div class="tripleimage">
+                {% image child.value.first_image fill-375x375 %}
+                {% image child.value.second_image fill-375x375 %}
+                {% image child.value.third_image fill-375x375 %}
             </div>
+
         {% elif child.block_type == 'stats' %}
-            <div class="row">
+
+            <div class="stats">
                 <div class="col-100">
                     <div class="container">
                         <ul class="two-col-sm three-col-med">
@@ -79,8 +88,9 @@
                     </div>
                 </div>
             </div>
+
         {% else %}
-            {{ child }}
+            <div class="paragraph">{{ child }}</div>
         {% endif %}
     {% endfor %}
 </div>
