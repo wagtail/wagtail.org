@@ -56,7 +56,7 @@ body {
     // Font smoothing
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // Replace vertical scroll with nested one for better overlay behaviour
+    // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
 }
@@ -233,16 +233,116 @@ section {
   Page specific
 
 */
+.template-home-page {
+    .body-content {
+        @include gridle_state( desktop ){
+
+            background: $color-primary-highlight;
+
+            h2 {
+                color: $color-primary-light;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 0 900px 900px;
+                border-color: transparent transparent $color-primary-bg transparent;
+            }
+
+            > * {
+                position: relative;
+                z-index: 2;
+            }
+
+        }
+    }
+}
+
+
 #examples {
+
     text-align: center;
+
     h2 {
         font-size: 32px;
         font-weight: 400;
+        @include gridle_state( desktop ){
+            text-align: left;
+        }
     }
+
     .carousel {
+
+        position: relative;
+        overflow: hidden;
+
+        .owl-controls {
+
+            position: absolute;
+            top: 0px; right: 0px;
+            z-index: 10;
+
+            .owl-page {
+                float: left;
+                clear: left;
+            }
+        }
+        .owl-wrapper-outer {
+            @include gridle_set( (
+                grid : 12,
+                no_gutter : (left right) 
+            ));
+
+            .owl-item {
+
+            }
+        }
+
         .slide {
-            img {
-                width: 100%;
+            > .image {
+
+                @include gridle( 12 );
+                @include gridle( 8, desktop );
+
+                img {
+                    width: 100%;
+                }
+            }
+            .text {
+
+                @include gridle( 12 );
+                @include gridle( 4, desktop );
+
+                @include gridle_state( desktop ){
+                    text-align: left;
+                }
+
+                h3 {}
+                p {}
+                .author {
+
+                    text-align: left;
+
+                    // not a particularly optimised way of doing this
+                    @include author( $inline: false );
+                    @include gridle_state( desktop ){
+                        @include author( $inline: true );
+                    }
+
+                    a {
+                        color: $color-primary-highlight;
+                        text-decoration: none;
+                    }
+                }
+                > a {
+                    @include external-link;
+                }
             }
         }
     }
