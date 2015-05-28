@@ -1,4 +1,4 @@
-/* ============================================ 
+/* ============================================
 
   Vars
 
@@ -24,7 +24,7 @@ $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color-primary-highlight;
 
-/* ============================================ 
+/* ============================================
 
   Imports
 
@@ -37,19 +37,19 @@ $carousel-highlightColour: $color-primary-highlight;
 @import "vendor/owl/_carousel_theme";
 @import "vendor/owl/_transitions";
 
-/* ============================================ 
+/* ============================================
 
   Mixins
 
 */
 @import "core/mixins";
 
-/* ============================================ 
+/* ============================================
 
   Default element styling
 
 */
-html, 
+html,
 body {
     // Font standard
     font: 400 16px/1.25 $font-primary;
@@ -67,7 +67,7 @@ a {
     }
 }
 
-/* ============================================ 
+/* ============================================
 
   Structure
 
@@ -116,7 +116,7 @@ a {
         color: $color-primary-dark;
 
         // Fade out body content concept
-        // @include transition( 
+        // @include transition(
         //     all $anim-speed-primary ease
         // );
         // @include opacity( 1 );
@@ -134,7 +134,7 @@ a {
             }
         }
         footer {
-            
+
         }
 
     }
@@ -158,7 +158,7 @@ a {
 }
 
 
-/* ============================================ 
+/* ============================================
 
   Header
 
@@ -166,7 +166,7 @@ a {
 @import "core/header";
 
 
-/* ============================================ 
+/* ============================================
 
   Section
 
@@ -188,14 +188,14 @@ section {
 }
 
 
-/* ============================================ 
+/* ============================================
 
   Footer
 
 */
 @import "core/footer";
 
-/* ============================================ 
+/* ============================================
 
   Sidebar
 
@@ -203,7 +203,7 @@ section {
 #sidebar {
 
     @include gridle( 4 );
-    
+
     position: absolute;
     top: $header-height; bottom: 0px;
     z-index: 10;
@@ -221,7 +221,7 @@ section {
 }
 
 
-/* ============================================ 
+/* ============================================
 
   Menu Overlay
 
@@ -229,11 +229,13 @@ section {
 @import "core/menu_overlay";
 
 
-/* ============================================ 
+/* ============================================
 
   Streamfield
 
 */
+
+
 .streamfield {
     @include clearfix;
 
@@ -299,7 +301,7 @@ section {
 
 }
 
-/* ============================================ 
+/* ============================================
 
   Page specific
 
@@ -315,8 +317,21 @@ section {
     }
 }
 
+// 404
+.template-404 {
+    .body-content {
+        padding: 5% 0% 5% 25%;
+    }
+}
 
-/* ============================================ 
+// newsletter thank you
+.newsletter-thanks {
+    .body-content {
+        padding: 5% 0% 5% 25%;
+    }
+}
+
+/* ============================================
 
   Legacy / Existing default styles found in starting CSS
 
