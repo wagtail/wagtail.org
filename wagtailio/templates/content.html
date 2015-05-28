@@ -3,11 +3,11 @@
 {% load static wagtailcore_tags wagtailio_utils %}
 
 {% block base_content %}
-    
+
     <div id="page">
 
         <header>
-            <a id="branding" href="#"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
+            <a id="branding" href="{{ BASE_URL }}"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
             <a href="#primary_navigation">menu</a>
            {% menu_primary %}
         </header>
@@ -30,7 +30,7 @@
                 {% include "includes/follow.html" %}
                 {% include "includes/copyright.html" %}
             </footer>
-            
+
         </div>
 
         <div id="menu_overlay">
