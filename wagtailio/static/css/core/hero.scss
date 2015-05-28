@@ -32,6 +32,11 @@
             h3 {
                 font-size: 14px;
                 font-weight: 400;
+                margin: 10px 0;
+
+                @include gridle_state( desktop ){
+                    font-size: 16px;
+                }
             }
         
             .progressBar {
@@ -57,7 +62,6 @@
                 }
             }
 
-
         }
     }
 
@@ -65,30 +69,70 @@
         padding-top: 14px;
     }
 
+    // Edge BG
+    @include gridle_state( desktop ){
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 400px 800px;
+            border-color: transparent transparent $color-primary-bg transparent;
+        }
+        .owl-controls {
+            position: relative;
+            z-index: 11;
+        }
+        .owl-wrapper-outer {
+            position: relative;
+            z-index: 10;
+        }
+    }
+
     // Slide styling
     .slide {
         text-align: center;
-        h3 {
-            font-size: 56px;
-            margin: 0;
+        @include clearfix;
+
+        @include gridle_state( desktop ){
+            @include flexbox;
+            @include align-items( center );
         }
-        p {
-            font-size: 24px;
-            font-weight: 300;
-            margin: 24px 0;
-        }
-        .cta {
-            @include button(
-                $padding: 8px 16px 10px,
-                $color: $color-primary-dark,
-                $color-hover: $color-primary-light
-            );
-            font-size: 14px;
-            font-weight: 300;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            .icon {
-                font-size: 20px;
+
+        .text {
+            h3 {
+                font-size: 56px;
+                margin: 0 0 14px;
+            }
+            p {
+                font-size: 24px;
+                font-weight: 300;
+                margin: 0 0 24px 0;
+            }
+            .cta {
+                @include button(
+                    $padding: 10px 16px 9px,
+                    $color: $color-primary-dark,
+                    $color-hover: $color-primary-light,
+                    $border-opacity: 1
+                );
+                font-size: 14px;
+                font-weight: 300;
+                text-transform: uppercase;
+                margin-bottom: 24px;
+                // icon alignment
+                vertical-align: top;
+                line-height: 1.7;
+                .icon {
+                    font-size: 20px;
+                }
+            }
+            @include gridle_state( desktop ){
+                @include gridle( 6 );
+                text-align: left;
             }
         }
         .image {
@@ -109,6 +153,7 @@
                     $color-hover: $color-primary-light
                 )                
             }
+            @include gridle( 6, desktop );
         }
     }
 
