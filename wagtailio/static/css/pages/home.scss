@@ -7,6 +7,10 @@
 
 .template-home-page {
     .body-content {
+
+        overflow: hidden;
+
+        // Edge background for desktop
         @include gridle_state( desktop ){
 
             background: $color-primary-highlight;
@@ -15,6 +19,7 @@
                 color: $color-primary-light;
             }
 
+            // Use border to create shape
             &:after {
                 content: "";
                 position: absolute;
@@ -23,10 +28,11 @@
                 width: 0;
                 height: 0;
                 border-style: solid;
-                border-width: 0 0 900px 900px;
+                border-width: 0 0 1200px 1200px;
                 border-color: transparent transparent $color-primary-bg transparent;
             }
 
+            // Position elements ontop of the border
             > * {
                 position: relative;
                 z-index: 2;
@@ -45,21 +51,22 @@
 */
 #hero.carousel {
 
+    @include gridle( 12 );
 
     background: $color-primary-highlight;
     @include gridle_state( desktop ){
         background: transparent;
     }
-
-
     color: $color-primary-light; // ensure by default text is readable ontop of BG
-    padding: 20px 0;
+    padding-top: 45px;
+    padding-bottom: 45px;
 
     // Owl carousel styling (could go in owl carousel CSS files?)
     .owl-controls {
         width: 100%;
         margin: 0;
 
+        // pagination item
         .owl-page {
 
             box-sizing: border-box;
@@ -76,7 +83,7 @@
             h3 {
                 font-size: 14px;
                 font-weight: 400;
-                margin: 10px 0;
+                margin: 0 0 10px;
 
                 @include gridle_state( desktop ){
                     font-size: 16px;
@@ -109,43 +116,19 @@
         }
     }
 
-    .owl-wrapper-outer {
-        padding-top: 14px;
-    }
-
-    // Edge BG
-    // @include gridle_state( desktop ){
-    //     &:after {
-    //         content: "";
-    //         position: absolute;
-    //         bottom: 0;
-    //         right: 0;
-    //         width: 0;
-    //         height: 0;
-    //         border-style: solid;
-    //         border-width: 0 0 400px 800px;
-    //         border-color: transparent transparent $color-primary-bg transparent;
-    //     }
-    //     .owl-controls {
-    //         position: relative;
-    //         z-index: 11;
-    //     }
-    //     .owl-wrapper-outer {
-    //         position: relative;
-    //         z-index: 10;
-    //     }
-    // }
-
-    // Slide styling
+    // Slide styling (create mixin to avoid pyramid of doom)
     .slide {
+
         text-align: center;
         @include clearfix;
+
+        padding-top: 45px;
 
         @include gridle_state( desktop ){
             @include flexbox;
             @include align-items( center );
         }
-
+        -webkit-perspective: 1000px;
         .text {
             h3 {
                 font-size: 56px;
@@ -174,6 +157,7 @@
                     font-size: 20px;
                 }
             }
+            @include gridle( 12 );
             @include gridle_state( desktop ){
                 @include gridle( 6 );
                 text-align: left;
@@ -183,20 +167,27 @@
             position: relative;
             img {
                 width: 100%;
+                height: auto;
             }
             a {
+                // not an ideal method for centering...
                 position: absolute;
-                top: 50%;
-                left: 50%;
-
-                // negative margin to position item in the middle
-                margin: -10px -50px;
+                top: 50%; left: 50%;
+                transform: translate3D( -50%, -50%, 0 );
 
                 @include button(
                     $color: $color-primary-dark,
                     $color-hover: $color-primary-light
-                )                
+                );
+                // Quick hack to override mixin... 
+                background: $color-primary-dark;
+                color: $color-primary-light;
+                &:hover {
+                    color: $color-primary-highlight;
+                }
+
             }
+            @include gridle( 12 );
             @include gridle( 6, desktop );
         }
     }
@@ -211,10 +202,14 @@
 #examples {
 
     text-align: center;
+    @include clearfix;
+    @include gridle( 12 );
 
     h2 {
+
         font-size: 32px;
         font-weight: 400;
+        @include gridle( 12 );
         @include gridle_state( desktop ){
             text-align: left;
         }
@@ -248,6 +243,10 @@
         }
 
         .slide {
+
+            overflow: hidden;
+            padding-bottom: 45px;
+
             > .image {
 
                 @include gridle( 12 );
@@ -267,8 +266,14 @@
                     text-align: left;
                 }
 
-                h3 {}
-                p {}
+                h3 {
+                    font-size: 32px;
+                }
+                p {
+                    font-size: 18px;
+                    font-weight: 300;
+                    line-height: 1.5;
+                }
                 .author {
 
                     text-align: left;
@@ -286,6 +291,9 @@
                 }
                 > a {
                     @include external-link;
+                    color: $color-secondary-highlight;
+                    display: inline-block;
+                    margin: 5px 0 0 69px;
                 }
             }
         }

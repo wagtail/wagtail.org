@@ -6,17 +6,12 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            <div class="container">
-                <h1>{{ self.title }}</h1>
-                <h2 class="intro dropcap">{{ self.introduction }}</h2>
-            </div>
-        </div>
-
-        {% include "core/includes/streamfield.html" with content=self.body %}
-
+    <div class="page-head">
+        <h1>{{ self.title }}</h1>
+        <h2 class="intro dropcap">{{ self.introduction }}</h2>
     </div>
+
+    {% include "core/includes/streamfield.html" with content=self.body %}
 
     {% include "core/includes/share.html" %}
 

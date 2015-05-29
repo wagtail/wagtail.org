@@ -37,9 +37,9 @@
 
         {% elif child.block_type == 'textimage' %}
 
-            <div class="textimage">
+            <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
                 {# <div class="col-12point5"></div> #}
-                <div class="text {{ child.value.alignment }} {{child.value.background }}">
+                <div class="text">
                     {{ child.value.text|richtext }}
                 </div>
                 <div class="image">
