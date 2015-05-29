@@ -53,12 +53,12 @@ html,
 body {
     // Font standard
     font: 400 16px/1.25 $font-primary;
-    // Font smoothing
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
+
+    background: $color-primary-light;
+    color: $color-primary-dark;
 }
 
 a {
@@ -112,8 +112,6 @@ a {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-        background: $color-primary-bg;
-        color: $color-primary-dark;
 
         // Fade out body content concept
         // @include transition(
@@ -233,31 +231,75 @@ section {
 
   Streamfield
 
+    Building a lot of technical debt here :-(
+
 */
 
+.template-standard-page {
+    section{ 
+        overflow: hidden;
+        .body-content {
+            padding: 45px 0;
+            @include gridle( 12 );
+        }
+    }
+}
 
-.streamfield {
+.page-content {
     @include clearfix;
+
+    p {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0 0 14px;
+    }
+    h2 {
+        margin: 14px 0;
+    }
 
     // replace star rule with specific classes
     > * {
         @include gridle_set((
             grid : 12,
             desktop : (
-                grid : 10,
-                push : 1,
-                pull : 1
+                grid : 8,
+                push : 2,
+                pull : 2
             )
         ));
+        margin-bottom: 14px;
     }
 
-    .heading {}
-    .intro {}
-    .paragraph {}
+    .heading {
+        h1 {
+            font-size: 56px;
+            margin: 0;
+        }
+    }
+    .intro {
+        p {
+            font-size: 24px;
+            line-height: 1.25;
+            &:first-letter {
+                float: left;
+                color: $color-primary-highlight;
+                font-size: 72px;
+                line-height: 0.7;
+                padding: 4px 8px 0 3px;
+            }
+        }
+
+    }
+    .paragraph {
+        
+    }
     .imagecaption {}
     .textimage {
+
         @include gridle_set((
             grid : 12,
+            no_gutter : (left right),
             desktop : (
                 grid : 12,
                 push : 0,
@@ -267,37 +309,97 @@ section {
         ));
 
         background: $color-primary-highlight;
+        color: $color-primary-light;
 
         .text {
             @include gridle_set((
                 grid : 12,
                 desktop : (
-                    grid : 7,
-                    push : 0,
+                    grid : 4,
+                    push : 1,
                     pull : 0
                 )
             ));
-            
+            padding-top: 25px;
         }
         .image {
             @include gridle_set((
                 grid : 12,
+                no_gutter : (left right),
                 desktop : (
-                    grid : 5,
-                    push : 0,
-                    pull : 0
+                    grid : 6,
+                    push : 2,
+                    pull : 0,
+                    no_gutter : (left right)
                 )
             ));
             img {
                 width: 100%;
                 height: auto;
+                vertical-align: top;
             }
         }
     }
-    .colourtext {}
+    .colourtext {
+        @include gridle_set((
+            grid : 12,
+            no_gutter : (left right),
+            desktop : (
+                grid : 12,
+                push : 0,
+                pull : 0,
+                no_gutter : (left right)
+            )
+        ));
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+
+        .text {
+            @include gridle_set((
+                grid : 12,
+                desktop : (
+                    grid : 10,
+                    push : 1,
+                    pull : 1
+                )
+            ));
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+    }
     .calltoaction {}
     .tripleimage {}
-    .stats {}
+    .stats {
+
+        ul {
+
+            @include reset-list;
+            margin-bottom: 2em;
+
+            li {
+
+                @include gridle_set((
+                    grid : 12,
+                    desktop : (
+                        grid : 4
+                    )
+                ));
+
+                > * {
+                    display: block;
+
+                }
+
+                .image {}
+                .name {
+                    font-size: 56px;
+                }
+                .statistic {}
+
+            }
+        }
+
+    }
 
 }
 
