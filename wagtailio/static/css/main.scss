@@ -133,15 +133,9 @@ img {
 
         // Trying this out for a moment, will need nested max width container
         section {
-            // @include clearfix;
-            .body-content {
-                
-            }
+            .body-content {}
         }
-        footer {
-
-        }
-
+        footer {}
     }
 
     #menu_overlay {
