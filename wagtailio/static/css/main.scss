@@ -67,6 +67,12 @@ a {
     }
 }
 
+img {
+    height: auto;
+    vertical-align: top;
+}
+// default styling for lists
+
 /* ============================================
 
   Structure
@@ -231,8 +237,6 @@ section {
 
   Streamfield
 
-    Building a lot of technical debt here :-(
-
 */
 
 .template-standard-page {
@@ -245,20 +249,56 @@ section {
     }
 }
 
+// Streamfield & RTE content combined
+// Elements may, or may not appear within .rich-text block
 .page-content {
+
+    $inline-spacing-bottom: 14px;
+    $block-spacing-bottom: 30px;
+
     @include clearfix;
 
+    h1 {
+        font-size: 56px;
+        margin: 0 0 $inline-spacing-bottom;
+    }
+    h2 {
+        font-size: 27px;
+        margin: 0 0 $inline-spacing-bottom;
+    }
+    // currently no styling for these elements in the prototype, however they are present in the models/templates/wagtail
+    h3,h4,h5 {
+        font-size: 27px;
+        margin: 0 0 $inline-spacing-bottom;
+    }
     p {
         font-size: 20px;
         font-weight: 300;
         line-height: 1.5;
-        margin: 0 0 14px;
+        margin: 0 0 $inline-spacing-bottom;
     }
-    h2 {
-        margin: 14px 0;
+    ol, ul {
+        margin: 0 0 $inline-spacing-bottom;
+        li {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.5;
+        }
     }
 
-    // replace star rule with specific classes
+    // Normalise margin-bottom for streamfield and RTE content (e.g headings in their own .heading container or within a .paragraph container)
+    // Allow parent container to define bottom spacing;
+    h1,h2,h3,h4,h5,
+    p,
+    ol,ul {
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+
+    // replace star rule with specific classes when known (if needed)
+    // Apply bottom spacing
     > * {
         @include gridle_set((
             grid : 12,
@@ -268,15 +308,10 @@ section {
                 pull : 2
             )
         ));
-        margin-bottom: 14px;
+        // 
+        margin-bottom: $block-spacing-bottom;
     }
 
-    .heading {
-        h1 {
-            font-size: 56px;
-            margin: 0;
-        }
-    }
     .intro {
         p {
             font-size: 24px;
@@ -291,9 +326,11 @@ section {
         }
 
     }
-    .paragraph {
-        
+    // Overwrite bottom spacing for heading elements so they sit the same distance as inline headings within .paragraph containers
+    .heading {
+        margin-bottom: $inline-spacing-bottom;
     }
+    .paragraph {} // redundant
     .imagecaption {}
     .textimage {
 
@@ -341,6 +378,10 @@ section {
         }
     }
     .colourtext {
+
+        background: $color-primary-highlight;
+        color: $color-primary-light;
+
         @include gridle_set((
             grid : 12,
             no_gutter : (left right),
@@ -351,10 +392,12 @@ section {
                 no_gutter : (left right)
             )
         ));
-        background: $color-primary-highlight;
-        color: $color-primary-light;
 
         .text {
+
+            padding-top: 25px;
+            padding-bottom: 25px;
+
             @include gridle_set((
                 grid : 12,
                 desktop : (
@@ -363,8 +406,7 @@ section {
                     pull : 1
                 )
             ));
-            padding-top: 25px;
-            padding-bottom: 25px;
+
         }
     }
     .calltoaction {}
@@ -374,7 +416,7 @@ section {
         ul {
 
             @include reset-list;
-            margin-bottom: 2em;
+            margin-bottom: $inline-spacing-bottom;
 
             li {
 
@@ -391,10 +433,13 @@ section {
                 }
 
                 .image {}
-                .name {
+                .statistic {
                     font-size: 56px;
+                    margin: 0 0 $inline-spacing-bottom;
                 }
-                .statistic {}
+                .name {
+                    
+                }
 
             }
         }
