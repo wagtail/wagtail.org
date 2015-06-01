@@ -45,8 +45,8 @@ footer {
     .component-sidebar & {
 
         @include gridle_set((
-            grid : 8,
-            push : 4
+            grid : 9,
+            push : 3
         ), tablet-landscape desktop );
 
         .get_started_links {

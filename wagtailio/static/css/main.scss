@@ -326,6 +326,7 @@ h1 {
         .date {
             font-size: 18px;
             font-weight: 300;
+            margin-bottom: 0;
         }
         .author {
             @include author;

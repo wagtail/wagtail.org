@@ -10,8 +10,8 @@
 
         position: relative;
         @include gridle_set((
-            grid : 8,
-            push : 4,
+            grid : 9,
+            push : 3,
             tablet-portrait : (
                 grid : 12,
                 push : 0,
@@ -23,6 +23,12 @@
                 pull : 0
             ),
         ), tablet-landscape desktop );
+
+        // custom padding to fit inline with prototype
+        .body-content {
+            // not finished, pixel perfect plx
+            padding-left: 60px;
+        }
         
     }
 }
@@ -60,7 +66,7 @@
     };
 
     @include gridle_set((
-        grid : 4,
+        grid : 3,
         no_gutter : (left right),
         tablet-portrait : (
             grid : 12,
