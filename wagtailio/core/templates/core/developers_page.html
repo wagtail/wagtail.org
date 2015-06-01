@@ -6,9 +6,9 @@
 
 {% block content %}
 
-    <div class="row index">
+    <div class="page-content">
         <div class="container">
-            <div class="col-50">
+            <div>
                 <h1>{{ self.title }}</h1>
                 <p class="">{{ self.introduction }}</p>
                 <h3>{{ self.body_heading }}</h3>
@@ -33,8 +33,8 @@
                     </ol>
                 </div>
             </div>
-            <div class="col-50">
-                <ul class="two-col-med-wide two-col-med features-list">
+            <div>
+                <ul class="features-list">
                     {% for option in self.options.all %}
                         <li>
                             <a href="{{ option.link }}">
