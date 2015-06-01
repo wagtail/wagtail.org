@@ -39,12 +39,13 @@
 
     {% elif child.block_type == 'textimage' %}{# img-text #}
 
+        {% image child.value.image original as img %}
         <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
             {# <div class="col-12point5"></div> #}
             <div class="text">
                 {{ child.value.text|richtext }}
             </div>
-            <div class="image">
+            <div class="image" style="background-image: url( {{ img.url }} );">
                 {% image child.value.image fill-800x450 %}
             </div>
         </div>

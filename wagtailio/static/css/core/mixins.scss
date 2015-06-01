@@ -29,6 +29,12 @@
 }
 
 
+@mixin fontsmoothing(){
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 /* ============================================ 
 
     Placeholder text
@@ -111,10 +117,9 @@
 
 */
 @mixin fa-icon{
+    @include fontsmoothing();
     font-family: "FontAwesome";
     position: absolute;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 };
 
 
@@ -203,7 +208,6 @@
     position: relative;
     font-size: 18px;
     font-weight: 500;
-    text-decoration: none;
 
     // download icon
     &:after {

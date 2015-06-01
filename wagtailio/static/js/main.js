@@ -1,29 +1,25 @@
 $(function( ){
 
+    // TODO: make selectors variables for portability
+
     // Menu button
-    $('a[href=#primary_navigation]').on( 'click', function( ){
-        $('body').toggleClass( 'mobile_nav-open' );
+    $( 'a[href=#primary_navigation]' ).on( 'click', function( e ){
+        e.preventDefault();
+        $( 'body' ).toggleClass( 'mobile_nav-open' );
+    });
+
+    // Blog index for mobile button
+    $( '.blog-index-button' ).on( 'click', function( e ){
+        e.preventDefault();
+        $( 'body' ).toggleClass( 'sidebar-open' );
     });
 
     // Window resize
     $( window ).on('resize', function( ){
         // Close nav on resize
-        $('body').removeClass( 'mobile_nav-open' );
+        $( 'body' ).removeClass( 'mobile_nav-open' );
+        $( 'body' ).removeClass( 'sidebar-open' );
     });
-
-    // Scroll behaviours
-    // not currently used
-    // $( '#body' ).on( 'scroll', function( ){
-
-    //     var $footer = $( 'footer' );
-
-    //     if ( $footer.is( ':in-viewport' ) ) {
-    //         $( 'body' ).addClass( 'footer-in' );
-    //     } else {
-    //         $( 'body' ).removeClass( 'footer-in' );
-    //     }
-
-    // });
 
     /************************************************************
     *
@@ -177,5 +173,21 @@ $(function( ){
         transitionStyle : "fade"
       
     });
+
+
+    // Scroll behaviours
+    // not currently used
+    // $( '#body' ).on( 'scroll', function( ){
+
+    //     var $footer = $( 'footer' );
+
+    //     if ( $footer.is( ':in-viewport' ) ) {
+    //         $( 'body' ).addClass( 'footer-in' );
+    //     } else {
+    //         $( 'body' ).removeClass( 'footer-in' );
+    //     }
+
+    // });
+
 
 });

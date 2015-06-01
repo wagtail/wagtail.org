@@ -2,53 +2,47 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}{% endblock %}
-
 {% block content %}
+    <div class="container">
+        <div class="description">
+            <h1>{{ self.feature_index.title }}</h1>
+            <p>{{ self.feature_index.introduction }}</p>
 
-    <div>
-        <div class="container">
-            <div>
-                <h1>{{ self.feature_index.title }}</h1>
-                <p>{{ self.feature_index.introduction }}</p>
+            <ul class="secondary-nav">
+                {% for option in self.feature_index.secondary_menu_options.all %}
+                    <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
 
-                <ul class="subnav">
-                    {% for option in self.feature_index.secondary_menu_options.all %}
-                        <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
-                    {% endfor %}
-                </ul>
+        <div class="main-content">
+            <div class="feature">
+                <a class="close" href="{% pageurl self.feature_index %}"><i class="fa fa-times"></i></a>
+                <h1>{{ self.title }}</h1>
+                <p class="intro">{{ self.introduction }}</p>
 
-                <div class="feature-container">
-                    <div class="feature">
-                        <a class="close" href="{% pageurl self.feature_index %}"><i class="fa fa-times"></i></a>
-                        <h1>{{ self.title }}</h1>
-                        <p class="intro">{{ self.introduction }}</p>
-
-                        {% for f in self.feature_aspects.all %}
-                            <div>
-                                <div class="screenshot">
-                                    {% image f.feature_aspect.screenshot fill-505x370 %}
-                                </div>
-                                <div class="notes">
-                                    {% for bullet in f.feature_aspect.bullets.all %}
-                                        <i class="fa fa-eye fa-2x"></i>
-                                        <h4>{{ bullet.title }}</h4>
-                                        <p>{{ bullet.text|richtext }}</p>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        {% endfor %}
+                {% for f in self.feature_aspects.all %}
+                    <div>
+                        <div class="screenshot">
+                            {% image f.feature_aspect.screenshot fill-505x370 %}
+                        </div>
+                        <div class="notes">
+                            {% for bullet in f.feature_aspect.bullets.all %}
+                                <i class="fa fa-eye fa-2x"></i>
+                                <h4>{{ bullet.title }}</h4>
+                                {{ bullet.text|richtext }}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
+            </div>
 
-                <div class="features-nav">
-                    <a class="back" href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
-                </div>
-                <div class="features-nav bottom">
-                    <a class="back" href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
-                </div>
+            <div class="features-nav">
+                <a class="back" href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="features-nav bottom">
+                <a class="back " href="{{ self.previous.specific.url }}"><i class="fa fa-angle-left"></i>{{ self.previous.specific.title }}</a><a class="next" href="{{ self.next.specific.url }}">{{ self.next.specific.title }}<i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
-
 {% endblock %}

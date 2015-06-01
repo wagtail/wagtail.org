@@ -14,6 +14,8 @@
 
         overflow: hidden;
 
+        position: relative; 
+
         // Edge background for desktop
         @include gridle_state( desktop ){
 
