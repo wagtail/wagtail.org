@@ -309,9 +309,7 @@ class FeatureIndexPage(Page):
 
 FeatureIndexPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
-    InlinePanel(FeatureIndexPage,
-                'secondary_menu_options',
-                label="Secondary Menu Options")
+    InlinePanel(FeatureIndexPage, 'secondary_menu_options', label="Secondary Menu Options")
 ]
 
 
@@ -319,11 +317,12 @@ FeatureIndexPage.content_panels = Page.content_panels + [
 
 class DevelopersPageOptions(Orderable, models.Model):
     page = ParentalKey('core.DevelopersPage', related_name='options')
-    icon = models.CharField(max_length=255,
-                            choices=(('fa-github', 'Github'),
-                                     ('fa-google', 'Google'),
-                                     ('fa-eye', 'Eye'),
-                                     ('fa-server', 'Servers')))
+    icon = models.CharField(max_length=255, choices=(
+        ('fa-github', 'Github'),
+        ('fa-google', 'Google'),
+        ('fa-eye', 'Eye'),
+        ('fa-server', 'Servers')
+    ))
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
     internal_link = models.ForeignKey(

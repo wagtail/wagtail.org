@@ -54,7 +54,7 @@ $carousel-highlightColour: $color-primary-highlight;
 html,
 body {
     // Font standard
-    font: 400 16px/1.25 $font-primary;
+    font: 300 18px/1.25 $font-primary;
     // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
@@ -75,19 +75,19 @@ img {
     vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
 }
 
-h1 {
-    font-size: 56px;
-    margin: 0 0 $inline-spacing-bottom;
-}
-
-// remove default styling for lists and create a mixin for list styling
-
 
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+h1 {
+    font-size: 56px;
+    margin: 0 0 $inline-spacing-bottom;
+}
+
+
 
 /* ============================================
 
