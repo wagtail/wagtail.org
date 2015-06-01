@@ -3,28 +3,27 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div>
-        <div class="container">
-            <div class="intro">
-                <h1>{{ self.title }}</h1>
-                <p>{{ self.introduction }}</p>
-                <ul class="secondary-nav">
-                    {% for option in self.secondary_menu_options.all %}
-                        <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <ul class="features-list">
-                {% for feature in self.features %}
-                    <li class="new">
-                        <a href="{% pageurl feature %}">
-                            {% image feature.specific.listing_image fill-115x90 %}
-                            <h2>{{ feature.specific.title }}</h2>
-                            <p>{{ feature.specific.introduction }}</p>
-                        </a>
-                    </li>
+    <div class="container">
+        <div class="description">
+            <h1>{{ self.title }}</h1>
+            <p>{{ self.introduction }}</p>
+            <ul class="secondary-nav">
+                {% for option in self.secondary_menu_options.all %}
+                    <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
                 {% endfor %}
             </ul>
         </div>
+
+        <ul class="main-content">
+            {% for feature in self.features %}
+                <li>{# class="new" unsupported by model #}
+                    <a href="{% pageurl feature %}">
+                        {% image feature.specific.listing_image fill-115x90 %}
+                        <h2>{{ feature.specific.title }}</h2>
+                        <p>{{ feature.specific.introduction }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
  {% endblock %}
