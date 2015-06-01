@@ -6,8 +6,9 @@
 
 {% block sidebar %}
     <div id="sidebar">
+        <a class="blog-index-button" href="#blog-index">blog index<span class="fa fa-angle-down"></span></a>
         <h2>Blog</h2>
-        <ul>
+        <ul id="blog-index">
             {% for sibling in self.siblings %}
                 <li>
                     <a href="{% pageurl sibling %}">
