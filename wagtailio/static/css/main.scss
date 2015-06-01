@@ -194,6 +194,14 @@ section {
 
 /* ============================================
 
+  Page content
+
+*/
+@import "core/page_content";
+
+
+/* ============================================
+
   Footer
 
 */
@@ -310,7 +318,17 @@ section {
 
 // Blog page
 .template-blog-page {
-
+    .page-content {
+        // Streamfield block standard
+        // replace star rule with specific classes when known (if needed)
+        > * {
+            @include gridle_set((
+                grid : 12,
+                push : 0,
+                pull : 0
+            ));
+        }
+    }
 }
 
 // 404
