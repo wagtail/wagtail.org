@@ -11,10 +11,6 @@
 
     .container{
         padding-top: 3em;
-
-        @include gridle_set((
-            grid : 12
-        ));
     }
     .description{
         @include gridle( 12 );
@@ -25,7 +21,9 @@
     .main-content{
         @include gridle_set((
             grid : 12,
-            clear_each : ( 3 , left )
+            desktop : (
+                clear_each : ( 3 , left )
+            )
         ));
         @include gridle( 12 );
         @include gridle( 9, desktop);
@@ -42,10 +40,6 @@
     .container{
         padding-top: 3em;
         color: $color-primary-light;
-
-        @include gridle_set((
-            grid : 12
-        ));
     }   
 
     .main-content{
