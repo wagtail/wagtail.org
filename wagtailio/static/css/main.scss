@@ -110,7 +110,7 @@ h1 {
 
     header {
         position: absolute;
-        z-index: 10;
+        z-index: 12;
         top: 0px;
 
         @include gridle( 12 );
@@ -127,7 +127,6 @@ h1 {
     }
 
     #body {
-
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
@@ -162,7 +161,7 @@ h1 {
         }
 
         position: fixed;
-        z-index: 9;
+        z-index: 11;
         left: 0px; right: 0px;
         top: 0px; bottom: 0px;
     }
@@ -215,6 +214,33 @@ section {
 */
 @import "core/footer";
 
+/* ============================================
+
+  Share
+
+*/
+.share {
+    
+    position: fixed;
+    top: 64px + 52px; // needs variablising
+    right: 50px;
+    
+    h3 {
+        font-size: 18px;
+        font-weight: 300;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        color: $color-primary-highlight;
+        font-size: 28px;
+        margin-bottom: 12px;
+        @include transition( color $anim-speed-primary linear );
+        &:hover {
+            color: $color-primary-dark;
+        }
+    }
+}
 
 /* ============================================
 
@@ -226,11 +252,43 @@ section {
     $horizontal-pad: 32px;
     $outOpacity: 0.5;
 
-    // @include gridle( 4 );
+    @mixin link-styling{
+        display: block;
+        text-decoration: none;
+        padding: 16px $horizontal-pad 48px;
+
+        @include transition( opacity $anim-speed-primary linear );
+
+        > * {
+            display: block;
+        }
+        .date {
+            font-size: 18px;
+            font-weight: 300;
+            color: $color-primary-dark;
+            @include opacity( 0.6 );
+            margin-bottom: 9px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 300;
+            color: $color-primary-light;
+        }
+        &:hover {
+            @include opacity( 1 );
+            background: rgba( $color-primary-dark, 0.2 );
+        }
+    };
+
     @include gridle_set((
         grid : 4,
         no_gutter : (left right),
         tablet-portrait : (
+            grid : 12,
+            push : 0,
+            pull : 0
+        ),
+         mobile : (
             grid : 12,
             push : 0,
             pull : 0
@@ -241,14 +299,48 @@ section {
     top: $header-height; bottom: 0px;
     z-index: 10;
 
+    // compensate for variable height header
+    @include gridle_state( tablet-landscape ){ top: $header-height - 2; }
+    @include gridle_state( tablet-portrait ){ top: $header-height - 20; }
+
     background: $color-primary-highlight;
     color: $color-primary-light;
     overflow-y: scroll; // replace with custom scrollbar when time
 
-    transform: translate3d( 0%, 0, 0 );
-    @include transition( transform $anim-speed-primary cubic-bezier(0.190, 1.000, 0.220, 1.000) );
-    .footer-in & {
-        // transform: translate3d( -100%, 0, 0 );
+    // 
+    @include gridle_state( tablet-portrait mobile ){
+        position: relative;
+        top: auto; bottom: auto;
+        overflow: hidden;
+    }
+
+
+    // transform: translate3d( 0%, 0, 0 );
+    // @include transition( transform $anim-speed-primary cubic-bezier(0.190, 1.000, 0.220, 1.000) );
+
+    .blog-index-button {
+
+        position: relative;
+        z-index: 10;
+
+        display: none;
+
+        @include gridle_state( tablet-portrait mobile ){
+            display: block;
+        }
+        
+        padding: 14px 0;
+
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        font-size: 16px;
+        color: $color-primary-light;
+
+        span {
+            margin-left: 10px;
+        }
     }
 
     h2 {
@@ -256,10 +348,22 @@ section {
         font-weight: 600;
         padding: 16px $horizontal-pad 0px;
         margin: 32px 0 10px;
+
+        @include gridle_state( tablet-portrait mobile ){
+            display: none;
+        }
     }
 
     ul {
         @include reset-list;
+
+        @include gridle_state( tablet-portrait mobile ){
+            // transform: translate3d( 0, -100%, 0 );
+            display: none;
+            .sidebar-open & {
+                display: block;
+            }
+        }
 
         // fade out links when hovering UL
         &:hover {
@@ -269,33 +373,8 @@ section {
         }
 
         li {
-
             a {
-                display: block;
-                text-decoration: none;
-                padding: 16px $horizontal-pad 48px;
-
-                @include transition( opacity $anim-speed-primary linear );
-
-                > * {
-                    display: block;
-                }
-                .date {
-                    font-size: 18px;
-                    font-weight: 300;
-                    color: $color-primary-dark;
-                    @include opacity( 0.6 );
-                    margin-bottom: 9px;
-                }
-                .title {
-                    font-size: 24px;
-                    font-weight: 300;
-                    color: $color-primary-light;
-                }
-                &:hover {
-                    @include opacity( 1 );
-                    background: rgba( $color-primary-dark, 0.2 );
-                }
+                @include link-styling;
             }
         }
     }
@@ -329,17 +408,27 @@ section {
 
 // Blog page
 .template-blog-page {
+
+    $padding-top: 62px;
+
     .page-content {
+
+        padding-top: $padding-top;
 
         // Streamfield/RTE block standard
         > * {
             @include gridle_set((
-                grid : 12,
+                grid : 11,
                 push : 0,
-                pull : 0
+                pull : 1 // makes space for fixed sharing node
             ));
         }
+        .date {
+            font-size: 18px;
+            font-weight: 300;
+        }
     }
+
 }
 
 

@@ -6,8 +6,9 @@
 
 {% block sidebar %}
     <div id="sidebar">
+        <a class="blog-index-button" href="#blog-index">blog index<span class="fa fa-angle-down"></span></a>
         <h2>Blog</h2>
-        <ul>
+        <ul id="blog-index">
             {% for sibling in self.siblings %}
                 <li>
                     <a href="{% pageurl sibling %}">
@@ -23,7 +24,7 @@
 {% block content %}
     <div class="page-content">
         
-        <span class="date">{{ self.date|date }}</span>
+        <div class="date"><span>{{ self.date|date }}<span></div>
         <div class="heading"><h1>{{ self.title }}</h1></div>
         <div class="intro"><p>{{ self.introduction }}</p></div>
 
