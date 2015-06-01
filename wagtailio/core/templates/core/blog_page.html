@@ -8,43 +8,39 @@
     <div id="sidebar">
         <h2>Blog</h2>
         <ul>
-            <li>
-                {% for sibling in self.siblings %}
+            {% for sibling in self.siblings %}
+                <li>
                     <a href="{% pageurl sibling %}">
-                        <p class="label">{{ sibling.date|date }}</p>
-                        <h3>{{ sibling.title }}</h3>
+                        <span class="date">{{ sibling.date|date }}</span>
+                        <span class="title">{{ sibling.title }}</span>
                     </a>
-                {% endfor %}
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-		<div class="blog">
-		    <div class="col-25">
+    <div class="page-content">
+        
+        <span class="date">{{ self.date|date }}</span>
+        <div class="heading"><h1>{{ self.title }}</h1></div>
+        <div class="intro"><p>{{ self.introduction }}</p></div>
 
-		    </div>
+        <div class="author">
+            <span class="image">
+                {% image self.author.image fill-55x55 alt=self.author.name %}
+            </span>
+            <span class="details">
+                <a class="name" href="{{ self.author.url }}">{{ self.author_name }}</a>
+                <span class="role">{{ self.author.job_title }}</span>
+            </span>
+        </div>
 
-		    <div class="col-62point5">
+        {% image self.main_image original %}
+        {% include "core/includes/streamfield.html" with content=self.body %}
 
-		        <p class="label">{{ self.date|date }}</p>
-		        <h1>{{ self.title }}</h1>
-		        <h2 class="intro dropcap">{{ self.introduction }}</h2>
-
-		        <div class="author">
-		            {% image self.author.image fill-55x55 alt=self.author.name %}
-		            <div class="text">
-		                <p><a href="{{ self.author.url }}">{{ self.author.name }}</a></p>
-		                <small>{{ self.author.job_title }}</small>
-		            </div>
-		        </div>
-                {% image self.main_image original %}
-                {% include "core/includes/streamfield.html" with content=self.body %}
-		    </div>
-		</div>
-	</div>
+    </div>
 
     {% include "core/includes/share.html" %}
 
