@@ -12,11 +12,7 @@ $color-primary-bg: #f6f2f2; // off-white
 
 $color-secondary-light: rgba($color-primary-light, 0.7);
 $color-secondary-highlight: #43b1b0; // wagtail brand teal
-<<<<<<< HEAD
-=======
-
-$color-green: #3cb65b;
->>>>>>> master
+$color-green: #3cb65b; // why?! :-(
 
 $anim-speed-primary: 250ms;
 $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
@@ -97,30 +93,18 @@ img {
     vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
 }
 
-<<<<<<< HEAD
-=======
+
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6, input {
     @include fontsmoothing();
 }
 
->>>>>>> master
+
 h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
 }
 
-<<<<<<< HEAD
-// remove default styling for lists and create a mixin for list styling
-=======
->>>>>>> master
-
-
-// Used on prototype to render heading text in a more 'slender' way
-h1, h2, h3, h4, h5, h6 {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 /* ============================================
 
@@ -273,29 +257,9 @@ h1, h2, h3, h4, h5, h6 {
     top: 64px + 52px; // needs variablising
     right: 40px;
 
-<<<<<<< HEAD
-    $horizontal-pad: 32px;
-    $outOpacity: 0.5;
-
-    @include gridle_set((
-        grid : 4,
-        no_gutter : (left right),
-        tablet-portrait : (
-            grid : 12,
-            push : 0,
-            pull : 0
-        ),
-         mobile : (
-            grid : 12,
-            push : 0,
-            pull : 0
-        )
-    ));
-=======
     text-align: center;
     background: rgba( $color-primary-light, 0.25 );
     padding: 14px 10px 0;
->>>>>>> master
 
     @include border-radius;
 
@@ -320,18 +284,6 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
-
-<<<<<<< HEAD
-    background: $color-primary-highlight;
-    color: $color-primary-light;
-    overflow-y: scroll; // replace with custom scrollbar when time
-
-    transform: translate3d( 0%, 0, 0 );
-    @include transition( transform $anim-speed-primary cubic-bezier(0.190, 1.000, 0.220, 1.000) );
-    .footer-in & {
-        // transform: translate3d( -100%, 0, 0 );
-=======
-
 
 /* ============================================
 
@@ -358,59 +310,7 @@ h1, h2, h3, h4, h5, h6 {
             opacity: 1;
             color: white;
         }
->>>>>>> master
     }
-
-    h2 {
-        font-size: 42px;
-        font-weight: 600;
-        padding: 16px $horizontal-pad 0px;
-        margin: 32px 0 10px;
-    }
-
-    ul {
-        @include reset-list;
-
-        // fade out links when hovering UL
-        &:hover {
-            a {
-                @include opacity( $outOpacity );
-            }
-        }
-
-        li {
-
-            a {
-                display: block;
-                text-decoration: none;
-                padding: 16px $horizontal-pad 48px;
-
-                @include transition( opacity $anim-speed-primary linear );
-
-                > * {
-                    display: block;
-                }
-                .date {
-                    font-size: 18px;
-                    font-weight: 300;
-                    color: $color-primary-dark;
-                    @include opacity( 0.6 );
-                    margin-bottom: 9px;
-                }
-                .title {
-                    font-size: 24px;
-                    font-weight: 300;
-                    color: $color-primary-light;
-                }
-                &:hover {
-                    @include opacity( 1 );
-                    background: rgba( $color-primary-dark, 0.2 );
-                }
-            }
-        }
-    }
-
-
 }
 
 /* ============================================
@@ -431,81 +331,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ============================================
 
-<<<<<<< HEAD
-  Streamfield
-
-*/
-
-
-.streamfield {
-    @include clearfix;
-
-    // replace star rule with specific classes
-    > * {
-        @include gridle_set((
-            grid : 12,
-            desktop : (
-                grid : 10,
-                push : 1,
-                pull : 1
-            )
-        ));
-    }
-
-    .heading {}
-    .intro {}
-    .paragraph {}
-    .imagecaption {}
-    .textimage {
-        @include gridle_set((
-            grid : 12,
-            desktop : (
-                grid : 12,
-                push : 0,
-                pull : 0,
-                no_gutter : (left right)
-            )
-        ));
-
-        background: $color-primary-highlight;
-
-        .text {
-            @include gridle_set((
-                grid : 12,
-                desktop : (
-                    grid : 7,
-                    push : 0,
-                    pull : 0
-                )
-            ));
-            
-        }
-        .image {
-            @include gridle_set((
-                grid : 12,
-                desktop : (
-                    grid : 5,
-                    push : 0,
-                    pull : 0
-                )
-            ));
-            img {
-                width: 100%;
-                height: auto;
-            }
-        }
-    }
-    .colourtext {}
-    .calltoaction {}
-    .tripleimage {}
-    .stats {}
-
-}
-
-/* ============================================
-
-=======
->>>>>>> master
   Page specific
 
 */
@@ -527,10 +352,7 @@ h1, h2, h3, h4, h5, h6 {
     .page-content {
 
         padding-top: $padding-top;
-<<<<<<< HEAD
-=======
         padding-bottom: $padding-top;
->>>>>>> master
 
         // Streamfield/RTE block standard
         > * {
@@ -543,13 +365,10 @@ h1, h2, h3, h4, h5, h6 {
         .date {
             font-size: 18px;
             font-weight: 300;
-<<<<<<< HEAD
-=======
             margin-bottom: 0;
         }
         .author {
             @include author;
->>>>>>> master
         }
     }
 
