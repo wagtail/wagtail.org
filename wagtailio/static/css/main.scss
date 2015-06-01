@@ -195,6 +195,7 @@ section {
 /* ============================================
 
   Page content
+   - contains streamfield & RTE styling together
 
 */
 @import "core/page_content";
@@ -313,14 +314,14 @@ section {
 // homepage
 @import "pages/home";
 
-// Standard page (currently contains streamfield & RTE styling)
+// Standard page 
 @import "pages/standard";
 
 // Blog page
 .template-blog-page {
     .page-content {
-        // Streamfield block standard
-        // replace star rule with specific classes when known (if needed)
+
+        // Streamfield/RTE block standard
         > * {
             @include gridle_set((
                 grid : 12,
