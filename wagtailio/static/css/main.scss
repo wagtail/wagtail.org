@@ -74,7 +74,12 @@ body {
 a {
     text-decoration: none;
     color: $color-secondary-highlight;
-    @include transition( color $anim-speed-primary linear );
+    @include transition(
+        color $anim-speed-primary linear, 
+        padding $anim-speed-primary linear, 
+        background-color $anim-speed-primary linear,
+        opacity $anim-speed-primary linear 
+    );
 
     &:hover{
         color: $color-primary-highlight;
@@ -91,8 +96,7 @@ img {
 
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6, input {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @include fontsmoothing();
 }
 
 h1 {

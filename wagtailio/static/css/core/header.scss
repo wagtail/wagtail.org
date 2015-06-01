@@ -15,7 +15,7 @@ header {
 
     // Mixins
     @mixin linkStyling {
-
+        @include fontsmoothing();
         display: block;
         padding: $link-padding;
 
@@ -24,10 +24,6 @@ header {
         font-size: 14px;
         font-weight:400;
         border: solid 1px transparent;
-
-        // Font smoothing
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
 
         @include transition(
             color $anim_speed-slow ease-out, 
