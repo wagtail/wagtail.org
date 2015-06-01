@@ -72,7 +72,7 @@ body {
 }
 
 a {
-    text-decoration: none; // TODO: remove nested insances of text-decoration: none;
+    text-decoration: none;
     color: $color-secondary-highlight;
     @include transition( color $anim-speed-primary linear );
 
@@ -90,7 +90,7 @@ img {
 }
 
 // Used on prototype to render heading text in a more 'slender' way
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, input {
     @include fontsmoothing();
 }
 
@@ -215,6 +215,12 @@ h1 {
     top: 64px + 52px; // needs variablising
     right: 40px;
 
+    text-align: center;
+    background: rgba( $color-primary-light, 0.25 );
+    padding: 14px 10px 0;
+
+    @include border-radius;
+
     @include gridle_state( tablet-portrait mobile ){
         right: 32px;
     }
@@ -222,12 +228,14 @@ h1 {
     h3 {
         font-size: 18px;
         font-weight: 300;
+        margin: 0 0 14px;
+        cursor: default;
     }
     a {
         display: block;
         color: $color-primary-highlight;
         font-size: 28px;
-        margin-bottom: $inline-spacing-bottom;
+        margin: 0 auto $inline-spacing-bottom;
         @include transition( color $anim-speed-primary linear );
         &:hover {
             color: $color-primary-dark;

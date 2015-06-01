@@ -8,15 +8,12 @@
 // The following styles attempt to normalise the difference in container rendering and simplify the styling.
 .page-content {
 
-    $inline-spacing-bottom: 14px; // such as grouped paragraphs/headings
+    // inline-spacing-bottom: 14px; now defined in main.scss // spacing for grouped paragraphs/headings
     $block-spacing-bottom: 30px; // individual streamfield blocks
 
     @include clearfix;
 
-    h1 {
-        font-size: 56px;
-        margin: 0 0 $inline-spacing-bottom;
-    }
+    h1 {}
     h2 {
         font-size: 27px;
         margin: 0 0 $inline-spacing-bottom;
@@ -33,8 +30,6 @@
         margin: 0 0 $inline-spacing-bottom;
     }
     a {
-        text-decoration: none;
-        color: $color-secondary-highlight;
         word-wrap: break-word;
     }
     ol, ul {

@@ -33,15 +33,7 @@ footer {
         color: $color-secondary-light;
         margin-top: 0px;
     }
-    a {
-        text-decoration: none;
-        color: $color-secondary-highlight;
-        @include transition( color $anim-speed-primary linear );
-
-        &:hover {
-            color: $color-primary-highlight;
-        }
-    }
+    a {}
 
     // Default immediately nested nodes to col-12
     > * {
