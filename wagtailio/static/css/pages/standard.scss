@@ -43,6 +43,10 @@
         line-height: 1.5;
         margin: 0 0 $inline-spacing-bottom;
     }
+    a {
+        text-decoration: none;
+        color: $color-secondary-highlight;
+    }
     ol, ul {
         margin: 0 0 $inline-spacing-bottom;
         li {
@@ -75,6 +79,15 @@
         ));
         // 
         margin-bottom: $block-spacing-bottom;
+
+        .template-blog-page & {
+            // @include gridle_state( desktop, {} )
+            @include gridle_set((
+                grid : 12,
+                push : 0,
+                pull : 0
+            ));
+        }
     }
 
     // Introduction block with drop cap
