@@ -1,0 +1,48 @@
+/* ============================================ 
+
+  Feature index page
+
+*/
+
+.template-feature-index-page {
+    background: $color-primary-highlight;
+    color: $color-primary-light;
+
+    .container{
+        padding-top: 3em;
+
+        @include gridle_set((
+            grid : 12
+        ));
+    }
+    .intro{
+        @include gridle( 12 );
+        @include gridle( 3, desktop);
+    }
+    .features-list{
+        @include gridle_set((
+            grid : 12,
+            gutter-width : 3%,
+            clear_each : ( 3 , left )
+        ));
+        @include gridle( 12 );
+        @include gridle( 9, desktop);
+
+        > li{
+            @include gridle( 12 );
+            @include gridle( 4, desktop);
+            @include gridle_gutter();
+
+            margin-bottom:40px;
+
+            a{
+                @include border-radius(3px);
+                display:block;
+                background-color:$color-primary-light;
+                height:0;
+                padding-bottom:100%;
+            }
+           
+        }
+    }
+}

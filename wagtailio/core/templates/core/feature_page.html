@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <div class="row index-feature">
+    <div>
         <div class="container">
             <div>
                 <h1>{{ self.feature_index.title }}</h1>
@@ -23,9 +23,9 @@
                         <a class="close" href="{% pageurl self.feature_index %}"><i class="fa fa-times"></i></a>
                         <h1>{{ self.title }}</h1>
                         <p class="intro">{{ self.introduction }}</p>
-                        
+
                         {% for f in self.feature_aspects.all %}
-                            <div class="row">
+                            <div>
                                 <div class="screenshot">
                                     {% image f.feature_aspect.screenshot fill-505x370 %}
                                 </div>
