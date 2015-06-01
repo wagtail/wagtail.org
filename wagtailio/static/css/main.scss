@@ -88,10 +88,10 @@ img {
     padding-top: $header-height;
 
     @include gridle_state( tablet-landscape ){
-      padding-top: $header-height - 2px;
+        padding-top: $header-height - 2px;
     }
     @include gridle_state( tablet-portrait mobile ){
-      padding-top: $header-height - 20px;
+        padding-top: $header-height - 20px;
     }
 
     header {
