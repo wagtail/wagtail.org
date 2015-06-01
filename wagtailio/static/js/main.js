@@ -56,8 +56,9 @@ $(function( ){
           
         });
 
-        //Init progressBar where elem is $("#owl-demo")
-        //Should chnage function name 
+        // Init progressBar
+        // @elem is $("#owl-carousel")
+        // TODO: change function name 
         function progressBar( elem ){
 
             // Pointer for carousel (should really have a better name)
@@ -81,6 +82,9 @@ $(function( ){
             buildProgressBar( $pagination );
             //start counting
             start();
+
+            // Add class to body so we can show the carousel (avoids flash of un-JS carousel)
+            $( 'body' ).addClass( 'carousel-loaded' );
 
         }
 

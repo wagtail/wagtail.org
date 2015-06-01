@@ -3,6 +3,14 @@
 {% load static wagtailimages_tags wagtailio_utils %}
 
 {% block body_class %}{% endblock %}
+{% block extra_css %}
+    <style>
+    /* immediately hide homepage content */
+    .template-home-page .body-content {
+        opacity: 0;
+     }
+    </style>
+{% endblock %}
 
 {% block content %}
     <div id="hero" class="carousel">

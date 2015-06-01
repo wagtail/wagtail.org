@@ -94,8 +94,6 @@ img {
       padding-top: $header-height - 20px;
     }
 
-    // perspective: 1000px;
-
     header {
         position: absolute;
         z-index: 10;
@@ -120,7 +118,7 @@ img {
         height: 100%;
         box-sizing: border-box;
 
-        // Fade out body content concept
+        // Fade out body content concept (any translateZ animations will require perspective: Xpx; set on parent)
         // @include transition(
         //     all $anim-speed-primary ease
         // );
@@ -131,7 +129,7 @@ img {
         //     transform: translateZ( -150px );
         // }
 
-        // Trying this out for a moment, will need nested max width container
+        // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
             .body-content {}
         }
