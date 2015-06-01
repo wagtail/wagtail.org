@@ -1,11 +1,8 @@
 <nav class="get_started_links">
     <h3>Good to go?</h3>
-    <p>Grab the open source code from GitHub and start building your new site</p>
+    <p>(TODO: reword me. We <strong>Don't</strong> want people to grab the open source code - we want them to <code>pip install wagtail</code>.) Grab the open source code from GitHub and start building your new site</p>
 
-    <a href="#"><span class="icon fa fa-download"></span>Get Wagtail</a>
-    <a href="#"><span class="icon fa fa-eye"></span>Documentation</a>
-    
     {% for link in links %}
         <a href="{{ link.link_url }}"><span class="fa {{ link.link_icon }}"></span> {{ link.link_text }}</a>
-    {% endfor %}
+    {% endfor %}  
 </nav>
