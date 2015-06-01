@@ -6,10 +6,10 @@
 
 .template-feature-index-page {
     background: $color-primary-highlight;
-    color: $color-primary-light;
 
     .container{
         padding-top: 3em;
+        color: $color-primary-light;
 
         @include gridle_set((
             grid : 12
@@ -22,7 +22,6 @@
     .features-list{
         @include gridle_set((
             grid : 12,
-            gutter-width : 3%,
             clear_each : ( 3 , left )
         ));
         @include gridle( 12 );
@@ -31,18 +30,24 @@
         > li{
             @include gridle( 12 );
             @include gridle( 4, desktop);
-            @include gridle_gutter();
-
+            padding-left:1.5%;
+            padding-right:1.5%;
             margin-bottom:40px;
+            text-align:center;
 
             a{
                 @include border-radius(3px);
                 display:block;
                 background-color:$color-primary-light;
-                height:0;
-                padding-bottom:100%;
+                text-decoration:none;
+                color:$color-primary-dark;
+                padding:20px;
+                min-height:250px
             }
-           
+        }
+        h2{
+            font-weight:500;
+            font-size:1.5em;
         }
     }
 }
