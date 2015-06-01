@@ -1,12 +1,44 @@
 /* ============================================ 
 
+  Feature index page AND feature page
+
+*/
+
+
+.template-feature-index-page,
+.template-feature-page{
+    background: $color-primary-highlight;
+
+    .container{
+        padding-top: 3em;
+
+        @include gridle_set((
+            grid : 12
+        ));
+    }
+    .description{
+        @include gridle( 12 );
+        @include gridle( 3, desktop);
+        color: $color-primary-light;
+    }
+
+    .main-content{
+        @include gridle_set((
+            grid : 12,
+            clear_each : ( 3 , left )
+        ));
+        @include gridle( 12 );
+        @include gridle( 9, desktop);
+    }
+}
+
+/* ============================================ 
+
   Feature index page
 
 */
 
-.template-feature-index-page {
-    background: $color-primary-highlight;
-
+.template-feature-index-page{
     .container{
         padding-top: 3em;
         color: $color-primary-light;
@@ -14,18 +46,14 @@
         @include gridle_set((
             grid : 12
         ));
-    }
-    .intro{
-        @include gridle( 12 );
-        @include gridle( 3, desktop);
-    }
-    .features-list{
-        @include gridle_set((
-            grid : 12,
-            clear_each : ( 3 , left )
-        ));
-        @include gridle( 12 );
-        @include gridle( 9, desktop);
+    }   
+
+    .main-content{
+        &:hover {
+            a {
+                opacity: 0.5;
+            }
+        }
 
         > li{
             @include gridle( 12 );
@@ -42,9 +70,10 @@
                 text-decoration:none;
                 color:$color-primary-dark;
                 padding:20px;
-                min-height:250px;
+                min-height:280px;
 
                 &:hover{
+                    opacity:1;
                     color:$color-green;
 
                     p{
@@ -56,6 +85,112 @@
         h2{
             font-weight:500;
             font-size:1.5em;
+        }
+    }
+}
+
+/* ============================================ 
+
+  Feature page
+
+*/
+
+
+.template-feature-page{
+    .main-content {
+        background: white;
+        position: relative;
+        border-radius: 2px;
+    }
+    .feature{
+        @include gridle_set((
+            grid : 12
+        ));
+        padding: 5rem 5% 5rem;
+
+        .intro {
+            margin-bottom: 1em;
+        }
+        img {
+            display: inline-block;
+        }
+       
+        .close {
+            display: block;
+            position: absolute;
+            top: 4rem;
+            right: 10px;
+            color: rgba(0,0,0,0.2);
+            font-size: 1.4em;
+            padding: 0.5rem 1rem;
+            &:hover {
+                background: white;
+                color: rgba(0,0,0,0.7);
+            }
+        }
+        .row {
+            margin-bottom: 2em;
+        }
+        .screenshot {
+            @include gridle( 12 );
+            @include gridle( 8, desktop);
+            padding: 0 2em 0 0;
+            margin: 0 0 0 0;
+        }
+        .notes {
+            @include gridle( 12 );
+            @include gridle( 4, desktop);
+            padding: 2rem 0 0 0;
+            p {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+.features-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 10;
+
+    &.bottom {
+        top: auto;
+        bottom: 0;
+    }
+    a {
+        display: inline-block;
+        background: rgba(0,0,0,0.1);
+        width: 50%;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $color-primary-dark;
+        border: 2px solid white;
+
+        i {
+            margin: 0 1rem;
+        }
+        &:hover {
+            background: rgba(0,0,0,0.05);
+        }
+    }
+    .back {
+        border-right: none;
+        border-radius: 2px 0 0 0;
+    }
+    .next {
+        float: right;
+        border-radius: 0 2px 0 0;
+    }
+
+
+    @include gridle_state( tablet-landscape ){
+        a {
+            font-size: 1em;
         }
     }
 }
