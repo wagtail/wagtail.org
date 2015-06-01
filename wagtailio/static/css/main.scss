@@ -74,7 +74,7 @@ body {
 a {
     text-decoration: none;
     color: $color-secondary-highlight;
-    @include transition( color $anim-speed-primary linear );
+    @include transition( color $anim-speed-primary linear, padding $anim-speed-primary linear, background-color $anim-speed-primary linear   );
 
     &:hover{
         color: $color-primary-highlight;
