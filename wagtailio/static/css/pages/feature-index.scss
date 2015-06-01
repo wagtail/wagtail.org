@@ -121,6 +121,9 @@
         padding: 5rem 5% 5rem;
 
         .intro {
+            @include fontsmoothing();
+            font-size: 1.4em;
+            font-weight:300;
             margin-bottom: 1em;
         }
         img {
@@ -148,6 +151,11 @@
             @include gridle( 8, desktop);
             padding: 0 2em 0 0;
             margin: 0 0 0 0;
+
+            img{
+                width:100%;
+                height:auto;
+            }
         }
         .notes {
             @include gridle( 12 );

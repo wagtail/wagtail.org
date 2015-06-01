@@ -91,8 +91,7 @@ img {
 
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6 {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @include fontsmoothing();
 }
 
 h1 {
