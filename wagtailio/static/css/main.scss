@@ -13,6 +13,8 @@ $color-primary-bg: #f6f2f2; // off-white
 $color-secondary-light: rgba($color-primary-light, 0.7);
 $color-secondary-highlight: #43b1b0; // wagtail brand teal
 
+$color-green: #3cb65b;
+
 $anim-speed-primary: 250ms;
 $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
@@ -64,6 +66,13 @@ body {
 }
 
 a {
+    @include transition(all 0.3s ease 0s);
+    text-decoration:none;
+    color:$color-secondary-highlight;
+
+    &:hover{
+        color:$color-primary-highlight;
+    }
     // could add text-decoration: none; here (and clean other uses of it)
     &:focus {
         outline-color: $color-primary-highlight;
@@ -241,6 +250,36 @@ section {
         }
     }
 }
+
+
+/* ============================================
+
+  Share
+
+*/
+.secondary-nav{
+    @include reset-list;
+    margin: 2em 0;
+
+    &:hover a {
+        opacity: 0.5;
+    }
+    a {
+        display: block;
+        color: $color-primary-dark;
+        font-weight: 400;
+        padding: 0.75rem 0;
+        border-top: 1px solid rgba(0,0,0,0.1);
+
+        &:hover {
+            background: rgba(0,0,0,0.1);
+            padding: 0.75rem 00.75rem;
+            opacity: 1;
+            color: white;
+        }
+    }
+}
+
 
 /* ============================================
 
