@@ -42,7 +42,15 @@
                 text-decoration:none;
                 color:$color-primary-dark;
                 padding:20px;
-                min-height:250px
+                min-height:250px;
+
+                &:hover{
+                    color:$color-green;
+
+                    p{
+                        color:$color-primary-dark;
+                    }
+                }
             }
         }
         h2{

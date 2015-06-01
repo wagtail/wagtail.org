@@ -12,7 +12,7 @@
                 <h1>{{ self.feature_index.title }}</h1>
                 <p>{{ self.feature_index.introduction }}</p>
 
-                <ul class="subnav">
+                <ul class="secondary-nav">
                     {% for option in self.feature_index.secondary_menu_options.all %}
                         <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
                     {% endfor %}

@@ -8,7 +8,7 @@
             <div class="intro">
                 <h1>{{ self.title }}</h1>
                 <p>{{ self.introduction }}</p>
-                <ul class="subnav">
+                <ul class="secondary-nav">
                     {% for option in self.secondary_menu_options.all %}
                         <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
                     {% endfor %}
