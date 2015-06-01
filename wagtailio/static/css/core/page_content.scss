@@ -35,6 +35,7 @@
     a {
         text-decoration: none;
         color: $color-secondary-highlight;
+        word-wrap: break-word;
     }
     ol, ul {
         margin: 0 0 $inline-spacing-bottom;
