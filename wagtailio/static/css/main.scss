@@ -53,26 +53,33 @@ html,
 body {
     // Font standard
     font: 400 16px/1.25 $font-primary;
-    // Font smoothing
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
+
+    background: $color-primary-light;
+    color: $color-primary-dark;
 }
 
 a {
+    // could add text-decoration: none; here (and clean other uses of it)
     &:focus {
         outline-color: $color-primary-highlight;
     }
 }
+
+img {
+    height: auto; // overwrite inline height added via django templating (possibly a bad assumption to make!)
+    vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
+}
+
+// remove default styling for lists and create a mixin for list styling
 
 /* ============================================
 
   Structure
 
 */
-
 #page {
 
     @include clearfix;
@@ -86,8 +93,6 @@ a {
     @include gridle_state( tablet-portrait mobile ){
       padding-top: $header-height - 20px;
     }
-
-    // perspective: 1000px;
 
     header {
         position: absolute;
@@ -111,10 +116,8 @@ a {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-        background: $color-primary-bg;
-        color: $color-primary-dark;
 
-        // Fade out body content concept
+        // Fade out body content concept (any translateZ animations will require perspective: Xpx; set on parent)
         // @include transition(
         //     all $anim-speed-primary ease
         // );
@@ -125,17 +128,11 @@ a {
         //     transform: translateZ( -150px );
         // }
 
-        // Trying this out for a moment, will need nested max width container
+        // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
-            // @include clearfix;
-            .body-content {
-                
-            }
+            .body-content {}
         }
-        footer {
-
-        }
-
+        footer {}
     }
 
     #menu_overlay {
@@ -194,6 +191,7 @@ section {
 */
 @import "core/footer";
 
+
 /* ============================================
 
   Sidebar
@@ -230,6 +228,7 @@ section {
 
 /* ============================================
 
+<<<<<<< HEAD
   Streamfield
 
 */
@@ -302,6 +301,8 @@ section {
 
 /* ============================================
 
+=======
+>>>>>>> master
   Page specific
 
 */
@@ -309,12 +310,8 @@ section {
 // homepage
 @import "pages/home";
 
-// Standard page
-.template-standard-page {
-    .body-content {
-
-    }
-}
+// Standard page (currently contains streamfield & RTE styling)
+@import "pages/standard";
 
 // 404
 .template-404 {
@@ -339,7 +336,6 @@ section {
 /* Responsive image/video classes */
 .rich-text img {
     max-width: 100%;
-    height: auto;
 }
 
 .richtext-image.left{

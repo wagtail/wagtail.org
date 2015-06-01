@@ -1,96 +1,94 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
-<div class="streamfield">
-    {% for child in content %}
-        {% if child.block_type == 'h2' %}
 
-            <div class="heading"><h2>{{ child }}</h2></div>
+{% for child in content %}
 
-        {% elif child.block_type == 'h3' %}
+    {% if child.block_type == 'h2' %}
 
-            <div class="heading"><h3>{{ child }}</h3></div>
+        <div class="heading"><h2>{{ child }}</h2></div>
 
-        {% elif child.block_type == 'h4' %}
+    {% elif child.block_type == 'h3' %}
 
-            <div class="heading"><h4>{{ child }}</h4></div>
+        <div class="heading"><h3>{{ child }}</h3></div>
 
-        {% elif child.block_type == 'intro' %}
+    {% elif child.block_type == 'h4' %}
 
-            <div class="intro">
-                <h2>{{ child }}</h2>
+        <div class="heading"><h4>{{ child }}</h4></div>
+
+    {% elif child.block_type == 'intro' %}
+
+        <div class="intro">
+            <p>{{ child }}</p>
+        </div>
+
+    {% elif child.block_type == 'paragraph' %}
+
+        <div class="paragraph">{{ child.value|richtext }}</div>
+
+    {% elif child.block_type == 'imagecaption' %}{# img-full-text #}
+
+        <div class="imagecaption">
+            <div class="image">
+                {% image child.value.image fill-1600x700 %}
             </div>
-
-        {% elif child.block_type == 'paragraph' %}
-
-            <div class="paragraph">{{ child.value|richtext }}</div>
-
-        {% elif child.block_type == 'imagecaption' %}
-
-            <div class="imagecaption">
-                <div class="image">
-                    {% image child.value.image fill-1600x700 %}
-                </div>
-                <div class="caption">
-                    <p>{{ child.value.caption|richtext }}</p>
-                </div>
+            {# check if we have caption #}
+            <div class="caption">
+                <p>{{ child.value.caption|richtext }}</p>
             </div>
+        </div>
 
-        {% elif child.block_type == 'textimage' %}
+    {% elif child.block_type == 'textimage' %}{# img-text #}
 
-            <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
-                {# <div class="col-12point5"></div> #}
-                <div class="text">
-                    {{ child.value.text|richtext }}
-                </div>
-                <div class="image">
-                    {% image child.value.image fill-800x450 %}
-                </div>
+        <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
+            {# <div class="col-12point5"></div> #}
+            <div class="text">
+                {{ child.value.text|richtext }}
             </div>
-
-        {% elif child.block_type == 'colourtext' %}
-
-            <div class="colourtext {{ child.value.background }}">
-                {# <div class="col-12point5"></div> #}
-                <div class="text">{{ child.value.text|richtext }}</div>
-                {# <div class="col-12point5"></div> #}
+            <div class="image">
+                {% image child.value.image fill-800x450 %}
             </div>
+        </div>
 
-        {% elif child.block_type == 'calltoaction' %}
+    {% elif child.block_type == 'colourtext' %}{# quote #}
 
-            <div class="calltoaction {{ child.value.background }}">
-                {# <div class="col-12point5"></div> #}
-                <div class="text">{{ child.value.text|richtext }}</div>
-                {# <div class="col-12point5"></div> #}
-            </div>
+        <div class="colourtext {{ child.value.background }}">
+            {# <div class="col-12point5"></div> #}
+            <div class="text">{{ child.value.text|richtext }}</div>
+            {# <div class="col-12point5"></div> #}
+        </div>
 
-        {% elif child.block_type == 'tripleimage' %}
+    {% elif child.block_type == 'calltoaction' %}{# img-full-title #}
 
-            <div class="tripleimage">
-                {% image child.value.first_image fill-375x375 %}
-                {% image child.value.second_image fill-375x375 %}
-                {% image child.value.third_image fill-375x375 %}
-            </div>
+        <div class="calltoaction {{ child.value.background }}">
+            {# <div class="col-12point5"></div> #}
+            <div class="text">{{ child.value.text|richtext }}</div>
+            {# <div class="col-12point5"></div> #}
+        </div>
 
-        {% elif child.block_type == 'stats' %}
+    {% elif child.block_type == 'tripleimage' %}
 
-            <div class="stats">
-                <div class="col-100">
-                    <div class="container">
-                        <ul class="two-col-sm three-col-med">
-                            {% for v in child.value %}
-                                <li>
-                                    {% image v.bound_blocks.image.value fill-50x50 %}
-                                    <h1>{{ v.bound_blocks.stat.value }}</h1>
-                                    <p>{{ v.bound_blocks.text.value }}</p>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="tripleimage">
+            {% image child.value.first_image fill-375x375 %}
+            {% image child.value.second_image fill-375x375 %}
+            {% image child.value.third_image fill-375x375 %}
+        </div>
 
-        {% else %}
-            <div class="paragraph">{{ child }}</div>
-        {% endif %}
-    {% endfor %}
-</div>
+    {% elif child.block_type == 'stats' %}
+
+        <div class="stats">
+            <ul>
+            {% for v in child.value %}
+                <li>
+                    <span class="image">{% image v.bound_blocks.image.value fill-50x50 %}</span>
+                    <span class="statistic">{{ v.bound_blocks.stat.value }}</span>
+                    <span class="name">{{ v.bound_blocks.text.value }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>            
+
+    {% else %}
+        <div class="paragraph">{{ child }}</div>
+    {% endif %}
+{% endfor %}
+

@@ -6,6 +6,10 @@
 */
 
 .template-home-page {
+
+    background: $color-primary-bg;
+    color: $color-primary-dark;
+    
     .body-content {
 
         overflow: hidden;
@@ -32,13 +36,24 @@
                 border-color: transparent transparent $color-primary-bg transparent;
             }
 
-            // Position elements ontop of the border
+            // Position immediate elements ontop of the border
             > * {
                 position: relative;
                 z-index: 2;
             }
 
         }
+
+        // Introduce carousel content in an elegant way (preventing FOUC)
+        // opacity: 0; <- defined inline in template to ensure it is applied immediately
+        @include transition( 
+            opacity 350ms linear
+        );
+    }
+
+    // Styles for when carousel has loaded
+    &.carousel-loaded .body-content {
+        opacity: 1;
     }
 }
 
@@ -254,7 +269,6 @@
 
                 img {
                     width: 100%;
-                    height: auto; // ta Dan :`)
                 }
             }
             .text {

@@ -25,6 +25,10 @@ header {
         font-size: 14px;
         border: solid 1px transparent;
 
+        // Font smoothing
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
         @include transition(
             color $anim_speed-slow ease-out, 
             opacity $anim_speed-slow ease-out
@@ -44,7 +48,7 @@ header {
     // Styling
     background: #fff;
     overflow: hidden;
-    border-bottom: solid 1px $color-primary-highlight;
+    border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
 
     // Transitions
     @include transition( all $anim_speed-fast linear );
