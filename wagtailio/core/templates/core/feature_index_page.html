@@ -3,9 +3,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="row index">
+    <div class="page-content index">
         <div class="container">
-            <div class="col-25">
+            <div>
                 <h1>{{ self.title }}</h1>
                 <p>{{ self.introduction }}</p>
                 <ul class="subnav">
@@ -15,8 +15,8 @@
                 </ul>
             </div>
 
-            <div class="col-75">
-                <ul class="two-col-med-wide three-col-med features-list">
+            <div>
+                <ul class="features-list">
                     {% for feature in self.features %}
                         <li class="new">
                             <a href="{% pageurl feature %}">
