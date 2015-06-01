@@ -75,11 +75,11 @@ small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
 }
 a {
     @include transition(all 0.3s ease 0s);
-    text-decoration:none;
-    color:$color-secondary-highlight;
+    text-decoration: none;
+    color: $color-secondary-highlight;
 
     &:hover{
-        color:$color-primary-highlight;
+        color: $color-primary-highlight;
     }
     // could add text-decoration: none; here (and clean other uses of it)
     &:focus {
@@ -170,7 +170,9 @@ p {
 
         // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
-            .body-content {}
+            .body-content {
+
+            }
         }
         footer {}
     }
@@ -204,28 +206,6 @@ p {
 
 /* ============================================
 
-  Section
-
-*/
-section {
-
-    position: relative;
-
-    // for blog template only (or maybe template with sidebar?)
-    .component-sidebar & {
-        .body-content {
-            // @include gridle( 8 );
-            @include gridle_set((
-                grid : 8,
-                push : 4
-            ), tablet-landscape desktop );
-        }
-    }
-}
-
-
-/* ============================================
-
   Page content
    - contains streamfield & RTE styling together
 
@@ -250,7 +230,11 @@ section {
     
     position: fixed;
     top: 64px + 52px; // needs variablising
-    right: 50px;
+    right: 40px;
+
+    @include gridle_state( tablet-portrait mobile ){
+        right: 32px;
+    }
     
     h3 {
         font-size: 18px;
@@ -261,7 +245,7 @@ section {
         text-decoration: none;
         color: $color-primary-highlight;
         font-size: 28px;
-        margin-bottom: 12px;
+        margin-bottom: $inline-spacing-bottom;
         @include transition( color $anim-speed-primary linear );
         &:hover {
             color: $color-primary-dark;
@@ -276,7 +260,7 @@ section {
   Secondary nav
 
 */
-.secondary-nav{
+.secondary-nav {
     @include reset-list;
     margin: 2em 0;
 
@@ -338,6 +322,7 @@ section {
     .page-content {
 
         padding-top: $padding-top;
+        padding-bottom: $padding-top;
 
         // Streamfield/RTE block standard
         > * {
@@ -350,6 +335,9 @@ section {
         .date {
             font-size: 18px;
             font-weight: 300;
+        }
+        .author {
+            @include author;
         }
     }
 
