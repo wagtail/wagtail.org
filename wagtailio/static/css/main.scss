@@ -67,11 +67,11 @@ body {
 
 a {
     @include transition(all 0.3s ease 0s);
-    text-decoration:none;
-    color:$color-secondary-highlight;
+    text-decoration: none;
+    color: $color-secondary-highlight;
 
     &:hover{
-        color:$color-primary-highlight;
+        color: $color-primary-highlight;
     }
     // could add text-decoration: none; here (and clean other uses of it)
     &:focus {
@@ -189,38 +189,6 @@ h1 {
 
 /* ============================================
 
-  Section
-
-*/
-section {
-
-    position: relative;
-
-    // for blog template only (or maybe template with sidebar?)
-    .component-sidebar & {
-        
-        // @include gridle( 8 );
-        @include gridle_set((
-            grid : 8,
-            push : 4,
-            tablet-portrait : (
-                grid : 12,
-                push : 0,
-                pull : 0
-            ),
-            mobile : (
-                grid : 12,
-                push : 0,
-                pull : 0
-            ),
-        ), tablet-landscape desktop );
-        
-    }
-}
-
-
-/* ============================================
-
   Page content
    - contains streamfield & RTE styling together
 
@@ -260,7 +228,7 @@ section {
         text-decoration: none;
         color: $color-primary-highlight;
         font-size: 28px;
-        margin-bottom: 12px;
+        margin-bottom: $inline-spacing-bottom;
         @include transition( color $anim-speed-primary linear );
         &:hover {
             color: $color-primary-dark;
@@ -275,7 +243,7 @@ section {
   Secondary nav
 
 */
-.secondary-nav{
+.secondary-nav {
     @include reset-list;
     margin: 2em 0;
 

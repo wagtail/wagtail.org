@@ -4,6 +4,29 @@
   Sidebar
 
 */
+
+.component-sidebar {
+    section {
+        
+        position: relative;
+        @include gridle_set((
+            grid : 8,
+            push : 4,
+            tablet-portrait : (
+                grid : 12,
+                push : 0,
+                pull : 0
+            ),
+            mobile : (
+                grid : 12,
+                push : 0,
+                pull : 0
+            ),
+        ), tablet-landscape desktop );
+        
+    }
+}
+
 #sidebar {
 
     $horizontal-pad: 32px;
