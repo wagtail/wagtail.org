@@ -6,7 +6,23 @@
 
 
 .template-feature-index-page,
-.template-feature-page{
+.template-feature-page {
+
+    small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
+        margin: 0;
+    }
+
+    h4 {
+        margin-bottom: 0.25em;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    p {
+        padding: 0;
+        margin: 0 0 1.5em 0;
+    }
+
     background: $color-primary-highlight;
 
     .container{
