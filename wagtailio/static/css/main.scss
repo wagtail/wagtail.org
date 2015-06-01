@@ -56,7 +56,7 @@ $carousel-highlightColour: $color-primary-highlight;
 html,
 body {
     // Font standard
-    font: 300 18px/1.5 $font-primary;
+    font: 300 18px/1.25 $font-primary;
     // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
@@ -70,18 +70,15 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
-    margin: 0;
-}
+
 a {
-    @include transition(all 0.3s ease 0s);
-    text-decoration: none;
+    text-decoration: none; // TODO: remove nested insances of text-decoration: none;
     color: $color-secondary-highlight;
+    @include transition( color $anim-speed-primary linear );
 
     &:hover{
         color: $color-primary-highlight;
     }
-    // could add text-decoration: none; here (and clean other uses of it)
     &:focus {
         outline-color: $color-primary-highlight;
     }
@@ -91,7 +88,6 @@ img {
     height: auto; // overwrite inline height added via django templating (possibly a bad assumption to make!)
     vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
 }
-
 
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6 {
@@ -103,17 +99,6 @@ h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
 }
-h4 {
-    margin-bottom: 0.25em;
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
-p {
-    padding: 0;
-    margin: 0 0 1.5em 0;
-}
-
 
 
 /* ============================================
@@ -171,7 +156,6 @@ p {
         // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
             .body-content {
-
             }
         }
         footer {}
@@ -242,7 +226,6 @@ p {
     }
     a {
         display: block;
-        text-decoration: none;
         color: $color-primary-highlight;
         font-size: 28px;
         margin-bottom: $inline-spacing-bottom;
