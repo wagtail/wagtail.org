@@ -7,6 +7,7 @@
 
 .template-feature-index-page,
 .template-feature-page {
+    background: $color-primary-highlight;
 
     small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
         margin: 0;
@@ -23,8 +24,6 @@
         margin: 0 0 1.5em 0;
     }
 
-    background: $color-primary-highlight;
-
     .container{
         padding-top: 3em;
     }
@@ -36,7 +35,6 @@
 
     .main-content{
         @include gridle_set((
-            grid : 12,
             desktop : (
                 clear_each : ( 3 , left )
             )
@@ -58,45 +56,10 @@
         color: $color-primary-light;
     }   
 
-    .main-content{
-        &:hover {
-            a {
-                opacity: 0.5;
-            }
-        }
-
-        > li{
-            @include gridle( 12 );
-            @include gridle( 6, tablet-landscape);
-            @include gridle( 4, desktop);
-            padding-left:1.5%;
-            padding-right:1.5%;
-            margin-bottom:40px;
-            text-align:center;
-
-            a{
-                @include border-radius(3px);
-                display:block;
-                background-color:$color-primary-light;
-                text-decoration:none;
-                color:$color-primary-dark;
-                padding:20px;
-                min-height:280px;
-
-                &:hover{
-                    opacity:1;
-                    color:$color-green;
-
-                    p{
-                        color:$color-primary-dark;
-                    }
-                }
-            }
-        }
-        h2{
-            font-weight:500;
-            font-size:1.5em;
-        }
+    .main-content > li{
+        @include gridle( 12 );
+        @include gridle( 6, tablet-landscape);
+        @include gridle( 4, desktop);
     }
 }
 
