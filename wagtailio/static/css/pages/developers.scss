@@ -1,0 +1,68 @@
+/* ============================================ 
+
+  Developers page
+
+*/
+
+
+.template-developers-page{
+    h4 {
+        margin-bottom: 0.25em;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    p {
+        padding: 0;
+        margin: 0 0 1.5em 0;
+    }
+
+    background: $color-primary-highlight;
+
+    .container{
+        padding-top: 3em;
+    }
+    .description{
+        @include gridle( 12 );
+        @include gridle( 6, desktop);
+        color: $color-primary-light;
+
+        h2{
+            margin-bottom: 0.25em;
+        }
+    }
+    .get-started{
+        margin-top:1em;
+        background: rgba(255, 255, 255, 0.1);
+        padding:1em;
+        color:$color-primary-dark;
+
+        @include gridle_state( desktop ){
+            padding: 2em;
+        }
+
+        pre{
+            color:white;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.3em;
+            font-size: 0.8em;
+        }
+    }
+
+    .block-list{
+        @include gridle_set((
+            desktop : (
+                clear_each : ( 2 , left )
+            )
+        ));
+        @include gridle( 12 );
+        @include gridle( 6, desktop);
+
+        > li{
+            @include gridle( 12 );
+            @include gridle( 6, tablet-landscape);
+            @include gridle( 6, desktop);
+        }
+
+    }
+}

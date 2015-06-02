@@ -104,6 +104,9 @@ h1 {
     margin: 0 0 $inline-spacing-bottom;
 }
 
+pre{
+    white-space:normal;
+}
 
 /* ============================================
 
@@ -278,6 +281,58 @@ h1 {
     }
 }
 
+
+/* ============================================
+
+  Block list: a grid of white blocks with content in the,
+
+*/
+
+.block-list{
+    @include gridle_set((
+        grid : 12
+    ));
+
+    &:hover {
+        a {
+            opacity: 0.5;
+        }
+    }
+
+    > li{
+        padding-left:1.5%;
+        padding-right:1.5%;
+        margin-bottom:40px;
+        text-align:center;
+
+        a{
+            @include border-radius(3px);
+            display:block;
+            background-color:$color-primary-light;
+            text-decoration:none;
+            color:$color-primary-dark;
+            padding:20px;
+            min-height:280px;
+
+            &:hover{
+                opacity:1;
+                color:$color-green;
+
+                p{
+                    color:$color-primary-dark;
+                }
+            }
+        }
+    }
+    h2, h3{
+        font-weight:500;
+        font-size:1.5em;
+        line-height:1.3em;
+        margin-bottom:0.25em;
+        margin-top:0;
+    }
+}
+
 /* ============================================
 
   Sidebar
@@ -308,6 +363,9 @@ h1 {
 
 // Feature index page
 @import "pages/feature-index";
+
+// Developers page
+@import "pages/developers";
 
 // Blog page
 .template-blog-page {
