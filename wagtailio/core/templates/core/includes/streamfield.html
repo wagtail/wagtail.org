@@ -46,7 +46,9 @@
                 <div class="text">
                     {{ child.value.text|richtext }}
                 </div>
-                <div class="image" style="background-image: url( {{ img.url }} );">
+                {# BG image could be an option in specific situations but requires further discussion #}
+                {# <div class="image" style="background-image: url( {{ img.url }} );"> #}
+                <div class="image">
                     {% image child.value.image fill-800x450 %}
                 </div>
             </div>
