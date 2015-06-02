@@ -106,6 +106,7 @@
 /* ============================================ 
 
     Opacity
+    - can be dropped for just opacity as we are no longer supporting IE8 :party:
 
 */
 @mixin opacity( $opacity ){
