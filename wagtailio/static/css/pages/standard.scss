@@ -4,11 +4,15 @@
 
 */
 .template-standard-page {
-    section{ 
-        overflow: hidden;
-        .body-content {
-            padding: 45px 0;
-            @include gridle( 12 );
-        }
+    .body-content {
+    	@include row;
+
+    	.container {
+    		text-align: center;
+    	}
+
+        padding: 45px 0;
+        // @include gridle( 12 );
     }
+    
 }

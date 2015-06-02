@@ -12,14 +12,10 @@
     
     .body-content {
         overflow: hidden;
-
         position: relative; 
 
-        // Edge background for desktop
         @include gridle_state( desktop ){
-
             background: $color-primary-highlight;
-
             h2 {
                 color: $color-primary-light;
             }
@@ -42,7 +38,6 @@
                 position: relative;
                 z-index: 2;
             }
-
         }
 
         // Introduce carousel content in an elegant way (preventing FOUC)
@@ -50,6 +45,7 @@
         @include transition( 
             opacity 350ms linear
         );
+
     }
 
     // Styles for when carousel has loaded
@@ -65,148 +61,155 @@
   Note: not exactly sure where to put own carousel styling (as it is currently mixed here and within the vendor directory)
 
 */
-#hero.carousel {
+#hero {
 
-    @include gridle( 12 );
+    @include row;
 
     background: $color-primary-highlight;
     @include gridle_state( desktop ){
         background: transparent;
     }
-    color: $color-primary-light; // ensure by default text is readable ontop of BG
-    padding-top: 45px;
-    padding-bottom: 45px;
 
-    // Owl carousel styling (could go in owl carousel CSS files?)
-    .owl-controls {
-        width: 100%;
-        margin: 0;
+    .carousel {
 
-        // pagination item
-        .owl-page {
+        @include gridle( 12 );
 
-            box-sizing: border-box;
-            padding: 0 30px;
-            overflow: hidden;
-
-            color: $color-primary-dark;
-
-            @include transition( color $anim-speed-primary linear );
-
-            // hide default owl carousel buttons
-            span { display: none; }
-
-            h3 {
-                font-size: 14px;
-                font-weight: 400;
-                margin: 0 0 10px;
-
-                @include gridle_state( desktop ){
-                    font-size: 16px;
-                }
-            }
         
-            .progressBar {
-                background: rgba( $color-primary-light, 0.2 );
-                width: 100%;
-                height: 4px;
 
-                // Position progress bar outside of item by default
-                transform: translate3d( 0, 100%, 0 );
-                // Animate bar position in
-                @include transition( transform $anim-speed-primary linear );
-
-                .bar {
-                    background: $color-primary-light;
-                    height: 4px;
-                }
-            }
-            
-            &.active {
-                color: $color-primary-light;
-                .progressBar {
-                    transform: translate3d( 0, 0, 0 );
-                }
-            }
-
-        }
-    }
-
-    // Slide styling (create mixin to avoid pyramid of doom)
-    .slide {
-
-        text-align: center;
-        @include clearfix;
-
+        color: $color-primary-light; // ensure by default text is readable ontop of BG
         padding-top: 45px;
+        padding-bottom: 45px;
 
-        @include gridle_state( desktop ){
-            @include flexbox;
-            @include align-items( center );
-        }
-        -webkit-perspective: 1000px;
-        .text {
-            h3 {
-                font-size: 56px;
-                margin: 0 0 14px;
-            }
-            p {
-                font-size: 24px;
-                font-weight: 300;
-                margin: 0 0 24px 0;
-            }
-            .cta {
-                @include button(
-                    $padding: 10px 16px 9px,
-                    $color: $color-primary-dark,
-                    $color-hover: $color-primary-light,
-                    $border-opacity: 1
-                );
-                font-size: 14px;
-                font-weight: 300;
-                text-transform: uppercase;
-                margin-bottom: 24px;
-                // icon alignment
-                vertical-align: top;
-                line-height: 1.7;
-                .icon {
-                    font-size: 20px;
+        // Owl carousel styling (could go in owl carousel CSS files?)
+        .owl-controls {
+            width: 100%;
+            margin: 0;
+
+            // pagination item
+            .owl-page {
+
+                box-sizing: border-box;
+                padding: 0 30px;
+                overflow: hidden;
+
+                color: $color-primary-dark;
+
+                @include transition( color $anim-speed-primary linear );
+
+                // hide default owl carousel buttons
+                span { display: none; }
+
+                h3 {
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin: 0 0 10px;
+
+                    @include gridle_state( desktop ){
+                        font-size: 16px;
+                    }
                 }
+            
+                .progressBar {
+                    background: rgba( $color-primary-light, 0.2 );
+                    width: 100%;
+                    height: 4px;
+
+                    // Position progress bar outside of item by default
+                    transform: translate3d( 0, 100%, 0 );
+                    // Animate bar position in
+                    @include transition( transform $anim-speed-primary linear );
+
+                    .bar {
+                        background: $color-primary-light;
+                        height: 4px;
+                    }
+                }
+                
+                &.active {
+                    color: $color-primary-light;
+                    .progressBar {
+                        transform: translate3d( 0, 0, 0 );
+                    }
+                }
+
             }
-            @include gridle( 12 );
+        }
+
+        // Slide styling (create mixin to avoid pyramid of doom)
+        .slide {
+
+            text-align: center;
+            @include clearfix;
+
+            padding-top: 45px;
+
             @include gridle_state( desktop ){
-                @include gridle( 6 );
-                text-align: left;
+                @include flexbox;
+                @include align-items( center );
             }
-        }
-        .image {
-            position: relative;
-            img {
-                width: 100%;
-            }
-            a {
-                // not an ideal method for centering...
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate3D( -50%, -50%, 0 );
-
-                @include button(
-                    $color: $color-primary-dark,
-                    $color-hover: $color-primary-light
-                );
-                // Quick hack to override mixin... 
-                background: $color-primary-dark;
-                color: $color-primary-light;
-                &:hover {
-                    color: $color-primary-highlight;
+            -webkit-perspective: 1000px;
+            .text {
+                h3 {
+                    font-size: 56px;
+                    margin: 0 0 14px;
                 }
-
+                p {
+                    font-size: 24px;
+                    font-weight: 300;
+                    margin: 0 0 24px 0;
+                }
+                .cta {
+                    @include button(
+                        $padding: 10px 16px 9px,
+                        $color: $color-primary-dark,
+                        $color-hover: $color-primary-light,
+                        $border-opacity: 1
+                    );
+                    font-size: 14px;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    margin-bottom: 24px;
+                    // icon alignment
+                    vertical-align: top;
+                    line-height: 1.7;
+                    .icon {
+                        font-size: 20px;
+                    }
+                }
+                @include gridle( 12 );
+                @include gridle_state( desktop ){
+                    @include gridle( 6 );
+                    text-align: left;
+                }
             }
-            @include gridle( 12 );
-            @include gridle( 6, desktop );
+            .image {
+                position: relative;
+                img {
+                    width: 100%;
+                }
+                a {
+                    // not an ideal method for centering...
+                    position: absolute;
+                    top: 50%; left: 50%;
+                    transform: translate3D( -50%, -50%, 0 );
+
+                    @include button(
+                        $color: $color-primary-dark,
+                        $color-hover: $color-primary-light
+                    );
+                    // Quick hack to override mixin... 
+                    background: $color-primary-dark;
+                    color: $color-primary-light;
+                    &:hover {
+                        color: $color-primary-highlight;
+                    }
+
+                }
+                @include gridle( 12 );
+                @include gridle( 6, desktop );
+            }
         }
     }
-
 }
 
 /* ============================================ 
@@ -216,12 +219,9 @@
 */
 #examples {
 
-    text-align: center;
-    @include clearfix;
-    @include gridle( 12 );
+    @include row;
 
     h2 {
-
         font-size: 32px;
         font-weight: 400;
         @include gridle( 12 );
@@ -231,6 +231,10 @@
     }
 
     .carousel {
+
+        text-align: center;
+        @include clearfix;
+        @include gridle( 12 );
 
         position: relative;
         overflow: hidden;
@@ -264,8 +268,17 @@
 
             > .image {
 
-                @include gridle( 12 );
-                @include gridle( 8, desktop );
+                // @include gridle( 12 );
+                // @include gridle( 8, desktop );
+                // // no_gutter : (left right) 
+
+                @include gridle_set((
+                    grid : 12,
+                    no_gutter : (left),
+                    desktop : (
+                        grid : 8
+                    )
+                ));
 
                 img {
                     width: 100%;
