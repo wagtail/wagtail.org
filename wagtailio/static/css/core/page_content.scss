@@ -92,19 +92,14 @@
     .imagecaption {}
     .textimage {
 
-        background: $color-primary-highlight;
-        color: $color-primary-light;
-
         max-width: none;
 
         @include gridle_set((
             grid : 12,
-            no_gutter : (left right),
+            // no_gutter : (left right),
             desktop : (
-                grid : 12,
-                push : 0,
-                pull : 0,
-                no_gutter : (left right)
+                grid : 12
+                // no_gutter : (left right)
             )
         ));
 
@@ -118,44 +113,51 @@
                 // display: none;
             }
         }
-        
-        .text {
-            @include gridle_set((
-                grid : 12,
-                desktop : (
-                    grid : 4,
-                    push : 1,
-                    pull : 0
-                )
-            ));
-            padding-top: 25px;
-            padding-bottom: 25px;
-        }
-        .image {
 
-            position: relative;
-            background-repeat: no-repeat;
-            background-size: cover;
+        .container {
 
-            @include gridle_set((
-                grid : 12,
-                no_gutter : (left right),
-                desktop : (
-                    grid : 6,
-                    push : 2,
-                    pull : 0,
-                    no_gutter : (left right)
-                )
-            ));
-            img {
-                width: 100%;
-                height: 100%;
+            background: $color-primary-highlight;
+            color: $color-primary-light;
+            text-align: left;
+
+            .text {
+                @include gridle_set((
+                    grid : 12,
+                    desktop : (
+                        grid : 4,
+                        push : 1,
+                        pull : 0
+                    )
+                ));
+                padding-top: 25px;
+                padding-bottom: 25px;
             }
+            .image {
+
+                position: relative;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                @include gridle_set((
+                    grid : 12,
+                    no_gutter : (left right),
+                    desktop : (
+                        grid : 6,
+                        push : 2,
+                        pull : 0,
+                        no_gutter : (left right)
+                    )
+                ));
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
         }
+        
     }
     .colourtext {
-
-        
 
         max-width: none;
 
@@ -183,12 +185,20 @@
 
             .rich-text {
                 @include gridle_set((
-                    grid : 10,
-                    centered : true
+                    grid : 12,
+                    desktop : (
+                        grid : 10,
+                        centered : true
+                    )
                 ));                
             }
 
-            padding: 35px 35px 45px;
+            padding-top: 25px;
+            padding-bottom: 35px;
+
+            @include gridle_state( desktop ){
+                padding: 35px 35px 45px;
+            }
 
         }
     }
