@@ -318,7 +318,7 @@
                 }
                 > a {
                     @include external-link;
-                    color: $color-secondary-highlight;
+                    font-weight: 400;
                     display: inline-block;
                     margin: 5px 0 0 69px;
                 }
