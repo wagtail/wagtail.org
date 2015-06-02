@@ -9,27 +9,29 @@
 .template-feature-page {
     background: $color-primary-highlight;
 
-    small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
-        margin: 0;
-    }
-
-    h4 {
-        margin-bottom: 0.25em;
-        font-size: 1.2em;
-        font-weight: 500;
-    }
-
-    p {
-        padding: 0;
-        margin: 0 0 1.5em 0;
-    }
-
     .body-content{
         @include row;
 
         .container{
             padding-top: 3em;
         }
+
+        // nesting element styling, for namespace (so we don't effect footer business)
+        small, figcaption, .label, p, span, h6, h5, .intro, blockquote, h4, h3, h2, h1 {
+            margin: 0;
+        }
+
+        h4 {
+            margin-bottom: 0.25em;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        p {
+            padding: 0;
+            margin: 0 0 1.5em 0;
+        }
+
     }
     .description{
         @include gridle( 12 );
@@ -41,7 +43,7 @@
         @include gridle_set((
             grid : 12,
             desktop : (
-                clear_each : ( 3 , left )
+                // clear_each : ( 3 , left ) :: seems to cause issues, and doesn't appear to be required.
             )
         ));
         @include gridle( 12 );

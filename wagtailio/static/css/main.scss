@@ -59,7 +59,7 @@ $website-width-max: 1600px;
 html,
 body {
     // Font standard
-    font: 300 18px/1.25 $font-primary;
+    font: 300 18px/1.5 $font-primary;
     // Replace vertical scroll with nested one for better overlay behavior
     overflow: hidden;
     height: 100%;
@@ -106,6 +106,7 @@ h1, h2, h3, h4, h5, h6, input {
 h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
+    line-height: 1.2;
 }
 
 pre{
@@ -193,7 +194,7 @@ pre{
 
     #menu_overlay {
 
-        @include transition( transform $mobile-nav-open_speed $anim-ease-expo );
+        @include transition( all $mobile-nav-open_speed $anim-ease-expo );
 
         // closed state
         @include transform( translate3d( 0, -100%, 0 ) );
@@ -387,25 +388,43 @@ pre{
     $padding-top: 62px;
 
     .page-content {
+        @include row;
+        .container {
 
-        padding-top: $padding-top;
-        padding-bottom: $padding-top;
+            padding-top: $padding-top;
+            padding-bottom: $padding-top;
 
-        // Streamfield/RTE block standard
-        > * {
-            @include gridle_set((
-                grid : 11,
-                push : 0,
-                pull : 1 // makes space for fixed sharing node
-            ));
-        }
-        .date {
-            font-size: 18px;
-            font-weight: 300;
-            margin-bottom: 0;
-        }
-        .author {
-            @include author;
+            // Streamfield/RTE block standard
+            > * {
+                @include gridle_set((
+                    grid : 11,
+                    push : 0,
+                    pull : 1, // makes space for fixed sharing node
+                    tablet-landscape : (
+                        grid : 12,
+                        push : 0,
+                        pull : 0
+                    ),
+                    tablet-portrait : (
+                        grid : 12,
+                        push : 0,
+                        pull : 0
+                    ),
+                    mobile : (
+                        grid : 12,
+                        push : 0,
+                        pull : 0
+                    ),
+                ));
+            }
+            .date {
+                font-size: 18px;
+                font-weight: 300;
+                margin-bottom: 0;
+            }
+            .author {
+                @include author;
+            }
         }
     }
 
