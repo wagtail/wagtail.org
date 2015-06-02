@@ -19,8 +19,12 @@
 
     background: $color-primary-highlight;
 
-    .container{
-        padding-top: 3em;
+    .body-content{
+        @include row;
+
+        .container{
+            padding-top: 3em;
+        }
     }
     .description{
         @include gridle( 12 );

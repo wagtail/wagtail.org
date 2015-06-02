@@ -24,8 +24,12 @@
         margin: 0 0 1.5em 0;
     }
 
-    .container{
-        padding-top: 3em;
+    .body-content{
+        @include row;
+
+        .container{
+            padding-top: 3em;
+        }
     }
     .description{
         @include gridle( 12 );
@@ -52,8 +56,7 @@
 */
 
 .template-feature-index-page{
-    .container{
-        padding-top: 3em;
+    .body-content .container{
         color: $color-primary-light;
     }   
 
