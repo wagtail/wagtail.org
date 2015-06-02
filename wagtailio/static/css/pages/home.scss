@@ -117,7 +117,7 @@
                     // Position progress bar outside of item by default
                     @include transform( translate3d( 0, 100%, 0 ) );
                     // Animate bar position in
-                    @include transition( transform $anim-speed-primary linear );
+                    @include transition( all $anim-speed-primary linear );
 
                     .bar {
                         background: $color-primary-light;
