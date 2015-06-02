@@ -46,12 +46,18 @@ header {
     overflow: hidden;
     border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
 
+    @include row;
+
     // Transitions
     @include transition( all $anim_speed-fast linear );
 
     // Branding
     #branding {
+
       display: inline-block;
+      @include gridle( 1 );
+      margin-top: 10px;
+
       img {
         width: 110px;
         @include gridle_state( tablet-landscape ){
@@ -73,6 +79,10 @@ header {
     // Primary Navigation
     .primary_navigation {
 
+        @include gridle_set((
+            grid : 10,
+            no_gutter : (right)
+        ));
         float: right;
 
         ul {
@@ -80,7 +90,9 @@ header {
             // clear nested floats
             overflow: hidden;
             // Styling
-            padding: 10px;
+            padding: 10px 0;
+            // 
+            float: right;
 
             // fade out links when hovering UL
             &:hover {

@@ -35,10 +35,16 @@ footer {
     }
     a {}
 
+    text-align: center;
+
     // Default immediately nested nodes to col-12
-    > * {
-        padding: 12px 0 0;
-        @include gridle( 12 );
+    .container {
+        
+        > * {
+            padding: 12px 0 0;
+            @include gridle( 12 );
+            text-align: left;
+        }
     }
 
     // Sidebar

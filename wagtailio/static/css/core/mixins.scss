@@ -65,6 +65,20 @@
     list-style: none;
 }
 
+/* ============================================ 
+
+    Drop cap mixin
+
+*/
+// Drop cap styling
+// &:first-letter {
+//     float: left;
+//     color: $color-primary-highlight;
+//     font-size: 72px;
+//     line-height: 0.7;
+//     padding: 4px 8px 0 3px;
+// }
+
 
 /* ============================================ 
 
@@ -92,6 +106,7 @@
 /* ============================================ 
 
     Opacity
+    - can be dropped for just opacity as we are no longer supporting IE8 :party:
 
 */
 @mixin opacity( $opacity ){

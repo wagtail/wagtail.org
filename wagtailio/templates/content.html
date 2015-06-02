@@ -4,15 +4,17 @@
 
 {% block base_content %}
 
-    <div id="page">
+    <div class="page">
 
         <header>
-            <a id="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
-            <a href="#primary_navigation">Menu</a>
-            {% menu_primary %}
+            <div class="container">
+                <a id="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
+                <a href="#primary_navigation">Menu</a>
+                {% menu_primary %}
+            </div>
         </header>
-
-        <div id="body">
+        
+        <div class="body">
 
             {% block sidebar %}{% endblock %}
 
@@ -21,16 +23,18 @@
                     {% block content %}{% endblock %}
                 </div>
             </section>
-
+            
             <footer>
-                {% menu_good_to_go %}
-                {% menu_network %}
-                {% latest_blog %}
-                {% include "includes/newsletter_signup.html" %}
-                {% include "includes/follow.html" %}
-                {% include "includes/copyright.html" %}
+                <div class="container">
+                    {% menu_good_to_go %}
+                    {% menu_network %}
+                    {% latest_blog %}
+                    {% include "includes/newsletter_signup.html" %}
+                    {% include "includes/follow.html" %}
+                    {% include "includes/copyright.html" %}
+                </div>
             </footer>
-
+            
         </div>
 
         <div id="menu_overlay">
