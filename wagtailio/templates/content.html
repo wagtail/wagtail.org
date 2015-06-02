@@ -4,7 +4,7 @@
 
 {% block base_content %}
 
-    <div id="page">
+    <div class="page">
 
         <header>
             <a id="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
@@ -12,7 +12,8 @@
             {% menu_primary %}
         </header>
 
-        <div id="body">
+        
+        <div class="body">
 
             {% block sidebar %}{% endblock %}
 

@@ -110,7 +110,7 @@ h1 {
   Structure
 
 */
-#page {
+.page {
 
     @include clearfix;
     height: 100%;
@@ -141,7 +141,7 @@ h1 {
         background: $color-primary-light;
     }
 
-    #body {
+    .body {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
