@@ -19,7 +19,9 @@
 
     background: $color-primary-highlight;
 
-    .container{
+    .body-content .container{
+        @include row;
+        text-align:left;
         padding-top: 3em;
     }
     .description{
