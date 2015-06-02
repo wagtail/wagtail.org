@@ -28,7 +28,11 @@
     background-clip: padding-box;
 }
 
+/* ============================================ 
 
+    Font smoothing
+
+*/
 @mixin fontsmoothing(){
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
