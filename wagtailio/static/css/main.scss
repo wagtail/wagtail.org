@@ -289,10 +289,6 @@ pre{
 */
 
 .block-list{
-    @include gridle_set((
-        grid : 12
-    ));
-
     &:hover {
         a {
             opacity: 0.5;
@@ -300,8 +296,6 @@ pre{
     }
 
     > li{
-        padding-left:1.5%;
-        padding-right:1.5%;
         margin-bottom:40px;
         text-align:center;
 

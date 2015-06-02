@@ -51,6 +51,7 @@
 
     .block-list{
         @include gridle_set((
+            grid : 12,
             desktop : (
                 clear_each : ( 2 , left )
             )
