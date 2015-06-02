@@ -2,51 +2,37 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}{% endblock %}
-
 {% block content %}
+    <div class="container">
+        <div class="description">
+            <h1>{{ self.title }}</h1>
 
-    <div class="page-content">
-        <div class="container">
-            <div>
-                <h1>{{ self.title }}</h1>
-                <p class="">{{ self.introduction }}</p>
-                <h3>{{ self.body_heading }}</h3>
-                <div class="code-window">
-                    <ol>
-                        <li>
-                            <p>Install Wagtail</p>
-                            <pre>pip install wagtail</pre>
-                        </li>
-                        <li>
-                            <p>Create new project</p>
-                            <pre>wagtail start project_name</pre>
-                        </li>
-                        <li>
-                            <p>Launch virtual machine and connect to it</p>
-                            <pre>cd project_name; vagrant up; vagrant ssh</pre>
-                        </li>
-                        <li>
-                            <p>Create superuser</p>
-                            <pre>dj createsuperuser (following the instructions), then djrun</pre>
-                        </li>
-                    </ol>
+            {% if self.introduction %}
+                <p>{{ self.introduction }}</p>
+            {% endif %}
+
+            {% if self.body_heading %}
+                <h2>{{ self.body_heading }}</h2>
+            {% endif %}
+
+            {% if self.body %}
+                <div class="get-started">
+                    {{ self.body|richtext }}
                 </div>
-            </div>
-            <div>
-                <ul class="features-list">
-                    {% for option in self.options.all %}
-                        <li>
-                            <a href="{{ option.link }}">
-                                <i class="fa {{ option.icon }} fa-3x"></i>
-                                <h3>{{ option.title }}</h3>
-                                <p>{{ option.summary }}</p>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% endif %}
         </div>
+       
+        <ul class="block-list">
+            {% for option in self.options.all %}
+                <li>
+                    <a href="{{ option.link }}">
+                        <i class="fa {{ option.icon }} fa-3x"></i>
+                        <h3>{{ option.title }}</h3>
+                        <p>{{ option.summary }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        
     </div>
-
 {% endblock %}
