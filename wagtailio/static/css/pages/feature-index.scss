@@ -24,7 +24,9 @@
         margin: 0 0 1.5em 0;
     }
 
-    .container{
+    .body-content .container{
+        @include row;
+        text-align:left;
         padding-top: 3em;
     }
     .description{
@@ -52,7 +54,7 @@
 */
 
 .template-feature-index-page{
-    .container{
+    .body-content .container{
         padding-top: 3em;
         color: $color-primary-light;
     }   
