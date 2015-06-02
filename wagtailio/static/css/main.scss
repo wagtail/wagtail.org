@@ -195,10 +195,10 @@ pre{
         @include transition( transform $mobile-nav-open_speed $anim-ease-expo );
 
         // closed state
-        transform: translate3d( 0, -100%, 0 );
+        @include transform( translate3d( 0, -100%, 0 ) );
         // open state
         .mobile_nav-open & {
-            transform: translate3d( 0, 0, 0 );
+            @include transform( translate3d( 0, 0, 0 ) );
         }
 
         position: fixed;
