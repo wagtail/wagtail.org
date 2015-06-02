@@ -115,7 +115,7 @@
                     height: 4px;
 
                     // Position progress bar outside of item by default
-                    transform: translate3d( 0, 100%, 0 );
+                    @include transform( translate3d( 0, 100%, 0 ) );
                     // Animate bar position in
                     @include transition( transform $anim-speed-primary linear );
 
@@ -128,7 +128,7 @@
                 &.active {
                     color: $color-primary-light;
                     .progressBar {
-                        transform: translate3d( 0, 0, 0 );
+                        @include transform( translate3d( 0, 0, 0 ) );
                     }
                 }
 
@@ -191,7 +191,7 @@
                     // not an ideal method for centering...
                     position: absolute;
                     top: 50%; left: 50%;
-                    transform: translate3D( -50%, -50%, 0 );
+                    @include transform( translate3D( -50%, -50%, 0 ) );
 
                     @include button(
                         $color: $color-primary-dark,
