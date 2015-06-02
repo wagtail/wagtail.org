@@ -28,6 +28,9 @@ $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color-primary-highlight;
 
+// 
+$website-width-max: 1600px;
+
 /* ============================================
 
   Imports
@@ -108,12 +111,30 @@ pre{
     white-space:normal;
 }
 
+
 /* ============================================
 
   Structure
 
 */
-#page {
+
+// rules for max width container
+@mixin row {
+    
+    text-align: center;
+    padding: 0 4%;
+    // use this for debugging...
+    // border: solid 5px hotpink; 
+
+    .container {
+        overflow: hidden;
+        max-width: $website-width-max;
+        margin: 0 auto;
+        text-align: left;
+    }
+}
+
+.page {
 
     @include clearfix;
     height: 100%;
@@ -134,17 +155,13 @@ pre{
         @include gridle( 12 );
         float: none;
 
-        @include flexbox;
-        @include align-items( center );
-        @include justify-content( space-between );
-
         padding-top: 4px;
         padding-bottom: 2px;
 
         background: $color-primary-light;
     }
 
-    #body {
+    .body {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
@@ -164,8 +181,13 @@ pre{
         section {
             .body-content {
             }
+            > .container {
+                @include row;
+            }
         }
-        footer {}
+        footer {
+            @include row;
+        }
     }
 
     #menu_overlay {
@@ -185,7 +207,6 @@ pre{
         top: 0px; bottom: 0px;
     }
 }
-
 
 /* ============================================
 

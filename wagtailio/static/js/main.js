@@ -39,7 +39,7 @@ $(function( ){
             percentTime;
 
         // Carousel
-        $("#hero.carousel").owlCarousel({
+        $("#hero .carousel").owlCarousel({
 
             // navigation : true, // Show next and prev buttons
             slideSpeed      : 500,

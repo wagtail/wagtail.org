@@ -7,9 +7,11 @@
 {% block content %}
 
     <div class="page-content">
-        <div class="heading"><h1>{{ self.title }}</h1></div>
-        <div class="intro"><p>{{ self.introduction }}</p></div>
-        {% include "core/includes/streamfield.html" with content=self.body %}
+    	<div class="container">
+	        <div class="heading"><h1>{{ self.title }}</h1></div>
+	        <div class="intro"><p>{{ self.introduction }}</p></div>
+	        {% include "core/includes/streamfield.html" with content=self.body %}
+	    </div>
     </div>
 
     {% include "core/includes/share.html" %}
