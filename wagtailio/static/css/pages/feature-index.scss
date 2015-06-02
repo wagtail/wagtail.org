@@ -35,6 +35,7 @@
 
     .main-content{
         @include gridle_set((
+            grid : 12,
             desktop : (
                 clear_each : ( 3 , left )
             )
