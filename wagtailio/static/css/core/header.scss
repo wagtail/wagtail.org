@@ -54,19 +54,26 @@ header {
     // Branding
     #branding {
 
-      display: inline-block;
-      @include gridle( 1 );
-      margin-top: 10px;
+        display: inline-block;
+        @include gridle( 1 );
+        margin-top: 10px;
 
-      img {
-        width: 110px;
+        img {
+            width: 110px;
+        }
+
         @include gridle_state( tablet-landscape ){
-          width: 90px;
+            margin-top: 13px;
+            img {
+                width: 90px;
+            }
         }
         @include gridle_state( tablet-portrait mobile ){
-          width: 70px;
+            img {
+                width: 70px;
+            }
         }
-      }
+
     }
 
     // Mobile navigation anchor
