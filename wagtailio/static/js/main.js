@@ -72,7 +72,7 @@ $(function( ){
             $items.each(function( i ){
                 var $item = $( this ),
                     $pageItem = $( $pagination[i] ),
-                    title = $item.find( 'h3' ).clone();
+                    title = $item.find( 'h1' ).clone(); // change this so it only clones the text of the h1
 
                 $pageItem.append( title );
 

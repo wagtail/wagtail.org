@@ -20,7 +20,7 @@
                 {% for item in self.main_carousel_items.all %}
                     <div class="slide">
                         <div class="text">
-                            <h3>{{ item.title }}</h3>
+                            <h1>{{ item.title }}</h1>
                             <p>{{ item.summary }}</p>
                             <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
                         </div>

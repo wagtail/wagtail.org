@@ -72,13 +72,21 @@
 
     .carousel {
 
-        @include gridle( 12 );
-
-        
+        @include gridle_set((
+            grid : 12,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ));
 
         color: $color-primary-light; // ensure by default text is readable ontop of BG
         padding-top: 45px;
         padding-bottom: 45px;
+
+        @include gridle_state( tablet-portrait mobile ){ 
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
 
         // Owl carousel styling (could go in owl carousel CSS files?)
         .owl-controls {
@@ -96,16 +104,26 @@
 
                 @include transition( color $anim-speed-primary linear );
 
+                @include gridle_state( tablet-portrait mobile ){
+                    padding: 0 15px;
+                }
+
                 // hide default owl carousel buttons
                 span { display: none; }
 
-                h3 {
-                    font-size: 14px;
+                h1 {
+                    
+                    font-size: 16px;
                     font-weight: 400;
                     margin: 0 0 10px;
+                    line-height: 1.5;
+                    color: rgba( $color-primary-dark, 0.8 );
 
-                    @include gridle_state( desktop ){
-                        font-size: 16px;
+                    @include transition( color $anim-speed-primary linear );
+
+                    @include gridle_state( tablet-portrait mobile  ){
+                        font-size: 14px;
+                        margin: 0 0 3px;
                     }
                 }
             
@@ -126,7 +144,10 @@
                 }
                 
                 &.active {
-                    color: $color-primary-light;
+
+                    h1 {
+                        color: $color-primary-light;
+                    }
                     .progressBar {
                         @include transform( translate3d( 0, 0, 0 ) );
                     }
@@ -147,17 +168,28 @@
                 @include flexbox;
                 @include align-items( center );
             }
-            -webkit-perspective: 1000px;
+
+            @include gridle_state( tablet-portrait mobile ){
+                padding-top: 15px;
+            }
+
+            // -webkit-perspective: 1000px;
             .text {
                 h3 {
                     font-size: 56px;
                     margin: 0 0 14px;
+                    @include gridle_state( tablet-portrait mobile ){
+                        margin: 0 0 7px;
+                    }
                 }
                 p {
                     font-size: 24px;
                     font-weight: 300;
                     margin: 0 0 24px 0;
                     @include font-smoothing;
+                    @include gridle_state( tablet-portrait mobile ){
+                        font-size: 20px;
+                    }
                 }
                 .cta {
                     @include button(
@@ -175,6 +207,13 @@
                     line-height: 1.7;
                     .icon {
                         font-size: 20px;
+                    }
+                    @include gridle_state( tablet-portrait mobile ){
+                        font-size: 13px;
+                        .icon {
+                            font-size: 17px;
+                            line-height: 19px;
+                        }
                     }
                 }
                 @include gridle( 12 );
