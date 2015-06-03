@@ -167,15 +167,10 @@ pre {
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-        @include transform( translate3d( 0, 0, 0 ) );
+        @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
 
-        // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
-            .body-content {
-            }
-            > .container {
-                @include row;
-            }
+            .body-content {}
         }
         footer {
             @include row;
