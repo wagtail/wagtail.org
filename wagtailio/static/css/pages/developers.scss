@@ -57,7 +57,7 @@
         @include gridle_set((
             grid : 12,
             desktop : (
-                clear_each : ( 2 , left )
+                // clear_each : ( 2 , left ) :: doesn't seem to be required
             )
         ));
         @include gridle( 12 );
