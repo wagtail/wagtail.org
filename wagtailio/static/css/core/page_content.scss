@@ -19,6 +19,9 @@
     h2 {
         font-size: 27px;
         margin: 0 0 $inline-spacing-bottom;
+        @include gridle_state( tablet-portrait mobile ){
+            font-size: 22px;
+        }
     }
     // currently no styling for these elements in the prototype, however they are present in the models/templates/wagtail
     h3,h4,h5 {
@@ -30,6 +33,10 @@
         font-weight: 300;
         line-height: 1.5;
         margin: 0 0 $inline-spacing-bottom;
+        @include gridle_state( tablet-portrait mobile ){
+            font-size: 18px;
+            line-height: 1.35;
+        }
     }
     a {
         word-wrap: break-word;
@@ -40,6 +47,10 @@
             font-size: 20px;
             font-weight: 300;
             line-height: 1.5;
+            @include gridle_state( tablet-portrait mobile ){
+                font-size: 18px;
+                line-height: 1.35;
+            }
         }
     }
 
@@ -82,7 +93,11 @@
     .intro {
         p {
             font-size: 24px;
-            line-height: 1.5;
+            line-height: 1.25;
+            @include font-smoothing;
+            @include gridle_state( tablet-portrait mobile ){ 
+                font-size: 20px;
+            }
         }
 
     }

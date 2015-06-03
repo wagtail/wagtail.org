@@ -100,13 +100,14 @@ img {
 
 // Used on prototype to render heading text in a more 'slender' way
 h1, h2, h3, h4, h5, h6, input {
-    @include fontsmoothing();
+    @include font-smoothing();
 }
 
 h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
     line-height: 1.2;
+    @include gridle_state( tablet-portrait mobile ){ font-size: 27px; }
 }
 
 pre {
@@ -138,40 +139,42 @@ pre {
 
 .page {
 
-    @include clearfix;
+    @include clearfix; // Clear anything nested
+    padding-top: $header-height; // adjust top position based on height on header
     height: 100%;
-    padding-top: $header-height;
 
-    @include gridle_state( tablet-landscape ){
-        padding-top: $header-height - 2px;
-    }
-    @include gridle_state( tablet-portrait mobile ){
-        padding-top: $header-height - 20px;
-    }
+    // Responsive adjustments for when the header height changes
+    @include gridle_state( tablet-landscape ){ padding-top: $header-height - 2px; }
+    @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
 
     header {
+
         position: absolute;
         z-index: 12;
         top: 0px;
 
-        @include gridle( 12 );
-        float: none;
-
+        @include gridle_set((
+            grid : 12,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ));
         padding-top: 4px;
         padding-bottom: 2px;
 
         background: $color-primary-light;
+
     }
 
     .body {
+
+        // Nested scroll container
         overflow-y: scroll;
         height: 100%;
-        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch; // iOS scrolling
         @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
 
-        section {
-            .body-content {}
-        }
+        section {}
         footer {
             @include row;
         }
@@ -261,52 +264,22 @@ pre {
 
 /* ============================================
 
-  Secondary nav
-
-*/
-.secondary-nav {
-    @include reset-list;
-    margin: 2em 0;
-
-    &:hover a {
-        opacity: 0.5;
-    }
-    a {
-        display: block;
-        color: $color-primary-dark;
-        font-weight: 400;
-        padding: 0.75rem 0;
-        border-top: 1px solid rgba(0,0,0,0.1);
-
-        &:hover {
-            background: rgba(0,0,0,0.1);
-            padding: 0.75rem 00.75rem;
-            opacity: 1;
-            color: white;
-        }
-    }
-}
-
-
-/* ============================================
-
-  Block list: a grid of white blocks with content in the,
+  Block list: a grid of white blocks with content in them
 
 */
 
-.block-list{
+.block-list {
     &:hover {
         a {
             opacity: 0.5;
         }
     }
 
-    > li{
+    > li {
         margin-bottom:40px;
         text-align:center;
 
-        a{
-            @include transform(translate3d(0,0,0));
+        a {
             @include border-radius(3px);
             display:block;
             background-color:$color-primary-light;
@@ -315,22 +288,24 @@ pre {
             padding:20px;
             min-height:280px;
 
+            // add responsive mixin to remove min-height at lower resolutions (when the elements are not being rednered as blocks)
+
             &:hover{
                 opacity:1;
                 color:$color-green;
 
-                p{
+                p {
                     color:$color-primary-dark;
                 }
             }
         }
     }
-    h2, h3{
-        font-weight:500;
-        font-size:1.5em;
-        line-height:1.3em;
-        margin-bottom:0.25em;
-        margin-top:0;
+    h2, h3 {
+        font-weight: 500;
+        font-size: 1.5em;
+        line-height: 1.3em;
+        margin-bottom: 0.25em;
+        margin-top: 0;
     }
 }
 
@@ -369,64 +344,19 @@ pre {
 @import "pages/developers";
 
 // Blog page
-.template-blog-page {
-
-    $padding-top: 62px;
-
-    .page-content {
-        @include row;
-        .container {
-
-            padding-top: $padding-top;
-            padding-bottom: $padding-top;
-
-            // Streamfield/RTE block standard
-            > * {
-                @include gridle_set((
-                    grid : 11,
-                    push : 0,
-                    pull : 1, // makes space for fixed sharing node
-                    tablet-landscape : (
-                        grid : 12,
-                        push : 0,
-                        pull : 0
-                    ),
-                    tablet-portrait : (
-                        grid : 12,
-                        push : 0,
-                        pull : 0
-                    ),
-                    mobile : (
-                        grid : 12,
-                        push : 0,
-                        pull : 0
-                    ),
-                ));
-            }
-            .date {
-                font-size: 18px;
-                font-weight: 300;
-                margin-bottom: 0;
-            }
-            .author {
-                @include author;
-            }
-        }
-    }
-
-}
+@import "pages/blog";
 
 
 // 404
 .template-404 {
-    .body-content {
+    section {
         padding: 5% 0% 5% 25%;
     }
 }
 
 // newsletter thank you
 .newsletter-thanks {
-    .body-content {
+    section {
         padding: 5% 0% 5% 25%;
     }
 }
