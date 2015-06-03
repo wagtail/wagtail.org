@@ -106,6 +106,7 @@ h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
     line-height: 1.2;
+    @include gridle_state( tablet-portrait mobile ){ font-size: 27px; }
 }
 
 pre {
