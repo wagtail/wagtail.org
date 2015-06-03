@@ -15,16 +15,20 @@ $(function( ){
     });
 
     // Quick sidebar hack
-    var setSideBarHeight = function(){
+    function setSideBarHeight(){
         var contentHeight = $('section').height() + $('footer').height();
         $('#sidebar').height( contentHeight );
-    }();
+    };
 
     // Window resize
     $( window ).on('resize', function( ){
         // Close nav on resize
         $( 'body' ).removeClass( 'mobile_nav-open' );
         $( 'body' ).removeClass( 'sidebar-open' );
+        setSideBarHeight();
+    });
+
+    $( window ).on('load', function( ){
         setSideBarHeight();
     });
 
