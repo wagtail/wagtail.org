@@ -33,7 +33,8 @@
                     mobile : (
                         grid : 12,
                         push : 0,
-                        pull : 0
+                        pull : 0,
+                        no_gutter : (left, right)
                     ),
                 ));
             }
