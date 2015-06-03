@@ -321,6 +321,7 @@ pre{
         text-align:center;
 
         a{
+            @include transform(translate3d(0,0,0));
             @include border-radius(3px);
             display:block;
             background-color:$color-primary-light;
