@@ -1,6 +1,16 @@
 
 /* ============================================ 
 
+    MIXINS
+    Some mixins depend on:
+     - flexbox
+     - gridle
+    
+*/
+
+
+/* ============================================ 
+
     Clearfix
     
 */
@@ -255,16 +265,16 @@
     Author
 
 */
-@mixin author( $inline: true ) {
+@mixin author( $inline: true, $responsive: false ) {
 
-    text-align: center;
-    
-    @if $inline { 
+    @mixin inline-rules {
         overflow: hidden;
         @include flexbox;
         @include align-items( center );
         text-align: left;
     }
+
+    text-align: center;
 
     .image {
 
@@ -297,6 +307,25 @@
             font-size: 14px;
             font-weight: 300;
             font-style: italic;
+        }
+    }
+
+    @if $inline { 
+        @include inline-rules;
+    }
+
+    @if $responsive {
+        @include gridle_state( desktop ){
+            @include inline-rules;
+        }
+        @include gridle_state( tablet-portrait mobile ){
+            .image {
+                display: inline-block;
+                margin: 0 auto -10px;
+            }
+            .details {
+                display: block;
+            }
         }
     }
 
