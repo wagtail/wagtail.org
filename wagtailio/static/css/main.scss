@@ -147,15 +147,22 @@ pre {
     @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
 
     header {
+
         position: absolute;
         z-index: 12;
         top: 0px;
 
-        @include gridle( 12 );
+        @include gridle_set((
+            grid : 12,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ));
         padding-top: 4px;
         padding-bottom: 2px;
 
         background: $color-primary-light;
+
     }
 
     .body {
