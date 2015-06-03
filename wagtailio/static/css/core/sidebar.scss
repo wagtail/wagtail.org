@@ -7,7 +7,6 @@
 
 .component-sidebar {
     section {
-
         position: relative;
         @include gridle_set((
             grid : 9,
@@ -28,17 +27,16 @@
                 pull : 0
             ),
         ));
-
         // custom padding to fit inline with prototype
-        .body-content {
-
-            // not finished, pixel perfect plx
-            padding-left: 60px;
-            @include gridle_state( tablet-landscape tablet-portrait mobile ){
-                padding-left: 0;   
-            }
+    }
+    @include gridle_state( tablet-landscape tablet-portrait mobile ){
+        .body {
+            position: relative;
+            top: -59px; // height of sidebar in mobile view collapsed
         }
-        
+        .body-content {
+            padding-left: 0;
+        }
     }
 }
 
@@ -95,7 +93,7 @@
     ));
 
     position: absolute;
-    top: 4px; bottom: 0px;
+    top: $header-height; bottom: 0px;
     z-index: 10;
 
     // compensate for variable height header
@@ -108,10 +106,16 @@
 
     // 
     @include gridle_state( tablet-landscape tablet-portrait mobile ){
+
         position: relative;
+        float: none;
         top: auto; bottom: auto;
         overflow: hidden;
-        height: auto !important;
+
+        .sidebar-open & {
+            overflow: auto;
+            height: 100%;
+        }
     }
 
 
@@ -156,6 +160,9 @@
     ul {
         @include reset-list;
 
+        /*
+            Toggle sidebar on mobile
+        */
         @include gridle_state( tablet-landscape tablet-portrait mobile ){
             // transform: translate3d( 0, -100%, 0 );
             display: none;
@@ -177,4 +184,6 @@
             }
         }
     }
+    
+
 }
