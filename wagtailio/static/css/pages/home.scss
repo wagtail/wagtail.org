@@ -10,7 +10,7 @@
     background: $color-primary-bg;
     color: $color-primary-dark;
     
-    .body-content {
+    section {
         overflow: hidden;
         position: relative; 
 
@@ -49,7 +49,7 @@
     }
 
     // Styles for when carousel has loaded
-    &.carousel-loaded .body-content {
+    &.carousel-loaded section {
         opacity: 1;
     }
 }

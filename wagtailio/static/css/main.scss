@@ -137,16 +137,13 @@ pre {
 
 .page {
 
-    @include clearfix;
+    @include clearfix; // Clear anything nested
+    padding-top: $header-height; // adjust top position based on height on header
     height: 100%;
-    padding-top: $header-height;
 
-    @include gridle_state( tablet-landscape ){
-        padding-top: $header-height - 2px;
-    }
-    @include gridle_state( tablet-portrait mobile ){
-        padding-top: $header-height - 20px;
-    }
+    // Responsive adjustments for when the header height changes
+    @include gridle_state( tablet-landscape ){ padding-top: $header-height - 2px; }
+    @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
 
     header {
         position: absolute;
@@ -154,8 +151,6 @@ pre {
         top: 0px;
 
         @include gridle( 12 );
-        float: none;
-
         padding-top: 4px;
         padding-bottom: 2px;
 
@@ -163,14 +158,13 @@ pre {
     }
 
     .body {
+
+        // Nested scroll container
         overflow-y: scroll;
         height: 100%;
-        box-sizing: border-box;
         @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
 
-        section {
-            .body-content {}
-        }
+        section {}
         footer {
             @include row;
         }
@@ -420,14 +414,14 @@ pre {
 
 // 404
 .template-404 {
-    .body-content {
+    section {
         padding: 5% 0% 5% 25%;
     }
 }
 
 // newsletter thank you
 .newsletter-thanks {
-    .body-content {
+    section {
         padding: 5% 0% 5% 25%;
     }
 }

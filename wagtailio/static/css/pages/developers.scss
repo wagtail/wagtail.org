@@ -19,7 +19,7 @@
 
     background: $color-primary-highlight;
 
-    .body-content{
+    section {
         @include row;
 
         .container{

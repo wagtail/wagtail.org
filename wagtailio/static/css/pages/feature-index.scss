@@ -9,7 +9,7 @@
 .template-feature-page {
     background: $color-primary-highlight;
 
-    .body-content{
+    section {
         @include row;
 
         .container{
@@ -58,7 +58,7 @@
 */
 
 .template-feature-index-page{
-    .body-content .container{
+    section .container{
         color: $color-primary-light;
     }   
 
