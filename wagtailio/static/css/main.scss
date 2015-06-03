@@ -109,8 +109,8 @@ h1 {
     line-height: 1.2;
 }
 
-pre{
-    white-space:normal;
+pre {
+    white-space: normal;
 }
 
 
@@ -167,17 +167,7 @@ pre{
         overflow-y: scroll;
         height: 100%;
         box-sizing: border-box;
-
-        // Fade out body content concept (any translateZ animations will require perspective: Xpx; set on parent)
-        // @include transition(
-        //     all $anim-speed-primary ease
-        // );
-        // @include opacity( 1 );
-        // transform: translateZ( 0px );
-        // .mobile_nav-open & {
-        //     @include opacity( 0 );
-        //     transform: translateZ( -150px );
-        // }
+        @include transform( translate3d( 0, 0, 0 ) );
 
         // Trying this structue out for a moment, will need nested max width container at somepoint (very soon!)
         section {
@@ -321,6 +311,7 @@ pre{
         text-align:center;
 
         a{
+            @include transform(translate3d(0,0,0));
             @include border-radius(3px);
             display:block;
             background-color:$color-primary-light;
