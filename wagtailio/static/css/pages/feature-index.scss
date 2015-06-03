@@ -115,7 +115,7 @@
         padding: 5rem 5% 5rem;
 
         .intro {
-            @include fontsmoothing();
+            @include font-smoothing();
             font-size: 1.4em;
             font-weight:300;
             margin-bottom: 1em;

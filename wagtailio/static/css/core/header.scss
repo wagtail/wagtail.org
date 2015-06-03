@@ -15,7 +15,7 @@ header {
 
     // Mixins
     @mixin linkStyling {
-        @include fontsmoothing();
+        @include font-smoothing();
         display: block;
         padding: $link-padding;
 

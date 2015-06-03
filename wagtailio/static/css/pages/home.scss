@@ -157,6 +157,7 @@
                     font-size: 24px;
                     font-weight: 300;
                     margin: 0 0 24px 0;
+                    @include font-smoothing;
                 }
                 .cta {
                     @include button(

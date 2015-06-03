@@ -33,7 +33,7 @@
     Font smoothing
 
 */
-@mixin fontsmoothing(){
+@mixin font-smoothing(){
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -148,7 +148,7 @@
 
 */
 @mixin fa-icon{
-    @include fontsmoothing();
+    @include font-smoothing();
     font-family: "FontAwesome";
     position: absolute;
 };
