@@ -143,6 +143,11 @@
                     }
                 }
                 
+                &:hover {
+                    h1 {
+                        color: $color-primary-light;
+                    }
+                }
                 &.active {
 
                     h1 {
