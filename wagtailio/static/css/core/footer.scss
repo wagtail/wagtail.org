@@ -92,7 +92,6 @@ footer {
     .get_started_links {
         @include gridle_set((
             grid : 4,
-            clear : both,
             mobile : (
                 no_gutter : (left, right)
             )
@@ -110,7 +109,7 @@ footer {
     .network_links {
         @include gridle_set((
             grid : 4,
-            clear : both,
+            
             mobile : (
                 no_gutter : (left, right)
             )
@@ -135,7 +134,6 @@ footer {
     .latest_blog {
         @include gridle_set((
             grid : 4,
-            clear : both,
             mobile : (
                 no_gutter : (left, right)
             )
@@ -163,7 +161,6 @@ footer {
     .newsletter_signup {
         @include gridle_set((
             grid : 8,
-            clear : both,
             mobile : (
                 no_gutter : (left, right)
             )
@@ -199,7 +196,6 @@ footer {
     .follow_links {
         @include gridle_set((
             grid : 4,
-            clear : both,
             mobile : (
                 no_gutter : (left, right)
             )
