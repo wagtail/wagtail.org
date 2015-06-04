@@ -228,15 +228,24 @@
                 }
             }
             .image {
+
                 position: relative;
+
                 img {
                     width: 100%;
                 }
                 a {
                     // not an ideal method for centering...
+                    // position: absolute;
+                    // top: 50%; left: 50%;
+                    // @include transform( translate3D( -50%, -50%, 0 ) );
+
+                    // Arguably worse, but renders text better...
+                    margin: auto;
                     position: absolute;
-                    top: 50%; left: 50%;
-                    @include transform( translate3D( -50%, -50%, 0 ) );
+                    top: 0; left: 0; bottom: 0; right: 0;
+                    width: 152px;
+                    height: 45px;
 
                     @include button(
                         $color: $color-primary-dark,
@@ -250,6 +259,8 @@
                     }
                     @include gridle_state( tablet-portrait mobile ){
                         font-size: 12px;
+                        width: 114px;
+                        height: 35px;
                     }
 
                 }
