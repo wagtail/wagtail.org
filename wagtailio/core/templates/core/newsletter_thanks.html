@@ -1,13 +1,14 @@
 {% extends "content.html" %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}newsletter-thanks{% endblock %}
 
 {% block content %}
     {% if success %}
-        <h1>Thanks for signing up for our newsletter!</h1>
-        <h2>Now switch off your computer and go outside.</h2>
+        <h1>Thanks for signing up to our newsletter!</h1>
+        <p>For more news items check out our <a href="{% slugurl 'blog-index' %}">blog</a></p>
     {% else %}
         <h1>Call that an email address?</h1>
-        <h2>You're address didn't validate.</h2>
+        <p>You're address didn't validate.</p>
     {% endif %}
 {% endblock %}
