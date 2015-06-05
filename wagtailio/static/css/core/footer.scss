@@ -44,7 +44,12 @@ footer {
         
         > * {
             padding: 12px 0 0;
-            @include gridle( 12 );
+            @include gridle_set((
+                grid : 12,
+                mobile : (
+                    no_gutter : (left, right)
+                )
+            ));
             text-align: left;
         }
     }
@@ -85,7 +90,13 @@ footer {
 
     // Nested components
     .get_started_links {
-        @include gridle( 4, tablet-landscape desktop );
+        @include gridle_set((
+            grid : 4,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ), tablet-landscape desktop );
+
         padding-bottom: 10px;
         a {
             @include button( $link-padding, $border-opacity: 1 );
@@ -96,7 +107,13 @@ footer {
         }
     }
     .network_links {
-        @include gridle( 4, tablet-landscape desktop );
+        @include gridle_set((
+            grid : 4,
+            
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ), tablet-landscape desktop );
         ul {
             @include reset-list;
             li {
@@ -115,7 +132,12 @@ footer {
         }
     }
     .latest_blog {
-        @include gridle( 4, tablet-landscape desktop );
+        @include gridle_set((
+            grid : 4,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ), tablet-landscape desktop );
         ul {
             @include reset-list;
             li {
@@ -139,7 +161,9 @@ footer {
     .newsletter_signup {
         @include gridle_set((
             grid : 8,
-            clear : both
+            mobile : (
+                no_gutter : (left, right)
+            )
         ), tablet-landscape desktop );
         h3 {}
         fieldset {
@@ -170,7 +194,12 @@ footer {
         
     }
     .follow_links {
-        @include gridle( 4, tablet-landscape desktop );
+        @include gridle_set((
+            grid : 4,
+            mobile : (
+                no_gutter : (left, right)
+            )
+        ), tablet-landscape desktop );
 
         a {
             font-size: 56px;

@@ -113,7 +113,9 @@ header {
                 a {
                     @include linkStyling;
                     @include gridle_state( tablet-landscape ){
-                        font-size: 12px; 
+                        font-size: 12px;
+                        padding-left: 14px;
+                        padding-right: 14px;
                     }
                 }
             }

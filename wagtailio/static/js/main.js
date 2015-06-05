@@ -35,7 +35,7 @@ $(function( ){
     // function is called imediately after definition (should put this call in a page/component specific check...)
     var heroCarousel = function( ){
 
-        var time = 3.5, // time in seconds
+        var time = 5, // time in seconds
             $currentBar,
             $elem,
             isPause,
@@ -49,7 +49,6 @@ $(function( ){
             slideSpeed      : 500,
             paginationSpeed : 400,
             singleItem      : true,
-            transitionStyle : "fade",
             afterInit       : progressBar,
             afterMove       : moved,
             startDragging   : pauseOnDragging
@@ -153,11 +152,12 @@ $(function( ){
             start();
         }
 
-        //uncomment this to make pause on mouseover 
-        // $elem.on('mouseover',function(){
+        // uncomment this to make pause on mouseover 
+        // img & text only plx
+        // $elem.find('.image > *, .text > *').on( 'mouseover' ,function(){
         //     isPause = true;
         // })
-        // $elem.on('mouseout',function(){
+        // $elem.find('.image > *, .text > *').on( 'mouseout' ,function(){
         //     isPause = false;
         // })
 
