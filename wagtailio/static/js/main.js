@@ -49,7 +49,6 @@ $(function( ){
             slideSpeed      : 500,
             paginationSpeed : 400,
             singleItem      : true,
-            transitionStyle : "fade",
             afterInit       : progressBar,
             afterMove       : moved,
             startDragging   : pauseOnDragging
@@ -155,12 +154,12 @@ $(function( ){
 
         // uncomment this to make pause on mouseover 
         // img & text only plx
-        $elem.find('.image > *, .text > *').on( 'mouseover' ,function(){
-            isPause = true;
-        })
-        $elem.find('.image > *, .text > *').on( 'mouseout' ,function(){
-            isPause = false;
-        })
+        // $elem.find('.image > *, .text > *').on( 'mouseover' ,function(){
+        //     isPause = true;
+        // })
+        // $elem.find('.image > *, .text > *').on( 'mouseout' ,function(){
+        //     isPause = false;
+        // })
 
     }();
 
