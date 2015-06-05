@@ -279,12 +279,14 @@
 #examples {
 
     @mixin title {
-        font-size: 32px;
+        text-align: center;
+        font-size: 24px;
         font-weight: 400;
-        @include gridle_state( tablet-portrait mobile ){
-            text-align: center;
-            font-size: 24px;
-            line-height: 1.3;
+        line-height: 1.3;
+
+        @include gridle_state( desktop ){
+            font-size: 32px;
+            text-align: left;
         }
     }
 
@@ -302,17 +304,34 @@
         @include gridle( 12 );
 
         position: relative;
-        overflow: hidden;
+
+        margin-top: 15px;
 
         .owl-controls {
 
             position: absolute;
-            top: 0px; right: 0px;
+            top: -43px; left: 0px;
             z-index: 10;
 
-            .owl-page {
-                float: left;
-                clear: left;
+            @include gridle( 12 );
+
+            // centered
+            
+            text-align: center;
+
+            .owl-pagination {
+
+                // centered
+                display: inline-block;
+                margin: 0 auto;
+                overflow: hidden;
+
+                .owl-page {
+                    float: left;
+                    span {
+                        background: rgba($color-primary-dark, 1);
+                    }
+                }
             }
         }
         .owl-wrapper-outer {
@@ -380,9 +399,9 @@
                     @include external-link;
                     font-weight: 400;
                     display: inline-block;
-                    margin: 5px 0 0 69px;
-                    @include gridle_state( tablet-portrait mobile ){
-                        margin-left: -20px;
+                    margin: 5px 0 0 0px;
+                    @include gridle_state( desktop ){
+                        margin: 5px 0 0 69px;
                     }
                 }
             }
