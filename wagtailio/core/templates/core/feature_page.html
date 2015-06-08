@@ -28,7 +28,6 @@
                         </div>
                         <div class="notes">
                             {% for bullet in f.feature_aspect.bullets.all %}
-                                <i class="fa fa-eye fa-2x"></i>
                                 <h4>{{ bullet.title }}</h4>
                                 {{ bullet.text|richtext }}
                             {% endfor %}
