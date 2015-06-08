@@ -224,8 +224,9 @@ footer {
             margin: 0;
         }
         .logo {
-            display: inline-block;
+            display: block;
             float: right;
+            width: 110px;
             @include opacity( 0.3 );
             @include transition( opacity $anim-speed-primary linear );
             img {
@@ -236,11 +237,10 @@ footer {
                 @include opacity( 1 );
             }
         }
-        @include gridle_state( mobile ){
+        @include gridle_state( tablet-portrait mobile ){
             padding-bottom: 24px;
             .copyright,
             .logo {
-                display: block;
                 float: none;
             }
             .logo {
