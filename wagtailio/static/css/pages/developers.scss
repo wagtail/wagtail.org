@@ -24,6 +24,7 @@
 
         .container{
             padding-top: 3em;
+            padding-bottom: 3em;
         }
     }
     .description{
@@ -50,6 +51,11 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 0.3em;
             font-size: 0.8em;
+        }
+
+        a {
+            color: $color-primary-light;
+            @include custom-underline( $underline-colour: $color-primary-light, $invert: true );
         }
     }
 

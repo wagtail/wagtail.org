@@ -96,18 +96,27 @@
 
 */
 @mixin custom-underline ( 
-    $underline-colour: $highlight-colour, 
-    $hover: true 
+    $underline-colour: $color-primary-highlight, 
+    $hover: true,
+    $invert: false
 ) {
-    border-bottom: 1px solid $underline-colour;
+    border-bottom: 2px solid $underline-colour;
     text-decoration: none;
 
-    @include ceaser-transition( border-bottom-color, 250ms );
+    @if $invert {
+        border-bottom-color: rgba($underline-colour, 0);
+    }
+
+    @include transition( border-bottom-color 250ms );
 
     @if $hover {
         &:hover {
             // color: #fff; (colour state should not be set here)
-            border-bottom-color: rgba($underline-colour, 0);
+            @if $invert {
+                border-bottom-color: rgba($underline-colour, 1);
+            } @else {
+                border-bottom-color: rgba($underline-colour, 0);
+            }
         }
     }
 }
