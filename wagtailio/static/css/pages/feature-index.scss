@@ -95,13 +95,13 @@
             @include gridle( 6, tablet-landscape);
             @include gridle_state( tablet-landscape ){
                 a {
-                    min-height: 200px;
+                    min-height: 250px;
                 }
             }
             @include gridle( 4, desktop);
             @include gridle_state( desktop ){
                 a {
-                    min-height: 260px;
+                    min-height: 330px;
                 }
             }
         }
