@@ -68,7 +68,7 @@
         @include gridle_set((
             grid : 12,
             desktop : (
-                // clear_each : ( 3 , left ) :: seems to cause issues, and doesn't appear to be required.
+                clear_each : ( 3 , left )  // :: seems to cause issues, and doesn't appear to be required.
             )
         ));
         @include gridle( 12 );
@@ -87,10 +87,24 @@
         color: $color-primary-light;
     }   
 
-    .main-content > li{
-        @include gridle( 12 );
-        @include gridle( 6, tablet-landscape);
-        @include gridle( 4, desktop);
+    .main-content {
+        // @include flexbox;
+        // @include align-items( stretch );
+        > li{
+            @include gridle( 12 );
+            @include gridle( 6, tablet-landscape);
+            @include gridle_state( tablet-landscape ){
+                a {
+                    min-height: 200px;
+                }
+            }
+            @include gridle( 4, desktop);
+            @include gridle_state( desktop ){
+                a {
+                    min-height: 260px;
+                }
+            }
+        }
     }
 }
 
