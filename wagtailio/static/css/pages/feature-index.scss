@@ -116,11 +116,13 @@
 
 
 .template-feature-page{
-    .main-content {
+
+    .feature-wrapper {
         background: white;
         position: relative;
         border-radius: 2px;
         margin-bottom: 3em;
+        overflow: hidden;
     }
     .feature{
         @include gridle_set((
