@@ -307,6 +307,7 @@
             font-size: 14px;
             font-weight: 300;
             font-style: italic;
+            @include font-smoothing;
         }
     }
 

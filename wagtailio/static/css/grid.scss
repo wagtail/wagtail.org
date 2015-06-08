@@ -20,12 +20,10 @@
     max-width : 1024px
 ));
 @include gridle_register_state( desktop, (
-    min-width : 1025px,
-    min-width : 1199px
+    min-width : 1025px
 ));
 @include gridle_register_state( desktop-wide, (
-    min-width : 1200px,
-    max-width : 1599px
+    min-width : 1200px
 ));
 @include gridle_register_state( desktop-super-wide, (
     min-width : 1600px

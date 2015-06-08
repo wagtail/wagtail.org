@@ -239,10 +239,6 @@ pre {
     padding: 14px 10px 0;
 
     @include border-radius;
-
-    @include gridle_state( tablet-portrait mobile ){
-        right: 32px;
-    }
     
     h3 {
         font-size: 18px;
@@ -259,6 +255,15 @@ pre {
         &:hover {
             color: $color-primary-dark;
         }
+    }
+
+    @include gridle_state( tablet-landscape tablet-portrait mobile ){
+        position: relative;
+        top: auto; right: auto;
+        a {
+            display: inline-block;
+        }
+        // right: 32px;
     }
 }
 
@@ -286,7 +291,7 @@ pre {
             text-decoration:none;
             color:$color-primary-dark;
             padding:20px;
-            min-height:280px;
+            // min-height:330px;
 
             // add responsive mixin to remove min-height at lower resolutions (when the elements are not being rednered as blocks)
 
