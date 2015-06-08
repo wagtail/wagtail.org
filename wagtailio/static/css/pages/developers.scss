@@ -71,14 +71,14 @@
 
         > li{
             @include gridle( 12 );
-            @include gridle( 6, tablet-landscape);
+            @include gridle( 12, tablet-landscape);
             @include gridle_state( tablet-landscape ){
                 a {
                     min-height: 280px;
                 }
             }
-            @include gridle( 6, desktop);
-            @include gridle_state( desktop ){
+            @include gridle( 6, desktop-wide);
+            @include gridle_state( desktop-wide ){
                 a {
                     min-height: 330px;
                 }
