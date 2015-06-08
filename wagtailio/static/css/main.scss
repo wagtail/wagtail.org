@@ -139,6 +139,7 @@ pre {
 
 .page {
 
+    position: relative;
     @include clearfix; // Clear anything nested
     padding-top: $header-height; // adjust top position based on height on header
     height: 100%;
@@ -182,19 +183,22 @@ pre {
 
     #menu_overlay {
 
+        position: absolute;
+        z-index: 11;
+        left: 0px; right: 0px;
+        top: 0px; bottom: 0px;
+
         @include transition( all $mobile-nav-open_speed $anim-ease-expo );
 
         // closed state
         @include transform( translate3d( 0, -100%, 0 ) );
+        .no-transform & { display: none; }
+
         // open state
         .mobile_nav-open & {
             @include transform( translate3d( 0, 0, 0 ) );
+            .no-transform & { display: block; }
         }
-
-        position: fixed;
-        z-index: 11;
-        left: 0px; right: 0px;
-        top: 0px; bottom: 0px;
     }
 }
 
