@@ -260,6 +260,7 @@ pre {
     @include gridle_state( tablet-landscape tablet-portrait mobile ){
         position: relative;
         top: auto; right: auto;
+        margin-bottom: $inline-spacing-bottom * 2;
         a {
             display: inline-block;
         }
