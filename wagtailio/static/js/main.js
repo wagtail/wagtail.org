@@ -227,5 +227,14 @@ $(function( ){
         $( 'html' ).addClass( 'no-transform' );
     }
 
+    // FB sharing popup
+    // Facebook sharing dialog (assumes FB.init has run)
+    $( '.share .fa-facebook' ).on('click', function( e ){
+        e.preventDefault();
+        FB.ui({
+            method: 'share',
+            href: document.location.href
+        }, function(response){});
+    });
 
 });
