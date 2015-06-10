@@ -17,7 +17,7 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 
-FB_APP_ID = 1
+FB_APP_ID = 710333029076622
 
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
