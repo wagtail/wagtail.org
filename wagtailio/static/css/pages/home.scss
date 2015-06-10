@@ -96,6 +96,7 @@
             // pagination item
             .owl-page {
 
+                position: relative;
                 box-sizing: border-box;
                 padding: 0 30px;
                 overflow: hidden;
@@ -128,12 +129,14 @@
                 }
             
                 .progressBar {
+                    position: relative;
                     background: rgba( $color-primary-light, 0.2 );
                     width: 100%;
                     height: 4px;
 
                     // Position progress bar outside of item by default
                     @include transform( translate3d( 0, 100%, 0 ) );
+                    .no-transform & { display: none; }
                     // Animate bar position in
                     @include transition( all $anim-speed-primary linear );
 
@@ -155,6 +158,7 @@
                     }
                     .progressBar {
                         @include transform( translate3d( 0, 0, 0 ) );
+                        .no-transform & { display: block; }
                     }
                 }
 
