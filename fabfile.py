@@ -1,3 +1,5 @@
+import getpass
+import warnings
 from fabric.api import *
 
 import uuid
@@ -15,9 +17,8 @@ env.roledefs = {
 
 @roles('production')
 def deploy_production():
-    # Remove this line when you're happy that this task is correct
-    raise RuntimeError("Please check the fabfile before using it")
-
+    if getpass.getuser() == 'toby':
+        warnings.warn("USER IS TOBY")
     run('git pull origin master')
     run('pip install -r requirements.txt')
     run('django-admin migrate --noinput')
@@ -31,6 +32,8 @@ def deploy_production():
 
 @roles('staging')
 def deploy_staging():
+    if getpass.getuser() == 'toby':
+        warnings.warn("USER IS TOBY")
     run('git pull origin staging')
     run('pip install -r requirements.txt')
     run('django-admin migrate --noinput')
