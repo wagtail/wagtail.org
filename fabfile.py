@@ -16,7 +16,7 @@ env.roledefs = {
 @roles('production')
 def deploy_production():
     # Remove this line when you're happy that this task is correct
-    raise RuntimeError("Please check the fabfile before using it")
+    # raise RuntimeError("Please check the fabfile before using it")
 
     run('git pull origin master')
     run('pip install -r requirements.txt')
