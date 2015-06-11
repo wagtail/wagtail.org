@@ -191,12 +191,12 @@ pre {
 
         // closed state
         @include transform( translate3d( 0, -100%, 0 ) );
-        .no-transform & { display: none; }
+        .no-csstransforms3d & { display: none; }
 
         // open state
         .mobile_nav-open & {
             @include transform( translate3d( 0, 0, 0 ) );
-            .no-transform & { display: block; }
+            .no-csstransforms3d & { display: block; }
         }
     }
 }
