@@ -118,13 +118,13 @@ if 'STATIC_URL' in env:
     STATIC_URL = env['STATIC_URL']
 
 if 'STATIC_DIR' in env:
-    STATIC_DIR = env['STATIC_DIR']
+    STATIC_ROOT = env['STATIC_DIR']
 
 if 'MEDIA_URL' in env:
     MEDIA_URL = env['MEDIA_URL']
 
 if 'MEDIA_DIR' in env:
-    MEDIA_DIR = env['MEDIA_DIR']
+    MEDIA_ROOT = env['MEDIA_DIR']
 
 
 # Logging
