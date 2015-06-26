@@ -39,6 +39,7 @@
 
         .container{
             padding-top: 3em;
+            padding-bottom: 3em;
         }
 
         // nesting element styling, for namespace (so we don't effect footer business)
@@ -88,25 +89,70 @@
     }   
 
     .main-content {
+
+    }
         // @include flexbox;
         // @include align-items( stretch );
-        > li{
-            @include gridle( 12 );
-            @include gridle( 6, tablet-landscape);
-            @include gridle_state( tablet-landscape ){
-                a {
-                    min-height: 250px;
-                }
+        
+        // > li{
+        //     @include gridle( 12 );
+        //     @include gridle( 6, tablet-landscape);
+        //     @include gridle_state( tablet-landscape ){
+        //         a {
+        //             min-height: 250px;
+        //         }
+        //     }
+        //     @include gridle( 4, desktop);
+        //     @include gridle_state( desktop ){
+        //         a {
+        //             min-height: 330px;
+        //         }
+        //     }
+        // }
+
+    .features {
+
+        li {
+            @include gridle_set((
+                grid : 12,
+                desktop : (
+                    grid : 4,
+                    gutter  : (top, bottom)
+                ),
+                tablet-landscape : (
+                    grid    : 6,
+                    gutter  : (top, bottom)
+                ),
+                tablet-portrait : (
+                    grid    : 12,
+                    gutter  : (top, bottom)
+                ),
+                mobile : (
+                    gutter : (top, bottom),
+                    no_gutter : (right, left)
+                )
+            ));
+
+            float: none;
+            @include flexbox; // GOTCHA: overwrite display: block set by gridle
+
+            .no-flexbox & {
+                float: left;
             }
-            @include gridle( 4, desktop);
-            @include gridle_state( desktop ){
-                a {
-                    min-height: 330px;
-                }
+        }
+        a {
+            padding: 20px;
+            background-color: #fff;
+            word-wrap: break-word;
+            text-align: center;
+            img {
+                margin: 0 auto;
             }
         }
     }
+    
 }
+
 
 /* ============================================ 
 

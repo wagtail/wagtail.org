@@ -25,6 +25,14 @@
 
         <div class="paragraph">{{ child.value|richtext }}</div>
 
+    {% elif child.block_type == 'blockquote' %}
+
+        <div class="blockquote">
+            <blockquote>
+                 "{{ child.value }}"
+            </blockquote>
+        </div>
+
     {% elif child.block_type == 'imagecaption' %}{# img-full-text #}
 
         <div class="imagecaption">

@@ -192,12 +192,12 @@ pre {
 
         // closed state
         @include transform( translate3d( 0, -100%, 0 ) );
-        .no-transform & { display: none; }
+        .no-csstransforms3d & { display: none; }
 
         // open state
         .mobile_nav-open & {
             @include transform( translate3d( 0, 0, 0 ) );
-            .no-transform & { display: block; }
+            .no-csstransforms3d & { display: block; }
         }
     }
 }
@@ -316,6 +316,28 @@ pre {
         line-height: 1.3em;
         margin-bottom: 0.25em;
         margin-top: 0;
+    }
+}
+
+/* ============================================
+
+  Flex list: .. Flex grid ..
+  :: do this as a mixin and make the list class semantic? (would be consistant with rest of project implementations)
+
+*/
+.flex-list {
+    @include flexbox;
+    @include flex-wrap( wrap );
+    @include reset-list;
+    li {
+        @include flexbox;
+        @include align-items( stretch );
+        a {
+            display: block; // fallback for non-flexbox 
+            @include flexbox;
+            @include flex-direction( column );
+            width: 100%; // required for conainer to fullfill width
+        }
     }
 }
 

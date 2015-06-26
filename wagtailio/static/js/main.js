@@ -1,3 +1,8 @@
+/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-flexbox-csstransforms3d-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes
+ */
+;window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){return z(m.join(a+";")+(b||""))}function B(a,b){return typeof a===b}function C(a,b){return!!~(""+a).indexOf(b)}function D(a,b){for(var d in a){var e=a[d];if(!C(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function E(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:B(f,"function")?f.bind(d||b):f}return!1}function F(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+o.join(d+" ")+d).split(" ");return B(b,"string")||B(b,"undefined")?D(e,b):(e=(a+" "+p.join(d+" ")+d).split(" "),E(e,b,c))}var d="2.8.3",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m=" -webkit- -moz- -o- -ms- ".split(" "),n="Webkit Moz O ms",o=n.split(" "),p=n.toLowerCase().split(" "),q={},r={},s={},t=[],u=t.slice,v,w=function(a,c,d,e){var f,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:h+(d+1),l.appendChild(j);return f=["&#173;",'<style id="s',h,'">',a,"</style>"].join(""),l.id=h,(m?l:n).innerHTML+=f,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=g.style.overflow,g.style.overflow="hidden",g.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),g.style.overflow=k),!!i},x={}.hasOwnProperty,y;!B(x,"undefined")&&!B(x.call,"undefined")?y=function(a,b){return x.call(a,b)}:y=function(a,b){return b in a&&B(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=u.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(u.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(u.call(arguments)))};return e}),q.flexbox=function(){return F("flexWrap")},q.csstransforms3d=function(){var a=!!F("perspective");return a&&"webkitPerspective"in g.style&&w("@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}",function(b,c){a=b.offsetLeft===9&&b.offsetHeight===3}),a};for(var G in q)y(q,G)&&(v=G.toLowerCase(),e[v]=q[G](),t.push((e[v]?"":"no-")+v));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)y(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},z(""),i=k=null,function(a,b){function l(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function m(){var a=s.elements;return typeof a=="string"?a.split(" "):a}function n(a){var b=j[a[h]];return b||(b={},i++,a[h]=i,j[i]=b),b}function o(a,c,d){c||(c=b);if(k)return c.createElement(a);d||(d=n(c));var g;return d.cache[a]?g=d.cache[a].cloneNode():f.test(a)?g=(d.cache[a]=d.createElem(a)).cloneNode():g=d.createElem(a),g.canHaveChildren&&!e.test(a)&&!g.tagUrn?d.frag.appendChild(g):g}function p(a,c){a||(a=b);if(k)return a.createDocumentFragment();c=c||n(a);var d=c.frag.cloneNode(),e=0,f=m(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function q(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return s.shivMethods?o(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(s,b.frag)}function r(a){a||(a=b);var c=n(a);return s.shivCSS&&!g&&!c.hasCSS&&(c.hasCSS=!!l(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),k||q(a,c),a}var c="3.7.0",d=a.html5||{},e=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,f=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g,h="_html5shiv",i=0,j={},k;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",g="hidden"in a,k=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){g=!0,k=!0}})();var s={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:c,shivCSS:d.shivCSS!==!1,supportsUnknownElements:k,shivMethods:d.shivMethods!==!1,type:"default",shivDocument:r,createElement:o,createDocumentFragment:p};a.html5=s,r(b)}(this,b),e._version=d,e._prefixes=m,e._domPrefixes=p,e._cssomPrefixes=o,e.testProp=function(a){return D([a])},e.testAllProps=F,e.testStyles=w,g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+t.join(" "):""),e}(this,this.document);
+
 $(function( ){
 
     // TODO: make selectors variables for portability
@@ -178,53 +183,62 @@ $(function( ){
       
     });
 
+    /************************************************************
+    *
+    * Equal heights for when no flexbox browsers
+    *
+    */
+    function equalheight( item ){
 
-    // Scroll behaviours
-    // not currently used
-    // $( '#body' ).on( 'scroll', function( ){
+        var tallestInRow    = 0,
+            lastItemXPos    = 0,
+            itemXPos        = 0,
+            rowDivs         = [];
+            
+        $( item ).each(function( ){
 
-    //     var $footer = $( 'footer' );
+            var $el = $( this ); // current element
+            $el.height( 'auto' ); // Ensure height is auto to ensure we fetching the automatic calculate height
+            itemXPos = $el.position().top; // Find the top position so we can determin which row we are on
 
-    //     if ( $footer.is( ':in-viewport' ) ) {
-    //         $( 'body' ).addClass( 'footer-in' );
-    //     } else {
-    //         $( 'body' ).removeClass( 'footer-in' );
-    //     }
+            // Create new row if:
+            if( lastItemXPos != itemXPos ){
+                
+                // Find the tallest item in current row and set the height of the current item
+                for( currentDiv = 0; currentDiv < rowDivs.length; currentDiv++ ){
+                    rowDivs[currentDiv].height( tallestInRow ); // Set height on all divs in row
+                }
 
-    // });
+                lastItemXPos = itemXPos; // Set lastItemTop
+                tallestInRow = $el.height(); // ?
+                rowDivs = []; // empty array 
+                rowDivs.push($el); // push item to array
 
-    function has3d() {
-        if (!window.getComputedStyle) {
-            return false;
-        }
-
-        var el = document.createElement('p'), 
-            has3d,
-            transforms = {
-                'webkitTransform':'-webkit-transform',
-                'OTransform':'-o-transform',
-                'msTransform':'-ms-transform',
-                'MozTransform':'-moz-transform',
-                'transform':'transform'
-            };
-
-        // Add it to the body to get the computed style.
-        document.body.insertBefore(el, null);
-
-        for (var t in transforms) {
-            if (el.style[t] !== undefined) {
-                el.style[t] = "translate3d(1px,1px,1px)";
-                has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+            // Otherwise assume we in the same row
+            } else {
+                rowDivs.push($el); // push item to array
+                tallestInRow = ( tallestInRow < $el.height() ) ? ( $el.height() ) : ( tallestInRow ); // calculate tallest in row
             }
-        }
 
-        document.body.removeChild(el);
+            // TODO: Remove this or justify it? 
+            for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+                rowDivs[currentDiv].height(tallestInRow);
+            }
+        });
 
-        return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
     };
 
-    if( !has3d() ){
-        $( 'html' ).addClass( 'no-transform' );
+    // If we have no flexbox... 
+    if( $( 'html' ).hasClass( 'no-flexbox' ) ){
+
+        $(window).load(function() {
+            equalheight('.flex-list > li a');
+        });
+
+        $(window).resize(function(){
+            // console.log( ' ====== resize =======' );
+            equalheight('.flex-list > li a');
+        });
     }
 
     // FB sharing popup

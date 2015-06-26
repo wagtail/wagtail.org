@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="container">
+
         <div class="description">
             <h1>{{ self.title }}</h1>
             <p>{{ self.introduction }}</p>
@@ -14,16 +15,19 @@
             </ul>
         </div>
 
-        <ul class="main-content block-list">
-            {% for feature in self.features %}
-                <li>{# class="new" unsupported by model #}
-                    <a href="{% pageurl feature %}">
-                        {% image feature.specific.listing_image fill-115x90 %}
-                        <h2>{{ feature.specific.title }}</h2>
-                        <p>{{ feature.specific.introduction }}</p>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="main-content">
+            <ul class="flex-list features">
+                {% for feature in self.features %}
+                    <li class="feature">{# class="new" unsupported by model #}
+                        <a href="{% pageurl feature %}">
+                            {% image feature.specific.listing_image fill-115x90 %}
+                            <h2>{{ feature.specific.title }}</h2>
+                            <p>{{ feature.specific.introduction }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
  {% endblock %}

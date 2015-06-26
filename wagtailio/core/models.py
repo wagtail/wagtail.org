@@ -126,7 +126,7 @@ HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossP
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     def serve(self, request):
-        latest_blog = BlogPage.objects.all().order_by('-date').first()
+        latest_blog = BlogPage.objects.live().order_by('-date').first()
         return redirect(latest_blog.url)
 
 
