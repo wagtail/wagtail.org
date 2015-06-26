@@ -2,18 +2,18 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.wagtaildocs.blocks
-import wagtail.wagtailcore.blocks
 import wagtail.wagtailcore.fields
-import wagtailio.utils.blocks
-import wagtail.wagtailimages.blocks
 import wagtail.wagtailembeds.blocks
+import wagtail.wagtailcore.blocks
+import wagtail.wagtaildocs.blocks
+import wagtail.wagtailimages.blocks
+import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0026_auto_20150625_1942'),
+        ('core', '0023_developerspage_body'),
     ]
 
     operations = [
