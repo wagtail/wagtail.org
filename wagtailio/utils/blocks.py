@@ -67,6 +67,7 @@ class StoryBlock(StreamBlock):
     h4 = CharBlock(icon="title", classname="title")
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
+    blockquote = CharBlock(icon="openquote", classname="title")
     image = ImageChooserBlock(icon="image")
     document = DocumentChooserBlock(icon="doc-full-inverse")
     imagecaption = ImageAndCaptionBlock(label="Image caption")
