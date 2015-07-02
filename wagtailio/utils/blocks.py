@@ -73,6 +73,7 @@ class CodeBlock(StructBlock):
     LANGUAGE_CHOICES = (
         ('bash', 'Bash/Shell'),
         ('css', 'CSS'),
+        ('django', 'Django templating language'),
         ('html', 'HTML'),
         ('javascript', 'Javascript'),
         ('python', 'Python'),
