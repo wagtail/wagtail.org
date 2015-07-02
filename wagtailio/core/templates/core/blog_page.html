@@ -3,7 +3,7 @@
 {% load static compress wagtailcore_tags wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
 
 {% block body_class %}component-sidebar{% endblock %}
-
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/vendor/code-highlighting.css' %}" />{% endblock %}
 {% block sidebar %}
     <div id="sidebar">
         <a class="blog-index-button" href="#blog-index">blog index<span class="fa fa-angle-down"></span></a>
