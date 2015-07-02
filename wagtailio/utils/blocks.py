@@ -71,10 +71,11 @@ class CodeBlock(StructBlock):
     Code Highlighting Block
     """
     LANGUAGE_CHOICES = (
-        ('python', 'Python'),
         ('bash', 'Bash/Shell'),
-        ('html', 'HTML'),
         ('css', 'CSS'),
+        ('html', 'HTML'),
+        ('javascript', 'Javascript'),
+        ('python', 'Python'),
         ('scss', 'SCSS'),
     )
 
