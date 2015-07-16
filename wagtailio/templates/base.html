@@ -96,6 +96,25 @@
 
         Copyright &copy; {% now "Y" %} Torchbox Ltd
 
+
+        <!-- twitter campaign tracking code -->
+        <script src="https://platform.twitter.com/oct.js"></script>
+        <script>
+            twttr.conversion.trackPid('l6ggy', {
+                tw_sale_amount: 0, 
+                tw_order_quantity: 0 
+            });
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none;" alt=""
+            src="https://analytics.twitter.com/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
+            />
+            <img height="1" width="1" style="display:none;" alt=""
+            src="//t.co/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
+            />
+        </noscript>
+        <!-- end twitter campaign tracking code -->
+
         <script src="https://platform.twitter.com/widgets.js" async></script>
 
         {% compress js %}
