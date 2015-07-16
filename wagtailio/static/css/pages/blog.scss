@@ -12,7 +12,10 @@
         .container {
 
             padding-top: $padding-top;
-            // padding-bottom: $padding-top;
+
+            @include gridle_state( mobile ){
+                padding-top: $padding-top + 10;
+            }
 
             // Streamfield/RTE block standard
             > * {
