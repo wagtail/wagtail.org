@@ -10,7 +10,7 @@ LOCAL_DUMP_PATH = "~/"
 REMOTE_DUMP_PATH = "~/"
 
 env.roledefs = {
-    'production': ['wagtailio@by-web-4-a.torchbox.com', 'wagtailio@by-web-4-b.torchbox.com' ],
+    'production': ['wagtailio@web-1-a.rslon.torchbox.net', 'wagtailio@web-1-b.rslon.torchbox.net' ],
     'staging': ['wagtailio@by-staging-1.torchbox.com'],
 }
 
@@ -19,7 +19,7 @@ env.roledefs = {
 def deploy_production():
     if getpass.getuser() == 'toby':
         warnings.warn("USER IS TOBY")
-    run('git pull origin master')
+    run('git pull origin')
     run('pip install -r requirements.txt')
     run('django-admin migrate --noinput')
     run('django-admin collectstatic --noinput')
@@ -34,7 +34,7 @@ def deploy_production():
 def deploy_staging():
     if getpass.getuser() == 'toby':
         warnings.warn("USER IS TOBY")
-    run('git pull origin staging')
+    run('git pull origin')
     run('pip install -r requirements.txt')
     run('django-admin migrate --noinput')
     run('django-admin collectstatic --noinput')
