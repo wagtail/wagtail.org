@@ -64,7 +64,7 @@ DATABASES = {
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
 
 if 'REDIS_HOST' in env:
-    REDIS_LOCATION = env['REDIS_HOST']
+    REDIS_LOCATION = 'redis://' + env['REDIS_HOST']
     BROKER_URL = 'redis://%s' % env['REDIS_HOST']
 
 elif 'REDIS_SOCKET' in env:
