@@ -1,0 +1,35 @@
+{% extends "content.html" %}
+{% load wagtailcore_tags wagtailadmin_tags wagtailimages_tags wagtailio_utils static %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+    <div class="page-content">
+        <div class="container">
+            <div class="heading"><h1>{{ self.title }}</h1></div>
+
+            {% if newsletters %}
+                <ul class="listing clearfix">
+                    {% for newsletter in newsletters %}
+                        <li>
+                            <a href="{% pageurl newsletter %}">
+                                <h2>{{ newsletter.title }} </h2>
+                                {% if newsletter.date %}
+                                    <div class="meta date">{{ newsletter.date|date:"j F Y" }}</div>
+                                {% endif %}
+
+                                <div class="intro">{{ newsletter.intro|richtext }}</div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                {% if newsletters.has_next %}
+                    <a class="btn pagination" href="?page={{ newsletter.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
+                {% endif %}
+            {% else %}
+                <p>There are currently no newsletters</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
