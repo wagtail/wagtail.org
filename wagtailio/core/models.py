@@ -1,7 +1,8 @@
 from operator import attrgetter
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -361,6 +362,63 @@ DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('body_heading'),
     FieldPanel('body'),
     InlinePanel(DevelopersPage, 'options', label="Options")
+]
+
+
+# Newsletters pages (archive of Mailchimp mailshots)
+
+
+class NewsletterIndexPage(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField()
+
+    @property
+    def newsletters(self):
+        # Get list of blog pages that are descendants of this page
+        newsletters = NewsletterPage.objects.filter(
+            live=True,
+            path__startswith=self.path
+        )
+
+        # Order by most recent date first
+        newsletters = newsletters.order_by('-date')
+
+        return newsletters
+
+    def serve(self, request):
+        # Get blogs
+        newsletters = self.newsletters
+
+        # Pagination
+        page = request.GET.get('page')
+        paginator = Paginator(newsletters, 5)  # Show 5 blogs per page
+        try:
+            newsletters = paginator.page(page)
+        except PageNotAnInteger:
+            newsletters = paginator.page(1)
+        except EmptyPage:
+            newsletters = paginator.page(paginator.num_pages)
+
+        return render(request, self.template, {
+            'self': self,
+            'newsletters': newsletters,
+        })
+
+
+NewsletterIndexPage.content_panels = Page.content_panels + [
+    FieldPanel('intro', classname="full"),
+    FieldPanel('body', classname="full"),
+]
+
+class NewsletterPage(Page):
+    date = models.DateField("Newsletter date")
+    intro = RichTextField(blank=True)
+    body = RichTextField()
+
+NewsletterPage.content_panels = Page.content_panels + [
+    FieldPanel('date'),
+    FieldPanel('intro', classname="full"),
+    FieldPanel('body', classname="full"),
 ]
 
 
