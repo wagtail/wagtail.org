@@ -375,10 +375,7 @@ class NewsletterIndexPage(Page):
     @property
     def newsletters(self):
         # Get list of blog pages that are descendants of this page
-        newsletters = NewsletterPage.objects.filter(
-            live=True,
-            path__startswith=self.path
-        )
+        newsletters = NewsletterPage.objects.live().descendant_of(self)
 
         # Order by most recent date first
         newsletters = newsletters.order_by('-date')
