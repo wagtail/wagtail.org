@@ -115,9 +115,9 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     secondary_carousel_introduction = models.CharField(max_length=511)
 
 HomePage.content_panels = Page.content_panels + [
-    InlinePanel(HomePage, 'main_carousel_items', label="Main carousel items"),
+    InlinePanel('main_carousel_items', label="Main carousel items"),
     FieldPanel('secondary_carousel_introduction'),
-    InlinePanel(HomePage, 'secondary_carousel_items', label="Secondary carousel items"),
+    InlinePanel('secondary_carousel_items', label="Secondary carousel items"),
 ]
 
 HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
@@ -238,7 +238,7 @@ class FeatureAspect(ClusterableModel):
 
 FeatureAspect.panels = [
     FieldPanel('title'),
-    InlinePanel(FeatureAspect, 'bullets', label="Bullets"),
+    InlinePanel('bullets', label="Bullets"),
     ImageChooserPanel('screenshot')
 ]
 
@@ -279,7 +279,7 @@ class FeaturePage(SocialMediaMixin, CrossPageMixin, Page):
 
 FeaturePage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
-    InlinePanel(FeaturePage, 'feature_aspects', label="Feature Aspects")
+    InlinePanel('feature_aspects', label="Feature Aspects")
 ]
 
 FeaturePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
@@ -310,7 +310,7 @@ class FeatureIndexPage(Page):
 
 FeatureIndexPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
-    InlinePanel(FeatureIndexPage, 'secondary_menu_options', label="Secondary Menu Options")
+    InlinePanel('secondary_menu_options', label="Secondary Menu Options")
 ]
 
 
@@ -361,7 +361,7 @@ DevelopersPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
     FieldPanel('body_heading'),
     FieldPanel('body'),
-    InlinePanel(DevelopersPage, 'options', label="Options")
+    InlinePanel('options', label="Options")
 ]
 
 
