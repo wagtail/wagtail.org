@@ -1,5 +1,6 @@
 import getpass
 import warnings
+from datetime import datetime
 from fabric.api import *
 
 import uuid
@@ -44,30 +45,93 @@ def deploy_staging():
     # 'restart' should be an alias to a script that restarts the web server
     run('restart')
 
+
 @roles('staging')
 def createsuperuser_staging():
     run('django-admin createsuperuser')
 
+
+@roles('production')
+def deploy_production():
+    # Remove this line when you're happy that this task is correct
+    raise RuntimeError("Please check the fabfile before using it")
+
+    run('git pull origin master')
+    run('pip install -r requirements.txt')
+    run('django-admin migrate --noinput')
+    run('django-admin collectstatic --noinput')
+    run('django-admin compress')
+    run('django-admin update_index')
+
+    # 'restart' should be an alias to a script that restarts the web server
+    run('restart')
+
+
+@roles('staging')
+def deploy_staging():
+    # Remove this line when you're happy that this task is correct
+    raise RuntimeError("Please check the fabfile before using it")
+
+    run('git pull origin staging')
+    run('pip install -r requirements.txt')
+    run('django-admin migrate --noinput')
+    run('django-admin collectstatic --noinput')
+    run('django-admin compress')
+    run('django-admin update_index')
+
+    # 'restart' should be an alias to a script that restarts the web server
+    run('restart')
+
+
+def _pull_data(env_name, remote_db_name, local_db_name, remote_dump_path, local_dump_path):
+    timestamp = datetime.now().strftime('%Y%m%d-%I%M%S')
+
+    filename = '.'.join([env_name, remote_db_name, timestamp, 'sql'])
+    remote_filename = remote_dump_path + filename
+    local_filename = local_dump_path + filename
+
+    params = {
+        'remote_db_name': remote_db_name,
+        'remote_filename': remote_filename,
+        'local_db_name': local_db_name,
+        'local_filename': local_filename,
+    }
+
+    # Dump/download database from server
+    run('pg_dump {remote_db_name} -xOf {remote_filename}'.format(**params))
+    run('gzip {remote_filename}'.format(**params))
+    get('{remote_filename}.gz'.format(**params), '{local_filename}.gz'.format(**params))
+    run('rm {remote_filename}.gz'.format(**params))
+
+    # Load database locally
+    local('gunzip {local_filename}.gz'.format(**params))
+    local('dropdb {local_db_name}'.format(**params))
+    local('createdb {local_db_name}'.format(**params))
+    local('psql {local_db_name} -f {local_filename}'.format(**params))
+    local('rm {local_filename}'.format(**params))
+
+
+@roles('production')
+def pull_production_data():
+    _pull_data(
+        env_name='production',
+        remote_db_name='wagtailio',
+        local_db_name='wagtailio',
+        remote_dump_path='/usr/local/django/wagtailio/tmp/',
+        local_dump_path='/tmp/',
+    )
+
+
 @roles('staging')
 def pull_staging_data():
-    filename = "%s-%s.sql" % (DB_NAME, uuid.uuid4())
-    local_path = "%s%s" % (LOCAL_DUMP_PATH, filename)
-    remote_path = "%s%s" % (REMOTE_DUMP_PATH, filename)
-    local_db_backup_path = "%svagrant-%s-%s.sql" % (LOCAL_DUMP_PATH, DB_NAME, uuid.uuid4())
+    _pull_data(
+        env_name='staging',
+        remote_db_name='wagtailio',
+        local_db_name='wagtailio',
+        remote_dump_path='/usr/local/django/wagtailio/tmp/',
+        local_dump_path='/tmp/',
+    )
 
-    run('pg_dump -U%s -xOf %s' % (STAGING_DB_USERNAME, remote_path))
-    run('gzip %s' % remote_path)
-    get("%s.gz" % remote_path, "%s.gz" % local_path)
-    run('rm %s.gz' % remote_path)
-
-    local('pg_dump -xOf %s %s' % (local_db_backup_path, DB_NAME))
-    puts('Previous local database backed up to %s' % local_db_backup_path)
-
-    local('dropdb %s' % DB_NAME)
-    local('createdb %s' % DB_NAME)
-    local('gunzip %s.gz' % local_path)
-    local('psql %s -f %s' % (DB_NAME, local_path))
-    local('rm %s' % local_path)
 
 @roles('staging')
 def pull_staging_media():
