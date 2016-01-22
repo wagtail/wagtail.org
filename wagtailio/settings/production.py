@@ -6,7 +6,6 @@ from .base import *
 
 # Disable debug mode
 DEBUG = False
-TEMPLATE_DEBUG = False
 
 
 # Compress static files offline and minify CSS
