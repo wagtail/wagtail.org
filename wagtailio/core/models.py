@@ -1,5 +1,3 @@
-from operator import attrgetter
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
 from django.shortcuts import redirect, render
@@ -17,9 +15,6 @@ from wagtail.wagtailadmin.edit_handlers import (
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
-
-from wagtail.wagtailsearch import index
-
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (
@@ -114,13 +109,13 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     secondary_carousel_introduction = models.CharField(max_length=511)
 
-HomePage.content_panels = Page.content_panels + [
-    InlinePanel('main_carousel_items', label="Main carousel items"),
-    FieldPanel('secondary_carousel_introduction'),
-    InlinePanel('secondary_carousel_items', label="Secondary carousel items"),
-]
+    content_panels = Page.content_panels + [
+        InlinePanel('main_carousel_items', label="Main carousel items"),
+        FieldPanel('secondary_carousel_introduction'),
+        InlinePanel('secondary_carousel_items', label="Secondary carousel items"),
+    ]
 
-HomePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 
 # Blog index
@@ -130,12 +125,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         latest_blog = BlogPage.objects.live().order_by('-date').first()
         return redirect(latest_blog.url)
 
-
-BlogIndexPage.content_panels = Page.content_panels + [
-
-]
-
-BlogIndexPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 
 # Blog page
@@ -185,15 +175,15 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         return self.__class__.objects.live(
         ).sibling_of(self).order_by('-date')
 
-BlogPage.content_panels = Page.content_panels + [
-    SnippetChooserPanel('author', Author),
-    ImageChooserPanel('main_image'),
-    FieldPanel('date'),
-    FieldPanel('introduction'),
-    StreamFieldPanel('body')
-]
+    content_panels = Page.content_panels + [
+        SnippetChooserPanel('author', Author),
+        ImageChooserPanel('main_image'),
+        FieldPanel('date'),
+        FieldPanel('introduction'),
+        StreamFieldPanel('body')
+    ]
 
-BlogPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 
 # Standard content page
@@ -202,12 +192,12 @@ class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
     body = StreamField(StoryBlock())
 
-StandardPage.content_panels = Page.content_panels + [
-    FieldPanel('introduction'),
-    StreamFieldPanel('body')
-]
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction'),
+        StreamFieldPanel('body')
+    ]
 
-StandardPage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
 
 # Feature page
@@ -236,11 +226,11 @@ class FeatureAspect(ClusterableModel):
     def __str__(self):
         return self.title
 
-FeatureAspect.panels = [
-    FieldPanel('title'),
-    InlinePanel('bullets', label="Bullets"),
-    ImageChooserPanel('screenshot')
-]
+    panels = [
+        FieldPanel('title'),
+        InlinePanel('bullets', label="Bullets"),
+        ImageChooserPanel('screenshot')
+    ]
 
 register_snippet(FeatureAspect)
 
@@ -277,12 +267,13 @@ class FeaturePage(SocialMediaMixin, CrossPageMixin, Page):
         else:
             return self.get_siblings().first()
 
-FeaturePage.content_panels = Page.content_panels + [
-    FieldPanel('introduction'),
-    InlinePanel('feature_aspects', label="Feature Aspects")
-]
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction'),
+        InlinePanel('feature_aspects', label="Feature Aspects")
+    ]
 
-FeaturePage.promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+
 
 # Feature Index Page
 
@@ -308,10 +299,10 @@ class FeatureIndexPage(Page):
     def features(self):
         return FeaturePage.objects.live().child_of(self)
 
-FeatureIndexPage.content_panels = Page.content_panels + [
-    FieldPanel('introduction'),
-    InlinePanel('secondary_menu_options', label="Secondary Menu Options")
-]
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction'),
+        InlinePanel('secondary_menu_options', label="Secondary Menu Options")
+    ]
 
 
 # Developers Page
@@ -357,16 +348,15 @@ class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
     body_heading = models.CharField(max_length=255)
     body = RichTextField(blank=True)
 
-DevelopersPage.content_panels = Page.content_panels + [
-    FieldPanel('introduction'),
-    FieldPanel('body_heading'),
-    FieldPanel('body'),
-    InlinePanel('options', label="Options")
-]
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction'),
+        FieldPanel('body_heading'),
+        FieldPanel('body'),
+        InlinePanel('options', label="Options")
+    ]
 
 
 # Newsletters pages (archive of Mailchimp mailshots)
-
 
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -401,22 +391,22 @@ class NewsletterIndexPage(Page):
             'newsletters': newsletters,
         })
 
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+    ]
 
-NewsletterIndexPage.content_panels = Page.content_panels + [
-    FieldPanel('intro', classname="full"),
-    FieldPanel('body', classname="full"),
-]
 
 class NewsletterPage(Page):
     date = models.DateField("Newsletter date")
     intro = RichTextField(blank=True)
     body = RichTextField()
 
-NewsletterPage.content_panels = Page.content_panels + [
-    FieldPanel('date'),
-    FieldPanel('intro', classname="full"),
-    FieldPanel('body', classname="full"),
-]
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+    ]
 
 
 # Newsletter signups
