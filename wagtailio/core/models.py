@@ -306,7 +306,7 @@ class FeatureIndexPage(Page):
 
     @property
     def features(self):
-        return self.get_children().live().type(FeaturePage)
+        return FeaturePage.objects.live().child_of(self)
 
 FeatureIndexPage.content_panels = Page.content_panels + [
     FieldPanel('introduction'),
