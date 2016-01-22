@@ -858,9 +858,11 @@
                       <td class="wrapper">
                         <table class="twelve columns">
                           <tr>
-                            <td class="center">
-                              <a href="{{ self.url }}" class="view-online">View this email online</a>
-                            </td>
+                            {% if is_email %}
+                              <td class="center">
+                                <a href="{{ self.url }}" class="view-online">View this email online</a>
+                              </td>
+                            {% endif %}
                             <td class="expander"></td>
                           </tr>
                         </table>
@@ -913,13 +915,13 @@
                           <td align="center">
                             <center>
                                 <br>
-                                *|IFNOT:ARCHIVE_PAGE|*
+                                {% if is_email %}
                                     <br>
                                     Want to change how you receive these emails?<br>
                                     You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>
                                     <br>
                                     <br>
-                                *|END:IF|*
+                                {% endif %}
                             </center>
                           </td>
                           <td class="expander"></td>
