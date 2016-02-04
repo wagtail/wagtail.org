@@ -408,6 +408,13 @@ class NewsletterPage(Page):
         FieldPanel('body', classname="full"),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        if request.GET.get('email', 'false') == 'true':
+            context['is_email'] = True
+
+        return context
+
 
 # Newsletter signups
 
