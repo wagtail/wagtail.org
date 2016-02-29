@@ -9,3 +9,4 @@
 /docs/_build/
 .npm-debug.log
 media.old
+node_modules

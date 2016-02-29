@@ -14,7 +14,7 @@
         <meta name="twitter:creator" content="@wagtailcms" />
         <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
         <meta name="twitter:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
-        <meta name="twitter:image:src" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta name="twitter:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
@@ -95,6 +95,27 @@
         {% block base_content %}{% endblock %}
 
         Copyright &copy; {% now "Y" %} Torchbox Ltd
+
+
+        {% if not DEBUG %}
+            <!-- twitter campaign tracking code -->
+            <script src="https://platform.twitter.com/oct.js"></script>
+            <script>
+                twttr.conversion.trackPid('l6ggy', {
+                    tw_sale_amount: 0, 
+                    tw_order_quantity: 0 
+                });
+            </script>
+            <noscript>
+                <img height="1" width="1" style="display:none;" alt=""
+                src="https://analytics.twitter.com/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
+                />
+                <img height="1" width="1" style="display:none;" alt=""
+                src="//t.co/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
+                />
+            </noscript>
+            <!-- end twitter campaign tracking code -->
+        {% endif %}
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
 

@@ -6,7 +6,6 @@ from .base import *
 
 # Disable debug mode
 DEBUG = False
-TEMPLATE_DEBUG = False
 
 
 # Compress static files offline and minify CSS
@@ -64,7 +63,7 @@ DATABASES = {
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
 
 if 'REDIS_HOST' in env:
-    REDIS_LOCATION = env['REDIS_HOST']
+    REDIS_LOCATION = 'redis://' + env['REDIS_HOST']
     BROKER_URL = 'redis://%s' % env['REDIS_HOST']
 
 elif 'REDIS_SOCKET' in env:
@@ -78,11 +77,11 @@ else:
 if REDIS_LOCATION is not None:
     CACHES = {
         'default': {
-            'BACKEND': 'redis_cache.cache.RedisCache',
+            'BACKEND': 'django_redis.cache.RedisCache',
             'LOCATION': REDIS_LOCATION,
             'KEY_PREFIX': APP_NAME,
             'OPTIONS': {
-                'CLIENT_CLASS': 'redis_cache.client.DefaultClient',
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             }
         }
     }

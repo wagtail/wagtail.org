@@ -20,9 +20,9 @@
                 {% for feature in self.features %}
                     <li class="feature">{# class="new" unsupported by model #}
                         <a href="{% pageurl feature %}">
-                            {% image feature.specific.listing_image fill-115x90 %}
-                            <h2>{{ feature.specific.title }}</h2>
-                            <p>{{ feature.specific.introduction }}</p>
+                            {% image feature.listing_image fill-115x90 %}
+                            <h2>{{ feature.title }}</h2>
+                            <p>{{ feature.introduction }}</p>
                         </a>
                     </li>
                 {% endfor %}
