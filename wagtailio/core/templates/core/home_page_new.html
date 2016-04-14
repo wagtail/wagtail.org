@@ -22,10 +22,10 @@
 
         <div class="actions">
             <a href="#">
-                Get Wagtail
+                <span>Get</span> Wagtail
             </a>
             <a href="#">
-                View the features
+                <span>View the</span> features
             </a>
         </div> <!-- /actions -->
 
@@ -40,22 +40,22 @@
 
         <div class="image-container">
             <div>
-                <img src="" alt="Royal College of Art" />
+                <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
             </div>
             <div>
-                <img src="" alt="Jasper Canada" />
+                <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
             </div>
             <div>
-                <img src="" alt="University of Tasmania" />
+                <img src="../static/img/logo_uot.png" alt="University of Tasmania" />
             </div>
             <div>
-                <img src="" alt="NASA" />
+                <img src="../static/img/logo_nasa.png" alt="NASA" />
             </div>
             <div>
-                <img src="" alt="Blackstone Chambers" />
+                <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
             </div>
             <div>
-                <img src="" alt="St John's College" />
+                <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
             </div>
         </div> <!-- /image-container -->
 
@@ -71,35 +71,35 @@
             </div> <!-- /text-container -->
 
             <ul>
-                <li>
-                    <a class="selected" href="#">Feature 1</a>
+                <li data-tab="feature-tab-1" class="current">
+                    <a href="#">Feature 1</a>
                 </li>
-                <li>
+                <li data-tab="feature-tab-2">
                     <a href="#">Feature 2</a>
                 </li>
-                <li>
+                <li data-tab="feature-tab-3">
                     <a href="#">Feature 3</a>
                 </li>
-                <li>
+                <li data-tab="feature-tab-4">
                     <a href="#">Feature 4</a>
                 </li>
             </ul>
         </nav> <!-- /tabs -->
 
-        <div class="tab-content">
-            <div>
-                Wagtail showcase 1
+        <div class="tab-content-container">
+            <div id="feature-tab-1" class="tab-content current">
+                <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
             </div>
-            <div>
+            <div id="feature-tab-2" class="tab-content">
                 Wagtail showcase 2
             </div>
-            <div>
+            <div id="feature-tab-3" class="tab-content">
                 Wagtail showcase 3
             </div>
-            <div>
+            <div id="feature-tab-4" class="tab-content">
                 Wagtail showcase 4
             </div>
-        </div> <!-- /tab-content -->
+        </div> <!-- /tab-content-container -->
 
     </section> <!-- /features -->
 
@@ -123,31 +123,33 @@
 
         <nav class="tabs">
             <ul>
-                <li><a href="#">Designers</a></li>
-                <li><a href="#">Developers</a></li>
-                <li><a href="#">Directors</a></li>
-                <li><a href="#">Editors</a></li>
+                <li data-tab="user-group-tab-1" class="current"><a href="#">Designers</a></li>
+                <li data-tab="user-group-tab-2"><a href="#">Developers</a></li>
+                <li data-tab="user-group-tab-3"><a href="#">Directors</a></li>
+                <li data-tab="user-group-tab-4"><a href="#">Editors</a></li>
             </ul>
         </nav> <!-- /tabs -->
 
-        <div class="tab-content">
-            <div>
+        <div class="tab-content-container">
+
+            <div id="user-group-tab-1" class="tab-content current">
                 <h2>Designers</h2>
                 <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
             </div>
-            <div>
+            <div id="user-group-tab-2" class="tab-content">
                 <h2>Developers</h2>
                 <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
             </div>
-            <div>
+            <div id="user-group-tab-3" class="tab-content">
                 <h2>Directors</h2>
                 <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
             </div>
-            <div>
+            <div id="user-group-tab-4" class="tab-content">
                 <h2>Editors</h2>
                 <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
             </div>
-        </div> <!-- /tab-content -->
+
+        </div> <!-- /tab-content-container -->
 
     </section> <!-- /user-groups -->
 
@@ -167,15 +169,16 @@
         <nav class="tabs">
             <h2>Create beautiful websites.</h2>
             <ul>
-                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
-                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
-                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
-                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li data-tab="casestudy-tab-1" class="current"><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li data-tab="casestudy-tab-2"><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li data-tab="casestudy-tab-3"><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li data-tab="casestudy-tab-4"><a href="#"><img src="" alt="Royal College of Art" /></a></li>
             </ul>
         </nav> <!-- /tabs -->
 
-        <div class="tab-content">
-            <div>
+        <div class="tab-content-container">
+
+            <div id="casestudy-tab-1" class="tab-content current">
                 <div class="text-container">
                     <a href="#">
                         <h2>Royal College of Art</h2>
@@ -186,10 +189,10 @@
                     <img src="" alt="Royal College of Art" />
                 </div>
             </div>
-            <div>
+            <div id="casestudy-tab-2" class="tab-content">
                 <div class="text-container">
                     <a href="#">
-                        <h2>Royal College of Art</h2>
+                        <h2>Second tab title</h2>
                         <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
                     </a>
                 </div>
@@ -197,10 +200,10 @@
                     <img src="" alt="Royal College of Art" />
                 </div>
             </div>
-            <div>
+            <div id="casestudy-tab-3" class="tab-content">
                 <div class="text-container">
                     <a href="#">
-                        <h2>Royal College of Art</h2>
+                        <h2>Third tab title</h2>
                         <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
                     </a>
                 </div>
@@ -208,10 +211,10 @@
                     <img src="" alt="Royal College of Art" />
                 </div>
             </div>
-            <div>
+            <div id="casestudy-tab-4" class="tab-content">
                 <div class="text-container">
                     <a href="#">
-                        <h2>Royal College of Art</h2>
+                        <h2>Fourth tab title</h2>
                         <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
                     </a>
                 </div>
@@ -219,7 +222,8 @@
                     <img src="" alt="Royal College of Art" />
                 </div>
             </div>
-        </div> <!-- /tab-content -->
+
+        </div> <!-- /tab-content-container -->
 
     </section> <!-- /case-studies -->
 
@@ -294,5 +298,18 @@
 
     </footer> <!-- /global -->
 
+{% endblock %}
 
+{% block extra_js %}
+<script>
+	$('.tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.tabs ul li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+</script>
 {% endblock %}

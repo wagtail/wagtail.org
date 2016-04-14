@@ -1,5 +1,7 @@
 // New homepage for 2016
 
+// Template specific
+
 .template-homepage {
 
     h1 {
@@ -22,22 +24,58 @@
 
     }
 
+    .tab-content {
+        display: none;
+
+        &.current {
+            display: inherit;
+        }
+
+    }
+
 }
+
+// General styles
 
 .hero {
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom: 1px solid rgba(#000, 0.2);
-    margin: 0 0 40px;
-    height: 60vh;
+    height: 80vh;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: -100px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 700px 1200px;
+        border-color: transparent transparent $color-primary-highlight transparent;
+        opacity: 1;
+        z-index: 0;
+    }
 
     .text-container {
         width: 30%;
+        position: relative;
+        z-index: 2;
+        padding: 40px;
+
+        h2 {
+            font-size: 42px;
+        }
+
+        p {
+            font-size: 21px;
+        }
     }
 
     .screenshot {
         position: absolute;
+        z-index: 1;
         bottom: 0;
         right: 40px;
         width: 50%;
@@ -52,6 +90,7 @@
 
     .actions {
         position: absolute;
+        z-index: 2;
         right: 40px;
         bottom: 40px;
 
@@ -59,6 +98,8 @@
             float: left;
             margin: 0 10px 0 0;
             padding: 20px;
+            width: 150px;
+            height: 150px;
             display: block;
             background: $color-primary-highlight;
             color: #fff;
@@ -67,6 +108,12 @@
             &:hover {
                 background: $color-secondary-highlight;
             }
+
+            span {
+                display: block;
+                font-weight: normal;
+            }
+
         }
 
     }
@@ -79,11 +126,21 @@
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
     text-align: center;
+    background: #333;
+    color: #fff;
+
+    span {
+        color: $color-secondary-highlight;
+    }
 
     blockquote {
+        font-size: 28px;
 
         cite {
+            margin-top: 10px;
+            font-size: 16px;
             display: block;
+            color: rgba(#fff,0.6);
         }
 
     }
@@ -93,8 +150,19 @@
 .company-showcase {
     overflow: hidden;
     margin: 0 0 40px;
+    padding: 40px;
     text-align: center;
     border-bottom: 1px solid rgba(#000, 0.2);
+    background: #333;
+    color: #fff;
+
+    .text-container {
+
+        p {
+            color: rgba(#fff, 0.7);
+        }
+
+    }
 
     .image-container {
 
@@ -110,6 +178,7 @@
                 height: auto;
                 display: block;
                 margin: 0 auto;
+                opacity: 0.8;
             }
 
         }
@@ -128,15 +197,19 @@
 
         li {
 
+            &.current {
+
+                a {
+                    background: $color-primary-highlight;
+                    color: #fff;
+                }
+
+            }
+
             a {
                 display: block;
                 padding: 10px 5px;
                 margin: 0 0 5px;
-
-                &.selected {
-                    background: $color-primary-highlight;
-                    color: #fff;
-                }
             }
 
         }
@@ -164,8 +237,17 @@
 
         li {
 
+            &.current {
+
+                a {
+                    background: #f2f3f5;
+                }
+
+            }
+
             a {
                 display: block;
+                background: #e8e9eb;
                 float: left;
                 width: 25%;
                 text-align: center;
@@ -196,6 +278,7 @@
                     width: 50%;
                     padding-right: 20px;
                     margin-bottom: 20px;
+                    background: #f2f3f5;
 
                     img {
                         width: 100%;
@@ -203,6 +286,7 @@
                     }
 
                     &:hover {
+                        background: #e8e9eb;
 
                         img {
                             opacity: 0.8;
