@@ -1,0 +1,252 @@
+// New homepage for 2016
+
+.template-homepage {
+
+    h1 {
+        display: none;
+    }
+
+    .tabs {
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                margin: 0;
+                padding: 0;
+            }
+
+        }
+
+    }
+
+}
+
+.hero {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    margin: 0 0 40px;
+    height: 60vh;
+
+    .text-container {
+        width: 30%;
+    }
+
+    .screenshot {
+        position: absolute;
+        bottom: 0;
+        right: 40px;
+        width: 50%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    .actions {
+        position: absolute;
+        right: 40px;
+        bottom: 40px;
+
+        a {
+            float: left;
+            margin: 0 10px 0 0;
+            padding: 20px;
+            display: block;
+            background: $color-primary-highlight;
+            color: #fff;
+            font-weight: bold;
+
+            &:hover {
+                background: $color-secondary-highlight;
+            }
+        }
+
+    }
+
+}
+
+.company-showcase {
+    overflow: hidden;
+    margin: 0 0 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(#000, 0.2);
+
+    .image-container {
+
+        div {
+            overflow: hidden;
+            float: left;
+            width: 16.6666%;
+            text-align: center;
+            margin-bottom: 40px;
+
+            img {
+                width: 80%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+        }
+
+    }
+
+}
+
+.features {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(#000, 0.2);
+
+    .tabs {
+        float: left;
+        width: 30%;
+
+        li {
+
+            a {
+                display: block;
+                padding: 10px 5px;
+                margin: 0 0 5px;
+
+                &.selected {
+                    background: $color-primary-highlight;
+                    color: #fff;
+                }
+            }
+
+        }
+    }
+
+    .tab-content {
+        float: left;
+        width: 70%;
+        padding-left: 40px;
+    }
+
+}
+
+.user-groups {
+    border-bottom: 1px solid rgba(#000, 0.2);
+    overflow: hidden;
+    padding: 0 0 40px;
+    margin: 0 0 40px;
+
+    .text-container {
+        text-align: center;
+    }
+
+    .tabs {
+
+        li {
+
+            a {
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: center;
+            }
+
+        }
+
+    }
+
+}
+
+.case-studies {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    padding-bottom: 40px;
+
+    .tabs {
+        float: left;
+        width: 30%;
+
+        ul {
+
+            li {
+
+                a {
+                    float: left;
+                    display: block;
+                    width: 50%;
+                    padding-right: 20px;
+                    margin-bottom: 20px;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    &:hover {
+
+                        img {
+                            opacity: 0.8;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    .tab-content {
+        float: left;
+        width: 70%;
+        padding-left: 40px;
+    }
+
+}
+
+.latest {
+    overflow: hidden;
+    margin: 0;
+
+    h2 {
+        display: none;
+    }
+
+    article {
+        float: left;
+        width: 50%;
+        overflow: hidden;
+
+        .image-container {
+            width: 30%;
+            float: left;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+        .text-container {
+            width: 70%;
+            float: left;
+            padding: 20px 0;
+
+            h3 {
+                margin: 0;
+            }
+
+            p {
+                margin: 0;
+            }
+
+        }
+
+    }
+
+}

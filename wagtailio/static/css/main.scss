@@ -28,7 +28,7 @@ $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color-primary-highlight;
 
-// 
+//
 $website-width-max: 1600px;
 
 /* ============================================
@@ -78,10 +78,10 @@ a {
     text-decoration: none;
     color: $color-secondary-highlight;
     @include transition(
-        color $anim-speed-primary linear, 
-        padding $anim-speed-primary linear, 
+        color $anim-speed-primary linear,
+        padding $anim-speed-primary linear,
         background-color $anim-speed-primary linear,
-        opacity $anim-speed-primary linear 
+        opacity $anim-speed-primary linear
     );
 
     &:hover{
@@ -122,11 +122,11 @@ pre {
 
 // rules for max width container
 @mixin row {
-    
+
     text-align: center;
     padding: 0 4%;
     // use this for debugging...
-    // border: solid 5px hotpink; 
+    // border: solid 5px hotpink;
 
     .container {
         overflow: hidden;
@@ -232,7 +232,7 @@ pre {
 
 */
 .share {
-    
+
     position: fixed;
     top: 64px + 52px; // needs variablising
     right: 40px;
@@ -242,7 +242,7 @@ pre {
     padding: 14px 10px 0;
 
     @include border-radius;
-    
+
     h3 {
         font-size: 18px;
         font-weight: 300;
@@ -333,7 +333,7 @@ pre {
         @include flexbox;
         @include align-items( stretch );
         a {
-            display: block; // fallback for non-flexbox 
+            display: block; // fallback for non-flexbox
             @include flexbox;
             @include flex-direction( column );
             width: 100%; // required for conainer to fullfill width
@@ -366,7 +366,10 @@ pre {
 // homepage
 @import "pages/home";
 
-// Standard page 
+// new homepage
+@import "pages/homepage";
+
+// Standard page
 @import "pages/standard";
 
 // Feature index page

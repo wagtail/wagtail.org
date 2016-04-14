@@ -2,65 +2,275 @@
 
 {% load static wagtailimages_tags wagtailio_utils %}
 
-{% block body_class %}{% endblock %}
-{% block extra_css %}
-    <style>
-    /* immediately hide homepage content */
-    .template-home-page section {
-        opacity: 0;
-     }
-    </style>
-{% endblock %}
+{% block body_class %}template-homepage{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block content %}
-    
-    <div id="hero">
-        <div class="container">
-            <div class="carousel">
-                {% for item in self.main_carousel_items.all %}
-                    <div class="slide">
-                        <div class="text">
-                            <h1>{{ item.title }}</h1>
-                            <p>{{ item.summary }}</p>
-                            <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
-                        </div>
-                        <div class="image">
-                            {% image item.image fill-635x370 %}
-                            <a href="{{ item.video }}"><span class="fa fa-play icon"></span>Watch demo</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
 
-    <div id="examples">
-        <div class="container">
-            <h2>{{ self.secondary_carousel_introduction }}</h2>
-            <div class="carousel">
-                {% for item in self.secondary_carousel_items.all %}
-                    <div class="slide">
-                        <div class="image">
-                            {% image item.desktop_image fill-1350x1020 %}
-                        </div>
-                        <div class="text">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.blockquote }}</p>
-                            <div class="author">
-                                <span class="image">
-                                    {% image item.author_image fill-55x55 %}
-                                </span>
-                                <span class="details">
-                                    <a class="name" href="{{ item.website }}">{{ item.author_name }}</a>
-                                    <span class="role">{{ item.author_job }}</span>
-                                </span>
-                            </div>
-                            <a href="{{ item.website }}">View the site</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+    <h1>Wagtail Django CMS Homepage</h1>
+
+    <section class="hero" style="background-image:url('../static/img/hero_wagtail.jpg')">
+
+        <div class="text-container">
+            <h2>Meet Wagtail</h2>
+            <p>The Open Source Django Content Management System </p>
+        </div> <!-- /text-container -->
+
+        <div class="screenshot">
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+        </div> <!-- /screenshot -->
+
+        <div class="actions">
+            <a href="#">
+                Get Wagtail
+            </a>
+            <a href="#">
+                View the features
+            </a>
+        </div> <!-- /actions -->
+
+    </section> <!-- /hero -->
+
+    <section class="company-showcase">
+
+        <div class="text-container">
+            <h2>Powering international websites for leading brands</h2>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
-    </div>
+
+        <div class="image-container">
+            <div>
+                <img src="" alt="Royal College of Art" />
+            </div>
+            <div>
+                <img src="" alt="Jasper Canada" />
+            </div>
+            <div>
+                <img src="" alt="University of Tasmania" />
+            </div>
+            <div>
+                <img src="" alt="NASA" />
+            </div>
+            <div>
+                <img src="" alt="Blackstone Chambers" />
+            </div>
+            <div>
+                <img src="" alt="St John's College" />
+            </div>
+        </div> <!-- /image-container -->
+
+    </section> <!-- /company-showcase -->
+
+    <section class="features">
+
+        <nav class="tabs">
+
+            <div class="text-container">
+                <h2>Why Wagtail?</h2>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div> <!-- /text-container -->
+
+            <ul>
+                <li>
+                    <a class="selected" href="#">Feature 1</a>
+                </li>
+                <li>
+                    <a href="#">Feature 2</a>
+                </li>
+                <li>
+                    <a href="#">Feature 3</a>
+                </li>
+                <li>
+                    <a href="#">Feature 4</a>
+                </li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content">
+            <div>
+                Wagtail showcase 1
+            </div>
+            <div>
+                Wagtail showcase 2
+            </div>
+            <div>
+                Wagtail showcase 3
+            </div>
+            <div>
+                Wagtail showcase 4
+            </div>
+        </div> <!-- /tab-content -->
+
+    </section> <!-- /features -->
+
+
+    <section class="user-groups">
+
+        <div class="text-container">
+            <h2>You'll all love it</h2>
+        </div> <!-- /text-container -->
+
+        <nav class="tabs">
+            <ul>
+                <li><a href="#">Designers</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Directors</a></li>
+                <li><a href="#">Editors</a></li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content">
+            <div>
+                <h2>Designers</h2>
+                <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+            </div>
+            <div>
+                <h2>Developers</h2>
+                <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+            </div>
+            <div>
+                <h2>Directors</h2>
+                <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+            </div>
+            <div>
+                <h2>Editors</h2>
+                <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+            </div>
+        </div> <!-- /tab-content -->
+
+    </section> <!-- /user-groups -->
+
+    <section class="case-studies">
+
+        <nav class="tabs">
+            <h2>Create beautiful websites.</h2>
+            <ul>
+                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+                <li><a href="#"><img src="" alt="Royal College of Art" /></a></li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content">
+            <div>
+                <div class="text-container">
+                    <a href="#">
+                        <h2>Royal College of Art</h2>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div>
+                <div class="text-container">
+                    <a href="#">
+                        <h2>Royal College of Art</h2>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div>
+                <div class="text-container">
+                    <a href="#">
+                        <h2>Royal College of Art</h2>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div>
+                <div class="text-container">
+                    <a href="#">
+                        <h2>Royal College of Art</h2>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="" alt="Royal College of Art" />
+                </div>
+            </div>
+        </div> <!-- /tab-content -->
+
+    </section> <!-- /case-studies -->
+
+    <section class="latest">
+
+        <h2>Latest from the blog</h2>
+
+        <article>
+            <a href="#">
+                <div class="image-container">
+                    <img src="" alt="Cape Town" />
+                </div>
+                <div class="text-container">
+                    <p class="date">Feb 29th 2016</p>
+                    <h3>Cape Town Retrospective</h3>
+                    <p>Spinting in South Africa</p>
+                </div>
+            </a>
+        </article>
+
+        <article>
+            <a href="#">
+                <div class="image-container">
+                    <img src="" alt="Wagtail in space" />
+                </div>
+                <div class="text-container">
+                    <p class="date">Feb 29th 2016</p>
+                    <h3>Wagtail in Space</h3>
+                    <p>Take your protein pill and put your helmet on</p>
+                </div>
+            </a>
+        </article>
+
+    </section> <!-- /latest -->
+
+    <footer class="global">
+
+        <nav>
+            <h2>Find Wagtail on</h2>
+            <ul>
+                <li><a href="#">Github</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Slack</a></li>
+                <li><a href="#">Stack exchange</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <h2>About Wagtail</h2>
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Development</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <h2>Core contributors</h2>
+            <ul>
+                <li><a href="#">Torchbox</a></li>
+                <li><a href="#">Spingload</a></li>
+                <li><a href="#">Another agency</a></li>
+                <li><a href="#">View all</a></li>
+            </ul>
+        </nav>
+
+        <ul class="footer-footer">
+            <li>&copy; 2016 Torchbox Ltd</li>
+            <li><img src="" alt="Torchbox" /></li>
+        </ul>
+
+    </footer> <!-- /global -->
+
 
 {% endblock %}
