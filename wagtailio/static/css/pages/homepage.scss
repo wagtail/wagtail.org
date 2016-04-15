@@ -35,6 +35,15 @@
 
 }
 
+.cols {
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-gap: 40px;
+    -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+}
+
 // General styles
 
 .hero {
@@ -234,23 +243,34 @@
 
 .user-groups {
     overflow: hidden;
-    padding: 0 0 40px;
+    padding: 0;
     margin: 0;
 
-    .text-container {
+    h2 {
         text-align: center;
+        font-size: 42px;
     }
 
     .tabs {
+        margin: 0 40px 0 60px;
 
         li {
             float: left;
             width: 25%;
 
+            span {
+                display: block;
+                text-align: center;
+                color: #333;
+                margin-bottom: 5px;
+            }
+
             &.current {
 
                 a {
                     background: #f2f3f5;
+                    color: #333;
+                    font-weight: bold;
                 }
 
             }
@@ -259,7 +279,30 @@
                 display: block;
                 background: #e8e9eb;
                 text-align: center;
-                margin: 0 20px 40px;
+                font-weight: normal;
+                margin: 0 20px 40px 0;
+                padding: 40px 20px;
+            }
+
+        }
+
+    }
+
+    .tab-content {
+
+        .text-container {
+            padding: 0 60px;
+            margin: 0 0 40px;
+        }
+
+        .image-container {
+            margin: 0 60px;
+            overflow: hidden;
+            max-height: 400px;
+
+            img {
+                width: 100%;
+                height: auto;
             }
 
         }
@@ -267,6 +310,8 @@
     }
 
 }
+
+// Case studies
 
 .case-studies {
     overflow: hidden;
@@ -370,6 +415,8 @@
 
 }
 
+// Latest blogs
+
 .latest {
     overflow: hidden;
     margin: 0;
@@ -383,28 +430,88 @@
         width: 50%;
         overflow: hidden;
 
-        .image-container {
-            width: 30%;
-            float: left;
+        a {
 
-            img {
-                width: 100%;
-                height: auto;
+            .image-container {
+                width: 30%;
+                float: left;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            }
+
+            .text-container {
+                width: 70%;
+                float: left;
+                padding: 20px 0 20px 30px;
+
+                h3 {
+                    margin: 0;
+                }
+
+                p {
+                    margin: 0;
+                    color: #333;
+
+                    &.date {
+                        color: #777;
+                    }
+
+                }
+
             }
 
         }
 
-        .text-container {
-            width: 70%;
-            float: left;
-            padding: 20px 0;
+    }
 
-            h3 {
-                margin: 0;
+}
+
+footer.global {
+    overflow: hidden;
+    margin-bottom: 200px;
+    padding-bottom: 30px;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        float: left;
+        width: 25%;
+        text-align: left;
+
+        ul {
+
+            li {
+
             }
 
-            p {
-                margin: 0;
+        }
+
+    }
+
+    .footer-footer {
+        clear: both;
+        text-align: left;
+        padding-top: 30px;
+
+        li {
+            display: inline-block;
+
+            &:last-child {
+                text-align: right;
+                float: right;
+
+                img {
+                    display: block;
+                    width: 110px;
+                }
             }
 
         }
