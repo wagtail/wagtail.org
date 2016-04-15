@@ -59,10 +59,10 @@
     }
 
     .text-container {
-        width: 30%;
+        width: 40%;
         position: relative;
         z-index: 2;
-        padding: 40px;
+        padding: 40px 60px;
 
         h2 {
             font-size: 42px;
@@ -120,8 +120,10 @@
 
 }
 
+
+// Testimonial
 .testimonial {
-    padding: 40px 0;
+    padding: 80px 0;
     margin: 0 0 40px;
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
@@ -147,6 +149,7 @@
 
 }
 
+// List of logos
 .company-showcase {
     overflow: hidden;
     margin: 0 0 40px;
@@ -187,13 +190,17 @@
 
 }
 
+
+// Wagtail features
+
 .features {
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
 
     .tabs {
         float: left;
-        width: 30%;
+        width: 40%;
+        padding-left: 60px;
 
         li {
 
@@ -217,17 +224,18 @@
 
     .tab-content {
         float: left;
-        width: 70%;
+        width: 60%;
         padding-left: 40px;
     }
 
 }
 
+// You'll all love it
+
 .user-groups {
-    border-bottom: 1px solid rgba(#000, 0.2);
     overflow: hidden;
     padding: 0 0 40px;
-    margin: 0 0 40px;
+    margin: 0;
 
     .text-container {
         text-align: center;
@@ -236,6 +244,8 @@
     .tabs {
 
         li {
+            float: left;
+            width: 25%;
 
             &.current {
 
@@ -248,9 +258,8 @@
             a {
                 display: block;
                 background: #e8e9eb;
-                float: left;
-                width: 25%;
                 text-align: center;
+                margin: 0 20px 40px;
             }
 
         }
@@ -266,23 +275,40 @@
 
     .tabs {
         float: left;
-        width: 30%;
+        width: 40%;
+        padding-left: 60px;
 
         ul {
 
             li {
+                float: left;
+                width: 50%;
+                padding-right: 20px;
+                margin-bottom: 20px;
+
+                &.current {
+
+                    a {
+                        background: #e8e9eb;
+                    }
+
+                    img {
+                        opacity: 1;
+                    }
+
+                }
 
                 a {
-                    float: left;
                     display: block;
-                    width: 50%;
-                    padding-right: 20px;
-                    margin-bottom: 20px;
                     background: #f2f3f5;
 
                     img {
+                        display: block;
                         width: 100%;
+                        max-width: 100px;
+                        margin: 0 auto;
                         height: auto;
+                        opacity: 0.7;
                     }
 
                     &:hover {
@@ -303,8 +329,43 @@
 
     .tab-content {
         float: left;
-        width: 70%;
+        width: 60%;
         padding-left: 40px;
+        position: relative;
+
+        .image-container {
+            padding-right: 60px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+        .text-container {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            background: rgba(#333, 0.95);
+            padding: 10px 20px;
+
+            a {
+                display: block;
+
+                h3 {
+                    margin: 0 0 5px;
+                }
+
+                p {
+                    color: #fff;
+                    margin: 0;
+                }
+
+            }
+
+        }
+
     }
 
 }
