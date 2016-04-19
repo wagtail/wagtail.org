@@ -34,7 +34,7 @@
     <section class="company-showcase">
 
         <div class="text-container">
-            <h2>Powering international websites for leading brands</h2>
+            <h2>Powering websites for leading brands</h2>
             <!-- <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p> -->
         </div>
 
@@ -59,9 +59,11 @@
             </div>
         </div> <!-- /image-container -->
 
+        <p><a href="#why" class="btn">Find out why</a></p>
+
     </section> <!-- /company-showcase -->
 
-    <section class="features">
+    <section class="features" id="why">
 
         <nav class="tabs">
 
@@ -157,6 +159,7 @@
                     <h3>Developers</h3>
                     <div class="cols">
                         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
                         <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
                     </div>
                 </div> <!--/ text-container -->
@@ -266,7 +269,7 @@
                     </a>
                 </div>
                 <div class="image-container">
-                    <img src="" alt="Royal College of Art" />
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
                 </div>
             </div>
             <div id="casestudy-tab-3" class="tab-content">
@@ -277,7 +280,7 @@
                     </a>
                 </div>
                 <div class="image-container">
-                    <img src="" alt="Royal College of Art" />
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
                 </div>
             </div>
             <div id="casestudy-tab-4" class="tab-content">
@@ -288,7 +291,7 @@
                     </a>
                 </div>
                 <div class="image-container">
-                    <img src="" alt="Royal College of Art" />
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
                 </div>
             </div>
 
@@ -371,11 +374,35 @@
 
 {% block extra_js %}
 <script>
-	$('.tabs ul li').click(function(){
+
+    // Features tabs
+	$('.features .tabs ul li').click(function(){
 		var tab_id = $(this).attr('data-tab');
 
-		$('.tabs ul li').removeClass('current');
-		$('.tab-content').removeClass('current');
+		$('.features .tabs ul li').removeClass('current');
+		$('.features .tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	});
+
+    // User groups tabs
+    $('.user-groups .tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.user-groups .tabs ul li').removeClass('current');
+		$('.user-groups .tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	});
+
+    // Case studies tabs
+    $('.case-studies .tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.case-studies .tabs ul li').removeClass('current');
+		$('.case-studies .tab-content').removeClass('current');
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
