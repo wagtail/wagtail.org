@@ -1,0 +1,583 @@
+// New homepage for 2016
+
+$background-color: #f4f1ea;
+
+// Template specific
+
+.template-homepage {
+
+    h1 {
+        display: none;
+    }
+
+    p {
+        margin: 0 0 15px;
+    }
+
+    .tabs {
+        margin: 0 0 40px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                margin: 0;
+                padding: 0;
+            }
+
+        }
+
+    }
+
+    .tab-content {
+        display: none;
+
+        &.current {
+            display: inherit;
+        }
+
+    }
+
+}
+
+.cols {
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-gap: 40px;
+    -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: $color-secondary-highlight;
+    color: #fff;
+    //font-weight: bold;
+}
+
+// General styles
+
+.hero {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    height: 600px;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: -100px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 700px 1200px;
+        border-color: transparent transparent rgba($color-primary-highlight, 0.85) transparent;
+        opacity: 1;
+        z-index: 0;
+    }
+
+    .text-container {
+        width: 40%;
+        position: relative;
+        z-index: 2;
+        padding: 40px 60px;
+
+        h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            //font-weight: normal;
+            color: #222;
+            color: $color-secondary-highlight;
+        }
+
+        p {
+            font-size: 42px;
+            color: rgba(#000, 1);
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+    }
+
+    .screenshot {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        right: 40px;
+        width: 50%;
+        height: 80%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    .actions {
+        position: absolute;
+        z-index: 2;
+        right: 40px;
+        bottom: 40px;
+
+        a {
+            float: left;
+            margin: 0 10px 0 0;
+            padding: 20px;
+            width: 150px;
+            height: 150px;
+            display: block;
+            background: $color-primary-highlight;
+            color: #fff;
+            font-weight: bold;
+
+            &:hover {
+                background: $color-secondary-highlight;
+            }
+
+            span {
+                display: block;
+                font-weight: normal;
+            }
+
+        }
+
+    }
+
+}
+
+
+// Testimonial
+.testimonial {
+    padding: 80px 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    text-align: center;
+    background: #333;
+    color: #fff;
+
+    span {
+        color: $color-secondary-highlight;
+    }
+
+    blockquote {
+        font-size: 28px;
+
+        cite {
+            margin-top: 10px;
+            font-size: 16px;
+            display: block;
+            color: rgba(#fff,0.6);
+        }
+
+    }
+
+}
+
+// List of logos
+.company-showcase {
+    overflow: hidden;
+    margin: 0;
+    padding: 60px 40px;
+    text-align: center;
+    //border-bottom: 1px solid rgba(#000, 0.2);
+    background: $background-color;
+    color: #fff;
+
+    .text-container {
+
+        h2 {
+            font-weight: normal;
+        }
+
+        p {
+            color: rgba(#fff, 0.7);
+        }
+
+    }
+
+    .image-container {
+
+        div {
+            overflow: hidden;
+            float: left;
+            width: 16.6666%;
+            text-align: center;
+            margin-bottom: 40px;
+
+            img {
+                width: 60%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                opacity: 0.8;
+            }
+
+        }
+
+    }
+
+}
+
+
+// Wagtail features
+
+.features {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    background: $background-color;
+    padding: 60px 0 0;
+
+    .tabs {
+        float: left;
+        width: 40%;
+        padding-left: 60px;
+
+        li {
+
+            &.current {
+
+                a {
+                    background: $color-primary-highlight;
+                    color: #fff;
+                }
+
+            }
+
+            a {
+                display: block;
+                padding: 10px 20px;
+                margin: 0 0 5px;
+            }
+
+        }
+    }
+
+    .tab-content {
+        float: left;
+        width: 60%;
+        padding-left: 40px;
+    }
+
+}
+
+// You'll all love it
+
+.user-groups {
+    overflow: hidden;
+    padding: 60px 0 0;
+    margin: 0;
+    background: $color-secondary-highlight;
+
+    h2 {
+        text-align: center;
+        font-size: 42px;
+        color: #fff;
+    }
+
+    .tabs {
+        margin: 0 40px 0 60px;
+
+        li {
+            float: left;
+            width: 25%;
+
+            span {
+                display: block;
+                text-align: center;
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 32px;
+            }
+
+            &.current {
+
+                a {
+                    background: #333;
+                    color: #fff;
+                    box-shadow: 0 0 20px rgba(#fff, 0.4);
+
+                    span {
+                        color: $color-secondary-highlight;
+                    }
+
+                }
+
+            }
+
+            a {
+                display: block;
+                background: #e8e9eb;
+                text-align: center;
+                font-weight: bold;
+                margin: 0 20px 40px 0;
+                padding: 40px 20px;
+                border-radius: 2px;
+            }
+
+        }
+
+    }
+
+    .tab-content {
+
+        .text-container {
+            padding: 0 60px;
+            margin: 0 0 40px;
+            color: #fff;
+
+            h3 {
+                font-size: 36px;
+            }
+
+        }
+
+        .image-container {
+            margin: 0 60px;
+            overflow: hidden;
+            max-height: 400px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+    }
+
+}
+
+// Case studies
+
+.case-studies {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    padding: 60px 0 0px;
+    background: $background-color;
+
+    .tabs {
+        float: left;
+        width: 40%;
+        padding-left: 60px;
+        margin: 0 0 40px;
+
+        p {
+            margin: 0 0 40px;
+        }
+
+        h2 {
+            font-size: 36px;
+        }
+
+        ul {
+
+            li {
+                float: left;
+                width: 50%;
+                padding-right: 20px;
+                margin-bottom: 20px;
+
+                &.current {
+
+                    a {
+                        background: #e8e9eb;
+                    }
+
+                    img {
+                        opacity: 1;
+                    }
+
+                }
+
+                a {
+                    display: block;
+                    background: #fff;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        max-width: 100px;
+                        margin: 0 auto;
+                        height: auto;
+                        opacity: 0.7;
+                    }
+
+                    &:hover {
+                        background: #e8e9eb;
+
+                        img {
+                            opacity: 0.8;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    .tab-content {
+        float: left;
+        width: 60%;
+        padding-left: 40px;
+        position: relative;
+
+        .image-container {
+            padding-right: 60px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+        .text-container {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(#333, 0.95);
+            padding: 10px 20px;
+
+            a {
+                display: block;
+
+                h3 {
+                    margin: 0 0 5px;
+                    font-size: 36px;
+                    color: $color-secondary-highlight;
+
+                    &:hover {
+                        color: #fff;
+                    }
+
+                }
+
+                p {
+                    color: #fff;
+                    margin: 0 0 5px;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+// Latest blogs
+
+.latest {
+    overflow: hidden;
+    margin: 0;
+
+    h2 {
+        display: none;
+    }
+
+    article {
+        float: left;
+        width: 50%;
+        overflow: hidden;
+
+        a {
+
+            .image-container {
+                width: 30%;
+                float: left;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            }
+
+            .text-container {
+                width: 70%;
+                float: left;
+                padding: 20px 0 20px 30px;
+
+                h3 {
+                    margin: 0;
+                }
+
+                p {
+                    margin: 0;
+                    color: #333;
+
+                    &.date {
+                        color: #777;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+footer.global {
+    overflow: hidden;
+    margin-bottom: 200px;
+    padding-bottom: 30px;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        float: left;
+        width: 25%;
+        text-align: left;
+
+        ul {
+
+            li {
+
+            }
+
+        }
+
+    }
+
+    .footer-footer {
+        clear: both;
+        text-align: left;
+        padding-top: 30px;
+
+        li {
+            display: inline-block;
+
+            &:last-child {
+                text-align: right;
+                float: right;
+
+                img {
+                    display: block;
+                    width: 110px;
+                }
+            }
+
+        }
+
+    }
+
+}

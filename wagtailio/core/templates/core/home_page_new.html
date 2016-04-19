@@ -1,0 +1,415 @@
+{% extends "content.html" %}
+
+{% load static wagtailimages_tags wagtailio_utils %}
+
+{% block body_class %}template-homepage{% endblock %}
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+
+    <h1>Wagtail Django CMS Homepage</h1>
+
+    <section class="hero" style="background-image:url('../static/img/hero_wagtail.jpg')">
+
+        <div class="text-container">
+            <h2>Meet Wagtail</h2>
+            <p>The Open Source Django Content Management System </p>
+        </div> <!-- /text-container -->
+
+        <div class="screenshot">
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+        </div> <!-- /screenshot -->
+
+        <div class="actions">
+            <a href="#">
+                <span>Get</span> Wagtail
+            </a>
+            <a href="#">
+                <span>View the</span> features
+            </a>
+        </div> <!-- /actions -->
+
+    </section> <!-- /hero -->
+
+    <section class="company-showcase">
+
+        <div class="text-container">
+            <h2>Powering websites for leading brands</h2>
+            <!-- <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p> -->
+        </div>
+
+        <div class="image-container">
+            <div>
+                <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
+            </div>
+            <div>
+                <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
+            </div>
+            <div>
+                <img src="../static/img/logo_uot.png" alt="University of Tasmania" />
+            </div>
+            <div>
+                <img src="../static/img/logo_nasa.png" alt="NASA" />
+            </div>
+            <div>
+                <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
+            </div>
+            <div>
+                <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
+            </div>
+        </div> <!-- /image-container -->
+
+        <p><a href="#why" class="btn">Find out why</a></p>
+
+    </section> <!-- /company-showcase -->
+
+    <section class="features" id="why">
+
+        <nav class="tabs">
+
+            <div class="text-container">
+                <h2>Why Wagtail?</h2>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div> <!-- /text-container -->
+
+            <ul>
+                <li data-tab="feature-tab-1" class="current">
+                    <a href="#">Feature 1</a>
+                </li>
+                <li data-tab="feature-tab-2">
+                    <a href="#">Feature 2</a>
+                </li>
+                <li data-tab="feature-tab-3">
+                    <a href="#">Feature 3</a>
+                </li>
+                <li data-tab="feature-tab-4">
+                    <a href="#">Feature 4</a>
+                </li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content-container">
+            <div id="feature-tab-1" class="tab-content current">
+                <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+            </div>
+            <div id="feature-tab-2" class="tab-content">
+                Wagtail showcase 2
+            </div>
+            <div id="feature-tab-3" class="tab-content">
+                Wagtail showcase 3
+            </div>
+            <div id="feature-tab-4" class="tab-content">
+                Wagtail showcase 4
+            </div>
+        </div> <!-- /tab-content-container -->
+
+    </section> <!-- /features -->
+
+    <section class="testimonial">
+
+        <blockquote>
+            <span>“</span>
+            Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+            <span>”</span>
+            <cite>Tom Dyson - Technical Director, Torchbox</cite>
+        </blockquote>
+
+    </section> <!-- /testimonial -->
+
+
+    <section class="user-groups">
+
+        <div class="text-container">
+            <h2>You'll all love it</h2>
+        </div> <!-- /text-container -->
+
+        <nav class="tabs">
+            <ul>
+                <li data-tab="user-group-tab-1" class="current">
+                    <a href="#">
+                        <span class="fa icon fa-code"></span>
+                        Developers
+                    </a>
+                </li>
+                <li data-tab="user-group-tab-2">
+                    <a href="#">
+                        <span class="fa icon fa-paint-brush"></span>
+                        Designers
+                    </a>
+                </li>
+                <li data-tab="user-group-tab-3">
+                    <a href="#">
+                        <span class="fa icon fa-paint-brush"></span>
+                        Directors
+                    </a>
+                </li>
+                <li data-tab="user-group-tab-4">
+                    <a href="#">
+                        <span class="fa icon fa-edit"></span>
+                        Editors
+                    </a>
+                </li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content-container">
+
+            <div id="user-group-tab-1" class="tab-content current">
+                <div class="text-container">
+                    <h3>Developers</h3>
+                    <div class="cols">
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div> <!--/ text-container -->
+                <div class="image-container">
+                    <img src="../static/img/screenshot_developers.png" alt="developers" />
+                </div> <!--/ image-container -->
+            </div>
+            <div id="user-group-tab-2" class="tab-content">
+                <div class="text-container">
+                    <h3>Designers</h3>
+                    <div class="cols">
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div> <!--/ text-container -->
+                <div class="image-container">
+                    <img src="../static/img/screenshot_developers.png" alt="developers" />
+                </div> <!--/ image-container -->
+            </div>
+            <div id="user-group-tab-3" class="tab-content">
+                <div class="text-container">
+                    <h3>Directors</h3>
+                    <div class="cols">
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div> <!--/ text-container -->
+                <div class="image-container">
+                    <img src="../static/img/screenshot_developers.png" alt="developers" />
+                </div> <!--/ image-container -->
+            </div>
+            <div id="user-group-tab-4" class="tab-content">
+                <div class="text-container">
+                    <h3>Editors</h3>
+                    <div class="cols">
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                </div> <!--/ text-container -->
+                <div class="image-container">
+                    <img src="../static/img/screenshot_developers.png" alt="developers" />
+                </div> <!--/ image-container -->
+            </div>
+
+        </div> <!-- /tab-content-container -->
+
+    </section> <!-- /user-groups -->
+
+    <section class="testimonial">
+
+        <blockquote>
+            <span>“</span>
+            Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+            <span>”</span>
+            <cite>Tom Dyson - Technical Director, Torchbox</cite>
+        </blockquote>
+
+    </section> <!-- /testimonial -->
+
+    <section class="case-studies">
+
+        <nav class="tabs">
+            <h2>Create beautiful websites.</h2>
+            <p>Wagtail allows it's developers and designers complete freedom to work how they want, imposing no limitations, meaning anything is possible.</p>
+            <ul>
+                <li data-tab="casestudy-tab-1" class="current">
+                    <a href="#">
+                        <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
+                    </a>
+                </li>
+                <li data-tab="casestudy-tab-2">
+                    <a href="#">
+                        <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
+                    </a>
+                </li>
+                <li data-tab="casestudy-tab-3">
+                    <a href="#">
+                        <img src="../static/img/logo_uot.png" alt="UOT" />
+                    </a>
+                </li>
+                <li data-tab="casestudy-tab-4">
+                    <a href="#">
+                        <img src="../static/img/logo_nasa.png" alt="NASA" />
+                    </a>
+                </li>
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content-container">
+
+            <div id="casestudy-tab-1" class="tab-content current">
+                <div class="text-container">
+                    <a href="#">
+                        <h3>Royal College of Art</h3>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div id="casestudy-tab-2" class="tab-content">
+                <div class="text-container">
+                    <a href="#">
+                        <h3>Second tab title</h3>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div id="casestudy-tab-3" class="tab-content">
+                <div class="text-container">
+                    <a href="#">
+                        <h3>Third tab title</h3>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+                </div>
+            </div>
+            <div id="casestudy-tab-4" class="tab-content">
+                <div class="text-container">
+                    <a href="#">
+                        <h3>Fourth tab title</h3>
+                        <p>Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                    </a>
+                </div>
+                <div class="image-container">
+                    <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+                </div>
+            </div>
+
+        </div> <!-- /tab-content-container -->
+
+    </section> <!-- /case-studies -->
+
+    <section class="latest">
+
+        <h2>Latest from the blog</h2>
+
+        <article>
+            <a href="#">
+                <div class="image-container">
+                    <img src="/static/img/blog_cape-town.jpg" alt="Cape Town" />
+                </div>
+                <div class="text-container">
+                    <p class="date">Feb 29th 2016</p>
+                    <h3>Cape Town Retrospective</h3>
+                    <p>Spinting in South Africa</p>
+                </div>
+            </a>
+        </article>
+
+        <article>
+            <a href="#">
+                <div class="image-container">
+                    <img src="/static/img/blog_wagtail-in-space.png" alt="Wagtail in space" />
+                </div>
+                <div class="text-container">
+                    <p class="date">Feb 29th 2016</p>
+                    <h3>Wagtail in Space</h3>
+                    <p>Take your protein pill and put your helmet on</p>
+                </div>
+            </a>
+        </article>
+
+    </section> <!-- /latest -->
+
+    <footer class="global">
+
+        <nav>
+            <h2>Find Wagtail on</h2>
+            <ul>
+                <li><a href="#">Github</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Slack</a></li>
+                <li><a href="#">Stack exchange</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <h2>About Wagtail</h2>
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Development</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <h2>Core contributors</h2>
+            <ul>
+                <li><a href="#">Torchbox</a></li>
+                <li><a href="#">Spingload</a></li>
+                <li><a href="#">Another agency</a></li>
+                <li><a href="#">View all</a></li>
+            </ul>
+        </nav>
+
+        <ul class="footer-footer">
+            <li>&copy; 2016 Torchbox Ltd</li>
+            <li><img src="/static/img/torchbox.svg" alt="Torchbox"></li>
+        </ul>
+
+    </footer> <!-- /global -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+
+    // Features tabs
+	$('.features .tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.features .tabs ul li').removeClass('current');
+		$('.features .tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	});
+
+    // User groups tabs
+    $('.user-groups .tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.user-groups .tabs ul li').removeClass('current');
+		$('.user-groups .tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	});
+
+    // Case studies tabs
+    $('.case-studies .tabs ul li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('.case-studies .tabs ul li').removeClass('current');
+		$('.case-studies .tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	});
+
+    $('.tabs ul li a').click(function( e ) {
+        e.preventDefault();
+    });
+</script>
+{% endblock %}

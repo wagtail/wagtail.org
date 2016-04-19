@@ -27,7 +27,7 @@ $(function( ){
     });
 
     $( window ).on('load', function( ){
-        
+
     });
 
     /************************************************************
@@ -57,12 +57,12 @@ $(function( ){
             afterInit       : progressBar,
             afterMove       : moved,
             startDragging   : pauseOnDragging
-          
+
         });
 
         // Init progressBar
         // @elem is $("#owl-carousel")
-        // TODO: change function name 
+        // TODO: change function name
         function progressBar( elem ){
 
             // Pointer for carousel (should really have a better name)
@@ -135,14 +135,14 @@ $(function( ){
                 });
                 //if percentTime is equal or greater than 100
                 if( percentTime >= 100 ){
-                    //slide to next item 
+                    //slide to next item
                     $elem.trigger('owl.next');
                 }
             }
 
         }
 
-        //pause while dragging 
+        //pause while dragging
         function pauseOnDragging( ){
             isPause = true;
         }
@@ -157,7 +157,7 @@ $(function( ){
             start();
         }
 
-        // uncomment this to make pause on mouseover 
+        // uncomment this to make pause on mouseover
         // img & text only plx
         // $elem.find('.image > *, .text > *').on( 'mouseover' ,function(){
         //     isPause = true;
@@ -180,7 +180,7 @@ $(function( ){
         paginationSpeed : 500,
         singleItem      : true,
         transitionStyle : "fade"
-      
+
     });
 
     /************************************************************
@@ -194,7 +194,7 @@ $(function( ){
             lastItemXPos    = 0,
             itemXPos        = 0,
             rowDivs         = [];
-            
+
         $( item ).each(function( ){
 
             var $el = $( this ); // current element
@@ -203,7 +203,7 @@ $(function( ){
 
             // Create new row if:
             if( lastItemXPos != itemXPos ){
-                
+
                 // Find the tallest item in current row and set the height of the current item
                 for( currentDiv = 0; currentDiv < rowDivs.length; currentDiv++ ){
                     rowDivs[currentDiv].height( tallestInRow ); // Set height on all divs in row
@@ -211,7 +211,7 @@ $(function( ){
 
                 lastItemXPos = itemXPos; // Set lastItemTop
                 tallestInRow = $el.height(); // ?
-                rowDivs = []; // empty array 
+                rowDivs = []; // empty array
                 rowDivs.push($el); // push item to array
 
             // Otherwise assume we in the same row
@@ -220,7 +220,7 @@ $(function( ){
                 tallestInRow = ( tallestInRow < $el.height() ) ? ( $el.height() ) : ( tallestInRow ); // calculate tallest in row
             }
 
-            // TODO: Remove this or justify it? 
+            // TODO: Remove this or justify it?
             for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
                 rowDivs[currentDiv].height(tallestInRow);
             }
@@ -228,7 +228,7 @@ $(function( ){
 
     };
 
-    // If we have no flexbox... 
+    // If we have no flexbox...
     if( $( 'html' ).hasClass( 'no-flexbox' ) ){
 
         $(window).load(function() {
