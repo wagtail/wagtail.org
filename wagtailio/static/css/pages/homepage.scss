@@ -120,7 +120,7 @@ $background-color: #f4f1ea;
             font-size: 42px;
             color: rgba(#000, 1);
             font-weight: bold;
-            line-height: 1.2;
+            line-height: 1.1;
             margin: 0 0 40px;
         }
 
@@ -210,7 +210,8 @@ $background-color: #f4f1ea;
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
     text-align: center;
-    background: #333;
+    background-color: #333;
+    background-size: cover;
     color: #fff;
 
     span {
@@ -225,6 +226,17 @@ $background-color: #f4f1ea;
             font-size: 16px;
             display: block;
             color: rgba(#fff,0.6);
+
+            a {
+                background: rgba($color-secondary-highlight, 0.6);
+                color: #fff;
+                padding: 5px 10px;
+
+                &:hover {
+                    background: darken($color-secondary-highlight, 20%);
+                }
+
+            }
         }
 
     }
@@ -238,7 +250,7 @@ $background-color: #f4f1ea;
     padding: 60px 40px;
     text-align: center;
     //border-bottom: 1px solid rgba(#000, 0.2);
-    background: $background-color;
+    background: #fff;
     color: #fff;
 
     .text-container {
@@ -431,6 +443,11 @@ $background-color: #f4f1ea;
 
             h3 {
                 font-size: 36px;
+
+                span {
+                    color: #000;
+                    margin: 0 10px 0 0;
+                }
             }
 
         }
