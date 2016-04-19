@@ -5,6 +5,7 @@ $background-color: #f4f1ea;
 // Template specific
 
 .template-homepage {
+    background-color: $background-color;
 
     h1 {
         display: none;
@@ -56,7 +57,25 @@ $background-color: #f4f1ea;
     padding: 10px 20px;
     background: $color-secondary-highlight;
     color: #fff;
+    border-radius: 2px;
     //font-weight: bold;
+
+
+    svg {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+        margin-left: 10px;
+        fill: #fff;
+    }
+
+    &:hover {
+        background: darken($color-secondary-highlight, 10%);
+        color: #fff;
+    }
+
 }
 
 // General styles
@@ -102,6 +121,7 @@ $background-color: #f4f1ea;
             color: rgba(#000, 1);
             font-weight: bold;
             line-height: 1.2;
+            margin: 0 0 40px;
         }
 
     }
@@ -123,24 +143,44 @@ $background-color: #f4f1ea;
     }
 
     .actions {
-        position: absolute;
-        z-index: 2;
-        right: 40px;
-        bottom: 40px;
 
         a {
             float: left;
-            margin: 0 10px 0 0;
+            margin: 0 20px 0 0;
             padding: 20px;
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
+            line-height: 1.2;
             display: block;
-            background: $color-primary-highlight;
+            background: $color-secondary-highlight;
             color: #fff;
             font-weight: bold;
+            position: relative;
+
+            &:first-child {
+
+                svg {
+                    transform:rotate(-90deg);
+                }
+
+                &:hover {
+
+                    svg {
+                        right: 15px;
+                        bottom: 20px;
+                    }
+
+                }
+
+            }
 
             &:hover {
-                background: $color-secondary-highlight;
+                background: darken($color-secondary-highlight, 20%);
+
+                svg {
+                    bottom: 15px;
+                }
+
             }
 
             span {
@@ -148,6 +188,15 @@ $background-color: #f4f1ea;
                 font-weight: normal;
             }
 
+            svg {
+                position: absolute;
+                transition: all 0.2s ease-in;
+                bottom: 20px;
+                right: 20px;
+                fill: #fff;
+                width: 30px;
+                height: 30px;
+            }
         }
 
     }
@@ -196,6 +245,7 @@ $background-color: #f4f1ea;
 
         h2 {
             font-weight: normal;
+            color: rgba(#000, 0.4);
         }
 
         p {
@@ -227,13 +277,57 @@ $background-color: #f4f1ea;
 
 }
 
+// Footprints
+.footprints {
+    position: relative;
+    background: $background-color;
+    padding: 40px 0;
+
+    .footprint-one,
+    .footprint-two,
+    .footprint-three,
+    .footprint-four {
+        position: absolute;
+        fill: rgba(#000, 0.3);
+        transform: rotate(-130deg);
+        left: 10%;
+        top: 20px;
+        z-index: 1;
+
+        svg {
+            width: 120px;
+            height: 120px;
+        }
+
+    }
+
+    .footprint-two {
+        left: 30%;
+        top: -20px;
+        transform: rotate(-100deg);
+    }
+
+    .footprint-three {
+        left: 55%;
+        top: -60px;
+        transform: rotate(-130deg);
+    }
+
+    .footprint-four {
+        left: 80%;
+        top: -160px;
+        transform: rotate(-160deg);
+    }
+
+}
+
 
 // Wagtail features
 
 .features {
+    position: relative;
+    z-index: 2;
     overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
-    background: $background-color;
     padding: 60px 0 0;
 
     .tabs {
@@ -265,6 +359,7 @@ $background-color: #f4f1ea;
         float: left;
         width: 60%;
         padding-left: 40px;
+        max-height: 100vh;
     }
 
 }
