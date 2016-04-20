@@ -57,7 +57,7 @@ $background-color: #f4f1ea;
     padding: 10px 20px;
     background: $color-secondary-highlight;
     color: #fff;
-    border-radius: 2px;
+    //border-radius: 2px;
     //font-weight: bold;
 
 
@@ -245,8 +245,10 @@ $background-color: #f4f1ea;
 
 // List of logos
 .company-showcase {
-    overflow: hidden;
+    //overflow: hidden;
     margin: 0;
+    position: relative;
+    z-index: 2;
     padding: 60px 40px;
     text-align: center;
     //border-bottom: 1px solid rgba(#000, 0.2);
@@ -270,7 +272,7 @@ $background-color: #f4f1ea;
 
         div {
             overflow: hidden;
-            float: left;
+            display: inline-block;
             width: 16.6666%;
             text-align: center;
             margin-bottom: 40px;
@@ -287,12 +289,13 @@ $background-color: #f4f1ea;
 
     }
 
+
 }
 
 // Footprints
 .footprints {
     position: relative;
-    background: $background-color;
+    z-index: 2;
     padding: 40px 0;
 
     .footprint-one,
@@ -314,18 +317,21 @@ $background-color: #f4f1ea;
     }
 
     .footprint-two {
+        fill: rgba(#000, 0.2);
         left: 30%;
         top: -20px;
         transform: rotate(-100deg);
     }
 
     .footprint-three {
+        fill: rgba(#000, 0.15);
         left: 55%;
         top: -60px;
         transform: rotate(-130deg);
     }
 
     .footprint-four {
+        fill: rgba(#000, 0.1);
         left: 80%;
         top: -160px;
         transform: rotate(-160deg);
@@ -390,8 +396,15 @@ $background-color: #f4f1ea;
         color: #fff;
     }
 
+    .footprints {
+        transform: rotate(208deg);
+        z-index: 1;
+    }
+
     .tabs {
         margin: 0 40px 0 60px;
+        z-index: 2;
+        position: relative;
 
         li {
             float: left;
@@ -422,7 +435,7 @@ $background-color: #f4f1ea;
 
             a {
                 display: block;
-                background: #e8e9eb;
+                background: rgba(#e8e9eb, 0.9);
                 text-align: center;
                 font-weight: bold;
                 margin: 0 20px 40px 0;
@@ -442,7 +455,8 @@ $background-color: #f4f1ea;
             color: #fff;
 
             h3 {
-                font-size: 36px;
+                font-size: 32px;
+                //text-align: center;
 
                 span {
                     color: #000;
@@ -472,7 +486,6 @@ $background-color: #f4f1ea;
 
 .case-studies {
     overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
     padding: 60px 0 0px;
     background: $background-color;
 
@@ -484,10 +497,12 @@ $background-color: #f4f1ea;
 
         p {
             margin: 0 0 40px;
+            color: rgba(#000, 0.6);
         }
 
         h2 {
             font-size: 36px;
+            line-height: 1.2;
         }
 
         ul {
@@ -593,16 +608,21 @@ $background-color: #f4f1ea;
 
 .latest {
     overflow: hidden;
-    margin: 0;
+    padding: 80px 60px 40px;
+    background: #fff;
 
     h2 {
-        display: none;
+        //display: none;
+        //text-align: center;
+        margin: 0 0 40px 0;
+        font-size: 32px;
     }
 
     article {
         float: left;
         width: 50%;
         overflow: hidden;
+        margin: 0 0 30px;
 
         a {
 
@@ -644,9 +664,14 @@ $background-color: #f4f1ea;
 
 }
 
+footer {
+    display: none;
+}
+
 footer.global {
+    display: block;
     overflow: hidden;
-    margin-bottom: 200px;
+    //margin-bottom: 200px;
     padding-bottom: 30px;
 
     ul {
