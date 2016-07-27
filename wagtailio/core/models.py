@@ -189,7 +189,7 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         ).sibling_of(self).order_by('-date')
 
     content_panels = Page.content_panels + [
-        SnippetChooserPanel('author', Author),
+        SnippetChooserPanel('author'),
         ImageChooserPanel('main_image'),
         FieldPanel('date'),
         FieldPanel('introduction'),
@@ -253,7 +253,7 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     feature_aspect = models.ForeignKey('core.FeatureAspect', related_name='+')
 
     panels = [
-        SnippetChooserPanel('feature_aspect', FeatureAspect)
+        SnippetChooserPanel('feature_aspect')
     ]
 
 
