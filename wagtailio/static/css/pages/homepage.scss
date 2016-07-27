@@ -5,6 +5,7 @@ $background-color: #f4f1ea;
 // Template specific
 
 .template-homepage {
+    background-color: $background-color;
 
     h1 {
         display: none;
@@ -56,7 +57,25 @@ $background-color: #f4f1ea;
     padding: 10px 20px;
     background: $color-secondary-highlight;
     color: #fff;
+    //border-radius: 2px;
     //font-weight: bold;
+
+
+    svg {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+        margin-left: 10px;
+        fill: #fff;
+    }
+
+    &:hover {
+        background: darken($color-secondary-highlight, 10%);
+        color: #fff;
+    }
+
 }
 
 // General styles
@@ -101,7 +120,8 @@ $background-color: #f4f1ea;
             font-size: 42px;
             color: rgba(#000, 1);
             font-weight: bold;
-            line-height: 1.2;
+            line-height: 1.1;
+            margin: 0 0 40px;
         }
 
     }
@@ -123,24 +143,44 @@ $background-color: #f4f1ea;
     }
 
     .actions {
-        position: absolute;
-        z-index: 2;
-        right: 40px;
-        bottom: 40px;
 
         a {
             float: left;
-            margin: 0 10px 0 0;
+            margin: 0 20px 0 0;
             padding: 20px;
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
+            line-height: 1.2;
             display: block;
-            background: $color-primary-highlight;
+            background: $color-secondary-highlight;
             color: #fff;
             font-weight: bold;
+            position: relative;
+
+            &:first-child {
+
+                svg {
+                    transform:rotate(-90deg);
+                }
+
+                &:hover {
+
+                    svg {
+                        right: 15px;
+                        bottom: 20px;
+                    }
+
+                }
+
+            }
 
             &:hover {
-                background: $color-secondary-highlight;
+                background: darken($color-secondary-highlight, 20%);
+
+                svg {
+                    bottom: 15px;
+                }
+
             }
 
             span {
@@ -148,6 +188,15 @@ $background-color: #f4f1ea;
                 font-weight: normal;
             }
 
+            svg {
+                position: absolute;
+                transition: all 0.2s ease-in;
+                bottom: 20px;
+                right: 20px;
+                fill: #fff;
+                width: 30px;
+                height: 30px;
+            }
         }
 
     }
@@ -161,7 +210,8 @@ $background-color: #f4f1ea;
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
     text-align: center;
-    background: #333;
+    background-color: #333;
+    background-size: cover;
     color: #fff;
 
     span {
@@ -176,6 +226,17 @@ $background-color: #f4f1ea;
             font-size: 16px;
             display: block;
             color: rgba(#fff,0.6);
+
+            a {
+                background: rgba($color-secondary-highlight, 0.6);
+                color: #fff;
+                padding: 5px 10px;
+
+                &:hover {
+                    background: darken($color-secondary-highlight, 20%);
+                }
+
+            }
         }
 
     }
@@ -184,18 +245,21 @@ $background-color: #f4f1ea;
 
 // List of logos
 .company-showcase {
-    overflow: hidden;
+    //overflow: hidden;
     margin: 0;
+    position: relative;
+    z-index: 2;
     padding: 60px 40px;
     text-align: center;
     //border-bottom: 1px solid rgba(#000, 0.2);
-    background: $background-color;
+    background: #fff;
     color: #fff;
 
     .text-container {
 
         h2 {
             font-weight: normal;
+            color: rgba(#000, 0.4);
         }
 
         p {
@@ -208,7 +272,7 @@ $background-color: #f4f1ea;
 
         div {
             overflow: hidden;
-            float: left;
+            display: inline-block;
             width: 16.6666%;
             text-align: center;
             margin-bottom: 40px;
@@ -225,15 +289,63 @@ $background-color: #f4f1ea;
 
     }
 
+
+}
+
+// Footprints
+.footprints {
+    position: relative;
+    z-index: 2;
+    padding: 40px 0;
+
+    .footprint-one,
+    .footprint-two,
+    .footprint-three,
+    .footprint-four {
+        position: absolute;
+        fill: rgba(#000, 0.3);
+        transform: rotate(-130deg);
+        left: 10%;
+        top: 20px;
+        z-index: 1;
+
+        svg {
+            width: 120px;
+            height: 120px;
+        }
+
+    }
+
+    .footprint-two {
+        fill: rgba(#000, 0.2);
+        left: 30%;
+        top: -20px;
+        transform: rotate(-100deg);
+    }
+
+    .footprint-three {
+        fill: rgba(#000, 0.15);
+        left: 55%;
+        top: -60px;
+        transform: rotate(-130deg);
+    }
+
+    .footprint-four {
+        fill: rgba(#000, 0.1);
+        left: 80%;
+        top: -160px;
+        transform: rotate(-160deg);
+    }
+
 }
 
 
 // Wagtail features
 
 .features {
+    position: relative;
+    z-index: 2;
     overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
-    background: $background-color;
     padding: 60px 0 0;
 
     .tabs {
@@ -265,6 +377,7 @@ $background-color: #f4f1ea;
         float: left;
         width: 60%;
         padding-left: 40px;
+        max-height: 100vh;
     }
 
 }
@@ -283,8 +396,15 @@ $background-color: #f4f1ea;
         color: #fff;
     }
 
+    .footprints {
+        transform: rotate(208deg);
+        z-index: 1;
+    }
+
     .tabs {
         margin: 0 40px 0 60px;
+        z-index: 2;
+        position: relative;
 
         li {
             float: left;
@@ -315,7 +435,7 @@ $background-color: #f4f1ea;
 
             a {
                 display: block;
-                background: #e8e9eb;
+                background: rgba(#e8e9eb, 0.9);
                 text-align: center;
                 font-weight: bold;
                 margin: 0 20px 40px 0;
@@ -335,7 +455,13 @@ $background-color: #f4f1ea;
             color: #fff;
 
             h3 {
-                font-size: 36px;
+                font-size: 32px;
+                //text-align: center;
+
+                span {
+                    color: #000;
+                    margin: 0 10px 0 0;
+                }
             }
 
         }
@@ -360,7 +486,6 @@ $background-color: #f4f1ea;
 
 .case-studies {
     overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
     padding: 60px 0 0px;
     background: $background-color;
 
@@ -372,10 +497,12 @@ $background-color: #f4f1ea;
 
         p {
             margin: 0 0 40px;
+            color: rgba(#000, 0.6);
         }
 
         h2 {
             font-size: 36px;
+            line-height: 1.2;
         }
 
         ul {
@@ -481,16 +608,21 @@ $background-color: #f4f1ea;
 
 .latest {
     overflow: hidden;
-    margin: 0;
+    padding: 80px 60px 40px;
+    background: #fff;
 
     h2 {
-        display: none;
+        //display: none;
+        //text-align: center;
+        margin: 0 0 40px 0;
+        font-size: 32px;
     }
 
     article {
         float: left;
         width: 50%;
         overflow: hidden;
+        margin: 0 0 30px;
 
         a {
 
@@ -532,10 +664,17 @@ $background-color: #f4f1ea;
 
 }
 
-footer.global {
+footer {
+    display: none;
+}
+
+.page .body footer.global {
+    display: block;
     overflow: hidden;
-    margin-bottom: 200px;
-    padding-bottom: 30px;
+    //margin-bottom: 200px;
+    padding: 60px;
+    text-align: left;
+    background: #111;
 
     ul {
         list-style-type: none;
@@ -543,14 +682,35 @@ footer.global {
         padding: 0;
     }
 
+    h2 {
+        text-transform: uppercase;
+        font-size: 16px;
+        margin: 0 0 10px;
+        color: #fff;
+    }
+
     nav {
-        float: left;
-        width: 25%;
+        display: inline-block;
+        width: 20%;
         text-align: left;
+        margin: 0 30px 30px 0;
 
         ul {
+            //border-top: 1px solid rgba(white, 0.2);
+            padding-top: 5px;
 
             li {
+                margin: 0 0 5px;
+                padding: 0 0 5px;
+                font-size: 14px;
+                line-height: 1.8;
+                //border-bottom: 1px solid rgba(white, 0.2);
+
+                a {
+                    display: block;
+                    transition: all 0.2s ease-in;
+                    background: transparent;
+                }
 
             }
 
@@ -562,6 +722,7 @@ footer.global {
         clear: both;
         text-align: left;
         padding-top: 30px;
+        font-size: 13px;
 
         li {
             display: inline-block;
