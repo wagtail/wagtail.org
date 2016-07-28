@@ -1,6 +1,5 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -301,55 +300,4 @@ class FeatureIndexPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('introduction'),
         InlinePanel('secondary_menu_options', label="Secondary Menu Options")
-    ]
-
-
-# Developers Page
-
-class DevelopersPageOptions(Orderable, models.Model):
-    page = ParentalKey('core.DevelopersPage', related_name='options')
-    icon = models.CharField(max_length=255, choices=(
-        ('fa-github', 'Github'),
-        ('fa-google', 'Google'),
-        ('fa-eye', 'Eye'),
-        ('fa-server', 'Servers')
-    ))
-    title = models.CharField(max_length=255)
-    summary = models.CharField(max_length=255)
-    internal_link = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-    external_link = models.URLField("External link", blank=True)
-
-    @property
-    def link(self):
-        if self.internal_link:
-            return self.internal_link.url
-        else:
-            return self.external_link
-
-    panels = [
-        FieldPanel('icon'),
-        FieldPanel('title'),
-        FieldPanel('summary'),
-        MultiFieldPanel([
-            PageChooserPanel('internal_link'),
-            FieldPanel('external_link')
-        ], "Link")
-    ]
-
-
-class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=255)
-    body_heading = models.CharField(max_length=255)
-    body = RichTextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        FieldPanel('body_heading'),
-        FieldPanel('body'),
-        InlinePanel('options', label="Options")
     ]
