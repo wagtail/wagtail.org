@@ -8,7 +8,7 @@ from wagtail.wagtailsearch import urls as wagtailsearch_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
-from wagtailio.core import views
+from wagtailio.newsletter import views
 
 
 admin.autodiscover()
