@@ -60,6 +60,7 @@ INSTALLED_APPS = (
     'wagtailio.standardpage',
     'wagtailio.newsletter',
     'wagtailio.developers',
+    'wagtailio.blog',
 )
 
 MIDDLEWARE_CLASSES = (
