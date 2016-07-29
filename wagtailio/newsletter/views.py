@@ -3,7 +3,7 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 
-from .models import NewsletterEmailAddress
+from wagtailio.newsletter.models import NewsletterEmailAddress
 
 
 @require_POST
