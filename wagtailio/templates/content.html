@@ -22,6 +22,7 @@
                 {% block content %}{% endblock %}
             </section>
             
+            {% block footer %}
             <footer>
                 <div class="container">
                     {% menu_good_to_go %}
@@ -32,6 +33,7 @@
                     {% include "includes/copyright.html" %}
                 </div>
             </footer>
+            {% endblock %}
             
         </div>
 
