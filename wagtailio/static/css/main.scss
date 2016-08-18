@@ -176,6 +176,7 @@ pre {
 
         section {}
         footer {
+            display: block;
             @include row;
         }
     }
