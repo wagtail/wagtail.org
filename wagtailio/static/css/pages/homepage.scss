@@ -85,13 +85,12 @@ $background-color: #f4f1ea;
     background-repeat: no-repeat;
     background-size: cover;
     height: 80vh;
-    height: 600px;
     overflow: hidden;
 
     &:after {
         content: '';
         position: absolute;
-        top: 0px;
+        bottom: 0px;
         right: -100px;
         width: 0;
         height: 0;
@@ -205,6 +204,7 @@ $background-color: #f4f1ea;
 
 
 // Testimonial
+
 .testimonial {
     padding: 80px 0;
     overflow: hidden;
@@ -244,6 +244,7 @@ $background-color: #f4f1ea;
 }
 
 // List of logos
+
 .company-showcase {
     //overflow: hidden;
     margin: 0;
@@ -293,6 +294,7 @@ $background-color: #f4f1ea;
 }
 
 // Footprints
+
 .footprints {
     position: relative;
     z-index: 2;
