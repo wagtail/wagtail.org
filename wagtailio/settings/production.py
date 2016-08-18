@@ -1,4 +1,7 @@
 import os
+
+import raven
+
 from .base import *
 
 # Do not set SECRET_KEY, Postgres or LDAP password or any other sensitive data here.
@@ -6,7 +9,6 @@ from .base import *
 
 # Disable debug mode
 DEBUG = False
-
 
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
@@ -169,3 +171,12 @@ try:
     from .local import *
 except ImportError:
     pass
+
+if 'RAVEN_DSN' in os.environ:
+    INSTALLED_APPS += (
+        'raven.contrib.django.raven_compat',
+    )
+    RAVEN_CONFIG = {
+        'dsn': os.environ['RAVEN_DSN'],
+        'release': raven.fetch_git_sha(PROJECT_ROOT),
+    }
