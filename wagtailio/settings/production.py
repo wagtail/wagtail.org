@@ -64,8 +64,12 @@ DATABASES = {
 # Redis
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
 
-if 'REDIS_HOST' in env:
-    REDIS_LOCATION = 'redis://' + env['REDIS_HOST']
+if 'REDIS_URL' in env:
+    REDIS_LOCATION = env['REDIS_URL']
+    BROKER_URL = env['REDIS_URL']
+
+elif 'REDIS_HOST' in env:
+    REDIS_LOCATION = env['REDIS_HOST']
     BROKER_URL = 'redis://%s' % env['REDIS_HOST']
 
 elif 'REDIS_SOCKET' in env:
@@ -87,6 +91,7 @@ if REDIS_LOCATION is not None:
             }
         }
     }
+
 
 
 # Elasticsearch
