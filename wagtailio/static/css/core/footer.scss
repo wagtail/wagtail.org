@@ -1,10 +1,10 @@
 
-/* ============================================ 
+/* ============================================
 
   Footer
 
 */
-footer {
+footer.global {
 
     // Vars
     $link-padding: 7px 15px;
@@ -17,6 +17,7 @@ footer {
     // Styling
     background: $color-primary-dark;
     color: $color-secondary-light;
+    text-align: center;
 
     // Standard element styling
     h3 {
@@ -35,13 +36,10 @@ footer {
         color: $color-secondary-light;
         margin-top: 0px;
     }
-    a {}
-
-    text-align: center;
 
     // Default immediately nested nodes to col-12
     .container {
-        
+
         > * {
             padding: 12px 0 0;
             @include gridle_set((
@@ -73,7 +71,7 @@ footer {
             ),
             mobile : (
                 grid : 12,
-                push : 0  
+                push : 0
             )
         ));
 
@@ -153,7 +151,7 @@ footer {
                 }
                 .author {
                     @include author;
-                    margin: 20px 0;                    
+                    margin: 20px 0;
                 }
             }
         }
@@ -194,7 +192,7 @@ footer {
                 border-left: 0;
             }
         }
-        
+
     }
     .follow_links {
         @include gridle_set((

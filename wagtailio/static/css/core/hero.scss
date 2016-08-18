@@ -1,0 +1,125 @@
+.hero {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    overflow: hidden;
+    padding-top: $header-height;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        right: -100px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 700px 1200px;
+        border-color: transparent transparent rgba($color-primary-highlight, 0.85) transparent;
+        opacity: 1;
+        z-index: 0;
+    }
+
+    .text-container {
+        width: 40%;
+        padding: 60px 0 0 60px;
+
+        h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            //font-weight: normal;
+            color: #222;
+            color: $color-secondary-highlight;
+        }
+
+        p {
+            font-size: 42px;
+            color: rgba(#000, 1);
+            font-weight: bold;
+            line-height: 1.1;
+            margin: 0 0 40px;
+        }
+
+    }
+
+    .screenshot {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        right: 40px;
+        width: 50%;
+        height: 80%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    .actions {
+        position: absolute;
+        bottom: 20%;
+        padding-left: 60px;
+
+        a {
+            cursor: pointer;
+            float: left;
+            margin: 0 20px 0 0;
+            padding: 20px;
+            width: 140px;
+            height: 140px;
+            line-height: 1.2;
+            display: block;
+            background: $color-secondary-highlight;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+
+            &:first-child {
+
+                svg {
+                    transform: translateX(0) rotate(-90deg);
+                }
+
+                &:hover {
+
+                    svg {
+                        transform: translateX(5px) rotate(-90deg);
+                        bottom: 20px;
+                    }
+
+                }
+
+            }
+
+            &:hover {
+                background: darken($color-secondary-highlight, 20%);
+
+                svg {
+                    transform: translateY(5px);
+                }
+
+            }
+
+            span {
+                display: block;
+                font-weight: normal;
+            }
+
+            svg {
+                position: absolute;
+                transform: translate3d(0, 0, 0);
+                transition: transform 0.2s ease-in-out 0;
+                bottom: 20px;
+                right: 20px;
+                fill: #fff;
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+    }
+
+}

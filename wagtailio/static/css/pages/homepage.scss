@@ -80,129 +80,6 @@ $background-color: #f4f1ea;
 
 // General styles
 
-.hero {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 80vh;
-    overflow: hidden;
-
-    &:after {
-        content: '';
-        position: absolute;
-        bottom: 0px;
-        right: -100px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0 700px 1200px;
-        border-color: transparent transparent rgba($color-primary-highlight, 0.85) transparent;
-        opacity: 1;
-        z-index: 0;
-    }
-
-    .text-container {
-        width: 40%;
-        position: relative;
-        z-index: 2;
-        padding: 40px 60px;
-
-        h2 {
-            font-size: 16px;
-            text-transform: uppercase;
-            //font-weight: normal;
-            color: #222;
-            color: $color-secondary-highlight;
-        }
-
-        p {
-            font-size: 42px;
-            color: rgba(#000, 1);
-            font-weight: bold;
-            line-height: 1.1;
-            margin: 0 0 40px;
-        }
-
-    }
-
-    .screenshot {
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        right: 40px;
-        width: 50%;
-        height: 80%;
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-    }
-
-    .actions {
-
-        a {
-            float: left;
-            margin: 0 20px 0 0;
-            padding: 20px;
-            width: 140px;
-            height: 140px;
-            line-height: 1.2;
-            display: block;
-            background: $color-secondary-highlight;
-            color: #fff;
-            font-weight: bold;
-            position: relative;
-
-            &:first-child {
-
-                svg {
-                    transform:rotate(-90deg);
-                }
-
-                &:hover {
-
-                    svg {
-                        right: 15px;
-                        bottom: 20px;
-                    }
-
-                }
-
-            }
-
-            &:hover {
-                background: darken($color-secondary-highlight, 20%);
-
-                svg {
-                    bottom: 15px;
-                }
-
-            }
-
-            span {
-                display: block;
-                font-weight: normal;
-            }
-
-            svg {
-                position: absolute;
-                transition: all 0.2s ease-in;
-                bottom: 20px;
-                right: 20px;
-                fill: #fff;
-                width: 30px;
-                height: 30px;
-            }
-        }
-
-    }
-
-}
-
-
 // Testimonial
 
 .testimonial {
@@ -243,146 +120,209 @@ $background-color: #f4f1ea;
 
 }
 
-// List of logos
 
-.company-showcase {
-    //overflow: hidden;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-    padding: 60px 40px;
-    text-align: center;
-    //border-bottom: 1px solid rgba(#000, 0.2);
-    background: #fff;
-    color: #fff;
 
-    .text-container {
+.pane {
+
+    // List of logos
+    &--logo-list {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        top: -67px; // height of h2
+        margin: 0 0 -67px;
 
         h2 {
-            font-weight: normal;
-            color: rgba(#000, 0.4);
-        }
-
-        p {
-            color: rgba(#fff, 0.7);
-        }
-
-    }
-
-    .image-container {
-
-        div {
-            overflow: hidden;
             display: inline-block;
-            width: 16.6666%;
-            text-align: center;
-            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            font-weight: normal;
+            color: rgba($white, 1);
+            background: rgba($color-primary-dark, 0.8);
+            padding: 20px 50px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .carousel {
+            display: none;
+            background: $color-primary-dark;
+            padding: 20px 40px;
+            min-height: 20vh;
 
             img {
-                width: 60%;
-                height: auto;
                 display: block;
-                margin: 0 auto;
+                width: 100%;
+                padding: 0 40px;
                 opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
 
-        }
+            .owl-wrapper-outer {
+                padding-top: 2%;
+            }
 
-    }
+            .owl-controls {
+                position: absolute;
+                top: -52px;
+                right: 40px;
+                text-align: center;
+            }
 
+            .owl-pagination {
 
-}
+                .owl-page {
 
-// Footprints
+                        span {
+                            background-color: rgba($white, 1);
+                            opacity: 1;
+                        }
 
-.footprints {
-    position: relative;
-    z-index: 2;
-    padding: 40px 0;
+                        &.active {
 
-    .footprint-one,
-    .footprint-two,
-    .footprint-three,
-    .footprint-four {
-        position: absolute;
-        fill: rgba(#000, 0.3);
-        transform: rotate(-130deg);
-        left: 10%;
-        top: 20px;
-        z-index: 1;
+                            span {
+                                background-color: $color-primary-highlight;
+                            }
 
-        svg {
-            width: 120px;
-            height: 120px;
-        }
+                        }
 
-    }
-
-    .footprint-two {
-        fill: rgba(#000, 0.2);
-        left: 30%;
-        top: -20px;
-        transform: rotate(-100deg);
-    }
-
-    .footprint-three {
-        fill: rgba(#000, 0.15);
-        left: 55%;
-        top: -60px;
-        transform: rotate(-130deg);
-    }
-
-    .footprint-four {
-        fill: rgba(#000, 0.1);
-        left: 80%;
-        top: -160px;
-        transform: rotate(-160deg);
-    }
-
-}
-
-
-// Wagtail features
-
-.features {
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    padding: 60px 0 0;
-
-    .tabs {
-        float: left;
-        width: 40%;
-        padding-left: 60px;
-
-        li {
-
-            &.current {
-
-                a {
-                    background: $color-primary-highlight;
-                    color: #fff;
                 }
 
             }
 
-            a {
-                display: block;
-                padding: 10px 20px;
-                margin: 0 0 5px;
-            }
-
         }
+
     }
 
-    .tab-content {
-        float: left;
-        width: 60%;
-        padding-left: 40px;
-        max-height: 100vh;
+    &--vertical-tabs {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        padding: 80px 0 0;
+        background: $color-primary-highlight;
+        height: 100vh;
+
+        header {
+            text-align: center;
+        }
+
+        h2 {
+            color: $white;
+            font-size: 42px;
+            margin: 0 0 60px;
+
+            span {
+                font-weight: normal;
+            }
+        }
+
+        .tabs {
+            float: left;
+            width: 30%;
+            padding: 40px 0 0 60px;
+
+            ul {
+                margin: 0 0 40px;
+            }
+
+            .view-all {
+                color: $white;
+                margin-left: 30px;
+            }
+
+            li {
+                margin: 0 0 10px;
+
+                &.current {
+
+                    a {
+                        background: $white;
+                    }
+
+                    p {
+                        color: rgba($black, 0.6);
+                    }
+
+                    h3 {
+                        color: rgba($black, 1);
+                    }
+
+                }
+
+                a {
+                    display: block;
+                    padding: 20px 40px 20px 30px;
+                    margin: 0 0 5px;
+                    color: #555;
+                    background: rgba($white, 0.2);
+                    border-radius: 5px 0 0 5px;
+
+                    h3 {
+                        text-transform: uppercase;
+                        margin: 0 0 5px;
+                        color: rgba($white, 1);
+                        line-height: 1.1;
+                    }
+
+                    p {
+                        margin: 0;
+                        line-height: 1.4;
+                        font-size: 15px;
+                        color: rgba($white, 0.5);
+                        transition: color .2s ease 0s;
+                    }
+                }
+
+            }
+        }
+
+        .tab-content {
+            float: left;
+            width: 70%;
+            padding-left: 0;
+            padding-right: 60px;
+            max-height: 70vh;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
     }
 
 }
+
+.view-all {
+    display: block;
+
+    svg {
+        display: inline-block;
+        margin-left: 5px;
+        width: 15px;
+        height: 15px;
+        fill: $white;
+        transform: rotate(-90deg) translateY(0px);
+        transition: transform .2s ease 0s;
+    }
+
+    &:hover {
+
+        svg {
+            transform: rotate(-90deg) translateY(5px);
+        }
+    }
+}
+
+// Wagtail features
+
+
 
 // You'll all love it
 

@@ -47,7 +47,7 @@
         <!-- Font: Effra -->
         <script src="//use.typekit.net/mah8zuf.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
-        
+
         {% compress css %}
             <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}" />
             <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
@@ -66,7 +66,7 @@
             '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-5XDDLH');</script>
         {% endif %}
-        
+
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
@@ -102,8 +102,8 @@
             <script src="https://platform.twitter.com/oct.js"></script>
             <script>
                 twttr.conversion.trackPid('l6ggy', {
-                    tw_sale_amount: 0, 
-                    tw_order_quantity: 0 
+                    tw_sale_amount: 0,
+                    tw_order_quantity: 0
                 });
             </script>
             <noscript>
@@ -123,10 +123,11 @@
             <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
             <script src="{% static 'js/vendor/jquery.isInViewport.js' %}"></script>
             <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
+            <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
+            <script src="{% static 'js/vendor/headroom.min.js' %}"></script>
             <script src="{% static 'js/main.js' %}"></script>
-        {% endcompress %}        
+        {% endcompress %}
 
         {% block extra_js %}{% endblock %}
     </body>
 </html>
-

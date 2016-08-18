@@ -1,41 +1,9 @@
 /* ============================================
 
-  Vars
-
-*/
-$font-primary: "effra", sans-serif;
-
-$color-primary-dark: #333; // dark grey
-$color-primary-light: #fff; // white (duh!)
-$color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
-$color-primary-bg: #f6f2f2; // off-white
-
-$color-secondary-light: rgba($color-primary-light, 0.7);
-$color-secondary-highlight: #43b1b0; // wagtail brand teal
-
-$color-green: #3cb65b;
-
-$anim-speed-primary: 250ms;
-$anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
-
-$mobile-nav-open_speed: 500ms;
-$header-height: 70px;
-
-$inline-spacing-bottom: 14px;
-
-// Carousel
-$carousel-fadeInSpeed: 1500ms;
-$carousel-fadeOutSpeed: 1500ms;
-$carousel-highlightColour: $color-primary-highlight;
-
-//
-$website-width-max: 1600px;
-
-/* ============================================
-
   Imports
 
 */
+@import "variables";
 @import "vendor/normalize";
 @import "vendor/flexbox";
 @import "grid";
@@ -60,9 +28,9 @@ html,
 body {
     // Font standard
     font: 300 18px/1.5 $font-primary;
-    // Replace vertical scroll with nested one for better overlay behavior
-    overflow: hidden;
-    height: 100%;
+    // // Replace vertical scroll with nested one for better overlay behavior
+    // overflow: hidden;
+    // height: 100%;
 
     background: $color-primary-light;
     color: $color-primary-dark;
@@ -140,31 +108,12 @@ pre {
 
     position: relative;
     @include clearfix; // Clear anything nested
-    padding-top: $header-height; // adjust top position based on height on header
+    //padding-top: $header-height; // adjust top position based on height on header
     height: 100%;
 
     // Responsive adjustments for when the header height changes
     @include gridle_state( tablet-landscape ){ padding-top: $header-height - 2px; }
     @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
-
-    header {
-
-        position: absolute;
-        z-index: 12;
-        top: 0px;
-
-        @include gridle_set((
-            grid : 12,
-            mobile : (
-                no_gutter : (left, right)
-            )
-        ));
-        padding-top: 4px;
-        padding-bottom: 2px;
-
-        background: $color-primary-light;
-
-    }
 
     .body {
 
@@ -224,6 +173,14 @@ pre {
 
 */
 @import "core/footer";
+
+
+/* ============================================
+
+    Additional page elements
+
+*/
+@import "core/hero";
 
 
 /* ============================================
