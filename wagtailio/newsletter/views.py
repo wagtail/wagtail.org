@@ -18,6 +18,6 @@ def newsletter_signup(request):
         success = True
     except ValidationError:
         pass
-    return render(request, 'core/newsletter_thanks.html', {
+    return render(request, 'newsletter/newsletter_thanks.html', {
         'success': success
     })
