@@ -550,6 +550,85 @@ $background-color: #f4f1ea;
 
     }
 
+    &--two-col {
+        background: $color-primary-highlight;
+    }
+
+    &--latest {
+        padding: 60px $grid * 4;
+
+        h2 {
+            text-align: center;
+            margin: 0 0 40px;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        article {
+            flex: 0 0 auto;
+            flex-basis: 33.3333%;
+            max-width: 33.3333%;
+            padding: 0 $grid;
+
+            a {
+                border-radius: 5px;
+                overflow: hidden;
+                display: block;
+
+                &:hover {
+
+                    h3 {
+                        color: $color-secondary-highlight;
+                    }
+
+                    .text-container {
+                        background: linear-gradient(to bottom, rgba($black, 0) 0%,rgba($black, 1) 50%,rgba($black, 1) 100%);
+                    }
+
+                }
+
+            }
+
+            .image-container {
+                height: 500px;
+                position: relative;
+                background-size: cover;
+            }
+
+            .text-container {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: $grid * 4 $grid * 2 $grid * 2;
+                background-color: rgba($color-primary-dark, 0.9);
+                background: linear-gradient(to bottom, rgba($color-primary-dark, 0) 0%,rgba($color-primary-dark, 1) 50%,rgba($color-primary-dark, 1) 100%);
+                color: $white;
+                transition: background .2s ease 0s;
+
+                h3 {
+                    color: $color-primary-highlight;
+                    margin: 0;
+                }
+
+                p {
+                    margin: 0;
+
+                    &.date {
+                        text-transform: uppercase;
+                        font-size: 15px;
+                        color: rgba($white, 0.85);
+                    }
+
+                }
+            }
+        }
+
+    }
+
 
 }
 
@@ -589,74 +668,7 @@ $background-color: #f4f1ea;
 }
 
 
-
-// Case studies
-
-
-// Latest blogs
-
-.latest {
-    overflow: hidden;
-    padding: 80px 60px 40px;
-    background: #fff;
-
-    h2 {
-        //display: none;
-        //text-align: center;
-        margin: 0 0 40px 0;
-        font-size: 32px;
-    }
-
-    article {
-        float: left;
-        width: 50%;
-        overflow: hidden;
-        margin: 0 0 30px;
-
-        a {
-
-            .image-container {
-                width: 30%;
-                float: left;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-
-            }
-
-            .text-container {
-                width: 70%;
-                float: left;
-                padding: 20px 0 20px 30px;
-
-                h3 {
-                    margin: 0;
-                }
-
-                p {
-                    margin: 0;
-                    color: #333;
-
-                    &.date {
-                        color: #777;
-                    }
-
-                }
-
-            }
-
-        }
-
-    }
-
-}
-
-footer {
-    display: none;
-}
-
+// Footer
 .page .body footer.global {
     display: block;
     overflow: hidden;
