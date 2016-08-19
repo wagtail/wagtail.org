@@ -333,14 +333,13 @@ $background-color: #f4f1ea;
             transform: translateY(-57%);
             font-size: 15px;
             text-align: left;
-            border-top: 10px solid $color-primary-highlight;
+            border-top: 20px solid $color-primary-highlight;
         }
 
     }
 
     &--horizontal-tabs {
-        background-color: $color-secondary-highlight;
-        background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
+        background-color: transparent;
         overflow: hidden;
         padding: $grid * 4 0 0;
         margin: 0;
@@ -348,7 +347,6 @@ $background-color: #f4f1ea;
         h2 {
             text-align: center;
             font-size: 42px;
-            color: #fff;
             margin: 0 0 $grid * 2;
         }
 
@@ -356,36 +354,33 @@ $background-color: #f4f1ea;
             margin: 0 40px 0 60px;
             z-index: 3;
             position: relative;
+            text-align: center;
 
             li {
-                float: left;
-                width: 25%;
-
-                span {
-                    display: block;
-                    text-align: center;
-                    color: #333;
-                    margin-bottom: 10px;
-                    font-size: 32px;
-                }
+                display: inline-block;
 
                 a {
                     display: block;
-                    background: rgba(#e8e9eb, 0.9);
+                    text-transform: uppercase;
                     text-align: center;
+                    font-size: 21px;
                     font-weight: bold;
-                    margin: 0 20px 40px 0;
-                    padding: 40px 20px;
-                    border-radius: 2px;
+                    padding: 0 0 5px;
+                    margin: 0 20px 40px;
+                    border-bottom: 2px solid rgba($color-secondary-highlight, 0.5);
+                    //text-shadow: 1px 1px 1px rgba($black, 0.2);
+                    color: $color-secondary-highlight;
+                    transition: color .2s ease 0s,
+                                border .2s ease 0s;
+
+                    &:hover {
+                        border-bottom: 5px solid rgba($color-secondary-highlight, 0.5);
+                    }
 
                     &.current {
-                        background: #333;
-                        color: #fff;
-                        box-shadow: 0 0 20px rgba(#fff, 0.4);
-
-                        span {
-                            color: $color-secondary-highlight;
-                        }
+                        border-bottom: 5px solid rgba($color-secondary-highlight, 1);
+                        text-shadow: 1px 1px 1px rgba($white, 0.2);
+                        color: $black;
                     }
                 }
 
@@ -399,8 +394,11 @@ $background-color: #f4f1ea;
 
             .text-container {
                 padding: 0 60px;
-                margin: 0 0 40px;
-                color: #fff;
+                margin: 0 auto 40px;
+                max-width: 960px;
+                text-align: center;
+                font-size: 21px;
+                text-shadow: 1px 1px 1px rgba($white, 0.2);
 
                 h3 {
                     font-size: 32px;
@@ -420,8 +418,10 @@ $background-color: #f4f1ea;
                 max-height: 400px;
 
                 img {
-                    width: 100%;
+                    display: block;
+                    width: 80%;
                     height: auto;
+                    margin: 0 auto;
                 }
 
             }
@@ -429,6 +429,127 @@ $background-color: #f4f1ea;
         }
 
     }
+
+    &--showcase {
+        overflow: hidden;
+        padding: 60px 0 0px;
+        background: $color-primary-dark;
+
+        .tabs {
+            float: left;
+            width: 40%;
+            padding-left: 60px;
+            margin: 0 0 40px;
+
+            p {
+                margin: 0 0 40px;
+                color: rgba(#000, 0.6);
+            }
+
+            h2 {
+                font-size: 36px;
+                line-height: 1.2;
+            }
+
+            ul {
+
+                li {
+                    float: left;
+                    width: 50%;
+                    padding-right: 20px;
+                    margin-bottom: 20px;
+
+                    &.current {
+
+                        a {
+                            background: #e8e9eb;
+                        }
+
+                        img {
+                            opacity: 1;
+                        }
+
+                    }
+
+                    a {
+                        display: block;
+                        background: #fff;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                            max-width: 100px;
+                            margin: 0 auto;
+                            height: auto;
+                            opacity: 0.7;
+                        }
+
+                        &:hover {
+                            background: #e8e9eb;
+
+                            img {
+                                opacity: 0.8;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+        .tab-content {
+            float: left;
+            width: 60%;
+            padding-left: 40px;
+            position: relative;
+
+            .image-container {
+                padding-right: 60px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            }
+
+            .text-container {
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+                background: rgba(#333, 0.95);
+                padding: 10px 20px;
+
+                a {
+                    display: block;
+
+                    h3 {
+                        margin: 0 0 5px;
+                        font-size: 36px;
+                        color: $color-secondary-highlight;
+
+                        &:hover {
+                            color: #fff;
+                        }
+
+                    }
+
+                    p {
+                        color: #fff;
+                        margin: 0 0 5px;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
 
 }
 
@@ -471,125 +592,6 @@ $background-color: #f4f1ea;
 
 // Case studies
 
-.case-studies {
-    overflow: hidden;
-    padding: 60px 0 0px;
-    background: $background-color;
-
-    .tabs {
-        float: left;
-        width: 40%;
-        padding-left: 60px;
-        margin: 0 0 40px;
-
-        p {
-            margin: 0 0 40px;
-            color: rgba(#000, 0.6);
-        }
-
-        h2 {
-            font-size: 36px;
-            line-height: 1.2;
-        }
-
-        ul {
-
-            li {
-                float: left;
-                width: 50%;
-                padding-right: 20px;
-                margin-bottom: 20px;
-
-                &.current {
-
-                    a {
-                        background: #e8e9eb;
-                    }
-
-                    img {
-                        opacity: 1;
-                    }
-
-                }
-
-                a {
-                    display: block;
-                    background: #fff;
-
-                    img {
-                        display: block;
-                        width: 100%;
-                        max-width: 100px;
-                        margin: 0 auto;
-                        height: auto;
-                        opacity: 0.7;
-                    }
-
-                    &:hover {
-                        background: #e8e9eb;
-
-                        img {
-                            opacity: 0.8;
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-    }
-
-    .tab-content {
-        float: left;
-        width: 60%;
-        padding-left: 40px;
-        position: relative;
-
-        .image-container {
-            padding-right: 60px;
-
-            img {
-                width: 100%;
-                height: auto;
-            }
-
-        }
-
-        .text-container {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            background: rgba(#333, 0.95);
-            padding: 10px 20px;
-
-            a {
-                display: block;
-
-                h3 {
-                    margin: 0 0 5px;
-                    font-size: 36px;
-                    color: $color-secondary-highlight;
-
-                    &:hover {
-                        color: #fff;
-                    }
-
-                }
-
-                p {
-                    color: #fff;
-                    margin: 0 0 5px;
-                }
-
-            }
-
-        }
-
-    }
-
-}
 
 // Latest blogs
 

@@ -2,7 +2,7 @@ html,
 body {
     font: 300 18px/1.5 $font-primary;
     background: $color-primary-light;
-    color: $color-primary-dark;
+    color: $bodyColor;
 }
 
 *, *:before, *:after{
