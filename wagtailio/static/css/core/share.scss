@@ -1,0 +1,44 @@
+/* ============================================
+
+  Share
+
+*/
+.share {
+
+    position: fixed;
+    top: 64px + 52px; // needs variablising
+    right: 40px;
+
+    text-align: center;
+    background: rgba( $color-primary-light, 0.25 );
+    padding: 14px 10px 0;
+
+    @include border-radius;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 300;
+        margin: 0 0 14px;
+        cursor: default;
+    }
+    a {
+        display: block;
+        color: $color-primary-highlight;
+        font-size: 28px;
+        margin: 0 auto $inline-spacing-bottom;
+        @include transition( color $anim-speed-primary linear );
+        &:hover {
+            color: $color-primary-dark;
+        }
+    }
+
+    @include gridle_state( tablet-landscape tablet-portrait mobile ){
+        position: relative;
+        top: auto; right: auto;
+        margin-bottom: $inline-spacing-bottom * 2;
+        a {
+            display: inline-block;
+        }
+        // right: 32px;
+    }
+}

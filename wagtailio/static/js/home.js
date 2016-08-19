@@ -1,40 +1,42 @@
 $(function( ){
 
-    // Features tabs
-    $('.pane--vertical-tabs .tabs ul li').click(function(){
-        var tab_id = $(this).attr('data-tab');
+    // tabs
+    $('.js-tabs').each(function(){
+        // For each set of tabs, we want to keep track of
+        // which tab is active and its associated content
+        var $active, $content, $links = $(this).find('a');
 
-        $('.pane--vertical-tabs .tabs ul li').removeClass('current');
-        $('.pane--vertical-tabs .tab-content').removeClass('current');
+        // If the location.hash matches one of the links, use that as the active tab.
+        // If no match is found, use the first link as the initial active tab.
+        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+        $active.addClass('current');
 
-        $(this).addClass('current');
-        $("#"+tab_id).addClass('current');
-    });
+        $content = $($active[0].hash);
 
-    // User groups tabs
-    $('.user-groups .tabs ul li').click(function(){
-        var tab_id = $(this).attr('data-tab');
+        // Hide the remaining content
+        $links.not($active).each(function () {
+            $(this.hash).hide();
+        });
 
-        $('.user-groups .tabs ul li').removeClass('current');
-        $('.user-groups .tab-content').removeClass('current');
+        // Bind the click event handler
+        $(this).on('click', 'a', function(e){
+            // Make the old tab inactive.
+            $active.removeClass('current');
+            $content.removeClass('current');
+            $content.hide();
 
-        $(this).addClass('current');
-        $("#"+tab_id).addClass('current');
-    });
+            // Update the variables with the new link and content
+            $active = $(this);
+            $content = $(this.hash);
 
-    // Case studies tabs
-    $('.case-studies .tabs ul li').click(function(){
-        var tab_id = $(this).attr('data-tab');
+            // Make the tab active.
+            $active.addClass('current');
+            $content.addClass('current');
+            $content.show();
 
-        $('.case-studies .tabs ul li').removeClass('current');
-        $('.case-studies .tab-content').removeClass('current');
-
-        $(this).addClass('current');
-        $("#"+tab_id).addClass('current');
-    });
-
-    $('.tabs ul li a').click(function( e ) {
-        e.preventDefault();
+            // Prevent the anchor's default click action
+            e.preventDefault();
+        });
     });
 
     $(window).on('scroll', function () {

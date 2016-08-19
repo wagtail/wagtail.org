@@ -1,0 +1,86 @@
+html,
+body {
+    font: 300 18px/1.5 $font-primary;
+    background: $color-primary-light;
+    color: $color-primary-dark;
+}
+
+*, *:before, *:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $color-secondary-highlight;
+
+    @include transition(
+        color $anim-speed-primary linear,
+        padding $anim-speed-primary linear,
+        background-color $anim-speed-primary linear,
+        opacity $anim-speed-primary linear
+    );
+
+    &:hover{
+        color: $color-primary-highlight;
+    }
+    &:focus {
+        outline-color: $color-primary-highlight;
+    }
+}
+
+img {
+    height: auto; // overwrite inline height added via django templating (possibly a bad assumption to make!)
+    vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
+}
+
+pre {
+    font-family: monospace;
+    background: $color-primary-dark;
+    padding: $grid;
+    color: $white;
+    text-indent: 0;
+    border-radius: 5px;
+    display: inline-block;
+ }
+
+
+/* ============================================
+
+Other global items
+
+*/
+
+.view-all {
+    display: block;
+
+    svg {
+        position: relative;
+        top: 2px;
+        display: inline-block;
+        margin-left: 5px;
+        width: 15px;
+        height: 15px;
+        fill: $black;
+        transform: rotate(-90deg) translateY(0px);
+        transition: transform .2s ease 0s;
+    }
+
+    &:hover {
+
+        svg {
+            transform: rotate(-90deg) translateY(5px);
+        }
+    }
+
+    &--light {
+        color: $white;
+
+        svg {
+            fill: $white;
+        }
+
+    }
+
+}

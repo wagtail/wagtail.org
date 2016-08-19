@@ -83,7 +83,7 @@ $background-color: #f4f1ea;
 // Testimonial
 
 .testimonial {
-    padding: 80px 0;
+    padding: $grid * 5 0;
     overflow: hidden;
     border-bottom: 1px solid rgba(#000, 0.2);
     text-align: center;
@@ -216,10 +216,6 @@ $background-color: #f4f1ea;
             color: $white;
             font-size: 42px;
             margin: 0 0 60px;
-
-            span {
-                font-weight: normal;
-            }
         }
 
         .tabs {
@@ -239,22 +235,6 @@ $background-color: #f4f1ea;
             li {
                 margin: 0 0 10px;
 
-                &.current {
-
-                    a {
-                        background: $white;
-                    }
-
-                    p {
-                        color: rgba($black, 0.6);
-                    }
-
-                    h3 {
-                        color: rgba($black, 1);
-                    }
-
-                }
-
                 a {
                     display: block;
                     padding: 20px 40px 20px 30px;
@@ -262,6 +242,45 @@ $background-color: #f4f1ea;
                     color: #555;
                     background: rgba($white, 0.2);
                     border-radius: 5px 0 0 5px;
+
+                    &:hover {
+
+                        p {
+                            color: rgba($white, 1);
+                        }
+
+                        h3 {
+                            color: rgba($white, 1);
+                        }
+
+                    }
+
+                    &.current {
+
+                        background: $white;
+
+                        p {
+                            color: rgba($black, 0.6);
+                        }
+
+                        h3 {
+                            color: rgba($black, 1);
+                        }
+
+                        &:hover {
+
+                            p {
+                                color: rgba($black, 0.6);
+                            }
+
+                            h3 {
+                                color: rgba($black, 1);
+                            }
+
+                        }
+
+                    }
+
 
                     h3 {
                         text-transform: uppercase;
@@ -297,132 +316,179 @@ $background-color: #f4f1ea;
 
     }
 
-}
+    &--code {
+        position: relative;
+        background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
 
-.view-all {
-    display: block;
-
-    svg {
-        display: inline-block;
-        margin-left: 5px;
-        width: 15px;
-        height: 15px;
-        fill: $white;
-        transform: rotate(-90deg) translateY(0px);
-        transition: transform .2s ease 0s;
-    }
-
-    &:hover {
-
-        svg {
-            transform: rotate(-90deg) translateY(5px);
+        &:after {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 10%;
+            height: 1px;
+            background-color: rgba($white, 0.4);
         }
+
+        .text-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 40%;
+            margin: 0 auto;
+            padding: $grid * 5 0 $grid * 5 60px;
+
+            h2 {
+                margin-bottom: 40px;
+            }
+
+            .md-imac {
+                font-size: 0.5em;
+                margin: 0 0 $grid * 4;
+            }
+        }
+
+        pre {
+            font-family: $font-primary;
+            width: 60%;
+            position: relative;
+            top: 50%;
+            transform: translateY(-57%);
+            font-size: 15px;
+            text-align: left;
+        }
+
     }
+
+    &--horizontal-tabs {
+        background-color: $color-secondary-highlight;
+        background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
+        overflow: hidden;
+        padding: $grid * 4 0 0;
+        margin: 0;
+
+        h2 {
+            text-align: center;
+            font-size: 42px;
+            color: #fff;
+            margin: 0 0 $grid * 2;
+        }
+
+        .tabs {
+            margin: 0 40px 0 60px;
+            z-index: 3;
+            position: relative;
+
+            li {
+                float: left;
+                width: 25%;
+
+                span {
+                    display: block;
+                    text-align: center;
+                    color: #333;
+                    margin-bottom: 10px;
+                    font-size: 32px;
+                }
+
+                a {
+                    display: block;
+                    background: rgba(#e8e9eb, 0.9);
+                    text-align: center;
+                    font-weight: bold;
+                    margin: 0 20px 40px 0;
+                    padding: 40px 20px;
+                    border-radius: 2px;
+
+                    &.current {
+                        background: #333;
+                        color: #fff;
+                        box-shadow: 0 0 20px rgba(#fff, 0.4);
+
+                        span {
+                            color: $color-secondary-highlight;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        .tab-content {
+            position: relative;
+            z-index: 2;
+
+            .text-container {
+                padding: 0 60px;
+                margin: 0 0 40px;
+                color: #fff;
+
+                h3 {
+                    font-size: 32px;
+                    //text-align: center;
+
+                    span {
+                        color: #000;
+                        margin: 0 10px 0 0;
+                    }
+                }
+
+            }
+
+            .image-container {
+                margin: 0 60px;
+                overflow: hidden;
+                max-height: 400px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
-// Wagtail features
-
-
-
-// You'll all love it
-
-.user-groups {
+.angle-container {
     overflow: hidden;
-    padding: 60px 0 0;
-    margin: 0;
-    background: $color-secondary-highlight;
+    position: relative;
+    background-color: $color-secondary-highlight;
 
-    h2 {
-        text-align: center;
-        font-size: 42px;
-        color: #fff;
-    }
-
-    .footprints {
-        transform: rotate(208deg);
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 700px 1200px 0 0;
+        border-color: rgba($color-secondary-highlight, 0.85) transparent transparent transparent;
+        opacity: 1;
         z-index: 1;
     }
 
-    .tabs {
-        margin: 0 40px 0 60px;
-        z-index: 2;
-        position: relative;
-
-        li {
-            float: left;
-            width: 25%;
-
-            span {
-                display: block;
-                text-align: center;
-                color: #333;
-                margin-bottom: 10px;
-                font-size: 32px;
-            }
-
-            &.current {
-
-                a {
-                    background: #333;
-                    color: #fff;
-                    box-shadow: 0 0 20px rgba(#fff, 0.4);
-
-                    span {
-                        color: $color-secondary-highlight;
-                    }
-
-                }
-
-            }
-
-            a {
-                display: block;
-                background: rgba(#e8e9eb, 0.9);
-                text-align: center;
-                font-weight: bold;
-                margin: 0 20px 40px 0;
-                padding: 40px 20px;
-                border-radius: 2px;
-            }
-
-        }
-
-    }
-
-    .tab-content {
-
-        .text-container {
-            padding: 0 60px;
-            margin: 0 0 40px;
-            color: #fff;
-
-            h3 {
-                font-size: 32px;
-                //text-align: center;
-
-                span {
-                    color: #000;
-                    margin: 0 10px 0 0;
-                }
-            }
-
-        }
-
-        .image-container {
-            margin: 0 60px;
-            overflow: hidden;
-            max-height: 400px;
-
-            img {
-                width: 100%;
-                height: auto;
-            }
-
-        }
-
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        right: -100px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 700px 1200px;
+        border-color: transparent transparent rgba($color-secondary-highlight, 0.85) transparent;
+        opacity: 1;
+        z-index: 0;
     }
 
 }
+
+
 
 // Case studies
 

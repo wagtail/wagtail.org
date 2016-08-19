@@ -23,11 +23,11 @@
         <div class="actions">
             <a href="#">
                 <span>Get</span> Wagtail
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><path d="M416.45 269.508c-5.942-5.945-15.577-5.945-21.52 0l-129.84 142.86V46.792c0-8.612-6.978-15.6-15.582-15.6-8.605 0-15.58 6.987-15.58 15.6v365.563L104.083 269.508c-5.94-5.945-15.576-5.945-21.52 0-5.94 5.952-5.94 15.58 0 21.535l154.427 169.895c.177.25.474.37.663.607.402.52.24 1.26.72 1.73.594.603 1.492.418 2.15.897 2.24 1.775 4.812 2.983 7.83 3.244.343.013.607.255.957.247.07 0 .123.046.198.046.08 0 .146-.04.223-.04.216 0 .38-.11.596-.11 3.67-.21 6.97-1.64 9.53-3.948.226-.21.57-.11.783-.338.215-.204.125-.546.322-.77.18-.198.14-.532.307-.735l155.18-170.727c5.94-5.956 5.94-15.583 0-21.535z"/></svg>
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
             </a>
             <a href="#">
                 <span>View the</span> features
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><path d="M416.45 269.508c-5.942-5.945-15.577-5.945-21.52 0l-129.84 142.86V46.792c0-8.612-6.978-15.6-15.582-15.6-8.605 0-15.58 6.987-15.58 15.6v365.563L104.083 269.508c-5.94-5.945-15.576-5.945-21.52 0-5.94 5.952-5.94 15.58 0 21.535l154.427 169.895c.177.25.474.37.663.607.402.52.24 1.26.72 1.73.594.603 1.492.418 2.15.897 2.24 1.775 4.812 2.983 7.83 3.244.343.013.607.255.957.247.07 0 .123.046.198.046.08 0 .146-.04.223-.04.216 0 .38-.11.596-.11 3.67-.21 6.97-1.64 9.53-3.948.226-.21.57-.11.783-.338.215-.204.125-.546.322-.77.18-.198.14-.532.307-.735l155.18-170.727c5.94-5.956 5.94-15.583 0-21.535z"/></svg>
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
             </a>
         </div> <!-- /actions -->
 
@@ -63,42 +63,42 @@
 
         <nav class="tabs">
 
-            <ul>
-                <li data-tab="feature-tab-1" class="current">
-                    <a href="#">
+            <ul class="js-tabs">
+                <li class="current">
+                    <a href="#feature-tab-1">
                         <h3>Streamfield</h3>
                         <p>Create breathtaking, immersive content all from a simple to use editor.</p>
                     </a>
                 </li>
-                <li data-tab="feature-tab-2">
-                    <a href="#">
+                <li>
+                    <a href="#feature-tab-2">
                         <h3>Templating</h3>
                         <p>Make your content future-proof by separating presentation and logic to give you maximum flexibility.</p>
                     </a>
                 </li>
-                <li data-tab="feature-tab-3">
-                    <a href="#">
+                <li>
+                    <a href="#feature-tab-3">
                         <h3>Ease of use</h3>
                         <p>Never train an editor again, Wagtail’s UI just doesn’t need explaining.</p>
                     </a>
                 </li>
-                <li data-tab="feature-tab-4">
-                    <a href="#">
+                <li >
+                    <a href="#feature-tab-4">
                         <h3>Intelligent images</h3>
                         <p>Facial recognition and helpful image cropping through Wagtail ensures your images always look amazing.</p>
                     </a>
                 </li>
-                <li data-tab="feature-tab-5">
-                    <a href="#">
+                <li>
+                    <a href="#feature-tab-5">
                         <h3>Community-built plugins</h3>
                         <p>Benefit from community built extensions of Wagtail. Or build one simply yourself.</p>
                     </a>
                 </li>
             </ul>
 
-            <a href="#" class="view-all">
+            <a href="#" class="view-all view-all--light">
                 Browse all Wagtail's features
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><path d="M416.45 269.508c-5.942-5.945-15.577-5.945-21.52 0l-129.84 142.86V46.792c0-8.612-6.978-15.6-15.582-15.6-8.605 0-15.58 6.987-15.58 15.6v365.563L104.083 269.508c-5.94-5.945-15.576-5.945-21.52 0-5.94 5.952-5.94 15.58 0 21.535l154.427 169.895c.177.25.474.37.663.607.402.52.24 1.26.72 1.73.594.603 1.492.418 2.15.897 2.24 1.775 4.812 2.983 7.83 3.244.343.013.607.255.957.247.07 0 .123.046.198.046.08 0 .146-.04.223-.04.216 0 .38-.11.596-.11 3.67-.21 6.97-1.64 9.53-3.948.226-.21.57-.11.783-.338.215-.204.125-.546.322-.77.18-.198.14-.532.307-.735l155.18-170.727c5.94-5.956 5.94-15.583 0-21.535z"/></svg>
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
             </a>
         </nav> <!-- /tabs -->
 
@@ -122,22 +122,6 @@
 
     </section> <!-- /features -->
 
-    <section class="installation">
-
-        <h2>Try Wagtail in 7 lines</h2>
-        <code>
-            pip install wagtail
-            wagtail start mysite
-            cd mysite
-            pip install -r requirements.txt
-            python manage.py migrate
-            python mange.py createsuperuser
-            python manage.py runserver
-        </code>
-        <p class="view-all">Jump into our <a href="#">10 minute installation guide</a> to get started</p>
-
-    </section> <!-- /installation -->
-
     <section class="testimonial" style="background-image: url(../static/img/photo_woodlands.jpg);">
         <!-- original https://sylva.org.uk/myforest/images/heroes/owners.jpg -->
 
@@ -150,106 +134,134 @@
 
     </section> <!-- /testimonial -->
 
-    <section class="user-groups">
+    <section class="angle-container">
 
-        <div class="footprints">
-            <span class="footprint-one">
-                <svg xmlns="http://www.w3.org/2000/svg" width="88.131" height="88.132" viewBox="0 0 88.131 88.132"><path d="M85.96 32.75c-1.538.066-5.085 4.508-8.423 7.495-2.253 2.015-5.554 4.703-8.494 7.28-.326-4.485-1.115-9.12-1.113-13.2.007-6.543.702-15.89-.895-16.942-.24-1.593-.794-3.106-.794-3.106s-.558 1.377-.81 3.113c-1.278 1.453-.89 8.81-1.2 14.55-.222 4.193-.614 10.168-.8 15.467-2.395-2.02-4.96-3.93-6.957-5.925-3.595-3.606-8.424-9.084-9.924-8.746-1.022-.738-2.173-1.25-2.173-1.25s.44 1.078 1.25 2.178c.062 1.538 4.988 5.23 7.972 8.57 2.917 3.257 6.76 8.582 10.116 11.94.234.232.518.378.818.47.48.325 1.065.52 1.704.52.596 0 1.106-.21 1.558-.498.36-.08.712-.22 1-.477 3.392-3.07 6.1-7.468 9.18-10.543 3.607-3.598 9.246-8.476 8.906-9.976.737-1.017 1.248-2.17 1.248-2.17s-1.07.44-2.17 1.25zM31.662 60.168c-1.995 1.996-4.558 3.905-6.956 5.926-.185-5.3-.577-11.272-.798-15.466-.31-5.743.08-13.098-1.2-14.55-.25-1.737-.812-3.114-.812-3.114s-.55 1.513-.794 3.106c-1.596 1.053-.902 10.397-.894 16.94.002 4.08-.788 8.713-1.112 13.202-2.94-2.578-6.244-5.265-8.496-7.28-3.34-2.985-6.886-7.43-8.423-7.494-1.1-.81-2.177-1.25-2.177-1.25s.512 1.153 1.25 2.17c-.34 1.5 5.3 6.38 8.906 9.98 3.08 3.076 5.788 7.47 9.18 10.54.288.26.635.395 1 .477.45.29.962.5 1.557.5.635 0 1.222-.196 1.703-.525.3-.09.584-.234.82-.467 3.36-3.36 7.2-8.685 10.117-11.94 2.982-3.34 7.91-7.03 7.972-8.57.813-1.1 1.25-2.177 1.25-2.177s-1.152.513-2.173 1.252c-1.495-.343-6.323 5.135-9.92 8.74z"/></svg>
-            </span>
-            <span class="footprint-two">
-                <svg xmlns="http://www.w3.org/2000/svg" width="88.131" height="88.132" viewBox="0 0 88.131 88.132"><path d="M85.96 32.75c-1.538.066-5.085 4.508-8.423 7.495-2.253 2.015-5.554 4.703-8.494 7.28-.326-4.485-1.115-9.12-1.113-13.2.007-6.543.702-15.89-.895-16.942-.24-1.593-.794-3.106-.794-3.106s-.558 1.377-.81 3.113c-1.278 1.453-.89 8.81-1.2 14.55-.222 4.193-.614 10.168-.8 15.467-2.395-2.02-4.96-3.93-6.957-5.925-3.595-3.606-8.424-9.084-9.924-8.746-1.022-.738-2.173-1.25-2.173-1.25s.44 1.078 1.25 2.178c.062 1.538 4.988 5.23 7.972 8.57 2.917 3.257 6.76 8.582 10.116 11.94.234.232.518.378.818.47.48.325 1.065.52 1.704.52.596 0 1.106-.21 1.558-.498.36-.08.712-.22 1-.477 3.392-3.07 6.1-7.468 9.18-10.543 3.607-3.598 9.246-8.476 8.906-9.976.737-1.017 1.248-2.17 1.248-2.17s-1.07.44-2.17 1.25zM31.662 60.168c-1.995 1.996-4.558 3.905-6.956 5.926-.185-5.3-.577-11.272-.798-15.466-.31-5.743.08-13.098-1.2-14.55-.25-1.737-.812-3.114-.812-3.114s-.55 1.513-.794 3.106c-1.596 1.053-.902 10.397-.894 16.94.002 4.08-.788 8.713-1.112 13.202-2.94-2.578-6.244-5.265-8.496-7.28-3.34-2.985-6.886-7.43-8.423-7.494-1.1-.81-2.177-1.25-2.177-1.25s.512 1.153 1.25 2.17c-.34 1.5 5.3 6.38 8.906 9.98 3.08 3.076 5.788 7.47 9.18 10.54.288.26.635.395 1 .477.45.29.962.5 1.557.5.635 0 1.222-.196 1.703-.525.3-.09.584-.234.82-.467 3.36-3.36 7.2-8.685 10.117-11.94 2.982-3.34 7.91-7.03 7.972-8.57.813-1.1 1.25-2.177 1.25-2.177s-1.152.513-2.173 1.252c-1.495-.343-6.323 5.135-9.92 8.74z"/></svg>
-            </span>
-            <span class="footprint-three">
-                <svg xmlns="http://www.w3.org/2000/svg" width="88.131" height="88.132" viewBox="0 0 88.131 88.132"><path d="M85.96 32.75c-1.538.066-5.085 4.508-8.423 7.495-2.253 2.015-5.554 4.703-8.494 7.28-.326-4.485-1.115-9.12-1.113-13.2.007-6.543.702-15.89-.895-16.942-.24-1.593-.794-3.106-.794-3.106s-.558 1.377-.81 3.113c-1.278 1.453-.89 8.81-1.2 14.55-.222 4.193-.614 10.168-.8 15.467-2.395-2.02-4.96-3.93-6.957-5.925-3.595-3.606-8.424-9.084-9.924-8.746-1.022-.738-2.173-1.25-2.173-1.25s.44 1.078 1.25 2.178c.062 1.538 4.988 5.23 7.972 8.57 2.917 3.257 6.76 8.582 10.116 11.94.234.232.518.378.818.47.48.325 1.065.52 1.704.52.596 0 1.106-.21 1.558-.498.36-.08.712-.22 1-.477 3.392-3.07 6.1-7.468 9.18-10.543 3.607-3.598 9.246-8.476 8.906-9.976.737-1.017 1.248-2.17 1.248-2.17s-1.07.44-2.17 1.25zM31.662 60.168c-1.995 1.996-4.558 3.905-6.956 5.926-.185-5.3-.577-11.272-.798-15.466-.31-5.743.08-13.098-1.2-14.55-.25-1.737-.812-3.114-.812-3.114s-.55 1.513-.794 3.106c-1.596 1.053-.902 10.397-.894 16.94.002 4.08-.788 8.713-1.112 13.202-2.94-2.578-6.244-5.265-8.496-7.28-3.34-2.985-6.886-7.43-8.423-7.494-1.1-.81-2.177-1.25-2.177-1.25s.512 1.153 1.25 2.17c-.34 1.5 5.3 6.38 8.906 9.98 3.08 3.076 5.788 7.47 9.18 10.54.288.26.635.395 1 .477.45.29.962.5 1.557.5.635 0 1.222-.196 1.703-.525.3-.09.584-.234.82-.467 3.36-3.36 7.2-8.685 10.117-11.94 2.982-3.34 7.91-7.03 7.972-8.57.813-1.1 1.25-2.177 1.25-2.177s-1.152.513-2.173 1.252c-1.495-.343-6.323 5.135-9.92 8.74z"/></svg>
-            </span>
-            <span class="footprint-four">
-                <svg xmlns="http://www.w3.org/2000/svg" width="88.131" height="88.132" viewBox="0 0 88.131 88.132"><path d="M85.96 32.75c-1.538.066-5.085 4.508-8.423 7.495-2.253 2.015-5.554 4.703-8.494 7.28-.326-4.485-1.115-9.12-1.113-13.2.007-6.543.702-15.89-.895-16.942-.24-1.593-.794-3.106-.794-3.106s-.558 1.377-.81 3.113c-1.278 1.453-.89 8.81-1.2 14.55-.222 4.193-.614 10.168-.8 15.467-2.395-2.02-4.96-3.93-6.957-5.925-3.595-3.606-8.424-9.084-9.924-8.746-1.022-.738-2.173-1.25-2.173-1.25s.44 1.078 1.25 2.178c.062 1.538 4.988 5.23 7.972 8.57 2.917 3.257 6.76 8.582 10.116 11.94.234.232.518.378.818.47.48.325 1.065.52 1.704.52.596 0 1.106-.21 1.558-.498.36-.08.712-.22 1-.477 3.392-3.07 6.1-7.468 9.18-10.543 3.607-3.598 9.246-8.476 8.906-9.976.737-1.017 1.248-2.17 1.248-2.17s-1.07.44-2.17 1.25zM31.662 60.168c-1.995 1.996-4.558 3.905-6.956 5.926-.185-5.3-.577-11.272-.798-15.466-.31-5.743.08-13.098-1.2-14.55-.25-1.737-.812-3.114-.812-3.114s-.55 1.513-.794 3.106c-1.596 1.053-.902 10.397-.894 16.94.002 4.08-.788 8.713-1.112 13.202-2.94-2.578-6.244-5.265-8.496-7.28-3.34-2.985-6.886-7.43-8.423-7.494-1.1-.81-2.177-1.25-2.177-1.25s.512 1.153 1.25 2.17c-.34 1.5 5.3 6.38 8.906 9.98 3.08 3.076 5.788 7.47 9.18 10.54.288.26.635.395 1 .477.45.29.962.5 1.557.5.635 0 1.222-.196 1.703-.525.3-.09.584-.234.82-.467 3.36-3.36 7.2-8.685 10.117-11.94 2.982-3.34 7.91-7.03 7.972-8.57.813-1.1 1.25-2.177 1.25-2.177s-1.152.513-2.173 1.252c-1.495-.343-6.323 5.135-9.92 8.74z"/></svg>
-            </span>
-        </div> <!-- /footprints -->
+        <section class="pane--code">
 
-        <div class="text-container">
-            <h2>You'll all love it</h2>
-        </div> <!-- /text-container -->
+            <div class="text-container">
 
-        <nav class="tabs">
-            <ul>
-                <li data-tab="user-group-tab-1" class="current">
-                    <a href="#">
-                        <span class="fa icon fa-code"></span>
-                        Developers
-                    </a>
-                </li>
-                <li data-tab="user-group-tab-2">
-                    <a href="#">
-                        <span class="fa icon fa-paint-brush"></span>
-                        Designers
-                    </a>
-                </li>
-                <li data-tab="user-group-tab-3">
-                    <a href="#">
-                        <span class="fa icon fa-suitcase"></span>
-                        Budget Holders
-                    </a>
-                </li>
-                <li data-tab="user-group-tab-4">
-                    <a href="#">
-                        <span class="fa icon fa-edit"></span>
-                        Editors
-                    </a>
-                </li>
-            </ul>
-        </nav> <!-- /tabs -->
+                <h2 class="heading--light">Try Wagtail <span>in just 7 lines</span></h2>
 
-        <div class="tab-content-container">
-
-            <div id="user-group-tab-1" class="tab-content current">
-                <div class="text-container">
-                    <h3><span class="fa icon fa-code"></span> Developers</h3>
-                    <div class="cols">
-                        <p>Wagtail is built by developers for developers. Spend less time on configuration and more perfecting your site. As a Django app Wagtail is the CMS that will play nicely with everything else in your tech stack. It’s an un-opinionated toolbox to help you build your project without reinventing the wheel.</p>
+                <div class="md-imac">
+                    <div class="md-body">
+                        <div class="md-top">
+                            <div class="md-camera"></div>
+                            <div class="md-screen">
+                                <pre>
+    pip install wagtail
+    wagtail start mysite
+    cd mysite
+    pip install -r requirements.txt
+    python manage.py migrate
+    python mange.py createsuperuser
+    python manage.py runserver
+                                </pre>
+                            </div>
+                        </div>
                     </div>
-                </div> <!--/ text-container -->
-                <div class="image-container">
-                    <img src="../static/img/screenshot_developers.png" alt="developers" />
-                </div> <!--/ image-container -->
-            </div>
-            <div id="user-group-tab-2" class="tab-content">
-                <div class="text-container">
-                    <h3><span class="fa icon fa-paint-brush"></span> Designers</h3>
-                    <div class="cols">
-                        <p>Display the content the way you want. Using Django’s simple templating system allows you to build a beautiful website the way you want to, not the way the CMS thinks you should build it. Prefer a headless approach to work some MVC magic? That’s fine, just send the content through Wagtail’s REST API and receive a JSON package for absolute front-end freedom.</p>
-                    </div>
-                </div> <!--/ text-container -->
-                <div class="image-container">
-                    <img src="../static/img/screenshot_developers.png" alt="developers" />
-                </div> <!--/ image-container -->
-            </div>
-            <div id="user-group-tab-3" class="tab-content">
-                <div class="text-container">
-                    <h3><span class="fa icon fa-suitcase"></span> Budget holders</h3>
-                    <div class="cols">
-                        <p>Wagtail is open source. We’ve used the BSD license, meaning it’s both free from costs, and free from strings. No more monthly licensing charges! And we’re here to support and encourage a community of developers to make Wagtail better and better. We have a roadmap of upcoming features and you can have confidence the CMS will improve with every release.</p>
-                    </div>
-                </div> <!--/ text-container -->
-                <div class="image-container">
-                    <img src="../static/img/screenshot_developers.png" alt="developers" />
-                </div> <!--/ image-container -->
-            </div>
-            <div id="user-group-tab-4" class="tab-content">
-                <div class="text-container">
-                    <h3><span class="fa icon fa-edit"></span> Editors</h3>
-                    <div class="cols">
-                        <p>We created Wagtail to allow you to create once and publish everywhere. Content models are defined in code, ensuring that relationships are consistently defined for a zen-like content architecture. With StreamField you can create beautiful, modular ‘streams’ of content that neatly separate presentation from content. All that, and the user-interface for content entry looks beautiful too! </p>
-                    </div>
-                </div> <!--/ text-container -->
-                <div class="image-container">
-                    <img src="../static/img/screenshot_developers.png" alt="developers" />
-                </div> <!--/ image-container -->
-            </div>
 
-        </div> <!-- /tab-content-container -->
+                    <div class="md-base">
+                        <div class="md-stand"></div>
+                        <div class="md-foot"></div>
+                    </div>
+                </div>
 
-    </section> <!-- /user-groups -->
+                <a href="#" class="view-all view-all--light">
+                    Jump into our 10 minute installation guide to get started
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+
+            </div> <!-- /text-container -->
+
+        </section> <!-- /pane--code -->
+
+        <section class="pane--horizontal-tabs">
+
+            <div class="text-container">
+                <h2>Build for everyone, <span>you'll all love it</span></h2>
+            </div> <!-- /text-container -->
+
+            <nav class="tabs">
+                <ul class="js-tabs">
+                    <li class="current">
+                        <a href="#user-tab-1">
+                            <span class="fa icon fa-code"></span>
+                            Developers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#user-tab-2">
+                            <span class="fa icon fa-paint-brush"></span>
+                            Designers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#user-tab-3">
+                            <span class="fa icon fa-suitcase"></span>
+                            Budget Holders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#user-tab-4">
+                            <span class="fa icon fa-edit"></span>
+                            Editors
+                        </a>
+                    </li>
+                </ul>
+            </nav> <!-- /tabs -->
+
+            <div class="tab-content-container">
+
+                <div id="user-tab-1" class="tab-content current">
+                    <div class="text-container">
+                        <h3><span class="fa icon fa-code"></span> Developers</h3>
+                        <div class="cols">
+                            <p>Wagtail is built by developers for developers. Spend less time on configuration and more perfecting your site. As a Django app Wagtail is the CMS that will play nicely with everything else in your tech stack. It’s an un-opinionated toolbox to help you build your project without reinventing the wheel.</p>
+                        </div>
+                    </div> <!--/ text-container -->
+                    <div class="image-container">
+                        <img src="../static/img/screenshot_developers.png" alt="developers" />
+                    </div> <!--/ image-container -->
+                </div>
+                <div id="user-tab-2" class="tab-content">
+                    <div class="text-container">
+                        <h3><span class="fa icon fa-paint-brush"></span> Designers</h3>
+                        <div class="cols">
+                            <p>Display the content the way you want. Using Django’s simple templating system allows you to build a beautiful website the way you want to, not the way the CMS thinks you should build it. Prefer a headless approach to work some MVC magic? That’s fine, just send the content through Wagtail’s REST API and receive a JSON package for absolute front-end freedom.</p>
+                        </div>
+                    </div> <!--/ text-container -->
+                    <div class="image-container">
+                        <img src="../static/img/screenshot_developers.png" alt="developers" />
+                    </div> <!--/ image-container -->
+                </div>
+                <div id="user-tab-3" class="tab-content">
+                    <div class="text-container">
+                        <h3><span class="fa icon fa-suitcase"></span> Budget holders</h3>
+                        <div class="cols">
+                            <p>Wagtail is open source. We’ve used the BSD license, meaning it’s both free from costs, and free from strings. No more monthly licensing charges! And we’re here to support and encourage a community of developers to make Wagtail better and better. We have a roadmap of upcoming features and you can have confidence the CMS will improve with every release.</p>
+                        </div>
+                    </div> <!--/ text-container -->
+                    <div class="image-container">
+                        <img src="../static/img/screenshot_developers.png" alt="developers" />
+                    </div> <!--/ image-container -->
+                </div>
+                <div id="user-tab-4" class="tab-content">
+                    <div class="text-container">
+                        <h3><span class="fa icon fa-edit"></span> Editors</h3>
+                        <div class="cols">
+                            <p>We created Wagtail to allow you to create once and publish everywhere. Content models are defined in code, ensuring that relationships are consistently defined for a zen-like content architecture. With StreamField you can create beautiful, modular ‘streams’ of content that neatly separate presentation from content. All that, and the user-interface for content entry looks beautiful too! </p>
+                        </div>
+                    </div> <!--/ text-container -->
+                    <div class="image-container">
+                        <img src="../static/img/screenshot_developers.png" alt="developers" />
+                    </div> <!--/ image-container -->
+                </div>
+
+            </div> <!-- /tab-content-container -->
+
+        </section> <!-- /user-groups -->
+
+    </section> <!-- /angle-container -->
 
     <section class="testimonial" style="background-image: url(../static/img/photo_lake.jpg);">
         <!-- /original image: http://images.123hdwallpapers.com/20150827/british-columbia-canada-calm-forest-lake-landscape-reflection-1600x1000.jpg -->
@@ -268,30 +280,30 @@
         <nav class="tabs">
             <h2>Create beautiful websites.</h2>
             <p>Wagtail allows it's developers and designers complete freedom to work how they want, imposing no limitations, meaning anything is possible.</p>
-            <ul>
-                <li data-tab="casestudy-tab-1" class="current">
-                    <a href="#">
+            <ul class="js-tabs">
+                <li>
+                    <a href="#casestudy-tab-1">
                         <img src="../static/img/logo_rca.png" alt="Royal College of Art" />
                     </a>
                 </li>
-                <li data-tab="casestudy-tab-2">
-                    <a href="#">
+                <li>
+                    <a href="#casestudy-tab-2">
                         <img src="../static/img/logo_jasper.png" alt="Jasper Canada" />
                     </a>
                 </li>
-                <li data-tab="casestudy-tab-3">
-                    <a href="#">
+                <li>
+                    <a href="#casestudy-tab-3">
                         <img src="../static/img/logo_uot.png" alt="UOT" />
                     </a>
                 </li>
-                <li data-tab="casestudy-tab-4">
-                    <a href="#">
+                <li>
+                    <a href="#casestudy-tab-4">
                         <img src="../static/img/logo_nasa.png" alt="NASA" />
                     </a>
                 </li>
             </ul>
 
-            <p class="view-all">See more examples of what Wagtail can do at <a href="">madewithwagtail.org</a></p>
+            <a href="#" class="view-all">See more examples of what Wagtail can do at madewithwagtail.org <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></a>
 
         </nav> <!-- /tabs -->
 
