@@ -80,47 +80,6 @@ $background-color: #f4f1ea;
 
 // General styles
 
-// Testimonial
-
-.testimonial {
-    padding: $grid * 5 0;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
-    text-align: center;
-    background-color: #333;
-    background-size: cover;
-    color: #fff;
-
-    span {
-        color: $color-secondary-highlight;
-    }
-
-    blockquote {
-        font-size: 28px;
-
-        cite {
-            margin-top: 10px;
-            font-size: 16px;
-            display: block;
-            color: rgba(#fff,0.6);
-
-            a {
-                background: rgba($color-secondary-highlight, 0.6);
-                color: #fff;
-                padding: 5px 10px;
-
-                &:hover {
-                    background: darken($color-secondary-highlight, 20%);
-                }
-
-            }
-        }
-
-    }
-
-}
-
-
 
 .pane {
 
@@ -343,7 +302,26 @@ $background-color: #f4f1ea;
 
             .md-imac {
                 font-size: 0.5em;
-                margin: 0 0 $grid * 4;
+                margin: 0 auto $grid * 4;
+
+                .wagtail-sticker {
+                    position: absolute;
+                    bottom: 72px;
+                    right: 18px;
+                    z-index: 4;
+                    width: 50px;
+                    height: 50px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    transform: rotate(23deg);
+
+                    img {
+                        width: 37px;
+                        height: auto;
+                        position: relative;
+                        top: 20px;
+                    }
+                }
             }
         }
 
@@ -355,6 +333,7 @@ $background-color: #f4f1ea;
             transform: translateY(-57%);
             font-size: 15px;
             text-align: left;
+            border-top: 10px solid $color-primary-highlight;
         }
 
     }
