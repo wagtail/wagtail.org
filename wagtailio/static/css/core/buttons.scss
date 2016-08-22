@@ -10,6 +10,11 @@
     &--outline {
         border: 1px solid $borderColorDark;
         border-radius: 3px;
+
+        &--light {
+            border-color: $borderColorLight;
+        }
+        
     }
 
     &--transparent {
