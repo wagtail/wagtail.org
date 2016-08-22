@@ -1,10 +1,89 @@
+/* New footer */
 
-/* ============================================ 
+// Footer
+.page .body footer.global {
+    display: block;
+    overflow: hidden;
+    //margin-bottom: 200px;
+    padding: 60px;
+    text-align: left;
+    background: #111;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 16px;
+        margin: 0 0 10px;
+        color: #fff;
+    }
+
+    nav {
+        display: inline-block;
+        width: 20%;
+        text-align: left;
+        margin: 0 30px 30px 0;
+
+        ul {
+            //border-top: 1px solid rgba(white, 0.2);
+            padding-top: 5px;
+
+            li {
+                margin: 0 0 5px;
+                padding: 0 0 5px;
+                font-size: 14px;
+                line-height: 1.8;
+                //border-bottom: 1px solid rgba(white, 0.2);
+
+                a {
+                    display: block;
+                    transition: all 0.2s ease-in;
+                    background: transparent;
+                }
+
+            }
+
+        }
+
+    }
+
+    .footer-footer {
+        clear: both;
+        text-align: left;
+        padding-top: 30px;
+        font-size: 13px;
+
+        li {
+            display: inline-block;
+
+            &:last-child {
+                text-align: right;
+                float: right;
+
+                img {
+                    display: block;
+                    width: 110px;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+
+/* ============================================
 
   Footer
 
 */
-footer {
+footer.global {
 
     // Vars
     $link-padding: 7px 15px;
@@ -17,6 +96,7 @@ footer {
     // Styling
     background: $color-primary-dark;
     color: $color-secondary-light;
+    text-align: center;
 
     // Standard element styling
     h3 {
@@ -35,13 +115,10 @@ footer {
         color: $color-secondary-light;
         margin-top: 0px;
     }
-    a {}
-
-    text-align: center;
 
     // Default immediately nested nodes to col-12
     .container {
-        
+
         > * {
             padding: 12px 0 0;
             @include gridle_set((
@@ -73,7 +150,7 @@ footer {
             ),
             mobile : (
                 grid : 12,
-                push : 0  
+                push : 0
             )
         ));
 
@@ -153,7 +230,7 @@ footer {
                 }
                 .author {
                     @include author;
-                    margin: 20px 0;                    
+                    margin: 20px 0;
                 }
             }
         }
@@ -194,7 +271,7 @@ footer {
                 border-left: 0;
             }
         }
-        
+
     }
     .follow_links {
         @include gridle_set((

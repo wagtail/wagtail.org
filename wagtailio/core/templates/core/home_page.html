@@ -2,64 +2,412 @@
 
 {% load static wagtailimages_tags wagtailio_utils %}
 
-{% block body_class %}{% endblock %}
-{% block extra_css %}
-    <style>
-    /* immediately hide homepage content */
-    .template-home-page section {
-        opacity: 0;
-     }
-    </style>
-{% endblock %}
+{% block body_class %}template-homepage{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block content %}
-    
-    <div id="hero">
-        <div class="container">
-            <div class="carousel">
-                {% for item in self.main_carousel_items.all %}
-                    <div class="slide">
-                        <div class="text">
-                            <h1>{{ item.title }}</h1>
-                            <p>{{ item.summary }}</p>
-                            <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
-                        </div>
-                        <div class="image">
-                            {% image item.image fill-635x370 %}
-                            <a href="{{ item.video }}"><span class="fa fa-play icon"></span>Watch demo</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
 
-    <div id="examples">
-        <div class="container">
-            <h2>{{ self.secondary_carousel_introduction }}</h2>
-            <div class="carousel">
-                {% for item in self.secondary_carousel_items.all %}
-                    <div class="slide">
-                        <div class="image">
-                            {% image item.desktop_image fill-1350x1020 %}
-                        </div>
-                        <div class="text">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.blockquote }}</p>
-                            <div class="author">
-                                <span class="image">
-                                    {% image item.author_image fill-55x55 %}
-                                </span>
-                                <span class="details">
-                                    <a class="name" href="{{ item.website }}">{{ item.author_name }}</a>
-                                    <span class="role">{{ item.author_job }}</span>
-                                </span>
-                            </div>
-                            <a href="{{ item.website }}">View the site</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+<h1>Wagtail Django CMS Homepage</h1>
+
+<section class="hero" style="background-image:url('../static/img/hero_bg_3.jpg')">
+
+    <div class="text-container js-fade">
+        <h2>Open source content management with secret source</h2>
+        <p>The open source Django content management system</p>
+    </div> <!-- /text-container -->
+
+    <div class="screenshot">
+        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+    </div> <!-- /screenshot -->
+
+    <div class="actions">
+        <a href="#">
+            <span>Get</span> Wagtail
+            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+        </a>
+        <a href="#features">
+            <span>View the</span> features
+            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+        </a>
+    </div> <!-- /actions -->
+
+</section> <!-- /hero -->
+
+<section class="pane pane--logo-list">
+
+    <h2>Powering websites for leading brands</h2>
+
+    <div class="carousel">
+        <div><img src="../static/img/logo_rca-white.png" alt="Royal College of Art" /></div>
+        <div><img src="../static/img/logo_jasper-white.png" alt="Jasper Canada" /></div>
+        <div><img src="../static/img/logo_uot-white.png" alt="University of Tasmania" /></div>
+        <div><img src="../static/img/logo_nasa-white.png" alt="NASA" /></div>
+        <div><img src="../static/img/logo_rca-white.png" alt="Royal College of Art" /></div>
+        <div><img src="../static/img/logo_jasper-white.png" alt="Jasper Canada" /></div>
+        <div><img src="../static/img/logo_uot-white.png" alt="University of Tasmania" /></div>
+        <div><img src="../static/img/logo_nasa-white.png" alt="NASA" /></div>
+        <div><img src="../static/img/logo_rca-white.png" alt="Royal College of Art" /></div>
+        <div><img src="../static/img/logo_jasper-white.png" alt="Jasper Canada" /></div>
+        <div><img src="../static/img/logo_uot-white.png" alt="University of Tasmania" /></div>
+        <div><img src="../static/img/logo_nasa-white.png" alt="NASA" /></div>
+        <div><img src="../static/img/logo_rca-white.png" alt="Royal College of Art" /></div>
+    </div> <!-- /carousel -->
+
+</section> <!-- /pane--logo-list -->
+
+<section class="pane--vertical-tabs" id="features">
+
+    <header>
+        <h2>Why Wagtail? <span>Flexibility without compromise.</span></h2>
+    </header> <!-- /text-container -->
+
+    <nav class="tabs">
+
+        <ul class="js-tabs">
+            <li class="current">
+                <a href="#feature-tab-1">
+                    <h3>Streamfield</h3>
+                    <p>Create breathtaking, immersive content all from a simple to use editor.</p>
+                </a>
+            </li>
+            <li>
+                <a href="#feature-tab-2">
+                    <h3>Templating</h3>
+                    <p>Make your content future-proof by separating presentation and logic to give you maximum flexibility.</p>
+                </a>
+            </li>
+            <li>
+                <a href="#feature-tab-3">
+                    <h3>Ease of use</h3>
+                    <p>Never train an editor again, Wagtail’s UI just doesn’t need explaining.</p>
+                </a>
+            </li>
+            <li >
+                <a href="#feature-tab-4">
+                    <h3>Intelligent images</h3>
+                    <p>Facial recognition and helpful image cropping through Wagtail ensures your images always look amazing.</p>
+                </a>
+            </li>
+            <li>
+                <a href="#feature-tab-5">
+                    <h3>Community-built plugins</h3>
+                    <p>Benefit from community built extensions of Wagtail. Or build one simply yourself.</p>
+                </a>
+            </li>
+        </ul>
+
+        <a href="#" class="view-all view-all--light">
+            Browse all Wagtail's features
+            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+        </a>
+    </nav> <!-- /tabs -->
+
+    <div class="tab-content-container">
+        <div id="feature-tab-1" class="tab-content current">
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
         </div>
+        <div id="feature-tab-2" class="tab-content">
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div id="feature-tab-3" class="tab-content">
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+        </div>
+        <div id="feature-tab-4" class="tab-content">
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div id="feature-tab-5" class="tab-content">
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div> <!-- /tab-content-container -->
+
+</section> <!-- /features -->
+
+<section class="testimonial" style="background-image: url(../static/img/hero_bg_2.jpg);">
+    <!-- original https://sylva.org.uk/myforest/images/heroes/owners.jpg -->
+
+    <blockquote class="fade">
+        <p>
+            <span>“</span>
+            If I could turn one piece of code into a human and marry it it would be the @WagtailCMS StreamField #wagtail #python #streamintome
+            <span>”</span>
+        </p>
+        <cite><a href="https://twitter.com/pelliportraits/status/688787334230339584">JB - @pelliportraits</a></cite>
+    </blockquote>
+
+</section> <!-- /testimonial -->
+
+<section class="pane--code pane--contours">
+
+    <div class="text-container">
+
+        <h2>Try Wagtail <span>in just 7 lines</span></h2>
+
+        <pre>
+pip install wagtail
+wagtail start mysite
+cd mysite
+pip install -r requirements.txt
+python manage.py migrate
+python mange.py createsuperuser
+python manage.py runserver
+        </pre>
+
+        <a href="#" class="btn btn--outline btn--transparent view-all">
+            Jump into our 10 minute installation guide to get started
+            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+        </a>
+
+    </div> <!-- /text-container -->
+
+</section> <!-- /pane--code -->
+
+
+<section class="pane--horizontal-tabs">
+
+    <div class="text-container">
+        <h2>You'll all love it&hellip;</h2>
+    </div> <!-- /text-container -->
+
+    <nav class="tabs">
+        <ul class="js-tabs">
+            <li class="current">
+                <a href="#user-tab-1">Developers</a>
+            </li>
+            <li>
+                <a href="#user-tab-2">Designers</a>
+            </li>
+            <li>
+                <a href="#user-tab-3">Budget Holders</a>
+            </li>
+            <li>
+                <a href="#user-tab-4">Editors</a>
+            </li>
+        </ul>
+    </nav> <!-- /tabs -->
+
+    <div class="tab-content-container">
+
+        <div id="user-tab-1" class="tab-content current">
+            <div class="text-container">
+                <p>Wagtail is built by developers for developers. Spend less time on configuration and more perfecting your site.</p><p> As a Django app Wagtail is the CMS that will play nicely with everything else in your tech stack. It’s an un-opinionated toolbox to help you build your project without reinventing the wheel.</p>
+            </div> <!--/ text-container -->
+            <div class="image-container">
+                <img src="../static/img/screenshot_developers.png" alt="developers" />
+            </div> <!--/ image-container -->
+        </div>
+
+        <div id="user-tab-2" class="tab-content">
+            <div class="text-container">
+                <p>Display the content the way you want. Using Django’s simple templating system allows you to build a beautiful website the way you want to, not the way the CMS thinks you should build it.</p> <p>Prefer a headless approach to work some MVC magic? That’s fine, just send the content through Wagtail’s REST API and receive a JSON package for absolute front-end freedom.</p>
+            </div> <!--/ text-container -->
+            <div class="image-container">
+                <img src="../static/img/screenshot_developers.png" alt="developers" />
+            </div> <!--/ image-container -->
+        </div>
+
+        <div id="user-tab-3" class="tab-content">
+            <div class="text-container">
+                <p>Wagtail is open source. We’ve used the BSD license, meaning it’s both free from costs, and free from strings. No more monthly licensing charges!</p> <p>And we’re here to support and encourage a community of developers to make Wagtail better and better. We have a roadmap of upcoming features and you can have confidence the CMS will improve with every release.</p>
+            </div> <!--/ text-container -->
+            <div class="image-container">
+                <img src="../static/img/screenshot_developers.png" alt="developers" />
+            </div> <!--/ image-container -->
+        </div>
+
+        <div id="user-tab-4" class="tab-content">
+            <div class="text-container">
+                <p>We created Wagtail to allow you to create once and publish everywhere. Content models are defined in code, ensuring that relationships are consistently defined for a zen-like content architecture.</p> <p>With StreamField you can create beautiful, modular ‘streams’ of content that neatly separate presentation from content. All that, and the user-interface for content entry looks beautiful too! </p>
+            </div> <!--/ text-container -->
+            <div class="image-container">
+                <img src="../static/img/screenshot_developers.png" alt="developers" />
+            </div> <!--/ image-container -->
+        </div>
+<<<<<<< HEAD
     </div>
+=======
+
+    </div> <!-- /tab-content-container -->
+
+</section> <!-- /pane--horizontal-tabs -->
+
+<section class="testimonial" style="background-image: url(../static/img/hero_bg_1.jpg);">
+    <!-- /original image: http://images.123hdwallpapers.com/20150827/british-columbia-canada-calm-forest-lake-landscape-reflection-1600x1000.jpg -->
+
+    <blockquote>
+        <p>
+            <span>“</span>
+            @WagtailCMS is great. Built a large(ish) website using it; client could use it right away,  no training needed.
+            <span>”</span>
+        </p>
+        <cite><a href="https://twitter.com/creativedutch/status/703153421507952640">@creativedutchman</a></cite>
+    </blockquote>
+
+</section> <!-- /testimonial -->
+
+<section class="pane--showcase pane--contours">
+
+    <header>
+        <h2>Create beautiful websites.</h2>
+        <p>Wagtail allows it's developers and designers complete freedom to work how they want, imposing no limitations, meaning anything is possible.</p>
+    </header>
+
+    <div class="showcase">
+
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>Royal College of Art</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>Jasper Canada</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>NASA</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
+    </div> <!-- /carousel -->
+
+    <a href="#" class="view-all btn btn--outline btn--transparent btn--dark">See more examples of what Wagtail can do at madewithwagtail.org <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></a>
+
+</section> <!-- /case-studies -->
+
+<section class="pane--latest">
+
+    <h2>Latest from the blog</h2>
+
+    <div class="row">
+
+        <article>
+            <a href="#">
+                <div class="image-container" style="background-image: url('/static/img/blog_cape-town.jpg');">
+                    <div class="text-container">
+                        <p class="date">Feb 29th 2016</p>
+                        <h3>Cape Town Retrospective</h3>
+                        <p>Spinting in South Africa</p>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <article>
+            <a href="#">
+                <div class="image-container" style="background-image: url('/static/img/hero_bg_3.jpg');">
+                    <div class="text-container">
+                        <p class="date">Feb 29th 2016</p>
+                        <h3>Cape Town Retrospective</h3>
+                        <p>Spinting in South Africa</p>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <article>
+            <a href="#">
+                <div class="image-container" style="background-image: url('/static/img/hero_bg_2.jpg');">
+                    <div class="text-container">
+                        <p class="date">Feb 29th 2016</p>
+                        <h3>Cape Town Retrospective</h3>
+                        <p>Spinting in South Africa</p>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+    </div> <!-- /row -->
+
+</section> <!-- /latest -->
+
+<div class="pane--two-col">
+
+    <section class="pane--hire">
+
+        <h2 class="heading--light">Need an Agency?</h2>
+        <p>We got you covered. <a href="#">Torchbox</a> created Wagtail to help awesome people make great websites. We’d love to hear from you if you’d like to work together.</p>
+        <a href="http://www.torchbox.com/contact" class="view-all view-all--light">Get in touch <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></a>
+
+    </section> <!-- /hire -->
+
+    <section class="pane--stats">
+        <h2 class="heading--light">Wagtail <span>Statistics</span></h2>
+        <ul>
+            <li><em>3,509</em> Stargazers</li>
+            <li><em>659</em> forks</li>
+            <li><em>2,241</em> sites</li>
+            <li><em>58</em> closed issues in last 30 days</li>
+            <li><em>91</em> commits in the last 30 days</li>
+            <li><em>160</em> contributors</li>
+        </ul>
+    </section> <!-- /stats -->
+
+</div> <!-- pane--two-col -->
+
+
+<footer class="global">
+
+    <nav>
+        <h2>Find Wagtail on</h2>
+        <ul>
+            <li><a href="#">Github</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Slack</a></li>
+            <li><a href="#">Stack exchange</a></li>
+        </ul>
+    </nav>
+
+    <nav>
+        <h2>About Wagtail</h2>
+        <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <nav>
+        <h2>Core contributors</h2>
+        <ul>
+            <li><a href="#">Torchbox</a></li>
+            <li><a href="#">Spingload</a></li>
+            <li><a href="#">Another agency</a></li>
+            <li><a href="#">View all</a></li>
+        </ul>
+    </nav>
+
+    <ul class="footer-footer">
+        <li>&copy; 2016 Torchbox Ltd</li>
+        <li><img src="/static/img/torchbox.svg" alt="Torchbox"></li>
+    </ul>
+
+</footer> <!-- /global -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+>>>>>>> feature/new-homepage
 {% endblock %}

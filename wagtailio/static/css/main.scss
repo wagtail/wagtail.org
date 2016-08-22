@@ -1,41 +1,9 @@
 /* ============================================
 
-  Vars
-
-*/
-$font-primary: "effra", sans-serif;
-
-$color-primary-dark: #333; // dark grey
-$color-primary-light: #fff; // white (duh!)
-$color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
-$color-primary-bg: #f6f2f2; // off-white
-
-$color-secondary-light: rgba($color-primary-light, 0.7);
-$color-secondary-highlight: #43b1b0; // wagtail brand teal
-
-$color-green: #3cb65b; // why?! :-(
-
-$anim-speed-primary: 250ms;
-$anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
-
-$mobile-nav-open_speed: 500ms;
-$header-height: 70px;
-
-$inline-spacing-bottom: 14px;
-
-// Carousel
-$carousel-fadeInSpeed: 1500ms;
-$carousel-fadeOutSpeed: 1500ms;
-$carousel-highlightColour: $color-primary-highlight;
-
-//
-$website-width-max: 1600px;
-
-/* ============================================
-
   Imports
 
 */
+@import "variables";
 @import "vendor/normalize";
 @import "vendor/flexbox";
 @import "grid";
@@ -44,319 +12,29 @@ $website-width-max: 1600px;
 @import "vendor/owl/_carousel_theme";
 @import "vendor/owl/_transitions";
 
-/* ============================================
-
-  Mixins
-
-*/
 @import "core/mixins";
+@import "core/base";
+@import "core/structure";
+@import "core/headings";
 
-/* ============================================
-
-  Default element styling
-
-*/
-html,
-body {
-    // Font standard
-    font: 300 18px/1.5 $font-primary;
-    // Replace vertical scroll with nested one for better overlay behavior
-    overflow: hidden;
-    height: 100%;
-
-    background: $color-primary-light;
-    color: $color-primary-dark;
-}
-
-*, *:before, *:after{
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-    color: $color-secondary-highlight;
-    @include transition(
-        color $anim-speed-primary linear,
-        padding $anim-speed-primary linear,
-        background-color $anim-speed-primary linear,
-        opacity $anim-speed-primary linear
-    );
-
-    &:hover{
-        color: $color-primary-highlight;
-    }
-    &:focus {
-        outline-color: $color-primary-highlight;
-    }
-}
-
-img {
-    height: auto; // overwrite inline height added via django templating (possibly a bad assumption to make!)
-    vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
-}
-
-
-// Used on prototype to render heading text in a more 'slender' way
-h1, h2, h3, h4, h5, h6, input {
-    @include font-smoothing();
-}
-
-h1 {
-    font-size: 56px;
-    margin: 0 0 $inline-spacing-bottom;
-    line-height: 1.2;
-    @include gridle_state( tablet-portrait mobile ){ font-size: 27px; }
-}
-
-pre {
-    white-space: normal;
-}
-
-
-/* ============================================
-
-  Structure
-
-*/
-
-// rules for max width container
-@mixin row {
-
-    text-align: center;
-    padding: 0 4%;
-    // use this for debugging...
-    // border: solid 5px hotpink;
-
-    .container {
-        overflow: hidden;
-        max-width: $website-width-max;
-        margin: 0 auto;
-        text-align: left;
-    }
-}
-
-.page {
-
-    position: relative;
-    @include clearfix; // Clear anything nested
-    padding-top: $header-height; // adjust top position based on height on header
-    height: 100%;
-
-    // Responsive adjustments for when the header height changes
-    @include gridle_state( tablet-landscape ){ padding-top: $header-height - 2px; }
-    @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
-
-    header {
-
-        position: absolute;
-        z-index: 12;
-        top: 0px;
-
-        @include gridle_set((
-            grid : 12,
-            mobile : (
-                no_gutter : (left, right)
-            )
-        ));
-        padding-top: 4px;
-        padding-bottom: 2px;
-
-        background: $color-primary-light;
-
-    }
-
-    .body {
-
-        // Nested scroll container
-        overflow-y: scroll;
-        height: 100%;
-        -webkit-overflow-scrolling: touch; // iOS scrolling
-        @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
-
-        section {}
-        footer {
-            display: block;
-            @include row;
-        }
-    }
-
-    #menu_overlay {
-
-        position: absolute;
-        z-index: 11;
-        left: 0px; right: 0px;
-        top: 0px; bottom: 0px;
-
-        @include transition( all $mobile-nav-open_speed $anim-ease-expo );
-
-        // closed state
-        @include transform( translate3d( 0, -100%, 0 ) );
-        .no-csstransforms3d & { display: none; }
-
-        // open state
-        .mobile_nav-open & {
-            @include transform( translate3d( 0, 0, 0 ) );
-            .no-csstransforms3d & { display: block; }
-        }
-    }
-}
-
-/* ============================================
-
-  Header
-
-*/
 @import "core/header";
-
-
-/* ============================================
-
-  Page content
-   - contains streamfield & RTE styling together
-
-*/
+@import "core/buttons";
 @import "core/page_content";
-
-
-/* ============================================
-
-  Footer
-
-*/
 @import "core/footer";
-
-
-/* ============================================
-
-  Share
-
-*/
-.share {
-
-    position: fixed;
-    top: 64px + 52px; // needs variablising
-    right: 40px;
-
-    text-align: center;
-    background: rgba( $color-primary-light, 0.25 );
-    padding: 14px 10px 0;
-
-    @include border-radius;
-
-    h3 {
-        font-size: 18px;
-        font-weight: 300;
-        margin: 0 0 14px;
-        cursor: default;
-    }
-    a {
-        display: block;
-        color: $color-primary-highlight;
-        font-size: 28px;
-        margin: 0 auto $inline-spacing-bottom;
-        @include transition( color $anim-speed-primary linear );
-        &:hover {
-            color: $color-primary-dark;
-        }
-    }
-
-    @include gridle_state( tablet-landscape tablet-portrait mobile ){
-        position: relative;
-        top: auto; right: auto;
-        margin-bottom: $inline-spacing-bottom * 2;
-        a {
-            display: inline-block;
-        }
-        // right: 32px;
-    }
-}
-
-/* ============================================
-
-  Block list: a grid of white blocks with content in them
-
-*/
-
-.block-list {
-    &:hover {
-        a {
-            opacity: 0.5;
-        }
-    }
-
-    > li {
-        margin-bottom:40px;
-        text-align:center;
-
-        a {
-            @include border-radius(3px);
-            display:block;
-            background-color:$color-primary-light;
-            text-decoration:none;
-            color:$color-primary-dark;
-            padding:20px;
-            // min-height:330px;
-
-            // add responsive mixin to remove min-height at lower resolutions (when the elements are not being rednered as blocks)
-
-            &:hover{
-                opacity:1;
-                color:$color-green;
-
-                p {
-                    color:$color-primary-dark;
-                }
-            }
-        }
-    }
-    h2, h3 {
-        font-weight: 500;
-        font-size: 1.5em;
-        line-height: 1.3em;
-        margin-bottom: 0.25em;
-        margin-top: 0;
-    }
-}
-
-/* ============================================
-
-  Flex list: .. Flex grid ..
-  :: do this as a mixin and make the list class semantic? (would be consistant with rest of project implementations)
-
-*/
-.flex-list {
-    @include flexbox;
-    @include flex-wrap( wrap );
-    @include reset-list;
-    li {
-        @include flexbox;
-        @include align-items( stretch );
-        a {
-            display: block; // fallback for non-flexbox
-            @include flexbox;
-            @include flex-direction( column );
-            width: 100%; // required for conainer to fullfill width
-        }
-    }
-}
-
-/* ============================================
-
-  Sidebar
-
-*/
+@import "core/tabs";
+@import "core/hero";
 @import "core/sidebar";
-
-
-/* ============================================
-
-  Menu Overlay
-
-*/
 @import "core/menu_overlay";
+@import "core/share";
+// @import "core/imac";
+@import "core/testimonial";
+@import "core/panes";
 
+
+// Remove when possible
+@import "core/block-list";
+@import "core/flex-list";
+@import "core/legacy";
 
 /* ============================================
 
@@ -365,7 +43,7 @@ pre {
 */
 
 // homepage
-@import "pages/home";
+//@import "pages/home";
 
 // new homepage
 @import "pages/homepage";
@@ -382,44 +60,5 @@ pre {
 // Blog page
 @import "pages/blog";
 
-
-// 404 & Newsletter
-.template-404,
-.newsletter-thanks {
-    section {
-        padding: 5% 10%;
-    }
-}
-
-/* ============================================
-
-  Legacy / Existing default styles found in starting CSS
-
-*/
-
-/* Responsive image/video classes */
-.rich-text img {
-    max-width: 100%;
-}
-
-.richtext-image.left{
-    float:left;
-    margin-right:1em;
-}
-.richtext-image.right{
-    float:right;
-    margin-left:1em;
-}
-
-.responsive-object {
-    position: relative;
-}
-.responsive-object iframe,
-.responsive-object object,
-.responsive-object embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+// error
+@import "pages/error";

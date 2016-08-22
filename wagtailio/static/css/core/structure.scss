@@ -1,0 +1,67 @@
+/* ============================================
+
+  Structure
+
+*/
+
+// rules for max width container
+@mixin row {
+
+    text-align: center;
+    padding: 0 4%;
+    // use this for debugging...
+    // border: solid 5px hotpink;
+
+    .container {
+        overflow: hidden;
+        max-width: $website-width-max;
+        margin: 0 auto;
+        text-align: left;
+    }
+}
+
+.page {
+
+    position: relative;
+    @include clearfix; // Clear anything nested
+    //padding-top: $header-height; // adjust top position based on height on header
+    height: 100%;
+
+    // Responsive adjustments for when the header height changes
+    @include gridle_state( tablet-landscape ){ padding-top: $header-height - 2px; }
+    @include gridle_state( tablet-portrait mobile ){ padding-top: $header-height - 20px; }
+
+    .body {
+
+        // Nested scroll container
+        overflow-y: scroll;
+        height: 100%;
+        -webkit-overflow-scrolling: touch; // iOS scrolling
+        @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
+
+        section {}
+        footer {
+            @include row;
+        }
+    }
+
+    #menu_overlay {
+
+        position: absolute;
+        z-index: 11;
+        left: 0px; right: 0px;
+        top: 0px; bottom: 0px;
+
+        @include transition( all $mobile-nav-open_speed $anim-ease-expo );
+
+        // closed state
+        @include transform( translate3d( 0, -100%, 0 ) );
+        .no-csstransforms3d & { display: none; }
+
+        // open state
+        .mobile_nav-open & {
+            @include transform( translate3d( 0, 0, 0 ) );
+            .no-csstransforms3d & { display: block; }
+        }
+    }
+}

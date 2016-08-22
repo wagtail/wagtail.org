@@ -6,14 +6,16 @@
 
     <div class="page">
 
-        <header>
+        <header class="global">
             <div class="container">
                 <a id="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
                 <a href="#primary_navigation">Menu</a>
                 {% menu_primary %}
             </div>
         </header>
-        
+
+        {% include "includes/svg_sprites.html" %}
+
         {% block sidebar %}{% endblock %}
 
         <div class="body">
@@ -21,9 +23,8 @@
             <section>
                 {% block content %}{% endblock %}
             </section>
-            
-            {% block footer %}
-            <footer>
+
+            <footer class="global">
                 <div class="container">
                     {% menu_good_to_go %}
                     {% menu_network %}
@@ -33,8 +34,7 @@
                     {% include "includes/copyright.html" %}
                 </div>
             </footer>
-            {% endblock %}
-            
+
         </div>
 
         <div id="menu_overlay">

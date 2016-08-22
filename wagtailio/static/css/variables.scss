@@ -1,0 +1,40 @@
+/* ============================================
+
+  Vars
+
+*/
+$font-primary: "effra", sans-serif;
+
+$color-primary-dark: #222; // dark grey
+$color-primary-light: #fff; // white (duh!)
+$color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
+$color-primary-bg: #f6f2f2; // off-white
+
+$color-secondary-light: rgba($color-primary-light, 0.7);
+$color-secondary-highlight: #43b1b0; // wagtail brand teal
+
+$color-green: #3cb65b;
+
+$white: #fff;
+$black: #000;
+$headingColor: #333;
+$bodyColor: #555;
+$borderColorLight: rgba($white, 0.3);
+$borderColorDark: rgba($black, 0.3);
+
+$anim-speed-primary: 250ms;
+$anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+$mobile-nav-open_speed: 500ms;
+$header-height: 74px;
+
+$inline-spacing-bottom: 14px;
+$grid: 20px;
+
+// Carousel
+$carousel-fadeInSpeed: 1500ms;
+$carousel-fadeOutSpeed: 1500ms;
+$carousel-highlightColour: $color-primary-highlight;
+
+//
+$website-width-max: 1600px;

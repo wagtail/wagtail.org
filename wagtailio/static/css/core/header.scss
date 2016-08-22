@@ -1,10 +1,10 @@
 
-/* ============================================ 
+/* ============================================
 
   Header
 
 */
-header {
+header.global {
 
     // Vars
     $link-padding: 12px 15px;
@@ -26,7 +26,7 @@ header {
         border: solid 1px transparent;
 
         @include transition(
-            color $anim_speed-slow ease-out, 
+            color $anim_speed-slow ease-out,
             opacity $anim_speed-slow ease-out
         );
 
@@ -42,14 +42,45 @@ header {
     }
 
     // Styling
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    float: none;
+    width: 100%;
     background: #fff;
     overflow: hidden;
+    padding-top: 4px;
+    padding-bottom: 2px;
     border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
+    background: $color-primary-light;
+    transform: translateY(0);
+    transition: transform .2s ease 0s;
 
-    @include row;
+    @include gridle_set((
+        grid : 12,
+        mobile : (
+            no_gutter : (left, right)
+        )
+    ));
+
+    &.headroom {
+
+        &--unpinned {
+            transform: translateY(-100%);
+        }
+
+        &--top,
+        &--pinned {
+            transform: translateY(0);
+        }
+
+    }
+
+    // @include row;
 
     // Transitions
-    @include transition( all $anim_speed-fast linear );
+    // @include transition( all $anim_speed-fast linear );
 
     // Branding
     #branding {
@@ -98,7 +129,7 @@ header {
             overflow: hidden;
             // Styling
             padding: 10px 0;
-            // 
+            //
             float: right;
 
             // fade out links when hovering UL

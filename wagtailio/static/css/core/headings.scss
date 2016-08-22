@@ -1,0 +1,57 @@
+// Used on prototype to render heading text in a more 'slender' way
+h1, h2, h3, h4, h5, h6 {
+    @include font-smoothing();
+    color: $headingColor;
+    transition: color .2s ease 0s;
+
+    span {
+        font-weight: normal;
+    }
+}
+
+h1 {
+    font-size: 56px;
+    margin: 0 0 $inline-spacing-bottom;
+    line-height: 1.2;
+    @include gridle_state( tablet-portrait mobile ){ font-size: 27px; }
+}
+
+h2 {
+    font-size: 42px;
+    margin: 0 0 20px;
+}
+
+h3 {
+    font-size: 21px;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+}
+
+h4 {
+    font-size: 18px;
+    margin: 0 0 5px;
+}
+
+
+.heading {
+    color: $headingColor;
+
+    &--light {
+        color: $white;
+    }
+
+}
+
+a {
+    h1, h2, h3, h4, h5, h6 {
+        color: $color-secondary-highlight;
+    }
+
+    &:hover {
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $black;
+        }
+
+    }
+}
