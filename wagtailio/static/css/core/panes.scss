@@ -51,7 +51,7 @@
             .owl-controls {
                 position: absolute;
                 top: -52px;
-                right: 40px;
+                right: 60px;
                 text-align: center;
             }
 
@@ -199,6 +199,7 @@
     &--code {
         position: relative;
         border-bottom: 1px dotted rgba($black, 0.1);
+        background: $color-primary-dark;
         // background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
         //
         // &:after {
@@ -230,6 +231,8 @@
             text-align: left;
             border-top: 20px solid $color-primary-highlight;
             margin: 0 0 $grid * 2;
+            background-color: $black;
+            box-shadow: 0 0 20px rgba($white, 0.1);
         }
 
 
@@ -353,15 +356,19 @@
                 flex-basis: 33.333%;
                 max-width: 33.333%;
                 padding: 0 $grid * 2;
-                text-align: left;
                 font-size: 16px;
 
                 img {
                     width: 100%;
                     margin: 0 0 $grid;
+                    box-shadow: 0 -5px 10px rgba($black, 0.4);
                 }
 
                 a {
+
+                    h3 {
+                        color: $black;
+                    }
 
                     p {
                         color: $bodyColor;
@@ -414,8 +421,8 @@
 
         article {
             flex: 0 0 auto;
-            flex-basis: 33.3333%;
-            max-width: 33.3333%;
+            flex-basis: 25%;
+            max-width: 25%;
             padding: 0 $grid;
 
             a {
@@ -438,7 +445,7 @@
             }
 
             .image-container {
-                height: 500px;
+                height: 400px;
                 position: relative;
                 background-size: cover;
             }
@@ -457,6 +464,7 @@
                 h3 {
                     color: $color-secondary-highlight;
                     margin: 0;
+                    line-height: 1.2;
                 }
 
                 p {
