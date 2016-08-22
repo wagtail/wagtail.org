@@ -39,12 +39,39 @@ $(function( ){
         });
     });
 
+    // Slow scroll on anchors
+    function anchorScroll(event) {
+
+        // prevent default link action
+        event.preventDefault();
+
+        // make some vars so it is easy to understand what we are doing
+        var $clicked    = $(this);
+        var id          = $clicked.attr('href');
+        var $target     = $(id);
+
+        // if there is no target, fail silently
+        if ($target.length === 0) {
+            // TODO: this breaks the django debug toolbar and possibly some other event handlers too
+            return false;
+        }
+
+        // animate html & body scrollTop property to the top position of the $target element
+        $('html, body').animate({
+            scrollTop: $target.offset().top,
+        }, 500);
+
+    }
+
     $(window).on('scroll', function () {
 
         // Fadeout effect
         $('.js-fade').css('opacity', 1 - $(window).scrollTop() / 250);
 
     });
+
+    // Slow scroll on anchor links
+    $('a[href*=#]').on('click', anchorScroll);
 
     /***
 
@@ -67,9 +94,10 @@ $(function( ){
         slideSpeed      : 500,
         paginationSpeed : 500,
         transitionStyle : "fade",
-        items : 6,
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3]
+        items : 8,
+        itemsDesktop : [1025,6],
+        itemsDesktopSmall : [769,3],
+        itemsMobile : [481,3]
     });
 
 

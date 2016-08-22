@@ -30,14 +30,24 @@
             //font-weight: normal;
             color: #222;
             color: $color-secondary-highlight;
+
+            @include gridle_state( desktop-wide ){
+                margin-top: $grid;
+                font-size: 18px;
+            }
         }
 
         p {
             font-size: 42px;
-            color: rgba(#000, 1);
+            color: rgba($white, 1);
             font-weight: bold;
             line-height: 1.1;
             margin: 0 0 40px;
+            text-shadow: 1px 1px 1px $black;
+
+            @include gridle_state( desktop-wide ){
+                font-size: 62px;
+            }
         }
 
     }

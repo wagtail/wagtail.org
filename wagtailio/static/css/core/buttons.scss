@@ -1,0 +1,88 @@
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: $color-secondary-highlight;
+
+    &:hover {
+        background: darken($color-secondary-highlight, 10%);
+    }
+
+    &--outline {
+        border: 1px solid $borderColorDark;
+        border-radius: 3px;
+    }
+
+    &--transparent {
+        background: transparent;
+
+        &:hover {
+            background: rgba($black, 0.1);
+        }
+    }
+
+    &--dark {
+
+    }
+
+    &--key-action {
+        cursor: pointer;
+        float: left;
+        margin: 0 20px 0 0;
+        padding: 20px;
+        width: 140px;
+        height: 140px;
+        line-height: 1.2;
+        display: block;
+        background: $color-secondary-highlight;
+        color: #fff;
+        font-weight: bold;
+        position: relative;
+
+        &.highlight {
+            background: $color-primary-highlight;
+        }
+
+        &:first-child {
+
+            svg {
+                transform: translateX(0) rotate(-90deg);
+            }
+
+            &:hover {
+
+                svg {
+                    transform: translateX(5px) rotate(-90deg);
+                    bottom: 20px;
+                }
+
+            }
+
+        }
+
+        &:hover {
+            background: darken($color-secondary-highlight, 20%);
+
+            svg {
+                transform: translateY(5px);
+            }
+
+        }
+
+        span {
+            display: block;
+            font-weight: normal;
+        }
+
+        svg {
+            position: absolute;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.2s ease-in-out 0;
+            bottom: 20px;
+            right: 20px;
+            fill: $white;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+}

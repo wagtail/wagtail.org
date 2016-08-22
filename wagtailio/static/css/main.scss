@@ -18,6 +18,7 @@
 @import "core/structure";
 @import "core/headings";
 @import "core/header";
+@import "core/buttons";
 @import "core/page_content";
 @import "core/footer";
 @import "core/tabs";
@@ -25,8 +26,9 @@
 @import "core/sidebar";
 @import "core/menu_overlay";
 @import "core/share";
-@import "core/imac";
+// @import "core/imac";
 @import "core/testimonial";
+@import "core/panes";
 
 
 // Remove when possible
@@ -41,7 +43,7 @@
 */
 
 // homepage
-@import "pages/home";
+//@import "pages/home";
 
 // new homepage
 @import "pages/homepage";

@@ -4,7 +4,6 @@
     position: relative;
     padding: 0;
     overflow: hidden;
-    border-bottom: 1px solid rgba(#000, 0.2);
     text-align: center;
     background-color: #333;
     background-size: cover;
@@ -17,11 +16,11 @@
 
     blockquote {
         position: absolute;
-        top: $grid * 2;
-        bottom: $grid * 2;
-        left: $grid * 2;
-        right: $grid * 2;
-        background: rgba($black, 0.4);
+        top: $grid * 4;
+        bottom: $grid * 4;
+        left: $grid * 4;
+        right: $grid * 4;
+        background: rgba($black, 0.6);
         padding: $grid * 2;
         font-size: 28px;
         margin: 0;

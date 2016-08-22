@@ -1,0 +1,528 @@
+// General styles
+
+
+.pane {
+
+    // List of logos
+    &--logo-list {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        height: 20vh;
+        background: $color-primary-dark;
+
+        h2 {
+            position: absolute;
+            top: -67px;
+            left: 0;
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            font-weight: normal;
+            color: rgba($white, 1);
+            background: rgba($color-primary-dark, 0.8);
+            padding: 20px 50px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .carousel {
+            display: none;
+            padding: 20px 40px;
+
+            img {
+                display: block;
+                width: 100%;
+                padding: 0 40px;
+                opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .owl-wrapper-outer {
+                padding-top: 2%;
+            }
+
+            .owl-controls {
+                position: absolute;
+                top: -52px;
+                right: 40px;
+                text-align: center;
+            }
+
+            .owl-pagination {
+
+                .owl-page {
+
+                        span {
+                            background-color: rgba($white, 1);
+                            opacity: 1;
+                        }
+
+                        &.active {
+
+                            span {
+                                background-color: $color-primary-highlight;
+                            }
+
+                        }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    &--vertical-tabs {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        padding: 80px 0 0;
+        background: $color-primary-highlight;
+        height: 100vh;
+
+        header {
+            text-align: center;
+        }
+
+        h2 {
+            color: $white;
+            font-size: 42px;
+            margin: 0 0 60px;
+        }
+
+        .tabs {
+            float: left;
+            width: 30%;
+            padding: 40px 0 0 60px;
+
+            ul {
+                margin: 0 0 40px;
+            }
+
+            .view-all {
+                color: $white;
+                margin-left: 30px;
+            }
+
+            li {
+                margin: 0 0 10px;
+
+                a {
+                    display: block;
+                    padding: 20px 40px 20px 30px;
+                    margin: 0 0 5px;
+                    color: #555;
+                    background: rgba($white, 0.2);
+                    border-radius: 5px 0 0 5px;
+
+                    &:hover {
+
+                        p {
+                            color: rgba($white, 1);
+                        }
+
+                        h3 {
+                            color: rgba($white, 1);
+                        }
+
+                    }
+
+                    &.current {
+
+                        background: $white;
+
+                        p {
+                            color: rgba($black, 0.6);
+                        }
+
+                        h3 {
+                            color: rgba($black, 1);
+                        }
+
+                        &:hover {
+
+                            p {
+                                color: rgba($black, 0.6);
+                            }
+
+                            h3 {
+                                color: rgba($black, 1);
+                            }
+
+                        }
+
+                    }
+
+
+                    h3 {
+                        text-transform: uppercase;
+                        margin: 0 0 5px;
+                        color: rgba($white, 1);
+                        line-height: 1.1;
+                    }
+
+                    p {
+                        margin: 0;
+                        line-height: 1.4;
+                        font-size: 15px;
+                        color: rgba($white, 0.5);
+                        transition: color .2s ease 0s;
+                    }
+                }
+
+            }
+        }
+
+        .tab-content {
+            float: left;
+            width: 70%;
+            padding-left: 0;
+            padding-right: 60px;
+            max-height: 70vh;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    }
+
+    &--code {
+        position: relative;
+        border-bottom: 1px dotted rgba($black, 0.1);
+        // background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
+        //
+        // &:after {
+        //     content: '';
+        //     display: block;
+        //     margin: 0 auto;
+        //     width: 10%;
+        //     height: 1px;
+        //     background-color: rgba($white, 0.4);
+        // }
+
+        .text-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 40%;
+            margin: 0 auto;
+            padding: $grid * 5 0 $grid * 5 60px;
+
+            h2 {
+                margin-bottom: 40px;
+            }
+        }
+
+        pre {
+            font-family: $font-primary;
+            width: 60%;
+            font-size: 15px;
+            text-align: left;
+            border-top: 20px solid $color-primary-highlight;
+            margin: 0 0 $grid * 2;
+        }
+
+
+    }
+
+    &--horizontal-tabs {
+        background-color: transparent;
+        overflow: hidden;
+        padding: $grid * 4 0 0;
+        margin: 0;
+
+        h2 {
+            text-align: center;
+            font-size: 42px;
+            margin: 0 0 $grid * 2;
+        }
+
+        .tabs {
+            margin: 0 40px 0 60px;
+            z-index: 3;
+            position: relative;
+            text-align: center;
+
+            li {
+                display: inline-block;
+
+                a {
+                    display: block;
+                    text-transform: uppercase;
+                    text-align: center;
+                    font-size: 21px;
+                    font-weight: bold;
+                    padding: 0 0 5px;
+                    margin: 0 20px 40px;
+                    border-bottom: 2px solid rgba($color-secondary-highlight, 0.5);
+                    //text-shadow: 1px 1px 1px rgba($black, 0.2);
+                    color: $color-secondary-highlight;
+                    transition: color .2s ease 0s,
+                                border .2s ease 0s;
+
+                    &:hover {
+                        border-bottom: 5px solid rgba($color-secondary-highlight, 0.5);
+                    }
+
+                    &.current {
+                        border-bottom: 5px solid rgba($color-secondary-highlight, 1);
+                        text-shadow: 1px 1px 1px rgba($white, 0.2);
+                        color: $black;
+                    }
+                }
+
+            }
+
+        }
+
+        .tab-content {
+
+            .text-container {
+                padding: 0 60px;
+                margin: 0 auto 40px;
+                max-width: 960px;
+                text-align: center;
+                font-size: 21px;
+                text-shadow: 1px 1px 1px rgba($white, 0.2);
+
+                h3 {
+                    font-size: 32px;
+                    //text-align: center;
+
+                    span {
+                        color: #000;
+                        margin: 0 10px 0 0;
+                    }
+                }
+
+            }
+
+            .image-container {
+                margin: 0 60px;
+                overflow: hidden;
+                max-height: 400px;
+
+                img {
+                    display: block;
+                    width: 80%;
+                    height: auto;
+                    margin: 0 auto;
+                }
+
+            }
+
+        }
+
+    }
+
+    &--showcase {
+        overflow: hidden;
+        padding: $grid * 4 0;
+        text-align: center;
+        border-bottom: 1px dotted rgba($black, 0.1);
+
+        header {
+            margin: 0 0 $grid * 3;
+            font-size: 21px;
+
+            p {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+        }
+
+        .showcase {
+            display: flex;
+            flex-direction: row;
+            padding: 0 $grid * 5;
+            margin: 0 0 $grid * 2;
+
+            &--item {
+                flex: 0 0 auto;
+                flex-basis: 33.333%;
+                max-width: 33.333%;
+                padding: 0 $grid * 2;
+                text-align: left;
+                font-size: 16px;
+
+                img {
+                    width: 100%;
+                    margin: 0 0 $grid;
+                }
+
+                a {
+
+                    p {
+                        color: $bodyColor;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    &--two-col {
+        background: $color-primary-highlight;
+        display: flex;
+        flex-direction: row;
+
+        section {
+            flex: 0 0 auto;
+            flex-basis: 50%;
+            max-width: 50%;
+            padding: $grid * 3;
+            border-right: 1px solid $color-primary-bg;
+
+            &:last-child  {
+                border: 0;
+            }
+
+        }
+    }
+
+    &--latest {
+        padding: 60px $grid * 4;
+
+        h2 {
+            text-align: center;
+            margin: 0 0 40px;
+        }
+
+        .view-all {
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            margin: 0 0 $grid * 2;
+        }
+
+        article {
+            flex: 0 0 auto;
+            flex-basis: 33.3333%;
+            max-width: 33.3333%;
+            padding: 0 $grid;
+
+            a {
+                border-radius: 5px;
+                overflow: hidden;
+                display: block;
+
+                &:hover {
+
+                    h3 {
+                        color: $color-primary-highlight;
+                    }
+
+                    .text-container {
+                        background: linear-gradient(to bottom, rgba($black, 0) 0%,rgba($black, 1) 50%,rgba($black, 1) 100%);
+                    }
+
+                }
+
+            }
+
+            .image-container {
+                height: 500px;
+                position: relative;
+                background-size: cover;
+            }
+
+            .text-container {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: $grid * 4 $grid * 2 $grid * 2;
+                background-color: rgba($color-primary-dark, 0.9);
+                background: linear-gradient(to bottom, rgba($color-primary-dark, 0) 0%,rgba($color-primary-dark, 1) 50%,rgba($color-primary-dark, 1) 100%);
+                color: $white;
+                transition: background .2s ease 0s;
+
+                h3 {
+                    color: $color-secondary-highlight;
+                    margin: 0;
+                }
+
+                p {
+                    margin: 0;
+
+                    &.date {
+                        text-transform: uppercase;
+                        font-size: 15px;
+                        color: rgba($white, 0.85);
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    &--stats {
+        color: $white;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            flex: 0 0 auto;
+            flex-basis: 50%;
+            max-width: 50%;
+            list-style-type: none;
+
+        }
+
+        em {
+            font-size: 1.2em;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+    }
+
+    &--hire {
+
+        p {
+            color: rgba($white, 0.8);
+        }
+
+        a {
+            color: $white;
+
+            &:hover {
+                color: $black;
+            }
+
+        }
+    }
+
+    &--contours {
+        background-image: url('../img/contours.png');
+        background-repeat: repeat;
+        background-size: 400px 400px;
+    }
+
+
+}
