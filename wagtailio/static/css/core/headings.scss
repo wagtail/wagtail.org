@@ -2,6 +2,7 @@
 h1, h2, h3, h4, h5, h6 {
     @include font-smoothing();
     color: $headingColor;
+    transition: color .2s ease 0s;
 
     span {
         font-weight: normal;
@@ -39,4 +40,18 @@ h4 {
         color: $white;
     }
 
+}
+
+a {
+    h1, h2, h3, h4, h5, h6 {
+        color: $color-secondary-highlight;
+    }
+
+    &:hover {
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $black;
+        }
+
+    }
 }
