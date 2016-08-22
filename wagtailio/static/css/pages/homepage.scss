@@ -521,14 +521,13 @@ $background-color: #f4f1ea;
             flex: 0 0 auto;
             flex-basis: 50%;
             max-width: 50%;
-            text-align: center;
             padding: $grid * 3;
             border-right: 1px solid $color-primary-bg;
 
             &:last-child  {
                 border: 0;
             }
-            
+
         }
     }
 
@@ -610,6 +609,50 @@ $background-color: #f4f1ea;
             }
         }
 
+    }
+
+    &--stats {
+        color: $white;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            flex: 0 0 auto;
+            flex-basis: 50%;
+            max-width: 50%;
+            list-style-type: none;
+
+        }
+
+        em {
+            font-size: 1.2em;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+    }
+
+    &--hire {
+
+        p {
+            color: rgba($white, 0.8);
+        }
+
+        a {
+            color: $white;
+
+            &:hover {
+                color: $black;
+            }
+
+        }
     }
 
 
