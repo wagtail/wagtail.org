@@ -8,7 +8,7 @@
 
     h2 {
         position: absolute;
-        top: -61px;
+        top: -58px;
         left: 0;
         display: inline-block;
         text-align: center;
@@ -17,10 +17,15 @@
         font-weight: normal;
         color: rgba($white, 1);
         background: rgba($color-primary-dark, 0.8);
-        padding: 20px 50px;
+        padding: 20px 0;
         text-transform: uppercase;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: bold;
+
+        @include gridle_state( tablet-landscape ){
+            font-size: 18px;
+            top: -61px;
+        }
 
         @include gridle_state( desktop ){
             text-align: left;

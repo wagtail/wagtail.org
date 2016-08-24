@@ -11,7 +11,6 @@
         background: $color-primary-highlight;
 
         @include gridle_state( tablet-landscape ){
-            height: 100vh;
             padding: $grid * 4 0 0;
         }
 
@@ -122,7 +121,7 @@
                         margin: 0;
                         line-height: 1.4;
                         font-size: 15px;
-                        color: rgba($white, 0.5);
+                        color: rgba($white, 0.8);
                         transition: color .2s ease 0s;
                     }
                 }
@@ -147,7 +146,6 @@
                 width: 60%;
                 padding: 0 $grid * 3 0 0;
                 float: left;
-                max-height: 70vh;
 
                 &:after {
                     display: none;
@@ -184,14 +182,21 @@
             margin: 0 0 $grid * 2;
         }
 
+        h3 {
+            text-align: center;
+            margin-bottom: $grid;
+        }
+
         .tabs {
             margin: 0 40px 20px 60px;
             z-index: 3;
             position: relative;
             text-align: center;
+            display: none;
 
             @include gridle_state( tablet-landscape ){
                 margin-bottom: 0;
+                display: block;
             }
 
             li {
@@ -236,13 +241,38 @@
 
         .tab-content {
 
+            @include gridle_state( up-to-tablet-portrait ){
+                display: block !important;
+            }
+
+            &:after {
+                content: '';
+                height: 1px;
+                width: 20%;
+                background: $borderColorDark;
+                display: block;
+                margin: $grid * 2 auto;
+            }
+
+            @include gridle_state( tablet-landscape ){
+
+                &:after {
+                    display: none;
+                }
+
+            }
+
             .text-container {
                 padding: 0 60px;
                 margin: 0 auto 40px;
                 max-width: 960px;
                 text-align: center;
-                font-size: 21px;
+
                 text-shadow: 1px 1px 1px rgba($white, 0.2);
+
+                @include gridle_state( tablet-landscape ){
+                    font-size: 21px;
+                }
 
                 h3 {
                     font-size: 32px;
@@ -260,6 +290,11 @@
                 margin: 0 60px;
                 overflow: hidden;
                 max-height: 400px;
+                display: none;
+
+                @include gridle_state( tablet-landscape ){
+                    display: block;
+                }
 
                 img {
                     display: block;

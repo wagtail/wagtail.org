@@ -4,7 +4,7 @@
     background-size: cover;
     overflow: hidden;
     padding-top: $header-height;
-    height: 600px;
+    height: auto;
 
     @include gridle_state( tablet-landscape ){
         height: 700px;
@@ -121,7 +121,7 @@
             font-weight: bold;
             position: relative;
 
-            &:first-child {
+            &:nth-child(2) {
 
                 svg {
                     transform: translateX(0) rotate(-90deg);
