@@ -25,6 +25,7 @@
         @include gridle_state( tablet-landscape ){
             font-size: 18px;
             top: -61px;
+            padding: 20px $grid * 3;
         }
 
         @include gridle_state( desktop ){
