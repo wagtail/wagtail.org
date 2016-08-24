@@ -98,7 +98,7 @@ $(function( ){
         itemsDesktop : [1025,6],
         itemsDesktopSmall : [979,4],
         itemsTablet : [768,4],
-        itemsMobile : [481,3]
+        itemsMobile : [481,2]
     });
 
 
