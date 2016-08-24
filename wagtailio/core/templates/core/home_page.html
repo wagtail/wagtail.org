@@ -11,25 +11,24 @@
 
 <section class="hero" style="background-image:url('../static/img/hero_bg_3.jpg')">
 
-    <div class="text-container js-fade">
-        <h2>Open source content management with secret sauce</h2>
-        <p>The open source Django content management system</p>
+    <div class="text-container">
+        <h2 class="js-fade">Open source content management with secret source</h2>
+        <p class="js-fade">The open source Django content management system</p>
+
+        <div class="actions">
+            <a href="#">
+                <span>Get</span> Wagtail
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+            </a>
+            <a href="#features">
+                <span>View the</span> features
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+            </a>
+        </div> <!-- /actions -->
+
     </div> <!-- /text-container -->
 
-    <div class="screenshot">
-        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
-    </div> <!-- /screenshot -->
-
-    <div class="actions">
-        <a href="#">
-            <span>Get</span> Wagtail
-            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-        </a>
-        <a href="#features">
-            <span>View the</span> features
-            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-        </a>
-    </div> <!-- /actions -->
+    <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" class="screenshot"/>
 
 </section> <!-- /hero -->
 
@@ -104,26 +103,52 @@
 
     <div class="tab-content-container">
         <div id="feature-tab-1" class="tab-content current">
+            <div class="mobile-only">
+                <h3>Streamfield</h3>
+                <p>Create breathtaking, immersive content all from a simple to use editor.</p>
+            </div>
             <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
         </div>
         <div id="feature-tab-2" class="tab-content">
+            <div class="mobile-only">
+                <h3>Templating</h3>
+                <p>Make your content future-proof by separating presentation and logic to give you maximum flexibility.</p>
+            </div>
             <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
         <div id="feature-tab-3" class="tab-content">
+            <div class="mobile-only">
+                <h3>Ease of use</h3>
+                <p>Never train an editor again, Wagtail’s UI just doesn’t need explaining.</p>
+            </div>
             <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
         </div>
         <div id="feature-tab-4" class="tab-content">
+            <div class="mobile-only">
+                <h3>Intelligent images</h3>
+                <p>Facial recognition and helpful image cropping through Wagtail ensures your images always look amazing.</p>
+            </div>
             <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
         <div id="feature-tab-5" class="tab-content">
+            <div class="mobile-only">
+                <h3>Community-built plugins</h3>
+                <p>Benefit from community built extensions of Wagtail. Or build one simply yourself.</p>
+            </div>
             <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
     </div> <!-- /tab-content-container -->
 
+    <div class="mobile-only">
+        <a href="#" class="btn btn--outline btn--transparent view-all view-all--light">
+            Browse all Wagtail's features
+            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+        </a>
+    </div>
+
 </section> <!-- /features -->
 
-<section class="testimonial" style="background-image: url(../static/img/hero_bg_2.jpg);">
-    <!-- original https://sylva.org.uk/myforest/images/heroes/owners.jpg -->
+<section class="testimonial pane--contours">
 
     <blockquote class="fade">
         <p>
@@ -142,7 +167,15 @@
 
         <h2 class="heading--light">Try Wagtail <span>in just 7 lines</span></h2>
 
-        <pre>
+        <div class="pre-container">
+
+            <div class="app-header">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <pre>
 pip install wagtail
 wagtail start mysite
 cd mysite
@@ -150,7 +183,9 @@ pip install -r requirements.txt
 python manage.py migrate
 python mange.py createsuperuser
 python manage.py runserver
-        </pre>
+            </pre>
+
+        </div> <!-- /pre-container -->
 
         <a href="#" class="btn btn--outline btn--outline--light btn--transparent view-all view-all--light">
             Jump into our 10 minute installation guide to get started
@@ -227,8 +262,7 @@ python manage.py runserver
 
 </section> <!-- /pane--horizontal-tabs -->
 
-<section class="testimonial" style="background-image: url(../static/img/hero_bg_1.jpg);">
-    <!-- /original image: http://images.123hdwallpapers.com/20150827/british-columbia-canada-calm-forest-lake-landscape-reflection-1600x1000.jpg -->
+<section class="testimonial pane--contours">
 
     <blockquote>
         <p>
@@ -286,15 +320,51 @@ python manage.py runserver
             </div>
         </div> <!-- /showcase--item -->
 
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_rca.png" alt="Royal College of Art" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>Royal College of Art</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_jaspercanada.png" alt="Royal College of Art" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>Jasper, Canada</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
+        <div class="showcase--item">
+            <div class="image-container">
+                <img src="../static//img/casestudy_blackstonechambers.png" alt="Blackstone Chambers" />
+            </div>
+            <div class="text-container">
+                <a href="#">
+                    <h3>Blackstone Chambers</h3>
+                    <p>The Royal College of Art website needs to be innovative, creative and functional. We asked Torchbox to design a new CMS. Wagtail is the result, and it's a perfect fit.</p>
+                </a>
+            </div>
+        </div> <!-- /showcase--item -->
+
     </div> <!-- /carousel -->
 
-    <a href="#" class="view-all btn btn--outline btn--transparent btn--dark">See more examples of what Wagtail can do at madewithwagtail.org <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></a>
+    <a href="#" class="view-all btn btn--outline btn--outline--light btn--opaque btn--dark">See more examples of what Wagtail can do at madewithwagtail.org <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></a>
 
 </section> <!-- /case-studies -->
 
 <section class="pane--latest">
 
-    <h2>Latest <span>from the blog</span></h2>
+    <h2>Latest from the blog</h2>
 
     <div class="row">
 

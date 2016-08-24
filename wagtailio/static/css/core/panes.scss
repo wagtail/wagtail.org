@@ -3,90 +3,17 @@
 
 .pane {
 
-    // List of logos
-    &--logo-list {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        color: #fff;
-        height: 20vh;
-        background: $color-primary-dark;
-
-        h2 {
-            position: absolute;
-            top: -67px;
-            left: 0;
-            display: inline-block;
-            text-align: left;
-            width: 100%;
-            margin: 0 auto;
-            font-weight: normal;
-            color: rgba($white, 1);
-            background: rgba($color-primary-dark, 0.8);
-            padding: 20px 50px;
-            text-transform: uppercase;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .carousel {
-            display: none;
-            padding: 20px 40px;
-
-            img {
-                display: block;
-                width: 100%;
-                padding: 0 40px;
-                opacity: 0.8;
-
-                &:hover {
-                    opacity: 1;
-                }
-            }
-
-            .owl-wrapper-outer {
-                padding-top: 2%;
-            }
-
-            .owl-controls {
-                position: absolute;
-                top: -52px;
-                right: 60px;
-                text-align: center;
-            }
-
-            .owl-pagination {
-
-                .owl-page {
-
-                        span {
-                            background-color: rgba($white, 1);
-                            opacity: 1;
-                        }
-
-                        &.active {
-
-                            span {
-                                background-color: $color-primary-highlight;
-                            }
-
-                        }
-
-                }
-
-            }
-
-        }
-
-    }
-
     &--vertical-tabs {
         position: relative;
         z-index: 2;
         overflow: hidden;
-        padding: 80px 0 0;
+        padding: $grid * 4 0 $grid * 4;
         background: $color-primary-highlight;
-        height: 100vh;
+
+        @include gridle_state( tablet-landscape ){
+            height: 100vh;
+            padding: $grid * 4 0 0;
+        }
 
         header {
             text-align: center;
@@ -98,10 +25,32 @@
             margin: 0 0 60px;
         }
 
+        .mobile-only {
+            text-align: center;
+
+            h3 {
+                color: $white;
+            }
+
+            p {
+                color: rgba($white, 0.8);
+            }
+        }
+
         .tabs {
+            display: none;
             float: left;
             width: 30%;
             padding: 40px 0 0 60px;
+
+            @include gridle_state( tablet-landscape ){
+                display: block;
+                width: 40%;
+            }
+
+            @include gridle_state( desktop ){
+                width: 30%;
+            }
 
             ul {
                 margin: 0 0 40px;
@@ -182,59 +131,44 @@
         }
 
         .tab-content {
-            float: left;
-            width: 70%;
-            padding-left: 0;
-            padding-right: 60px;
-            max-height: 70vh;
+            width: 100%;
+            padding: 0 $grid * 2 $grid;
+
+            &:after {
+                content: '';
+                height: 1px;
+                width: 20%;
+                background: $borderColorLight;
+                display: block;
+                margin: $grid * 2 auto;
+            }
+
+            @include gridle_state( tablet-landscape ){
+                width: 60%;
+                padding: 0 $grid * 3 0 0;
+                float: left;
+                max-height: 70vh;
+
+                &:after {
+                    display: none;
+                }
+
+            }
+
+            @include gridle_state( desktop ){
+                width: 70%;
+            }
+
+            @include gridle_state( up-to-tablet-portrait ){
+                display: block !important;
+            }
+
 
             img {
                 width: 100%;
                 height: auto;
             }
         }
-
-    }
-
-    &--code {
-        position: relative;
-        border-bottom: 1px dotted rgba($black, 0.1);
-        background: $color-primary-dark;
-        // background: radial-gradient(ellipse at center, rgba(8,147,147,1) 0%,rgba(67,177,176,1) 100%);
-        //
-        // &:after {
-        //     content: '';
-        //     display: block;
-        //     margin: 0 auto;
-        //     width: 10%;
-        //     height: 1px;
-        //     background-color: rgba($white, 0.4);
-        // }
-
-        .text-container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            width: 40%;
-            margin: 0 auto;
-            padding: $grid * 5 0 $grid * 5 60px;
-
-            h2 {
-                margin-bottom: 40px;
-            }
-        }
-
-        pre {
-            font-family: $font-primary;
-            width: 60%;
-            font-size: 15px;
-            text-align: left;
-            border-top: 20px solid $color-primary-highlight;
-            margin: 0 0 $grid * 2;
-            background-color: $black;
-            box-shadow: 0 0 20px rgba($white, 0.1);
-        }
-
 
     }
 
@@ -251,13 +185,21 @@
         }
 
         .tabs {
-            margin: 0 40px 0 60px;
+            margin: 0 40px 20px 60px;
             z-index: 3;
             position: relative;
             text-align: center;
 
+            @include gridle_state( tablet-landscape ){
+                margin-bottom: 0;
+            }
+
             li {
-                display: inline-block;
+                display: block;
+
+                @include gridle_state( tablet-landscape ){
+                    display: inline-block;
+                }
 
                 a {
                     display: block;
@@ -266,12 +208,16 @@
                     font-size: 21px;
                     font-weight: bold;
                     padding: 0 0 5px;
-                    margin: 0 20px 40px;
+                    margin: 0 20px 5px;
                     border-bottom: 2px solid rgba($color-secondary-highlight, 0.5);
                     //text-shadow: 1px 1px 1px rgba($black, 0.2);
                     color: $color-secondary-highlight;
                     transition: color .2s ease 0s,
                                 border .2s ease 0s;
+
+                    @include gridle_state( tablet-landscape ){
+                        margin: 0 20px 40px;
+                    }
 
                     &:hover {
                         border-bottom: 5px solid rgba($color-secondary-highlight, 0.5);
@@ -328,160 +274,6 @@
 
     }
 
-    &--showcase {
-        overflow: hidden;
-        padding: $grid * 4 0;
-        text-align: center;
-        border-bottom: 1px dotted rgba($black, 0.1);
-
-        header {
-            margin: 0 0 $grid * 3;
-            font-size: 21px;
-
-            p {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-
-        }
-
-        .showcase {
-            display: flex;
-            flex-direction: row;
-            padding: 0 $grid * 5;
-            margin: 0 0 $grid * 2;
-
-            &--item {
-                flex: 0 0 auto;
-                flex-basis: 33.333%;
-                max-width: 33.333%;
-                padding: 0 $grid * 2;
-                font-size: 16px;
-
-                img {
-                    width: 100%;
-                    margin: 0 0 $grid;
-                    box-shadow: 0 -5px 10px rgba($black, 0.4);
-                }
-
-                a {
-
-                    h3 {
-                        color: $black;
-                    }
-
-                    p {
-                        color: $bodyColor;
-                    }
-
-                }
-
-            }
-
-        }
-
-    }
-
-    &--two-col {
-        background: $color-primary-highlight;
-        display: flex;
-        flex-direction: row;
-
-        section {
-            flex: 0 0 auto;
-            flex-basis: 50%;
-            max-width: 50%;
-            padding: $grid * 3;
-            border-right: 1px solid $color-primary-bg;
-
-            &:last-child  {
-                border: 0;
-            }
-
-        }
-    }
-
-    &--latest {
-        padding: 60px $grid * 4;
-        
-        h2 {
-            text-align: center;
-            margin: 0 0 40px;
-        }
-
-        .view-all {
-            text-align: center;
-        }
-
-        .row {
-            display: flex;
-            flex-direction: row;
-            margin: 0 0 $grid * 2;
-        }
-
-        article {
-            flex: 0 0 auto;
-            flex-basis: 25%;
-            max-width: 25%;
-            padding: 0 $grid;
-
-            a {
-                border-radius: 5px;
-                overflow: hidden;
-                display: block;
-
-                &:hover {
-
-                    h3 {
-                        color: $color-primary-highlight;
-                    }
-
-                    .text-container {
-                        background: linear-gradient(to bottom, rgba($black, 0) 0%,rgba($black, 1) 50%,rgba($black, 1) 100%);
-                    }
-
-                }
-
-            }
-
-            .image-container {
-                height: 400px;
-                position: relative;
-                background-size: cover;
-            }
-
-            .text-container {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: $grid * 4 $grid * 2 $grid * 2;
-                background-color: rgba($color-primary-dark, 0.9);
-                background: linear-gradient(to bottom, rgba($color-primary-dark, 0) 0%,rgba($color-primary-dark, 1) 50%,rgba($color-primary-dark, 1) 100%);
-                color: $white;
-                transition: background .2s ease 0s;
-
-                h3 {
-                    color: $color-secondary-highlight;
-                    margin: 0;
-                    line-height: 1.2;
-                }
-
-                p {
-                    margin: 0;
-
-                    &.date {
-                        text-transform: uppercase;
-                        font-size: 15px;
-                        color: rgba($white, 0.85);
-                    }
-
-                }
-            }
-        }
-
-    }
-
     &--stats {
         color: $white;
 
@@ -530,6 +322,33 @@
         background-image: url('../img/contours.png');
         background-repeat: repeat;
         background-size: 400px 400px;
+    }
+
+    &--two-col {
+        background: $color-primary-highlight;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        section {
+            flex: 0 0 auto;
+            flex-basis: 100%;
+            max-width: 100%;
+            padding: $grid * 3;
+            border-bottom: 1px solid $color-primary-bg;
+
+            @include gridle_state( desktop ){
+                border-bottom: 0;
+                border-right: 1px solid $color-primary-bg;
+                flex-basis: 50%;
+                max-width: 50%;
+            }
+
+            &:last-child  {
+                border: 0;
+            }
+
+        }
     }
 
 

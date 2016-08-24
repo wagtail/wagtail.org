@@ -5,22 +5,27 @@
     padding: 0;
     overflow: hidden;
     text-align: center;
-    background-color: #333;
+    background-color: $color-secondary-highlight;
     background-size: cover;
     color: #fff;
-    min-height: 400px;
+    min-height: 600px;
+
+    @include gridle_state( tablet-landscape ){
+        min-height: 400px;
+    }
 
     span {
-        color: $color-secondary-highlight;
+        color: $black;
+        font-size: 1.2em;
     }
 
     blockquote {
         position: absolute;
-        top: $grid * 4;
-        bottom: $grid * 4;
-        left: $grid * 4;
-        right: $grid * 4;
-        background: rgba($black, 0.6);
+        top: $grid * 2;
+        bottom: $grid * 2;
+        left: $grid * 2;
+        right: $grid * 2;
+        background: rgba($white, 0.2);
         padding: $grid * 2;
         font-size: 28px;
         margin: 0;
@@ -29,6 +34,14 @@
         flex-direction: column;
         justify-content: center; /* align horizontal */
         align-items: center; /* align vertical */
+        font-family: $font-secondary;
+
+        @include gridle_state( tablet-landscape ){
+            top: $grid * 4;
+            bottom: $grid * 4;
+            left: $grid * 4;
+            right: $grid * 4;
+        }
 
         p {
             max-width: 800px;
@@ -36,6 +49,7 @@
         }
 
         cite {
+            font-family: $font-primary;
             margin-top: 10px;
             font-size: 16px;
             display: block;
