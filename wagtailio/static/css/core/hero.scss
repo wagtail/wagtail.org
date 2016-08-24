@@ -2,9 +2,17 @@
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
     overflow: hidden;
     padding-top: $header-height;
+    height: 600px;
+
+    @include gridle_state( tablet-landscape ){
+        height: 700px;
+    }
+
+    @include gridle_state( desktop ){
+        height: 900px;
+    }
 
     &:after {
         content: '';
@@ -18,11 +26,25 @@
         border-color: transparent transparent rgba($color-primary-highlight, 0.85) transparent;
         opacity: 1;
         z-index: 0;
+        display: none;
+
+        @include gridle_state( tablet-landscape ){
+            display: block;
+        }
     }
 
     .text-container {
-        width: 40%;
-        padding: 60px 0 0 60px;
+        width: 100%;
+        padding: $grid * 2 $grid * 2;
+
+        @include gridle_state( tablet-landscape ){
+            width: 50%;
+            padding: $grid * 2 0 0 $grid * 3;
+        }
+
+        @include gridle_state( desktop ){
+            width: 40%;
+        }
 
         h2 {
             font-size: 16px;
@@ -31,7 +53,7 @@
             color: #222;
             color: $color-secondary-highlight;
 
-            @include gridle_state( desktop-wide ){
+            @include gridle_state( tablet-landscape ){
                 margin-top: $grid;
                 font-size: 18px;
             }
@@ -54,24 +76,36 @@
 
     .screenshot {
         position: absolute;
+        display: none;
         z-index: 1;
-        bottom: 0;
+        top: $grid * 10;
         right: 60px;
         width: 50%;
-        height: 80%;
+        height: auto;
 
-        img {
+        @include gridle_state( tablet-landscape ){
             display: block;
-            width: 100%;
-            height: auto;
+            width: 40%;
+        }
+
+        @include gridle_state( desktop ){
+            width: 50%;
+            top: $grid * 7;
         }
 
     }
 
     .actions {
-        position: absolute;
-        bottom: 20%;
-        padding-left: 60px;
+        position: relative;
+        z-index: 2;
+        padding-left: 0;
+        margin-bottom: $grid * 7;
+        overflow: hidden;
+
+        @include gridle_state( tablet-landscape ){
+            padding-left: 0;
+            margin-bottom: 0;
+        }
 
         a {
             cursor: pointer;

@@ -12,9 +12,9 @@
         border-radius: 3px;
 
         &--light {
-            border-color: $borderColorLight;
+            border-color: $white;
         }
-        
+
     }
 
     &--transparent {
@@ -22,6 +22,14 @@
 
         &:hover {
             background: rgba($black, 0.1);
+        }
+    }
+
+    &--opaque {
+        background: rgba($white, 0.6);
+
+        &:hover {
+            background: rgba($white, 1);
         }
     }
 

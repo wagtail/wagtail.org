@@ -3,6 +3,7 @@ h1, h2, h3, h4, h5, h6 {
     @include font-smoothing();
     color: $headingColor;
     transition: color .2s ease 0s;
+    line-height: 1.2;
 
     span {
         font-weight: normal;
@@ -13,7 +14,9 @@ h1 {
     font-size: 56px;
     margin: 0 0 $inline-spacing-bottom;
     line-height: 1.2;
-    @include gridle_state( tablet-portrait mobile ){ font-size: 27px; }
+    @include gridle_state( tablet-portrait ){ 
+        font-size: 27px;
+    }
 }
 
 h2 {

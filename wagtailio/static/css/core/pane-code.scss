@@ -1,0 +1,63 @@
+.pane--code {
+    position: relative;
+    border-bottom: 1px dotted rgba($black, 0.1);
+    background: $color-primary-dark;
+    padding: $grid * 2;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        right: -300px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 700px 1200px;
+        border-color: transparent transparent rgba($color-primary-bg, 0.05) transparent;
+        opacity: 1;
+        z-index: 0;
+        display: none;
+
+        @include gridle_state( tablet-landscape ){
+            display: block;
+        }
+    }
+
+    @include gridle_state( desktop ){
+        padding: $grid * 5 0 $grid * 5 $grid * 3;
+    }
+
+    .text-container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+
+        @include gridle_state( desktop ){
+            width: 60%;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+        }
+    }
+
+    .pre-container {
+        width: 80%;
+        text-align: left;
+        margin: 0 auto $grid * 2;
+
+        @include gridle_state( desktop ){
+            width: 60%;
+        }
+    }
+
+    pre {
+        font-size: 15px;
+        width: 100%;
+        background-color: $black;
+        box-shadow: 0 0 20px rgba($white, 0.1);
+    }
+
+}

@@ -43,6 +43,41 @@ pre {
     text-indent: 0;
     border-radius: 5px;
     display: inline-block;
+    font-family: monospace, courier, times, serif;
+ }
+
+ .pre-container {
+     position: relative;
+ }
+
+ .app-header {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     display: block;
+     background: #383838;
+     height: 20px;
+     border-radius: 5px 5px 0 0;
+
+     span {
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         background-color: $color-secondary-highlight;
+         margin: 5px 5px 0 0;
+         display: inline-block;
+         float: left;
+
+         &:first-of-type {
+             margin-left: 10px;
+             background-color: $color-primary-highlight;
+         }
+     }
+ }
+
+ iframe {
+     max-width: 100%;
  }
 
 
@@ -83,4 +118,14 @@ Other global items
 
     }
 
+}
+
+
+
+.mobile-only {
+    display: block;
+
+    @include gridle_state( tablet-landscape ){
+        display: none;
+    }
 }

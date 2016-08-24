@@ -96,7 +96,8 @@ $(function( ){
         transitionStyle : "fade",
         items : 8,
         itemsDesktop : [1025,6],
-        itemsDesktopSmall : [769,3],
+        itemsDesktopSmall : [979,4],
+        itemsTablet : [768,4],
         itemsMobile : [481,3]
     });
 
