@@ -20,7 +20,7 @@
     }
 
     .pre-container {
-        width: 70%;
+        width: 90%;
         text-align: left;
         margin: 0 auto;
 
@@ -30,16 +30,26 @@
     }
 
     pre {
-        font-size: 15px;
+        font-size: 16px;
         width: 100%;
         background-color: $black;
         box-shadow: 0 0 20px rgba($white, 0.1);
+        border-radius:  0 0 5px 5px;
+
+        @include gridle_state( desktop ){
+            font-size: 21px;
+        }
     }
 
     .actions {
         position: absolute;
         bottom: 0;
-        right: 20%;
+        right: $grid;
+        margin: 0;
+
+        @include gridle_state( desktop ){
+            right: 20%;
+        }
 
         svg {
             transform: translateX(0) rotate(-90deg);

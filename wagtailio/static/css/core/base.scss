@@ -38,10 +38,9 @@ img {
 pre {
     font-family: monospace;
     background: $color-primary-dark;
-    padding: $grid;
+    padding: $grid * 2 $grid * 2 $grid * 3;
     color: $white;
     text-indent: 0;
-    border-radius: 5px;
     display: inline-block;
     font-family: monospace, courier, times, serif;
  }
