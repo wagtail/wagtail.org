@@ -251,7 +251,8 @@ $(function( ){
         }, function(response){});
     });
 
-    // Facebook codewindow.fbAsyncInit = function() {
+    // Facebook code
+    window.fbAsyncInit = function() {
         FB.init({
             appId: {{ FB_APP_ID }},
             xfbml: true,

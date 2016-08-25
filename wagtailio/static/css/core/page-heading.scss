@@ -5,13 +5,13 @@
     @include gridle_state( tablet-landscape ){
         padding: $grid * 2 $grid * 3;
     }
+}
 
-    .introduction {
-        font-size: 21px;
-        max-width: 1000px;
+.introduction {
+    font-size: 21px;
+    max-width: 1000px;
 
-        @include gridle_state( tablet-landscape ){
-            font-size: 24px;
-        }
+    @include gridle_state( tablet-landscape ){
+        font-size: 24px;
     }
 }
