@@ -11,12 +11,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 56px;
+    color: $headingColor;
+    font-size: 27px;
     margin: 0 0 $inline-spacing-bottom;
     line-height: 1.2;
-    @include gridle_state( tablet-portrait ){ 
-        font-size: 27px;
+
+    @include gridle_state( tablet-portrait ){
+        font-size: 56px;
     }
+
 }
 
 h2 {

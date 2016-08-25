@@ -3,11 +3,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    padding-top: $header-height;
+    padding-top: $headerHeightMobile;
     height: auto;
 
     @include gridle_state( tablet-landscape ){
         height: 700px;
+        padding-top: $headerHeight;
     }
 
     @include gridle_state( desktop ){

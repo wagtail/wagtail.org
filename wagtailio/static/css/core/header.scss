@@ -75,25 +75,21 @@ header.global {
     // @include transition( all $anim_speed-fast linear );
 
     // Branding
-    #branding {
+    .branding {
 
         display: inline-block;
         @include gridle( 1 );
         margin-top: 10px;
 
         img {
-            width: 110px;
+            width: 70px;
         }
 
         @include gridle_state( tablet-landscape ){
             margin-top: 13px;
+            
             img {
                 width: 90px;
-            }
-        }
-        @include gridle_state( tablet-portrait mobile ){
-            img {
-                width: 70px;
             }
         }
 

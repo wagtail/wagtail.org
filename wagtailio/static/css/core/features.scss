@@ -1,0 +1,62 @@
+.other-features {
+    background-color: $backgroundColor;
+    padding: 0 $grid * 3;
+    position: relative;
+
+    h2 {
+        position: absolute;
+        z-index: 2;
+        top: -58px;
+        left: 0;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        font-weight: normal;
+        color: rgba($white, 1);
+        padding: 20px 0;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+
+        @include gridle_state( tablet-landscape ){
+            font-size: 18px;
+            top: -61px;
+            padding: 20px $grid * 3;
+        }
+
+        @include gridle_state( desktop ){
+            text-align: left;
+        }
+
+    }
+
+    h3 {
+        text-transform: none;
+    }
+
+    .row {
+        margin-left: -$grid;
+        margin-right: -$grid;
+        padding: $grid * 2 0;
+    }
+
+    article {
+        flex: 0 0 auto;
+        flex-basis: 25%;
+        text-align: left;
+        padding: $grid / 2 $grid;
+
+        p {
+            font-size: 16px;
+        }
+
+    }
+}
+
+.template-features {
+
+    .pane--vertical-tabs {
+        height: 1000px;
+    }
+}
