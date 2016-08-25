@@ -1,33 +1,237 @@
 {% extends "content.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-features{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block content %}
-    <div class="container">
 
-        <div class="description">
-            <h1>{{ self.title }}</h1>
-            <p>{{ self.introduction }}</p>
-            <ul class="secondary-nav">
-                {% for option in self.secondary_menu_options.all %}
-                    <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
-                {% endfor %}
-            </ul>
+<nav class="page-nav">
+
+</nav>
+
+<header class="page-heading pane--contours">
+
+    <h1>{{ self.title }}</h1>
+
+    <div class="introduction">
+        <p>{{ self.introduction }}</p>
+    </div> <!-- /introduction -->
+
+</header> <!-- /text-container -->
+
+<section class="pane--vertical-tabs" id="features">
+
+    <nav class="tabs">
+
+        <ul class="js-tabs">
+            {% for feature in self.features %}
+            <li class="feature">
+                <a href="#{{ forloop.counter }}">
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.introduction }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav> <!-- /tabs -->
+
+    <div class="tab-content-container">
+        <div id="feature-tab-1" class="tab-content current">
+            <div class="mobile-only">
+                <h3>Streamfield</h3>
+                <p>Create breathtaking, immersive content all from a simple to use editor.</p>
+            </div>
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
         </div>
-
-        <div class="main-content">
-            <ul class="flex-list features">
-                {% for feature in self.features %}
-                    <li class="feature">{# class="new" unsupported by model #}
-                        <a href="{% pageurl feature %}">
-                            {% image feature.listing_image fill-115x90 %}
-                            <h2>{{ feature.title }}</h2>
-                            <p>{{ feature.introduction }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <div id="feature-tab-2" class="tab-content">
+            <div class="mobile-only">
+                <h3>Templating</h3>
+                <p>Make your content future-proof by separating presentation and logic to give you maximum flexibility.</p>
+            </div>
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
+        <div id="feature-tab-3" class="tab-content">
+            <div class="mobile-only">
+                <h3>Ease of use</h3>
+                <p>Never train an editor again, Wagtail’s UI just doesn’t need explaining.</p>
+            </div>
+            <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+        </div>
+        <div id="feature-tab-4" class="tab-content">
+            <div class="mobile-only">
+                <h3>Intelligent images</h3>
+                <p>Facial recognition and helpful image cropping through Wagtail ensures your images always look amazing.</p>
+            </div>
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div id="feature-tab-5" class="tab-content">
+            <div class="mobile-only">
+                <h3>Community-built plugins</h3>
+                <p>Benefit from community built extensions of Wagtail. Or build one simply yourself.</p>
+            </div>
+            <iframe src="https://player.vimeo.com/video/86036070" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div> <!-- /tab-content-container -->
 
-    </div>
- {% endblock %}
+
+</section> <!-- /features -->
+
+<div class="other-features">
+    <h2>Additional features</h2>
+
+    <div class="row">
+
+        <article>
+            <h3>Preview</h3>
+            <p>Contributors to your site don’t need to publish their content to be able to view what they’ve created. Clicking on preview will generate a representation of the page for them giving the contributor the chance to tweak and change the content before publishing it to the world.</p>
+        </article>
+
+        <article>
+            <h3>Tables</h3>
+            <p>Tables are difficult to use within normal WYSIWYG rich-text editors. In Wagtail you can use a table block within StreamField to allow your users to neatly enter tabulated information in an intuitive, easy-to-use spreadsheet-style interface.</p>
+        </article>
+
+        <article>
+            <h3>Revisions</h3>
+            <p>Whilst revisions are never going to win the prize for most interesting feature they’re pretty essential to any content workflow strategy. This allows content producers, editors and managers the peace of mind that their content is version managed and that they can always go back in time to retrieve the version they need. Wagtail, out of the box, allows you to do this, and will show you the author of the edit, and the time it was saved to help you locate what you need.</p>
+        </article>
+
+        <article>
+            <h3>Image cropping and upload</h3>
+            <p>Wagtail implements smart facial recognition and helpful image cropping to try and ensure your images always look amazing</p>
+            <p>We used the OpenCV library to build feature detection into the image upload process: when you upload an image Wagtail detects features and faces (single or multiple) and stores their coordinates.</p>
+            <p>It then uses this information to intelligently crop images when they’re output, respecting the composition of photos and making sure that their subjects are visible and nicely framed.</p>
+        </article>
+
+        <article>
+            <h3>Custom cropping</h3>
+            <p>You can also optionally override the default, detected focal point and define your own by drawing a marquee over the region of the image you want to make sure Wagtail never crops out.</p>
+        </article>
+
+        <article>
+            <h3>Multiple image upload</h3>
+            <p>When you’re adding images you can now upload multiple images in one go, with a slick user experience and solid workflow.</p>
+            <p>Drag your images into the browser or choose them from your local filesystem; Wagtail displays individual file upload progress for you and when the upload is complete you can then easily add the key metadata for each image from a single screen.</p>
+        </article>
+
+        <article>
+            <h3>Simple, configurable permissions</h3>
+            <p>Out of the box Wagtail allows you to add users to different groups with different permissions. You can control who has permissions over different images, documents or pages all through a straightforward user-interface within the admin area of the site. Since Wagtail is just a Django app developers can augment the complexity around permissions as necessary to the project.</p>
+        </article>
+
+        <article>
+            <h3>Intelligent copy and paste</h3>
+            <p>Wagtail’s RichText field will accept any valid HTML input but without the cruft of inline styles. It means you can copy across linked text, or nested bullets from other sites, email, or documents without having to worry about pesky spans or styling that other systems might have.</p>
+        </article>
+
+        <article>
+            <h3>Fast out of the box</h3>
+            <p>Wagtail is lightweight by design, using resources sparingly. It means that it can run on almost any server and give good performance.</p>
+            <h4>Cache-friendly if you need it</h4>
+            <p>Wagtail will play nicely with almost any cache you care to use. Torchbox, the creators of Wagtail, have used it with Redis, Varnish and Squid in production</p>
+        </article>
+
+        <article>
+            <h3>Elasticsearch</h3>
+            <p>Wagtail uses Elastic for finding content within the admin interface. It provides quick and fluent access to pages, images and documents.</p>
+            <p>We use Elastic because it’s open source, gives great performance and offers a straightforward integration with Wagtail.</p>
+        </article>
+
+        <article>
+            <h3>Easy configuration</h3>
+            <p>Developers can enable searchable fields and define the relevance per model or field.Search results can also be manually promoted using the handy Promoted Search module. If you’re interested in how to implement search for your site you can read our search documentation here.</p>
+        </article>
+
+        <article>
+            <h3>Promoted search</h3>
+            <p>Wagtail also allows you to implement promoted search, to allow editors more control about what to display to end users when they search for content. If you’re interested in implementing the promoted search module for your site you can visit our documentation.</p>
+        </article>
+
+        <article>
+            <h3>Integrate with existing Django apps</h3>
+            <p>Wagtail is, at it’s heart, a Django app, and it’ll play nicely with any other Django app in your tech stack. </p>
+        </article>
+
+        <article>
+            <h3>Workflow support</h3>
+            <p>Content owners and editors can implement refined content workflows for contributions. Authors can submit content for moderation, and editors can apply changes, or return the content to the original author for amendments.</p>
+        </article>
+
+        <article>
+            <h3>Form builder</h3>
+            <p>Using Wagtail’s form module allows you to create a single page form on your site. Submissions from the form are stored for later retrieval through a new ‘Forms’ section within the Wagtail admin interface. You can find out more about the form builder.</p>
+        </article>
+
+        <article>
+            <h3>Multi-site support</h3>
+            <p>Wagtail allows you to run multiple sites via the same admin. It means that, for example, you could run your main website, intranet and satellite sites through the same Wagtail instance allowing you to maintain permission groups across the different sites and a single point where your content producers would need to login.</p>
+        </article>
+
+        <article>
+            <h3>Site settings</h3>
+            <p>With the site settings module you can implement editable site content areas to give editors more control. No longer does the address in the footer, or the link to Instagram need to be hardcoded into the template, but can be editable, where it should be, within the CMS. There’s more information on the site settings module here.</p>
+        </article>
+
+        <article>
+            <h3>Wagtail API</h3>
+            <p>With the Wagtail API module you can receive a read-only JSON-based API of your site’s content.</p>
+        </article>
+
+        <article>
+            <h3>Static site generation</h3>
+            <p>Wagtail will allow you to generate static sites using Django Medusa and Wagtail’s Medusa module. It allows you to easily serve static HTML pages to end-users creating a frighteningly quick site with all the advantages of a content management system. You can read a full guide here.</p>
+        </article>
+
+        <article>
+            <h3>Sitemap</h3>
+            <p>Wagtail supports the creation of sitemaps via our sitemap generator module. This helps Google Search Tools to fully crawl your site and supporting any SEO strategies that you have in place for your site.</p>
+        </article>
+
+        <article>
+            <h3>Expiring caches</h3>
+            <p>Many sites implement caches to improve performance, and reduce server load. The problem is that sometimes this means that updates take time to become visible. Wagtail’s cache invalidator module helps to solve this problem by allowing individual pages to expire the cache when published or deleted, ensuring your content is always up-to-date, whilst still getting all the benefits of a cache.</p>
+        </article>
+
+        <article>
+            <h3>Flexible page URL patterns</h3>
+            <p>With Wagtail’s Routable Page Mixin module you can provide different views of content via different URLs. For example a blog index page could show a date view of the content at /blog/2013/06/, an author’s content view at /blog/authors/bob/, and a tag view at /blog/tagged/python/</p>
+        </article>
+
+        <article>
+            <h3>Excellent test coverage</h3>
+            <p>Wagtail has over 95% test coverage. We’re committed to following a test driven development pattern where all new code contributed to the project must include tests. You can see more details about our test coverage history at https://coveralls.io/github/torchbox/wagtail</p>
+        </article>
+
+        <article>
+            <h3>Community created modules</h3>
+            <p>Want FontAwesome within the admin? Want a different admin layout? A Wordpress to Wagtail importer? A starter site kit? And more… Wagtail has an active community contributing back with solutions to common problems they’ve found. We’re working on a site where they can all be collated but in the meantime you can view the most popular Wagtail modules on Github.</p>
+        </article>
+
+    </div> <!-- /row -->
+
+</div> <!-- /other-features -->
+
+
+
+<!-- <div class="main-content">
+<ul class="flex-list features">
+{% for feature in self.features %}
+<li class="feature">{# class="new" unsupported by model #}
+<a href="{% pageurl feature %}">
+{% image feature.listing_image fill-115x90 %}
+<h2>{{ feature.title }}</h2>
+<p>{{ feature.introduction }}</p>
+</a>
+</li>
+{% endfor %}
+</ul>
+</div> -->
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

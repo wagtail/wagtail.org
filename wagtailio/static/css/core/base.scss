@@ -128,11 +128,18 @@ Other global items
         background: lighten($borderColorDark, 50%);
         display: block;
         margin: $grid * 3 auto;
+        position: relative;
+        z-index: 2;
     }
 
 }
 
-
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+}
 
 .mobile-only {
     display: block;

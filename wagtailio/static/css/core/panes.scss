@@ -267,6 +267,8 @@
         }
 
         .tab-content {
+            position: relative;
+            z-index: 2;
 
             @include gridle_state( up-to-tablet-portrait ){
                 display: block !important;
