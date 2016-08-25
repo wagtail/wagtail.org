@@ -5,9 +5,8 @@
     padding: 0;
     overflow: hidden;
     text-align: center;
-    background-color: $color-secondary-highlight;
     background-size: cover;
-    color: #fff;
+    color: rgba($black, 1);
     min-height: 600px;
 
     @include gridle_state( tablet-landscape ){
@@ -15,8 +14,17 @@
     }
 
     span {
+        color: $color-primary-dark;
+    }
+
+    a {
         color: $black;
-        font-size: 1.2em;
+        transition: color .2s ease 0s;
+
+        &:hover {
+            color: $color-primary-dark;
+        }
+
     }
 
     blockquote {
@@ -25,7 +33,7 @@
         bottom: $grid * 2;
         left: $grid * 2;
         right: $grid * 2;
-        background: rgba($white, 0.2);
+        background: rgba($white, 0.5);
         padding: $grid * 2;
         font-size: 28px;
         margin: 0;
@@ -53,14 +61,15 @@
             margin-top: 10px;
             font-size: 16px;
             display: block;
-            color: rgba(#fff,0.6);
+            color: rgba($white,0.6);
 
             a {
-                background: rgba($color-secondary-highlight, 0.6);
-                color: #fff;
+                background: rgba($color-secondary-highlight, 0.9);
+                color: $white;
                 padding: 5px 10px;
 
                 &:hover {
+                    color: $white;
                     background: darken($color-secondary-highlight, 20%);
                 }
 

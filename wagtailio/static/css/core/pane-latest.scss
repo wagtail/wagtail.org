@@ -1,8 +1,9 @@
 .pane--latest {
-    padding: 60px $grid * 2;
+    padding: 0 $grid * 2 $grid * 3;
+    background: $backgroundColor;
 
     @include gridle_state( tablet-landscape ){
-        padding: 60px $grid * 4;
+        padding: 0 $grid * 4 $grid * 2;
     }
 
     h2 {
@@ -18,7 +19,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin: 0 0 $grid * 2;
+        margin: 0;
     }
 
     article {
@@ -30,13 +31,24 @@
         @include gridle_state( tablet-landscape ){
             flex-basis: 50%;
             max-width: 50%;
-
         }
 
         @include gridle_state( desktop ){
+            flex-basis: 33.333%;
+            max-width: 33.333%;
+
+            &:nth-child(4) {
+                display: none;
+            }
+        }
+
+        @include gridle_state( desktop-super-wide ){
             flex-basis: 25%;
             max-width: 25%;
 
+            &:nth-child(4) {
+                display: block;
+            }
         }
 
         a {

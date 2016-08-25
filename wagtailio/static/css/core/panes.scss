@@ -14,6 +14,19 @@
             padding: $grid * 4 0 0;
         }
 
+        &:before {
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            height: $grid * 3;
+            width: 100%;
+            background: rgba($color-primary-dark, 0.8);
+            display: block;
+        }
+
         header {
             text-align: center;
         }
@@ -173,7 +186,7 @@
     &--horizontal-tabs {
         background-color: transparent;
         overflow: hidden;
-        padding: $grid * 4 0 0;
+        padding: 0 0 0;
         margin: 0;
 
         h2 {
@@ -286,24 +299,24 @@
 
             }
 
-            .image-container {
-                margin: 0 60px;
-                overflow: hidden;
-                max-height: 400px;
-                display: none;
-
-                @include gridle_state( tablet-landscape ){
-                    display: block;
-                }
-
-                img {
-                    display: block;
-                    width: 80%;
-                    height: auto;
-                    margin: 0 auto;
-                }
-
-            }
+            // .image-container {
+            //     margin: 0 60px;
+            //     overflow: hidden;
+            //     max-height: 400px;
+            //     display: none;
+            //
+            //     @include gridle_state( tablet-landscape ){
+            //         display: block;
+            //     }
+            //
+            //     img {
+            //         display: block;
+            //         width: 80%;
+            //         height: auto;
+            //         margin: 0 auto;
+            //     }
+            //
+            // }
 
         }
 
@@ -387,4 +400,10 @@
     }
 
 
+}
+
+.template-homepage {
+    background-image: url('../img/contours.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
 }

@@ -120,6 +120,19 @@ Other global items
 
 }
 
+.border-after {
+
+    &:after {
+        content: '';
+        height: 1px;
+        width: 20%;
+        background: lighten($borderColorDark, 50%);
+        display: block;
+        margin: $grid * 3 auto;
+    }
+
+}
+
 
 
 .mobile-only {
