@@ -2,6 +2,7 @@
     background-color: $backgroundColor;
     padding: 0 $grid * 3;
     position: relative;
+    overflow: hidden;
 
     h2 {
         position: absolute;
@@ -31,24 +32,36 @@
 
     }
 
-    h3 {
-        text-transform: none;
+    header {
+        float: left;
+        width: 20%;
+        padding: $grid * 2 0;
+        border-top: 1px solid $borderColorDark;
+
+        h3 {
+            color: $color-primary-highlight;
+            text-transform: none;
+        }
     }
 
     .row {
+        float: left;
+        width: 80%;
         margin-left: -$grid;
         margin-right: -$grid;
         padding: $grid * 2 0;
+        border-top: 1px solid $borderColorDark;
+
     }
 
     article {
         flex: 0 0 auto;
         flex-basis: 25%;
         text-align: left;
-        padding: $grid / 2 $grid;
+        padding: $grid / 2 $grid * 0.75;
 
         p {
-            font-size: 16px;
+            font-size: 15px;
         }
 
     }
@@ -59,8 +72,13 @@
     .pane--vertical-tabs {
         padding-top: $grid * 2;
 
+        .tabs {
+            width: 25%;
+        }
+
         .tab-content {
             padding-top: $grid * 2;
+            width: 75%;
 
             .content {
                 background-color: $white;

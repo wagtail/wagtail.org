@@ -1,9 +1,19 @@
 .page-heading {
+    position: relative;
     padding: $grid;
     background-color: $backgroundColor;
 
     @include gridle_state( tablet-landscape ){
         padding: $grid * 2 $grid * 3;
+    }
+
+    img {
+        width: auto;
+        height: 200px;
+        position: absolute;
+        z-index: 3;
+        bottom: -10px;
+        right: $grid * 4;
     }
 }
 
