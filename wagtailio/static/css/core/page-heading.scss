@@ -1,10 +1,18 @@
 .page-heading {
     position: relative;
     padding: $grid;
-    background-color: $backgroundColor;
+    background-color: $color-primary-dark;
 
     @include gridle_state( tablet-landscape ){
-        padding: $grid * 2 $grid * 3;
+        padding: $grid * 3 $grid * 3 $grid * 2;
+    }
+
+    h1 {
+        color: $white;
+    }
+
+    .introduction {
+        color: rgba($white, 0.8);
     }
 
     img {
@@ -12,7 +20,7 @@
         height: 200px;
         position: absolute;
         z-index: 3;
-        bottom: -10px;
+        bottom: -23px;
         right: $grid * 4;
     }
 }
