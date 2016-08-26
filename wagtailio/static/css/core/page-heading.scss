@@ -2,9 +2,10 @@
     position: relative;
     padding: $grid;
     background-color: $color-primary-dark;
+    text-align: center;
 
     @include gridle_state( tablet-landscape ){
-        padding: $grid * 3 $grid * 3 $grid * 2;
+        padding: $grid * 3;
     }
 
     h1 {
@@ -13,6 +14,7 @@
 
     .introduction {
         color: rgba($white, 0.8);
+        margin: 0 auto;
     }
 
     img {
@@ -22,6 +24,15 @@
         z-index: 3;
         bottom: -23px;
         right: $grid * 4;
+    }
+
+    .btn {
+        margin: 0 $grid / 2;
+        color: $color-secondary-highlight;
+
+        &:hover {
+            color: $white;
+        }
     }
 }
 

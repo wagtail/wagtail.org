@@ -15,8 +15,14 @@
         <p>{{ self.introduction }}</p>
     </div> <!-- /introduction -->
 
-    <img src="/static/img/wagtail-shadow.png" alt="" />
-
+    <a href="#features" class="view-all view-all--light view-all--internal btn btn--outline btn--outline--light btn--transparent">
+        Primary features
+        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+    </a>
+    <a href="#additional" class="view-all view-all--light view-all--internal btn btn--outline btn--outline--light btn--transparent">
+        Additional features
+        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+    </a>
 
 </header> <!-- /text-container -->
 
@@ -45,7 +51,13 @@
 
             <div class="content">
 
-                <h3>Streamfield</h3>
+                <header>
+                    <h3>Streamfield</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        Streamfield documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -57,11 +69,6 @@
                 <div class="introduction border--after border--left">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
-
-                <a href="#" class="view-all btn btn--outline">
-                    View streamfields documentation
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
 
                 <!-- <p>The go-to solution for creating content is the rich text area. But as we all know, adding more and more content types to rich text areas is often tricky.</p>
                 <p>We wanted something more elegant. No more quirky bugs, compromise solutions and arbitrary blobs of html - in StreamField, we respect the separation of content and design.</p>
@@ -81,7 +88,7 @@
                 <h4>Getting started with StreamField</h4>
                 <p>If you’re interested in StreamField as a developer there are docs here. If you’re a content professional we’ve created specific documentation for you here.</p> -->
 
-                <div class="actions border--before border--left">
+                <div class="actions">
                     <a href="#features">
                         <span>Prev.</span> Form builder
                         <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
