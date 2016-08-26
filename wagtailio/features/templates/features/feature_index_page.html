@@ -66,47 +66,36 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <!-- <p>The go-to solution for creating content is the rich text area. But as we all know, adding more and more content types to rich text areas is often tricky.</p>
-                <p>We wanted something more elegant. No more quirky bugs, compromise solutions and arbitrary blobs of html - in StreamField, we respect the separation of content and design.</p>
-
-                <h4>Modular Blocks</h4>
-
-                <div class="image-container">
-                    <div class="app-header">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <img src="../static/img/screenshot_stream-field.png" alt="Wagtail screenshot" />
-                </div>
-
-                <p>StreamField allows an editor to build a mixed sequence of content types. These serialise to a single JSON field in the database and provide a straightforward way to output content on a template, using HTML representations.</p>
-                <h4>Extensible blocks</h4>
-                <p>Out of the box StreamField arrives with standard blocks relevant to most sites - headers, paragraph, table, image, embeds and documents for example - but with the flexibility to extend them as you need. You’ll also find a number of the community have already developed, and released, allowing you to use Markdown, highlight code snippets by language, or cards.</p>
-                <h4>Getting started with StreamField</h4>
-                <p>If you’re interested in StreamField as a developer there are docs here. If you’re a content professional we’ve created specific documentation for you here.</p> -->
-
-                <div class="actions">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                </div> <!-- /actions -->
-
             </div> <!-- /content -->
+
+            <nav class="tab-nav pane--contours">
+                <a class="btn btn--outline view-all" href="#feature-tab-1">
+                    Form builder
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+                <a class="btn btn--outline view-all" href="#feature-tab-2">
+                    Snippets
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </nav> <!-- /tab-nav -->
+
 
         </div>
         <div id="feature-tab-2" class="tab-content">
 
             <div class="content">
 
-                <h3>Snippets</h3>
+                <header>
+                    <h3>Snippets</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        Snippet documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -115,34 +104,26 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction border--after">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <a href="#" class="view-all btn btn--outline">
-                    View snippet documentation
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
-
-                <div class="actions border--before border--left">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                </div> <!-- /actions -->
-
             </div> <!-- /content -->
+
+
 
         </div>
         <div id="feature-tab-3" class="tab-content">
 
             <div class="content">
 
-                <h3>ElasticSearch</h3>
+                <header>
+                    <h3>ElasticSearch</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        ElasticSearch documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -151,25 +132,20 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction border--after">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <a href="#" class="view-all btn btn--outline">
-                    View snippet documentation
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
-
-                <div class="actions border--before border--left">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
+                <nav class="tab-nav">
+                    <a class="btn btn--outline btn--transparent view-all"href="#features">
+                        Form builder
                         <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                     </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
+                    <a class="btn btn--outline btn--transparent view-all" href="#">
+                        Snippets
                         <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                     </a>
-                </div> <!-- /actions -->
+                </nav> <!-- /tab-nav -->
 
             </div> <!-- /content -->
 
@@ -179,7 +155,13 @@
 
             <div class="content">
 
-                <h3>Explorer</h3>
+                <header>
+                    <h3>Explorer</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        Explorer documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -188,27 +170,22 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction border--after">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <a href="#" class="view-all btn btn--outline">
-                    View snippet documentation
+            </div> <!-- /content -->
+
+            <nav class="tab-nav pane--contours">
+                <a class="btn btn--outline view-all" href="#feature-tab-1">
+                    Form builder
                     <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                 </a>
-
-                <div class="actions border--before border--left">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                </div> <!-- /actions -->
-
-            </div> <!-- /content -->
+                <a class="btn btn--outline view-all" href="#feature-tab-2">
+                    Snippets
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </nav> <!-- /tab-nav -->
 
         </div>
 
@@ -216,7 +193,13 @@
 
             <div class="content">
 
-                <h3>Image cropping</h3>
+                <header>
+                    <h3>Image cropping</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        Image documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -225,35 +208,36 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction border--after">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <a href="#" class="view-all btn btn--outline">
-                    View snippet documentation
+            </div> <!-- /content -->
+
+            <nav class="tab-nav pane--contours">
+                <a class="btn btn--outline view-all" href="#feature-tab-1">
+                    Form builder
                     <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                 </a>
-
-                <div class="actions border--before border--left">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                </div> <!-- /actions -->
-
-            </div> <!-- /content -->
+                <a class="btn btn--outline view-all" href="#feature-tab-2">
+                    Snippets
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </nav> <!-- /tab-nav -->
 
         </div>
 
-        <div id="feature-tab-5" class="tab-content">
+        <div id="feature-tab-6" class="tab-content">
 
             <div class="content">
 
-                <h3>Form building</h3>
+                <header>
+                    <h3>Form Building</h3>
+                    <a href="#" class="view-all btn btn--transparent btn--outline">
+                        Form builder documentation
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </header>
 
                 <div class="video-container">
                     <div class="app-header">
@@ -262,27 +246,22 @@
                     <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
                 </div><!-- /image-container -->
 
-                <div class="introduction border--after border--left">
+                <div class="introduction border--after">
                     <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
                 </div>
 
-                <a href="#" class="view-all btn btn--outline">
-                    View snippet documentation
+            </div> <!-- /content -->
+
+            <nav class="tab-nav pane--contours">
+                <a class="btn btn--outline view-all" href="#feature-tab-1">
+                    Form builder
                     <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                 </a>
-
-                <div class="actions border--before border--left">
-                    <a href="#features">
-                        <span>Prev.</span> Form builder
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                    <a href="#">
-                        <span>Next.</span> Snippets
-                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                </div> <!-- /actions -->
-
-            </div> <!-- /content -->
+                <a class="btn btn--outline view-all" href="#feature-tab-2">
+                    Snippets
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </nav> <!-- /tab-nav -->
 
         </div>
 
@@ -294,182 +273,195 @@
 <div class="other-features" id="additional">
     <h2>Additional features</h2>
 
-    <header>
-        <h3>Editing features</h3>
-    </header>
+    <div class="pane--feature">
 
-    <div class="row">
+        <header>
+            <h3>Editing features</h3>
+        </header>
 
-        <article>
-            <h4>Preview</h4>
-            <p>Contributors to your site don’t need to publish their content to be able to view what they’ve created. Clicking on preview will generate a representation of the page for them giving the contributor the chance to tweak and change the content before publishing it to the world.</p>
-        </article>
+        <div class="row">
 
-        <article>
-            <h4>Tables</h4>
-            <p>Tables are difficult to use within normal WYSIWYG rich-text editors. In Wagtail you can use a table block within StreamField to allow your users to neatly enter tabulated information in an intuitive, easy-to-use spreadsheet-style interface.</p>
-        </article>
+            <article>
+                <h4>Preview</h4>
+                <p>Contributors to your site don’t need to publish their content to be able to view what they’ve created. Clicking on preview will generate a representation of the page for them giving the contributor the chance to tweak and change the content before publishing it to the world.</p>
+            </article>
 
-        <article>
-            <h4>Revisions</h4>
-            <p>Whilst revisions are never going to win the prize for most interesting feature they’re pretty essential to any content workflow strategy. This allows content producers, editors and managers the peace of mind that their content is version managed and that they can always go back in time to retrieve the version they need. Wagtail, out of the box, allows you to do this, and will show you the author of the edit, and the time it was saved to help you locate what you need.</p>
-        </article>
+            <article>
+                <h4>Tables</h4>
+                <p>Tables are difficult to use within normal WYSIWYG rich-text editors. In Wagtail you can use a table block within StreamField to allow your users to neatly enter tabulated information in an intuitive, easy-to-use spreadsheet-style interface.</p>
+            </article>
 
-        <article>
-            <h4>Image cropping and upload</h4>
-            <p>Wagtail implements smart facial recognition and helpful image cropping to try and ensure your images always look amazing</p>
-            <p>We used the OpenCV library to build feature detection into the image upload process: when you upload an image Wagtail detects features and faces (single or multiple) and stores their coordinates.</p>
-            <p>It then uses this information to intelligently crop images when they’re output, respecting the composition of photos and making sure that their subjects are visible and nicely framed.</p>
-        </article>
+            <article>
+                <h4>Revisions</h4>
+                 <p>Whilst revisions are never going to win the prize for most interesting feature they’re pretty essential to any content workflow strategy. This allows content producers, editors and managers the peace of mind that their content is version managed and that they can always go back in time to retrieve the version they need. <!--Wagtail, out of the box, allows you to do this, and will show you the author of the edit, and the time it was saved to help you locate what you need.--></p>
+            </article>
 
-        <article>
-            <h4>Custom cropping</h4>
-            <p>You can also optionally override the default, detected focal point and define your own by drawing a marquee over the region of the image you want to make sure Wagtail never crops out.</p>
-        </article>
+            <article>
+                <h4>Image cropping and upload</h4>
+                <p>Wagtail implements smart facial recognition and helpful image cropping to try and ensure your images always look amazing. We used the OpenCV library to build feature detection into the image upload process: when you upload an image Wagtail detects features and faces (single or multiple) and stores their coordinates.</p>
+                <!-- <p>It then uses this information to intelligently crop images when they’re output, respecting the composition of photos and making sure that their subjects are visible and nicely framed.</p> -->
+            </article>
 
-        <article>
-            <h4>Multiple image upload</h4>
-            <p>When you’re adding images you can now upload multiple images in one go, with a slick user experience and solid workflow.</p>
-            <p>Drag your images into the browser or choose them from your local filesystem; Wagtail displays individual file upload progress for you and when the upload is complete you can then easily add the key metadata for each image from a single screen.</p>
-        </article>
+            <article>
+                <h4>Custom cropping</h4>
+                <p>You can also optionally override the default, detected focal point and define your own by drawing a marquee over the region of the image you want to make sure Wagtail never crops out.</p>
+            </article>
 
-        <article>
-            <h4>Intelligent copy and paste</h4>
-            <p>Wagtail’s RichText field will accept any valid HTML input but without the cruft of inline styles. It means you can copy across linked text, or nested bullets from other sites, email, or documents without having to worry about pesky spans or styling that other systems might have.</p>
-        </article>
+            <article>
+                <h4>Multiple image upload</h4>
+                <p>When you’re adding images you can now upload multiple images in one go, with a slick user experience and solid workflow.</p>
+                <p>Drag your images into the browser or choose them from your local filesystem; Wagtail displays individual file upload progress for you and when the upload is complete you can then easily add the key metadata for each image from a single screen.</p>
+            </article>
 
-        <article>
-            <h4>Form builder</h4>
-            <p>Using Wagtail’s form module allows you to create a single page form on your site. Submissions from the form are stored for later retrieval through a new ‘Forms’ section within the Wagtail admin interface. You can find out more about the form builder.</p>
-        </article>
+            <article>
+                <h4>Intelligent copy and paste</h4>
+                <p>Wagtail’s RichText field will accept any valid HTML input but without the cruft of inline styles. It means you can copy across linked text, or nested bullets from other sites, email, or documents without having to worry about pesky spans or styling that other systems might have.</p>
+            </article>
 
-    </div> <!-- /row -->
+            <article>
+                <h4>Form builder</h4>
+                <p>Using Wagtail’s form module allows you to create a single page form on your site. Submissions from the form are stored for later retrieval through a new ‘Forms’ section within the Wagtail admin interface. You can find out more about the form builder.</p>
+            </article>
 
-    <header>
-        <h3>Administrative</h3>
-    </header>
+        </div> <!-- /row -->
 
-    <div class="row">
+    </div> <!-- /pane--feature -->
 
-        <article>
-            <h4>Simple, configurable permissions</h4>
-            <p>Out of the box Wagtail allows you to add users to different groups with different permissions. You can control who has permissions over different images, documents or pages all through a straightforward user-interface within the admin area of the site. Since Wagtail is just a Django app developers can augment the complexity around permissions as necessary to the project.</p>
-        </article>
+    <div class="pane--feature">
 
+        <header>
+            <h3>Administrative</h3>
+        </header>
 
-        <article>
-            <h4>Easy configuration</h4>
-            <p>Developers can enable searchable fields and define the relevance per model or field.Search results can also be manually promoted using the handy Promoted Search module. If you’re interested in how to implement search for your site you can read our search documentation here.</p>
-        </article>
+        <div class="row">
 
-        <article>
-            <h4>Elasticsearch</h4>
-            <p>Wagtail uses Elastic for finding content within the admin interface. It provides quick and fluent access to pages, images and documents.</p>
-            <p>We use Elastic because it’s open source, gives great performance and offers a straightforward integration with Wagtail.</p>
-        </article>
-
-        <article>
-            <h4>Workflow support</h4>
-            <p>Content owners and editors can implement refined content workflows for contributions. Authors can submit content for moderation, and editors can apply changes, or return the content to the original author for amendments.</p>
-        </article>
-
-    </div> <!-- /row -->
-
-    <header>
-        <h3>Performance</h3>
-    </header>
-
-    <div class="row">
-
-        <article>
-            <h4>Fast out of the box</h4>
-            <p>Wagtail is lightweight by design, using resources sparingly. It means that it can run on almost any server and give good performance.</p>
-            <h5>Cache-friendly if you need it</h5>
-            <p>Wagtail will play nicely with almost any cache you care to use. Torchbox, the creators of Wagtail, have used it with Redis, Varnish and Squid in production</p>
-        </article>
-
-        <article>
-            <h4>Expiring caches</h4>
-            <p>Many sites implement caches to improve performance, and reduce server load. The problem is that sometimes this means that updates take time to become visible. Wagtail’s cache invalidator module helps to solve this problem by allowing individual pages to expire the cache when published or deleted, ensuring your content is always up-to-date, whilst still getting all the benefits of a cache.</p>
-        </article>
-
-        <article>
-            <h4>Static site generation</h4>
-            <p>Wagtail will allow you to generate static sites using Django Medusa and Wagtail’s Medusa module. It allows you to easily serve static HTML pages to end-users creating a frighteningly quick site with all the advantages of a content management system. You can read a full guide here.</p>
-        </article>
+            <article>
+                <h4>Simple, configurable permissions</h4>
+                <p>Out of the box Wagtail allows you to add users to different groups with different permissions. You can control who has permissions over different images, documents or pages all through a straightforward user-interface within the admin area of the site. Since Wagtail is just a Django app developers can augment the complexity around permissions as necessary to the project.</p>
+            </article>
 
 
-        <article>
-            <h4>Integrate with existing Django apps</h4>
-            <p>Wagtail is, at it’s heart, a Django app, and it’ll play nicely with any other Django app in your tech stack. </p>
-        </article>
+            <article>
+                <h4>Easy configuration</h4>
+                <p>Developers can enable searchable fields and define the relevance per model or field.Search results can also be manually promoted using the handy Promoted Search module. If you’re interested in how to implement search for your site you can read our search documentation here.</p>
+            </article>
 
-    </div> <!-- /row -->
+            <article>
+                <h4>Elasticsearch</h4>
+                <p>Wagtail uses Elastic for finding content within the admin interface. It provides quick and fluent access to pages, images and documents.</p>
+                <p>We use Elastic because it’s open source, gives great performance and offers a straightforward integration with Wagtail.</p>
+            </article>
 
-    <header>
-        <h3>Performance</h3>
-    </header>
+            <article>
+                <h4>Workflow support</h4>
+                <p>Content owners and editors can implement refined content workflows for contributions. Authors can submit content for moderation, and editors can apply changes, or return the content to the original author for amendments.</p>
+            </article>
 
-    <div class="row">
+            <article>
+                <h4>Multi-site support</h4>
+                <p>Wagtail allows you to run multiple sites via the same admin. It means that, for example, you could run your main website, intranet and satellite sites through the same Wagtail instance allowing you to maintain permission groups across the different sites and a single point where your content producers would need to login.</p>
+            </article>
 
-        <article>
-            <h4>Multi-site support</h4>
-            <p>Wagtail allows you to run multiple sites via the same admin. It means that, for example, you could run your main website, intranet and satellite sites through the same Wagtail instance allowing you to maintain permission groups across the different sites and a single point where your content producers would need to login.</p>
-        </article>
+            <article>
+                <h4>Site settings</h4>
+                <p>With the site settings module you can implement editable site content areas to give editors more control. No longer does the address in the footer, or the link to Instagram need to be hardcoded into the template, but can be editable, where it should be, within the CMS. There’s more information on the site settings module here.</p>
+            </article>
 
-        <article>
-            <h4>Site settings</h4>
-            <p>With the site settings module you can implement editable site content areas to give editors more control. No longer does the address in the footer, or the link to Instagram need to be hardcoded into the template, but can be editable, where it should be, within the CMS. There’s more information on the site settings module here.</p>
-        </article>
+            <article>
+                <h4>Wagtail API</h4>
+                <p>With the Wagtail API module you can receive a read-only JSON-based API of your site’s content.</p>
+            </article>
 
-        <article>
-            <h4>Wagtail API</h4>
-            <p>With the Wagtail API module you can receive a read-only JSON-based API of your site’s content.</p>
-        </article>
+            <article>
+                <h4>Integrate with existing Django apps</h4>
+                <p>Wagtail is, at it’s heart, a Django app, and it’ll play nicely with any other Django app in your tech stack. </p>
+            </article>
 
-    </div> <!-- /row -->
+        </div> <!-- /row -->
 
-    <header>
-        <h3>SEO</h3>
-    </header>
+    </div> <!-- /pane--feature -->
 
-    <div class="row">
-
-        <article>
-            <h4>Flexible page URL patterns</h4>
-            <p>With Wagtail’s Routable Page Mixin module you can provide different views of content via different URLs. For example a blog index page could show a date view of the content at /blog/2013/06/, an author’s content view at /blog/authors/bob/, and a tag view at /blog/tagged/python/</p>
-        </article>
-
-        <article>
-            <h4>Sitemap</h4>
-            <p>Wagtail supports the creation of sitemaps via our sitemap generator module. This helps Google Search Tools to fully crawl your site and supporting any SEO strategies that you have in place for your site.</p>
-        </article>
-
-        <article>
-            <h4>Promoted search</h4>
-            <p>Wagtail also allows you to implement promoted search, to allow editors more control about what to display to end users when they search for content. If you’re interested in implementing the promoted search module for your site you can visit our documentation.</p>
-        </article>
+    <div class="pane--feature">
 
 
-    </div> <!-- /row -->
+        <header>
+            <h3>Performance</h3>
+        </header>
 
-    <header>
-        <h3>Community</h3>
-    </header>
+        <div class="row">
 
-    <div class="row">
+            <article>
+                <h4>Fast out of the box</h4>
+                <p>Wagtail is lightweight by design, using resources sparingly. It means that it can run on almost any server and give good performance.</p>
+                <!-- <h5>Cache-friendly if you need it</h5> -->
+                <p>Wagtail will play nicely with almost any cache you care to use. Torchbox, the creators of Wagtail, have used it with Redis, Varnish and Squid in production</p>
+            </article>
 
-        <article>
-            <h4>Community created modules</h4>
-            <p>Want FontAwesome within the admin? Want a different admin layout? A Wordpress to Wagtail importer? A starter site kit? And more… Wagtail has an active community contributing back with solutions to common problems they’ve found. We’re working on a site where they can all be collated but in the meantime you can view the most popular Wagtail modules on Github.</p>
-        </article>
+            <article>
+                <h4>Expiring caches</h4>
+                <p>Many sites implement caches to improve performance, and reduce server load. The problem is that sometimes this means that updates take time to become visible. Wagtail’s cache invalidator module helps to solve this problem by allowing individual pages to expire the cache when published or deleted, ensuring your content is always up-to-date, whilst still getting all the benefits of a cache.</p>
+            </article>
 
-        <article>
-            <h4>Excellent test coverage</h4>
-            <p>Wagtail has over 95% test coverage. We’re committed to following a test driven development pattern where all new code contributed to the project must include tests. You can see more details about our test coverage history at https://coveralls.io/github/torchbox/wagtail</p>
-        </article>
+            <article>
+                <h4>Static site generation</h4>
+                <p>Wagtail will allow you to generate static sites using Django Medusa and Wagtail’s Medusa module. It allows you to easily serve static HTML pages to end-users creating a frighteningly quick site with all the advantages of a content management system. You can read a full guide here.</p>
+            </article>
 
-    </div> <!-- /row -->
+        </div> <!-- /row -->
+
+    </div> <!-- /pane--feature -->
+
+    <div class="pane--feature">
+
+
+        <header>
+            <h3>SEO</h3>
+        </header>
+
+        <div class="row">
+
+            <article>
+                <h4>Flexible page URL patterns</h4>
+                <p>With Wagtail’s Routable Page Mixin module you can provide different views of content via different URLs. For example a blog index page could show a date view of the content at /blog/2013/06/, an author’s content view at /blog/authors/bob/, and a tag view at /blog/tagged/python/</p>
+            </article>
+
+            <article>
+                <h4>Sitemap</h4>
+                <p>Wagtail supports the creation of sitemaps via our sitemap generator module. This helps Google Search Tools to fully crawl your site and supporting any SEO strategies that you have in place for your site.</p>
+            </article>
+
+            <article>
+                <h4>Promoted search</h4>
+                <p>Wagtail also allows you to implement promoted search, to allow editors more control about what to display to end users when they search for content. If you’re interested in implementing the promoted search module for your site you can visit our documentation.</p>
+            </article>
+
+        </div> <!-- /row -->
+
+    </div> <!-- /pane--feature -->
+
+    <div class="pane--feature">
+
+
+        <header>
+            <h3>Community</h3>
+        </header>
+
+        <div class="row">
+
+            <article>
+                <h4>Community created modules</h4>
+                <p>Want FontAwesome within the admin? Want a different admin layout? A Wordpress to Wagtail importer? A starter site kit? And more… Wagtail has an active community contributing back with solutions to common problems they’ve found. We’re working on a site where they can all be collated but in the meantime you can view the most popular Wagtail modules on Github.</p>
+            </article>
+
+            <article>
+                <h4>Excellent test coverage</h4>
+                <p>Wagtail has over 95% test coverage. We’re committed to following a test driven development pattern where all new code contributed to the project must include tests. You can see more details about our test coverage history at https://coveralls.io/github/torchbox/wagtail</p>
+            </article>
+
+        </div> <!-- /row -->
+
+    </div> <!-- /pane--feature -->
+
 
 </div> <!-- /other-features -->
 
