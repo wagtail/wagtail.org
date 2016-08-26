@@ -45,36 +45,6 @@ pre {
     font-family: monospace, courier, times, serif;
  }
 
- .pre-container {
-     position: relative;
- }
-
- .app-header {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     display: block;
-     background: #383838;
-     height: 20px;
-     border-radius: 5px 5px 0 0;
-
-     span {
-         width: 10px;
-         height: 10px;
-         border-radius: 50%;
-         background-color: $color-secondary-highlight;
-         margin: 5px 5px 0 0;
-         display: inline-block;
-         float: left;
-
-         &:first-of-type {
-             margin-left: 10px;
-             background-color: $color-primary-highlight;
-         }
-     }
- }
-
  iframe {
      max-width: 100%;
  }
@@ -85,6 +55,36 @@ pre {
 Other global items
 
 */
+
+.pre-container {
+    position: relative;
+}
+
+.app-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    background: #383838;
+    height: 20px;
+    border-radius: 5px 5px 0 0;
+
+    span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $color-secondary-highlight;
+        margin: 5px 5px 0 0;
+        display: inline-block;
+        float: left;
+
+        &:first-of-type {
+            margin-left: 10px;
+            background-color: $color-primary-highlight;
+        }
+    }
+}
 
 .view-all {
     display: block;
@@ -117,19 +117,64 @@ Other global items
 
     }
 
+    &--internal {
+
+        svg {
+            transform: rotate(0deg) translateY(0px);
+        }
+
+        &:hover {
+
+            svg {
+                transform: rotate(0deg) translateY(5px) ;
+            }
+
+        }
+    }
+
 }
 
-.border-after {
 
-    &:after {
-        content: '';
-        height: 1px;
-        width: 20%;
-        background: lighten($borderColorDark, 50%);
-        display: block;
-        margin: $grid * 3 auto;
-        position: relative;
-        z-index: 2;
+.border {
+
+    &--after {
+
+        &:after {
+            content: '';
+            height: 1px;
+            width: 20%;
+            background: lighten($borderColorDark, 50%);
+            display: block;
+            margin: $grid * 3 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+    }
+
+    &--before {
+
+        &:before {
+            content: '';
+            height: 1px;
+            width: 20%;
+            background: lighten($borderColorDark, 50%);
+            display: block;
+            margin: $grid * 3 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+    }
+
+    &--left {
+
+        &:before,
+        &:after {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
     }
 
 }
