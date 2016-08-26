@@ -69,19 +69,37 @@
 .template-features {
 
     .pane--vertical-tabs {
-        padding-top: 0;
+        //padding-top: 0;
+
+        .actions {
+            margin: 0 auto;
+            text-align: center;
+
+            a {
+
+                &:first-child {
+
+                    svg {
+                        transform: translateX(0) rotate(90deg);
+                    }
+
+                }
+
+            }
+
+        }
 
         .tabs {
             width: 25%;
-            padding: 0 0;
+            padding-top: 0;
 
             li {
                 margin: 0;
 
                 a {
-                    border-radius: 0;
-                    margin: 0 0 1px;
-                    padding-left: $grid * 3;
+                    //border-radius: 0;
+                    //margin: 0 0 1px;
+                    //padding-left: $grid * 3;
                 }
 
             }
@@ -92,7 +110,7 @@
         }
 
         .tab-content {
-            padding: 0;
+            //padding: 0;
             width: 75%;
 
             .content {
@@ -100,15 +118,24 @@
                 padding: $grid * 2 $grid * 2 $grid * 5;
                 border-radius: 0 5px 0 0;
 
+                header {
+                    text-align: left;
+
+                    .btn {
+                        float: right;
+                    }
+
+                }
+
                 h3 {
                     text-transform: none;
-                    font-size: 32px;
+                    font-size: 42px;
                     margin-bottom: $grid * 2;
-                    background: $color-primary-dark;
-                    color: $white;
+                    // background: $color-primary-dark;
+                    // color: $white;
                     display: inline-block;
-                    padding: $grid / 2 $grid;
-                    text-transform: uppercase;
+                    // padding: $grid / 2 $grid;
+                    // text-transform: uppercase;
                 }
 
                 .video-container {
@@ -131,22 +158,6 @@
         }
     }
 
-    .actions {
-        margin: 0 auto;
-        text-align: center;
 
-        a {
-
-            &:first-child {
-
-                svg {
-                    transform: translateX(0) rotate(90deg);
-                }
-
-            }
-
-        }
-
-    }
 
 }
