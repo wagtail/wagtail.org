@@ -57,6 +57,47 @@
 .template-features {
 
     .pane--vertical-tabs {
-        height: 1000px;
+        padding-top: $grid * 2;
+
+        .tab-content {
+            padding-top: $grid * 2;
+
+            .content {
+                background-color: $white;
+                padding: $grid * 2 $grid * 2 $grid * 5;
+                border-radius: 0 5px 0 0;
+
+                h3 {
+                    text-transform: none;
+                    font-size: 32px;
+                }
+
+                .image-container {
+                    max-height: 500px;
+                    overflow: hidden;
+                    margin-bottom: $grid;
+                    position: relative;
+                }
+            }
+        }
     }
+
+    .actions {
+        margin: 0 auto;
+        text-align: center;
+
+        a {
+
+            &:first-child {
+
+                svg {
+                    transform: translateX(0) rotate(90deg);
+                }
+
+            }
+
+        }
+
+    }
+
 }
