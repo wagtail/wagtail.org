@@ -88,13 +88,29 @@
                 h3 {
                     text-transform: none;
                     font-size: 32px;
+                    margin-bottom: $grid * 2;
+                    background: $color-primary-dark;
+                    color: $white;
+                    display: inline-block;
+                    padding: $grid / 2 $grid;
+                    text-transform: uppercase;
                 }
 
-                .image-container {
-                    max-height: 500px;
+                .video-container {
                     overflow: hidden;
                     margin-bottom: $grid;
                     position: relative;
+                    max-height: 500px;
+                }
+
+                .image-container {
+                    overflow: hidden;
+                    margin-bottom: $grid;
+                    margin-left: $grid;
+                    position: relative;
+                    padding-top: 20px;
+                    float: right;
+                    max-width: 60%;
                 }
             }
         }
