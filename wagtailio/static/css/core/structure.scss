@@ -21,17 +21,12 @@
 }
 
 .page {
-
     position: relative;
     @include clearfix; // Clear anything nested
     height: 100%;
 
     .body {
         padding-top: $headerHeightMobile;
-        // Nested scroll container
-        overflow-y: scroll;
-        height: 100%;
-        -webkit-overflow-scrolling: touch; // iOS scrolling
         @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
 
         @include gridle_state( tablet-landscape ){
@@ -40,7 +35,6 @@
     }
 
     .menu_overlay {
-
         position: absolute;
         z-index: 11;
         left: 0px; right: 0px;
