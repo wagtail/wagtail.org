@@ -1,8 +1,7 @@
 /* ============================================
-
   Imports
-
 */
+
 @import "variables";
 @import "vendor/normalize";
 @import "vendor/flexbox";
@@ -28,7 +27,6 @@
 @import "core/menu-overlay";
 @import "core/menu-toggle";
 @import "core/share";
-// @import "core/imac";
 @import "core/testimonial";
 @import "core/panes";
 @import "core/pane-latest";
@@ -38,12 +36,6 @@
 @import "core/features";
 @import "core/page-heading";
 @import "core/blog";
-
-
-// Remove when possible
-@import "core/block-list";
-@import "core/flex-list";
-@import "core/legacy";
 
 /* ============================================
 

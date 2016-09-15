@@ -50,7 +50,6 @@
         <script>try{Typekit.load();}catch(e){}</script>
 
         {% compress css %}
-            <!-- <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}" /> -->
             <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
         {% endcompress %}
@@ -122,10 +121,9 @@
         <script src="https://platform.twitter.com/widgets.js" async></script>
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-        
+
         {% compress js %}
             <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
-            <script src="{% static 'js/vendor/jquery.isInViewport.js' %}"></script>
             <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
             <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
             <script src="{% static 'js/vendor/headroom.min.js' %}"></script>
