@@ -87,7 +87,7 @@ $(function( ){
 
     // Slow scroll on anchor links
     $('.js-smoothscroll').on('click', anchorScroll);
-    
+
     // Menu button
     $( '.menu-toggle' ).on( 'click', function( e ){
         e.preventDefault();
@@ -125,6 +125,14 @@ $(function( ){
         itemsDesktopSmall : [979,4],
         itemsTablet : [768,4],
         itemsMobile : [481,2]
+    });
+
+    $(".js-carousel").owlCarousel({
+        navigation : false,
+        slideSpeed      : 500,
+        paginationSpeed : 500,
+        transitionStyle : "fade",
+        items : 1
     });
 
     // headroom

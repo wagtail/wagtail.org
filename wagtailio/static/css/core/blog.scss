@@ -15,6 +15,10 @@
         margin: 0 auto;
     }
 
+    img {
+        max-width: 100%;
+    }
+
     .date {
         font-size: 18px;
         font-weight: 300;
@@ -28,6 +32,7 @@
 
 .author {
     overflow: hidden;
+    margin: 0 0 $grid;
 
     .image {
         float: left;

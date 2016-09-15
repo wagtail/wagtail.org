@@ -1,0 +1,50 @@
+.textimage {
+    background: $color-primary-highlight;
+    color: $color-primary-light;
+    text-align: left;
+
+    h2,
+    h3,
+    h4 {
+        color: $color-white;
+    }
+
+    .container {
+
+        .text {
+            @include gridle_set((
+                grid : 12,
+                desktop : (
+                    grid : 4,
+                    push : 1,
+                    pull : 0
+                )
+            ));
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        .image {
+
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            @include gridle_set((
+                grid : 12,
+                no_gutter : (left right),
+                desktop : (
+                    grid : 6,
+                    push : 2,
+                    pull : 0,
+                    no_gutter : (left right)
+                )
+            ));
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+    }
+
+}

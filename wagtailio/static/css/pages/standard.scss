@@ -1,19 +1,29 @@
-/* ============================================ 
+/* ============================================
 
   Standard page
 
 */
 .template-standard-page {
 
-	section {
-		@include row;
+    .body {
+        padding-top: 0;
+    }
 
-		.container {
-			text-align: center;
-		}
+    .page-heading {
+        padding-top: ($grid * 6);
+        padding-bottom: ($grid * 3);
+        background-color: $color-primary-highlight;
+        margin-bottom: ($grid * 2)
+    }
 
-		padding: 45px 0;
-		// @include gridle( 12 );
-	}
-   
+    .page-content {
+        font-size: 20px;
+    }
+
+    .paragraph,
+    .calltoaction {
+        max-width: 800px;
+        margin: 0 auto ($grid * 2);
+    }
+
 }

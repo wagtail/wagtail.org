@@ -3,6 +3,10 @@
 .template-homepage {
     background-color: $backgroundColor;
 
+    .body {
+        padding-top: 0;
+    }
+
     h1 {
         display: none;
     }

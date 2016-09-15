@@ -1,11 +1,11 @@
-/* ============================================ 
+/* ============================================
 
   Developers page
 
 */
 
 
-.template-developers-page{
+.template-developers-page {
     h4 {
         margin-bottom: 0.25em;
         font-size: 1.2em;
@@ -36,7 +36,7 @@
             margin-bottom: 0.25em;
         }
     }
-    .get-started{
+    .get-started {
         margin-top:1em;
         background: rgba(255, 255, 255, 0.1);
         padding:1em;
@@ -59,32 +59,4 @@
         }
     }
 
-    .block-list{
-        @include gridle_set((
-            grid : 12,
-            desktop : (
-                // clear_each : ( 2 , left ) :: doesn't seem to be required
-            )
-        ));
-        @include gridle( 12 );
-        @include gridle( 6, desktop);
-
-        > li{
-            @include gridle( 12 );
-            @include gridle( 12, tablet-landscape);
-            @include gridle_state( tablet-landscape ){
-                a {
-                    min-height: 280px;
-                }
-            }
-            @include gridle( 6, desktop-wide);
-            @include gridle_state( desktop-wide ){
-                a {
-                    min-height: 330px;
-                }
-            }
-
-        }
-
-    }
 }
