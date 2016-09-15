@@ -12,7 +12,7 @@
         border-radius: 3px;
 
         &--light {
-            border-color: $white;
+            border-color: $color-white;
         }
 
     }
@@ -21,15 +21,15 @@
         background: transparent;
 
         &:hover {
-            background: rgba($black, 0.1);
+            background: rgba($color-black, 0.1);
         }
     }
 
     &--opaque {
-        background: rgba($white, 0.6);
+        background: rgba($color-white, 0.6);
 
         &:hover {
-            background: rgba($white, 1);
+            background: rgba($color-white, 1);
         }
     }
 
@@ -92,7 +92,7 @@
             transition: transform 0.2s ease-in-out 0;
             bottom: 20px;
             right: 20px;
-            fill: $white;
+            fill: $color-white;
             width: 30px;
             height: 30px;
         }

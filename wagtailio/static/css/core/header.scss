@@ -48,7 +48,7 @@ header.global {
     z-index: 20;
     float: none;
     width: 100%;
-    background: $white;
+    background: $color-white;
     overflow: hidden;
     padding: 4px $grid 2px;
     border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
@@ -69,17 +69,13 @@ header.global {
 
     }
 
-    // @include row;
-
-    // Transitions
-    // @include transition( all $anim_speed-fast linear );
-
     // Branding
     .branding {
 
         display: inline-block;
         @include gridle( 1 );
         margin-top: 10px;
+        margin-bottom: 10px;
 
         img {
             width: 70px;
@@ -87,23 +83,13 @@ header.global {
 
         @include gridle_state( tablet-landscape ){
             margin-top: 13px;
-            
+            margin-bottom: 0;
+
             img {
                 width: 90px;
             }
         }
 
-    }
-
-    // Mobile navigation anchor
-    a[href="#primary_navigation"]{
-        @include linkStyling;
-        float: right;
-        display: block; // default to hide
-
-        @include gridle_state( tablet-landscape ){
-            display: none;
-        }
     }
 
     // Primary Navigation

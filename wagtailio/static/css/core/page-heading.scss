@@ -10,11 +10,11 @@
     }
 
     h1 {
-        color: $white;
+        color: $color-white;
     }
 
     .introduction {
-        color: rgba($white, 0.8);
+        color: rgba($color-white, 0.8);
         margin: 0 auto;
     }
 
@@ -29,10 +29,10 @@
 
     .btn {
         margin: 0 $grid / 2;
-        color: $white;
+        color: $color-white;
 
         &:hover {
-            color: $white;
+            color: $color-white;
         }
     }
 }

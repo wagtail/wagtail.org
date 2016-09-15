@@ -1,4 +1,4 @@
-.pane--showcase {
+.pane__showcase {
     overflow: hidden;
     padding: $grid $grid * 2 0;
     text-align: center;
@@ -70,13 +70,13 @@
             img {
                 width: 100%;
                 margin: 0 0 $grid;
-                box-shadow: 0 -5px 10px rgba($black, 0.4);
+                box-shadow: 0 -5px 10px rgba($color-black, 0.4);
             }
 
             a {
 
                 h3 {
-                    color: $black;
+                    color: $color-black;
                 }
 
                 p {

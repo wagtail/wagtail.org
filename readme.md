@@ -32,7 +32,7 @@ To make code changes:
  - Create a new branch for your work in the form `ticketnumber-briefdescription` e.g. `123-fix-dodgy-quotemarks`
  - Make your code changes
  - `git push origin branchname`
- - Go back to Torchbox repo in the browser (https://github.com/torchbox/wagtail-torchbox)
+ - Go back to Torchbox repo in the browser (https://projects.torchbox.com/projects/wagtailio/repositories/wagtailio/)
  - Click the big green 'New pull request' button
  - Set the 'base' as 'master' and the 'compare' as your branch.
  - Click 'create pull request.'

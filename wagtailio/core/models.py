@@ -115,16 +115,3 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     ]
 
     promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
-
-# New Homepage
-
-class HomePageNew(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=511)
-    body = StreamField(StoryBlock())
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        StreamFieldPanel('body')
-    ]
-
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels

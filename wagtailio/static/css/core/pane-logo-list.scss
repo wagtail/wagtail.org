@@ -1,5 +1,5 @@
 // List of logos
-.pane--logo-list {
+.pane__logo-list {
     position: relative;
     z-index: 2;
     text-align: center;
@@ -15,7 +15,7 @@
         width: 100%;
         margin: 0 auto;
         font-weight: normal;
-        color: rgba($white, 1);
+        color: rgba($color-white, 1);
         background: rgba($color-primary-dark, 0.8);
         padding: 20px 0;
         text-transform: uppercase;
@@ -77,7 +77,7 @@
             .owl-page {
 
                     span {
-                        background-color: rgba($white, 1);
+                        background-color: rgba($color-white, 1);
                         opacity: 1;
                     }
 

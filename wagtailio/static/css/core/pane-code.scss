@@ -1,4 +1,4 @@
-.pane--code {
+.pane__code {
     position: relative;
 
     .text-container {
@@ -32,8 +32,8 @@
     pre {
         font-size: 16px;
         width: 100%;
-        background-color: $black;
-        box-shadow: 0 0 20px rgba($white, 0.1);
+        background-color: $color-black;
+        box-shadow: 0 0 20px rgba($color-white, 0.1);
         border-radius:  0 0 5px 5px;
 
         @include gridle_state( desktop ){

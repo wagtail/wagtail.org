@@ -25,7 +25,8 @@
 @import "core/hero";
 @import "core/actions";
 @import "core/sidebar";
-@import "core/menu_overlay";
+@import "core/menu-overlay";
+@import "core/menu-toggle";
 @import "core/share";
 // @import "core/imac";
 @import "core/testimonial";
@@ -36,6 +37,7 @@
 @import "core/pane-logo-list";
 @import "core/features";
 @import "core/page-heading";
+@import "core/blog";
 
 
 // Remove when possible
@@ -49,9 +51,6 @@
 
 */
 
-// homepage
-//@import "pages/home";
-
 // new homepage
 @import "pages/homepage";
 
@@ -63,9 +62,6 @@
 
 // Developers page
 @import "pages/developers";
-
-// Blog page
-@import "pages/blog";
 
 // error
 @import "pages/error";

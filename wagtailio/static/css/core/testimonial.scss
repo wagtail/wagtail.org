@@ -6,7 +6,7 @@
     overflow: hidden;
     text-align: center;
     background-size: cover;
-    color: rgba($black, 1);
+    color: rgba($color-black, 1);
     min-height: 600px;
 
     @include gridle_state( tablet-landscape ){
@@ -18,7 +18,7 @@
     }
 
     a {
-        color: $black;
+        color: $color-black;
         transition: color .2s ease 0s;
 
         &:hover {
@@ -33,7 +33,7 @@
         bottom: $grid * 2;
         left: $grid * 2;
         right: $grid * 2;
-        background: rgba($white, 0.5);
+        background: rgba($color-white, 0.5);
         padding: $grid * 2;
         font-size: 28px;
         margin: 0;
@@ -61,15 +61,15 @@
             margin-top: 10px;
             font-size: 16px;
             display: block;
-            color: rgba($white,0.6);
+            color: rgba($color-white,0.6);
 
             a {
                 background: rgba($color-secondary-highlight, 0.9);
-                color: $white;
+                color: $color-white;
                 padding: 5px 10px;
 
                 &:hover {
-                    color: $white;
+                    color: $color-white;
                     background: darken($color-secondary-highlight, 20%);
                 }
 

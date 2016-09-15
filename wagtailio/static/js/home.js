@@ -79,17 +79,8 @@ $(function( ){
 
     ***/
 
-    // headroom
-    // http://wicky.nillia.ms/headroom.js/
-    $("header.global").headroom({
-        tolerance : {
-            up : 0,
-            down : 10
-        },
-    });
-
     // Owl carousel
-    $(".pane--logo-list .carousel").owlCarousel({
+    $(".pane__logo-list .carousel").owlCarousel({
         navigation : false,
         slideSpeed      : 500,
         paginationSpeed : 500,

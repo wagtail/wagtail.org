@@ -59,7 +59,7 @@
 
     </head>
 
-    <body class="{% if self %}template-{{ self.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane--contours">
+    <body class="{% if self %}template-{{ self.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
 
         {% if not DEBUG %}
             <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
@@ -120,7 +120,9 @@
         {% endif %}
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
-
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        
         {% compress js %}
             <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
             <script src="{% static 'js/vendor/jquery.isInViewport.js' %}"></script>

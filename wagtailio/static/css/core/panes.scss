@@ -3,7 +3,7 @@
 
 .pane {
 
-    &--vertical-tabs {
+    &__vertical-tabs {
         position: relative;
         z-index: 2;
         overflow: hidden;
@@ -32,7 +32,7 @@
         }
 
         h2 {
-            color: $white;
+            color: $color-white;
             font-size: 42px;
             margin: 0 0 60px;
         }
@@ -41,11 +41,11 @@
             text-align: center;
 
             h3 {
-                color: $white;
+                color: $color-white;
             }
 
             p {
-                color: rgba($white, 0.8);
+                color: rgba($color-white, 0.8);
             }
         }
 
@@ -69,7 +69,7 @@
             }
 
             .view-all {
-                color: $white;
+                color: $color-white;
                 margin-left: 30px;
             }
 
@@ -81,41 +81,41 @@
                     padding: 20px 40px 20px 30px;
                     margin: 0 0 5px;
                     color: #555;
-                    background: rgba($white, 0.2);
+                    background: rgba($color-white, 0.2);
                     border-radius: 5px 0 0 5px;
 
                     &:hover {
 
                         p {
-                            color: rgba($white, 1);
+                            color: rgba($color-white, 1);
                         }
 
                         h3 {
-                            color: rgba($white, 1);
+                            color: rgba($color-white, 1);
                         }
 
                     }
 
                     &.current {
 
-                        background: $white;
+                        background: $color-white;
 
                         p {
-                            color: rgba($black, 0.6);
+                            color: rgba($color-black, 0.6);
                         }
 
                         h3 {
-                            color: rgba($black, 1);
+                            color: rgba($color-black, 1);
                         }
 
                         &:hover {
 
                             p {
-                                color: rgba($black, 0.6);
+                                color: rgba($color-black, 0.6);
                             }
 
                             h3 {
-                                color: rgba($black, 1);
+                                color: rgba($color-black, 1);
                             }
 
                         }
@@ -126,7 +126,7 @@
                     h3 {
                         text-transform: uppercase;
                         margin: 0 0 5px;
-                        color: rgba($white, 1);
+                        color: rgba($color-white, 1);
                         line-height: 1.1;
                     }
 
@@ -134,7 +134,7 @@
                         margin: 0;
                         line-height: 1.4;
                         font-size: 15px;
-                        color: rgba($white, 0.8);
+                        color: rgba($color-white, 0.8);
                         transition: color .2s ease 0s;
                     }
                 }
@@ -183,7 +183,7 @@
 
     }
 
-    &--horizontal-tabs {
+    &__horizontal-tabs {
         position: relative;
         background-color: transparent;
         overflow: hidden;
@@ -242,7 +242,7 @@
                     padding: 0 0 5px;
                     margin: 0 20px 5px;
                     border-bottom: 2px solid rgba($color-secondary-highlight, 0.5);
-                    //text-shadow: 1px 1px 1px rgba($black, 0.2);
+                    //text-shadow: 1px 1px 1px rgba($color-black, 0.2);
                     color: $color-secondary-highlight;
                     transition: color .2s ease 0s,
                                 border .2s ease 0s;
@@ -257,8 +257,8 @@
 
                     &.current {
                         border-bottom: 5px solid rgba($color-secondary-highlight, 1);
-                        text-shadow: 1px 1px 1px rgba($white, 0.2);
-                        color: $black;
+                        text-shadow: 1px 1px 1px rgba($color-white, 0.2);
+                        color: $color-black;
                     }
                 }
 
@@ -297,7 +297,7 @@
                 max-width: 960px;
                 text-align: center;
 
-                text-shadow: 1px 1px 1px rgba($white, 0.2);
+                text-shadow: 1px 1px 1px rgba($color-white, 0.2);
 
                 @include gridle_state( tablet-landscape ){
                     font-size: 21px;
@@ -338,8 +338,8 @@
 
     }
 
-    &--stats {
-        color: $white;
+    &__stats {
+        color: $color-white;
 
         ul {
             display: flex;
@@ -366,23 +366,23 @@
 
     }
 
-    &--hire {
+    &__hire {
 
         p {
-            color: rgba($white, 0.8);
+            color: rgba($color-white, 0.8);
         }
 
         a {
-            color: $white;
+            color: $color-white;
 
             &:hover {
-                color: $black;
+                color: $color-black;
             }
 
         }
     }
 
-    &--contours {
+    &__contours {
         background-image: url('../img/contours.png');
         background-repeat: repeat;
         background-size: 400px 400px;
@@ -392,7 +392,7 @@
         }
     }
 
-    &--two-col {
+    &__two-col {
         background: $color-primary-highlight;
         display: flex;
         flex-direction: row;

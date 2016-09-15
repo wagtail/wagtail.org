@@ -43,7 +43,7 @@ h4 {
     color: $headingColor;
 
     &--light {
-        color: $white;
+        color: $color-white;
     }
 
 }
@@ -56,7 +56,7 @@ a {
     &:hover {
 
         h1, h2, h3, h4, h5, h6 {
-            color: $black;
+            color: $color-black;
         }
 
     }

@@ -39,7 +39,7 @@ pre {
     font-family: monospace;
     background: $color-primary-dark;
     padding: $grid * 2 $grid * 2 $grid * 3;
-    color: $white;
+    color: $color-white;
     text-indent: 0;
     display: inline-block;
     font-family: monospace, courier, times, serif;
@@ -96,7 +96,7 @@ Other global items
         margin-left: 5px;
         width: 15px;
         height: 15px;
-        fill: $black;
+        fill: $color-black;
         transform: rotate(-90deg) translateY(0px);
         transition: transform .2s ease 0s;
     }
@@ -109,10 +109,10 @@ Other global items
     }
 
     &--light {
-        color: $white;
+        color: $color-white;
 
         svg {
-            fill: $white;
+            fill: $color-white;
         }
 
     }

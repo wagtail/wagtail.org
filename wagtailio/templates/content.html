@@ -9,10 +9,12 @@
         <header class="global">
             <div class="container">
                 <a class="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
-                <a href="#primary_navigation">Menu</a>
+                <a href="#primary_navigation" class="menu-toggle">
+                    <span></span>
+                </a>
                 {% menu_primary %}
             </div>
-        </header>
+        </header> <!-- /global -->
 
         {% include "includes/svg_sprites.html" %}
 
@@ -33,13 +35,13 @@
                     {% include "includes/follow.html" %}
                     {% include "includes/copyright.html" %}
                 </div>
-            </footer>
+            </footer> <!-- /global -->
 
-        </div>
+        </div> <!-- /body -->
 
-        <div class="menu_overlay">
+        <div class="menu-overlay">
             {% menu_primary %}
-        </div>
+        </div> <!-- /menu-overlay -->
 
     </div>
 

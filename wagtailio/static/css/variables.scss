@@ -16,12 +16,12 @@ $color-secondary-highlight: #43b1b0; // wagtail brand teal
 
 $color-green: #3cb65b;
 
-$white: #fff;
-$black: #000;
+$color-white: #fff;
+$color-black: #000;
 $headingColor: #333;
 $bodyColor: #555;
-$borderColorLight: rgba($white, 0.3);
-$borderColorDark: rgba($black, 0.3);
+$borderColorLight: rgba($color-white, 0.3);
+$borderColorDark: rgba($color-black, 0.3);
 $backgroundColor: #f4f1ea;
 
 $anim-speed-primary: 250ms;

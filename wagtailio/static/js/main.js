@@ -251,4 +251,19 @@ $(function( ){
         }, function(response){});
     });
 
+    /***
+
+    Plugins
+
+    ***/
+
+    // headroom
+    // http://wicky.nillia.ms/headroom.js/
+    $("header.global").headroom({
+        tolerance : {
+            up : 0,
+            down : 10
+        },
+    });
+
 });
