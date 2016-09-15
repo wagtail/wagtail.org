@@ -8,6 +8,7 @@
     background-size: cover;
     color: rgba($color-black, 1);
     min-height: 600px;
+    margin: ($grid * 3) auto ($grid);
 
     @include gridle_state( tablet-landscape ){
         min-height: 400px;
@@ -28,28 +29,12 @@
     }
 
     blockquote {
-        position: absolute;
-        top: $grid * 2;
-        bottom: $grid * 2;
-        left: $grid * 2;
-        right: $grid * 2;
         background: rgba($color-white, 0.5);
         padding: $grid * 2;
         font-size: 28px;
-        margin: 0;
-        vertical-align: middle;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* align horizontal */
-        align-items: center; /* align vertical */
+        margin: 0 auto;
+        max-width: 800px;
         font-family: $font-secondary;
-
-        @include gridle_state( tablet-landscape ){
-            top: $grid * 4;
-            bottom: $grid * 4;
-            left: $grid * 4;
-            right: $grid * 4;
-        }
 
         p {
             max-width: 800px;
@@ -74,6 +59,20 @@
                 }
 
             }
+        }
+
+    }
+
+    .owl-controls {
+        bottom: -($grid * 3);
+        right: 0;
+        left: 0;
+        position: absolute;
+        margin: 0 auto;
+        text-align: center;
+
+        .owl-page span {
+            background-color: rgba($color-black, 0.5);
         }
 
     }

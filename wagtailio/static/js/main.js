@@ -131,7 +131,6 @@ $(function( ){
         navigation : false,
         slideSpeed      : 500,
         paginationSpeed : 500,
-        transitionStyle : "fade",
         items : 1
     });
 
