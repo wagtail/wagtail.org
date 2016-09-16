@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -96,7 +96,46 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        {% block base_content %}{% endblock %}
+        <div class="page">
+
+            <header class="global">
+                <div class="container">
+                    <a class="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
+                    <a href="#primary_navigation" class="menu-toggle">
+                        <span></span>
+                    </a>
+                    {% menu_primary %}
+                </div>
+            </header> <!-- /global -->
+
+            {% include "includes/svg_sprites.html" %}
+
+            {% block sidebar %}{% endblock %}
+
+            <div class="body">
+
+                <section>
+                    {% block content %}{% endblock %}
+                </section>
+
+                <footer class="global">
+                    <div class="container">
+                        {% menu_good_to_go %}
+                        {% menu_network %}
+                        {% latest_blog %}
+                        {% include "includes/newsletter_signup.html" %}
+                        {% include "includes/follow.html" %}
+                        {% include "includes/copyright.html" %}
+                    </div>
+                </footer> <!-- /global -->
+
+            </div> <!-- /body -->
+
+            <div class="menu-overlay">
+                {% menu_primary %}
+            </div> <!-- /menu-overlay -->
+
+        </div> <!-- /page -->
 
         {% if not DEBUG %}
             <!-- twitter campaign tracking code -->
