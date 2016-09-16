@@ -37,6 +37,13 @@
     .image {
         float: left;
         margin: 0 $grid 0 0;
+
+        img {
+            border-radius: 50%;
+            width: 55px;
+            height: auto;
+        }
+
     }
 
     .details {

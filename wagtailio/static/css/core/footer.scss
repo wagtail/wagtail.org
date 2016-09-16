@@ -9,19 +9,6 @@
 */
 footer.global {
 
-    // Vars
-    $link-padding: 7px 15px;
-
-    line-height: 1.25;
-
-    // clear nested floats
-    overflow: hidden;
-
-    // Styling
-    background: $color-primary-dark;
-    color: $color-secondary-light;
-    text-align: center;
-
     // Standard element styling
     h3 {
         font-size: 28px;
@@ -40,46 +27,6 @@ footer.global {
         margin-top: 0px;
     }
 
-    // Default immediately nested nodes to col-12
-    .container {
-
-        > * {
-            padding: 12px 0 0;
-            @include gridle_set((
-                grid : 12,
-                tablet-portrait : (
-                    no_gutter : (left, right)
-                ),
-                mobile : (
-                    no_gutter : (left, right)
-                )
-            ));
-            text-align: left;
-        }
-    }
-
-    // Sidebar
-    .component-sidebar & {
-
-        @include gridle_set((
-            grid : 9,
-            push : 3,
-            tablet-portrait : (
-                grid : 12,
-                push : 0
-            ),
-            tablet-landscape : (
-                grid : 12,
-                push : 0
-            ),
-            mobile : (
-                grid : 12,
-                push : 0
-            )
-        ));
-
-    }
-
     // Nested components
     .get_started_links {
         @include gridle_set((
@@ -94,7 +41,6 @@ footer.global {
 
         padding-bottom: 10px;
         a {
-            @include button( $link-padding, $border-opacity: 1 );
             // make buttons sit after each other without using display: block or <br />;
             float: left;
             clear: left;
@@ -153,7 +99,6 @@ footer.global {
                     font-size: 21px;
                 }
                 .author {
-                    @include author;
                     margin: 20px 0;
                 }
             }
@@ -181,7 +126,6 @@ footer.global {
             input {
                 float: left;
                 width: 60%;
-                @include input-text;
             }
             button {
                 // reset button styling
@@ -219,31 +163,39 @@ footer.global {
     .footnote {
         padding-top: 24px;
         padding-bottom: 56px;
+        clear: both;
         overflow: hidden;
+
         .copyright {
             float: left;
             margin: 0;
         }
+
         .logo {
             display: block;
             float: right;
             width: 110px;
             @include opacity( 0.3 );
             @include transition( opacity $anim-speed-primary linear );
+
             img {
                 display: inline-block;
                 width: 110px;
             }
+
             &:hover {
                 @include opacity( 1 );
             }
+
         }
+
         @include gridle_state( tablet-portrait mobile ){
             padding-bottom: 24px;
             .copyright,
             .logo {
                 float: none;
             }
+
             .logo {
                 margin: 30px 15px 0 0;
                 text-align: right;
@@ -283,10 +235,9 @@ footer.global {
         display: inline-block;
         width: 20%;
         text-align: left;
-        margin: 0 30px 30px 0;
+        margin: 0;
 
         ul {
-            //border-top: 1px solid rgba(white, 0.2);
             padding-top: 5px;
 
             li {
@@ -294,7 +245,6 @@ footer.global {
                 padding: 0 0 5px;
                 font-size: 14px;
                 line-height: 1.8;
-                //border-bottom: 1px solid rgba(white, 0.2);
 
                 a {
                     display: block;

@@ -20,7 +20,7 @@
                 <div class="feature">
                     <a class="close" href="{% pageurl self.feature_index %}"><i class="fa fa-times"></i></a>
                     <h1>{{ self.title }}</h1>
-                    <p class="intro">{{ self.introduction }}</p>
+                    <div class="introduction">{{ self.introduction }}</div>
 
                     {% for f in self.feature_aspects.all %}
                         <div>
