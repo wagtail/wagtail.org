@@ -37,6 +37,7 @@
 @import "core/page-heading";
 @import "core/blog";
 @import "core/text-image";
+@import "core/teasers";
 
 /* ============================================
 
@@ -49,9 +50,6 @@
 
 // Standard page
 @import "pages/standard";
-
-// Feature index page
-@import "pages/feature-index";
 
 // Developers page
 @import "pages/developers";

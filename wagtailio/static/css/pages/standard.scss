@@ -13,11 +13,27 @@
         padding-top: ($grid * 6);
         padding-bottom: ($grid * 3);
         background-color: $color-primary-highlight;
-        margin-bottom: ($grid * 2)
+        margin-bottom: ($grid * 2);
+        text-align: left;
+
+        h1,
+        .introduction {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .page-content {
         font-size: 20px;
+
+        h2,
+        h3,
+        h4 {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto ($grid);
+        }
     }
 
     .paragraph,

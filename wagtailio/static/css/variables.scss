@@ -3,35 +3,45 @@
   Vars
 
 */
+
+
+// Fonts
 $font-primary: "effra", sans-serif;
 $font-secondary: 'Playfair Display', serif;
 
+// Colours (could do with tidying this up)
 $color-primary-dark: #222; // dark grey
 $color-primary-light: #fff; // white (duh!)
 $color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
 $color-primary-bg: #f6f2f2; // off-white
-
 $color-secondary-light: rgba($color-primary-light, 0.7);
 $color-secondary-highlight: #43b1b0; // wagtail brand teal
-
 $color-green: #3cb65b;
 
+// Generic colours
 $color-white: #fff;
 $color-black: #000;
+
+// Heading and body text colours
 $headingColor: #333;
 $bodyColor: #555;
+
+// Borders
 $borderColorLight: rgba($color-white, 0.3);
 $borderColorDark: rgba($color-black, 0.3);
+
+// Background colours
 $backgroundColor: #f4f1ea;
 
+// Animations
 $anim-speed-primary: 250ms;
 $anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
-$mobile-nav-open_speed: 500ms;
+// Header vars
 $headerHeight: 74px;
 $headerHeightMobile: 54px;
 
-$inline-spacing-bottom: 14px;
+// Grid
 $grid: 20px;
 
 // Carousel
@@ -39,5 +49,5 @@ $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color-primary-highlight;
 
-//
+// Max width
 $website-width-max: 1600px;

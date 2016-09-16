@@ -12,7 +12,7 @@
         word-wrap: break-word;
     }
     ol, ul {
-        margin: 0 0 $inline-spacing-bottom;
+        margin: 0 0 ($grid / 2);
         li {
             font-size: 20px;
             font-weight: 300;
@@ -23,7 +23,7 @@
             }
         }
     }
-    
+
     // Introduction block with drop cap
     .intro {
         p {
@@ -38,7 +38,7 @@
     }
     // Overwrite bottom spacing for heading elements so they sit the same distance as inline headings within .paragraph containers
     .heading {
-        margin-bottom: $inline-spacing-bottom;
+        margin-bottom: ($grid / 2);
     }
     .paragraph {}
     .blockquote {
@@ -118,7 +118,7 @@
         ul {
 
             @include reset-list;
-            margin-bottom: $inline-spacing-bottom;
+            margin-bottom: ($grid / 2);
 
             li {
 
@@ -137,7 +137,7 @@
                 .image {}
                 .statistic {
                     font-size: 56px;
-                    margin: 0 0 $inline-spacing-bottom;
+                    margin: 0 0 ($grid / 2);
                 }
                 .name {
 

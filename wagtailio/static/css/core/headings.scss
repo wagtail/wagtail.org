@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     color: $headingColor;
     font-size: 27px;
-    margin: 0 0 $inline-spacing-bottom;
+    margin: 0 0 ($grid / 2);
     line-height: 1.2;
 
     @include gridle_state( tablet-portrait ){

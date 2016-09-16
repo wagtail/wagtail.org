@@ -45,19 +45,21 @@ python manage.py runserver</pre>
 
 <p>Now sign in at http://127.0.0.1:8000/admin/. For the next steps on building your Wagtail site, see our ten minute guide.</p>
 
+<section class="teasers">
 
-<ul class="block-list">
+    <ul>
     {% for option in self.options.all %}
         <li>
             <a href="{{ option.link }}">
-                <i class="fa {{ option.icon }} fa-3x"></i>
-                <h3>{{ option.title }}</h3>
+                <!-- <i class="fa {{ option.icon }} fa-3x"></i> -->
+                <h2>{{ option.title }}</h2>
                 <p>{{ option.summary }}</p>
             </a>
         </li>
     {% endfor %}
-</ul>
+    </ul>
 
+</section> <!-- /teasers -->
 
     <!-- <div class="container">
         <div class="description">

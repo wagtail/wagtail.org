@@ -15,17 +15,22 @@
         font-size: 18px;
         font-weight: 300;
         margin: 0 0 14px;
-        cursor: default;
+        text-transform: none;
     }
     a {
         display: block;
-        color: $color-primary-highlight;
-        font-size: 28px;
-        margin: 0 auto $inline-spacing-bottom;
-        @include transition( color $anim-speed-primary linear );
+        margin: 0 auto ($grid / 2);
+
+        svg {
+            fill: $color-black;
+            transition: fill .2s ease 0s;
+        }
 
         &:hover {
-            color: $color-primary-dark;
+
+            svg {
+                fill: $color-white;
+            }
         }
 
     }
