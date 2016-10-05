@@ -1,0 +1,67 @@
+.pane__teasers {
+    background-color: $color--secondary;
+    padding: ($grid * 4) $grid ($grid * 4);
+
+    &__container {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+    &__item {
+        display: flex;
+        flex: 0 1 auto;
+        flex-basis: 25%;
+        list-style-type: none;
+        padding: 0 $grid 0;
+        margin: 0;
+
+        &__link {
+            display: block;
+            background-color: rgba($color-white, 0.8);
+            border-radius: 5px;
+            color: $bodyColor;
+            padding: $grid;
+            transition: background-color .2s ease 0s,
+                        transform .2s ease 0s;
+
+            &:hover {
+                transform: translate3d(0, -10px, 0);
+                background-color: rgba($color-white, 1);
+            }
+        }
+
+    }
+
+    a {
+
+        &:hover {
+
+            p {
+                color: $bodyColor;
+            }
+
+        }
+
+    }
+
+    h2 {
+        font-size: 28px;
+        color: $color-black;
+        margin-bottom: ($grid / 2);
+    }
+
+    p {
+        font-size: 18px;
+        margin: 0;
+    }
+
+    svg {
+        transform: rotate(-90deg) scale(0.6) translate(-11px, 0);
+        fill: $color--primary;
+    }
+
+
+
+}

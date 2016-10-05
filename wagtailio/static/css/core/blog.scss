@@ -1,6 +1,10 @@
 .blog-container {
     position: relative;
     height: 100%;
+
+    .share {
+        background-color: rgba($color-black, 0.1);
+    }
 }
 
 .blog-item {
@@ -11,7 +15,7 @@
     background-color: $color-white;
 
     .container {
-        max-width: $website-width-max;
+        max-width: 800px;
         margin: 0 auto;
     }
 
@@ -87,7 +91,7 @@
             transition: background-color .2s ease;
 
             &:hover {
-                background-color: rgba($headingColor, 0.2);
+                background-color: $color--tertiary;
             }
 
             span {
@@ -95,9 +99,11 @@
             }
 
             .date {
-                color: rgba($headingColor, 0.6);
-                font-size: 18px;
+                color: rgba($color-white, 0.6);
+                font-size: 16px;
                 margin-bottom: $grid / 4;
+                font-weight: 300;
+                text-transform: uppercase;
             }
         }
 
@@ -107,6 +113,25 @@
         position: relative;
         width: 100%;
         height: 100%;
+    }
+
+}
+
+.blog-nav {
+
+    &__header {
+        padding: ($grid * 5) 40px ($grid);
+        background-color: $color-secondary-highlight;
+
+        a {
+            color: rgba($color-white, 0.7);
+            visibility: hidden;
+
+            &:hover {
+                color: $color-black;
+            }
+
+        }
     }
 
 }

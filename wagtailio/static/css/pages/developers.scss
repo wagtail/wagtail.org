@@ -6,57 +6,15 @@
 
 
 .template-developers-page {
-    h4 {
-        margin-bottom: 0.25em;
-        font-size: 1.2em;
-        font-weight: 500;
-    }
-
-    p {
-        padding: 0;
-        margin: 0 0 1.5em 0;
-    }
-
     background: $color-primary-highlight;
 
-    section {
-        @include row;
-
-        .container{
-            padding-top: 3em;
-            padding-bottom: 3em;
-        }
+    .page-heading {
+        padding-top: ($grid * 2);
+        margin-bottom: ($grid * 2);
     }
-    .description{
-        @include gridle( 12 );
-        @include gridle( 6, desktop);
-        color: $color-primary-light;
 
-        h2{
-            margin-bottom: 0.25em;
-        }
-    }
-    .get-started {
-        margin-top:1em;
-        background: rgba(255, 255, 255, 0.1);
-        padding:1em;
-        color:$color-primary-dark;
-
-        @include gridle_state( desktop ){
-            padding: 2em;
-        }
-
-        pre{
-            color:white;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.3em;
-            font-size: 0.8em;
-        }
-
-        a {
-            color: $color-primary-light;
-            @include custom-underline( $underline-colour: $color-primary-light, $invert: true );
-        }
+    .pane__code {
+        margin-bottom: ($grid * 4);
     }
 
 }

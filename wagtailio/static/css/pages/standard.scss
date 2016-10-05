@@ -11,8 +11,8 @@
 
     .page-heading {
         padding-top: ($grid * 6);
-        padding-bottom: ($grid * 3);
-        background-color: $color-primary-highlight;
+        padding-bottom: ($grid);
+        background-color: $color-white;
         margin-bottom: ($grid * 2);
         text-align: left;
 
@@ -21,7 +21,13 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: $bodyColor;
         }
+
+        h1 {
+            color: $color-black;
+        }
+
     }
 
     .page-content {

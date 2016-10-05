@@ -18,6 +18,11 @@ $color-secondary-light: rgba($color-primary-light, 0.7);
 $color-secondary-highlight: #43b1b0; // wagtail brand teal
 $color-green: #3cb65b;
 
+$color--primary:            $color-primary-highlight;   // orange
+$color--secondary:          $color-secondary-highlight;  // teal
+$color--tertiary:           $color-primary-dark; // grey
+$color--quaternary:         $color-primary-bg; // offwhite
+
 // Generic colours
 $color-white: #fff;
 $color-black: #000;

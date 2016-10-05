@@ -367,6 +367,9 @@
     }
 
     &__hire {
+        background-color: $color-secondary-highlight;
+        padding: ($grid * 3) $grid ($grid * 4);
+        text-align: center;
 
         p {
             color: rgba($color-white, 0.8);

@@ -4,10 +4,10 @@
     left: 0;
     z-index: 2;
     overflow: hidden;
-    background-color: $color-primary-highlight;
+    background-color: $headingColor;
     height: 100%;
     width: 25%;
-    padding: $headerHeight 0;
+    padding: 0 0;
 
     h2 {
         color: $color-white;

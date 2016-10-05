@@ -4,23 +4,24 @@
 
 {% block content %}
 
-<header class="page-heading">
-    <h1>{{ self.title }}</h1>
-    <div class="introduction">Install Wagtail <span>in just 7 lines</span></div>
-</header> <!-- /page-heading -->
 
-<section class="pane__code border--after">
+    <header class="page-heading">
+        <h1>{{ self.title }}</h1>
+        <div class="introduction">Install Wagtail <span>in just 7 lines</span></div>
+    </header> <!-- /page-heading -->
 
-    <div class="text-container">
+    <section class="pane__code">
+
+        <div class="text-container">
 
 
-        <div class="pre-container">
+            <div class="pre-container">
 
-            <div class="app-header">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+                <div class="app-header">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
 <pre>pip install wagtail
 wagtail start mysite
@@ -30,36 +31,45 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver</pre>
 
-        </div> <!-- /pre-container -->
+            </div> <!-- /pre-container -->
 
-        <div class="actions">
-            <a href="#">
-                <span>View</span> on Github
-                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-            </a>
-        </div> <!-- /actions -->
+            <div class="actions">
+                <a href="http://docs.wagtail.io/en/latest/getting_started/tutorial.html">
+                    <span>10 min</span> guide
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </div> <!-- /actions -->
 
-    </div> <!-- /text-container -->
+        </div> <!-- /text-container -->
 
-</section> <!-- /pane__code -->
+    </section> <!-- /pane__code -->
 
-<p>Now sign in at http://127.0.0.1:8000/admin/. For the next steps on building your Wagtail site, see our ten minute guide.</p>
+    <section class="pane__teasers pane__contours">
 
-<section class="teasers">
+        <ul class="pane__teasers__container">
+        {% for option in self.options.all %}
+            <li class="pane__teasers__item">
+                <a class="pane__teasers__item__link" href="{{ option.link }}">
+                    <h2>{{ option.title }} <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></h2>
+                    <p>{{ option.summary }}</p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
 
-    <ul>
-    {% for option in self.options.all %}
-        <li>
-            <a href="{{ option.link }}">
-                <!-- <i class="fa {{ option.icon }} fa-3x"></i> -->
-                <h2>{{ option.title }}</h2>
-                <p>{{ option.summary }}</p>
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
+        <svg height="150px" width="150px">
+    <use xlink:href="#github"></use>
+</svg>
 
-</section> <!-- /teasers -->
+<svg height="150px" width="150px">
+    <use xlink:href="#social"></use>
+</svg>
+
+<svg height="150px" width="150px">
+    <use xlink:href="#documentation"></use>
+</svg>
+
+    </section> <!-- /teasers -->
 
     <!-- <div class="container">
         <div class="description">
