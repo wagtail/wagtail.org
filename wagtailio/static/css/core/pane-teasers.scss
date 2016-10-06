@@ -1,28 +1,37 @@
 .pane__teasers {
-    background-color: $color--secondary;
-    padding: ($grid * 4) $grid ($grid * 4);
+    padding: 0 $grid;
+    margin-bottom: ($grid * 4);
+
+    &__main-heading {
+        color: $color-white;
+        font-size: 42px;
+        margin: 0 0 60px;
+        text-align: center;
+    }
 
     &__container {
         list-style-type: none;
         padding: 0;
-        margin: 0;
+        margin: 0 auto;
         display: flex;
+        flex-wrap: wrap;
+        max-width: $website-width-max;
     }
 
     &__item {
-        display: flex;
         flex: 0 1 auto;
-        flex-basis: 25%;
+        flex-basis: 50%;
         list-style-type: none;
         padding: 0 $grid 0;
-        margin: 0;
+        margin: 0 0 ($grid * 2);
+        text-align: center;
 
         &__link {
             display: block;
             background-color: rgba($color-white, 0.8);
             border-radius: 5px;
             color: $bodyColor;
-            padding: $grid;
+            padding: ($grid * 2) $grid $grid;
             transition: background-color .2s ease 0s,
                         transform .2s ease 0s;
 
@@ -42,22 +51,33 @@
                 color: $bodyColor;
             }
 
+            h2 {
+                color: $color--primary;
+            }
+
         }
 
     }
 
-    h2 {
+    &__heading {
         font-size: 28px;
         color: $color-black;
         margin-bottom: ($grid / 2);
+        text-transform: none;
     }
 
     p {
         font-size: 18px;
-        margin: 0;
+        margin: 0 0 $grid;
     }
 
-    svg {
+    &__icon {
+        text-align: center;
+        margin-bottom: ($grid / 2);
+        fill: $color--secondary;
+    }
+
+    &__arrow {
         transform: rotate(-90deg) scale(0.6) translate(-11px, 0);
         fill: $color--primary;
     }

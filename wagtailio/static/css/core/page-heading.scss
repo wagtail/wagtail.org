@@ -35,6 +35,31 @@
             color: $color-white;
         }
     }
+
+    // Standard page specific styles
+
+    .template-standard-page & {
+        background-color: $color--quaternary;
+        margin-bottom: ($grid * 3);
+        text-align: left;
+        padding-bottom: ($grid * 4);
+        padding-top: ($grid * 6);
+
+        h1,
+        .introduction {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: $bodyColor;
+        }
+
+        h1 {
+            color: $color--secondary;
+            margin-bottom: ($grid * 2)
+        }
+
+    }
+
 }
 
 .introduction {

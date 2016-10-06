@@ -9,27 +9,6 @@
         padding-top: 0;
     }
 
-    .page-heading {
-        padding-top: ($grid * 6);
-        padding-bottom: ($grid);
-        background-color: $color-white;
-        margin-bottom: ($grid * 2);
-        text-align: left;
-
-        h1,
-        .introduction {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: $bodyColor;
-        }
-
-        h1 {
-            color: $color-black;
-        }
-
-    }
-
     .page-content {
         font-size: 20px;
 
@@ -40,12 +19,25 @@
             max-width: 800px;
             margin: 0 auto ($grid);
         }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 21px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
     }
 
     .paragraph,
     .calltoaction {
         max-width: 800px;
-        margin: 0 auto ($grid * 2);
+        margin: 0 auto ($grid * 3);
     }
 
 }

@@ -5,43 +5,6 @@
 
 */
 header.global {
-
-    // Vars
-    $link-padding: 12px 15px;
-    $anim_speed-slow: 500ms;
-    $anim_speed-fast: 150ms;
-    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
-    $outOpacity: 0.5;
-
-    // Mixins
-    @mixin linkStyling {
-        @include font-smoothing();
-        display: block;
-        padding: $link-padding;
-
-        color: $color-primary-dark;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight:400;
-        border: solid 1px transparent;
-
-        @include transition(
-            color $anim_speed-slow ease-out,
-            opacity $anim_speed-slow ease-out
-        );
-
-        &:hover:not( .get_started ) {
-            @include transition( none );
-            @include opacity( 1 );
-            color: $color-primary-highlight;
-        }
-
-        &.get_started {
-            @include button( $link-padding );
-        }
-    }
-
-    // Styling
     position: fixed;
     top: 0;
     left: 0;
@@ -56,6 +19,10 @@ header.global {
     transform: translateY(0);
     transition: transform .2s ease 0s;
 
+    @include gridle_state( tablet-landscape ) {
+        padding: 4px ($grid * 1.5) 2px;
+    }
+
     &.headroom {
 
         &--unpinned {
@@ -68,64 +35,5 @@ header.global {
         }
 
     }
-
-    // Branding
-    .branding {
-
-        display: inline-block;
-        @include gridle( 1 );
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-        img {
-            width: 70px;
-        }
-
-        @include gridle_state( tablet-landscape ){
-            margin-top: 13px;
-            margin-bottom: 0;
-
-            img {
-                width: 90px;
-            }
-        }
-
-    }
-
-    // Primary Navigation
-    .primary_navigation {
-        float: right;
-        display: none;
-
-        @include gridle_state( tablet-landscape ){
-            display: block;
-        }
-
-        ul {
-            @include reset-list;
-            // clear nested floats
-            overflow: hidden;
-            // Styling
-            padding: 10px 0;
-            //
-            float: right;
-
-            // fade out links when hovering UL
-            &:hover {
-                a:not( .get_started ) {
-                    @include opacity( $outOpacity );
-                }
-            }
-
-            li {
-                float: left;
-
-                a {
-                    @include linkStyling;
-                }
-            }
-        }
-    }
-
 
 }

@@ -5,6 +5,8 @@
 {% block content %}
 
 
+<div class="pane__contours">
+
     <header class="page-heading">
         <h1>{{ self.title }}</h1>
         <div class="introduction">Install Wagtail <span>in just 7 lines</span></div>
@@ -46,30 +48,50 @@ python manage.py runserver</pre>
 
     <section class="pane__teasers pane__contours">
 
+        <h2 class="pane__teasers__main-heading">Wagtail Resources <span>Sub title to support this</span></h2>
+
         <ul class="pane__teasers__container">
-        {% for option in self.options.all %}
             <li class="pane__teasers__item">
                 <a class="pane__teasers__item__link" href="{{ option.link }}">
-                    <h2>{{ option.title }} <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></h2>
-                    <p>{{ option.summary }}</p>
+                    <svg class="pane__teasers__icon" height="50px" width="50px">
+                        <use xlink:href="#github"></use>
+                    </svg>
+                    <h3 class="pane__teasers__heading">Github <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                    <p>Start here to work on Wagtail itself, or to submit feature requests.</p>
                 </a>
             </li>
-        {% endfor %}
+            <li class="pane__teasers__item">
+                <a class="pane__teasers__item__link" href="{{ option.link }}">
+                    <svg class="pane__teasers__icon" height="50px" width="50px">
+                        <use xlink:href="#social"></use>
+                    </svg>
+                    <h3 class="pane__teasers__heading">User group <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                    <p>Wagtail user group, for support on using Wagtail.</p>
+                </a>
+            </li>
+            <li class="pane__teasers__item">
+                <a class="pane__teasers__item__link" href="{{ option.link }}">
+                    <svg class="pane__teasers__icon" height="50px" width="50px">
+                        <use xlink:href="#social"></use>
+                    </svg>
+                    <h3 class="pane__teasers__heading">Developer Group <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                    <p>An open group for people developing Wagtail itself.</p>
+                </a>
+            </li>
+            <li class="pane__teasers__item">
+                <a class="pane__teasers__item__link" href="{{ option.link }}">
+                    <svg class="pane__teasers__icon" height="50px" width="50px">
+                        <use xlink:href="#documentation"></use>
+                    </svg>
+                    <h3 class="pane__teasers__heading">Documentation <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                    <p>Guides and reference for installing and using Wagtail.</p>
+                </a>
+            </li>
         </ul>
 
-        <svg height="150px" width="150px">
-    <use xlink:href="#github"></use>
-</svg>
-
-<svg height="150px" width="150px">
-    <use xlink:href="#social"></use>
-</svg>
-
-<svg height="150px" width="150px">
-    <use xlink:href="#documentation"></use>
-</svg>
-
     </section> <!-- /teasers -->
+
+</div> <!-- /contours -->
 
     <!-- <div class="container">
         <div class="description">
@@ -87,6 +109,17 @@ python manage.py runserver</pre>
                     {{ self.body|richtext }}
                 </div>
             {% endif %}
+
+            <ul class="pane__teasers__container">
+            {% for option in self.options.all %}
+                <li class="pane__teasers__item">
+                    <a class="pane__teasers__item__link" href="{{ option.link }}">
+                        <h2>{{ option.title }} <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg></h2>
+                        <p>{{ option.summary }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
         </div>
 
 
