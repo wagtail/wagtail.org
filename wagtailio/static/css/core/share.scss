@@ -5,7 +5,7 @@
 */
 .share {
     position: fixed;
-    top: 64px + 52px; // needs variablising
+    top: ($grid * 6);
     right: 40px;
     text-align: center;
     background: rgba( $color-primary-light, 0.25 );
@@ -17,6 +17,7 @@
         margin: 0 0 14px;
         text-transform: none;
     }
+
     a {
         display: block;
         margin: 0 auto ($grid / 2);
@@ -29,8 +30,9 @@
         &:hover {
 
             svg {
-                fill: $color-white;
+                fill: $color--primary;
             }
+
         }
 
     }

@@ -67,16 +67,9 @@ footer.global {
 }
 
 
-// Nested components
 .get_started_links {
     @include gridle_set((
         grid : 4,
-        tablet-portrait : (
-            no_gutter : (left, right)
-        ),
-        mobile : (
-            no_gutter : (left, right)
-        )
     ), tablet-landscape desktop );
 
     padding-bottom: 10px;
@@ -92,41 +85,51 @@ footer.global {
 .network_links {
     @include gridle_set((
         grid : 4,
-        tablet-portrait : (
-            no_gutter : (left)
-        ),
-        mobile : (
-            no_gutter : (left, right)
-        )
     ), tablet-landscape desktop );
 
-    ul {
-        @include reset-list;
-        li {
-
-            border-bottom: solid 1px $borderColorLight;
-            padding: ($grid / 2) 0;
-
-            a {
-                @include external-link;
-            }
-            p {
-                font-size: 14px;
-                margin: 4px 0;
-            }
-        }
+    &__heading {
+        margin-bottom: 0 !important;
     }
+
+    &__container {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &__item {
+        border-bottom: solid 1px $borderColorLight;
+        padding: $grid 0;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        p {
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+    }
+
+    &__link {
+        display: block;
+
+        &:hover {
+
+            .network_links__subheading {
+                color: $color--primary;
+            }
+
+        }
+
+    }
+
 }
 
 .latest_blog {
     @include gridle_set((
         grid : 4,
-        tablet-portrait : (
-            no_gutter : (left, right)
-        ),
-        mobile : (
-            no_gutter : (left, right)
-        )
     ), tablet-landscape desktop );
 
     ul {
@@ -154,12 +157,6 @@ footer.global {
 .newsletter_signup {
     @include gridle_set((
         grid : 8,
-        tablet-portrait : (
-            no_gutter : (left, right)
-        ),
-        mobile : (
-            no_gutter : (left, right)
-        )
     ), tablet-landscape desktop );
 
     fieldset {
@@ -194,19 +191,13 @@ footer.global {
 .follow_links {
     margin-bottom: ($grid * 1.5);
 
-    h3 {
-        margin-bottom: 0;
-    }
-
     @include gridle_set((
         grid : 4,
-        tablet-portrait : (
-            no_gutter : (left, right)
-        ),
-        mobile : (
-            no_gutter : (left, right)
-        )
     ), tablet-landscape desktop );
+
+    &__heading {
+        margin-bottom: 0 !important;
+    }
 
     a {
         font-size: 56px;
@@ -224,6 +215,10 @@ footer.global {
     clear: both;
     overflow: hidden;
     border-top: 1px solid $borderColorLight;
+
+    @include gridle_set((
+        grid : 12,
+    ), tablet-landscape desktop );
 
     .copyright {
         float: left;

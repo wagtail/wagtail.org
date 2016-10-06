@@ -27,7 +27,6 @@
 
     .body {
         padding-top: $headerHeightMobile;
-        @include transform( translate3d( 0, 0, 0 ) ); // Fixes issues on chrome with retina display
 
         @include gridle_state( tablet-landscape ){
             padding-top: $headerHeight;

@@ -20,8 +20,8 @@
         <div class="blog-listing__container">
             <ul class="blog-listing">
                 {% for sibling in self.siblings %}
-                    <li>
-                        <a href="{% pageurl sibling %}">
+                    <li class="blog-listing__item">
+                        <a href="{% pageurl sibling %}" class="blog-listing__link {% if sibling == self %}blog-listing__link--current{% endif %}">
                             <span class="date">{{ sibling.date|date }}</span>
                             <span class="title">{{ sibling.title }}</span>
                         </a>

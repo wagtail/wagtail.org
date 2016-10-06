@@ -371,6 +371,11 @@
         padding: ($grid * 3) $grid ($grid * 4);
         text-align: center;
 
+        &__container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         p {
             color: rgba($color-white, 0.8);
         }
