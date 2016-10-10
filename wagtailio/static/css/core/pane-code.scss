@@ -39,7 +39,7 @@
 
         @include gridle_state( desktop ){
             font-size: 21px;
-            padding-bottom: 0;
+            padding-bottom: ($grid * 3);
         }
     }
 

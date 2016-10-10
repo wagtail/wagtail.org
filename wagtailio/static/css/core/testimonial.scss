@@ -7,11 +7,11 @@
     text-align: center;
     background-size: cover;
     color: rgba($color-black, 1);
-    min-height: 600px;
+    min-height: 400px;
     margin: ($grid * 3) auto ($grid);
 
     @include gridle_state( tablet-landscape ){
-        min-height: 400px;
+        min-height: 300px;
     }
 
     span {
@@ -32,12 +32,10 @@
         background: rgba($color-white, 0.5);
         padding: $grid * 2;
         font-size: 28px;
-        margin: 0 auto;
-        max-width: 800px;
+        margin: 0 ($grid * 2);
         font-family: $font-secondary;
 
         p {
-            max-width: 800px;
             line-height: 1.3;
         }
 

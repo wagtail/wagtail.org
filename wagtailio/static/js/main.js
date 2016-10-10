@@ -130,7 +130,11 @@ $(function( ){
         navigation : false,
         slideSpeed      : 500,
         paginationSpeed : 500,
-        items : 1
+        items : 1,
+        itemsDesktop : [1025,1],
+        itemsDesktopSmall : [979,1],
+        itemsTablet : [768,1],
+        itemsMobile : [481,1]
     });
 
     // headroom
