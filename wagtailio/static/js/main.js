@@ -96,7 +96,6 @@ $(function( ){
 
     // Blog index for mobile button
     $( '.blog-index-button' ).on( 'click', function( e ){
-        e.preventDefault();
         $( 'body' ).toggleClass( 'sidebar-open' );
     });
 

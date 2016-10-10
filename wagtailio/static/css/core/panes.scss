@@ -7,7 +7,7 @@
         position: relative;
         z-index: 2;
         overflow: hidden;
-        padding: $grid * 4 0 $grid * 4;
+        padding: $grid 0 $grid * 4;
         background: $color-primary-highlight;
 
         @include gridle_state( tablet-landscape ){

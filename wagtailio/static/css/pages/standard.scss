@@ -12,6 +12,15 @@
     .page-content {
         font-size: 20px;
 
+        .container {
+            margin: 0 $grid;
+
+            @include gridle_state( tablet-landscape ){
+                margin: 0;
+            }
+            
+        }
+
         h2,
         h3,
         h4 {

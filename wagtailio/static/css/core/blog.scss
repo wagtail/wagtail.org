@@ -10,9 +10,12 @@
 .blog-item {
     direction: ltr;
     padding: $headerHeight 6%;
-    width: 75%;
-    margin-left: 25%;
     background-color: $color-white;
+
+    @include gridle_state( tablet-landscape ){
+        width: 75%;
+        margin-left: 25%;
+    }
 
     .container {
         max-width: 800px;
@@ -76,15 +79,18 @@
 }
 
 .blog-listing {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    overflow-y: scroll;
-    width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
+
+    @include gridle_state( tablet-landscape ){
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        overflow-y: scroll;
+        width: 100%;
+        height: 100%;
+    }
 
     &__item {
         list-style-type: none;
@@ -132,9 +138,28 @@
     }
 
     &__container {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
+        transform: translate3d(0, -200%, 0);
+        background-color: $headingColor;
+        z-index: 4;
+        opacity: 0;
+        transition: transform .2s ease 0s,
+                    opacity .2s ease 0s;
+
+        @include gridle_state( tablet-landscape ){
+            transform: translate3d(0, 0%, 0);
+            position: relative;
+            background-color: transparent;
+            opacity: 1;
+        }
+
+        .sidebar-open & {
+            transform: translate3d(0, 0%, 0);
+            opacity: 1;
+            padding-top: 127px;
+        }
     }
 
 }
@@ -142,18 +167,65 @@
 .blog-nav {
 
     &__header {
-        padding: ($grid * 5) 40px ($grid);
+        padding: ($grid * 4) 40px ($grid);
         background-color: $color-secondary-highlight;
+        text-align: center;
+        position: relative;
+
+        @include gridle_state( tablet-landscape ){
+            padding: ($grid * 5) 40px ($grid);
+            text-align: left;
+        }
+
+        h2 {
+            display: none;
+
+            @include gridle_state( tablet-landscape ){
+                display: block;
+            }
+        }
 
         a {
-            color: rgba($color-white, 0.7);
-            visibility: hidden;
+            color: rgba($color-white, 1);
+            font-weight: bold;
+            text-transform: uppercase;
+
+            @include gridle_state( tablet-landscape ){
+                visibility: hidden;
+            }
+
+            svg {
+                fill: $color-white;
+                transition: transform .2s ease 0s;
+            }
 
             &:hover {
                 color: $color-black;
             }
 
         }
+
+        .sidebar-open & {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 5;
+
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+
+    }
+
+}
+
+.template-blog-page .body {
+    padding-top: 0;
+
+    @include gridle_state( tablet-landscape ){
+        padding-top: $headerHeight;
     }
 
 }

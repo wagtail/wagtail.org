@@ -20,11 +20,15 @@
 
     &__item {
         flex: 0 1 auto;
-        flex-basis: 50%;
+        flex-basis: 100%;
         list-style-type: none;
         padding: 0 $grid 0;
         margin: 0 0 ($grid * 2);
         text-align: center;
+
+        @include gridle_state( tablet-landscape ){
+            flex-basis: 50%;
+        }
 
         &__link {
             display: block;

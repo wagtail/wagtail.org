@@ -10,9 +10,13 @@ footer.global {
     display: block;
     overflow: hidden;
     //margin-bottom: 200px;
-    padding: 60px;
+    padding: $grid;
     text-align: left;
     background: #111;
+
+    @include gridle_state( tablet-landscape ){
+        padding: ($grid * 3);
+    }
 
     h3 {
         font-size: 28px;
@@ -73,6 +77,11 @@ footer.global {
     ), tablet-landscape desktop );
 
     padding-bottom: 10px;
+    margin-bottom: $grid;
+
+    @include gridle_state( tablet-landscape ){
+        margin-bottom: 0;
+    }
 
     a {
         // make buttons sit after each other without using display: block or <br />;
@@ -84,8 +93,18 @@ footer.global {
 
 .network_links {
     @include gridle_set((
-        grid : 4,
-    ), tablet-landscape desktop );
+        grid : 12,
+        push: 0,
+        tablet-landscape: (
+            push: 0,
+            grid : 4
+        )
+    ));
+    margin-bottom: $grid;
+
+    @include gridle_state( tablet-landscape ){
+        margin-bottom: 0;
+    }
 
     &__heading {
         margin-bottom: 0 !important;
@@ -99,7 +118,12 @@ footer.global {
 
     &__item {
         border-bottom: solid 1px $borderColorLight;
-        padding: $grid 0;
+        padding: ($grid / 2) 0;
+        margin: 0;
+
+        @include gridle_state( tablet-landscape ){
+            padding: $grid 0;
+        }
 
         &:last-child {
             border-bottom: 0;
@@ -107,7 +131,7 @@ footer.global {
 
         p {
             font-size: 14px;
-            margin: 4px 0;
+            margin: 4px 0 !important;
         }
 
     }
@@ -129,8 +153,19 @@ footer.global {
 
 .latest_blog {
     @include gridle_set((
-        grid : 4,
-    ), tablet-landscape desktop );
+        grid : 12,
+        push: 0,
+        tablet-landscape: (
+            push: 0,
+            grid : 4
+        )
+    ));
+
+    margin-bottom: $grid;
+
+    @include gridle_state( tablet-landscape ){
+        margin-bottom: 0;
+    }
 
     ul {
         @include reset-list;
@@ -156,8 +191,18 @@ footer.global {
 
 .newsletter_signup {
     @include gridle_set((
-        grid : 8,
-    ), tablet-landscape desktop );
+        grid : 12,
+        push: 0,
+        tablet-landscape: (
+            push: 0,
+            grid : 8
+        )
+    ));
+    margin-bottom: $grid;
+
+    @include gridle_state( tablet-landscape ){
+        margin-bottom: 0;
+    }
 
     fieldset {
         // reset fieldset styling
@@ -192,8 +237,13 @@ footer.global {
     margin-bottom: ($grid * 1.5);
 
     @include gridle_set((
-        grid : 4,
-    ), tablet-landscape desktop );
+        grid : 12,
+        push: 0,
+        tablet-landscape: (
+            push: 0,
+            grid : 4
+        )
+    ));
 
     &__heading {
         margin-bottom: 0 !important;

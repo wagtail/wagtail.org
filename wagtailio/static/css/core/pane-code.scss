@@ -35,9 +35,11 @@
         background-color: $color-black;
         box-shadow: 0 0 20px rgba($color-white, 0.1);
         border-radius:  0 0 5px 5px;
+        padding-bottom: 140px; // to ensure button doesn't cover code
 
         @include gridle_state( desktop ){
             font-size: 21px;
+            padding-bottom: 0;
         }
     }
 
