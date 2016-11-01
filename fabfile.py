@@ -3,15 +3,8 @@ import warnings
 from datetime import datetime
 from fabric.api import *
 
-import uuid
-
-STAGING_DB_USERNAME = "wagtailio"
-DB_NAME = "wagtailio"
-LOCAL_DUMP_PATH = "~/"
-REMOTE_DUMP_PATH = "~/"
-
 env.roledefs = {
-    'production': ['wagtailio@web-1-a.rslon.torchbox.net', 'wagtailio@web-1-b.rslon.torchbox.net' ],
+    'production': ['wagtailio@web-1-a.rslon.torchbox.net', 'wagtailio@web-1-b.rslon.torchbox.net'],
     'staging': ['wagtailio@by-staging-1.torchbox.com'],
 }
 
@@ -51,6 +44,7 @@ def createsuperuser_staging():
     run('django-admin createsuperuser')
 
 
+@runs_once
 def _pull_data(env_name, remote_db_name, local_db_name, remote_dump_path, local_dump_path):
     timestamp = datetime.now().strftime('%Y%m%d-%I%M%S')
 
@@ -101,19 +95,16 @@ def pull_staging_data():
     )
 
 
+@runs_once
+def _pull_media():
+    local("rsync -avz %s:\'$CFG_MEDIA_DIR\' /vagrant/media/" % env['host_string'])
+
+
 @roles('staging')
 def pull_staging_media():
-    media_filename = "wagtailio-%s-media.tar.gz" % uuid.uuid4()
-    local_media_dump = "%s%s" % (LOCAL_DUMP_PATH, media_filename)
-    remote_media_dump = "%s%s" % (REMOTE_DUMP_PATH, media_filename)
+    _pull_media()
 
-    with cd('/usr/local/django/wagtailio'):
-        run('tar cvf - media | gzip -1 >%s' % remote_media_dump)
 
-    get('%s' % remote_media_dump, '%s' % local_media_dump)
-
-    local('rm -rf media.old')
-    local('mv media media.old || true')
-    local('gzip -dc %s | tar xvf -' % local_media_dump)
-    local('rm -f %s' % local_media_dump)
-    run('rm -f %s' % remote_media_dump)
+@roles('production')
+def pull_production_media():
+    _pull_media()
