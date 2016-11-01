@@ -179,7 +179,7 @@ WAGTAILIMAGES_IMAGE_MODEL = 'images.WagtailioImage'
 # Use Elasticsearch as the search backend for extra performance and better search results
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
         'INDEX': 'wagtailio',
     },
 }
