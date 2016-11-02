@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static wagtailimages_tags wagtailio_utils %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 {% block body_class %}template-homepage{% endblock %}
 {% block extra_css %}{% endblock %}
@@ -385,53 +385,27 @@ python manage.py runserver</pre>
 
     <div class="row">
 
-        <article>
-            <a href="#">
-                <div class="image-container" style="background-image: url('/static/img/blog_cape-town.jpg');">
-                    <div class="text-container">
-                        <p class="date">Feb 29th 2016</p>
-                        <h3>Cape Town Retrospective</h3>
-                        <p>Spinting in South Africa</p>
-                    </div>
-                </div>
-            </a>
-        </article>
+        {% for blog_post in blog_posts|slice:":3" %}
+            <article>
+                <a href="{% pageurl blog_post %}">
+                    <div class="image-container"
+                        {% if blog_post.listing_image %}
+                            {% image blog_post.listing_image fill-360x400 as bg_image %}
 
-        <article>
-            <a href="#">
-                <div class="image-container" style="background-image: url('/static/img/hero_bg_3.jpg');">
-                    <div class="text-container">
-                        <p class="date">Feb 29th 2016</p>
-                        <h3>Cape Town Retrospective</h3>
-                        <p>Spinting in South Africa</p>
+                            style="background-image: url({{ bg_image.url }});"
+                        {% else %}
+                            style="background-image: url({% static 'img/hero_bg_3.jpg' %});"
+                         {% endif %}
+                        >
+                        <div class="text-container">
+                            <p class="date">{{ blog_post.date|date }}</p>
+                            <h3>{{ blog_post.title }}</h3>
+                            <p>{{ blog_post.introduction }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </article>
-
-        <article>
-            <a href="#">
-                <div class="image-container" style="background-image: url('/static/img/hero_bg_2.jpg');">
-                    <div class="text-container">
-                        <p class="date">Feb 29th 2016</p>
-                        <h3>Cape Town Retrospective</h3>
-                        <p>Spinting in South Africa</p>
-                    </div>
-                </div>
-            </a>
-        </article>
-
-        <article>
-            <a href="#">
-                <div class="image-container" style="background-image: url('/static/img/blog_cape-town.jpg');">
-                    <div class="text-container">
-                        <p class="date">Feb 29th 2016</p>
-                        <h3>Cape Town Retrospective</h3>
-                        <p>Spinting in South Africa</p>
-                    </div>
-                </div>
-            </a>
-        </article>
+                </a>
+            </article>
+        {% endfor %}
 
     </div> <!-- /row -->
 

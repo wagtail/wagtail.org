@@ -15,6 +15,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
+from wagtailio.blog.models import BlogPage
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (
     SocialMediaMixin,
@@ -115,3 +116,12 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     ]
 
     promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+
+    def get_context(self, request, *args, **kwargs):
+
+        context = super(HomePage, self).get_context(request, *args, **kwargs)
+        context.update({
+            'blog_posts': BlogPage.objects.live().order_by('-date'),
+        })
+
+        return context
