@@ -2,15 +2,17 @@ from django.db import models
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
+from wagtail.wagtailcore.fields import StreamField
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, MultiFieldPanel, InlinePanel,
-    PageChooserPanel
-)
+    PageChooserPanel,
+    StreamFieldPanel)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 from wagtailio.blog.models import BlogPage
+from wagtailio.core.blocks import HomeBlock
 from wagtailio.utils.models import (
     SocialMediaMixin,
     CrossPageMixin,
@@ -102,8 +104,13 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     secondary_carousel_introduction = models.CharField(max_length=511)
+    body = StreamField(HomeBlock())
 
     content_panels = Page.content_panels + [
+        # New fields
+        StreamFieldPanel('body'),
+
+        # TODO: Remove the following fields, when body streamfield is ready
         InlinePanel('main_carousel_items', label="Main carousel items"),
         FieldPanel('secondary_carousel_introduction'),
         InlinePanel('secondary_carousel_items', label="Secondary carousel items"),

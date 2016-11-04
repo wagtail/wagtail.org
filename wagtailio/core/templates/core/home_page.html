@@ -9,28 +9,7 @@
 
 <h1>Wagtail Django CMS Homepage</h1>
 
-<section class="hero" style="background-image:url('../static/img/hero_bg_3.jpg')">
-
-    <div class="text-container">
-        <h2 class="js-fade">Open source content management with secret source</h2>
-        <p class="js-fade">The open source Django content management system</p>
-
-        <div class="actions">
-            <a href="#features" class="js-smoothscroll">
-                <span>View the</span> features
-                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-            </a>
-            <a href="#">
-                <span>Get</span> Wagtail
-                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-            </a>
-        </div> <!-- /actions -->
-
-    </div> <!-- /text-container -->
-
-    <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" class="screenshot"/>
-
-</section> <!-- /hero -->
+{% include_block page.body %}
 
 <section class="pane pane__logo-list">
 

@@ -1,0 +1,7 @@
+{% load wagtailcore_tags %}
+
+<a href="{% if value.link_page %}{% pageurl value.link_page %}{% else %}{{ value.link_url }}{% endif %}"
+   {% if is_anchor %}class="js-smoothscroll"{% endif %}>
+    <span>{{ value.link_text }}</span> {{ value.link_text_bold }}
+    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+</a>
