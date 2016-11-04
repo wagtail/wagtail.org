@@ -1,22 +1,16 @@
 from django.db import models
-from django.shortcuts import redirect
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore.models import Page, Orderable
-
-from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel, MultiFieldPanel, InlinePanel,
-    PageChooserPanel, StreamFieldPanel
+    PageChooserPanel
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
 
 from wagtailio.blog.models import BlogPage
-from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (
     SocialMediaMixin,
     CrossPageMixin,
@@ -118,7 +112,6 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
 
     def get_context(self, request, *args, **kwargs):
-
         context = super(HomePage, self).get_context(request, *args, **kwargs)
         context.update({
             'blog_posts': BlogPage.objects.live().order_by('-date'),
