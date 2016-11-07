@@ -53,7 +53,14 @@ class BannerBlock(blocks.StructBlock):
         template = 'core/blocks/banner_block.html'
 
 
-# Main streamfield block to be inherited by Pages
+class BrandsBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=True)
+    brands = blocks.ListBlock(ImageChooserBlock())
+
+    class Meta:
+        template = 'core/blocks/brands_block.html'
+
 
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
+    brands = BrandsBlock()
