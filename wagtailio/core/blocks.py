@@ -60,6 +60,7 @@ class BrandsBlock(blocks.StructBlock):
     brands = blocks.ListBlock(ImageChooserBlock())
 
     class Meta:
+        icon = 'pick'
         template = 'core/blocks/brands_block.html'
 
 
@@ -103,12 +104,29 @@ class CodePromoBlock(blocks.StructBlock):
         template = 'core/blocks/code_with_link_block.html'
 
 
+class ShowcasesBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    subtitle = blocks.CharBlock(required=False)
+    more_link = PageOrExternalLinkBlock(required=False)
+    items = blocks.ListBlock(blocks.StructBlock((
+        ('title', blocks.CharBlock()),
+        ('subtitle', blocks.CharBlock(required=False)),
+        ('link_url', blocks.URLBlock(required=False)),
+        ('image', ImageChooserBlock()),
+    )))
+
+    class Meta:
+        icon = 'view'
+        template = 'core/blocks/showcases_block.html'
+
+
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
     home_page_features = HomePageFeaturesBlock()
-    testimonials = blocks.ListBlock(TestimonialBlock())
+    testimonials = blocks.ListBlock(TestimonialBlock(), icon='group')
     code = CodePromoBlock()
+    showcases = ShowcasesBlock()
 
     class Meta:
         template = 'core/blocks/home_block.html'
