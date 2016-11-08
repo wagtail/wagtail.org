@@ -20,15 +20,7 @@
 
         {% if value.link %}
             <div class="actions">
-                <a href="{% pageurl value.link %}">
-                    {% if value.link_title or value.link_subtitle %}
-                        {% if value.link_title %}<span>{{ value.link_title }}</span>{% endif %}
-                        {% if value.link_subtitle %}{{ value.link_subtitle }}{% endif %}
-                    {% else %}
-                        <span>{{ value.link.title }}</span>
-                    {% endif %}
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
+                {% include_block value.link %}
             </div> <!-- /actions -->
         {% endif %}
 

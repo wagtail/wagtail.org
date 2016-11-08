@@ -96,9 +96,7 @@ class CodePromoBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     subtitle = blocks.CharBlock(required=False)
     code = CodeBlock()
-    link = blocks.PageChooserBlock()
-    link_title = blocks.CharBlock(required=False)
-    link_subtitle = blocks.CharBlock(required=False)
+    link = SquareLinkBlock()
 
     class Meta:
         icon = 'code'
