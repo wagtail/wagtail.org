@@ -1,6 +1,7 @@
 import six
 from django.core.exceptions import ValidationError
 from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.blocks import RichTextBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
@@ -61,6 +62,27 @@ class BrandsBlock(blocks.StructBlock):
         template = 'core/blocks/brands_block.html'
 
 
+class FeatureBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    subtitle = blocks.CharBlock()
+    body = blocks.StreamBlock((
+        ('image', ImageChooserBlock(icon="image")),
+        ('heading', blocks.CharBlock(icon="title")),
+        ('paragraph', blocks.TextBlock(icon="pilcrow")),
+    ), template='core/blocks/feature_block_body_block.html')
+
+
+class HomePageFeaturesBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    subtitle = blocks.CharBlock(required=False)
+    all_features_page = blocks.PageChooserBlock(required=False)
+    features = blocks.ListBlock(FeatureBlock())
+
+    class Meta:
+        template = 'core/blocks/home_page_features_block.html'
+
+
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
+    home_page_features = HomePageFeaturesBlock()

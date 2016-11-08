@@ -1,0 +1,15 @@
+{% load  wagtailcore_tags %}
+
+{% for block in value %}
+    {% if block.block_type == 'heading' %}
+        <h4>
+            {% include_block block %}
+        </h4>
+    {% elif block.block_type == 'paragraph' %}
+        <p>
+            {% include_block block %}
+        </p>
+    {% else %}
+        {% include_block block %}
+    {% endif %}
+{% endfor %}
