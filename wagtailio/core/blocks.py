@@ -82,7 +82,20 @@ class HomePageFeaturesBlock(blocks.StructBlock):
         template = 'core/blocks/home_page_features_block.html'
 
 
+class TestimonialBlock(blocks.StructBlock):
+    quote = blocks.TextBlock()
+    author = blocks.CharBlock()
+    link = blocks.URLBlock(required=False)
+
+    class Meta:
+        template = 'core/blocks/testimonial_block.html'
+
+
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
     home_page_features = HomePageFeaturesBlock()
+    testimonials = blocks.ListBlock(TestimonialBlock())
+
+    class Meta:
+        template = 'core/blocks/home_block.html'

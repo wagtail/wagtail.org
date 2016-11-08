@@ -1,0 +1,23 @@
+{% load  wagtailcore_tags %}
+
+{% for block in value %}
+    {% if block.block_type == 'testimonials' %}
+
+        <section class="testimonial">
+
+            <div class="js-carousel">
+
+                {% for testimonial in block.value %}
+                    <div>
+                        {% include_block testimonial %}
+                    </div>
+                {% endfor %}
+
+            </div> <!-- /js-carousel -->
+
+        </section> <!-- /testimonial -->
+
+    {% else %}
+        {% include_block block %}
+    {% endif %}
+{% endfor %}
