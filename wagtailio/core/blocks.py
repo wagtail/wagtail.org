@@ -6,7 +6,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtailio.utils.blocks import CodeBlock
 
 
-class SquareLinkBlock(blocks.StructBlock):
+class PageOrExternalLinkBlock(blocks.StructBlock):
     link_text = blocks.CharBlock()
     link_text_bold = blocks.CharBlock(required=False)
     link_page = blocks.PageChooserBlock(required=False)
@@ -14,7 +14,7 @@ class SquareLinkBlock(blocks.StructBlock):
     link_url = blocks.CharBlock(required=False)
 
     def clean(self, value):
-        struct_value = super(SquareLinkBlock, self).clean(value)
+        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
 
         if not value.get('link_page') and not value.get('link_url'):
             raise ValidationError("Validation error while saving block", params={
@@ -33,7 +33,7 @@ class SquareLinkBlock(blocks.StructBlock):
     def get_context(self, value):
         link_url = value.get('link_url')
 
-        context = super(SquareLinkBlock, self).get_context(value)
+        context = super(PageOrExternalLinkBlock, self).get_context(value)
         context.update({
             'is_anchor': isinstance(link_url, six.text_type) and link_url.startswith('#')
         })
@@ -41,7 +41,7 @@ class SquareLinkBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        template = 'core/blocks/square_link_block.html'
+        template = 'core/blocks/page_or_external_link_block.html'
 
 
 class BannerBlock(blocks.StructBlock):
@@ -49,7 +49,7 @@ class BannerBlock(blocks.StructBlock):
     sub_title = blocks.CharBlock(max_length=128)
     image = ImageChooserBlock()
     background = ImageChooserBlock(required=False)
-    links = blocks.ListBlock(SquareLinkBlock())
+    links = blocks.ListBlock(PageOrExternalLinkBlock())
 
     class Meta:
         template = 'core/blocks/banner_block.html'
@@ -96,7 +96,7 @@ class CodePromoBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     subtitle = blocks.CharBlock(required=False)
     code = CodeBlock()
-    link = SquareLinkBlock()
+    link = PageOrExternalLinkBlock()
 
     class Meta:
         icon = 'code'
