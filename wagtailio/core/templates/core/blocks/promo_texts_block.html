@@ -1,0 +1,42 @@
+{% load wagtailcore_tags %}
+
+{% if value.texts %}
+    <section class="pane__horizontal-tabs border--after">
+
+        <div class="text-container">
+            <h2>{{ value.title }}</h2>
+        </div> <!-- /text-container -->
+
+        <nav class="tabs">
+            <ul class="js-tabs">
+                {% for text in value.texts %}
+
+                    <li {% if forloop.first %}class="current"{% endif %}>
+                        <a href="#user-tab-{{ forloop.counter }}">{{ text.title }}</a>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content-container">
+
+            {% for item in value.texts %}
+
+                <div id="user-tab-{{ forloop.counter }}" class="tab-content {% if forloop.first %}current{% endif %}">
+                    <div class="mobile-only">
+                        <h3>{{ item.title }}</h3>
+                    </div>
+                    <div class="text-container">
+                        {{ item.text|richtext }}
+                    </div> <!--/ text-container -->
+
+                </div>
+
+            {% endfor %}
+
+        </div> <!-- /tab-content-container -->
+
+    </section> <!-- /pane__horizontal-tabs -->
+{% endif %}

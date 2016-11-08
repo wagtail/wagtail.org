@@ -120,6 +120,17 @@ class ShowcasesBlock(blocks.StructBlock):
         template = 'core/blocks/showcases_block.html'
 
 
+class PromoTextsBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    texts = blocks.ListBlock(blocks.StructBlock((
+        ('title', blocks.CharBlock()),
+        ('text', blocks.RichTextBlock()),
+    )))
+
+    class Meta:
+        template = 'core/blocks/promo_texts_block.html'
+
+
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
@@ -127,6 +138,7 @@ class HomeBlock(blocks.StreamBlock):
     testimonials = blocks.ListBlock(TestimonialBlock(), icon='group')
     code = CodePromoBlock()
     showcases = ShowcasesBlock()
+    promo_texts = PromoTextsBlock()
 
     class Meta:
         template = 'core/blocks/home_block.html'
