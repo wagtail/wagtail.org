@@ -100,8 +100,9 @@ class CodeBlock(StructBlock):
 
     class Meta:
         icon = 'code'
+        template = None
 
-    def render(self, value, context=None):
+    def render_basic(self, value, context=None):
         src = value['code'].strip('\n')
         lang = value['language']
 

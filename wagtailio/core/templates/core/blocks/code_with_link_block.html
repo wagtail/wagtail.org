@@ -1,0 +1,37 @@
+{% load wagtailcore_tags %}
+
+<section class="pane__code border--after">
+
+    <div class="text-container">
+
+        <h2>{{ value.title }}{% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}</h2>
+
+        <div class="pre-container">
+
+            <div class="app-header">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            {{ value.code }}
+
+        </div> <!-- /pre-container -->
+
+        {% if value.link %}
+            <div class="actions">
+                <a href="{% pageurl value.link %}">
+                    {% if value.link_title or value.link_subtitle %}
+                        {% if value.link_title %}<span>{{ value.link_title }}</span>{% endif %}
+                        {% if value.link_subtitle %}{{ value.link_subtitle }}{% endif %}
+                    {% else %}
+                        <span>{{ value.link.title }}</span>
+                    {% endif %}
+                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                </a>
+            </div> <!-- /actions -->
+        {% endif %}
+
+    </div> <!-- /text-container -->
+
+</section> <!-- /pane__code -->

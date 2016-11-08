@@ -1,8 +1,9 @@
 import six
 from django.core.exceptions import ValidationError
 from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import RichTextBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+
+from wagtailio.utils.blocks import CodeBlock
 
 
 class SquareLinkBlock(blocks.StructBlock):
@@ -91,11 +92,25 @@ class TestimonialBlock(blocks.StructBlock):
         template = 'core/blocks/testimonial_block.html'
 
 
+class CodePromoBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    subtitle = blocks.CharBlock(required=False)
+    code = CodeBlock()
+    link = blocks.PageChooserBlock()
+    link_title = blocks.CharBlock(required=False)
+    link_subtitle = blocks.CharBlock(required=False)
+
+    class Meta:
+        icon = 'code'
+        template = 'core/blocks/code_with_link_block.html'
+
+
 class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
     home_page_features = HomePageFeaturesBlock()
     testimonials = blocks.ListBlock(TestimonialBlock())
+    code = CodePromoBlock()
 
     class Meta:
         template = 'core/blocks/home_block.html'
