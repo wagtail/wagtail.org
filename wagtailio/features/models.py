@@ -7,13 +7,14 @@ from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel,
     InlinePanel,
     PageChooserPanel,
-)
-from wagtail.wagtailcore.fields import RichTextField
+    StreamFieldPanel)
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
+from wagtailio.features.blocks import FeatureIndexPageBlock
 from wagtailio.utils.models import (
     SocialMediaMixin,
     CrossPageMixin,
@@ -112,13 +113,18 @@ class FeatureIndexPageMenuOption(models.Model):
 
 
 class FeatureIndexPage(Page):
+    # TODO: Remove the introduction field, when body streamfield is ready
     introduction = models.CharField(max_length=255)
+    body = StreamField(FeatureIndexPageBlock())
 
     @property
     def features(self):
         return FeaturePage.objects.live().child_of(self)
 
     content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+
+        # TODO: Remove the following fields, when body streamfield is ready
         FieldPanel('introduction'),
-        InlinePanel('secondary_menu_options', label="Secondary Menu Options")
+        # InlinePanel('secondary_menu_options', label="Secondary Menu Options")
     ]

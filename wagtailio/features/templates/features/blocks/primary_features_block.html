@@ -1,0 +1,278 @@
+{% load  wagtailcore_tags wagtailimages_tags %}
+
+<section class="pane__vertical-tabs pane__contours" id="features">
+
+    <header class="page-heading">
+
+        <h1>{{ value.title }}</h1>
+
+        <div class="introduction">
+            <p>{{ value.introduction }}</p>
+        </div> <!-- /introduction -->
+
+        {% for link in value.links %}
+            {% include_block link with link_classes="view-all view-all--internal btn btn--outline btn--transparent" %}
+        {% endfor %}
+
+    </header> <!-- /text-container -->
+
+    {% if value.features %}
+
+        <nav class="tabs">
+
+            <ul class="js-tabs">
+                {% for feature in value.features %}
+
+                    <li class="feature">
+                        <a href="#feature-tab-{{ forloop.counter }}">
+                            <h3>{{ feature.title }}</h3>
+                            <p>{{ feature.subtitle }}</p>
+                        </a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+            <!-- TODO: Do we need to add this link dynamically? -->
+            <a href="#additional" class="view-all view-all--light view-all--internal js-smoothscroll">
+                View additional features
+                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+            </a>
+        </nav> <!-- /tabs -->
+
+        <div class="tab-content-container">
+            {% for feature in value.features %}
+
+
+                <div id="feature-tab-{{ forloop.counter }}" class="tab-content current">
+
+                    <div class="content">
+
+                        <header>
+                            <h3>{{ feature.title }}</h3>
+                            {% if feature.documentation_link %}
+                                <a href="{{ feature.documentation_link }}" class="view-all btn btn--transparent btn--outline">
+                                    {{ feature.title }} documentation
+                                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                                </a>
+                            {% endif %}
+                        </header>
+
+                        {% for feature_aspect in feature.feature_aspects %}
+                            {% if feature_aspect.screenshot %}
+                                <div class="video-container">
+                                    <div class="app-header">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    {% image feature_aspect.screenshot width-1000 %}
+                                </div><!-- /image-container -->
+                            {% endif %}
+
+                            {% for bullet in feature_aspect.bullets.all %}
+                                <h4>{{ bullet.title }}</h4>
+                                {{ bullet.text|richtext }}
+                            {% endfor %}
+                        {% endfor %}
+
+                    </div> <!-- /content -->
+
+                    <nav class="tab-nav pane__contours">
+                        <a class="btn btn--outline view-all" href="#feature-tab-1">
+                            Form builder
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                        <a class="btn btn--outline view-all" href="#feature-tab-2">
+                            Snippets
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </nav> <!-- /tab-nav -->
+
+
+                </div>
+
+            {% endfor %}
+            <div id="feature-tab-2" class="tab-content">
+
+                <div class="content">
+
+                    <header>
+                        <h3>Snippets</h3>
+                        <a href="#" class="view-all btn btn--transparent btn--outline">
+                            Snippet documentation
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </header>
+
+                    <div class="video-container">
+                        <div class="app-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+                    </div><!-- /image-container -->
+
+                    <div class="introduction border--after">
+                        <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
+                    </div>
+
+                </div> <!-- /content -->
+
+
+
+            </div>
+            <div id="feature-tab-3" class="tab-content">
+
+                <div class="content">
+
+                    <header>
+                        <h3>ElasticSearch</h3>
+                        <a href="#" class="view-all btn btn--transparent btn--outline">
+                            ElasticSearch documentation
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </header>
+
+                    <div class="video-container">
+                        <div class="app-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+                    </div><!-- /image-container -->
+
+                    <div class="introduction border--after">
+                        <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
+                    </div>
+
+                    <nav class="tab-nav">
+                        <a class="btn btn--outline btn--transparent view-all"href="#features">
+                            Form builder
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                        <a class="btn btn--outline btn--transparent view-all" href="#">
+                            Snippets
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </nav> <!-- /tab-nav -->
+
+                </div> <!-- /content -->
+
+            </div>
+
+            <div id="feature-tab-4" class="tab-content">
+
+                <div class="content">
+
+                    <header>
+                        <h3>Explorer</h3>
+                        <a href="#" class="view-all btn btn--transparent btn--outline">
+                            Explorer documentation
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </header>
+
+                    <div class="video-container">
+                        <div class="app-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+                    </div><!-- /image-container -->
+
+                    <div class="introduction border--after">
+                        <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
+                    </div>
+
+                </div> <!-- /content -->
+
+                <nav class="tab-nav pane__contours">
+                    <a class="btn btn--outline view-all" href="#feature-tab-1">
+                        Form builder
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                    <a class="btn btn--outline view-all" href="#feature-tab-2">
+                        Snippets
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </nav> <!-- /tab-nav -->
+
+            </div>
+
+            <div id="feature-tab-5" class="tab-content">
+
+                <div class="content">
+
+                    <header>
+                        <h3>Image cropping</h3>
+                        <a href="#" class="view-all btn btn--transparent btn--outline">
+                            Image documentation
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </header>
+
+                    <div class="video-container">
+                        <div class="app-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+                    </div><!-- /image-container -->
+
+                    <div class="introduction border--after">
+                        <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
+                    </div>
+
+                </div> <!-- /content -->
+
+                <nav class="tab-nav pane__contours">
+                    <a class="btn btn--outline view-all" href="#feature-tab-1">
+                        Form builder
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                    <a class="btn btn--outline view-all" href="#feature-tab-2">
+                        Snippets
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </nav> <!-- /tab-nav -->
+
+            </div>
+
+            <div id="feature-tab-6" class="tab-content">
+
+                <div class="content">
+
+                    <header>
+                        <h3>Form Building</h3>
+                        <a href="#" class="view-all btn btn--transparent btn--outline">
+                            Form builder documentation
+                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                        </a>
+                    </header>
+
+                    <div class="video-container">
+                        <div class="app-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <img src="../static/img/screenshot_wagtail.png" alt="Wagtail screenshot" />
+                    </div><!-- /image-container -->
+
+                    <div class="introduction border--after">
+                        <p>StreamField is a powerful way of introducing modular content to your pages. It’s a way to allow flexibility for content editors to build page from a range of content types be it headers, images, pull quotes, videos or even charts, code snippets, maps or polls.</p>
+                    </div>
+
+                </div> <!-- /content -->
+
+                <nav class="tab-nav pane__contours">
+                    <a class="btn btn--outline view-all" href="#feature-tab-1">
+                        Form builder
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                    <a class="btn btn--outline view-all" href="#feature-tab-2">
+                        Snippets
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </nav> <!-- /tab-nav -->
+
+            </div>
+
+        </div> <!-- /tab-content-container -->
+
+    {% endif %}
+
+
+</section> <!-- /features -->
