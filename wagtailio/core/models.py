@@ -6,7 +6,7 @@ from wagtail.wagtailcore.fields import StreamField
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, MultiFieldPanel, InlinePanel,
+    FieldPanel, MultiFieldPanel,
     PageChooserPanel,
     StreamFieldPanel)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -111,9 +111,9 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         StreamFieldPanel('body'),
 
         # TODO: Remove the following fields, when body streamfield is ready
-        InlinePanel('main_carousel_items', label="Main carousel items"),
-        FieldPanel('secondary_carousel_introduction'),
-        InlinePanel('secondary_carousel_items', label="Secondary carousel items"),
+        # InlinePanel('main_carousel_items', label="Main carousel items"),
+        # FieldPanel('secondary_carousel_introduction'),
+        # InlinePanel('secondary_carousel_items', label="Secondary carousel items"),
     ]
 
     promote_panels = Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
