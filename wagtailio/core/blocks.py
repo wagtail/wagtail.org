@@ -131,7 +131,7 @@ class PromoTextsBlock(blocks.StructBlock):
         template = 'core/blocks/promo_texts_block.html'
 
 
-class HomeBlock(blocks.StreamBlock):
+class HomePageBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
     home_page_features = HomePageFeaturesBlock()
@@ -141,4 +141,4 @@ class HomeBlock(blocks.StreamBlock):
     promo_texts = PromoTextsBlock()
 
     class Meta:
-        template = 'core/blocks/home_block.html'
+        template = 'core/blocks/home_page_block.html'

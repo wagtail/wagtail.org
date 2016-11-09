@@ -12,7 +12,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 from wagtailio.blog.models import BlogPage
-from wagtailio.core.blocks import HomeBlock
+from wagtailio.core.blocks import HomePageBlock
 from wagtailio.utils.models import (
     SocialMediaMixin,
     CrossPageMixin,
@@ -103,8 +103,9 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
 # Homepage
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
+    # TODO: Remove the secondary_carousel_introduction field, when body streamfield is ready
     secondary_carousel_introduction = models.CharField(max_length=511)
-    body = StreamField(HomeBlock())
+    body = StreamField(HomePageBlock())
 
     content_panels = Page.content_panels + [
         # New fields
