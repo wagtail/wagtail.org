@@ -1,4 +1,4 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% if value.features %}
     <section class="pane__vertical-tabs" id="features">
@@ -37,7 +37,20 @@
                         <h3>{{ feature.title }}</h3>
                         <p>{{ feature.subtitle }}</p>
                     </div>
-                    {% include_block feature.body %}
+
+                    {% for feature_aspect in feature.feature_aspects %}
+                        <div>
+                            <div class="screenshot">
+                                {% image feature_aspect.screenshot width-1000 %}
+                            </div>
+                            <div class="notes">
+                                {% for bullet in feature_aspect.bullets.all %}
+                                    <h4>{{ bullet.title }}</h4>
+                                    {{ bullet.text|richtext }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
 
             {% endfor %}
