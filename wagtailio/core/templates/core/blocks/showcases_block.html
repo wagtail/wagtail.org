@@ -31,10 +31,6 @@
 
     </div> <!-- /carousel -->
 
-    <a href="{% if value.more_link.link_page %}{% pageurl value.more_link.link_page %}{% else %}{{ value.more_link.link_url }}{% endif %}"
-        class="view-all btn btn--outline btn--outline--light btn--opaque btn--dark">
-        <span>{{ value.more_link.link_text }}</span>
-        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-    </a>
+    {% include_block value.more_link with link_classes="view-all btn btn--outline btn--outline--light btn--opaque btn--dark" %}
 
 </section> <!-- /case-studies -->
