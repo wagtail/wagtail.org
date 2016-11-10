@@ -1,12 +1,13 @@
 from wagtail.wagtailcore import blocks
+from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
-from wagtailio.core.blocks import PageOrExternalLinkBlock, FeatureBlock
+from wagtailio.core.blocks import PageOrExternalLinkBlock
 
 
 class PrimaryFeaturesBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     introduction = blocks.RichTextBlock()
-    features = blocks.ListBlock(FeatureBlock())
+    features = blocks.ListBlock(SnippetChooserBlock('features.FeatureDescription'))
     links = blocks.ListBlock(PageOrExternalLinkBlock())
 
     class Meta:

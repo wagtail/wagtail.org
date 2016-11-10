@@ -151,6 +151,6 @@ class FeatureIndexPage(Page):
         StreamFieldPanel('body'),
 
         # TODO: Remove the following fields, when body streamfield is ready
-        FieldPanel('introduction'),
+        # FieldPanel('introduction'),
         # InlinePanel('secondary_menu_options', label="Secondary Menu Options")
     ]
