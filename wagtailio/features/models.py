@@ -53,6 +53,32 @@ class FeatureAspect(ClusterableModel):
     ]
 
 
+class FeatureDescriptionFeatureAspect(Orderable, models.Model):
+    page = ParentalKey('features.FeatureDescription', related_name='feature_aspects')
+    feature_aspect = models.ForeignKey('features.FeatureAspect', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('feature_aspect')
+    ]
+
+
+@register_snippet
+class FeatureDescription(ClusterableModel):
+    title = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=255, blank=True)
+    documentation_link = models.URLField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('introduction'),
+        FieldPanel('documentation_link'),
+        InlinePanel('feature_aspects', label="Feature Aspects"),
+    ]
+
+
 class FeaturePageFeatureAspect(Orderable, models.Model):
     page = ParentalKey('features.FeaturePage', related_name='feature_aspects')
     feature_aspect = models.ForeignKey(
