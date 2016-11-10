@@ -65,18 +65,11 @@ class BrandsBlock(blocks.StructBlock):
         template = 'core/blocks/brands_block.html'
 
 
-class FeatureBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
-    subtitle = blocks.CharBlock()
-    documentation_link = blocks.URLBlock(required=False)
-    feature_aspects = blocks.ListBlock(SnippetChooserBlock('features.FeatureAspect'))
-
-
 class HomePageFeaturesBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     subtitle = blocks.CharBlock(required=False)
     all_features_page = blocks.PageChooserBlock(required=False)
-    features = blocks.ListBlock(FeatureBlock())
+    features = blocks.ListBlock(SnippetChooserBlock('features.FeatureDescription'))
 
     class Meta:
         template = 'core/blocks/home_page_features_block.html'
@@ -132,7 +125,7 @@ class PromoTextsBlock(blocks.StructBlock):
 class HomePageBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
-    home_page_features = HomePageFeaturesBlock()
+    features = HomePageFeaturesBlock()
     testimonials = blocks.ListBlock(TestimonialBlock(), icon='group')
     code = CodePromoBlock()
     showcases = ShowcasesBlock()
