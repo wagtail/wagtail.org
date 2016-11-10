@@ -13,7 +13,7 @@
 
                 {% for feature in value.features %}
                     <li{% if forloop.first %} class="current"{% endif %}>
-                        <a href="#feature-tab-{{ forloop.counter }}">
+                        <a href="#{{ feature.title|slugify }}">
                             <h3>{{ feature.title }}</h3>
                             <p>{{ feature.introduction }}</p>
                         </a>
@@ -32,7 +32,7 @@
         <div class="tab-content-container">
             {% for feature in value.features %}
 
-                <div id="feature-tab-{{ forloop.counter }}" class="tab-content current">
+                <div id="{{ feature.title|slugify }}" class="tab-content current">
                     <div class="mobile-only">
                         <h3>{{ feature.title }}</h3>
                         <p>{{ feature.subtitle }}</p>
