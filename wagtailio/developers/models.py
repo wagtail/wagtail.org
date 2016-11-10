@@ -13,10 +13,9 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 class DevelopersPageOptions(Orderable, models.Model):
     page = ParentalKey('developers.DevelopersPage', related_name='options')
     icon = models.CharField(max_length=255, choices=(
-        ('fa-github', 'Github'),
-        ('fa-google', 'Google'),
-        ('fa-eye', 'Eye'),
-        ('fa-server', 'Servers')
+        ('github', 'Github'),
+        ('social', 'Social'),
+        ('documentation', 'Documentation')
     ))
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
