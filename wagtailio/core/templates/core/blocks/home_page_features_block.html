@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 {% if value.features %}
     <section class="pane__vertical-tabs" id="features">
@@ -39,7 +39,13 @@
                     </div>
 
                     {% with f=feature.feature_aspects.first %}
-                        {% image f.feature_aspect.screenshot width-1000 %}
+                        {% if f.feature_aspect.video_url %}
+                            <div class="video-embed">
+                                {% embed f.feature_aspect.video_url 1000 %}
+                            </div>
+                        {% elif f.feature_aspect.screenshot %}
+                            {% image f.feature_aspect.screenshot width-1000 %}
+                        {% endif %}
                     {% endwith %}
                 </div>
 
