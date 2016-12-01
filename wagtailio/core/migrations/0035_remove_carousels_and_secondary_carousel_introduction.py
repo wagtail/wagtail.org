@@ -46,4 +46,8 @@ class Migration(migrations.Migration):
         migrations.DeleteModel(
             name='HomePageSecondaryCarouselItem',
         ),
+        migrations.RemoveField(
+            model_name='homepage',
+            name='secondary_carousel_introduction',
+        ),
     ]

@@ -12,7 +12,6 @@ from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
-    secondary_carousel_introduction = models.CharField(max_length=511)
     body = StreamField(HomePageBlock())
 
     content_panels = Page.content_panels + [
