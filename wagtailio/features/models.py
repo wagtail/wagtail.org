@@ -81,49 +81,6 @@ class FeatureDescription(ClusterableModel):
     ]
 
 
-class FeaturePageFeatureAspect(Orderable, models.Model):
-    page = ParentalKey('features.FeaturePage', related_name='feature_aspects')
-    feature_aspect = models.ForeignKey(
-        'features.FeatureAspect',
-        related_name='+'
-    )
-
-    panels = [
-        SnippetChooserPanel('feature_aspect')
-    ]
-
-
-class FeaturePage(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=255)
-
-    @property
-    def feature_index(self):
-        return FeatureIndexPage.objects.ancestor_of(
-            self
-        ).order_by('-depth').first()
-
-    @property
-    def previous(self):
-        if self.get_prev_sibling():
-            return self.get_prev_sibling()
-        else:
-            return self.get_siblings().last()
-
-    @property
-    def next(self):
-        if self.get_next_sibling():
-            return self.get_next_sibling()
-        else:
-            return self.get_siblings().first()
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        InlinePanel('feature_aspects', label="Feature Aspects")
-    ]
-
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
-
 
 class FeatureIndexPageMenuOption(models.Model):
     page = ParentalKey('features.FeatureIndexPage',
@@ -144,10 +101,6 @@ class FeatureIndexPage(Page):
     # TODO: Remove the introduction field, when body streamfield is ready
     introduction = models.CharField(max_length=255)
     body = StreamField(FeatureIndexPageBlock())
-
-    @property
-    def features(self):
-        return FeaturePage.objects.live().child_of(self)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
