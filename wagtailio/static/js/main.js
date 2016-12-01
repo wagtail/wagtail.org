@@ -54,6 +54,21 @@ $(function( ){
         });
     });
 
+    $('.js-tabs-proxy-link').on('click', function (e) {
+        var $targetElement = $(this.hash);
+        var $proxyTo = $('.js-tabs').find('a[href="'+this.hash+'"]')[0];
+
+        // This links already have all required logic to switch tabs,
+        // so just generate a click event to activate the logic
+        $proxyTo.click();
+
+        $('html, body').animate({
+            scrollTop: $targetElement.offset().top - $('header.global').height()
+        }, 500);
+
+        e.preventDefault();
+    });
+
     // Slow scroll on anchors
     function anchorScroll(event) {
 

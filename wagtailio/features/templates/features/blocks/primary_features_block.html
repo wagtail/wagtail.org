@@ -79,7 +79,7 @@
 
                         {% with prev_feature=value.features|carousel_prev:forloop.counter0 %}
 
-                            <a class="btn btn--outline view-all" href="#{{ prev_feature.title|slugify }}">
+                            <a class="btn btn--outline view-all js-tabs-proxy-link" href="#{{ prev_feature.title|slugify }}">
                                 {{ prev_feature.title }}
                                 <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                             </a>
@@ -88,7 +88,7 @@
 
                         {% with next_feture=value.features|carousel_next:forloop.counter0 %}
 
-                            <a class="btn btn--outline view-all" href="#{{ next_feture.title|slugify }}">
+                            <a class="btn btn--outline view-all js-tabs-proxy-link" href="#{{ next_feture.title|slugify }}">
                                 {{ next_feture.title }}
                                 <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                             </a>
