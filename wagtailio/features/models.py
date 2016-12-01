@@ -35,6 +35,7 @@ class Bullet(Orderable, models.Model):
 @register_snippet
 class FeatureAspect(ClusterableModel):
     title = models.CharField(max_length=255)
+    video_url = models.URLField(blank=True)
     screenshot = models.ForeignKey(
         'images.WagtailIOImage',
         null=True,
@@ -49,7 +50,8 @@ class FeatureAspect(ClusterableModel):
     panels = [
         FieldPanel('title'),
         InlinePanel('bullets', label="Bullets"),
-        ImageChooserPanel('screenshot')
+        ImageChooserPanel('screenshot'),
+        FieldPanel('video_url'),
     ]
 
 
