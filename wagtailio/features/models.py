@@ -81,31 +81,9 @@ class FeatureDescription(ClusterableModel):
     ]
 
 
-
-class FeatureIndexPageMenuOption(models.Model):
-    page = ParentalKey('features.FeatureIndexPage',
-                       related_name='secondary_menu_options')
-    link = models.ForeignKey(
-        'wagtailcore.Page',
-        related_name='+'
-    )
-    label = models.CharField(max_length=255)
-
-    panels = [
-        PageChooserPanel('link'),
-        FieldPanel('label')
-    ]
-
-
 class FeatureIndexPage(Page):
-    # TODO: Remove the introduction field, when body streamfield is ready
-    introduction = models.CharField(max_length=255)
     body = StreamField(FeatureIndexPageBlock())
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
-
-        # TODO: Remove the following fields, when body streamfield is ready
-        # FieldPanel('introduction'),
-        # InlinePanel('secondary_menu_options', label="Secondary Menu Options")
     ]
