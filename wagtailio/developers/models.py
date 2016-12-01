@@ -3,10 +3,11 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
-                                                PageChooserPanel)
-from wagtail.wagtailcore.fields import RichTextField
+                                                PageChooserPanel, StreamFieldPanel)
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Orderable, Page
 
+from wagtailio.core.blocks import CodePromoBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
@@ -46,13 +47,11 @@ class DevelopersPageOptions(Orderable, models.Model):
 
 
 class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=255)
-    body_heading = models.CharField(max_length=255)
-    body = RichTextField(blank=True)
+    body = StreamField((
+        ('code', CodePromoBlock(template='developers/blocks/code_with_link_block.html')),
+    ))
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        FieldPanel('body_heading'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
         InlinePanel('options', label="Options")
     ]

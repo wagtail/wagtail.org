@@ -7,44 +7,7 @@
 
 <div class="pane__contours">
 
-    <header class="page-heading">
-        <h1>{{ self.title }}</h1>
-        <div class="introduction">Install Wagtail <span>in just 7 lines</span></div>
-    </header> <!-- /page-heading -->
-
-    <section class="pane__code">
-
-        <div class="text-container">
-
-
-            <div class="pre-container">
-
-                <div class="app-header">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-<pre>pip install wagtail
-wagtail start mysite
-cd mysite
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver</pre>
-
-            </div> <!-- /pre-container -->
-
-            <div class="actions">
-                <a href="http://docs.wagtail.io/en/latest/getting_started/tutorial.html">
-                    <span>10 min</span> guide
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
-            </div> <!-- /actions -->
-
-        </div> <!-- /text-container -->
-
-    </section> <!-- /pane__code -->
+    {% include_block page.body %}
 
     {% with options=self.options.all %}
         {% if options %}
