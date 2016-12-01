@@ -1,4 +1,4 @@
-{% load  wagtailcore_tags wagtailimages_tags %}
+{% load  wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <section class="pane__vertical-tabs pane__contours" id="features">
 
@@ -76,14 +76,24 @@
                     </div> <!-- /content -->
 
                     <nav class="tab-nav pane__contours">
-                        <a class="btn btn--outline view-all" href="#feature-tab-1">
-                            Form builder
-                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                        </a>
-                        <a class="btn btn--outline view-all" href="#feature-tab-2">
-                            Snippets
-                            <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                        </a>
+
+                        {% with prev_feature=value.features|carousel_prev:forloop.counter0 %}
+
+                            <a class="btn btn--outline view-all" href="#{{ prev_feature.title|slugify }}">
+                                {{ prev_feature.title }}
+                                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                            </a>
+
+                        {% endwith %}
+
+                        {% with next_feture=value.features|carousel_next:forloop.counter0 %}
+
+                            <a class="btn btn--outline view-all" href="#{{ next_feture.title|slugify }}">
+                                {{ next_feture.title }}
+                                <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                            </a>
+
+                        {% endwith %}
                     </nav> <!-- /tab-nav -->
 
 
