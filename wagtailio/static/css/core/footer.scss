@@ -252,8 +252,22 @@ footer.global {
     a {
         font-size: 56px;
         color: $color-primary-light;
+
+        svg {
+            fill: $color-primary-light;
+            transition: fill .2s ease 0s;
+
+            &.twitter {
+                transform: scale(1.7)
+            }
+        }
+
         &:hover {
             color: $color-primary-highlight;
+
+            svg {
+                fill: $color-primary-highlight;
+            }
         }
     }
 }
