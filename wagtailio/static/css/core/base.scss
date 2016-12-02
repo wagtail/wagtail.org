@@ -35,16 +35,6 @@ img {
     vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
 }
 
-pre {
-    font-family: monospace;
-    background: $color-primary-dark;
-    padding: $grid * 2 $grid * 2 $grid * 3;
-    color: $color-white;
-    text-indent: 0;
-    display: inline-block;
-    font-family: monospace, courier, times, serif;
- }
-
  iframe {
      max-width: 100%;
  }
