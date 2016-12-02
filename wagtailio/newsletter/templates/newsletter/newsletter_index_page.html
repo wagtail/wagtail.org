@@ -25,7 +25,7 @@
                 </ul>
 
                 {% if newsletters.has_next %}
-                    <a class="btn pagination" href="?page={{ newsletter.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
+                    <a class="btn pagination" href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
                 {% endif %}
             {% else %}
                 <p>There are currently no newsletters</p>
