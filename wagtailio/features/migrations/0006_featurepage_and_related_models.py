@@ -7,10 +7,11 @@ from django.db import migrations
 
 # We need to remove all feature pages before deleting FeaturePage model
 # to cleanup the wagtailcore_page table
+# Will be great to run ./manage.py fixtree
 def remove_feature_pages(apps, schema_editor):
     FeaturePage = apps.get_model('features', 'FeaturePage')
 
-    FeaturePage.objects.delete()
+    FeaturePage.objects.all().delete()
 
 
 class Migration(migrations.Migration):
