@@ -5,6 +5,14 @@ from __future__ import unicode_literals
 from django.db import migrations
 
 
+# We need to remove all feature pages before deleting FeaturePage model
+# to cleanup the wagtailcore_page table
+def remove_feature_pages(apps, schema_editor):
+    FeaturePage = apps.get_model('features', 'FeaturePage')
+
+    FeaturePage.objects.delete()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -15,6 +23,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(remove_feature_pages),
         migrations.RemoveField(
             model_name='featurepage',
             name='listing_image',
