@@ -45,11 +45,11 @@
             display: block;
             width: 100%;
             padding: 0 40px;
-            opacity: 0.8;
+            opacity: 1;
 
-            &:hover {
-                opacity: 1;
-            }
+            // &:hover {
+            //     opacity: 1;
+            // }
         }
 
         .owl-wrapper-outer {
