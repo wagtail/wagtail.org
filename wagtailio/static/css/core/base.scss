@@ -196,9 +196,10 @@ Other global items
  * $Generic video embed wrapper
  */
 
-.video-embed {
+.video-embed,
+.responsive-object {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25% !important;
     height: 0;
     max-width: 100%;
     overflow: hidden;
