@@ -171,6 +171,7 @@
         background-color: $color-secondary-highlight;
         text-align: center;
         position: relative;
+        transition: padding 0.2s ease 0s;
 
         @include gridle_state( tablet-landscape ){
             padding: ($grid * 5) 40px ($grid);
@@ -226,6 +227,20 @@
 
     @include gridle_state( tablet-landscape ){
         padding-top: $headerHeight;
+    }
+
+}
+
+.site-header--slideup {
+
+    .blog-nav__header {
+        padding: 26px 40px ($grid);
+
+        @include gridle_state( tablet-landscape ){
+            padding: 26px 40px ($grid);
+            text-align: left;
+        }
+
     }
 
 }
