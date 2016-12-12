@@ -154,10 +154,15 @@ $(function( ){
 
     // headroom
     // http://wicky.nillia.ms/headroom.js/
-    $("header.global").headroom({
+    $("body").headroom({
         tolerance : {
             up : 0,
             down : 10
+        },
+        classes: {
+            initial: 'site-header--animated',
+            pinned: 'site-header--slidedown',
+            unpinned: 'site-header--slideup',
         },
     });
 

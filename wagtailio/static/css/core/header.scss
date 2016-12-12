@@ -16,24 +16,23 @@ header.global {
     padding: 4px $grid 2px;
     border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
     background: $color-primary-light;
-    transform: translateY(0);
+    transform: translate3d(0, 0%, 0);
     transition: transform .2s ease 0s;
 
     @include gridle_state( tablet-landscape ) {
         padding: 4px ($grid * 1.5) 2px;
     }
 
-    &.headroom {
+}
 
-        &--unpinned {
-            transform: translateY(-100%);
-        }
+.site-header {
 
-        &--top,
-        &--pinned {
-            transform: translateY(0);
-        }
+    &--slideup header.global {
+        transform: translate3d(0, -100%, 0);
+    }
 
+    &--slidedown header.global {
+        transform: translate3d(0, 0%, 0);
     }
 
 }
