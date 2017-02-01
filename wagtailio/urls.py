@@ -19,13 +19,9 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^newsletter-signup/$', views.newsletter_signup, name='newsletter_signup'),
 
     url(r'', include(wagtail_urls)),
-    url(
-        r'newsletter-signup',
-        views.newsletter_signup,
-        name='newsletter_signup'
-    ),
 ]
 
 
