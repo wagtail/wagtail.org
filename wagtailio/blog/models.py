@@ -48,11 +48,13 @@ class Author(models.Model):
 
 
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
+    canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
         'blog.Author',
         null=True, blank=True,
         on_delete=models.SET_NULL,
-        related_name='+')
+        related_name='+'
+    )
     main_image = models.ForeignKey(
         'images.WagtailIOImage',
         null=True, blank=True,
@@ -76,5 +78,11 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         StreamFieldPanel('body')
     ]
 
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
+    promote_panels = (
+        Page.promote_panels +
+        SocialMediaMixin.panels +
+        CrossPageMixin.panels +
+        [
+            FieldPanel('canonical_url'),
+        ]
+    )

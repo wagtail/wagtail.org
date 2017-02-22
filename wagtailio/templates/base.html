@@ -9,6 +9,8 @@
         <meta name="description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        {% if self.canonical_url %}<link rel="canonical" href="{{ self.canonical_url }}" />{% endif %}
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wagtailcms" />
         <meta name="twitter:creator" content="@wagtailcms" />
