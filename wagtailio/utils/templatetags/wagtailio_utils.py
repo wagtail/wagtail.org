@@ -52,6 +52,7 @@ def menu_network(context):
     }
 
 
+# TODO: Get rid of `responsiveimage` and `ResponsiveImageNode`. It doesn't look like we use it.
 @register.tag(name="responsiveimage")
 def responsiveimage(parser, token):
     bits = token.split_contents()[1:]
@@ -79,7 +80,7 @@ def responsiveimage(parser, token):
 class ResponsiveImageNode(ImageNode, template.Node):
     def render(self, context):
         try:
-            image = self.image_var.resolve(context)
+            image = self.image_expr.resolve(context)
         except template.VariableDoesNotExist:
             return ''
 
