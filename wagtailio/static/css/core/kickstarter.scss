@@ -1,0 +1,52 @@
+$kickstarter-height: 75px;
+$kickstarter-padding: 15px;
+$kickstarter-line-height: $kickstarter-height - $kickstarter-padding * 2;
+
+a.kickstarter {
+  display: none;
+  width: 100vw;
+  text-align: center;
+  background: #84D499;
+  color: white;
+  padding: $kickstarter-padding;
+  z-index: 1000;
+  &.visible {
+    display: block;
+  }
+  span {
+    line-height: $kickstarter-line-height;
+  }
+  img {
+    display: inline-block;
+    margin-left: $kickstarter-padding;
+    margin-right: $kickstarter-padding;
+  }
+  .close {
+    float: right;
+    width: 40px;
+    height: $kickstarter-line-height;
+    padding: 10px;
+    line-height: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  @media (max-width: 1000px) {
+    span {
+      display: block;
+    }
+    img {
+      display: none;
+    }
+  }
+  @media (min-width: 769px) {
+    position: fixed;
+  }
+}
+
+.kickstarter.visible + .page {
+  padding-top: $header-height + $kickstarter-height;
+  header {
+    top: $kickstarter-height;
+  }
+}
