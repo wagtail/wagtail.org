@@ -16,7 +16,7 @@ $(function () {
   $kickstarter.toggleClass(
     'visible',
     !hasCookie('kickstarterClosed', 'true')
-      && new Date() < new Date(2018, 4, 17));
+      && new Date() < new Date(2018, 3, 17));
   $kickstarter.find('.close').click(function (e) {
     e.preventDefault();
     setCookie('kickstarterClosed', 'true', 30);
