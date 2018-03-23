@@ -1,4 +1,5 @@
 Django==1.9.8
+djangorestframework>=3.6,<3.7  # 3.7 drops Django 1.9 support
 wagtail==1.9
 psycopg2==2.5.4
 elasticsearch==1.2.0
