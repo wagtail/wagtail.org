@@ -41,6 +41,8 @@ test:
     # Check for missing migrations
     - bash -c "! python manage.py makemigrations -e --dry-run --noinput"
 
+    - python manage.py createcachetable
+
     # Run tests
     - python manage.py test
 
