@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailsearch import urls as wagtailsearch_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -21,6 +22,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^newsletter-signup/$', views.newsletter_signup, name='newsletter_signup'),
     url(r'^blog/feed/$', BlogFeed(), name='blog_feed'),
+    url('^sitemap\.xml$', sitemap),
 
     url(r'', include(wagtail_urls)),
 ]
