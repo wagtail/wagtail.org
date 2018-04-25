@@ -1,5 +1,6 @@
 import os
 
+import dj_database_url
 import raven
 
 from .base import *
@@ -50,16 +51,17 @@ if 'SERVER_EMAIL' in env:
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env.get('PGDATABASE', APP_NAME),
-
-        # User, host and port can be configured by the PGUSER, PGHOST and
-        # PGPORT environment variables (these get picked up by libpq).
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': env.get('PGDATABASE', APP_NAME),
+            # User, host and port can be configured by the PGUSER, PGHOST and
+            # PGPORT environment variables (these get picked up by libpq).
+        }
     }
-}
-
 
 # Redis
 # Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
