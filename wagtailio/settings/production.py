@@ -76,7 +76,7 @@ else:
 # CACHING
 
 if 'CACHE_PURGE_URL' in env:
-    INSTALLED_APPS += ( 'wagtail.contrib.wagtailfrontendcache', )
+    INSTALLED_APPS += ( 'wagtail.contrib.wagtailfrontendcache', )  # noqa
     WAGTAILFRONTENDCACHE = {
         'default': {
             'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.HTTPBackend',
