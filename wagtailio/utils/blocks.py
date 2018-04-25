@@ -138,3 +138,6 @@ class StoryBlock(StreamBlock):
     embed = EmbedBlock(icon="code")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
+
+    class Meta:
+        template = 'core/includes/streamfield.html'

@@ -40,7 +40,8 @@
             </div>
 
             {% image page.main_image original %}
-            {% include "core/includes/streamfield.html" with content=page.body %}
+
+            {% include_block page.body %}
         </div>
     </div>
 

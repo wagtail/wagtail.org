@@ -1,6 +1,6 @@
 {% extends "content.html" %}
 
-{% load static compress wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
+{% load static compress wagtailadmin_tags wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 {% block body_class %}{% endblock %}
 
@@ -10,8 +10,8 @@
     	<div class="container">
 	        <div class="heading"><h1>{{ page.title }}</h1></div>
 	        <div class="intro"><p>{{ page.introduction }}</p></div>
-	        {% include "core/includes/streamfield.html" with content=page.body %}
-	    </div>
+	        {% include_block page.body %}
+        </div>
     </div>
 
     {% include "core/includes/share.html" %}
