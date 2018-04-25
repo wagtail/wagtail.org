@@ -36,9 +36,9 @@ class FeatureAspect(ClusterableModel):
     title = models.CharField(max_length=255)
     screenshot = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
 
@@ -56,6 +56,7 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     page = ParentalKey('features.FeaturePage', related_name='feature_aspects')
     feature_aspect = models.ForeignKey(
         'features.FeatureAspect',
+        models.CASCADE,
         related_name='+'
     )
 
@@ -101,6 +102,7 @@ class FeatureIndexPageMenuOption(models.Model):
                        related_name='secondary_menu_options')
     link = models.ForeignKey(
         'wagtailcore.Page',
+        models.CASCADE,
         related_name='+'
     )
     label = models.CharField(max_length=255)

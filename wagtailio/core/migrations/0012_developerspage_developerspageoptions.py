@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DevelopersPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, to='wagtailcore.Page', serialize=False, primary_key=True, parent_link=True)),
+                ('page_ptr', models.OneToOneField(auto_created=True, to='wagtailcore.Page', serialize=False, primary_key=True, parent_link=True, on_delete=models.CASCADE)),
                 ('social_text', models.CharField(blank=True, verbose_name='Meta description', max_length=255, help_text='Description of this page as it should appear when shared on social networks, or in Google results')),
                 ('listing_intro', models.TextField(blank=True, help_text='Summary of this page to display when this is linked from elsewhere in the site.')),
                 ('introduction', models.CharField(max_length=255)),
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('summary', models.CharField(max_length=255)),
                 ('external_link', models.URLField(blank=True, verbose_name='External link')),
-                ('internal_link', models.ForeignKey(to='wagtailcore.Page', blank=True, null=True, related_name='+')),
+                ('internal_link', models.ForeignKey(to='wagtailcore.Page', blank=True, null=True, related_name='+', on_delete=models.SET_NULL)),
                 ('page', modelcluster.fields.ParentalKey(to='core.DevelopersPage', related_name='options')),
             ],
             options={

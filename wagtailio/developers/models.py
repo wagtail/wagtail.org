@@ -22,6 +22,7 @@ class DevelopersPageOptions(Orderable, models.Model):
     summary = models.CharField(max_length=255)
     internal_link = models.ForeignKey(
         'wagtailcore.Page',
+        models.CASCADE,
         null=True,
         blank=True,
         related_name='+'

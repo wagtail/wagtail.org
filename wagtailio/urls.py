@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
@@ -17,14 +17,14 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^newsletter-signup/$', views.newsletter_signup, name='newsletter_signup'),
-    url(r'^blog/feed/$', BlogFeed(), name='blog_feed'),
-    url('^sitemap\.xml$', sitemap),
+    path('django-admin/', admin.site.urls),
+    path('admin/', include(wagtailadmin_urls)),
+    path('documents/', include(wagtaildocs_urls)),
+    path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
+    path('blog/feed/', BlogFeed(), name='blog_feed'),
+    path('sitemap.xml', sitemap),
 
-    url(r'', include(wagtail_urls)),
+    path('', include(wagtail_urls)),
 ]
 
 

@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('focal_point_height', models.PositiveIntegerField(blank=True, null=True)),
                 ('alternative_text', models.CharField(help_text='The alternative text for the image, provided for the benefit of visually impaired users', blank=True, max_length=255)),
                 ('tags', taggit.managers.TaggableManager(verbose_name='Tags', blank=True, help_text=None, through='taggit.TaggedItem', to='taggit.Tag')),
-                ('uploaded_by_user', models.ForeignKey(verbose_name='Uploaded by user', blank=True, null=True, to=settings.AUTH_USER_MODEL, editable=False)),
+                ('uploaded_by_user', models.ForeignKey(verbose_name='Uploaded by user', blank=True, null=True, to=settings.AUTH_USER_MODEL, editable=False, on_delete=models.SET_NULL)),
             ],
             options={
                 'abstract': False,
@@ -47,8 +47,8 @@ class Migration(migrations.Migration):
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('focal_point_key', models.CharField(blank=True, default='', max_length=255, editable=False)),
-                ('filter', models.ForeignKey(to='wagtailimages.Filter', related_name='+')),
-                ('image', models.ForeignKey(to='images.WagtailIOImage', related_name='renditions')),
+                ('filter', models.ForeignKey(to='wagtailimages.Filter', related_name='+', on_delete=models.CASCADE)),
+                ('image', models.ForeignKey(to='images.WagtailIOImage', related_name='renditions', on_delete=models.CASCADE)),
             ],
             options={
             },

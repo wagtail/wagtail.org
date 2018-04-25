@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='NewsletterIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(to='wagtailcore.Page', auto_created=True, primary_key=True, serialize=False, parent_link=True)),
+                ('page_ptr', models.OneToOneField(to='wagtailcore.Page', auto_created=True, primary_key=True, serialize=False, on_delete=models.CASCADE, parent_link=True)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('body', wagtail.core.fields.RichTextField()),
             ],
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='NewsletterPage',
             fields=[
-                ('page_ptr', models.OneToOneField(to='wagtailcore.Page', auto_created=True, primary_key=True, serialize=False, parent_link=True)),
+                ('page_ptr', models.OneToOneField(to='wagtailcore.Page', auto_created=True, primary_key=True, serialize=False, parent_link=True, on_delete=models.CASCADE)),
                 ('date', models.DateField(verbose_name='Newsletter date')),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
                 ('body', wagtail.core.fields.RichTextField()),

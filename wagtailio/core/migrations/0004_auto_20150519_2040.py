@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FeaturePage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, primary_key=True, parent_link=True, to='wagtailcore.Page', serialize=False)),
+                ('page_ptr', models.OneToOneField(auto_created=True, primary_key=True, parent_link=True, to='wagtailcore.Page', serialize=False, on_delete=models.CASCADE)),
                 ('introduction', models.CharField(max_length=255)),
             ],
             options={

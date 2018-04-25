@@ -19,7 +19,8 @@ class WagtailIOImage(AbstractImage):
 
 
 class WagtailIORendition(AbstractRendition):
-    image = models.ForeignKey('WagtailIOImage', related_name='renditions')
+    image = models.ForeignKey('WagtailIOImage', models.CASCADE,
+                              related_name='renditions')
 
     class Meta:
         unique_together = (

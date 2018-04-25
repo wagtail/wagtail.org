@@ -30,14 +30,15 @@ class HomePageMainCarouselItem(Orderable, models.Model):
     summary = models.CharField(max_length=511)
     image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     video = models.URLField()
     call_to_action_internal_link = models.ForeignKey(
         'wagtailcore.Page',
+        models.SET_NULL,
         null=True,
         blank=True,
         related_name='+'
@@ -70,22 +71,23 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     title = models.CharField(max_length=255)
     desktop_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.CASCADE,
         related_name='+'
     )
     mobile_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     blockquote = models.TextField()
     author_name = models.CharField(max_length=255)
     author_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     author_job = models.CharField(max_length=255)
