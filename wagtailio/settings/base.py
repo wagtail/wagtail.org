@@ -54,6 +54,8 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
+    'wagtail.contrib.postgres_search',
+
     'wagtailio.utils',
     'wagtailio.core',
     'wagtailio.images',
@@ -64,7 +66,8 @@ INSTALLED_APPS = (
     'wagtailio.features',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -169,10 +172,11 @@ WAGTAIL_SITE_NAME = "wagtailio"
 
 WAGTAILIMAGES_IMAGE_MODEL = 'images.WagtailioImage'
 
-# Use Elasticsearch as the search backend for extra performance and better search results
+
+# Search
+
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'INDEX': 'wagtailio',
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
     },
 }

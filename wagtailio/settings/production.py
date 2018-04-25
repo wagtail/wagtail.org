@@ -36,6 +36,14 @@ for key, value in os.environ.items():
 
 APP_NAME = env.get('APP_NAME', 'wagtailio')
 
+
+if env.get('SECURE_SSL_REDIRECT', 'true') == 'true':
+    SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# enable HSTS only once the site is working properly on https with
+# the actual live domain name
+# SECURE_HSTS_SECONDS = 31536000  # 1 year
+
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
 
@@ -62,18 +70,6 @@ else:
             # User, host and port can be configured by the PGUSER, PGHOST and
             # PGPORT environment variables (these get picked up by libpq).
         }
-    }
-
-
-# Elasticsearch
-
-if 'ELASTICSEARCH_URL' in env:
-    WAGTAILSEARCH_BACKENDS = {
-        'default': {
-            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-            'URLS': [env['ELASTICSEARCH_URL']],
-            'INDEX': APP_NAME,
-        },
     }
 
 
