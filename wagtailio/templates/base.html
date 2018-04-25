@@ -5,25 +5,25 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %} {% block title_suffix %}| Wagtail CMS{% endblock %}</title>
-        <meta name="description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <title>{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %} {% block title_suffix %}| Wagtail CMS{% endblock %}</title>
+        <meta name="description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {% if self.canonical_url %}<link rel="canonical" href="{{ self.canonical_url }}" />{% endif %}
+        {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />{% endif %}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wagtailcms" />
         <meta name="twitter:creator" content="@wagtailcms" />
-        <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta name="twitter:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
-        <meta name="twitter:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
+        <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
+        <meta name="twitter:image" content="https://{{ request.site.hostname }}{% if page.social_image %}{% image page.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
-        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
-        <meta property="og:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta property="og:url" content="https://{{ request.site.hostname }}{{ page.url }}" />
+        <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
+        <meta property="og:image" content="https://{{ request.site.hostname }}{% if page.social_image %}{% image page.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
         <meta property="og:site_name" content="Wagtail CMS" />
 
         <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
@@ -51,7 +51,7 @@
         <!-- Font: Effra -->
         <script src="//use.typekit.net/mah8zuf.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
-        
+
         {% compress css %}
             <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}" />
             <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
@@ -60,7 +60,7 @@
         {% block extra_css %}{% endblock %}
 
     </head>
-    <body class="{% if self %}template-{{ self.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %}">
+    <body class="{% if self %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %}">
         {% if not DEBUG %}
             <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -70,7 +70,7 @@
             '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-5XDDLH');</script>
         {% endif %}
-        
+
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
@@ -106,8 +106,8 @@
             <script src="https://platform.twitter.com/oct.js"></script>
             <script>
                 twttr.conversion.trackPid('l6ggy', {
-                    tw_sale_amount: 0, 
-                    tw_order_quantity: 0 
+                    tw_sale_amount: 0,
+                    tw_order_quantity: 0
                 });
             </script>
             <noscript>
@@ -129,7 +129,7 @@
             <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
             <script src="{% static 'js/main.js' %}"></script>
             <script src="{% static 'js/kickstarter.js' %}"></script>
-        {% endcompress %}        
+        {% endcompress %}
 
         {% block extra_js %}{% endblock %}
     </body>

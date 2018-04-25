@@ -9,7 +9,7 @@
         <a class="blog-index-button" href="#blog-index">blog index<span class="fa fa-angle-down"></span></a>
         <h2>Blog</h2>
         <ul id="blog-index">
-            {% for sibling in self.siblings %}
+            {% for sibling in page.siblings %}
                 <li>
                     <a href="{% pageurl sibling %}">
                         <span class="date">{{ sibling.date|date }}</span>
@@ -24,23 +24,23 @@
 {% block content %}
     <div class="page-content">
         <div class="container">
-            
-            <div class="date"><span>{{ self.date|date }}<span></div>
-            <div class="heading"><h1>{{ self.title }}</h1></div>
-            <div class="intro"><p>{{ self.introduction }}</p></div>
+
+            <div class="date"><span>{{ page.date|date }}<span></div>
+            <div class="heading"><h1>{{ page.title }}</h1></div>
+            <div class="intro"><p>{{ page.introduction }}</p></div>
 
             <div class="author">
                 <span class="image">
-                    {% image self.author.image fill-55x55 alt=self.author.name %}
+                    {% image page.author.image fill-55x55 alt=page.author.name %}
                 </span>
                 <span class="details">
-                    <a class="name" href="{{ self.author.url }}">{{ self.author.name }}</a>
-                    <span class="role">{{ self.author.job_title }}</span>
+                    <a class="name" href="{{ page.author.url }}">{{ page.author.name }}</a>
+                    <span class="role">{{ page.author.job_title }}</span>
                 </span>
             </div>
 
-            {% image self.main_image original %}
-            {% include "core/includes/streamfield.html" with content=self.body %}
+            {% image page.main_image original %}
+            {% include "core/includes/streamfield.html" with content=page.body %}
         </div>
     </div>
 

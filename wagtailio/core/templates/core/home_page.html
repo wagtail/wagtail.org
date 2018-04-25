@@ -13,11 +13,11 @@
 {% endblock %}
 
 {% block content %}
-    
+
     <div id="hero">
         <div class="container">
             <div class="carousel">
-                {% for item in self.main_carousel_items.all %}
+                {% for item in page.main_carousel_items.all %}
                     <div class="slide">
                         <div class="text">
                             <h1>{{ item.title }}</h1>
@@ -36,9 +36,9 @@
 
     <div id="examples">
         <div class="container">
-            <h2>{{ self.secondary_carousel_introduction }}</h2>
+            <h2>{{ page.secondary_carousel_introduction }}</h2>
             <div class="carousel">
-                {% for item in self.secondary_carousel_items.all %}
+                {% for item in page.secondary_carousel_items.all %}
                     <div class="slide">
                         <div class="image">
                             {% image item.desktop_image fill-1350x1020 %}
