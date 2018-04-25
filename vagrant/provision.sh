@@ -51,9 +51,3 @@ source $VIRTUALENV_DIR/bin/activate
 export PS1="[$PROJECT_NAME \W]\\$ "
 cd $PROJECT_DIR
 EOF
-
-
-# Ruby and scss-lint
-apt-get update -y
-apt-get install -y ruby ruby-dev
-gem install scss_lint

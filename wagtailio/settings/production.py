@@ -58,42 +58,11 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': env.get('PGDATABASE', APP_NAME),
+            'CONN_MAX_AGE': 600,
             # User, host and port can be configured by the PGUSER, PGHOST and
             # PGPORT environment variables (these get picked up by libpq).
         }
     }
-
-# Redis
-# Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
-
-if 'REDIS_URL' in env:
-    REDIS_LOCATION = env['REDIS_URL']
-    BROKER_URL = env['REDIS_URL']
-
-elif 'REDIS_HOST' in env:
-    REDIS_LOCATION = env['REDIS_HOST']
-    BROKER_URL = 'redis://%s' % env['REDIS_HOST']
-
-elif 'REDIS_SOCKET' in env:
-    REDIS_LOCATION = 'unix://%s' % env['REDIS_SOCKET']
-    BROKER_URL = 'redis+socket://%s' % env['REDIS_SOCKET']
-
-else:
-    REDIS_LOCATION = None
-
-
-if REDIS_LOCATION is not None:
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': REDIS_LOCATION,
-            'KEY_PREFIX': APP_NAME,
-            'OPTIONS': {
-                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            }
-        }
-    }
-
 
 
 # Elasticsearch

@@ -152,16 +152,13 @@ TEMPLATES = [
 ]
 
 
-# Use Redis as the cache backend for extra performance
+# Cache
+# Use database cache as the cache backend
 
 CACHES = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'KEY_PREFIX': 'wagtailio',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'database_cache',
     }
 }
 
@@ -179,12 +176,3 @@ WAGTAILSEARCH_BACKENDS = {
         'INDEX': 'wagtailio',
     },
 }
-
-# Celery settings
-# When you have multiple sites using the same Redis server,
-# specify a different Redis DB. e.g. redis://localhost/5
-
-BROKER_URL = 'redis://'
-
-CELERY_SEND_TASK_ERROR_EMAILS = True
-CELERYD_LOG_COLOR = False
