@@ -3,10 +3,10 @@ import os
 import dj_database_url
 import raven
 
-from .base import *
+from .base import *  # noqa
 
-# Do not set SECRET_KEY, Postgres or LDAP password or any other sensitive data here.
-# Instead, create a local.py file on the server.
+# Do not set SECRET_KEY, Postgres or LDAP password or any other
+# sensitive data here. Instead, create a local.py file on the server.
 
 # Disable debug mode
 DEBUG = False
@@ -150,5 +150,5 @@ if 'RAVEN_DSN' in os.environ:
     )
     RAVEN_CONFIG = {
         'dsn': os.environ['RAVEN_DSN'],
-        'release': raven.fetch_git_sha(PROJECT_ROOT),
+        'release': raven.fetch_git_sha(PROJECT_ROOT),  # noqa
     }
