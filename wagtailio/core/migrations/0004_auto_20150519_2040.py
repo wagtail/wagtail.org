@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 import modelcluster.fields
 import django.db.models.deletion
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('sort_order', models.IntegerField(editable=False, null=True, blank=True)),
                 ('title', models.CharField(max_length=255)),
-                ('text', wagtail.wagtailcore.fields.RichTextField()),
+                ('text', wagtail.core.fields.RichTextField()),
                 ('model', modelcluster.fields.ParentalKey(related_name='bullets', to='core.FeatureAspect')),
             ],
             options={

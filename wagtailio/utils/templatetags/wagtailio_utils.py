@@ -1,7 +1,7 @@
 from django import template
 
-from wagtail.wagtailimages.templatetags.wagtailimages_tags import ImageNode
-from wagtail.wagtailimages.models import SourceImageIOError
+from wagtail.images.templatetags.wagtailimages_tags import ImageNode
+from wagtail.images.models import SourceImageIOError
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
