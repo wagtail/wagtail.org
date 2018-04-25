@@ -1,7 +1,7 @@
 Django>=1.11,<1.12
 dj-database-url==0.5.0
 djangorestframework>=3.6,<3.7  # 3.7 drops Django 1.9 support
-wagtail==1.10
+wagtail>=1.13,<2
 psycopg2==2.5.4
 elasticsearch==1.2.0
 libsass==0.8.2
