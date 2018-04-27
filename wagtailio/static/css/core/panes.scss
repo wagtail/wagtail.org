@@ -27,6 +27,12 @@
             display: block;
         }
 
+        &--features {
+            &::before {
+                display: none;
+            }
+        }
+
         header {
             text-align: center;
         }
