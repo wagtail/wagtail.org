@@ -192,9 +192,27 @@
             img {
                 width: 100%;
                 height: auto;
+                object-fit: cover;
+                object-position: top;
+                height: 250px;
+
+                @include gridle_state( mobile-portrait ){
+                    height: 400px;
+                }
+
+                @include gridle_state( laptop ){
+                    height: 550px;
+                }
+
+                @include gridle_state( desktop ){
+                    height: 755px;
+                }
+
+                @include gridle_state( desktop-wide ){
+                    height: 650px;
+                }
             }
         }
-
     }
 
     &__horizontal-tabs {
