@@ -61,7 +61,7 @@
             width: 30%;
             padding: 40px 0 0 60px;
 
-            @include gridle_state( tablet-landscape ){
+            @include gridle_state( laptop ){
                 display: block;
                 width: 40%;
             }
@@ -161,7 +161,7 @@
                 margin: $grid * 2 auto;
             }
 
-            @include gridle_state( tablet-landscape ){
+            @include gridle_state( laptop ){
                 width: 60%;
                 padding: 0 $grid * 3 0 0;
                 float: left;
