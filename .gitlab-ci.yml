@@ -25,11 +25,7 @@ test:
   variables:
     DJANGO_SETTINGS_MODULE: wagtailio.settings.production
     SECRET_KEY: fake_secret_key_to_run_tests
-    PGDATABASE: postgres
-    PGUSER: postgres
-    PGHOST: postgres
-    PGPORT: 5432
-    REDIS_URL: redis://redis:6379/
+    DATABASE_URL: postgres://postgres@postgres/postgres
   script:
     # Install requirements
     - pip install wheel
@@ -44,6 +40,8 @@ test:
 
     # Check for missing migrations
     - bash -c "! python manage.py makemigrations -e --dry-run --noinput"
+
+    - python manage.py createcachetable
 
     # Run tests
     - python manage.py test

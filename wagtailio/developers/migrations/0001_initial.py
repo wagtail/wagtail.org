@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                         ('listing_intro', models.TextField(blank=True, help_text='Summary of this page to display when this is linked from elsewhere in the site.')),
                         ('introduction', models.CharField(max_length=255)),
                         ('body_heading', models.CharField(max_length=255)),
-                        ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                        ('body', wagtail.core.fields.RichTextField(blank=True)),
                         ('listing_image', models.ForeignKey(blank=True, help_text='Image to display along with summary, when this page is linked from elsewhere in the site.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.WagtailIOImage')),
                         ('social_image', models.ForeignKey(blank=True, help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks", null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.WagtailIOImage', verbose_name='Meta image')),
                     ],

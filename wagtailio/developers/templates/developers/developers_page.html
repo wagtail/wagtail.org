@@ -5,25 +5,25 @@
 {% block content %}
     <div class="container">
         <div class="description">
-            <h1>{{ self.title }}</h1>
+            <h1>{{ page.title }}</h1>
 
-            {% if self.introduction %}
-                <p>{{ self.introduction }}</p>
+            {% if page.introduction %}
+                <p>{{ page.introduction }}</p>
             {% endif %}
 
-            {% if self.body_heading %}
-                <h2>{{ self.body_heading }}</h2>
+            {% if page.body_heading %}
+                <h2>{{ page.body_heading }}</h2>
             {% endif %}
 
-            {% if self.body %}
+            {% if page.body %}
                 <div class="get-started">
-                    {{ self.body|richtext }}
+                    {{ page.body|richtext }}
                 </div>
             {% endif %}
         </div>
-       
+
         <ul class="block-list">
-            {% for option in self.options.all %}
+            {% for option in page.options.all %}
                 <li>
                     <a href="{{ option.link }}">
                         <i class="fa {{ option.icon }} fa-3x"></i>
@@ -33,6 +33,6 @@
                 </li>
             {% endfor %}
         </ul>
-        
+
     </div>
 {% endblock %}

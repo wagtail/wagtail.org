@@ -1,11 +1,11 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import (FieldPanel, InlinePanel,
+from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
                                                 MultiFieldPanel,
                                                 PageChooserPanel)
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.models import Orderable, Page
+from wagtail.core.fields import RichTextField
+from wagtail.core.models import Orderable, Page
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
@@ -22,6 +22,7 @@ class DevelopersPageOptions(Orderable, models.Model):
     summary = models.CharField(max_length=255)
     internal_link = models.ForeignKey(
         'wagtailcore.Page',
+        models.CASCADE,
         null=True,
         blank=True,
         related_name='+'

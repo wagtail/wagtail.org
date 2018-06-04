@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import django.db.models.deletion
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 import modelcluster.fields
 
 
@@ -19,12 +19,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DevelopersPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, to='wagtailcore.Page', serialize=False, primary_key=True, parent_link=True)),
+                ('page_ptr', models.OneToOneField(auto_created=True, to='wagtailcore.Page', serialize=False, primary_key=True, parent_link=True, on_delete=models.CASCADE)),
                 ('social_text', models.CharField(blank=True, verbose_name='Meta description', max_length=255, help_text='Description of this page as it should appear when shared on social networks, or in Google results')),
                 ('listing_intro', models.TextField(blank=True, help_text='Summary of this page to display when this is linked from elsewhere in the site.')),
                 ('introduction', models.CharField(max_length=255)),
                 ('body_heading', models.CharField(max_length=255)),
-                ('body', wagtail.wagtailcore.fields.RichTextField()),
+                ('body', wagtail.core.fields.RichTextField()),
                 ('listing_image', models.ForeignKey(to='images.WagtailIOImage', blank=True, null=True, help_text='Image to display along with summary, when this page is linked from elsewhere in the site.', related_name='+', on_delete=django.db.models.deletion.SET_NULL)),
                 ('social_image', models.ForeignKey(to='images.WagtailIOImage', blank=True, verbose_name='Meta image', null=True, help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks", related_name='+', on_delete=django.db.models.deletion.SET_NULL)),
             ],
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('summary', models.CharField(max_length=255)),
                 ('external_link', models.URLField(blank=True, verbose_name='External link')),
-                ('internal_link', models.ForeignKey(to='wagtailcore.Page', blank=True, null=True, related_name='+')),
+                ('internal_link', models.ForeignKey(to='wagtailcore.Page', blank=True, null=True, related_name='+', on_delete=models.SET_NULL)),
                 ('page', modelcluster.fields.ParentalKey(to='core.DevelopersPage', related_name='options')),
             ],
             options={

@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='featurepagefeatureaspect',
             name='feature_aspect',
-            field=models.ForeignKey(to='core.FeatureAspect', related_name='+'),
+            field=models.ForeignKey(to='core.FeatureAspect', related_name='+', on_delete=models.CASCADE),
             preserve_default=True,
         ),
     ]

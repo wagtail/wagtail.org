@@ -4,16 +4,16 @@ from django.shortcuts import redirect
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
-from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.core.models import Page, Orderable
 
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import (
     FieldPanel, MultiFieldPanel, InlinePanel,
     PageChooserPanel, StreamFieldPanel
 )
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (
@@ -30,14 +30,15 @@ class HomePageMainCarouselItem(Orderable, models.Model):
     summary = models.CharField(max_length=511)
     image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     video = models.URLField()
     call_to_action_internal_link = models.ForeignKey(
         'wagtailcore.Page',
+        models.SET_NULL,
         null=True,
         blank=True,
         related_name='+'
@@ -70,22 +71,23 @@ class HomePageSecondaryCarouselItem(Orderable, models.Model):
     title = models.CharField(max_length=255)
     desktop_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.CASCADE,
         related_name='+'
     )
     mobile_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     blockquote = models.TextField()
     author_name = models.CharField(max_length=255)
     author_image = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
     author_job = models.CharField(max_length=255)

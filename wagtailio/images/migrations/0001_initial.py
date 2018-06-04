@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.wagtailsearch.index
-import wagtail.wagtailimages.models
+import wagtail.search.index
+import wagtail.images.models
 from django.conf import settings
 import taggit.managers
 
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('title', models.CharField(verbose_name='Title', max_length=255)),
-                ('file', models.ImageField(height_field='height', verbose_name='File', upload_to=wagtail.wagtailimages.models.get_upload_to, width_field='width')),
+                ('file', models.ImageField(height_field='height', verbose_name='File', upload_to=wagtail.images.models.get_upload_to, width_field='width')),
                 ('width', models.IntegerField(verbose_name='Width', editable=False)),
                 ('height', models.IntegerField(verbose_name='Height', editable=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
@@ -32,12 +32,12 @@ class Migration(migrations.Migration):
                 ('focal_point_height', models.PositiveIntegerField(blank=True, null=True)),
                 ('alternative_text', models.CharField(help_text='The alternative text for the image, provided for the benefit of visually impaired users', blank=True, max_length=255)),
                 ('tags', taggit.managers.TaggableManager(verbose_name='Tags', blank=True, help_text=None, through='taggit.TaggedItem', to='taggit.Tag')),
-                ('uploaded_by_user', models.ForeignKey(verbose_name='Uploaded by user', blank=True, null=True, to=settings.AUTH_USER_MODEL, editable=False)),
+                ('uploaded_by_user', models.ForeignKey(verbose_name='Uploaded by user', blank=True, null=True, to=settings.AUTH_USER_MODEL, editable=False, on_delete=models.SET_NULL)),
             ],
             options={
                 'abstract': False,
             },
-            bases=(models.Model, wagtail.wagtailsearch.index.Indexed),
+            bases=(models.Model, wagtail.search.index.Indexed),
         ),
         migrations.CreateModel(
             name='WagtailIORendition',
@@ -47,8 +47,8 @@ class Migration(migrations.Migration):
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('focal_point_key', models.CharField(blank=True, default='', max_length=255, editable=False)),
-                ('filter', models.ForeignKey(to='wagtailimages.Filter', related_name='+')),
-                ('image', models.ForeignKey(to='images.WagtailIOImage', related_name='renditions')),
+                ('filter', models.ForeignKey(to='wagtailimages.Filter', related_name='+', on_delete=models.CASCADE)),
+                ('image', models.ForeignKey(to='images.WagtailIOImage', related_name='renditions', on_delete=models.CASCADE)),
             ],
             options={
             },
