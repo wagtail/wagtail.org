@@ -28,7 +28,10 @@ RUN pip install -r /requirements.txt
 COPY . .
 
 # Install assets
-RUN SECRET_KEY=none django-admin.py collectstatic --noinput --clear
+RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
+
+# Compress
+RUN SECRET_KEY=none django-admin compress
 
 # Run application
 CMD gunicorn wagtailio.wsgi:application

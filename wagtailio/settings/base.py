@@ -82,7 +82,7 @@ INSTALLED_APPS = (
     'wagtailio.features',
 )
 
-MIDDLEWARE = (
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,7 +95,7 @@ MIDDLEWARE = (
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-)
+]
 
 ROOT_URLCONF = 'wagtailio.urls'
 WSGI_APPLICATION = 'wagtailio.wsgi.application'
@@ -129,10 +129,24 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 # Media files
 MEDIA_ROOT = env.get('MEDIA_DIR', join(BASE_DIR, 'media'))
 MEDIA_URL = env.get('MEDIA_URL', '/media/')
+
+
+# Basic auth settings
+if os.environ.get('ENABLE_BASIC_AUTH', 'false').lower() == 'true':
+    MIDDLEWARE += [
+        'baipw.middleware.BasicAuthIPWhitelistMiddleware'
+    ]
+    BASIC_AUTH_LOGIN = 'wagtailio'
+    BASIC_AUTH_PASSWORD = 'showmewagtailio'
+    BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
+        '78.32.251.192/28',
+        '89.197.53.244/30',
+        '193.227.244.0/23',
+        '2001:41c8:103::/48',
+    ]
 
 
 # S3 configuration
@@ -146,7 +160,10 @@ if 'AWS_STORAGE_BUCKET_NAME' in env:
 
     if 'AWS_S3_CUSTOM_DOMAIN' in env:
         AWS_S3_CUSTOM_DOMAIN = env['AWS_S3_CUSTOM_DOMAIN']
-
+    if 'AWS_S3_SECURE_URLS' in env:
+        AWS_S3_SECURE_URLS = (
+            env['AWS_S3_SECURE_URLS'].lower() == 'true'
+        )
     INSTALLED_APPS += (
         'storages',
     )
@@ -243,6 +260,9 @@ if env.get('EMAIL_USE_SSL', 'false') == 'true':
 
 if 'EMAIL_SUBJECT_PREFIX' in env:
     EMAIL_SUBJECT_PREFIX = env['EMAIL_SUBJECT_PREFIX']
+
+if 'SERVER_EMAIL' in env:
+    SERVER_EMAIL = env['SERVER_EMAIL']
 
 
 # Logging
