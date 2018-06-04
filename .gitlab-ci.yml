@@ -1,0 +1,50 @@
+stages:
+  - test
+
+# Check python code style.
+flake8:
+  image: python:3.6
+  stage: test
+  tags:
+    - kubernetes-128
+  script:
+    - pip install flake8
+    - flake8 wagtailio --ignore=E501,C901 --exclude=*/migrations/*,{{ cookiecutter.repo_name }}/settings/*
+    - flake8 wagtailio/settings --ignore=E501,F405
+
+
+# Check settings, migrations and run tests.
+test:
+  image: python:3.6
+  stage: test
+  tags:
+    - kubernetes-512
+  services:
+    - postgres:9.6
+    - redis:2.8
+  variables:
+    DJANGO_SETTINGS_MODULE: wagtailio.settings.production
+    SECRET_KEY: fake_secret_key_to_run_tests
+    DATABASE_URL: postgres://postgres@postgres/postgres
+  script:
+    # Install requirements
+    - pip install wheel
+    - pip install -r requirements.txt
+
+    # We need to run the collectstatic command, because we use ManifestStaticFilesStorage.
+    # Otherwise the check command will fail
+    - python manage.py collectstatic --verbosity 0 --noinput --clear
+
+    # Run system checks
+    - python manage.py check
+
+    # Check for missing migrations
+    - bash -c "! python manage.py makemigrations -e --dry-run --noinput"
+
+    - python manage.py createcachetable
+
+    # Run tests
+    - python manage.py test
+
+    # Validate compress works.
+    - python manage.py compress

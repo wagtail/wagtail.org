@@ -5,24 +5,28 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %} {% block title_suffix %}| Wagtail CMS{% endblock %}</title>
-        <meta name="description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <title>{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %} {% block title_suffix %}| Wagtail CMS{% endblock %}</title>
+        <meta name="description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />{% endif %}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wagtailcms" />
         <meta name="twitter:creator" content="@wagtailcms" />
-        <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta name="twitter:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
-        <meta name="twitter:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
+        <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
+        <meta name="twitter:image" content="https://{{ request.site.hostname }}{% if page.social_image %}{% image page.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://{{ request.site.hostname }}{{ self.url }}" />
-        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | Wagtail CMS" />
-        <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.social_image %}{% image self.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
-        <meta property="og:description" content="{% if self.social_text %}{{ self.social_text }}{% elif self.listing_intro %}{{ self.listing_intro }}{% endif %}" />
+        <meta property="og:url" content="https://{{ request.site.hostname }}{{ page.url }}" />
+        <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
+        <meta property="og:image" content="https://{{ request.site.hostname }}{% if page.social_image %}{% image page.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.jpg' %}{% endif %}" />
+        <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
         <meta property="og:site_name" content="Wagtail CMS" />
+
+        <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
 
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}"/>
         <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicons/apple-touch-icon-60x60.png' %}"/>
@@ -57,9 +61,7 @@
         {% block extra_css %}{% endblock %}
 
     </head>
-
-    <body class="{% if self %}template-{{ self.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
-
+    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
         {% if not DEBUG %}
             <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

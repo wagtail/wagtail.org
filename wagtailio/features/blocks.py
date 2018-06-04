@@ -1,5 +1,5 @@
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
+from wagtail.core import blocks
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailio.core.blocks import PageOrExternalLinkBlock
 

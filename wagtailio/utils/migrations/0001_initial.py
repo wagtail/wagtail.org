@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('sort_order', models.IntegerField(blank=True, null=True, editable=False)),
                 ('link_text', models.TextField(blank=True, help_text='Optional. Override title text for chosen link page')),
-                ('link_page', models.ForeignKey(blank=True, null=True, help_text='Choose a page to which to link', to='wagtailcore.Page', related_name='+')),
+                ('link_page', models.ForeignKey(blank=True, null=True, help_text='Choose a page to which to link', to='wagtailcore.Page', related_name='+', on_delete=models.SET_NULL)),
                 ('snippet', modelcluster.fields.ParentalKey(to='utils.MenuSnippet', related_name='links')),
             ],
             options={

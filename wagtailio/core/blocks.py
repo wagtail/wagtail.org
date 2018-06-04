@@ -1,8 +1,8 @@
 import six
 from django.core.exceptions import ValidationError
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
+from wagtail.core import blocks
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailio.utils.blocks import CodeBlock
 
@@ -31,10 +31,13 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
 
         return struct_value
 
-    def get_context(self, value):
+    def get_context(self, value, parent_context=None):
         link_url = value.get('link_url')
 
-        context = super(PageOrExternalLinkBlock, self).get_context(value)
+        context = super(PageOrExternalLinkBlock, self).get_context(
+            value,
+            parent_context=parent_context
+        )
         context.update({
             'is_anchor': isinstance(link_url, six.text_type) and link_url.startswith('#')
         })

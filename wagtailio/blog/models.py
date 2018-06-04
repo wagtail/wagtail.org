@@ -1,12 +1,12 @@
 from django.db import models
 from django.shortcuts import redirect
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (
@@ -48,11 +48,13 @@ class Author(models.Model):
 
 
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
+    canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
         'blog.Author',
         null=True, blank=True,
         on_delete=models.SET_NULL,
-        related_name='+')
+        related_name='+'
+    )
     main_image = models.ForeignKey(
         'images.WagtailIOImage',
         null=True, blank=True,
@@ -76,5 +78,11 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         StreamFieldPanel('body')
     ]
 
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
+    promote_panels = (
+        Page.promote_panels +
+        SocialMediaMixin.panels +
+        CrossPageMixin.panels +
+        [
+            FieldPanel('canonical_url'),
+        ]
+    )

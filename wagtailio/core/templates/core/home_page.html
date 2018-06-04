@@ -21,9 +21,8 @@
             <article>
                 <a href="{% pageurl blog_post %}">
                     <div class="image-container"
-                        {% if blog_post.listing_image %}
-                            {% image blog_post.listing_image fill-360x400 as bg_image %}
-
+                        {% if blog_post.listing_image or blog_post.main_image %}
+                            {% image blog_post.listing_image|default:blog_post.main_image fill-360x400 as bg_image %}
                             style="background-image: url({{ bg_image.url }});"
                         {% else %}
                             style="background-image: url({% static 'img/hero_bg_3.jpg' %});"
@@ -32,7 +31,7 @@
                         <div class="text-container">
                             <p class="date">{{ blog_post.date|date }}</p>
                             <h3>{{ blog_post.title }}</h3>
-                            <p>{{ blog_post.introduction }}</p>
+                            <p>{{ blog_post.introduction|truncatechars:225 }}</p>
                         </div>
                     </div>
                 </a>

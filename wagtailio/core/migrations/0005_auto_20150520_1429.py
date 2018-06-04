@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 import modelcluster.fields
 
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('sort_order', models.IntegerField(blank=True, null=True, editable=False)),
                 ('title', models.CharField(max_length=255)),
-                ('text', wagtail.wagtailcore.fields.RichTextField()),
+                ('text', wagtail.core.fields.RichTextField()),
                 ('snippet', modelcluster.fields.ParentalKey(related_name='bullets', to='core.FeatureAspect')),
             ],
             options={
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('sort_order', models.IntegerField(blank=True, null=True, editable=False)),
-                ('feature_aspect', models.ForeignKey(related_name='+', to='core.FeaturePage')),
+                ('feature_aspect', models.ForeignKey(related_name='+', to='core.FeaturePage', on_delete=models.CASCADE)),
                 ('page', modelcluster.fields.ParentalKey(related_name='feature_aspects', to='core.FeaturePage')),
             ],
             options={
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepagemaincarouselitem',
             name='call_to_action_internal_link',
-            field=models.ForeignKey(blank=True, related_name='+', null=True, to='wagtailcore.Page'),
+            field=models.ForeignKey(blank=True, related_name='+', null=True, to='wagtailcore.Page', on_delete=models.SET_NULL),
             preserve_default=True,
         ),
     ]

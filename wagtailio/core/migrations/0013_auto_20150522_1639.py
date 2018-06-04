@@ -19,13 +19,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepagesecondarycarouselitem',
             name='desktop_image',
-            field=models.ForeignKey(default=1, related_name='+', to='images.WagtailIOImage'),
+            field=models.ForeignKey(default=1, related_name='+', to='images.WagtailIOImage', on_delete=models.CASCADE),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='homepagesecondarycarouselitem',
             name='mobile_image',
-            field=models.ForeignKey(default=1, related_name='+', to='images.WagtailIOImage'),
+            field=models.ForeignKey(default=1, related_name='+', to='images.WagtailIOImage', on_delete=models.CASCADE),
             preserve_default=False,
         ),
     ]

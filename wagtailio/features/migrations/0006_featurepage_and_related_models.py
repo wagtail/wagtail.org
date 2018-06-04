@@ -25,30 +25,4 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(remove_feature_pages),
-        migrations.RemoveField(
-            model_name='featurepage',
-            name='listing_image',
-        ),
-        migrations.RemoveField(
-            model_name='featurepage',
-            name='page_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='featurepage',
-            name='social_image',
-        ),
-        migrations.RemoveField(
-            model_name='featurepagefeatureaspect',
-            name='feature_aspect',
-        ),
-        migrations.RemoveField(
-            model_name='featurepagefeatureaspect',
-            name='page',
-        ),
-        migrations.DeleteModel(
-            name='FeaturePage',
-        ),
-        migrations.DeleteModel(
-            name='FeaturePageFeatureAspect',
-        ),
     ]

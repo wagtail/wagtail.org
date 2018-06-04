@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
 
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
+from wagtail.images.models import AbstractImage, AbstractRendition
 
 
 class WagtailIOImage(AbstractImage):
@@ -19,11 +19,12 @@ class WagtailIOImage(AbstractImage):
 
 
 class WagtailIORendition(AbstractRendition):
-    image = models.ForeignKey('WagtailIOImage', related_name='renditions')
+    image = models.ForeignKey('WagtailIOImage', models.CASCADE,
+                              related_name='renditions')
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
 

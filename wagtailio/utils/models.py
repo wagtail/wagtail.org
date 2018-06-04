@@ -5,15 +5,15 @@ from django.utils.translation import ugettext as _
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.models import Orderable
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page
+from wagtail.core.models import Orderable
+from wagtail.admin.edit_handlers import (
     FieldPanel, MultiFieldPanel, PageChooserPanel, InlinePanel
 )
 
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
 class LinkGroupLink(Orderable, models.Model):
     snippet = ParentalKey('LinkGroupSnippet', related_name='links')
@@ -49,7 +49,7 @@ register_snippet(LinkGroupSnippet)
 
 class MenuSnippetLink(Orderable, models.Model):
     snippet = ParentalKey('MenuSnippet', related_name='links')
-    link_page = models.ForeignKey('wagtailcore.Page', null=True, blank=True, related_name='+', help_text="Choose a page to which to link")
+    link_page = models.ForeignKey('wagtailcore.Page', models.SET_NULL, null=True, blank=True, related_name='+', help_text="Choose a page to which to link")
     link_text = models.TextField(blank=True, help_text="Optional. Override title text for chosen link page")
 
     panels = [
@@ -77,7 +77,7 @@ register_snippet(MenuSnippet)
 
 class SocialMediaMixin(models.Model):
     social_text = models.CharField("Meta description", max_length=255, blank=True, help_text="Description of this page as it should appear when shared on social networks, or in Google results")
-    social_image = models.ForeignKey('images.WagtailIOImage', verbose_name="Meta image", null=True, blank=True, on_delete=models.SET_NULL, related_name='+', help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks",)
+    social_image = models.ForeignKey('images.WagtailIOImage', models.SET_NULL, verbose_name="Meta image", null=True, blank=True, related_name='+', help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks",)
 
     panels = [
         MultiFieldPanel([
@@ -91,7 +91,7 @@ class SocialMediaMixin(models.Model):
 
 
 class CrossPageMixin(models.Model):
-    listing_image = models.ForeignKey('images.WagtailIOImage', null=True, blank=True, on_delete=models.SET_NULL, related_name='+', help_text="Image to display along with summary, when this page is linked from elsewhere in the site.")
+    listing_image = models.ForeignKey('images.WagtailIOImage', models.SET_NULL, null=True, blank=True, related_name='+', help_text="Image to display along with summary, when this page is linked from elsewhere in the site.")
     listing_intro = models.TextField(blank=True, help_text="Summary of this page to display when this is linked from elsewhere in the site.")
 
     panels = [

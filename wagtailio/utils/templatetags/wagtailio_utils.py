@@ -1,7 +1,7 @@
 from django import template
 
-from wagtail.wagtailimages.templatetags.wagtailimages_tags import ImageNode
-from wagtail.wagtailimages.models import Filter, SourceImageIOError, InvalidFilterSpecError
+from wagtail.images.templatetags.wagtailimages_tags import ImageNode
+from wagtail.images.models import SourceImageIOError
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
@@ -52,6 +52,7 @@ def menu_network(context):
     }
 
 
+# TODO: Get rid of `responsiveimage` and `ResponsiveImageNode`. It doesn't look like we use it.
 @register.tag(name="responsiveimage")
 def responsiveimage(parser, token):
     bits = token.split_contents()[1:]
@@ -79,7 +80,7 @@ def responsiveimage(parser, token):
 class ResponsiveImageNode(ImageNode, template.Node):
     def render(self, context):
         try:
-            image = self.image_var.resolve(context)
+            image = self.image_expr.resolve(context)
         except template.VariableDoesNotExist:
             return ''
 

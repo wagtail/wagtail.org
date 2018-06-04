@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width"/>
-    <title>{% if self.title %}{{ self.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }}{% endif %}</title>
     <style>
         /**********************************************
         * Ink v1.0.5 - Copyright 2013 ZURB Inc				*
@@ -860,7 +860,7 @@
                           <tr>
                             {% if is_email %}
                               <td class="center">
-                                <a href="{{ self.full_url }}" class="view-online">View this email online</a>
+                                <a href="{{ page.full_url }}" class="view-online">View this email online</a>
                               </td>
                             {% endif %}
                             <td class="expander"></td>
@@ -896,10 +896,10 @@
                       <table class="twelve columns">
                         <tr>
                           <td>
-                            {% if self.date %}<p class="date">{{ self.date|date:"j F Y" }}</p>{% endif %}
-                            {% if self.title %}<h1>{{ self.title }}</h1>{% endif %}
-                            {% if self.intro %}<p class="lead">{{ self.intro|richtext }}</p>{% endif %}
-                            {{ self.body|richtext }}
+                            {% if page.date %}<p class="date">{{ page.date|date:"j F Y" }}</p>{% endif %}
+                            {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+                            {% if page.intro %}<p class="lead">{{ page.intro|richtext }}</p>{% endif %}
+                            {{ page.body|richtext }}
                           </td>
                           <td class="expander"></td>
                         </tr>

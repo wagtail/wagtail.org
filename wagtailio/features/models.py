@@ -1,24 +1,20 @@
 from django.db import models
 
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    StreamFieldPanel
+)
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, Orderable
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
+
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
-from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel,
-    InlinePanel,
-    PageChooserPanel,
-    StreamFieldPanel)
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-
 from wagtailio.features.blocks import FeatureIndexPageBlock
-from wagtailio.utils.models import (
-    SocialMediaMixin,
-    CrossPageMixin,
-)
 
 
 class Bullet(Orderable, models.Model):
@@ -38,9 +34,9 @@ class FeatureAspect(ClusterableModel):
     video_url = models.URLField(blank=True)
     screenshot = models.ForeignKey(
         'images.WagtailIOImage',
+        models.SET_NULL,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
         related_name='+'
     )
 
@@ -55,9 +51,13 @@ class FeatureAspect(ClusterableModel):
     ]
 
 
-class FeatureDescriptionFeatureAspect(Orderable, models.Model):
+class FeaturePageFeatureAspect(Orderable, models.Model):
     page = ParentalKey('features.FeatureDescription', related_name='feature_aspects')
-    feature_aspect = models.ForeignKey('features.FeatureAspect', related_name='+')
+    feature_aspect = models.ForeignKey(
+        'features.FeatureAspect',
+        models.CASCADE,
+        related_name='+'
+    )
 
     panels = [
         SnippetChooserPanel('feature_aspect')
@@ -72,6 +72,17 @@ class FeatureDescription(ClusterableModel):
 
     def __str__(self):
         return self.title
+
+
+class FeatureIndexPageMenuOption(models.Model):
+    page = ParentalKey('features.FeatureIndexPage',
+                       related_name='secondary_menu_options')
+    link = models.ForeignKey(
+        'wagtailcore.Page',
+        models.CASCADE,
+        related_name='+'
+    )
+    label = models.CharField(max_length=255)
 
     panels = [
         FieldPanel('title'),

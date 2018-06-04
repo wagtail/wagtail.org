@@ -6,13 +6,10 @@ from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
 
-from wagtail.wagtailcore.blocks import (
-    TextBlock, StructBlock, ListBlock, StreamBlock,
-    FieldBlock, CharBlock, RichTextBlock, ChoiceBlock
-)
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.core.blocks import TextBlock, StructBlock, ListBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, ChoiceBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 
 
 # Common Streamfield blocks
@@ -154,3 +151,6 @@ class StoryBlock(StreamBlock):
     embed = EmbedBlock(icon="code")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
+
+    class Meta:
+        template = 'core/includes/streamfield.html'

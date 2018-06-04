@@ -1,8 +1,8 @@
 from django.db import models
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
