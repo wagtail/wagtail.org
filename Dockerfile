@@ -27,6 +27,11 @@ RUN pip install -r /requirements.txt
 # Install application code.
 COPY . .
 
+# Don't use the root user.
+RUN useradd wagtailio
+RUN chown -R wagtailio .
+USER wagtailio
+
 # Install assets
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
