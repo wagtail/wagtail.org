@@ -1,0 +1,39 @@
+// Template specific
+
+.template-newsletter-index-page {
+    .page-content {
+        margin-left: auto;
+        margin-right: auto;
+
+
+        @include gridle_state( desktop ){
+            width: 60%;
+        }
+
+        .heading {
+            padding-left: $grid;
+        }
+
+        ul.listing {
+            padding-left: $grid;
+            padding-right: $grid;
+            list-style-type: disc;
+
+            h2 {
+                font-size: 27px;
+                margin-bottom: 5px;
+            }
+
+            li {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        a.pagination {
+            color: $color-primary-light;
+            display: block;
+            margin-bottom: 30px;
+        }
+    }
+}

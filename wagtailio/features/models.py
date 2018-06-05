@@ -1,23 +1,20 @@
 from django.db import models
 
-from modelcluster.fields import ParentalKey
-from modelcluster.models import ClusterableModel
-
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     InlinePanel,
-    PageChooserPanel,
+    StreamFieldPanel
 )
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.utils.models import (
-    SocialMediaMixin,
-    CrossPageMixin,
-)
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
+
+from wagtailio.features.blocks import FeatureIndexPageBlock
 
 
 class Bullet(Orderable, models.Model):
@@ -34,6 +31,7 @@ class Bullet(Orderable, models.Model):
 @register_snippet
 class FeatureAspect(ClusterableModel):
     title = models.CharField(max_length=255)
+    video_url = models.URLField(blank=True)
     screenshot = models.ForeignKey(
         'images.WagtailIOImage',
         models.SET_NULL,
@@ -48,12 +46,13 @@ class FeatureAspect(ClusterableModel):
     panels = [
         FieldPanel('title'),
         InlinePanel('bullets', label="Bullets"),
-        ImageChooserPanel('screenshot')
+        ImageChooserPanel('screenshot'),
+        FieldPanel('video_url'),
     ]
 
 
 class FeaturePageFeatureAspect(Orderable, models.Model):
-    page = ParentalKey('features.FeaturePage', related_name='feature_aspects')
+    page = ParentalKey('features.FeatureDescription', related_name='feature_aspects')
     feature_aspect = models.ForeignKey(
         'features.FeatureAspect',
         models.CASCADE,
@@ -65,36 +64,14 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     ]
 
 
-class FeaturePage(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=255)
+@register_snippet
+class FeatureDescription(ClusterableModel):
+    title = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=255, blank=True)
+    documentation_link = models.URLField(max_length=255, blank=True)
 
-    @property
-    def feature_index(self):
-        return FeatureIndexPage.objects.ancestor_of(
-            self
-        ).order_by('-depth').first()
-
-    @property
-    def previous(self):
-        if self.get_prev_sibling():
-            return self.get_prev_sibling()
-        else:
-            return self.get_siblings().last()
-
-    @property
-    def next(self):
-        if self.get_next_sibling():
-            return self.get_next_sibling()
-        else:
-            return self.get_siblings().first()
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        InlinePanel('feature_aspects', label="Feature Aspects")
-    ]
-
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
+    def __str__(self):
+        return self.title
 
 
 class FeatureIndexPageMenuOption(models.Model):
@@ -108,19 +85,16 @@ class FeatureIndexPageMenuOption(models.Model):
     label = models.CharField(max_length=255)
 
     panels = [
-        PageChooserPanel('link'),
-        FieldPanel('label')
+        FieldPanel('title'),
+        FieldPanel('introduction'),
+        FieldPanel('documentation_link'),
+        InlinePanel('feature_aspects', label="Feature Aspects"),
     ]
 
 
 class FeatureIndexPage(Page):
-    introduction = models.CharField(max_length=255)
-
-    @property
-    def features(self):
-        return FeaturePage.objects.live().child_of(self)
+    body = StreamField(FeatureIndexPageBlock())
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        InlinePanel('secondary_menu_options', label="Secondary Menu Options")
+        StreamFieldPanel('body'),
     ]

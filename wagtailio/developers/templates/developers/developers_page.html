@@ -1,38 +1,40 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="container">
-        <div class="description">
-            <h1>{{ page.title }}</h1>
 
-            {% if page.introduction %}
-                <p>{{ page.introduction }}</p>
-            {% endif %}
 
-            {% if page.body_heading %}
-                <h2>{{ page.body_heading }}</h2>
-            {% endif %}
+<div class="pane__contours">
 
-            {% if page.body %}
-                <div class="get-started">
-                    {{ page.body|richtext }}
-                </div>
-            {% endif %}
-        </div>
+    {% include_block page.body %}
 
-        <ul class="block-list">
-            {% for option in page.options.all %}
-                <li>
-                    <a href="{{ option.link }}">
-                        <i class="fa {{ option.icon }} fa-3x"></i>
-                        <h3>{{ option.title }}</h3>
-                        <p>{{ option.summary }}</p>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+    {% with options=page.options.all %}
+        {% if options %}
+            <section class="pane__teasers pane__contours">
 
-    </div>
+                <h2 class="pane__teasers__main-heading">Wagtail Resources</h2>
+
+                <ul class="pane__teasers__container">
+                    {% for option in options %}
+                        <li class="pane__teasers__item">
+                            <a class="pane__teasers__item__link" href="{{ option.link }}">
+                                <svg class="pane__teasers__icon" height="50px" width="50px">
+                                    <use xlink:href="#{{ option.icon }}"></use>
+                                </svg>
+                                <h3 class="pane__teasers__heading">{{ option.title }} <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                                <p>{{ option.summary }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+            </section> <!-- /teasers -->
+
+        {% endif %}
+    {% endwith %}
+
+</div> <!-- /contours -->
+
 {% endblock %}

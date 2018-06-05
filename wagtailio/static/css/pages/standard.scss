@@ -1,19 +1,52 @@
-/* ============================================ 
+/* ============================================
 
   Standard page
 
 */
 .template-standard-page {
 
-	section {
-		@include row;
+    .body {
+        padding-top: 0;
+    }
 
-		.container {
-			text-align: center;
-		}
+    .page-content {
+        font-size: 20px;
 
-		padding: 45px 0;
-		// @include gridle( 12 );
-	}
-   
+        .container {
+            margin: 0 $grid;
+
+            @include gridle_state( tablet-landscape ){
+                margin: 0 auto;
+            }
+
+        }
+
+        h2,
+        h3,
+        h4 {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto ($grid);
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 21px;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+    }
+
+    .paragraph,
+    .calltoaction {
+        max-width: 800px;
+        margin: 0 auto ($grid * 3);
+    }
+
 }

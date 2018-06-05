@@ -2,21 +2,21 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (FieldPanel, InlinePanel,
-                                                MultiFieldPanel,
-                                                PageChooserPanel)
-from wagtail.core.fields import RichTextField
+                                         MultiFieldPanel,
+                                         PageChooserPanel, StreamFieldPanel)
+from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
 
+from wagtailio.core.blocks import CodePromoBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class DevelopersPageOptions(Orderable, models.Model):
     page = ParentalKey('developers.DevelopersPage', related_name='options')
     icon = models.CharField(max_length=255, choices=(
-        ('fa-github', 'Github'),
-        ('fa-google', 'Google'),
-        ('fa-eye', 'Eye'),
-        ('fa-server', 'Servers')
+        ('github', 'Github'),
+        ('social', 'Social'),
+        ('documentation', 'Documentation')
     ))
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
@@ -48,13 +48,11 @@ class DevelopersPageOptions(Orderable, models.Model):
 
 
 class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
-    introduction = models.CharField(max_length=255)
-    body_heading = models.CharField(max_length=255)
-    body = RichTextField(blank=True)
+    body = StreamField((
+        ('code', CodePromoBlock(template='developers/blocks/code_with_link_block.html')),
+    ))
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        FieldPanel('body_heading'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
         InlinePanel('options', label="Options")
     ]

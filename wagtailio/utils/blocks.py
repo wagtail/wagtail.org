@@ -6,28 +6,39 @@ from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
 
-from wagtail.core.blocks import TextBlock, ChooserBlock, StructBlock, ListBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, PageChooserBlock, RawHTMLBlock, ChoiceBlock
+from wagtail.core.blocks import TextBlock, StructBlock, ListBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, ChoiceBlock
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 
 
-### Common Streamfield blocks ###
+# Common Streamfield blocks
 
 class BackgroundColourChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(('red', 'Red'), ('white', 'White')))
 
 
 class ImageFormatChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(('left','Wrap left'),('right','Wrap right'),('mid','Mid width'),('full','Full width'),))
+    field = forms.ChoiceField(choices=(
+        ('left', 'Wrap left'),
+        ('right', 'Wrap right'),
+        ('mid', 'Mid width'),
+        ('full', 'Full width'),
+    ))
 
 
 class SimpleImageFormatChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(('left','Left'),('right','Right'),))
+    field = forms.ChoiceField(choices=(
+        ('left', 'Left'),
+        ('right', 'Right'),
+    ))
+
 
 class HTMLAlignmentChoiceBlock(FieldBlock):
-    field = forms.ChoiceField(choices=(('normal','Normal'),('full','Full width'),))
+    field = forms.ChoiceField(choices=(
+        ('normal', 'Normal'),
+        ('full', 'Full width'),
+    ))
 
 
 # New blocks
@@ -64,7 +75,8 @@ class StatBlock(StructBlock):
     stat = CharBlock()
     text = CharBlock()
 
-### Code and Markdown blocks https://gist.github.com/frankwiles/74a882f16704db9caa27
+
+# Code and Markdown blocks https://gist.github.com/frankwiles/74a882f16704db9caa27
 
 class CodeBlock(StructBlock):
     """
@@ -85,8 +97,9 @@ class CodeBlock(StructBlock):
 
     class Meta:
         icon = 'code'
+        template = None
 
-    def render(self, value, context=None):
+    def render_basic(self, value, context=None):
         src = value['code'].strip('\n')
         lang = value['language']
 
@@ -118,7 +131,7 @@ class MarkDownBlock(TextBlock):
         return mark_safe(md)
 
 
-### Main streamfield block to be inherited by Pages ###
+# Main streamfield block to be inherited by Pages
 
 class StoryBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title")

@@ -1,65 +1,49 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 
-{% load static wagtailimages_tags wagtailio_utils %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
-{% block body_class %}{% endblock %}
-{% block extra_css %}
-    <style>
-    /* immediately hide homepage content */
-    .template-home-page section {
-        opacity: 0;
-     }
-    </style>
-{% endblock %}
+{% block body_class %}template-homepage{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block content %}
 
-    <div id="hero">
-        <div class="container">
-            <div class="carousel">
-                {% for item in page.main_carousel_items.all %}
-                    <div class="slide">
-                        <div class="text">
-                            <h1>{{ item.title }}</h1>
-                            <p>{{ item.summary }}</p>
-                            <a class="cta" href="{{ item.call_to_action_link }}"><span class="fa fa-eye icon"></span>{{ item.call_to_action_caption }}</a>
-                        </div>
-                        <div class="image">
-                            {% image item.image fill-635x370 %}
-                            <a href="{{ item.video }}"><span class="fa fa-play icon"></span>Watch demo</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+<h1>Wagtail Django CMS Homepage</h1>
 
-    <div id="examples">
-        <div class="container">
-            <h2>{{ page.secondary_carousel_introduction }}</h2>
-            <div class="carousel">
-                {% for item in page.secondary_carousel_items.all %}
-                    <div class="slide">
-                        <div class="image">
-                            {% image item.desktop_image fill-1350x1020 %}
-                        </div>
-                        <div class="text">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.blockquote }}</p>
-                            <div class="author">
-                                <span class="image">
-                                    {% image item.author_image fill-55x55 %}
-                                </span>
-                                <span class="details">
-                                    <a class="name" href="{{ item.website }}">{{ item.author_name }}</a>
-                                    <span class="role">{{ item.author_job }}</span>
-                                </span>
-                            </div>
-                            <a href="{{ item.website }}">View the site</a>
+{% include_block page.body %}
+
+<section class="pane__latest">
+
+    <h2>Latest from the blog</h2>
+
+    <div class="row">
+
+        {% for blog_post in blog_posts|slice:":3" %}
+            <article>
+                <a href="{% pageurl blog_post %}">
+                    <div class="image-container"
+                        {% if blog_post.listing_image or blog_post.main_image %}
+                            {% image blog_post.listing_image|default:blog_post.main_image fill-360x400 as bg_image %}
+                            style="background-image: url({{ bg_image.url }});"
+                        {% else %}
+                            style="background-image: url({% static 'img/hero_bg_3.jpg' %});"
+                         {% endif %}
+                        >
+                        <div class="text-container">
+                            <p class="date">{{ blog_post.date|date }}</p>
+                            <h3>{{ blog_post.title }}</h3>
+                            <p>{{ blog_post.introduction|truncatechars:225 }}</p>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+                </a>
+            </article>
+        {% endfor %}
+
+    </div> <!-- /row -->
+
+</section> <!-- /latest -->
+
+{% include "core/includes/contact_torchbox.html" %}
+{% endblock %}
+
+{% block extra_js %}
 {% endblock %}

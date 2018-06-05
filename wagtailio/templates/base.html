@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags %}
+{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -22,7 +22,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://{{ request.site.hostname }}{{ page.url }}" />
         <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
-        <meta property="og:image" content="{% if page.social_image %}https://{{ request.site.hostname }}{% image page.social_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
+        <meta property="og:image" content="{% if page.social_image %}https://{{ request.site.hostname }}{% image page.social_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
         <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
         <meta property="og:site_name" content="Wagtail CMS" />
 
@@ -49,18 +49,19 @@
         <meta name="theme-color" content="#43b1b0"/>
 
         <!-- Font: Effra -->
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400" rel="stylesheet">
         <script src="//use.typekit.net/mah8zuf.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
         {% compress css %}
-            <link rel="stylesheet" href="{% static 'css/vendor/font-awesome.min.css' %}" />
             <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
         {% endcompress %}
+
         {% block extra_css %}{% endblock %}
 
     </head>
-    <body class="{% if self %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %}">
+    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
         {% if not DEBUG %}
             <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -72,6 +73,7 @@
         {% endif %}
 
         <div id="fb-root"></div>
+
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
@@ -96,10 +98,48 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        {% block base_content %}{% endblock %}
+        <div class="page">
 
-        Copyright &copy; {% now "Y" %} Torchbox Ltd
+            <header class="global">
+                <div class="container">
+                    <a class="branding" href="/">
+                        <img class="branding__logo" src="{% static "img/wagtail.svg" %}" alt="Wagtail" />
+                    </a>
+                    <a href="#primary_navigation" class="menu-toggle">
+                        <span></span>
+                    </a>
+                    {% menu_primary %}
+                </div>
+            </header> <!-- /global -->
 
+            {% include "includes/svg_sprites.html" %}
+
+            {% block sidebar %}{% endblock %}
+
+            <div class="body">
+
+                <section>
+                    {% block content %}{% endblock %}
+                </section>
+
+                <footer class="global">
+                    <div class="container">
+                        {% menu_good_to_go %}
+                        {% menu_network %}
+                        {% latest_blog %}
+                        {% include "includes/newsletter_signup.html" %}
+                        {% include "includes/follow.html" %}
+                        {% include "includes/copyright.html" %}
+                    </div>
+                </footer> <!-- /global -->
+
+            </div> <!-- /body -->
+
+            <div class="menu-overlay">
+                {% menu_primary %}
+            </div> <!-- /menu-overlay -->
+
+        </div> <!-- /page -->
 
         {% if not DEBUG %}
             <!-- twitter campaign tracking code -->
@@ -122,16 +162,17 @@
         {% endif %}
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 
         {% compress js %}
             <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
-            <script src="{% static 'js/vendor/jquery.isInViewport.js' %}"></script>
             <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
+            <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
+            <script src="{% static 'js/vendor/headroom.min.js' %}"></script>
             <script src="{% static 'js/main.js' %}"></script>
-            <script src="{% static 'js/kickstarter.js' %}"></script>
         {% endcompress %}
 
         {% block extra_js %}{% endblock %}
     </body>
 </html>
-

@@ -1,0 +1,28 @@
+<div class="other-features" id="additional">
+    <h2>{{ value.title }}</h2>
+
+    {% for group in value.features_groups %}
+        <div class="pane__feature">
+
+            <header>
+                <h3>{{ group.name }}</h3>
+            </header>
+
+            <div class="row">
+
+                {% for feature in group.features %}
+
+                    <article>
+                        <h4>{{ feature.title }}</h4>
+                        {{ feature.text }}
+                    </article>
+
+                {% endfor %}
+
+            </div> <!-- /row -->
+
+        </div> <!-- /pane__feature -->
+    {% endfor %}
+
+
+</div> <!-- /other-features -->

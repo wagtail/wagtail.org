@@ -1,18 +1,18 @@
 
-/* ============================================ 
+/* ============================================
 
     MIXINS
     Some mixins depend on:
      - flexbox
      - gridle
-    
+
 */
 
 
-/* ============================================ 
+/* ============================================
 
     Clearfix
-    
+
 */
 @mixin clearfix {
     &:after {
@@ -23,7 +23,7 @@
 };
 
 
-/* ============================================ 
+/* ============================================
 
     Border radius
 
@@ -33,12 +33,12 @@
     -moz-border-radius: $radius;
     border-radius: $radius;
 
-    -webkit-background-clip: padding-box; 
-    -moz-background-clip: padding; 
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
     background-clip: padding-box;
 }
 
-/* ============================================ 
+/* ============================================
 
     Font smoothing
 
@@ -49,7 +49,7 @@
 }
 
 
-/* ============================================ 
+/* ============================================
 
     Placeholder text
     Allows for easy crossbrowser placeholder adjustment
@@ -64,7 +64,7 @@
 };
 
 
-/* ============================================ 
+/* ============================================
 
     Reset list styling
 
@@ -75,7 +75,7 @@
     list-style: none;
 }
 
-/* ============================================ 
+/* ============================================
 
     Drop cap mixin
 
@@ -90,13 +90,13 @@
 // }
 
 
-/* ============================================ 
+/* ============================================
 
     Custom underline
 
 */
-@mixin custom-underline ( 
-    $underline-colour: $color-primary-highlight, 
+@mixin custom-underline (
+    $underline-colour: $color-primary-highlight,
     $hover: true,
     $invert: false
 ) {
@@ -122,7 +122,7 @@
 }
 
 
-/* ============================================ 
+/* ============================================
 
     Opacity
     - can be dropped for just opacity as we are no longer supporting IE8 :party:
@@ -135,7 +135,7 @@
 }
 
 
-/* ============================================ 
+/* ============================================
 
     Transitions
 
@@ -148,7 +148,7 @@
     transition: $args;
 }
 
-/* ============================================ 
+/* ============================================
 
     Tranform
 
@@ -161,19 +161,8 @@
           transform: $transforms;
 }
 
-/* ============================================ 
 
-    Font awesome mixin
-
-*/
-@mixin fa-icon{
-    @include font-smoothing();
-    font-family: "FontAwesome";
-    position: absolute;
-};
-
-
-/* ============================================ 
+/* ============================================
 
     Text input
 
@@ -203,12 +192,12 @@
 }
 
 
-/* ============================================ 
+/* ============================================
 
     Button mixin
 
 */
-@mixin button( 
+@mixin button(
     $padding: 7px 15px,
     $color: $color-primary-highlight,
     $color-hover: $color-primary-light,
@@ -219,7 +208,7 @@
     $anim_speed-slow: 500ms;
     $anim_speed-fast: 150ms;
     $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
-        
+
     // make animations an option?
     @include transition(
         background $anim_speed-fast $easing,
@@ -249,7 +238,7 @@
     }
 }
 
-/* ============================================ 
+/* ============================================
 
     External link
 
@@ -258,18 +247,10 @@
     position: relative;
     font-size: 18px;
     font-weight: 500;
-
-    // download icon
-    &:after {
-        @include fa-icon();
-        top: 0px;
-        right: -25px;
-        content: "\f08e";
-    }
 }
 
 
-/* ============================================ 
+/* ============================================
 
     Author
 
@@ -320,7 +301,7 @@
         }
     }
 
-    @if $inline { 
+    @if $inline {
         @include inline-rules;
     }
 

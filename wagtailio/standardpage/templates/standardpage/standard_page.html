@@ -1,4 +1,4 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 
 {% load static compress wagtailadmin_tags wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
@@ -7,13 +7,23 @@
 {% block content %}
 
     <div class="page-content">
+
+        <header class="page-heading pane__contours">
+
+            <h1>{{ page.title }}</h1>
+
+            <div class="introduction">
+                {{ page.introduction }}
+            </div> <!-- /introduction -->
+
+        </header> <!-- /page-heading -->
+
     	<div class="container">
-	        <div class="heading"><h1>{{ page.title }}</h1></div>
-	        <div class="intro"><p>{{ page.introduction }}</p></div>
 	        {% include_block page.body %}
         </div>
     </div>
 
+    {% include "core/includes/contact_torchbox.html" %}
     {% include "core/includes/share.html" %}
 
 {% endblock %}

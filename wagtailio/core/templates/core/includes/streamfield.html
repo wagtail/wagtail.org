@@ -5,22 +5,22 @@
 
     {% if child.block_type == 'h2' %}
 
-        <div class="heading"><h2>{{ child }}</h2></div>
+        <h2>{{ child }}</h2>
 
     {% elif child.block_type == 'h3' %}
 
-        <div class="heading"><h3>{{ child }}</h3></div>
+        <h3>{{ child }}</h3>
 
     {% elif child.block_type == 'h4' %}
 
-        <div class="heading"><h4>{{ child }}</h4></div>
+        <h4>{{ child }}</h4>
 
     {% elif child.block_type == 'intro' %}
 
         <div class="intro">
             <p>{{ child }}</p>
         </div>
-
+        
     {% elif child.block_type == 'paragraph' %}
 
         <div class="paragraph">{{ child.value|richtext }}</div>
@@ -45,37 +45,35 @@
             </div>
         </div>
 
-    {% elif child.block_type == 'textimage' %}{# img-text #}
+    {% elif child.block_type == 'textimage' %}
 
         {% image child.value.image original as img %}
         <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
+
             <div class="container">
-                {# <div class="col-12point5"></div> #}
-                <div class="text">
-                    {{ child.value.text|richtext }}
-                </div>
-                {# BG image could be an option in specific situations but requires further discussion #}
-                {# <div class="image" style="background-image: url( {{ img.url }} );"> #}
+
                 <div class="image">
                     {% image child.value.image fill-800x450 %}
                 </div>
+
+                <div class="text">
+                    {{ child.value.text|richtext }}
+                </div>
+
             </div>
-        </div>
+
+        </div> <!-- /textimage -->
 
     {% elif child.block_type == 'colourtext' %}{# quote #}
 
         <div class="colourtext {{ child.value.background }}">
-            {# <div class="col-12point5"></div> #}
             <div class="text">{{ child.value.text|richtext }}</div>
-            {# <div class="col-12point5"></div> #}
         </div>
 
     {% elif child.block_type == 'calltoaction' %}{# img-full-title #}
 
         <div class="calltoaction {{ child.value.background }}">
-            {# <div class="col-12point5"></div> #}
             <div class="text">{{ child.value.text|richtext }}</div>
-            {# <div class="col-12point5"></div> #}
         </div>
 
     {% elif child.block_type == 'tripleimage' %}
@@ -104,4 +102,3 @@
         <div class="paragraph">{{ child }}</div>
     {% endif %}
 {% endfor %}
-

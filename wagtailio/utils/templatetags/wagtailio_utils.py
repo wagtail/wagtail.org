@@ -145,3 +145,16 @@ class ResponsiveImageNode(ImageNode, template.Node):
                 resolved_attrs[key] = self.attrs[key].resolve(context)
 
             return rendition.img_tag(resolved_attrs)
+
+
+@register.filter
+def carousel_next(carousel_list, current_index):
+    if current_index == len(carousel_list) - 1:
+        return carousel_list[0]
+
+    return carousel_list[current_index + 1]
+
+
+@register.filter
+def carousel_prev(carousel_list, current_index):
+    return carousel_list[current_index - 1]
