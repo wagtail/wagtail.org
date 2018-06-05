@@ -11,7 +11,7 @@ from wagtail.core import urls as wagtail_urls
 
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter import views
-from wagtailio.utils.views import favicon
+from wagtailio.utils.views import favicon, robots
 
 
 admin.autodiscover()
@@ -25,6 +25,7 @@ urlpatterns = [
     path('blog/feed/', BlogFeed(), name='blog_feed'),
     path('sitemap.xml', sitemap),
     path('favicon.ico', favicon),
+    path('robots.txt', robots),
 
     path('', include(wagtail_urls)),
 ]
