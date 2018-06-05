@@ -266,6 +266,9 @@ if 'SERVER_EMAIL' in env:
 
 
 # Logging
+if 'ADMINS' in env:
+    ADMINS = env['ADMINS'].split(',')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -283,7 +286,7 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '[%(asctime)s] (%(process)d/%(thread)d) %(name)s %(levelname)s: %(message)s'
+            'format': '[%(asctime)s][%(process)d][%(levelname)s][%(name)s] %(message)s'
         }
     },
     'loggers': {
