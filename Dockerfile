@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
     PORT=8000 \
     WEB_CONCURRENCY=3 \
-    GUNICORN_CMD_ARGS="--max-requests 1200"
+    GUNICORN_CMD_ARGS="--max-requests 1200 --accesslog -"
 
 EXPOSE 8000
 
