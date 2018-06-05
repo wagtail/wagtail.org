@@ -1,8 +1,7 @@
 <form class="newsletter_signup" action="{% url 'newsletter_signup' %}" method="post">
-    {% csrf_token %}
     <h3>Stay up to date with Wagtail</h3>
     <fieldset>
-        <input name="email" type="text" placeholder="Enter your email" />
+        <input name="email" type="email" placeholder="Enter your email" />
         <button>Sign up</button>
     </fieldset>
 </form>
