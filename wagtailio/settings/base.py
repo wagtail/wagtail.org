@@ -350,3 +350,6 @@ if 'SENTRY_DSN' in env:
         except KeyError:
             # Do not set the Sentry 'release' parameter
             pass
+
+# Favicon path
+FAVICON_PATH = 'img/favicons/favicon.ico'
