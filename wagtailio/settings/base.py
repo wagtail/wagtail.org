@@ -354,3 +354,17 @@ if 'SENTRY_DSN' in env:
 
 # Favicon path
 FAVICON_PATH = 'img/favicons/favicon.ico'
+
+
+# Frontend cache
+
+if 'FRONTEND_CACHE_CLOUDFLARE_TOKEN' in env:
+    INSTALLED_APPS += ('wagtail.contrib.frontend_cache', )  # noqa
+    WAGTAILFRONTENDCACHE = {
+        'default': {
+            'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
+            'EMAIL': env['FRONTEND_CACHE_CLOUDFLARE_EMAIL'],
+            'TOKEN': env['FRONTEND_CACHE_CLOUDFLARE_TOKEN'],
+            'ZONEID': env['FRONTEND_CACHE_CLOUDFLARE_ZONEID'],
+        },
+    }
