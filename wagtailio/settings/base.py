@@ -262,27 +262,28 @@ if 'EMAIL_SUBJECT_PREFIX' in env:
     EMAIL_SUBJECT_PREFIX = env['EMAIL_SUBJECT_PREFIX']
 
 if 'SERVER_EMAIL' in env:
-    SERVER_EMAIL = env['SERVER_EMAIL']
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL = env['SERVER_EMAIL']
 
 
 # Logging
-if 'ADMINS' in env:
-    ADMINS = env['ADMINS'].split(',')
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
             'formatter': 'verbose',
         },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        }
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+        },
     },
     'formatters': {
         'verbose': {
@@ -291,22 +292,22 @@ LOGGING = {
     },
     'loggers': {
         'wagtailio': {
-            'handlers': ['console'],
+            'handlers': ['console', 'sentry', 'mail_admins'],
             'level': 'INFO',
             'propagate': False,
         },
         'wagtail': {
-            'handlers': ['console'],
+            'handlers': ['console', 'sentry', 'mail_admins'],
             'level': 'INFO',
             'propagate': False,
         },
         'django.request': {
-            'handlers': ['mail_admins', 'console'],
+            'handlers': ['mail_admins', 'sentry', 'console'],
             'level': 'ERROR',
             'propagate': False,
         },
         'django.security': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'sentry', 'console'],
             'level': 'ERROR',
             'propagate': False,
         },
@@ -340,7 +341,7 @@ if 'SENTRY_DSN' in env:
         'raven.contrib.django.raven_compat',
     )
     RAVEN_CONFIG = {
-        'dsn': '{}?verify_ssl=0'.format(env['SENTRY_DSN']),
+        'dsn': env['SENTRY_DSN'],
     }
     try:
         RAVEN_CONFIG['release'] = raven.fetch_git_sha(PROJECT_ROOT)  # noqa
