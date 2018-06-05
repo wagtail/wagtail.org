@@ -27,6 +27,12 @@
             display: block;
         }
 
+        &--features {
+            &::before {
+                display: none;
+            }
+        }
+
         header {
             text-align: center;
         }
@@ -55,7 +61,7 @@
             width: 30%;
             padding: 40px 0 0 60px;
 
-            @include gridle_state( tablet-landscape ){
+            @include gridle_state( laptop ){
                 display: block;
                 width: 40%;
             }
@@ -136,6 +142,14 @@
                         font-size: 15px;
                         color: rgba($color-white, 0.8);
                         transition: color .2s ease 0s;
+
+                        @include gridle_state( laptop ){
+                            display: none;
+                        }
+
+                        @include gridle_state( desktop ){
+                            display: block;
+                        }
                     }
                 }
 
@@ -155,7 +169,7 @@
                 margin: $grid * 2 auto;
             }
 
-            @include gridle_state( tablet-landscape ){
+            @include gridle_state( laptop ){
                 width: 60%;
                 padding: 0 $grid * 3 0 0;
                 float: left;
@@ -178,9 +192,27 @@
             img {
                 width: 100%;
                 height: auto;
+                object-fit: cover;
+                object-position: top;
+                height: 250px;
+
+                @include gridle_state( mobile-portrait ){
+                    height: 400px;
+                }
+
+                @include gridle_state( laptop ){
+                    height: 550px;
+                }
+
+                @include gridle_state( desktop ){
+                    height: 755px;
+                }
+
+                @include gridle_state( desktop-wide ){
+                    height: 650px;
+                }
             }
         }
-
     }
 
     &__horizontal-tabs {
