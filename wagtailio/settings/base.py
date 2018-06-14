@@ -46,6 +46,8 @@ APP_NAME = env.get('APP_NAME', 'wagtailio')
 # Application definition
 
 INSTALLED_APPS = (
+    'scout_apm.django',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
