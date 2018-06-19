@@ -6,3 +6,4 @@ release:
   command:
     - django-admin createcachetable
     - django-admin migrate --noinput
+
