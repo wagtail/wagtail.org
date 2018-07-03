@@ -8,8 +8,9 @@
         <h2>{{ child }}</h2>
 
     {% elif child.block_type == 'h3' %}
-
+        <div class="heading">
         <h3>{{ child }}</h3>
+        </div>
 
     {% elif child.block_type == 'h4' %}
 
@@ -20,7 +21,7 @@
         <div class="intro">
             <p>{{ child }}</p>
         </div>
-        
+
     {% elif child.block_type == 'paragraph' %}
 
         <div class="paragraph">{{ child.value|richtext }}</div>

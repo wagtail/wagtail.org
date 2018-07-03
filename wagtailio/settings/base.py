@@ -217,6 +217,21 @@ TEMPLATES = [
 ]
 
 
+# Set s-max-age header that is used by reverse proxy/front end cache. See
+# urls.py
+try:
+    CACHE_CONTROL_S_MAXAGE = int(env.get('CACHE_CONTROL_S_MAXAGE', 600))
+except ValueError:
+    pass
+
+
+# Give front-end cache 30 second to revalidate the cache to avoid hitting the
+# backend. See urls.py
+CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
+    env.get('CACHE_CONTROL_STALE_WHILE_REVALIDATE', 30)
+)
+
+
 # Cache
 # Use Redis or database as the cache backend
 
