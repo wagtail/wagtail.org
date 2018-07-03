@@ -33,7 +33,9 @@ urlpatterns = [
     path('robots.txt', robots),
 ]
 
+
 Page.serve = get_default_cache_control_decorator()(Page.serve)
+
 
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -50,15 +52,16 @@ urlpatterns = decorate_urlpatterns(urlpatterns,
                                    get_default_cache_control_decorator())
 
 
+urlpatterns = private_urlpatterns + urlpatterns + [
+    path('', include(wagtail_urls)),
+]
+
 # Set vary header to instruct cache to serve different version on different
 # cookies, different request method (e.g. AJAX) and different protocol
 # (http vs https).
+
 urlpatterns = decorate_urlpatterns(
     urlpatterns,
     vary_on_headers('Cookie', 'X-Requested-With', 'X-Forwarded-Proto',
                     'Accept-Encoding')
 )
-
-urlpatterns = private_urlpatterns + urlpatterns + [
-    path('', include(wagtail_urls)),
-]
