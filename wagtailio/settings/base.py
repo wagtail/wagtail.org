@@ -138,9 +138,7 @@ MEDIA_URL = env.get('MEDIA_URL', '/media/')
 
 # Basic auth settings
 if os.environ.get('BASIC_AUTH_ENABLED', 'false').lower() == 'true':
-    MIDDLEWARE += [
-        'baipw.middleware.BasicAuthIPWhitelistMiddleware'
-    ]
+    MIDDLEWARE.insert(0, 'baipw.middleware.BasicAuthIPWhitelistMiddleware')
     BASIC_AUTH_LOGIN = 'wagtailio'
     BASIC_AUTH_PASSWORD = 'showmewagtailio'
     BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
