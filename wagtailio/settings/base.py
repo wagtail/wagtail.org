@@ -149,6 +149,9 @@ if os.environ.get('ENABLE_BASIC_AUTH', 'false').lower() == 'true':
         '193.227.244.0/23',
         '2001:41c8:103::/48',
     ]
+    BASIC_AUTH_WHITELISTED_HTTP_HOSTS = [
+        'wagtail.io',
+    ]
 
 
 # S3 configuration
