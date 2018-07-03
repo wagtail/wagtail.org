@@ -137,7 +137,7 @@ MEDIA_URL = env.get('MEDIA_URL', '/media/')
 
 
 # Basic auth settings
-if os.environ.get('ENABLE_BASIC_AUTH', 'false').lower() == 'true':
+if os.environ.get('BASIC_AUTH_ENABLED', 'false').lower() == 'true':
     MIDDLEWARE += [
         'baipw.middleware.BasicAuthIPWhitelistMiddleware'
     ]
@@ -152,6 +152,10 @@ if os.environ.get('ENABLE_BASIC_AUTH', 'false').lower() == 'true':
     BASIC_AUTH_WHITELISTED_HTTP_HOSTS = [
         'wagtail.io',
     ]
+    if 'BASIC_AUTH_WHITELISTED_HTTP_HOSTS' in env:
+        BASIC_AUTH_WHITELISTED_HTTP_HOSTS = (
+            env['BASIC_AUTH_WHITELISTED_HTTP_HOSTS'].split(',')
+        )
 
 
 # S3 configuration
