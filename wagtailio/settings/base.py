@@ -149,9 +149,6 @@ if os.environ.get('BASIC_AUTH_ENABLED', 'false').lower() == 'true':
         '193.227.244.0/23',
         '2001:41c8:103::/48',
     ]
-    BASIC_AUTH_WHITELISTED_HTTP_HOSTS = [
-        'wagtail.io',
-    ]
     if 'BASIC_AUTH_WHITELISTED_HTTP_HOSTS' in env:
         BASIC_AUTH_WHITELISTED_HTTP_HOSTS = (
             env['BASIC_AUTH_WHITELISTED_HTTP_HOSTS'].split(',')
