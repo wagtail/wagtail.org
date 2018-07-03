@@ -285,6 +285,34 @@ if 'SERVER_EMAIL' in env:
     SERVER_EMAIL = DEFAULT_FROM_EMAIL = env['SERVER_EMAIL']
 
 
+# Security configuration
+# https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
+
+if env.get('SECURE_SSL_REDIRECT', 'true').strip().lower() == 'true':
+    SECURE_SSL_REDIRECT = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+if 'SECURE_HSTS_SECONDS' in env:
+    try:
+        SECURE_HSTS_SECONDS = int(env['SECURE_HSTS_SECONDS'])
+    except ValueError:
+        pass
+
+if env.get('SECURE_BROWSER_XSS_FILTER', 'true').lower().strip() == 'true':
+    SECURE_BROWSER_XSS_FILTER = True
+
+if env.get('SECURE_CONTENT_TYPE_NOSNIFF', 'true').lower().strip() == 'true':
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+# Referrer-policy header settings
+# https://django-referrer-policy.readthedocs.io/en/1.0/
+
+REFERRER_POLICY = env.get('SECURE_REFERRER_POLICY',
+                          'no-referrer-when-downgrade').strip()
+
+
 # Logging
 LOGGING = {
     'version': 1,

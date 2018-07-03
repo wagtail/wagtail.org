@@ -9,6 +9,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 FB_APP_ID = 0
 
+SECURE_SSL_REDIRECT = False
+
 
 try:
     from .local import *  # noqa
