@@ -1,0 +1,62 @@
+{% load i18n %}
+
+<div class="backers">
+
+  {% if value.gold_backers %}
+    <div class="category gold">
+      <h3>{% trans 'Gold' %}</h3>
+      <div class="list">
+        {% for gold_backer in value.gold_backers %}
+          {{ gold_backer }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if value.silver_backers %}
+    <div class="category silver">
+      <h3>{% trans 'Silver' %}</h3>
+      <div class="list">
+        {% for silver_backer in value.silver_backers %}
+          {{ silver_backer }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if value.bronze_backers %}
+    <div class="category bronze">
+      <h3>{% trans 'Bronze' %}</h3>
+      <div class="list">
+        {% for bronze_backer in value.bronze_backers %}
+          {{ bronze_backer }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if value.linked_backers %}
+    <div class="category linked">
+      <h3>{% trans 'Other backers' %}</h3>
+      <div class="list">
+        {% for linked_backer in value.linked_backers %}
+          {{ linked_backer }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if value.named_backers %}
+    <div class="category named">
+      {% if not value.linked_backers %}
+        <h3>{% trans 'Other backers' %}</h3>
+      {% endif %}
+      <div class="list">
+        {% for named_backer in value.named_backers %}
+          {{ named_backer }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</div>

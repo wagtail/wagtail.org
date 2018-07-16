@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+
+<div class="backer">
+  {% if value.url %}
+    <a href="{{ value.url }}">
+      {{ value.name }}
+    </a>
+  {% else %}
+    {{ value.name }}
+  {% endif %}
+</div>
