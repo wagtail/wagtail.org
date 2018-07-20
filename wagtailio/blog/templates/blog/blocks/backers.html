@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n wagtailcore_tags %}
 
 <div class="backers">
 
@@ -7,7 +7,7 @@
       <h3>{% trans 'Gold' %}</h3>
       <div class="list">
         {% for gold_backer in value.gold_backers %}
-          {{ gold_backer }}
+          {% include_block gold_backer %}
         {% endfor %}
       </div>
     </div>
@@ -18,7 +18,7 @@
       <h3>{% trans 'Silver' %}</h3>
       <div class="list">
         {% for silver_backer in value.silver_backers %}
-          {{ silver_backer }}
+          {% include_block silver_backer %}
         {% endfor %}
       </div>
     </div>
@@ -29,7 +29,7 @@
       <h3>{% trans 'Bronze' %}</h3>
       <div class="list">
         {% for bronze_backer in value.bronze_backers %}
-          {{ bronze_backer }}
+          {% include_block bronze_backer %}
         {% endfor %}
       </div>
     </div>
@@ -40,7 +40,7 @@
       <h3>{% trans 'Other backers' %}</h3>
       <div class="list">
         {% for linked_backer in value.linked_backers %}
-          {{ linked_backer }}
+          {% include_block linked_backer %}
         {% endfor %}
       </div>
     </div>
@@ -53,7 +53,7 @@
       {% endif %}
       <div class="list">
         {% for named_backer in value.named_backers %}
-          {{ named_backer }}
+          {% include_block named_backer %}
         {% endfor %}
       </div>
     </div>
