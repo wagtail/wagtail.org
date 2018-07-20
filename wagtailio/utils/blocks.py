@@ -6,7 +6,9 @@ from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
 
-from wagtail.core.blocks import TextBlock, StructBlock, ListBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, ChoiceBlock
+from wagtail.core.blocks import (
+    TextBlock, StructBlock, ListBlock, StreamBlock, FieldBlock, CharBlock,
+    RichTextBlock, ChoiceBlock, URLBlock)
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
@@ -131,6 +133,40 @@ class MarkDownBlock(TextBlock):
         return mark_safe(md)
 
 
+class NamedBackerBlock(StructBlock):
+    name = CharBlock()
+
+    class Meta:
+        template = 'blog/blocks/named_backer.html'
+
+
+class LinkedBackerBlock(NamedBackerBlock):
+    url = URLBlock(required=False)
+
+    class Meta:
+        template = 'blog/blocks/linked_backer.html'
+
+
+class ImageBackerBlock(StructBlock):
+    name = CharBlock()
+    image = ImageChooserBlock(required=False)
+    url = URLBlock(required=False)
+
+    class Meta:
+        template = 'blog/blocks/image_backer.html'
+
+
+class BackersBlock(StructBlock):
+    gold_backers = ListBlock(ImageBackerBlock())
+    silver_backers = ListBlock(ImageBackerBlock())
+    bronze_backers = ListBlock(ImageBackerBlock())
+    linked_backers = ListBlock(LinkedBackerBlock())
+    named_backers = ListBlock(NamedBackerBlock())
+
+    class Meta:
+        template = 'blog/blocks/backers.html'
+
+
 # Main streamfield block to be inherited by Pages
 
 class StoryBlock(StreamBlock):
@@ -151,6 +187,7 @@ class StoryBlock(StreamBlock):
     embed = EmbedBlock(icon="code")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
+    backers = BackersBlock()
 
     class Meta:
         template = 'core/includes/streamfield.html'

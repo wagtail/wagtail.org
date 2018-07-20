@@ -1,0 +1,19 @@
+{% load wagtailimages_tags %}
+
+<div class="backer">
+  {% if value.url %}
+    <a href="{{ value.url }}" target="_blank">
+      {% if value.image %}
+        {% image value.image width-750 alt=value.name %}
+      {% else %}
+        <div class="placeholder">{{ value.name }}</div>
+      {% endif %}
+    </a>
+  {% else %}
+    {% if value.image %}
+      {% image value.image width-750 alt=value.name %}
+    {% else %}
+      <div class="placeholder">{{ value.name }}</div>
+    {% endif %}
+  {% endif %}
+</div>
