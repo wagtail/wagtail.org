@@ -1,0 +1,26 @@
+// Branding
+.branding {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: opacity .2s ease 0s;
+
+    @include gridle_state( tablet-landscape ) {
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+
+    &__logo {
+        width: 70px;
+
+        @include gridle_state( tablet-landscape ) {
+            width: 90px;
+        }
+
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+}

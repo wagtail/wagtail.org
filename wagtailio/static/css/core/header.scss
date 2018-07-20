@@ -1,133 +1,38 @@
 
-/* ============================================ 
+/* ============================================
 
   Header
 
 */
-header {
-
-    // Vars
-    $link-padding: 12px 15px;
-    $anim_speed-slow: 500ms;
-    $anim_speed-fast: 150ms;
-    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
-    $outOpacity: 0.5;
-
-    // Mixins
-    @mixin linkStyling {
-        @include font-smoothing();
-        display: block;
-        padding: $link-padding;
-
-        color: $color-primary-dark;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight:400;
-        border: solid 1px transparent;
-
-        @include transition(
-            color $anim_speed-slow ease-out, 
-            opacity $anim_speed-slow ease-out
-        );
-
-        &:hover:not( .get_started ) {
-            @include transition( none );
-            @include opacity( 1 );
-            color: $color-primary-highlight;
-        }
-
-        &.get_started {
-            @include button( $link-padding );
-        }
-    }
-
-    // Styling
-    background: #fff;
+header.global {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    float: none;
+    width: 100%;
+    background: $color-white;
     overflow: hidden;
+    padding: 4px $grid 2px;
     border-bottom: solid 1px rgba( $color-primary-dark, 0.1 );
+    background: $color-primary-light;
+    transform: translate3d(0, 0%, 0);
+    transition: transform .2s ease 0s;
 
-    @include row;
-
-    // Transitions
-    @include transition( all $anim_speed-fast linear );
-
-    // Branding
-    #branding {
-
-        display: inline-block;
-        @include gridle( 1 );
-        margin-top: 10px;
-
-        img {
-            width: 110px;
-        }
-
-        @include gridle_state( tablet-landscape ){
-            margin-top: 13px;
-            img {
-                width: 90px;
-            }
-        }
-        @include gridle_state( tablet-portrait mobile ){
-            img {
-                width: 70px;
-            }
-        }
-
+    @include gridle_state( tablet-landscape ) {
+        padding: 4px ($grid * 1.5) 2px;
     }
 
-    // Mobile navigation anchor
-    a[href="#primary_navigation"]{
-        @include linkStyling;
-        float: right;
-        display: none; // default to hide
+}
+
+.site-header {
+
+    &--slideup header.global {
+        transform: translate3d(0, -100%, 0);
     }
 
-    // Primary Navigation
-    .primary_navigation {
-
-        @include gridle_set((
-            grid : 10,
-            no_gutter : (right)
-        ));
-        float: right;
-
-        ul {
-            @include reset-list;
-            // clear nested floats
-            overflow: hidden;
-            // Styling
-            padding: 10px 0;
-            // 
-            float: right;
-
-            // fade out links when hovering UL
-            &:hover {
-                a:not( .get_started ) {
-                    @include opacity( $outOpacity );
-                }
-            }
-
-            li {
-                float: left;
-                a {
-                    @include linkStyling;
-                    @include gridle_state( tablet-landscape ){
-                        font-size: 12px;
-                        padding-left: 14px;
-                        padding-right: 14px;
-                    }
-                }
-            }
-        }
+    &--slidedown header.global {
+        transform: translate3d(0, 0%, 0);
     }
 
-    @include gridle_state( tablet-portrait mobile ){
-        .primary_navigation {
-            display: none;
-        }
-        a[href="#primary_navigation"] {
-            display: block;
-        }
-    }
 }

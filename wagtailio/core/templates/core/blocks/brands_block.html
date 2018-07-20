@@ -1,0 +1,19 @@
+{% load wagtailimages_tags %}
+
+{% image value.background original as bg_image %}
+
+{% if value.brands %}
+    <section class="pane pane__logo-list">
+
+        <h2>{{ value.title }}</h2>
+
+        <div class="carousel">
+            {% for brand in value.brands %}
+                {% image brand width-300 as brand_image %}
+                <div><img src="{{ brand_image.url }}" alt="{{ brand.title }}" /></div>
+            {% endfor %}
+
+        </div> <!-- /carousel -->
+
+    </section> <!-- /pane__logo-list -->
+{% endif %}

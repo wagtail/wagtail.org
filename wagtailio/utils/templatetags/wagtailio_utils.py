@@ -1,7 +1,7 @@
 from django import template
 
-from wagtail.wagtailimages.templatetags.wagtailimages_tags import ImageNode
-from wagtail.wagtailimages.models import SourceImageIOError
+from wagtail.images.templatetags.wagtailimages_tags import ImageNode
+from wagtail.images.models import SourceImageIOError
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
@@ -145,3 +145,16 @@ class ResponsiveImageNode(ImageNode, template.Node):
                 resolved_attrs[key] = self.attrs[key].resolve(context)
 
             return rendition.img_tag(resolved_attrs)
+
+
+@register.filter
+def carousel_next(carousel_list, current_index):
+    if current_index == len(carousel_list) - 1:
+        return carousel_list[0]
+
+    return carousel_list[current_index + 1]
+
+
+@register.filter
+def carousel_prev(carousel_list, current_index):
+    return carousel_list[current_index - 1]

@@ -5,17 +5,112 @@
 
 $(function( ){
 
-    // TODO: make selectors variables for portability
+    // FB sharing popup
+    // Facebook sharing dialog (assumes FB.init has run)
+    $( '.share .fa-facebook' ).on('click', function( e ){
+        e.preventDefault();
+        FB.ui({
+            method: 'share',
+            href: document.location.href
+        }, function(response){});
+    });
+
+    // tabs
+    $('.js-tabs').each(function(){
+        // For each set of tabs, we want to keep track of
+        // which tab is active and its associated content
+        var $active, $content, $links = $(this).find('a');
+
+        // If the location.hash matches one of the links, use that as the active tab.
+        // If no match is found, use the first link as the initial active tab.
+        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+        $active.addClass('current');
+
+        $content = $($active[0].hash);
+
+        // Hide the remaining content
+        $links.not($active).each(function () {
+            $(this.hash).hide();
+        });
+
+        // Bind the click event handler
+        $(this).on('click', 'a', function(e){
+            // Make the old tab inactive.
+            $active.removeClass('current');
+            $content.removeClass('current');
+            $content.hide();
+
+            // Update the variables with the new link and content
+            $active = $(this);
+            $content = $(this.hash);
+
+            // Make the tab active.
+            $active.addClass('current');
+            $content.addClass('current');
+            $content.show();
+
+            // Prevent the anchor's default click action
+            e.preventDefault();
+        });
+    });
+
+    $('.js-tabs-proxy-link').on('click', function (e) {
+        var $targetElement = $(this.hash);
+        var $proxyTo = $('.js-tabs').find('a[href="'+this.hash+'"]')[0];
+
+        // This links already have all required logic to switch tabs,
+        // so just generate a click event to activate the logic
+        $proxyTo.click();
+
+        $('html, body').animate({
+            scrollTop: $targetElement.offset().top - $('header.global').height()
+        }, 500);
+
+        e.preventDefault();
+    });
+
+    // Slow scroll on anchors
+    function anchorScroll(event) {
+
+        // prevent default link action
+        event.preventDefault();
+
+        // make some vars so it is easy to understand what we are doing
+        var $clicked    = $(this);
+        var id          = $clicked.attr('href');
+        var $target     = $(id);
+
+        // if there is no target, fail silently
+        if ($target.length === 0) {
+            // TODO: this breaks the django debug toolbar and possibly some other event handlers too
+            return false;
+        }
+
+        // animate html & body scrollTop property to the top position of the $target element
+        $('html, body').animate({
+            scrollTop: $target.offset().top,
+        }, 500);
+
+    }
+
+    $(window).on('scroll', function () {
+
+        // Fadeout effect
+        $('.js-fade').css('opacity', 1 - $(window).scrollTop() / 250);
+
+    });
+
+    // Slow scroll on anchor links
+    $('.js-smoothscroll').on('click', anchorScroll);
 
     // Menu button
-    $( 'a[href=#primary_navigation]' ).on( 'click', function( e ){
+    $( '.menu-toggle' ).on( 'click', function( e ){
         e.preventDefault();
         $( 'body' ).toggleClass( 'mobile_nav-open' );
     });
 
     // Blog index for mobile button
     $( '.blog-index-button' ).on( 'click', function( e ){
-        e.preventDefault();
         $( 'body' ).toggleClass( 'sidebar-open' );
     });
 
@@ -26,229 +121,49 @@ $(function( ){
         $( 'body' ).removeClass( 'sidebar-open' );
     });
 
-    $( window ).on('load', function( ){
 
-    });
+    /***
 
-    /************************************************************
-    *
-    * Hero Carousel
-    * mostly hacked together for speed, can be tideid up (relatively) painlessly
-    *
-    */
+    Plugins
 
-    // function is called imediately after definition (should put this call in a page/component specific check...)
-    var heroCarousel = function( ){
+    ***/
 
-        var time = 5, // time in seconds
-            $currentBar,
-            $elem,
-            isPause,
-            tick,
-            percentTime;
-
-        // Carousel
-        $("#hero .carousel").owlCarousel({
-
-            // navigation : true, // Show next and prev buttons
-            slideSpeed      : 500,
-            paginationSpeed : 400,
-            singleItem      : true,
-            afterInit       : progressBar,
-            afterMove       : moved,
-            startDragging   : pauseOnDragging
-
-        });
-
-        // Init progressBar
-        // @elem is $("#owl-carousel")
-        // TODO: change function name
-        function progressBar( elem ){
-
-            // Pointer for carousel (should really have a better name)
-            $elem = elem;
-
-            // navigation stuff
-            // Add carousel titles to pagination items
-            var $items = $elem.find( '.owl-item' ),
-                $pagination = $elem.find( '.owl-page' );
-
-            $items.each(function( i ){
-                var $item = $( this ),
-                    $pageItem = $( $pagination[i] ),
-                    title = $item.find( 'h1' ).clone(); // change this so it only clones the text of the h1
-
-                $pageItem.append( title );
-
-            });
-
-            //build progress bar elements
-            buildProgressBar( $pagination );
-            //start counting
-            start();
-
-            // Add class to body so we can show the carousel (avoids flash of un-JS carousel)
-            $( 'body' ).addClass( 'carousel-loaded' );
-
-        }
-
-        //create div#progressBar and div#bar then prepend to $("#owl-demo")
-        function buildProgressBar( $pagination ){
-
-            var $container = $("<div>",{
-                    class:"progressBar"
-                }),
-                $bar = $("<div>",{
-                    class:"bar"
-                }),
-                progressBar;
-
-            // build it (could be neater to do this at the top TBH)
-            progressBar = $container.append($bar); //.prependTo($elem);
-
-            $pagination.each(function( ){
-                var $item = $( this ),
-                    $progressBar = progressBar.clone();
-
-                $item.append( $progressBar );
-            });
-
-            // set first bar as currentBar
-            $currentBar = $( $pagination[0] ).find( '.bar' );
-
-        }
-
-        function start( ){
-            //reset timer
-            percentTime = 0;
-            isPause = false;
-            //run interval every 0.01 second
-            tick = setInterval(interval, 10);
-        }
-
-        function interval( ){
-
-            if(isPause === false){
-                percentTime += 1 / time
-                $currentBar.css({
-                    width: percentTime + "%"
-                });
-                //if percentTime is equal or greater than 100
-                if( percentTime >= 100 ){
-                    //slide to next item
-                    $elem.trigger('owl.next');
-                }
-            }
-
-        }
-
-        //pause while dragging
-        function pauseOnDragging( ){
-            isPause = true;
-        }
-
-        //moved callback
-        function moved( ){
-            //clear interval
-            clearTimeout(tick);
-            // Set currentBar
-            $currentBar = $elem.find( '.owl-page.active .bar');
-            //start again
-            start();
-        }
-
-        // uncomment this to make pause on mouseover
-        // img & text only plx
-        // $elem.find('.image > *, .text > *').on( 'mouseover' ,function(){
-        //     isPause = true;
-        // })
-        // $elem.find('.image > *, .text > *').on( 'mouseout' ,function(){
-        //     isPause = false;
-        // })
-
-    }();
-
-    /************************************************************
-    *
-    * Examples Carousel
-    *
-    */
-    $("#examples .carousel").owlCarousel({
-
-        // navigation : true, // Show next and prev buttons
+    // Owl carousel
+    $(".pane__logo-list .carousel").owlCarousel({
+        navigation : false,
         slideSpeed      : 500,
         paginationSpeed : 500,
-        singleItem      : true,
-        transitionStyle : "fade"
-
+        transitionStyle : "fade",
+        items : 8,
+        itemsDesktop : [1025,6],
+        itemsDesktopSmall : [979,4],
+        itemsTablet : [768,4],
+        itemsMobile : [481,2]
     });
 
-    /************************************************************
-    *
-    * Equal heights for when no flexbox browsers
-    *
-    */
-    function equalheight( item ){
+    $(".js-carousel").owlCarousel({
+        navigation : false,
+        slideSpeed      : 500,
+        paginationSpeed : 500,
+        items : 1,
+        itemsDesktop : [1025,1],
+        itemsDesktopSmall : [979,1],
+        itemsTablet : [768,1],
+        itemsMobile : [481,1]
+    });
 
-        var tallestInRow    = 0,
-            lastItemXPos    = 0,
-            itemXPos        = 0,
-            rowDivs         = [];
-
-        $( item ).each(function( ){
-
-            var $el = $( this ); // current element
-            $el.height( 'auto' ); // Ensure height is auto to ensure we fetching the automatic calculate height
-            itemXPos = $el.position().top; // Find the top position so we can determin which row we are on
-
-            // Create new row if:
-            if( lastItemXPos != itemXPos ){
-
-                // Find the tallest item in current row and set the height of the current item
-                for( currentDiv = 0; currentDiv < rowDivs.length; currentDiv++ ){
-                    rowDivs[currentDiv].height( tallestInRow ); // Set height on all divs in row
-                }
-
-                lastItemXPos = itemXPos; // Set lastItemTop
-                tallestInRow = $el.height(); // ?
-                rowDivs = []; // empty array
-                rowDivs.push($el); // push item to array
-
-            // Otherwise assume we in the same row
-            } else {
-                rowDivs.push($el); // push item to array
-                tallestInRow = ( tallestInRow < $el.height() ) ? ( $el.height() ) : ( tallestInRow ); // calculate tallest in row
-            }
-
-            // TODO: Remove this or justify it?
-            for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
-                rowDivs[currentDiv].height(tallestInRow);
-            }
-        });
-
-    };
-
-    // If we have no flexbox...
-    if( $( 'html' ).hasClass( 'no-flexbox' ) ){
-
-        $(window).load(function() {
-            equalheight('.flex-list > li a');
-        });
-
-        $(window).resize(function(){
-            // console.log( ' ====== resize =======' );
-            equalheight('.flex-list > li a');
-        });
-    }
-
-    // FB sharing popup
-    // Facebook sharing dialog (assumes FB.init has run)
-    $( '.share .fa-facebook' ).on('click', function( e ){
-        e.preventDefault();
-        FB.ui({
-            method: 'share',
-            href: document.location.href
-        }, function(response){});
+    // headroom
+    // http://wicky.nillia.ms/headroom.js/
+    $("body").headroom({
+        tolerance : {
+            up : 0,
+            down : 10
+        },
+        classes: {
+            initial: 'site-header--animated',
+            pinned: 'site-header--slidedown',
+            unpinned: 'site-header--slideup',
+        },
     });
 
 });

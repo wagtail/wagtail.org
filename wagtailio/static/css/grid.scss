@@ -8,16 +8,23 @@
 ));
 
 // register states :
+@include gridle_register_state( mobile-portrait, (
+    min-width : 380px
+));
 @include gridle_register_state( mobile, (
     max-width : 480px
 ));
 @include gridle_register_state( tablet-portrait, (
-    min-width : 481px,
-    max-width : 768px
+    min-width : 481px
 ));
 @include gridle_register_state( tablet-landscape, (
-    min-width : 769px,
-    max-width : 1024px
+    min-width : 769px
+));
+@include gridle_register_state( up-to-tablet-portrait, (
+    max-width : 769px,
+));
+@include gridle_register_state( laptop, (
+    min-width : 900px
 ));
 @include gridle_register_state( desktop, (
     min-width : 1025px

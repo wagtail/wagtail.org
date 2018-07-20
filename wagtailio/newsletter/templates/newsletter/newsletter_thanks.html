@@ -1,4 +1,4 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 {% load wagtailcore_tags %}
 
 {% block body_class %}newsletter-thanks{% endblock %}
@@ -12,3 +12,4 @@
         <p>Your address didn't validate.</p>
     {% endif %}
 {% endblock %}
+{% block footer %}{% endblock %}

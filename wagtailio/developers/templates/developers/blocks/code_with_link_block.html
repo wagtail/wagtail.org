@@ -1,0 +1,36 @@
+{% load wagtailcore_tags %}
+
+<header class="page-heading">
+    <h1>{{ page.title }}</h1>
+    <div class="introduction">
+        {{ value.title }}
+        {% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}
+    </div>
+</header> <!-- /page-heading -->
+
+<section class="pane__code">
+
+    <div class="text-container">
+
+
+        <div class="pre-container">
+
+            <div class="app-header">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            {% include_block value.code %}
+
+        </div> <!-- /pre-container -->
+
+        {% if value.link %}
+            <div class="actions">
+                {% include_block value.link %}
+            </div> <!-- /actions -->
+        {% endif %}
+
+    </div> <!-- /text-container -->
+
+</section> <!-- /pane__code -->

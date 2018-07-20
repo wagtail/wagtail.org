@@ -4,8 +4,6 @@
 
 {% block base_content %}
 
-    {% include 'includes/kickstarter.html' %}
-
     <div class="page">
 
         <header>
@@ -15,7 +13,7 @@
                 {% menu_primary %}
             </div>
         </header>
-        
+
         {% block sidebar %}{% endblock %}
 
         <div class="body">
@@ -23,7 +21,7 @@
             <section>
                 {% block content %}{% endblock %}
             </section>
-            
+
             <footer>
                 <div class="container">
                     {% menu_good_to_go %}
@@ -34,7 +32,7 @@
                     {% include "includes/copyright.html" %}
                 </div>
             </footer>
-            
+
         </div>
 
         <div id="menu_overlay">

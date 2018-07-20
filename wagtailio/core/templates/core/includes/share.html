@@ -2,6 +2,14 @@
 
 <div class="share">
 	<h3>Share</h3>
-	<a class="fa fa-twitter fa-fw" href="https://twitter.com/intent/tweet?text={{ self.full_url }}"></a>
-	<a class="fa fa-facebook fa-fw" href="https://www.facebook.com/dialog/share?app_id={{ FB_APP_ID }}&display=popup&href={{ self.full_url }}"></a>
-</div>
+	<a href="https://twitter.com/intent/tweet?text={{ page.full_url }}">
+        <svg height="28px" width="36px">
+            <use xlink:href="#social-twitter"></use>
+        </svg>
+    </a>
+    <a href="https://www.facebook.com/dialog/share?app_id={{ FB_APP_ID }}&display=popup&href={{ page.full_url }}">
+        <svg height="28px" width="36px">
+            <use xlink:href="#social-facebook"></use>
+        </svg>
+    </a>
+</div> <!-- /share -->

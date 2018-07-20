@@ -1,0 +1,36 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section class="pane__showcase border--after">
+
+    <header>
+        <h2>{{ value.title }}</h2>
+        {% if value.subtitle %}
+            <p>{{ value.subtitle }}</p>
+        {% endif %}
+    </header>
+
+    <div class="showcase">
+
+        {% for item in value.items %}
+
+            {% image item.image width-600 as item_image %}
+
+            <div class="showcase--item">
+                <div class="image-container">
+                    <img src="{{ item_image.url }}" alt="{{ item.iamge.title }}" />
+                </div>
+                <div class="text-container">
+                    {% if item.link_url %}<a href="{{ item.link_url }}">{% endif %}
+                        <h3>{{ item.title }}</h3>
+                        {% if item.subtitle %}<p>{{ item.subtitle }}</p>{% endif %}
+                    {% if item.link_url %}</a>{% endif %}
+                </div>
+            </div> <!-- /showcase--item -->
+
+        {% endfor %}
+
+    </div> <!-- /carousel -->
+
+    {% include_block value.more_link with link_classes="view-all btn btn--outline btn--outline--light btn--opaque btn--dark" %}
+
+</section> <!-- /case-studies -->

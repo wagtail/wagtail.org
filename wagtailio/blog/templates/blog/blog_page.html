@@ -1,49 +1,63 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 
 {% load static compress wagtailcore_tags wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
 
-{% block body_class %}component-sidebar{% endblock %}
+{% block body_class %}template-blog{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/vendor/code-highlighting.css' %}" />{% endblock %}
 {% block sidebar %}
-    <div id="sidebar">
-        <a class="blog-index-button" href="#blog-index">blog index<span class="fa fa-angle-down"></span></a>
-        <h2>Blog</h2>
-        <ul id="blog-index">
-            {% for sibling in self.siblings %}
-                <li>
-                    <a href="{% pageurl sibling %}">
-                        <span class="date">{{ sibling.date|date }}</span>
-                        <span class="title">{{ sibling.title }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+
+<div class="blog-container" id="blog-top">
+
+    <div class="sidebar blog-nav">
+
+        <header class="blog-nav__header">
+
+            <a class="blog-index-button" href="#blog-top">blog index <svg height="15px" width="15px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow"></use></svg></a>
+            <h2>Blog</h2>
+
+        </header>
+
+        <div class="blog-listing__container">
+            <ul class="blog-listing">
+                {% for sibling in self.siblings %}
+                    <li class="blog-listing__item">
+                        <a href="{% pageurl sibling %}" class="blog-listing__link {% if sibling == self %}blog-listing__link--current{% endif %}">
+                            <span class="date">{{ sibling.date|date }}</span>
+                            <span class="title">{{ sibling.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div> <!-- /blog-listing__container -->
+
+    </div> <!-- /sidebar -->
 {% endblock %}
 
 {% block content %}
-    <div class="page-content">
+    <div class="blog-item">
         <div class="container">
-            
-            <div class="date"><span>{{ self.date|date }}<span></div>
-            <div class="heading"><h1>{{ self.title }}</h1></div>
-            <div class="intro"><p>{{ self.introduction }}</p></div>
+
+            <div class="date"><span>{{ page.date|date }}<span></div>
+            <div class="heading"><h1>{{ page.title }}</h1></div>
+            <div class="introduction"><p>{{ page.introduction }}</p></div> <!-- /introduction -->
 
             <div class="author">
-                <span class="image">
-                    {% image self.author.image fill-55x55 alt=self.author.name %}
-                </span>
-                <span class="details">
-                    <a class="name" href="{{ self.author.url }}">{{ self.author.name }}</a>
-                    <span class="role">{{ self.author.job_title }}</span>
-                </span>
+                <div class="image">
+                    {% image page.author.image fill-55x55 alt=page.author.name %}
+                </div>
+                <div class="details">
+                    <h2><a href="{{ page.author.url }}">{{ page.author.name }}</a></h2>
+                    <span class="role">{{ page.author.job_title }}</span>
+                </div>
             </div>
 
-            {% image self.main_image original %}
-            {% include "core/includes/streamfield.html" with content=self.body %}
+            {% image page.main_image original %}
+            {% include_block page.body %}
         </div>
     </div>
 
     {% include "core/includes/share.html" %}
+
+</div> <!-- /blog-container -->
 
 {% endblock %}

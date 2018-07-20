@@ -1,12 +1,12 @@
 from django.db import models
 from django.shortcuts import redirect
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import (

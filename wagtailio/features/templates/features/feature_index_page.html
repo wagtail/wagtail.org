@@ -1,33 +1,12 @@
-{% extends "content.html" %}
+{% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-features{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block content %}
-    <div class="container">
 
-        <div class="description">
-            <h1>{{ self.title }}</h1>
-            <p>{{ self.introduction }}</p>
-            <ul class="secondary-nav">
-                {% for option in self.secondary_menu_options.all %}
-                    <li><a href="{% pageurl option.link %}">{{ option.label }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+{% include_block page.body %}
 
-        <div class="main-content">
-            <ul class="flex-list features">
-                {% for feature in self.features %}
-                    <li class="feature">{# class="new" unsupported by model #}
-                        <a href="{% pageurl feature %}">
-                            {% image feature.listing_image fill-115x90 %}
-                            <h2>{{ feature.title }}</h2>
-                            <p>{{ feature.introduction }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-
-    </div>
- {% endblock %}
+{% endblock %}

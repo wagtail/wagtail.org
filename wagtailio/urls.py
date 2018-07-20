@@ -1,30 +1,40 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+from django.views.decorators.vary import vary_on_headers
 
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtailsearch import urls as wagtailsearch_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
-from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.contrib.sitemaps.views import sitemap
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.core.models import Page
+from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter import views
+from wagtailio.utils.views import favicon, robots
+from wagtailio.utils.cache import get_default_cache_control_decorator
 
 
-admin.autodiscover()
-
+# Private URLs are not meant to be cached.
+private_urlpatterns = [
+    path('django-admin/', admin.site.urls),
+    path('admin/', include(wagtailadmin_urls)),
+]
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^search/', include(wagtailsearch_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^newsletter-signup/$', views.newsletter_signup, name='newsletter_signup'),
-    url(r'^blog/feed/$', BlogFeed(), name='blog_feed'),
-
-    url(r'', include(wagtail_urls)),
+    path('documents/', include(wagtaildocs_urls)),
+    path('newsletter-signup/', views.newsletter_signup,
+         name='newsletter_signup'),
+    path('blog/feed/', BlogFeed(), name='blog_feed'),
+    path('sitemap.xml', sitemap),
+    path('favicon.ico', favicon),
+    path('robots.txt', robots),
 ]
+
+
+Page.serve = get_default_cache_control_decorator()(Page.serve)
 
 
 if settings.DEBUG:
@@ -35,3 +45,23 @@ if settings.DEBUG:
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT
     )
+
+
+# Set public URLs to use public cache.
+urlpatterns = decorate_urlpatterns(urlpatterns,
+                                   get_default_cache_control_decorator())
+
+
+urlpatterns = private_urlpatterns + urlpatterns + [
+    path('', include(wagtail_urls)),
+]
+
+# Set vary header to instruct cache to serve different version on different
+# cookies, different request method (e.g. AJAX) and different protocol
+# (http vs https).
+
+urlpatterns = decorate_urlpatterns(
+    urlpatterns,
+    vary_on_headers('Cookie', 'X-Requested-With', 'X-Forwarded-Proto',
+                    'Accept-Encoding')
+)

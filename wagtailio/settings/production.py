@@ -1,18 +1,17 @@
-import os
+from .base import *  # noqa
+from .base import env
 
-import raven
-
-from .base import *
-
-# Do not set SECRET_KEY, Postgres or LDAP password or any other sensitive data here.
-# Instead, create a local.py file on the server.
-
-# Disable debug mode
-DEBUG = False
 
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
 COMPRESS_OFFLINE = True
+
+# Use local cache for Django compressor so we can build it in Docker
+CACHES['compressor_cache'] = {  # noqa
+    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+}
+COMPRESS_CACHE_BACKEND = "compressor_cache"
+
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter',
@@ -20,168 +19,8 @@ COMPRESS_CSS_FILTERS = [
 
 FB_APP_ID = 710333029076622
 
-# Configuration from environment variables
-# Alternatively, you can set these in a local.py file on the server
-
-env = os.environ.copy()
-
-# On Torchbox servers, many environment variables are prefixed with "CFG_"
-for key, value in os.environ.items():
-    if key.startswith('CFG_'):
-        env[key[4:]] = value
-
-
-# Basic configuration
-
-APP_NAME = env.get('APP_NAME', 'wagtailio')
-
-if 'SECRET_KEY' in env:
-    SECRET_KEY = env['SECRET_KEY']
-
-if 'ALLOWED_HOSTS' in env:
-    ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
-
-if 'PRIMARY_HOST' in env:
-    BASE_URL = 'http://%s/' % env['PRIMARY_HOST']
-
-if 'SERVER_EMAIL' in env:
-    SERVER_EMAIL = env['SERVER_EMAIL']
-
-
-# Database
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env.get('PGDATABASE', APP_NAME),
-
-        # User, host and port can be configured by the PGUSER, PGHOST and
-        # PGPORT environment variables (these get picked up by libpq).
-    }
-}
-
-
-# Redis
-# Redis location can either be passed through with REDIS_HOST or REDIS_SOCKET
-
-if 'REDIS_URL' in env:
-    REDIS_LOCATION = env['REDIS_URL']
-    BROKER_URL = env['REDIS_URL']
-
-elif 'REDIS_HOST' in env:
-    REDIS_LOCATION = env['REDIS_HOST']
-    BROKER_URL = 'redis://%s' % env['REDIS_HOST']
-
-elif 'REDIS_SOCKET' in env:
-    REDIS_LOCATION = 'unix://%s' % env['REDIS_SOCKET']
-    BROKER_URL = 'redis+socket://%s' % env['REDIS_SOCKET']
-
-else:
-    REDIS_LOCATION = None
-
-
-if REDIS_LOCATION is not None:
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': REDIS_LOCATION,
-            'KEY_PREFIX': APP_NAME,
-            'OPTIONS': {
-                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            }
-        }
-    }
-
-
-
-# Elasticsearch
-
-if 'ELASTICSEARCH_URL' in env:
-    WAGTAILSEARCH_BACKENDS = {
-        'default': {
-            'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-            'URLS': [env['ELASTICSEARCH_URL']],
-            'INDEX': APP_NAME,
-        },
-    }
-
-
-# CACHING
-
-if 'CACHE_PURGE_URL' in env:
-    INSTALLED_APPS += ( 'wagtail.contrib.wagtailfrontendcache', )
-    WAGTAILFRONTENDCACHE = {
-        'default': {
-            'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.HTTPBackend',
-            'LOCATION': env['CACHE_PURGE_URL'],
-        },
-    }
-
-
-# CDN
-
-if 'STATIC_URL' in env:
-    STATIC_URL = env['STATIC_URL']
-
-if 'STATIC_DIR' in env:
-    STATIC_ROOT = env['STATIC_DIR']
-
-if 'MEDIA_URL' in env:
-    MEDIA_URL = env['MEDIA_URL']
-
-if 'MEDIA_DIR' in env:
-    MEDIA_ROOT = env['MEDIA_DIR']
-
-
-# Logging
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
-        },
-        'django.security': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
-        },
-    },
-}
-
-
-# Log errors to file
-if 'ERROR_LOG' in env:
-    LOGGING['handlers']['errors_file'] = {
-        'level':        'ERROR',
-        'class':        'logging.handlers.RotatingFileHandler',
-        'filename':     env['ERROR_LOG'],
-        'maxBytes':     5242880, # 5MB
-        'backupCount':  5
-    }
-    LOGGING['loggers']['django.request']['handlers'].append('errors_file')
-    LOGGING['loggers']['django.security']['handlers'].append('errors_file')
-
 
 try:
-    from .local import *
+    from .local import *  # noqa
 except ImportError:
     pass
-
-if 'RAVEN_DSN' in os.environ:
-    INSTALLED_APPS += (
-        'raven.contrib.django.raven_compat',
-    )
-    RAVEN_CONFIG = {
-        'dsn': os.environ['RAVEN_DSN'],
-        'release': raven.fetch_git_sha(PROJECT_ROOT),
-    }
