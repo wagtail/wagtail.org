@@ -2,6 +2,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from wagtail.contrib.sitemaps.views import sitemap
@@ -21,10 +22,11 @@ from wagtailio.utils.cache import get_default_cache_control_decorator
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
-]
+] + decorate_urlpatterns([
+    path('documents/', include(wagtaildocs_urls)),
+], never_cache)
 
 urlpatterns = [
-    path('documents/', include(wagtaildocs_urls)),
     path('newsletter-signup/', views.newsletter_signup,
          name='newsletter_signup'),
     path('blog/feed/', BlogFeed(), name='blog_feed'),

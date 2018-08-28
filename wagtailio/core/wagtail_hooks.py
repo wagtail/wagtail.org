@@ -1,8 +1,16 @@
-from django.utils.safestring import mark_safe
-from django.utils.html import format_html, format_html_join
 from django.conf import settings
+from django.core.files.storage import get_storage_class
+from django.shortcuts import redirect
+from django.utils.cache import add_never_cache_headers
+from django.utils.html import format_html, format_html_join
+from django.utils.safestring import mark_safe
 from wagtail.core import hooks
 from wagtail.core.whitelist import allow_without_attributes
+from wagtail.documents.models import document_served, get_document_model
+
+from storages.backends.s3boto3 import S3Boto3Storage
+
+from wagtailio.storages.backends import S3Boto3StorageWithQuerystring
 
 
 def editor_js():
@@ -38,3 +46,33 @@ def whitelister_element_rules():
         'pre': allow_without_attributes,
         'code': allow_without_attributes,
     }
+
+
+# It's important that this hooks runs after all the other hooks,
+# hence order is set to "100".
+@hooks.register('before_serve_document', order=100)
+def serve_document_from_s3(document, request):
+    """
+    Download document from S3.
+
+    This is to avoid reading the whole document by the Wagtail view
+    and potentially risking DoS attack and the server timing out.
+    """
+    # Skip this hook if not using django-storages boto3 backend.
+    if not issubclass(get_storage_class(), S3Boto3Storage):
+        return
+
+    # Send document_served signal, same as Wagtail does.
+    # https://github.com/wagtail/wagtail/blob/7938e81ab48327a084ac1dced9474c998fd44c2d/wagtail/documents/views/serve.py#L32-L33
+    document_served.send(sender=get_document_model(), instance=document,
+                         request=request)
+
+    # Generate signed URL so it can have private ACL set on S3.
+    file_url = S3Boto3StorageWithQuerystring().url(document.file.name)
+
+    # Generate redirect response and add never_cache headers.
+    # Delete all existing headers.
+    response = redirect(file_url)
+    del response['Cache-control']
+    add_never_cache_headers(response)
+    return response
