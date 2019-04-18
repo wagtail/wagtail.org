@@ -8,7 +8,7 @@ You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.va
 
 ```
 git clone https://github.com/wagtail/wagtail.io.git
-cd bakerydemo
+cd wagtail.io
 vagrant up
 ```
 
