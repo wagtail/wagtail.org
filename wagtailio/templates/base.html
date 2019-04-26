@@ -48,6 +48,17 @@
         <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}" />
         <meta name="theme-color" content="#43b1b0"/>
 
+        {% if not DEBUG %}
+            <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-5XDDLH');
+            </script>
+            <!-- End Google Tag Manager -->
+        {% endif %}
+
         <!-- Font: Effra -->
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400" rel="stylesheet">
         <script src="//use.typekit.net/mah8zuf.js"></script>
@@ -63,13 +74,12 @@
     </head>
     <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
         {% if not DEBUG %}
-            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5XDDLH');</script>
+            <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <!-- End Google Tag Manager (noscript) -->
         {% endif %}
 
         <div id="fb-root"></div>
