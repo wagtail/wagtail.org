@@ -11,6 +11,12 @@ PIP=$VIRTUALENV_DIR/bin/pip
 apt-get update -y
 apt-get install -y unzip
 
+# Upgrade PostgreSQL to match version on Heroku
+service postgresql stop
+apt-get remove -y --purge postgresql-*
+apt-get install -y postgresql-11 postgresql-client-10 postgresql-contrib-10 postgresql-10-postgis-2.5
+su - postgres -c "createuser -s vagrant"
+
 # Create database
 su - vagrant -c "createdb $PROJECT_NAME"
 
