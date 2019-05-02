@@ -10,14 +10,23 @@
             width: 60%;
         }
 
-        .heading {
-            padding-left: $grid;
+        h1 {
+            margin-top: 0.5em;
+            color: $headingColor;
+        }
+
+        div.introduction {
+            color: $bodyColor;
         }
 
         ul.listing {
             padding-left: $grid;
             padding-right: $grid;
-            list-style-type: disc;
+            list-style-type: none;
+
+            a {
+                color: $bodyColor;
+            }
 
             h2 {
                 font-size: 27px;
@@ -25,6 +34,7 @@
             }
 
             li {
+                margin-top: 20px;
                 font-size: 20px;
                 margin-bottom: 20px;
             }
