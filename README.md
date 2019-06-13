@@ -29,3 +29,18 @@ Within the VM shell, you can run ``./manage.py`` to run any Django management co
 
  - ``dj <command> [args]`` - Runs a management command (eg, ``dj shell``)
  - ``djrun`` - Starts the webserver on port 8000
+
+
+## Deployment
+
+The site is hosted on heroku, and is deployed by pushing to the heroku remote.
+
+Creating and pushing to the heroku branch is handled automatically by fabric command.
+
+To staging
+
+`fab deploy_staging`
+
+To production
+
+`fab deploy_production`

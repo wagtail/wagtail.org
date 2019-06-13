@@ -106,8 +106,7 @@ def delete_local_database(local_database_name=LOCAL_DATABASE_NAME):
 
 
 def deploy_prompt(app_instance):
-    prompt_msg = 'You are about to do a manual deployment. You probably ' \
-                 'should use automatic deployments on CI. \nPlease type ' \
+    prompt_msg = 'You are about to do a manual deployment. \nPlease type ' \
                  'the application name "{app_instance}" in order to ' \
                  'proceed:\n>>> '.format(app_instance=colors.red(app_instance,
                                                                  bold=True))
