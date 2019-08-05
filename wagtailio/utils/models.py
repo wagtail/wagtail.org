@@ -77,7 +77,7 @@ register_snippet(MenuSnippet)
 
 class SocialMediaMixin(models.Model):
     social_text = models.CharField("Meta description", max_length=255, blank=True, help_text="Description of this page as it should appear when shared on social networks, or in Google results")
-    social_image = models.ForeignKey('images.WagtailIOImage', models.SET_NULL, verbose_name="Meta image", null=True, blank=True, related_name='+', help_text="Image to appear alongside 'Meta descro[topm', particularly for sharing on social networks",)
+    social_image = models.ForeignKey('images.WagtailIOImage', models.SET_NULL, verbose_name="Meta image", null=True, blank=True, related_name='+', help_text="Image to appear alongside 'Meta description', particularly for sharing on social networks",)
 
     panels = [
         MultiFieldPanel([

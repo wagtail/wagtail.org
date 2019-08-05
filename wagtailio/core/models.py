@@ -13,7 +13,14 @@ from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     body = StreamField(HomePageBlock())
-
+    parent_page_types = ['wagtailcore.Page']
+    subpage_types = [
+        'blog.BlogIndexPage',
+        'developers.DevelopersPage',
+        'features.FeatureIndexPage',
+        'newsletter.NewsletterIndexPage',
+        'standardpage.StandardPage',
+    ]
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
