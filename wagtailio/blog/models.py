@@ -16,6 +16,8 @@ from wagtailio.utils.models import (
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
+    subpage_types = ['blog.BlogPage']
+
     def serve(self, request):
         latest_blog = BlogPage.objects.live().order_by('-date').first()
         return redirect(latest_blog.url)
@@ -48,6 +50,7 @@ class Author(models.Model):
 
 
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
+    subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
         'blog.Author',
