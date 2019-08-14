@@ -1,7 +1,0 @@
-{
-  "scripts": {
-    "dokku": {
-      "postdeploy": "django-admin createcachetable && django-admin migrate --noinput"
-    }
-  }
-}

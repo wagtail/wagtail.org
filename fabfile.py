@@ -4,11 +4,7 @@ from fabric.context_managers import warn_only
 
 
 PRODUCTION_APP_INSTANCE = 'wagtailio-production'
-
-
-STAGING_APP_INSTANCE = 'wagtailio'
-STAGING_APP_DB_INSTANCE = 'wagtailio'
-STAGING_REMOTE = 'dokku@staging.torchbox.com'
+STAGING_APP_INSTANCE = 'wagtailio-staging'
 
 LOCAL_MEDIA_FOLDER = '/vagrant/media'
 LOCAL_DATABASE_NAME = 'wagtailio'
@@ -55,35 +51,34 @@ def production_shell():
 
 
 @task
-def pull_staging_data():
-    pull_database_from_dokku(STAGING_REMOTE, STAGING_APP_DB_INSTANCE)
-
-
-@task
 def pull_staging_media():
-    pull_media_from_s3_dokku(STAGING_REMOTE, STAGING_APP_INSTANCE)
+    pull_media_from_s3_heroku(STAGING_APP_INSTANCE)
 
 
 @task
 def push_staging_media():
-    push_media_to_s3_dokku(STAGING_REMOTE, STAGING_APP_INSTANCE)
+    push_media_to_s3_heroku(STAGING_APP_INSTANCE)
+
+
+@task
+def pull_staging_data():
+    pull_database_from_heroku(STAGING_APP_INSTANCE)
 
 
 @task
 def push_staging_data():
-    push_database_to_dokku(STAGING_REMOTE, STAGING_APP_INSTANCE,
-                           STAGING_APP_DB_INSTANCE)
+    push_database_to_heroku(STAGING_APP_INSTANCE)
 
 
 @task
 def deploy_staging():
-    deploy_to_dokku(STAGING_REMOTE, STAGING_APP_INSTANCE,
-                    local_branch='staging', remote_branch='staging')
+    deploy_to_heroku(STAGING_APP_INSTANCE, local_branch='master',
+                     remote_branch='master')
 
 
 @task
 def staging_shell():
-    open_dokku_shell(STAGING_REMOTE, STAGING_APP_INSTANCE)
+    open_heroku_shell(STAGING_APP_INSTANCE)
 
 
 #######
@@ -210,123 +205,6 @@ def open_heroku_shell(app_instance, shell_command='bash'):
         app=app_instance,
         command=shell_command,
     ))
-
-
-#######
-# Dokku
-#######
-
-
-def pull_database_from_dokku(dokku_remote, app_db_instance):
-    clean_local_database()
-    local('ssh {remote} postgres:export {db_instance} | '
-          'pg_restore -d {local_database}'.format(
-              remote=dokku_remote,
-              db_instance=app_db_instance,
-              local_database=LOCAL_DATABASE_NAME,
-          ))
-
-
-def push_database_to_dokku(dokku_remote, app_instance, db_instance):
-    prompt_msg = 'You are about to push your local database to Dokku. ' \
-                 'It\'s a destructive operation and will override the ' \
-                 'database on the server. \n' \
-                 'Please type the database name "{db_instance}" to ' \
-                 'proceed:\n>>> '.format(db_instance=colors.red(db_instance,
-                                                                bold=True))
-    prompt(prompt_msg, validate=db_instance)
-    local('ssh {remote} ps:stop {app}'.format(remote=dokku_remote,
-                                              app=app_instance))
-    clean_dokku_database(dokku_remote, db_instance)
-    local(
-        'pg_dump -Fc --no-acl --no-owner -w {local_db} | '
-        'ssh -t {remote} postgres:import {db_instance} '
-        '|| true'.format(
-            local_db=LOCAL_DATABASE_NAME,
-            remote=dokku_remote,
-            db_instance=db_instance,
-        )
-    )
-    local('ssh {remote} ps:start {app}'.format(remote=dokku_remote,
-                                               app=app_instance))
-
-
-def pull_media_from_s3_dokku(dokku_remote, app_instance):
-    aws_access_key_id = get_dokku_variable(dokku_remote, app_instance,
-                                           'AWS_ACCESS_KEY_ID')
-    aws_secret_access_key = get_dokku_variable(dokku_remote, app_instance,
-                                               'AWS_SECRET_ACCESS_KEY')
-    aws_storage_bucket_name = get_dokku_variable(dokku_remote, app_instance,
-                                                 'AWS_STORAGE_BUCKET_NAME')
-    pull_media_from_s3(aws_access_key_id, aws_secret_access_key,
-                       aws_storage_bucket_name)
-
-
-def push_media_to_s3_dokku(dokku_remote, app_instance):
-    prompt_msg = 'You are about to push your media folder contents to the ' \
-                 'S3 bucket. It\'s a destructive operation. \n' \
-                 'Please type the application name "{app_instance}" to ' \
-                 'proceed:\n>>> '.format(app_instance=colors.red(app_instance,
-                                                                 bold=True))
-    prompt(prompt_msg, validate=app_instance)
-    aws_access_key_id = get_dokku_variable(dokku_remote, app_instance,
-                                           'AWS_ACCESS_KEY_ID')
-    aws_secret_access_key = get_dokku_variable(dokku_remote, app_instance,
-                                               'AWS_SECRET_ACCESS_KEY')
-    aws_storage_bucket_name = get_dokku_variable(dokku_remote, app_instance,
-                                                 'AWS_STORAGE_BUCKET_NAME')
-    push_media_to_s3(aws_access_key_id, aws_secret_access_key,
-                     aws_storage_bucket_name)
-
-
-def get_dokku_variable(dokku_remote, app_instance, variable):
-    return local('ssh {remote} config:get {app} {var}'.format(
-        remote=dokku_remote,
-        app=app_instance,
-        var=variable,
-    ), capture=True).strip()
-
-
-def deploy_to_dokku(dokku_remote, app_instance, local_branch='master',
-                    remote_branch=None):
-    if remote_branch is None:
-        remote_branch = local_branch
-    print(
-        'This will push your local "{local_branch}" branch to remote '
-        '"{remote_branch}" branch.'.format(
-            local_branch=local_branch,
-            remote_branch=remote_branch
-        )
-    )
-    deploy_prompt(app_instance)
-    local('git push {remote}:{app} {local_branch}:{remote_branch}'.format(
-        remote=dokku_remote,
-        app=app_instance,
-        local_branch=local_branch,
-        remote_branch=remote_branch,
-    ))
-
-
-def open_dokku_shell(dokku_remote, app_instance):
-    local('ssh -t {remote} enter {app}'.format(remote=dokku_remote,
-                                               app=app_instance))
-
-
-def clean_dokku_database(dokku_remote, db_instance):
-    local(
-        'ssh -t {remote} postgres:export {db_instance} > '
-        '{db_instance}-backup.pg'.format(
-            remote=dokku_remote,
-            db_instance=db_instance,
-        )
-    )
-    local(
-        'echo "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" | '
-        'ssh -t {remote} postgres:connect {db_instance}'.format(
-            remote=dokku_remote,
-            db_instance=db_instance,
-        )
-    )
 
 
 ####
