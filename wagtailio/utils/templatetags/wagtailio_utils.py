@@ -10,7 +10,10 @@ register = template.Library()
 
 @register.inclusion_tag('includes/menu_primary.html', takes_context=True)
 def menu_primary(context):
-    menu = MenuSnippet.objects.get(menu_name__iexact='primary')
+    try:
+        menu = MenuSnippet.objects.get(menu_name__iexact='primary')
+    except MenuSnippet.DoesNotExist:
+        return {}
 
     return {
         'links': menu.links.all(),
