@@ -67,7 +67,7 @@
         {% block extra_css %}{% endblock %}
 
     </head>
-    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
+    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} ">
         {% if not DEBUG %}
             <!-- Google Tag Manager (noscript) -->
             <noscript>
