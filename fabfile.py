@@ -73,7 +73,7 @@ def push_staging_data():
 @task
 def deploy_staging():
     deploy_to_heroku(STAGING_APP_INSTANCE, local_branch='staging',
-                     remote_branch='staging')
+                     remote_branch='master')
 
 
 @task
