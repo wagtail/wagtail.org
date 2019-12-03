@@ -163,7 +163,9 @@ footer.global {
   }
 
   ul {
-    @include reset-list;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
     li {
       .date {
@@ -216,13 +218,8 @@ footer.global {
     }
 
     button {
-      // reset button styling
       background: none;
-      // position
       float: left;
-      // styling
-      @include button($border-opacity: 1, $padding: 14px 15px);
-      @include border-radius(0);
       text-transform: uppercase;
       border-left: 0;
     }

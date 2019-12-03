@@ -2,6 +2,7 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: $color--primary;
   overflow: hidden;
   padding-top: $headerHeightMobile;
   height: auto;
@@ -62,7 +63,7 @@
 
     p {
       font-size: 42px;
-      color: rgba($color--primary, 1);
+      color: $color--white;
       font-weight: 800;
       line-height: 1.1;
       margin: 0 0 40px;

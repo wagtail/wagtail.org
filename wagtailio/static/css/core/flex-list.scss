@@ -5,17 +5,19 @@
 
 */
 .flex-list {
+  @include flexbox;
+  @include flex-wrap(wrap);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
     @include flexbox;
-    @include flex-wrap( wrap );
-    @include reset-list;
-    li {
-        @include flexbox;
-        @include align-items( stretch );
-        a {
-            display: block; // fallback for non-flexbox
-            @include flexbox;
-            @include flex-direction( column );
-            width: 100%; // required for conainer to fullfill width
-        }
+    @include align-items(stretch);
+    a {
+      display: block; // fallback for non-flexbox
+      @include flexbox;
+      @include flex-direction(column);
+      width: 100%; // required for conainer to fullfill width
     }
+  }
 }
