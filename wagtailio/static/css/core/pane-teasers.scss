@@ -1,6 +1,6 @@
 .pane__teasers {
-  padding: 0 $grid;
-  margin-bottom: ($grid * 4);
+  padding: 0 $gutter;
+  margin-bottom: ($gutter * 4);
 
   &__main-heading {
     color: $color--white;
@@ -22,8 +22,8 @@
     flex: 0 1 auto;
     flex-basis: 100%;
     list-style-type: none;
-    padding: 0 $grid 0;
-    margin: 0 0 ($grid * 2);
+    padding: 0 $gutter 0;
+    margin: 0 0 ($gutter * 2);
     text-align: center;
 
     @include gridle_state(tablet-landscape) {
@@ -34,8 +34,8 @@
       display: block;
       background-color: rgba($color--white, 0.8);
       border-radius: 5px;
-      color: $bodyColor;
-      padding: ($grid * 2) $grid $grid;
+      color: $color--base;
+      padding: ($gutter * 2) $gutter $gutter;
       transition: background-color 0.2s ease 0s, transform 0.2s ease 0s;
 
       &:hover {
@@ -48,7 +48,7 @@
   a {
     &:hover {
       p {
-        color: $bodyColor;
+        color: $color--base;
       }
 
       h2 {
@@ -60,18 +60,18 @@
   &__heading {
     font-size: 28px;
     color: $color--black;
-    margin-bottom: ($grid / 2);
+    margin-bottom: ($gutter / 2);
     text-transform: none;
   }
 
   p {
     font-size: 18px;
-    margin: 0 0 $grid;
+    margin: 0 0 $gutter;
   }
 
   &__icon {
     text-align: center;
-    margin-bottom: ($grid / 2);
+    margin-bottom: ($gutter / 2);
     fill: $color--secondary;
   }
 

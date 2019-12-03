@@ -24,11 +24,12 @@ $color--secondary: $color--coral;
 $color--tertiary: $color--blue;
 $color--quaternary: $color--green;
 
+$color--background-light: $color--grey-light;
 $color--interaction: $color--blue;
 
 // Heading and body text colours
-$headingColor: $color--grey-dark;
-$bodyColor: $color--grey;
+$color--headings: $color--dark-blue;
+$color--base: $color--grey;
 
 // Borders
 $borderColorLight: rgba($color--white, 0.3);
@@ -47,6 +48,7 @@ $headerHeightMobile: 54px;
 
 // Grid
 $grid: 20px;
+$gutter: $grid;
 
 // Carousel
 $carousel-fadeInSpeed: 1500ms;
@@ -54,4 +56,4 @@ $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color--interaction;
 
 // Max width
-$website-width-max: 1600px;
+$website-width-max: 1400px;

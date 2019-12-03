@@ -6,19 +6,15 @@ h4,
 h5,
 h6 {
   @include font-smoothing();
-  color: $headingColor;
+  color: $color--headings;
   transition: color 0.2s ease 0s;
   line-height: 1.2;
-
-  span {
-    font-weight: normal;
-  }
 }
 
 h1 {
-  color: $headingColor;
+  color: $color--headings;
   font-size: 27px;
-  margin: 0 0 ($grid / 2);
+  margin: 0 0 ($gutter / 2);
   line-height: 1.2;
 
   @include gridle_state(tablet-portrait) {
@@ -33,8 +29,8 @@ h2 {
 
 h3 {
   font-size: 21px;
-  text-transform: uppercase;
   margin: 0 0 5px;
+  font-weight: 800;
 }
 
 h4 {
@@ -43,7 +39,7 @@ h4 {
 }
 
 .heading {
-  color: $headingColor;
+  color: $color--headings;
 
   &--light {
     color: $color--white;

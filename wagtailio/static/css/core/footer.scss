@@ -9,21 +9,19 @@ footer.global {
   z-index: 3;
   display: block;
   overflow: hidden;
-  //margin-bottom: 200px;
-  padding: $grid;
+  padding: $gutter;
   text-align: left;
-  background-color: $color--grey-light;
+  background-color: $color--background-light;
 
   @include gridle_state(tablet-landscape) {
-    padding: ($grid * 3);
+    padding: ($gutter * 3);
   }
 
   h3 {
     font-size: 28px;
-    color: $color--white;
     border-bottom: 1px solid $borderColorLight;
-    padding-bottom: ($grid / 2);
-    margin-bottom: $grid;
+    padding-bottom: ($gutter / 2);
+    margin-bottom: $gutter;
 
     @include gridle_state(tablet-landscape) {
       font-size: 24px;
@@ -75,7 +73,7 @@ footer.global {
   );
 
   padding-bottom: 10px;
-  margin-bottom: $grid;
+  margin-bottom: $gutter;
 
   @include gridle_state(tablet-landscape) {
     margin-bottom: 0;
@@ -100,7 +98,7 @@ footer.global {
       )
     )
   );
-  margin-bottom: $grid;
+  margin-bottom: $gutter;
 
   @include gridle_state(tablet-landscape) {
     margin-bottom: 0;
@@ -118,11 +116,11 @@ footer.global {
 
   &__item {
     border-bottom: solid 1px $borderColorLight;
-    padding: ($grid / 2) 0;
+    padding: ($gutter / 2) 0;
     margin: 0;
 
     @include gridle_state(tablet-landscape) {
-      padding: $grid 0;
+      padding: $gutter 0;
     }
 
     &:last-child {
@@ -158,7 +156,7 @@ footer.global {
     )
   );
 
-  margin-bottom: $grid;
+  margin-bottom: $gutter;
 
   @include gridle_state(tablet-landscape) {
     margin-bottom: 0;
@@ -197,7 +195,7 @@ footer.global {
       )
     )
   );
-  margin-bottom: $grid;
+  margin-bottom: $gutter;
 
   @include gridle_state(tablet-landscape) {
     margin-bottom: 0;
@@ -232,7 +230,7 @@ footer.global {
 }
 
 .follow_links {
-  margin-bottom: ($grid * 1.5);
+  margin-bottom: ($gutter * 1.5);
 
   @include gridle_set(
     (
@@ -254,7 +252,7 @@ footer.global {
     color: $color--white;
 
     svg {
-      fill: $color--white;
+      fill: $color--primary;
       transition: fill 0.2s ease 0s;
 
       &.twitter {
@@ -273,8 +271,8 @@ footer.global {
 }
 
 .footnote {
-  margin-top: ($grid * 2);
-  padding-top: $grid;
+  margin-top: ($gutter * 2);
+  padding-top: $gutter;
   padding-bottom: 56px;
   clear: both;
   overflow: hidden;
@@ -296,7 +294,7 @@ footer.global {
     display: block;
     float: right;
     width: 110px;
-    @include opacity(0.3);
+    opacity: 0.3;
     @include transition(opacity $anim-speed-primary linear);
 
     img {
@@ -305,7 +303,7 @@ footer.global {
     }
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
     }
   }
 

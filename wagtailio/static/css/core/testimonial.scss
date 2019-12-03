@@ -2,13 +2,14 @@
 
 .testimonial {
   position: relative;
-  padding: 0;
+  padding: ($gutter * 5) 0;
   overflow: hidden;
   text-align: center;
   background-size: cover;
-  color: rgba($color--black, 1);
+  background-color: $color--background-light;
+  color: $color--black;
   min-height: 400px;
-  margin: ($grid * 3) auto ($grid);
+  margin: 0 auto ($gutter);
 
   @include gridle_state(tablet-landscape) {
     min-height: 300px;
@@ -28,10 +29,10 @@
   }
 
   blockquote {
-    background: rgba($color--white, 0.5);
-    padding: $grid * 2;
+    background: $color--white;
+    padding: ($gutter * 2);
     font-size: 28px;
-    margin: 0 ($grid * 2);
+    margin: 0 ($gutter * 2);
 
     p {
       line-height: 1.3;
@@ -58,7 +59,7 @@
   }
 
   .owl-controls {
-    bottom: -($grid * 3);
+    bottom: -($gutter * 3);
     right: 0;
     left: 0;
     position: absolute;

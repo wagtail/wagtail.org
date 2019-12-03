@@ -8,7 +8,7 @@
             flex: 0 0 auto;
             flex-basis: 100%;
             max-width: 100%;
-            padding: 0 $grid $grid * 2;
+            padding: 0 $gutter $gutter * 2;
 
             @include gridle_state( tablet-landscape ){
                 flex-basis: 50%;
@@ -26,7 +26,7 @@
                 display: block;
                 background-color: $backgroundColor;
                 height: 100%;
-                padding: $grid;
+                padding: $gutter;
                 text-align: left;
                 transition: background-color .2s ease 0s;
 

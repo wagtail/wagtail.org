@@ -28,11 +28,11 @@
                             style="background-image: url({% static 'img/hero_bg_3.jpg' %});"
                          {% endif %}
                         >
-                        <div class="text-container">
-                            <p class="date">{{ blog_post.date|date }}</p>
-                            <h3>{{ blog_post.title }}</h3>
-                            <p>{{ blog_post.introduction|truncatechars:225 }}</p>
-                        </div>
+                    </div>
+                    <div class="text-container">
+                        <p class="date">{{ blog_post.date|date }}</p>
+                        <h3>{{ blog_post.title }}</h3>
+                        <!-- <p>{{ blog_post.introduction|truncatechars:225 }}</p> -->
                     </div>
                 </a>
             </article>

@@ -58,7 +58,7 @@
  * Get the column width in percent for the global or a specific context
  *
  * @param 	int 		$columns 					The number of columns to calculate
- * @param 	int 		$context : $gridle-columns-count 	 	The context to use
+ * @param 	int 		$context : $gutterle-columns-count 	 	The context to use
  * @return 	percentage 							The width in percent
  */
 @function gridle_get_column_width(
@@ -255,10 +255,10 @@
 	}
 	
 	// add class prefix :
-	@if $gridle-class-prefix and $gridle-class-prefix != '' {
-		$sel : "#{$sel}#{$gridle-class-prefix}";
-		@if $gridle-class-separator {
-			$sel : "#{$sel}#{$gridle-class-separator}";
+	@if $gutterle-class-prefix and $gutterle-class-prefix != '' {
+		$sel : "#{$sel}#{$gutterle-class-prefix}";
+		@if $gutterle-class-separator {
+			$sel : "#{$sel}#{$gutterle-class-separator}";
 		}
 	}
 
@@ -283,21 +283,21 @@
 			$value : nth($pattern, $index);
 			@if $value != '%state' and $value != '%count' and $value != '%-' and $value != '-' and $value != '--' and $value != '_' and $value != '__' and $value != '%prefix' {
 				@if $var == '%-' {
-					$sel : "#{$sel}#{$gridle-class-separator}";
+					$sel : "#{$sel}#{$gutterle-class-separator}";
 				} @else {
 					$sel : "#{$sel}#{$var}";
 				}
 			}
 			@if $value == '%state' and $state {
 				@if $var == '%-' {
-					$sel : "#{$sel}#{$gridle-class-separator}";
+					$sel : "#{$sel}#{$gutterle-class-separator}";
 				} @else {
 					$sel : "#{$sel}#{$var}";
 				}
 			}
 			@if $value == '%count' and $count {
 				@if $var == '%-' {
-					$sel : "#{$sel}#{$gridle-class-separator}";
+					$sel : "#{$sel}#{$gutterle-class-separator}";
 				} @else {
 					$sel : "#{$sel}#{$var}";
 				}

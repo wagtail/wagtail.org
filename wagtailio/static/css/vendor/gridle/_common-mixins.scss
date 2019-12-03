@@ -12,7 +12,7 @@
 	// debug part
 	$debug : _gridle_get_var_value(debug, $state);
 	@if ($debug == true) {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			@extend %gridle-container-debug-common;
 		}
 	}
@@ -64,7 +64,7 @@ $_gridle-already-generated : ();
 			}
 			
 			@if $debug == true {
-				#{$gridle-debug-selector} {
+				#{$gutterle-debug-selector} {
 					@extend %gridle-grid-debug-common;
 				}
 			}
@@ -83,7 +83,7 @@ $_gridle-already-generated : ();
 	// extend common :
 	@extend %gridle-push-pull-common;
 	@if $debug == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			@extend %gridle-push-pull-debug-background-common;
 			background-color:#f4efdf !important;
 		}
@@ -96,7 +96,7 @@ $_gridle-already-generated : ();
 
 	@extend %gridle-push-pull-common;
 	@if $debug == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			@extend %gridle-push-pull-debug-background-common;
 			background-color:#cfe4d5 !important;
 		}
@@ -107,7 +107,7 @@ $_gridle-already-generated : ();
 ) {
 	$debug : _gridle_get_var_value(debug, $state);
 	@if $debug == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			@extend %gridle-prefix-debug-common;
 		}
 	}
@@ -117,7 +117,7 @@ $_gridle-already-generated : ();
 ) {
 	$debug : _gridle_get_var_value(debug, $state);
 	@if $debug == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			@extend %gridle-suffix-debug-common;
 		}
 	}

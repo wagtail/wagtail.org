@@ -1,5 +1,6 @@
 .pane__code {
   position: relative;
+  padding-top: ($gutter * 5);
 
   .text-container {
     position: relative;
@@ -8,14 +9,14 @@
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    padding: 0 $grid * 2;
+    padding: 0 $gutter * 2;
 
     @include gridle_state(desktop) {
-      padding: 0 $grid * 3;
+      padding: 0 $gutter * 3;
     }
 
     h2 {
-      margin-bottom: $grid * 2;
+      margin-bottom: $gutter * 2;
     }
   }
 
@@ -39,19 +40,19 @@
     border-radius: 0 0 5px 5px;
     width: 100%;
     display: inline-block;
-    padding: $grid * 2 $grid * 2 $grid * 3;
+    padding: $gutter * 2 $gutter * 2 $gutter * 3;
     padding-bottom: 140px; // to ensure button doesn't cover code
 
     @include gridle_state(desktop) {
       font-size: 21px;
-      padding-bottom: ($grid * 3);
+      padding-bottom: ($gutter * 3);
     }
   }
 
   .actions {
     position: absolute;
     bottom: 0;
-    right: $grid;
+    right: $gutter;
     margin: 0;
 
     @include gridle_state(desktop) {

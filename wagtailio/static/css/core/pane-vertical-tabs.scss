@@ -2,10 +2,10 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  padding: $grid 0 ($grid * 4);
+  padding: $gutter 0 ($gutter * 4);
 
   @include gridle_state(tablet-landscape) {
-    padding: ($grid * 4) 0 0;
+    padding: ($gutter * 6) 0 0;
   }
 
   &:before {
@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     content: "";
-    height: $grid * 3;
+    height: $gutter * 3;
     width: 100%;
     background: rgba($color--primary, 0.8);
     display: block;
@@ -61,7 +61,8 @@
 
     .view-all {
       color: $color--interaction;
-      margin-left: 30px;
+      margin-left: ($gutter * 1.5);
+      font-weight: 500;
     }
 
     li {
@@ -69,11 +70,10 @@
 
       a {
         display: block;
-        padding: 20px 40px 20px 30px;
+        padding: $gutter ($gutter * 2) $gutter ($gutter * 1.5);
         margin: 0 0 5px;
         color: #555;
-        background: rgba($color--black, 0.2);
-        border-radius: 5px 0 0 5px;
+        background-color: $color--background-light;
 
         &:hover {
           p {
@@ -86,14 +86,10 @@
         }
 
         &.current {
-          background: $color--black;
-
-          p {
-            color: rgba($color--black, 0.6);
-          }
+          background: $color--secondary;
 
           h3 {
-            color: $color--black;
+            color: $color--white;
           }
 
           &:hover {
@@ -108,9 +104,8 @@
         }
 
         h3 {
-          text-transform: uppercase;
           margin: 0 0 5px;
-          color: r$color--black;
+          color: $color--interaction;
           line-height: 1.1;
         }
 
@@ -135,7 +130,7 @@
 
   .tab-content {
     width: 100%;
-    padding: 0 $grid * 2 $grid;
+    padding: 0 $gutter * 2 $gutter;
 
     &:after {
       content: "";
@@ -143,12 +138,12 @@
       width: 20%;
       background: $borderColorLight;
       display: block;
-      margin: $grid * 2 auto;
+      margin: $gutter * 2 auto;
     }
 
     @include gridle_state(laptop) {
       width: 60%;
-      padding: 0 $grid * 3 0 0;
+      padding: 0 $gutter * 3 0 0;
       float: left;
 
       &:after {

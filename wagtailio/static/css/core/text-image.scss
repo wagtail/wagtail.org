@@ -2,8 +2,8 @@
   background-color: $color--interaction;
   color: $color--white;
   text-align: left;
-  margin-bottom: ($grid * 2);
-  padding: ($grid * 3) 0;
+  margin-bottom: ($gutter * 2);
+  padding: ($gutter * 3) 0;
 
   h2,
   h3,
@@ -22,7 +22,7 @@
     .image {
       float: right;
       max-width: 50%;
-      padding-left: $grid;
+      padding-left: $gutter;
 
       img {
         display: block;

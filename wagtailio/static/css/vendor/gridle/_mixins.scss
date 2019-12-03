@@ -246,7 +246,7 @@
 	
 	// debug :
 	@if $debug == true and $debug-show-class-names == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			&:before {
 				@if $name == default {
 					content:"grid-#{$name}-#{$columns}";
@@ -315,7 +315,7 @@
 
 	// debug css :
 	@if $debug == true and $debug-show-class-names == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			&:after {
 				@if $name == default {
 					content:"push-#{$name}-#{$columns}";
@@ -366,7 +366,7 @@
 
 	// debug css :
 	@if $debug == true and $debug-show-class-names == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			&:after {
 				@if $name == default {
 					content:"pull-#{$name}-#{$columns}";
@@ -419,7 +419,7 @@
 
 	// debug css :
 	@if $debug == true and $debug-show-class-names == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			&:after {
 				@if $name == default {
 					content:"prefix-#{$name}-#{$columns}";
@@ -472,7 +472,7 @@
 
 	// debug css :
 	@if $debug == true and $debug-show-class-names == true {
-		#{$gridle-debug-selector} {
+		#{$gutterle-debug-selector} {
 			&:after {
 				@if $name == default {
 					content:"suffix-#{$name}-#{$columns}";
@@ -517,7 +517,7 @@
 		$width : percentage(1 / $context);
 		background: linear-gradient(to right, rgba(0,0,0,.01) 50% , rgba(0,0,0,.04) 50%); /* Standard syntax */
 		background-size:($width*2) 100%;
-		// background-position:$gridle-gutter-width/2 0;
+		// background-position:$gutterle-gutter-width/2 0;
 	}
 }
 

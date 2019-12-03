@@ -1,6 +1,6 @@
 .pane__showcase {
   overflow: hidden;
-  padding: $grid $grid * 2 0;
+  padding: $gutter $gutter * 2 0;
   text-align: center;
   position: relative;
 
@@ -10,7 +10,7 @@
   }
 
   header {
-    margin: 0 0 $grid * 3;
+    margin: 0 0 $gutter * 3;
     font-size: 21px;
 
     p {
@@ -27,14 +27,14 @@
     margin: 0;
 
     @include gridle_state(tablet-landscape) {
-      padding: 0 $grid * 3;
+      padding: 0 $gutter * 3;
     }
 
     &--item {
       flex: 0 0 auto;
       flex-basis: 100%;
       max-width: 100%;
-      padding: 0 $grid * 2 $grid * 2;
+      padding: 0 $gutter * 2 $gutter * 2;
       font-size: 16px;
 
       // Just show three for mobile
@@ -68,7 +68,7 @@
 
       img {
         width: 100%;
-        margin: 0 0 $grid;
+        margin: 0 0 $gutter;
         box-shadow: 0 -5px 10px rgba($color--black, 0.4);
       }
 
@@ -78,7 +78,7 @@
         }
 
         p {
-          color: $bodyColor;
+          color: $color--base;
         }
       }
     }

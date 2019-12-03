@@ -3,7 +3,7 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  background-color: $color--grey-light;
+  background-color: $color--background-light;
 
   h2 {
     position: absolute;
@@ -11,20 +11,19 @@
     left: 0;
     display: inline-block;
     text-align: center;
-    width: 100%;
     margin: 0 auto;
     font-weight: normal;
     color: $color--white;
-    background: rgba($color--primary, 0.8);
-    padding: 20px 0;
-    text-transform: uppercase;
+    background-color: $color--primary;
+    padding: $gutter 0;
     font-size: 15px;
     font-weight: bold;
 
     @include gridle_state(tablet-landscape) {
       font-size: 18px;
-      top: -61px;
-      padding: 20px $grid * 3;
+      top: -($gutter * 1.5);
+      left: ($gutter * 3);
+      padding: $gutter ($gutter * 1.5);
     }
 
     @include gridle_state(desktop) {
@@ -34,10 +33,10 @@
 
   .carousel {
     display: none;
-    padding: $grid $grid * 2 $grid * 3;
+    padding: $gutter $gutter * 2 $gutter * 3;
 
     @include gridle_state(desktop) {
-      padding: $grid * 2 $grid * 2;
+      padding: $gutter * 2 $gutter * 2;
     }
 
     img {
@@ -58,7 +57,7 @@
     .owl-controls {
       position: absolute;
       z-index: 2;
-      bottom: $grid;
+      bottom: $gutter;
       left: 0;
       right: 0;
       text-align: center;

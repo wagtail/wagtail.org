@@ -13,7 +13,7 @@
         font-size: 20px;
 
         .container {
-            margin: 0 $grid;
+            margin: 0 $gutter;
 
             @include gridle_state( tablet-landscape ){
                 margin: 0 auto;
@@ -26,7 +26,7 @@
         h4 {
             text-align: left;
             max-width: 800px;
-            margin: 0 auto ($grid);
+            margin: 0 auto ($gutter);
         }
 
         h2 {
@@ -46,7 +46,7 @@
     .paragraph,
     .calltoaction {
         max-width: 800px;
-        margin: 0 auto ($grid * 3);
+        margin: 0 auto ($gutter * 3);
     }
 
 }

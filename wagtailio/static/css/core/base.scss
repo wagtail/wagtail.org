@@ -1,8 +1,8 @@
 html,
 body {
-  font: 300 18px/1.5 $font-primary;
+  font: 400 18px/1.5 $font-primary;
   background-color: $color--white;
-  color: $bodyColor;
+  color: $color--base;
 }
 
 *,
@@ -45,7 +45,7 @@ ul {
   list-style-type: square;
 
   li {
-    margin-bottom: ($grid / 2);
+    margin-bottom: ($gutter / 2);
   }
 }
 
@@ -73,14 +73,14 @@ Other global items
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: $color--interaction;
+    background-color: $color--quaternary;
     margin: 5px 5px 0 0;
     display: inline-block;
     float: left;
 
     &:first-of-type {
       margin-left: 10px;
-      background-color: $color--interaction;
+      background-color: $color--secondary;
     }
   }
 }
@@ -135,7 +135,7 @@ Other global items
       width: 20%;
       background: lighten($borderColorDark, 50%);
       display: block;
-      margin: $grid * 3 auto;
+      margin: $gutter * 3 auto;
       position: relative;
       z-index: 2;
     }
@@ -148,7 +148,7 @@ Other global items
       width: 20%;
       background: lighten($borderColorDark, 50%);
       display: block;
-      margin: $grid * 3 auto;
+      margin: $gutter * 3 auto;
       position: relative;
       z-index: 2;
     }

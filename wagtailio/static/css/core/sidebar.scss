@@ -1,18 +1,18 @@
 .sidebar {
-    background-color: $headingColor;
+  background-color: $color--headings;
 
-    @include gridle_state( tablet-landscape ){
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        overflow: hidden;
-        height: 100%;
-        width: 25%;
-        padding: 0 0;
-    }
+  @include gridle_state(tablet-landscape) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    height: 100%;
+    width: 25%;
+    padding: 0 0;
+  }
 
-    h2 {
-        color: $color--white;
-    }
+  h2 {
+    color: $color--white;
+  }
 }

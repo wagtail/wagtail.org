@@ -28,7 +28,7 @@
 
             .content {
                 background-color: $color--white;
-                padding: $grid * 2 $grid * 2 $grid * 3;
+                padding: $gutter * 2 $gutter * 2 $gutter * 3;
                 border-radius: 0 5px 0 0;
                 //text-align: center;
                 margin-bottom: 0;
@@ -37,7 +37,7 @@
                     text-align: left;
 
                     .btn {
-                        margin-bottom: ($grid * 2);
+                        margin-bottom: ($gutter * 2);
 
                         @include gridle_state( tablet-landscape ){
                             float: right;
@@ -61,21 +61,21 @@
                 h3 {
                     text-transform: none;
                     font-size: 42px;
-                    margin-bottom: $grid * 2;
+                    margin-bottom: $gutter * 2;
                     display: inline-block;
                 }
 
                 .video-container {
                     overflow: hidden;
-                    margin-bottom: $grid;
+                    margin-bottom: $gutter;
                     position: relative;
                     max-height: 500px;
                 }
 
                 .image-container {
                     overflow: hidden;
-                    margin-bottom: $grid;
-                    margin-left: $grid;
+                    margin-bottom: $gutter;
+                    margin-left: $gutter;
                     position: relative;
                     padding-top: 20px;
                     float: right;
@@ -87,9 +87,9 @@
 }
 
 .tab-nav {
-    margin-bottom: $grid * 6;
+    margin-bottom: $gutter * 6;
     background-color: rgba($color--white, 0.6);
-    padding: $grid $grid * 2;
+    padding: $gutter $gutter * 2;
     text-align: center;
     border-radius: 0 0 5px 5px;
     overflow: hidden;
@@ -163,7 +163,7 @@
         @include gridle_state( tablet-landscape ){
             font-size: 18px;
             top: -61px;
-            padding: 20px $grid * 3;
+            padding: 20px $gutter * 3;
         }
 
         @include gridle_state( desktop ){
@@ -173,10 +173,10 @@
     }
 
     header {
-        padding: $grid 0;
+        padding: $gutter 0;
 
         @include gridle_state( tablet-landscape ){
-            padding: ($grid * 2) 0;
+            padding: ($gutter * 2) 0;
             float: left;
             width: 20%;
         }
@@ -188,13 +188,13 @@
 
     .row {
 
-        padding: $grid * 2 0 $grid;
+        padding: $gutter * 2 0 $gutter;
 
         @include gridle_state( tablet-landscape ){
             float: left;
             width: 80%;
-            margin-left: -$grid;
-            margin-right: -$grid;
+            margin-left: -$gutter;
+            margin-right: -$gutter;
         }
 
     }
@@ -203,7 +203,7 @@
         flex: 0 0 auto;
         flex-basis: 100%;
         text-align: left;
-        padding: 0 $grid * 0.75 $grid;
+        padding: 0 $gutter * 0.75 $gutter;
 
         @include gridle_state( tablet-landscape ){
             flex-basis: 25%;
@@ -219,10 +219,10 @@
 
 .pane__feature {
     overflow: hidden;
-    padding: 0 $grid;
+    padding: 0 $gutter;
 
     @include gridle_state( tablet-landscape ){
-        padding: 0 $grid * 3;
+        padding: 0 $gutter * 3;
     }
 
 
