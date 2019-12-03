@@ -50,6 +50,8 @@ $headerHeightMobile: 54px;
 $grid: 20px;
 $gutter: $grid;
 
+$section-top-space: ($gutter * 5);
+
 // Carousel
 $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;

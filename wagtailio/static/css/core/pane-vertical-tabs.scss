@@ -5,7 +5,7 @@
   padding: $gutter 0 ($gutter * 4);
 
   @include gridle_state(tablet-landscape) {
-    padding: ($gutter * 6) 0 0;
+    padding: $section-top-space 0 0;
   }
 
   &:before {
