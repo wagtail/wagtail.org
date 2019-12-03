@@ -42,7 +42,7 @@
 
     @include gridle_state(tablet-landscape) {
       width: 50%;
-      padding: ($gutter * 2.5) 0 0 ($gutter * 3);
+      padding: ($gutter * 5) 0 0 ($gutter * 3);
     }
 
     @include gridle_state(desktop) {
