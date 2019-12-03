@@ -1,7 +1,7 @@
 html,
 body {
   font: 300 18px/1.5 $font-primary;
-  background-color: $color-white;
+  background-color: $color--white;
   color: $bodyColor;
 }
 
@@ -15,7 +15,7 @@ body {
 
 a {
   text-decoration: none;
-  color: $color-secondary-highlight;
+  color: $color--interaction;
 
   @include transition(
     color $anim-speed-primary linear,
@@ -25,10 +25,10 @@ a {
   );
 
   &:hover {
-    color: $color-primary-highlight;
+    color: $color--interaction;
   }
   &:focus {
-    outline-color: $color-primary-highlight;
+    outline-color: $color--interaction;
   }
 }
 
@@ -73,14 +73,14 @@ Other global items
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: $color-secondary-highlight;
+    background-color: $color--interaction;
     margin: 5px 5px 0 0;
     display: inline-block;
     float: left;
 
     &:first-of-type {
       margin-left: 10px;
-      background-color: $color-primary-highlight;
+      background-color: $color--interaction;
     }
   }
 }
@@ -95,7 +95,7 @@ Other global items
     margin-left: 5px;
     width: 15px;
     height: 15px;
-    fill: $color-black;
+    fill: $color--black;
     transform: rotate(-90deg) translateY(0px);
     transition: transform 0.2s ease 0s;
   }
@@ -107,10 +107,10 @@ Other global items
   }
 
   &--light {
-    color: $color-white;
+    color: $color--white;
 
     svg {
-      fill: $color-white;
+      fill: $color--white;
     }
   }
 

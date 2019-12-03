@@ -1,98 +1,89 @@
 // List of logos
 .pane__logo-list {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background-color: $color--grey-light;
+
+  h2 {
+    position: absolute;
+    top: -58px;
+    left: 0;
+    display: inline-block;
     text-align: center;
-    color: #fff;
-    background: $color-primary-dark;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: normal;
+    color: $color--white;
+    background: rgba($color--primary, 0.8);
+    padding: 20px 0;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
 
-    h2 {
+    @include gridle_state(tablet-landscape) {
+      font-size: 18px;
+      top: -61px;
+      padding: 20px $grid * 3;
+    }
+
+    @include gridle_state(desktop) {
+      text-align: left;
+    }
+  }
+
+  .carousel {
+    display: none;
+    padding: $grid $grid * 2 $grid * 3;
+
+    @include gridle_state(desktop) {
+      padding: $grid * 2 $grid * 2;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      padding: 0 40px;
+      opacity: 1;
+
+      // &:hover {
+      //     opacity: 1;
+      // }
+    }
+
+    .owl-wrapper-outer {
+      padding-top: 2%;
+    }
+
+    .owl-controls {
+      position: absolute;
+      z-index: 2;
+      bottom: $grid;
+      left: 0;
+      right: 0;
+      text-align: center;
+
+      @include gridle_state(desktop) {
         position: absolute;
-        top: -58px;
-        left: 0;
-        display: inline-block;
-        text-align: center;
-        width: 100%;
-        margin: 0 auto;
-        font-weight: normal;
-        color: rgba($color-white, 1);
-        background: rgba($color-primary-dark, 0.8);
-        padding: 20px 0;
-        text-transform: uppercase;
-        font-size: 15px;
-        font-weight: bold;
-
-        @include gridle_state( tablet-landscape ){
-            font-size: 18px;
-            top: -61px;
-            padding: 20px $grid * 3;
-        }
-
-        @include gridle_state( desktop ){
-            text-align: left;
-        }
+        top: -52px;
+        left: auto;
+        right: 60px;
+      }
     }
 
-    .carousel {
-        display: none;
-        padding: $grid $grid * 2 $grid * 3;
-
-        @include gridle_state( desktop ){
-            padding: $grid * 2 $grid * 2;
+    .owl-pagination {
+      .owl-page {
+        span {
+          background-color: rgba($color--white, 1);
+          opacity: 1;
         }
 
-        img {
-            display: block;
-            width: 100%;
-            padding: 0 40px;
-            opacity: 1;
-
-            // &:hover {
-            //     opacity: 1;
-            // }
+        &.active {
+          span {
+            background-color: $color--interaction;
+          }
         }
-
-        .owl-wrapper-outer {
-            padding-top: 2%;
-        }
-
-        .owl-controls {
-            position: absolute;
-            z-index: 2;
-            bottom: $grid;
-            left: 0;
-            right: 0;
-            text-align: center;
-
-            @include gridle_state( desktop ){
-                position: absolute;
-                top: -52px;
-                left: auto;
-                right: 60px;
-            }
-        }
-
-        .owl-pagination {
-
-            .owl-page {
-
-                    span {
-                        background-color: rgba($color-white, 1);
-                        opacity: 1;
-                    }
-
-                    &.active {
-
-                        span {
-                            background-color: $color-primary-highlight;
-                        }
-
-                    }
-
-            }
-
-        }
-
+      }
     }
-
+  }
 }

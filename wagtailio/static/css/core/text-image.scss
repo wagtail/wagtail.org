@@ -1,34 +1,34 @@
 .textimage {
-    background-color: $color-primary-highlight;
-    color: $color-primary-light;
-    text-align: left;
-    margin-bottom: ($grid * 2);
-    padding: ($grid * 3) 0;
+  background-color: $color--interaction;
+  color: $color--white;
+  text-align: left;
+  margin-bottom: ($grid * 2);
+  padding: ($grid * 3) 0;
 
-    h2,
-    h3,
-    h4 {
-        color: $color-white;
+  h2,
+  h3,
+  h4 {
+    color: $color--white;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .text {
+      max-width: 50%;
     }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
+    .image {
+      float: right;
+      max-width: 50%;
+      padding-left: $grid;
 
-        .text {
-            max-width: 50%;
-        }
-
-        .image {
-            float: right;
-            max-width: 50%;
-            padding-left: $grid;
-
-            img {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-        }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
     }
+  }
 }

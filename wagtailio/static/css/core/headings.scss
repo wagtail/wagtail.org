@@ -1,63 +1,73 @@
 // Used on prototype to render heading text in a more 'slender' way
-h1, h2, h3, h4, h5, h6 {
-    @include font-smoothing();
-    color: $headingColor;
-    transition: color .2s ease 0s;
-    line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-smoothing();
+  color: $headingColor;
+  transition: color 0.2s ease 0s;
+  line-height: 1.2;
 
-    span {
-        font-weight: normal;
-    }
+  span {
+    font-weight: normal;
+  }
 }
 
 h1 {
-    color: $headingColor;
-    font-size: 27px;
-    margin: 0 0 ($grid / 2);
-    line-height: 1.2;
+  color: $headingColor;
+  font-size: 27px;
+  margin: 0 0 ($grid / 2);
+  line-height: 1.2;
 
-    @include gridle_state( tablet-portrait ){
-        font-size: 56px;
-    }
-
+  @include gridle_state(tablet-portrait) {
+    font-size: 56px;
+  }
 }
 
 h2 {
-    font-size: 42px;
-    margin: 0 0 20px;
+  font-size: 42px;
+  margin: 0 0 20px;
 }
 
 h3 {
-    font-size: 21px;
-    text-transform: uppercase;
-    margin: 0 0 5px;
+  font-size: 21px;
+  text-transform: uppercase;
+  margin: 0 0 5px;
 }
 
 h4 {
-    font-size: 18px;
-    margin: 0 0 5px;
+  font-size: 18px;
+  margin: 0 0 5px;
 }
 
-
 .heading {
-    color: $headingColor;
+  color: $headingColor;
 
-    &--light {
-        color: $color-white;
-    }
-
+  &--light {
+    color: $color--white;
+  }
 }
 
 a {
-    h1, h2, h3, h4, h5, h6 {
-        color: $color-secondary-highlight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $color--interaction;
+  }
+
+  &:hover {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $color--black;
     }
-
-    &:hover {
-
-        h1, h2, h3, h4, h5, h6 {
-            color: $color-black;
-        }
-
-    }
+  }
 }

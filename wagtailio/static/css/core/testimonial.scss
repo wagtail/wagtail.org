@@ -1,78 +1,72 @@
 // Testimonial
 
 .testimonial {
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-    text-align: center;
-    background-size: cover;
-    color: rgba($color-black, 1);
-    min-height: 400px;
-    margin: ($grid * 3) auto ($grid);
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  background-size: cover;
+  color: rgba($color--black, 1);
+  min-height: 400px;
+  margin: ($grid * 3) auto ($grid);
 
-    @include gridle_state( tablet-landscape ){
-        min-height: 300px;
+  @include gridle_state(tablet-landscape) {
+    min-height: 300px;
+  }
+
+  span {
+    color: $color--primary;
+  }
+
+  a {
+    color: $color--black;
+    transition: color 0.2s ease 0s;
+
+    &:hover {
+      color: $color--primary;
+    }
+  }
+
+  blockquote {
+    background: rgba($color--white, 0.5);
+    padding: $grid * 2;
+    font-size: 28px;
+    margin: 0 ($grid * 2);
+
+    p {
+      line-height: 1.3;
     }
 
-    span {
-        color: $color-primary-dark;
-    }
+    cite {
+      font-family: $font-primary;
+      margin-top: 10px;
+      font-size: 16px;
+      display: block;
+      color: rgba($color--white, 0.6);
 
-    a {
-        color: $color-black;
-        transition: color .2s ease 0s;
+      a {
+        background: rgba($color--interaction, 0.9);
+        color: $color--white;
+        padding: 5px 10px;
 
         &:hover {
-            color: $color-primary-dark;
+          color: $color--white;
+          background: darken($color--interaction, 20%);
         }
-
+      }
     }
+  }
 
-    blockquote {
-        background: rgba($color-white, 0.5);
-        padding: $grid * 2;
-        font-size: 28px;
-        margin: 0 ($grid * 2);
-        font-family: $font-secondary;
+  .owl-controls {
+    bottom: -($grid * 3);
+    right: 0;
+    left: 0;
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
 
-        p {
-            line-height: 1.3;
-        }
-
-        cite {
-            font-family: $font-primary;
-            margin-top: 10px;
-            font-size: 16px;
-            display: block;
-            color: rgba($color-white,0.6);
-
-            a {
-                background: rgba($color-secondary-highlight, 0.9);
-                color: $color-white;
-                padding: 5px 10px;
-
-                &:hover {
-                    color: $color-white;
-                    background: darken($color-secondary-highlight, 20%);
-                }
-
-            }
-        }
-
+    .owl-page span {
+      background-color: rgba($color--black, 0.5);
     }
-
-    .owl-controls {
-        bottom: -($grid * 3);
-        right: 0;
-        left: 0;
-        position: absolute;
-        margin: 0 auto;
-        text-align: center;
-
-        .owl-page span {
-            background-color: rgba($color-black, 0.5);
-        }
-
-    }
-
+  }
 }

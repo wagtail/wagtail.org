@@ -5,334 +5,332 @@
 */
 
 footer.global {
-    position: relative;
-    z-index: 3;
-    display: block;
-    overflow: hidden;
-    //margin-bottom: 200px;
-    padding: $grid;
-    text-align: left;
-    background: #111;
+  position: relative;
+  z-index: 3;
+  display: block;
+  overflow: hidden;
+  //margin-bottom: 200px;
+  padding: $grid;
+  text-align: left;
+  background-color: $color--grey-light;
 
-    @include gridle_state( tablet-landscape ){
-        padding: ($grid * 3);
-    }
+  @include gridle_state(tablet-landscape) {
+    padding: ($grid * 3);
+  }
 
-    h3 {
-        font-size: 28px;
-        color: $color-primary-light;
-        border-bottom: 1px solid $borderColorLight;
-        padding-bottom: ($grid / 2);
-        margin-bottom: $grid;
-
-        @include gridle_state( tablet-landscape ){
-            font-size: 24px;
-        }
-        @include gridle_state( tablet-portrait mobile ){
-            font-size: 21px;
-        }
-    }
-
-    p {
-        font-size: 18px;
-        color: $color-secondary-light;
-        margin-top: 0px;
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .footer-footer {
-        clear: both;
-        text-align: left;
-        padding-top: 30px;
-        font-size: 13px;
-
-        li {
-            display: inline-block;
-
-            &:last-child {
-                text-align: right;
-                float: right;
-
-                img {
-                    display: block;
-                    width: 110px;
-                }
-            }
-
-        }
-
-    }
-
-}
-
-
-.get_started_links {
-    @include gridle_set((
-        grid : 4,
-    ), tablet-landscape desktop );
-
-    padding-bottom: 10px;
+  h3 {
+    font-size: 28px;
+    color: $color--white;
+    border-bottom: 1px solid $borderColorLight;
+    padding-bottom: ($grid / 2);
     margin-bottom: $grid;
 
-    @include gridle_state( tablet-landscape ){
-        margin-bottom: 0;
+    @include gridle_state(tablet-landscape) {
+      font-size: 24px;
     }
+    @include gridle_state(tablet-portrait mobile) {
+      font-size: 21px;
+    }
+  }
 
-    a {
-        // make buttons sit after each other without using display: block or <br />;
-        float: left;
-        clear: left;
-        margin: 0 0 10px;
+  p {
+    font-size: 18px;
+    margin-top: 0px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-footer {
+    clear: both;
+    text-align: left;
+    padding-top: 30px;
+    font-size: 13px;
+
+    li {
+      display: inline-block;
+
+      &:last-child {
+        text-align: right;
+        float: right;
+
+        img {
+          display: block;
+          width: 110px;
+        }
+      }
     }
+  }
+}
+
+.get_started_links {
+  @include gridle_set(
+    (
+      grid: 4
+    ),
+    tablet-landscape desktop
+  );
+
+  padding-bottom: 10px;
+  margin-bottom: $grid;
+
+  @include gridle_state(tablet-landscape) {
+    margin-bottom: 0;
+  }
+
+  a {
+    // make buttons sit after each other without using display: block or <br />;
+    float: left;
+    clear: left;
+    margin: 0 0 10px;
+  }
 }
 
 .network_links {
-    @include gridle_set((
-        grid : 12,
+  @include gridle_set(
+    (
+      grid: 12,
+      push: 0,
+      tablet-landscape: (
         push: 0,
-        tablet-landscape: (
-            push: 0,
-            grid : 4
-        )
-    ));
-    margin-bottom: $grid;
+        grid: 4
+      )
+    )
+  );
+  margin-bottom: $grid;
 
-    @include gridle_state( tablet-landscape ){
-        margin-bottom: 0;
+  @include gridle_state(tablet-landscape) {
+    margin-bottom: 0;
+  }
+
+  &__heading {
+    margin-bottom: 0 !important;
+  }
+
+  &__container {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    border-bottom: solid 1px $borderColorLight;
+    padding: ($grid / 2) 0;
+    margin: 0;
+
+    @include gridle_state(tablet-landscape) {
+      padding: $grid 0;
     }
 
-    &__heading {
-        margin-bottom: 0 !important;
+    &:last-child {
+      border-bottom: 0;
     }
 
-    &__container {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
+    p {
+      font-size: 14px;
+      margin: 4px 0 !important;
     }
+  }
 
-    &__item {
-        border-bottom: solid 1px $borderColorLight;
-        padding: ($grid / 2) 0;
-        margin: 0;
+  &__link {
+    display: block;
 
-        @include gridle_state( tablet-landscape ){
-            padding: $grid 0;
-        }
-
-        &:last-child {
-            border-bottom: 0;
-        }
-
-        p {
-            font-size: 14px;
-            margin: 4px 0 !important;
-        }
-
+    &:hover {
+      .network_links__subheading {
+        color: $color--primary;
+      }
     }
-
-    &__link {
-        display: block;
-
-        &:hover {
-
-            .network_links__subheading {
-                color: $color--primary;
-            }
-
-        }
-
-    }
-
+  }
 }
 
 .latest_blog {
-    @include gridle_set((
-        grid : 12,
+  @include gridle_set(
+    (
+      grid: 12,
+      push: 0,
+      tablet-landscape: (
         push: 0,
-        tablet-landscape: (
-            push: 0,
-            grid : 4
-        )
-    ));
+        grid: 4
+      )
+    )
+  );
 
-    margin-bottom: $grid;
+  margin-bottom: $grid;
 
-    @include gridle_state( tablet-landscape ){
-        margin-bottom: 0;
+  @include gridle_state(tablet-landscape) {
+    margin-bottom: 0;
+  }
+
+  ul {
+    @include reset-list;
+
+    li {
+      .date {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 300;
+        @include font-smoothing;
+      }
+      .title {
+        display: block;
+        font-size: 21px;
+      }
+      .author {
+        margin: 20px 0;
+      }
     }
-
-    ul {
-        @include reset-list;
-
-        li {
-            .date {
-                display: block;
-                margin-bottom: 10px;
-                font-size: 18px;
-                font-weight: 300;
-                @include font-smoothing;
-            }
-            .title {
-                display: block;
-                font-size: 21px;
-            }
-            .author {
-                margin: 20px 0;
-            }
-        }
-    }
+  }
 }
 
 .newsletter_signup {
-    @include gridle_set((
-        grid : 12,
+  @include gridle_set(
+    (
+      grid: 12,
+      push: 0,
+      tablet-landscape: (
         push: 0,
-        tablet-landscape: (
-            push: 0,
-            grid : 8
-        )
-    ));
-    margin-bottom: $grid;
+        grid: 8
+      )
+    )
+  );
+  margin-bottom: $grid;
 
-    @include gridle_state( tablet-landscape ){
-        margin-bottom: 0;
+  @include gridle_state(tablet-landscape) {
+    margin-bottom: 0;
+  }
+
+  fieldset {
+    // reset fieldset styling
+    border: 0;
+    padding: 0;
+    margin: 0;
+    // Clear floats
+    overflow: hidden;
+    padding: 0 0 20px;
+    input {
+      float: left;
+      width: 60%;
+      padding: 15px 15px 16px;
     }
 
-    fieldset {
-        // reset fieldset styling
-        border: 0;
-        padding: 0;
-        margin: 0;
-        // Clear floats
-        overflow: hidden;
-        padding: 0 0 20px;
-        input {
-            float: left;
-            width: 60%;
-            padding: 15px 15px 16px;
-        }
-
-        button {
-            // reset button styling
-            background: none;
-            // position
-            float: left;
-            // styling
-            @include button( $border-opacity: 1, $padding: 14px 15px );
-            @include border-radius( 0 );
-            text-transform: uppercase;
-            border-left: 0;
-        }
+    button {
+      // reset button styling
+      background: none;
+      // position
+      float: left;
+      // styling
+      @include button($border-opacity: 1, $padding: 14px 15px);
+      @include border-radius(0);
+      text-transform: uppercase;
+      border-left: 0;
     }
-
+  }
 }
 
 .follow_links {
-    margin-bottom: ($grid * 1.5);
+  margin-bottom: ($grid * 1.5);
 
-    @include gridle_set((
-        grid : 12,
+  @include gridle_set(
+    (
+      grid: 12,
+      push: 0,
+      tablet-landscape: (
         push: 0,
-        tablet-landscape: (
-            push: 0,
-            grid : 4
-        )
-    ));
+        grid: 4
+      )
+    )
+  );
 
-    &__heading {
-        margin-bottom: 0 !important;
+  &__heading {
+    margin-bottom: 0 !important;
+  }
+
+  a {
+    font-size: 56px;
+    color: $color--white;
+
+    svg {
+      fill: $color--white;
+      transition: fill 0.2s ease 0s;
+
+      &.twitter {
+        transform: scale(1.7);
+      }
     }
 
-    a {
-        font-size: 56px;
-        color: $color-primary-light;
+    &:hover {
+      color: $color--interaction;
 
-        svg {
-            fill: $color-primary-light;
-            transition: fill .2s ease 0s;
-
-            &.twitter {
-                transform: scale(1.7)
-            }
-        }
-
-        &:hover {
-            color: $color-primary-highlight;
-
-            svg {
-                fill: $color-primary-highlight;
-            }
-        }
+      svg {
+        fill: $color--interaction;
+      }
     }
+  }
 }
 
 .footnote {
-    margin-top: ($grid * 2);
-    padding-top: $grid;
-    padding-bottom: 56px;
-    clear: both;
-    overflow: hidden;
-    border-top: 1px solid $borderColorLight;
+  margin-top: ($grid * 2);
+  padding-top: $grid;
+  padding-bottom: 56px;
+  clear: both;
+  overflow: hidden;
+  border-top: 1px solid $borderColorLight;
 
-    @include gridle_set((
-        grid : 12,
-    ), tablet-landscape desktop );
+  @include gridle_set(
+    (
+      grid: 12
+    ),
+    tablet-landscape desktop
+  );
 
-    .copyright {
-        float: left;
-        margin: 0;
+  .copyright {
+    float: left;
+    margin: 0;
+  }
+
+  .logo {
+    display: block;
+    float: right;
+    width: 110px;
+    @include opacity(0.3);
+    @include transition(opacity $anim-speed-primary linear);
+
+    img {
+      display: inline-block;
+      width: 110px;
     }
 
-    .logo {
-        display: block;
-        float: right;
-        width: 110px;
-        @include opacity( 0.3 );
-        @include transition( opacity $anim-speed-primary linear );
+    &:hover {
+      @include opacity(1);
+    }
+  }
 
-        img {
-            display: inline-block;
-            width: 110px;
-        }
+  .torchbox {
+    float: right;
 
-        &:hover {
-            @include opacity( 1 );
-        }
-
+    &__container {
+      display: inline-block;
+      overflow: hidden;
     }
 
-    .torchbox {
-      float: right;
-
-        &__container {
-            display: inline-block;
-            overflow: hidden;
-        }
-
-        &__logo {
-            opacity: 0.6;
-            fill: #fff;
-            width: 100px;
-            height: 25px;
-            transform: translate3D(80%, 0, 0);
-            transition: opacity .2s ease 0s,
-                        transform .2s ease 0s;
-        }
-
-        &:hover {
-
-            svg {
-                opacity: 1;
-                transform: translate3D(0, 0, 0);
-            }
-
-        }
-
+    &__logo {
+      opacity: 0.6;
+      fill: #fff;
+      width: 100px;
+      height: 25px;
+      transform: translate3D(80%, 0, 0);
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     }
+
+    &:hover {
+      svg {
+        opacity: 1;
+        transform: translate3D(0, 0, 0);
+      }
+    }
+  }
 }

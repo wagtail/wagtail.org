@@ -1,4 +1,3 @@
-
 /* ============================================
 
     MIXINS
@@ -8,34 +7,32 @@
 
 */
 
-
 /* ============================================
 
     Clearfix
 
 */
 @mixin clearfix {
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-};
-
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 
 /* ============================================
 
     Border radius
 
 */
-@mixin border-radius( $radius: 5px ) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    border-radius: $radius;
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
 
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
 }
 
 /* ============================================
@@ -43,11 +40,10 @@
     Font smoothing
 
 */
-@mixin font-smoothing(){
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
 
 /* ============================================
 
@@ -56,13 +52,22 @@
 
 */
 @mixin placeholder-text {
-    &.placeholder{ @content; }
-    &:-moz-placeholder{ @content; }
-    &::-moz-placeholder{ @content; }
-    &:-ms-input-placeholder{ @content; }
-    &::-webkit-input-placeholder{ @content; }
-};
-
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
 
 /* ============================================
 
@@ -70,9 +75,9 @@
 
 */
 @mixin reset-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 /* ============================================
@@ -83,44 +88,42 @@
 // Drop cap styling
 // &:first-letter {
 //     float: left;
-//     color: $color-primary-highlight;
+//     color: $color--interaction;
 //     font-size: 72px;
 //     line-height: 0.7;
 //     padding: 4px 8px 0 3px;
 // }
-
 
 /* ============================================
 
     Custom underline
 
 */
-@mixin custom-underline (
-    $underline-colour: $color-primary-highlight,
-    $hover: true,
-    $invert: false
+@mixin custom-underline(
+  $underline-colour: $color--interaction,
+  $hover: true,
+  $invert: false
 ) {
-    border-bottom: 2px solid $underline-colour;
-    text-decoration: none;
+  border-bottom: 2px solid $underline-colour;
+  text-decoration: none;
 
-    @if $invert {
+  @if $invert {
+    border-bottom-color: rgba($underline-colour, 0);
+  }
+
+  @include transition(border-bottom-color 250ms);
+
+  @if $hover {
+    &:hover {
+      // color: #fff; (colour state should not be set here)
+      @if $invert {
+        border-bottom-color: rgba($underline-colour, 1);
+      } @else {
         border-bottom-color: rgba($underline-colour, 0);
+      }
     }
-
-    @include transition( border-bottom-color 250ms );
-
-    @if $hover {
-        &:hover {
-            // color: #fff; (colour state should not be set here)
-            @if $invert {
-                border-bottom-color: rgba($underline-colour, 1);
-            } @else {
-                border-bottom-color: rgba($underline-colour, 0);
-            }
-        }
-    }
+  }
 }
-
 
 /* ============================================
 
@@ -128,24 +131,23 @@
     - can be dropped for just opacity as we are no longer supporting IE8 :party:
 
 */
-@mixin opacity( $opacity ){
-    opacity: $opacity;
-    $opacity-ie: $opacity * 100;
-    filter: alpha(opacity=$opacity-ie); //IE8
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
 }
-
 
 /* ============================================
 
     Transitions
 
 */
-@mixin transition( $args... ){
-    -webkit-transition: $args;
-    -moz-transition: $args;
-    -ms-transition: $args;
-    -o-transition: $args;
-    transition: $args;
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
 }
 
 /* ============================================
@@ -154,43 +156,40 @@
 
 */
 @mixin transform($transforms) {
-       -moz-transform: $transforms;
-         -o-transform: $transforms;
-        -ms-transform: $transforms;
-    -webkit-transform: $transforms;
-          transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
 }
-
 
 /* ============================================
 
     Text input
 
 */
-@mixin input-text{
+@mixin input-text {
+  padding: 14px 13px 15px;
+  font-weight: 500;
+  border: solid 1px #fff;
+  border-width: 1px 0px 1px 1px;
+  color: $color--primary;
 
-    padding: 14px 13px 15px;
-    font-weight: 500;
-    border: solid 1px #fff;
-    border-width: 1px 0px 1px 1px;
-    color: $color-primary-dark;
+  @include transition(all $anim-speed-primary linear);
 
-    @include transition( all $anim-speed-primary linear );
+  &:focus {
+    outline: none; // remove default outline
+    border-color: $color--interaction; // add custom border colour
 
-    &:focus {
-        outline: none; // remove default outline
-        border-color: $color-primary-highlight; // add custom border colour
-
-        // Hard to find a good box-shadow mixin and not enough time to write my own:
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        -webkit-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, .5 );
-        -moz-box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, .5 );
-        box-shadow: inset 0px 0px 10px 0px rgba( $color-primary-dark, .5 );
-    }
+    // Hard to find a good box-shadow mixin and not enough time to write my own:
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgba($color--primary, 0.5);
+    -moz-box-shadow: inset 0px 0px 10px 0px rgba($color--primary, 0.5);
+    box-shadow: inset 0px 0px 10px 0px rgba($color--primary, 0.5);
+  }
 }
-
 
 /* ============================================
 
@@ -198,44 +197,43 @@
 
 */
 @mixin button(
-    $padding: 7px 15px,
-    $color: $color-primary-highlight,
-    $color-hover: $color-primary-light,
-    $border-opacity: 0.2
-){
+  $padding: 7px 15px,
+  $color: $color--interaction,
+  $color-hover: $color--white,
+  $border-opacity: 0.2
+) {
+  // Vars
+  $anim_speed-slow: 500ms;
+  $anim_speed-fast: 150ms;
+  $easing: cubic-bezier(0.47, 0, 0.745, 0.715); // EXPERIMENTAL
 
-    // Vars
-    $anim_speed-slow: 500ms;
-    $anim_speed-fast: 150ms;
-    $easing: cubic-bezier(0.470, 0.000, 0.745, 0.715); // EXPERIMENTAL
+  // make animations an option?
+  @include transition(
+    background $anim_speed-fast $easing,
+    border ($anim_speed-fast - 100) linear,
+    color $anim_speed-fast $easing ($anim_speed-fast - 100)
+  );
 
-    // make animations an option?
-    @include transition(
-        background $anim_speed-fast $easing,
-        border ($anim_speed-fast - 100) linear,
-        color $anim_speed-fast $easing ( $anim_speed-fast - 100 )
-    );
+  // Styling
+  display: inline-block; // Might be too much of an assumption, can make mixin argument
+  border: solid 1px rgba($color, $border-opacity);
+  padding: $padding;
+  color: $color;
+  text-decoration: none;
+  @include border-radius(2px);
 
-    // Styling
-    display: inline-block; // Might be too much of an assumption, can make mixin argument
-    border: solid 1px rgba( $color, $border-opacity );
-    padding: $padding;
-    color: $color;
-    text-decoration: none;
-    @include border-radius( 2px );
+  // icon container
+  span {
+    margin-right: 7px;
+  }
 
-    // icon container
-    span {
-        margin-right: 7px;
-    }
-
-    &:focus,
-    &:hover {
-        outline: none;
-        border-color: rgba( $color, 1 );
-        background: $color;
-        color: $color-hover;
-    }
+  &:focus,
+  &:hover {
+    outline: none;
+    border-color: rgba($color, 1);
+    background: $color;
+    color: $color-hover;
+  }
 }
 
 /* ============================================
@@ -243,81 +241,80 @@
     External link
 
 */
-@mixin external-link(){
-    position: relative;
-    font-size: 18px;
-    font-weight: 500;
+@mixin external-link() {
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
 }
-
 
 /* ============================================
 
     Author
 
 */
-@mixin author( $inline: true, $responsive: false ) {
+@mixin author($inline: true, $responsive: false) {
+  @mixin inline-rules {
+    overflow: hidden;
+    @include flexbox;
+    @include align-items(center);
+    text-align: left;
+  }
 
-    @mixin inline-rules {
-        overflow: hidden;
-        @include flexbox;
-        @include align-items( center );
-        text-align: left;
-    }
+  text-align: center;
 
-    text-align: center;
-
-    .image {
-
-        @if $inline { float: left; }
-
-        overflow: hidden;
-        margin: 0 14px 0 0;
-
-        img {
-            width: 55px;
-            @include border-radius( 50% );
-        }
-    }
-    .details {
-
-        @if $inline { float: left; }
-
-        > * {
-            display: block;
-        }
-
-        .name {
-            font-size: 18px;
-            @include transition( color $anim-speed-primary linear );
-            &:hover {
-                color: $color-primary-highlight;
-            }
-        }
-        .role {
-            font-size: 14px;
-            font-weight: 300;
-            font-style: italic;
-            @include font-smoothing;
-        }
-    }
-
+  .image {
     @if $inline {
-        @include inline-rules;
+      float: left;
     }
 
-    @if $responsive {
-        @include gridle_state( desktop ){
-            @include inline-rules;
-        }
-        @include gridle_state( tablet-portrait mobile ){
-            .image {
-                display: inline-block;
-                margin: 0 auto -10px;
-            }
-            .details {
-                display: block;
-            }
-        }
+    overflow: hidden;
+    margin: 0 14px 0 0;
+
+    img {
+      width: 55px;
+      @include border-radius(50%);
+    }
+  }
+  .details {
+    @if $inline {
+      float: left;
     }
 
+    > * {
+      display: block;
+    }
+
+    .name {
+      font-size: 18px;
+      @include transition(color $anim-speed-primary linear);
+      &:hover {
+        color: $color--interaction;
+      }
+    }
+    .role {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+      @include font-smoothing;
+    }
+  }
+
+  @if $inline {
+    @include inline-rules;
+  }
+
+  @if $responsive {
+    @include gridle_state(desktop) {
+      @include inline-rules;
+    }
+    @include gridle_state(tablet-portrait mobile) {
+      .image {
+        display: inline-block;
+        margin: 0 auto -10px;
+      }
+      .details {
+        display: block;
+      }
+    }
+  }
 }

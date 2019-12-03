@@ -1,41 +1,41 @@
 /* ============================================
-
   Vars
-
 */
 
 // Fonts
 $font-primary: "Apercu Pro", arial, helvetica, sans-serif;
-$font-secondary: $font-primary;
 
-// Colours (could do with tidying this up)
-$color-primary-dark: #222; // dark grey
-$color-primary-light: #fff; // white (duh!)
-$color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
-$color-primary-bg: #f6f2f2; // off-white
-$color-secondary-light: rgba($color-primary-light, 0.7);
-$color-secondary-highlight: #43b1b0; // wagtail brand teal
-$color-green: #3cb65b;
+// Colours
+$color--blue: #2f128d;
+$color--dark-blue: #251657;
+$color--coral: #fd5765;
+$color--green: #3beccd;
 
-$color--primary: $color-primary-highlight; // orange
-$color--secondary: $color-secondary-highlight; // teal
-$color--tertiary: $color-primary-dark; // grey
-$color--quaternary: $color-primary-bg; // offwhite
+$color--grey: #555;
+$color--grey-light: #f4f3f6;
+$color--grey-dark: #333;
+$color--grey-darker: #222;
 
-// Generic colours
-$color-white: #fff;
-$color-black: #000;
+$color--black: #000;
+$color--white: #fff;
+
+$color--primary: $color--dark-blue;
+$color--secondary: $color--coral;
+$color--tertiary: $color--blue;
+$color--quaternary: $color--green;
+
+$color--interaction: $color--blue;
 
 // Heading and body text colours
-$headingColor: #333;
-$bodyColor: #555;
+$headingColor: $color--grey-dark;
+$bodyColor: $color--grey;
 
 // Borders
-$borderColorLight: rgba($color-white, 0.3);
-$borderColorDark: rgba($color-black, 0.3);
+$borderColorLight: rgba($color--white, 0.3);
+$borderColorDark: rgba($color--black, 0.3);
 
 // Background colours
-$backgroundColor: #f4f1ea;
+$backgroundColor: $color--white;
 
 // Animations
 $anim-speed-primary: 250ms;
@@ -51,7 +51,7 @@ $grid: 20px;
 // Carousel
 $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
-$carousel-highlightColour: $color-primary-highlight;
+$carousel-highlightColour: $color--interaction;
 
 // Max width
 $website-width-max: 1600px;

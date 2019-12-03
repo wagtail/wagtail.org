@@ -27,7 +27,7 @@
             }
 
             .content {
-                background-color: $color-white;
+                background-color: $color--white;
                 padding: $grid * 2 $grid * 2 $grid * 3;
                 border-radius: 0 5px 0 0;
                 //text-align: center;
@@ -88,7 +88,7 @@
 
 .tab-nav {
     margin-bottom: $grid * 6;
-    background-color: rgba($color-white, 0.6);
+    background-color: rgba($color--white, 0.6);
     padding: $grid $grid * 2;
     text-align: center;
     border-radius: 0 0 5px 5px;
@@ -103,7 +103,7 @@
         text-align: left;
         margin: 0;
         width: 20%;
-        color: $color-white;
+        color: $color--white;
 
         svg {
             position: relative;
@@ -154,7 +154,7 @@
         width: 100%;
         margin: 0 auto;
         font-weight: normal;
-        color: rgba($color-white, 1);
+        color: rgba($color--white, 1);
         padding: 20px 0;
         text-transform: uppercase;
         font-size: 15px;

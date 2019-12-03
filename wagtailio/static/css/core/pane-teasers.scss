@@ -1,91 +1,82 @@
 .pane__teasers {
-    padding: 0 $grid;
-    margin-bottom: ($grid * 4);
+  padding: 0 $grid;
+  margin-bottom: ($grid * 4);
 
-    &__main-heading {
-        color: $color-white;
-        font-size: 42px;
-        margin: 0 0 60px;
-        text-align: center;
+  &__main-heading {
+    color: $color--white;
+    font-size: 42px;
+    margin: 0 0 60px;
+    text-align: center;
+  }
+
+  &__container {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: $website-width-max;
+  }
+
+  &__item {
+    flex: 0 1 auto;
+    flex-basis: 100%;
+    list-style-type: none;
+    padding: 0 $grid 0;
+    margin: 0 0 ($grid * 2);
+    text-align: center;
+
+    @include gridle_state(tablet-landscape) {
+      flex-basis: 50%;
     }
 
-    &__container {
-        list-style-type: none;
-        padding: 0;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        max-width: $website-width-max;
+    &__link {
+      display: block;
+      background-color: rgba($color--white, 0.8);
+      border-radius: 5px;
+      color: $bodyColor;
+      padding: ($grid * 2) $grid $grid;
+      transition: background-color 0.2s ease 0s, transform 0.2s ease 0s;
+
+      &:hover {
+        transform: translate3d(0, -10px, 0);
+        background-color: rgba($color--white, 1);
+      }
     }
+  }
 
-    &__item {
-        flex: 0 1 auto;
-        flex-basis: 100%;
-        list-style-type: none;
-        padding: 0 $grid 0;
-        margin: 0 0 ($grid * 2);
-        text-align: center;
+  a {
+    &:hover {
+      p {
+        color: $bodyColor;
+      }
 
-        @include gridle_state( tablet-landscape ){
-            flex-basis: 50%;
-        }
-
-        &__link {
-            display: block;
-            background-color: rgba($color-white, 0.8);
-            border-radius: 5px;
-            color: $bodyColor;
-            padding: ($grid * 2) $grid $grid;
-            transition: background-color .2s ease 0s,
-                        transform .2s ease 0s;
-
-            &:hover {
-                transform: translate3d(0, -10px, 0);
-                background-color: rgba($color-white, 1);
-            }
-        }
-
+      h2 {
+        color: $color--primary;
+      }
     }
+  }
 
-    a {
+  &__heading {
+    font-size: 28px;
+    color: $color--black;
+    margin-bottom: ($grid / 2);
+    text-transform: none;
+  }
 
-        &:hover {
+  p {
+    font-size: 18px;
+    margin: 0 0 $grid;
+  }
 
-            p {
-                color: $bodyColor;
-            }
+  &__icon {
+    text-align: center;
+    margin-bottom: ($grid / 2);
+    fill: $color--secondary;
+  }
 
-            h2 {
-                color: $color--primary;
-            }
-
-        }
-
-    }
-
-    &__heading {
-        font-size: 28px;
-        color: $color-black;
-        margin-bottom: ($grid / 2);
-        text-transform: none;
-    }
-
-    p {
-        font-size: 18px;
-        margin: 0 0 $grid;
-    }
-
-    &__icon {
-        text-align: center;
-        margin-bottom: ($grid / 2);
-        fill: $color--secondary;
-    }
-
-    &__arrow {
-        transform: rotate(-90deg) scale(0.6) translate(-11px, 0);
-        fill: $color--primary;
-    }
-
-
-
+  &__arrow {
+    transform: rotate(-90deg) scale(0.6) translate(-11px, 0);
+    fill: $color--primary;
+  }
 }

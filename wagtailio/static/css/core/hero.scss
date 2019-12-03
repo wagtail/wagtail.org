@@ -1,97 +1,95 @@
 .hero {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    padding-top: $headerHeightMobile;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  padding-top: $headerHeightMobile;
+  height: auto;
+
+  @include gridle_state(tablet-landscape) {
+    height: 700px;
+    padding-top: $headerHeight;
+  }
+
+  @include gridle_state(desktop) {
+    height: 900px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: -100px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 700px 1200px;
+    border-color: transparent transparent rgba($color--secondary, 0.85)
+      transparent;
+    opacity: 1;
+    z-index: 0;
+    display: none;
+
+    @include gridle_state(tablet-landscape) {
+      display: block;
+    }
+  }
+
+  .text-container {
+    width: 100%;
+    padding: $grid * 2 $grid * 2;
+
+    @include gridle_state(tablet-landscape) {
+      width: 50%;
+      padding: $grid * 2 0 0 $grid * 3;
+    }
+
+    @include gridle_state(desktop) {
+      width: 40%;
+    }
+
+    h2 {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $color--secondary;
+
+      @include gridle_state(tablet-landscape) {
+        margin-top: $grid;
+        font-size: 18px;
+      }
+    }
+
+    p {
+      font-size: 42px;
+      color: rgba($color--primary, 1);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0 0 40px;
+
+      @include gridle_state(desktop-wide) {
+        font-size: 62px;
+      }
+    }
+  }
+
+  .screenshot {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: $grid * 10;
+    right: 60px;
+    width: 50%;
     height: auto;
 
-    @include gridle_state( tablet-landscape ){
-        height: 700px;
-        padding-top: $headerHeight;
+    @include gridle_state(tablet-landscape) {
+      display: block;
+      width: 40%;
     }
 
-    @include gridle_state( desktop ){
-        height: 900px;
+    @include gridle_state(desktop) {
+      width: 50%;
+      top: $grid * 7;
     }
-
-    &:after {
-        content: '';
-        position: absolute;
-        bottom: 0px;
-        right: -100px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0 700px 1200px;
-        border-color: transparent transparent rgba($color-primary-highlight, 0.85) transparent;
-        opacity: 1;
-        z-index: 0;
-        display: none;
-
-        @include gridle_state( tablet-landscape ){
-            display: block;
-        }
-    }
-
-    .text-container {
-        width: 100%;
-        padding: $grid * 2 $grid * 2;
-
-        @include gridle_state( tablet-landscape ){
-            width: 50%;
-            padding: $grid * 2 0 0 $grid * 3;
-        }
-
-        @include gridle_state( desktop ){
-            width: 40%;
-        }
-
-        h2 {
-            font-size: 16px;
-            text-transform: uppercase;
-            color: $color-secondary-highlight;
-
-            @include gridle_state( tablet-landscape ){
-                margin-top: $grid;
-                font-size: 18px;
-            }
-        }
-
-        p {
-            font-size: 42px;
-            color: rgba($color-white, 1);
-            font-weight: bold;
-            line-height: 1.1;
-            margin: 0 0 40px;
-            text-shadow: 1px 1px 1px $color-black;
-
-            @include gridle_state( desktop-wide ){
-                font-size: 62px;
-            }
-        }
-
-    }
-
-    .screenshot {
-        position: absolute;
-        display: none;
-        z-index: 1;
-        top: $grid * 10;
-        right: 60px;
-        width: 50%;
-        height: auto;
-
-        @include gridle_state( tablet-landscape ){
-            display: block;
-            width: 40%;
-        }
-
-        @include gridle_state( desktop ){
-            width: 50%;
-            top: $grid * 7;
-        }
-
-    }
-
+  }
 }

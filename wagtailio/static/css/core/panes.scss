@@ -1,208 +1,4 @@
-// General styles
-
 .pane {
-  &__vertical-tabs {
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    padding: $grid 0 $grid * 4;
-    background: $color-primary-highlight;
-
-    @include gridle_state(tablet-landscape) {
-      padding: $grid * 4 0 0;
-    }
-
-    &:before {
-      position: absolute;
-      z-index: 3;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      content: "";
-      height: $grid * 3;
-      width: 100%;
-      background: rgba($color-primary-dark, 0.8);
-      display: block;
-    }
-
-    &--features {
-      &::before {
-        display: none;
-      }
-    }
-
-    header {
-      text-align: center;
-    }
-
-    h2 {
-      color: $color-white;
-      font-size: 42px;
-      margin: 0 0 60px;
-    }
-
-    .mobile-only {
-      text-align: center;
-
-      h3 {
-        color: $color-white;
-      }
-
-      p {
-        color: rgba($color-white, 0.8);
-      }
-    }
-
-    .tabs {
-      display: none;
-      float: left;
-      width: 30%;
-      padding: 40px 0 0 60px;
-
-      @include gridle_state(laptop) {
-        display: block;
-        width: 40%;
-      }
-
-      @include gridle_state(desktop) {
-        width: 30%;
-      }
-
-      ul {
-        margin: 0 0 40px;
-      }
-
-      .view-all {
-        color: $color-white;
-        margin-left: 30px;
-      }
-
-      li {
-        margin: 0 0 10px;
-
-        a {
-          display: block;
-          padding: 20px 40px 20px 30px;
-          margin: 0 0 5px;
-          color: #555;
-          background: rgba($color-white, 0.2);
-          border-radius: 5px 0 0 5px;
-
-          &:hover {
-            p {
-              color: rgba($color-white, 1);
-            }
-
-            h3 {
-              color: rgba($color-white, 1);
-            }
-          }
-
-          &.current {
-            background: $color-white;
-
-            p {
-              color: rgba($color-black, 0.6);
-            }
-
-            h3 {
-              color: rgba($color-black, 1);
-            }
-
-            &:hover {
-              p {
-                color: rgba($color-black, 0.6);
-              }
-
-              h3 {
-                color: rgba($color-black, 1);
-              }
-            }
-          }
-
-          h3 {
-            text-transform: uppercase;
-            margin: 0 0 5px;
-            color: rgba($color-white, 1);
-            line-height: 1.1;
-          }
-
-          p {
-            margin: 0;
-            line-height: 1.4;
-            font-size: 15px;
-            color: rgba($color-white, 0.8);
-            transition: color 0.2s ease 0s;
-
-            @include gridle_state(laptop) {
-              display: none;
-            }
-
-            @include gridle_state(desktop) {
-              display: block;
-            }
-          }
-        }
-      }
-    }
-
-    .tab-content {
-      width: 100%;
-      padding: 0 $grid * 2 $grid;
-
-      &:after {
-        content: "";
-        height: 1px;
-        width: 20%;
-        background: $borderColorLight;
-        display: block;
-        margin: $grid * 2 auto;
-      }
-
-      @include gridle_state(laptop) {
-        width: 60%;
-        padding: 0 $grid * 3 0 0;
-        float: left;
-
-        &:after {
-          display: none;
-        }
-      }
-
-      @include gridle_state(desktop) {
-        width: 70%;
-      }
-
-      @include gridle_state(up-to-tablet-portrait) {
-        display: block !important;
-      }
-
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        object-position: top;
-        height: 250px;
-
-        @include gridle_state(mobile-portrait) {
-          height: 400px;
-        }
-
-        @include gridle_state(laptop) {
-          height: 550px;
-        }
-
-        @include gridle_state(desktop) {
-          height: 755px;
-        }
-
-        @include gridle_state(desktop-wide) {
-          height: 650px;
-        }
-      }
-    }
-  }
-
   &__horizontal-tabs {
     position: relative;
     background-color: transparent;
@@ -264,9 +60,9 @@
           font-weight: bold;
           padding: 0 0 5px;
           margin: 0 20px 5px;
-          border-bottom: 2px solid rgba($color-secondary-highlight, 0.5);
-          //text-shadow: 1px 1px 1px rgba($color-black, 0.2);
-          color: $color-secondary-highlight;
+          border-bottom: 2px solid rgba($color--secondary, 0.5);
+          //text-shadow: 1px 1px 1px rgba($color--black, 0.2);
+          color: $color--interaction;
           transition: color 0.2s ease 0s, border 0.2s ease 0s;
 
           @include gridle_state(tablet-landscape) {
@@ -274,13 +70,13 @@
           }
 
           &:hover {
-            border-bottom: 5px solid rgba($color-secondary-highlight, 0.5);
+            border-bottom: 5px solid rgba($color--secondary, 0.5);
           }
 
           &.current {
-            border-bottom: 5px solid rgba($color-secondary-highlight, 1);
-            text-shadow: 1px 1px 1px rgba($color-white, 0.2);
-            color: $color-black;
+            border-bottom: 5px solid rgba($color--secondary, 1);
+            text-shadow: 1px 1px 1px rgba($color--white, 0.2);
+            color: $color--black;
           }
         }
       }
@@ -315,7 +111,7 @@
         max-width: 960px;
         text-align: center;
 
-        text-shadow: 1px 1px 1px rgba($color-white, 0.2);
+        text-shadow: 1px 1px 1px rgba($color--white, 0.2);
 
         @include gridle_state(tablet-landscape) {
           font-size: 21px;
@@ -331,30 +127,11 @@
           }
         }
       }
-
-      // .image-container {
-      //     margin: 0 60px;
-      //     overflow: hidden;
-      //     max-height: 400px;
-      //     display: none;
-      //
-      //     @include gridle_state( tablet-landscape ){
-      //         display: block;
-      //     }
-      //
-      //     img {
-      //         display: block;
-      //         width: 80%;
-      //         height: auto;
-      //         margin: 0 auto;
-      //     }
-      //
-      // }
     }
   }
 
   &__stats {
-    color: $color-white;
+    color: $color--white;
 
     ul {
       display: flex;
@@ -380,7 +157,7 @@
   }
 
   &__hire {
-    background-color: $color-secondary-highlight;
+    background-color: $color--primary;
     padding: ($grid * 3) $grid ($grid * 4);
     text-align: center;
 
@@ -390,20 +167,20 @@
     }
 
     p {
-      color: rgba($color-white, 0.8);
+      color: rgba($color--white, 0.8);
     }
 
     a {
-      color: $color-white;
+      color: $color--white;
 
       &:hover {
-        color: $color-black;
+        color: $color--black;
       }
     }
   }
 
   &__two-col {
-    background: $color-primary-highlight;
+    background: $color--interaction;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -413,11 +190,9 @@
       flex-basis: 100%;
       max-width: 100%;
       padding: $grid * 3;
-      border-bottom: 1px solid $color-primary-bg;
 
       @include gridle_state(desktop) {
         border-bottom: 0;
-        border-right: 1px solid $color-primary-bg;
         flex-basis: 50%;
         max-width: 50%;
       }
