@@ -8,12 +8,9 @@
   top: 0;
   left: 0;
   z-index: 20;
-  float: none;
   width: 100%;
   background: $color--white;
-  overflow: hidden;
   padding: 4px $gutter 2px;
-  border-bottom: solid 1px rgba($color--primary, 0.1);
   background: $color--white;
   transform: translate3d(0, 0%, 0);
   transition: transform 0.2s ease 0s;
@@ -23,6 +20,9 @@
   }
 
   &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     max-width: $max-width;
     margin: 0 auto;
   }

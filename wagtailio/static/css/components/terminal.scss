@@ -21,6 +21,7 @@
   }
 
   .pre-container {
+    position: relative;
     width: 90%;
     text-align: left;
     margin: 0 auto;
@@ -40,11 +41,11 @@
     border-radius: 0 0 5px 5px;
     width: 100%;
     display: inline-block;
-    padding: $gutter * 2 $gutter * 2 $gutter * 3;
+    padding: ($gutter * 2) ($gutter * 2) ($gutter * 3);
     padding-bottom: 140px; // to ensure button doesn't cover code
 
     @include media-query(large) {
-      font-size: 21px;
+      font-size: 18px;
       padding-bottom: ($gutter * 3);
     }
   }

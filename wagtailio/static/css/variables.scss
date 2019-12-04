@@ -32,11 +32,11 @@ $color--headings: $color--dark-blue;
 $color--base: $color--grey;
 
 // Borders
-$borderColorLight: rgba($color--white, 0.3);
-$borderColorDark: rgba($color--black, 0.3);
+$color--border-light: $color--grey-light;
+$color--border-dark: $color--grey-darker;
 
 // Background colours
-$backgroundColor: $color--white;
+$color--background: $color--white;
 
 // Animations
 $anim-speed-primary: 250ms;

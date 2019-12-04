@@ -5,14 +5,10 @@
 */
 
 .template-developers-page {
-  background: $color--interaction;
+  background: $color--primary;
 
   .page-heading {
     padding-top: ($gutter * 4);
     margin-bottom: ($gutter * 2);
-  }
-
-  .pane__code {
-    margin-bottom: ($gutter * 4);
   }
 }

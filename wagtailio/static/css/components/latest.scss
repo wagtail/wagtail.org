@@ -1,6 +1,7 @@
 .latest {
   padding: 0 ($gutter * 2) ($gutter * 3);
-  background: $backgroundColor;
+  background: $color--background;
+  margin-bottom: $section-space;
 
   @include media-query(medium) {
     padding: 0 ($gutter * 4) ($gutter * 2);

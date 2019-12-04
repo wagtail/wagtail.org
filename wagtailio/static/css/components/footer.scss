@@ -19,7 +19,7 @@ footer.global {
 
   h3 {
     font-size: 28px;
-    border-bottom: 1px solid $borderColorLight;
+    border-bottom: 1px solid $color--border-light;
     padding-bottom: ($gutter / 2);
     margin-bottom: $gutter;
 
@@ -95,7 +95,7 @@ footer.global {
   }
 
   &__item {
-    border-bottom: solid 1px $borderColorLight;
+    border-bottom: solid 1px $color--border-light;
     padding: ($gutter / 2) 0;
     margin: 0;
 
@@ -221,7 +221,7 @@ footer.global {
   padding-bottom: 56px;
   clear: both;
   overflow: hidden;
-  border-top: 1px solid $borderColorLight;
+  border-top: 1px solid $color--border-light;
 
   .copyright {
     float: left;

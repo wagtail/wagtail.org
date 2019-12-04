@@ -6,6 +6,7 @@
   overflow: hidden;
   padding-top: $headerHeightMobile;
   height: auto;
+  max-height: 840px;
 
   @include media-query(medium) {
     height: 700px;

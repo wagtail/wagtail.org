@@ -55,36 +55,6 @@ Other global items
 
 */
 
-.pre-container {
-  position: relative;
-}
-
-.app-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: block;
-  background: #383838;
-  height: 20px;
-  border-radius: 5px 5px 0 0;
-
-  span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: $color--quaternary;
-    margin: 5px 5px 0 0;
-    display: inline-block;
-    float: left;
-
-    &:first-of-type {
-      margin-left: 10px;
-      background-color: $color--secondary;
-    }
-  }
-}
-
 .view-all {
   display: block;
 
@@ -125,49 +95,6 @@ Other global items
       }
     }
   }
-}
-
-.border {
-  &--after {
-    &:after {
-      content: "";
-      height: 1px;
-      width: 20%;
-      background: lighten($borderColorDark, 50%);
-      display: block;
-      margin: $gutter * 3 auto;
-      position: relative;
-      z-index: 2;
-    }
-  }
-
-  &--before {
-    &:before {
-      content: "";
-      height: 1px;
-      width: 20%;
-      background: lighten($borderColorDark, 50%);
-      display: block;
-      margin: $gutter * 3 auto;
-      position: relative;
-      z-index: 2;
-    }
-  }
-
-  &--left {
-    &:before,
-    &:after {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0;
 }
 
 .mobile-only {

@@ -4,25 +4,22 @@
 
 {% block content %}
 
-
-<div class="">
-
     {% include_block page.body %}
 
     {% with options=page.options.all %}
         {% if options %}
-            <section class="pane__teasers ">
+            <section class="teasers ">
 
-                <h2 class="pane__teasers__main-heading">Wagtail Resources</h2>
+                <h2 class="teasers__main-heading">Wagtail Resources</h2>
 
-                <ul class="pane__teasers__container">
+                <ul class="teasers__container">
                     {% for option in options %}
-                        <li class="pane__teasers__item">
-                            <a class="pane__teasers__item__link" href="{{ option.link }}">
-                                <svg class="pane__teasers__icon" height="50px" width="50px">
+                        <li class="teasers__item">
+                            <a class="teasers__item__link" href="{{ option.link }}">
+                                <svg class="teasers__icon" height="50px" width="50px">
                                     <use xlink:href="#{{ option.icon }}"></use>
                                 </svg>
-                                <h3 class="pane__teasers__heading">{{ option.title }} <svg height="30px" width="30px" class="pane__teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
+                            <h3 class="teasers__heading">{{ option.title }} <svg height="30px" width="30px" class="teasers__arrow"><use xlink:href="#arrow"></use></svg></h3>
                                 <p>{{ option.summary }}</p>
                             </a>
                         </li>
@@ -30,11 +27,9 @@
 
                 </ul>
 
-            </section> <!-- /teasers -->
+            </section> 
 
         {% endif %}
     {% endwith %}
-
-</div> <!-- /contours -->
 
 {% endblock %}
