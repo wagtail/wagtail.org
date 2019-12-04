@@ -1,0 +1,9 @@
+.newsletter-signup {
+  .footer & {
+    @include media-query(medium) {
+      flex-basis: 66.66%;
+      max-width: 66.66%;
+      min-width: 66.66%;
+    }
+  }
+}

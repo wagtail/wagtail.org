@@ -16,6 +16,11 @@
     margin: 0 auto;
   }
 
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
   h3 {
     font-size: 28px;
     border-bottom: 1px solid $color--border-light;
@@ -241,31 +246,6 @@
 
     &:hover {
       opacity: 1;
-    }
-  }
-
-  .torchbox {
-    float: right;
-
-    &__container {
-      display: inline-block;
-      overflow: hidden;
-    }
-
-    &__logo {
-      opacity: 0.6;
-      fill: #fff;
-      width: 100px;
-      height: 25px;
-      transform: translate3D(80%, 0, 0);
-      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
-    }
-
-    &:hover {
-      svg {
-        opacity: 1;
-        transform: translate3D(0, 0, 0);
-      }
     }
   }
 }

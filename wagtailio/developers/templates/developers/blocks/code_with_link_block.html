@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
 <header class="page-heading">
-    <h1>{{ page.title }}</h1>
-    <div class="introduction">
+    <h1 class="page-heading__heading">{{ page.title }}</h1>
+    <div class="page-heading__introduction">
         {{ value.title }}
         {% if value.subtitle %}{{ value.subtitle }}{% endif %}
     </div>

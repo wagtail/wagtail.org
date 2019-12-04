@@ -128,12 +128,18 @@
 
                 <footer class="footer">
                     <div class="footer__container">
-                        {% menu_good_to_go %}
-                        {% menu_network %}
-                        {% latest_blog %}
-                        {% include "includes/newsletter_signup.html" %}
-                        {% include "includes/follow.html" %}
-                        {% include "includes/copyright.html" %}
+                        <div class="footer__row">
+                            {% menu_good_to_go %}
+                            {% menu_network %}
+                            {% latest_blog %}
+                        </div>
+                        <div class="footer__row">
+                            {% include "includes/newsletter_signup.html" %}
+                            {% include "includes/follow.html" %}
+                        </div>
+                        <div class="footer__row">
+                            {% include "includes/copyright.html" %}
+                        </div>
                     </div>
                 </footer> <!-- /global -->
 
@@ -166,7 +172,6 @@
         {% endif %}
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
-        <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
 
         {% compress js %}

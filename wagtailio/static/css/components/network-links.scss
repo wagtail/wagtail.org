@@ -1,0 +1,9 @@
+.network-links {
+  .footer & {
+    @include media-query(medium) {
+      flex-basis: 33.333%;
+      max-width: 33.333%;
+      min-width: 33.333%;
+    }
+  }
+}

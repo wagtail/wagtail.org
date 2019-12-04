@@ -1,4 +1,5 @@
 .page-heading {
+  $root: &;
   position: relative;
   padding: $gutter;
   text-align: center;
@@ -9,13 +10,20 @@
     padding: 0;
   }
 
-  h1 {
+  &__heading {
     color: $color--white;
   }
 
-  .introduction {
+  &__introduction {
+    position: relative;
+    font-size: 21px;
+    max-width: 1000px;
     color: rgba($color--white, 0.8);
     margin: 0 auto;
+
+    @include media-query(medium) {
+      font-size: 24px;
+    }
   }
 
   img {
@@ -43,33 +51,22 @@
   // Standard page specific styles
 
   .template-standard-page & {
-    background-color: $color--quaternary;
     margin-bottom: ($gutter * 3);
     text-align: left;
     padding-bottom: ($gutter * 4);
     padding-top: ($gutter * 6);
 
-    h1,
-    .introduction {
+    &__heading,
+    &__introduction {
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
       color: $color--base;
     }
 
-    h1 {
-      color: $color--secondary;
+    &__heading {
+      color: $color--primary;
       margin-bottom: ($gutter * 2);
     }
-  }
-}
-
-.introduction {
-  position: relative;
-  font-size: 21px;
-  max-width: 1000px;
-
-  @include media-query(medium) {
-    font-size: 24px;
   }
 }

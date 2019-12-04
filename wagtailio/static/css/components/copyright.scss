@@ -1,0 +1,26 @@
+.copyright {
+  .torchbox {
+    float: right;
+
+    &__container {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    &__logo {
+      opacity: 0.6;
+      fill: $color--black;
+      width: 100px;
+      height: 25px;
+      transform: translate3D(80%, 0, 0);
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+        transform: translate3D(0, 0, 0);
+      }
+    }
+  }
+}

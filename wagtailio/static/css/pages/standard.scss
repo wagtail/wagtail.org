@@ -4,21 +4,7 @@
 
 */
 .template-standard-page {
-  .body {
-    padding-top: 0;
-  }
-
   .page-content {
-    font-size: 20px;
-
-    .container {
-      margin: 0 $gutter;
-
-      @include media-query(medium) {
-        margin: 0 auto;
-      }
-    }
-
     h2,
     h3,
     h4 {
