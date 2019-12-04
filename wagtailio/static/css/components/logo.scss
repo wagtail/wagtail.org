@@ -1,14 +1,6 @@
 // Branding
 .branding {
-  display: inline-block;
-  margin-top: 10px;
-  margin-bottom: 10px;
   transition: opacity 0.2s ease 0s;
-
-  @include media-query(medium) {
-    margin-top: 16px;
-    margin-bottom: 0;
-  }
 
   &__logo {
     width: 70px;

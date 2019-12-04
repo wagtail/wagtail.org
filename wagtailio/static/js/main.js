@@ -103,9 +103,6 @@ $(function() {
     $(".js-fade").css("opacity", 1 - $(window).scrollTop() / 250);
   });
 
-  // Slow scroll on anchor links
-  $(".js-smoothscroll").on("click", anchorScroll);
-
   // Menu button
   $(".menu-toggle").on("click", function(e) {
     e.preventDefault();

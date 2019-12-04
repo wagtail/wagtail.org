@@ -9,15 +9,10 @@
   left: 0;
   z-index: 20;
   width: 100%;
-  background: $color--white;
-  padding: 4px $gutter 2px;
-  background: $color--white;
+  background: $color--background;
+  padding: ($gutter / 2) $gutter;
   transform: translate3d(0, 0%, 0);
   transition: transform 0.2s ease 0s;
-
-  @include media-query(medium) {
-    padding: 4px ($gutter * 1.5) 2px;
-  }
 
   &__container {
     display: flex;

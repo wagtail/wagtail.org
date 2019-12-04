@@ -1,65 +1,69 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 {% if value.features %}
-    <section class="vertical-tabs vertical-tabs--features" id="features">
+    <section class="vertical-tabs" >
 
-        <header>
-            <h2>{{ value.title }}{% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}</h2>
-        </header> <!-- /text-container -->
+        <div class="vertical-tabs__container">
 
-        <nav class="tabs">
+            <header>
+                <h2>{{ value.title }}{% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}</h2>
+            </header> <!-- /text-container -->
 
-            <ul class="js-tabs">
+            <nav class="tabs">
 
+                <ul class="js-tabs">
+
+                    {% for feature in value.features %}
+                        <li{% if forloop.first %} class="current"{% endif %}>
+                            <a href="#{{ feature.title|slugify }}">
+                                <h3>{{ feature.title }}</h3>
+                                <p>{{ feature.introduction }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                {% if value.all_features_page %}
+                    <a href="{% pageurl value.all_features_page %}" class="view-all view-all--light">
+                        Browse all Wagtail's features
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                {% endif %}
+            </nav> <!-- /tabs -->
+
+            <div class="tab-content-container">
                 {% for feature in value.features %}
-                    <li{% if forloop.first %} class="current"{% endif %}>
-                        <a href="#{{ feature.title|slugify }}">
+
+                    <div id="{{ feature.title|slugify }}" class="tab-content current">
+                        <div class="mobile-only">
                             <h3>{{ feature.title }}</h3>
-                            <p>{{ feature.introduction }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+                            <p>{{ feature.subtitle }}</p>
+                        </div>
 
-            {% if value.all_features_page %}
-                <a href="{% pageurl value.all_features_page %}" class="view-all view-all--light">
-                    Browse all Wagtail's features
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
-            {% endif %}
-        </nav> <!-- /tabs -->
-
-        <div class="tab-content-container">
-            {% for feature in value.features %}
-
-                <div id="{{ feature.title|slugify }}" class="tab-content current">
-                    <div class="mobile-only">
-                        <h3>{{ feature.title }}</h3>
-                        <p>{{ feature.subtitle }}</p>
+                        {% with f=feature.feature_aspects.first %}
+                            {% if f.feature_aspect.video_url %}
+                                <div class="video-embed">
+                                    {% embed f.feature_aspect.video_url 1000 %}
+                                </div>
+                            {% elif f.feature_aspect.screenshot %}
+                                {% image f.feature_aspect.screenshot width-1600 %}
+                            {% endif %}
+                        {% endwith %}
                     </div>
 
-                    {% with f=feature.feature_aspects.first %}
-                        {% if f.feature_aspect.video_url %}
-                            <div class="video-embed">
-                                {% embed f.feature_aspect.video_url 1000 %}
-                            </div>
-                        {% elif f.feature_aspect.screenshot %}
-                            {% image f.feature_aspect.screenshot width-1600 %}
-                        {% endif %}
-                    {% endwith %}
+                {% endfor %}
+            </div> <!-- /tab-content-container -->
+
+            {% if value.all_features_page %}
+                <div class="mobile-only">
+                    <a href="{% pageurl value.all_features_page %}" class="btn btn--outline btn--transparent view-all view-all--light">
+                        Browse all Wagtail's features
+                        <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
+                    </a>
                 </div>
-
-            {% endfor %}
-        </div> <!-- /tab-content-container -->
-
-        {% if value.all_features_page %}
-            <div class="mobile-only">
-                <a href="{% pageurl value.all_features_page %}" class="btn btn--outline btn--transparent view-all view-all--light">
-                    Browse all Wagtail's features
-                    <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
-                </a>
-            </div>
-        {% endif %}
+            {% endif %}
+        
+        </div>
 
     </section> <!-- /features -->
 {% endif %}

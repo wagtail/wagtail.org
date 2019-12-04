@@ -3,30 +3,14 @@
   z-index: 2;
   overflow: hidden;
   padding: $gutter 0 ($gutter * 4);
-  max-width: $max-width;
-  margin: 0 auto;
 
   @include media-query(medium) {
     padding: $section-space 0 0;
   }
 
-  &:before {
-    position: absolute;
-    z-index: 3;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    content: "";
-    height: $gutter * 3;
-    width: 100%;
-    background: rgba($color--primary, 0.8);
-    display: block;
-  }
-
-  &--features {
-    &::before {
-      display: none;
-    }
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
   }
 
   header {
@@ -182,5 +166,10 @@
         height: 755px;
       }
     }
+  }
+
+  .template-features & {
+    background-color: $color--primary;
+    margin-bottom: $section-space;
   }
 }

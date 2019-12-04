@@ -1,3 +1,50 @@
+.features {
+  &__container {
+    margin: 0 auto;
+    max-width: $max-width;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: ($gutter * 2);
+  }
+
+  &__heading {
+    margin-bottom: ($gutter * 4);
+  }
+
+  &__sub-heading {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: ($gutter);
+
+    @include media-query(medium) {
+      flex-basis: 20%;
+      max-width: 20%;
+      min-width: 20%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @include media-query(medium) {
+      flex-basis: 80%;
+      max-width: 80%;
+      min-width: 80%;
+    }
+  }
+}
+
 .template-features {
   .vertical-tabs {
     .tabs {

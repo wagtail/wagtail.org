@@ -5,6 +5,14 @@ body {
   color: $color--base;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 *,
 *:before,
 *:after {

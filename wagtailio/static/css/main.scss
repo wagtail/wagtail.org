@@ -38,6 +38,7 @@
 @import "components/teasers";
 @import "components/vertical-tabs";
 @import "components/features";
+@import "components/feature-item";
 @import "components/page-heading";
 @import "components/blog";
 @import "components/text-image";
@@ -52,17 +53,9 @@
 
 */
 
-// new homepage
 @import "pages/homepage";
-
-// Newsletter index page
 @import "pages/newsletter-index";
-
-// Standard page
 @import "pages/standard";
-
-// Developers page
+@import "pages/features";
 @import "pages/developers";
-
-// error
 @import "pages/error";
