@@ -4,45 +4,46 @@
 
 @import "variables";
 @import "vendor/normalize";
-@import "vendor/flexbox";
-@import "grid";
 @import "fonts/fonts";
 
 @import "vendor/owl/_carousel";
 @import "vendor/owl/_carousel_theme";
 @import "vendor/owl/_transitions";
 
-@import "core/mixins";
-@import "core/base";
-@import "core/structure";
-@import "core/headings";
+@import "components/mixins";
+@import "components/base";
+@import "components/structure";
+@import "components/headings";
 
-@import "core/header";
-@import "core/primary-nav";
-@import "core/logo";
-@import "core/buttons";
-@import "core/page_content";
-@import "core/footer";
-@import "core/tabs";
-@import "core/hero";
-@import "core/actions";
-@import "core/sidebar";
-@import "core/menu-overlay";
-@import "core/menu-toggle";
-@import "core/share";
-@import "core/testimonial";
-@import "core/panes";
-@import "core/pane-latest";
-@import "core/pane-showcase";
-@import "core/pane-code";
-@import "core/pane-logo-list";
-@import "core/pane-teasers";
-@import "core/pane-vertical-tabs";
-@import "core/features";
-@import "core/page-heading";
-@import "core/blog";
-@import "core/text-image";
-// @import "core/teasers";
+@import "components/header";
+@import "components/primary-nav";
+@import "components/logo";
+@import "components/buttons";
+@import "components/page_content";
+@import "components/footer";
+@import "components/tabs";
+@import "components/hero";
+@import "components/actions";
+@import "components/sidebar";
+@import "components/menu-overlay";
+@import "components/menu-toggle";
+@import "components/share";
+@import "components/testimonial";
+@import "components/panes";
+@import "components/latest";
+@import "components/latest-item";
+@import "components/examples";
+@import "components/example-item";
+@import "components/terminal";
+@import "components/logo-list";
+@import "components/pane-teasers";
+@import "components/vertical-tabs";
+@import "components/features";
+@import "components/page-heading";
+@import "components/blog";
+@import "components/text-image";
+@import "components/horizontal-tabs";
+@import "components/nav-item";
 
 /* ============================================
 

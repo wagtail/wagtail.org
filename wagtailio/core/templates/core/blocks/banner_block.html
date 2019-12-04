@@ -2,19 +2,23 @@
 
 <section class="hero">
 
-    <div class="text-container">
-        <h2 class="js-fade">{{ value.title }}</h2>
-        <p class="js-fade">{{ value.sub_title }}</p>
+    <div class="hero__container">
 
-        <div class="actions">
-            {% for link in value.links %}
-                {% include_block link %}
-            {% endfor %}
-        </div> <!-- /actions -->
+        <div class="text-container">
+            <h2 class="js-fade">{{ value.title }}</h2>
+            <p class="js-fade">{{ value.sub_title }}</p>
 
-    </div> <!-- /text-container -->
+            <div class="actions">
+                {% for link in value.links %}
+                    {% include_block link %}
+                {% endfor %}
+            </div> <!-- /actions -->
 
-    {% image value.image original as main_image  %}
-    <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
+        </div> <!-- /text-container -->
+
+        {% image value.image original as main_image  %}
+        <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
+        
+    </div>
 
 </section> <!-- /hero -->

@@ -4,17 +4,17 @@
     {% if block.block_type == 'testimonials' %}
 
         <section class="testimonial">
+            <div class="testimonial__container">
+                <div class="js-carousel">
 
-            <div class="js-carousel">
+                    {% for testimonial in block.value %}
+                        <div>
+                            {% include_block testimonial %}
+                        </div>
+                    {% endfor %}
 
-                {% for testimonial in block.value %}
-                    <div>
-                        {% include_block testimonial %}
-                    </div>
-                {% endfor %}
-
-            </div> <!-- /js-carousel -->
-
+                </div> <!-- /js-carousel -->
+            </div>
         </section> <!-- /testimonial -->
 
     {% else %}

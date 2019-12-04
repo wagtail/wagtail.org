@@ -1,0 +1,18 @@
+.sidebar {
+  background-color: $color--headings;
+
+  @include media-query(medium) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    height: 100%;
+    width: 25%;
+    padding: 0 0;
+  }
+
+  h2 {
+    color: $color--white;
+  }
+}

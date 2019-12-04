@@ -1,24 +1,19 @@
 // Template specific
 
 .template-homepage {
-    background-color: $backgroundColor;
+  background-color: $backgroundColor;
 
-    .body {
-        padding-top: 0;
+  .body {
+    padding-top: 0;
+  }
+
+  h1 {
+    display: none;
+  }
+
+  .tab-content {
+    .video-embed {
+      margin-bottom: 60px;
     }
-
-    h1 {
-        display: none;
-    }
-
-    p {
-        margin: 0 0 $gutter;
-    }
-
-    .tab-content {
-        .video-embed {
-            margin-bottom: 60px;
-        }
-    }
-
+  }
 }

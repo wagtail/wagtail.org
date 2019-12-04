@@ -50,7 +50,7 @@ $headerHeightMobile: 54px;
 $grid: 20px;
 $gutter: $grid;
 
-$section-top-space: ($gutter * 5);
+$section-space: ($gutter * 5);
 
 // Carousel
 $carousel-fadeInSpeed: 1500ms;
@@ -58,4 +58,7 @@ $carousel-fadeOutSpeed: 1500ms;
 $carousel-highlightColour: $color--interaction;
 
 // Max width
-$website-width-max: 1400px;
+$max-width: 1400px;
+
+// Breakpoints
+$breakpoints: ("medium" "(min-width: 599px)", "large" "(min-width: 1023px)");

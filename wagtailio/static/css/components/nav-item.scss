@@ -1,0 +1,25 @@
+.nav-item {
+  display: flex;
+  align-items: center;
+
+  &--documentation {
+    font-weight: 800;
+  }
+
+  .primary-nav & {
+    @include font-smoothing();
+    display: block;
+    padding: 12px 15px;
+    color: $color--primary;
+    font-size: 16px;
+    font-weight: 600;
+    border: solid 1px transparent;
+
+    @include transition(color 0.5s ease-out, opacity 0.5s ease-out);
+
+    &:hover {
+      opacity: 1;
+      color: $color--interaction;
+    }
+  }
+}

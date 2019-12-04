@@ -1,0 +1,74 @@
+.pane {
+  &__stats {
+    color: $color--white;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      flex: 0 0 auto;
+      flex-basis: 50%;
+      max-width: 50%;
+      list-style-type: none;
+    }
+
+    em {
+      font-size: 1.2em;
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+
+  &__hire {
+    background-color: $color--primary;
+    padding: ($gutter * 3) $gutter ($gutter * 4);
+    text-align: center;
+
+    &__container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    p {
+      color: rgba($color--white, 0.8);
+    }
+
+    a {
+      color: $color--white;
+
+      &:hover {
+        color: $color--black;
+      }
+    }
+  }
+
+  &__two-col {
+    background: $color--interaction;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    section {
+      flex: 0 0 auto;
+      flex-basis: 100%;
+      max-width: 100%;
+      padding: $gutter * 3;
+
+      @include media-query(large) {
+        border-bottom: 0;
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}

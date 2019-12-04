@@ -1,0 +1,39 @@
+/* ============================================
+
+  Header
+
+*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  float: none;
+  width: 100%;
+  background: $color--white;
+  overflow: hidden;
+  padding: 4px $gutter 2px;
+  border-bottom: solid 1px rgba($color--primary, 0.1);
+  background: $color--white;
+  transform: translate3d(0, 0%, 0);
+  transition: transform 0.2s ease 0s;
+
+  @include media-query(medium) {
+    padding: 4px ($gutter * 1.5) 2px;
+  }
+
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+}
+
+.site-header {
+  &--slideup .header {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  &--slidedown .header {
+    transform: translate3d(0, 0%, 0);
+  }
+}

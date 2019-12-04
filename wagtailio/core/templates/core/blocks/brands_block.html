@@ -3,17 +3,21 @@
 {% image value.background original as bg_image %}
 
 {% if value.brands %}
-    <section class="pane pane__logo-list">
+    <section class="pane logo-list">
 
-        <h2>{{ value.title }}</h2>
+        <div class="logo-list__container">
 
-        <div class="carousel">
-            {% for brand in value.brands %}
-                {% image brand width-300 as brand_image %}
-                <div><img src="{{ brand_image.url }}" alt="{{ brand.title }}" /></div>
-            {% endfor %}
+            <h2>{{ value.title }}</h2>
 
-        </div> <!-- /carousel -->
+            <div class="carousel">
+                {% for brand in value.brands %}
+                    {% image brand width-300 as brand_image %}
+                    <div><img src="{{ brand_image.url }}" alt="{{ brand.title }}" /></div>
+                {% endfor %}
 
-    </section> <!-- /pane__logo-list -->
+            </div> <!-- /carousel -->
+        
+        </div>
+
+    </section> <!-- /logo-list -->
 {% endif %}

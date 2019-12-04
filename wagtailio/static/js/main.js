@@ -131,7 +131,7 @@ $(function() {
     ***/
 
   // Owl carousel
-  $(".pane__logo-list .carousel").owlCarousel({
+  $(".logo-list .carousel").owlCarousel({
     navigation: false,
     slideSpeed: 500,
     paginationSpeed: 500,

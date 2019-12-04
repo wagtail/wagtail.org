@@ -4,49 +4,45 @@
 
 */
 .template-standard-page {
+  .body {
+    padding-top: 0;
+  }
 
-    .body {
-        padding-top: 0;
+  .page-content {
+    font-size: 20px;
+
+    .container {
+      margin: 0 $gutter;
+
+      @include media-query(medium) {
+        margin: 0 auto;
+      }
     }
 
-    .page-content {
-        font-size: 20px;
-
-        .container {
-            margin: 0 $gutter;
-
-            @include gridle_state( tablet-landscape ){
-                margin: 0 auto;
-            }
-
-        }
-
-        h2,
-        h3,
-        h4 {
-            text-align: left;
-            max-width: 800px;
-            margin: 0 auto ($gutter);
-        }
-
-        h2 {
-            font-size: 28px;
-        }
-
-        h3 {
-            font-size: 21px;
-        }
-
-        h4 {
-            font-size: 20px;
-        }
-
+    h2,
+    h3,
+    h4 {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto ($gutter);
     }
 
-    .paragraph,
-    .calltoaction {
-        max-width: 800px;
-        margin: 0 auto ($gutter * 3);
+    h2 {
+      font-size: 28px;
     }
 
+    h3 {
+      font-size: 21px;
+    }
+
+    h4 {
+      font-size: 20px;
+    }
+  }
+
+  .paragraph,
+  .calltoaction {
+    max-width: 800px;
+    margin: 0 auto ($gutter * 3);
+  }
 }

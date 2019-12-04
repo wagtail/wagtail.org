@@ -1,0 +1,272 @@
+/* ============================================
+
+  Footer
+
+*/
+
+footer.global {
+  position: relative;
+  z-index: 3;
+  display: block;
+  overflow: hidden;
+  padding: $gutter;
+  text-align: left;
+  background-color: $color--background-light;
+
+  @include media-query(medium) {
+    padding: ($gutter * 3);
+  }
+
+  h3 {
+    font-size: 28px;
+    border-bottom: 1px solid $borderColorLight;
+    padding-bottom: ($gutter / 2);
+    margin-bottom: $gutter;
+
+    @include media-query(medium) {
+      font-size: 24px;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    margin-top: 0px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-footer {
+    clear: both;
+    text-align: left;
+    padding-top: 30px;
+    font-size: 13px;
+
+    li {
+      display: inline-block;
+
+      &:last-child {
+        text-align: right;
+        float: right;
+
+        img {
+          display: block;
+          width: 110px;
+        }
+      }
+    }
+  }
+}
+
+.get_started_links {
+  padding-bottom: 10px;
+  margin-bottom: $gutter;
+
+  @include media-query(medium) {
+    margin-bottom: 0;
+  }
+
+  a {
+    // make buttons sit after each other without using display: block or <br />;
+    float: left;
+    clear: left;
+    margin: 0 0 10px;
+  }
+}
+
+.network_links {
+  margin-bottom: $gutter;
+
+  @include media-query(medium) {
+    margin-bottom: 0;
+  }
+
+  &__heading {
+    margin-bottom: 0 !important;
+  }
+
+  &__container {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    border-bottom: solid 1px $borderColorLight;
+    padding: ($gutter / 2) 0;
+    margin: 0;
+
+    @include media-query(medium) {
+      padding: $gutter 0;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 4px 0 !important;
+    }
+  }
+
+  &__link {
+    display: block;
+
+    &:hover {
+      .network_links__subheading {
+        color: $color--primary;
+      }
+    }
+  }
+}
+
+.latest_blog {
+  margin-bottom: $gutter;
+
+  @include media-query(medium) {
+    margin-bottom: 0;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      .date {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 300;
+        @include font-smoothing;
+      }
+      .title {
+        display: block;
+        font-size: 21px;
+      }
+      .author {
+        margin: 20px 0;
+      }
+    }
+  }
+}
+
+.newsletter_signup {
+  margin-bottom: $gutter;
+
+  @include media-query(medium) {
+    margin-bottom: 0;
+  }
+
+  fieldset {
+    // reset fieldset styling
+    border: 0;
+    padding: 0;
+    margin: 0;
+    // Clear floats
+    overflow: hidden;
+    padding: 0 0 20px;
+    input {
+      float: left;
+      width: 60%;
+      padding: 15px 15px 16px;
+    }
+
+    button {
+      background: none;
+      float: left;
+      text-transform: uppercase;
+      border-left: 0;
+    }
+  }
+}
+
+.follow_links {
+  margin-bottom: ($gutter * 1.5);
+
+  &__heading {
+    margin-bottom: 0 !important;
+  }
+
+  a {
+    font-size: 56px;
+    color: $color--white;
+
+    svg {
+      fill: $color--primary;
+      transition: fill 0.2s ease 0s;
+
+      &.twitter {
+        transform: scale(1.7);
+      }
+    }
+
+    &:hover {
+      color: $color--interaction;
+
+      svg {
+        fill: $color--interaction;
+      }
+    }
+  }
+}
+
+.footnote {
+  margin-top: ($gutter * 2);
+  padding-top: $gutter;
+  padding-bottom: 56px;
+  clear: both;
+  overflow: hidden;
+  border-top: 1px solid $borderColorLight;
+
+  .copyright {
+    float: left;
+    margin: 0;
+  }
+
+  .logo {
+    display: block;
+    float: right;
+    width: 110px;
+    opacity: 0.3;
+    @include transition(opacity $anim-speed-primary linear);
+
+    img {
+      display: inline-block;
+      width: 110px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .torchbox {
+    float: right;
+
+    &__container {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    &__logo {
+      opacity: 0.6;
+      fill: #fff;
+      width: 100px;
+      height: 25px;
+      transform: translate3D(80%, 0, 0);
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+        transform: translate3D(0, 0, 0);
+      }
+    }
+  }
+}

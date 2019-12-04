@@ -1,0 +1,27 @@
+.latest {
+  padding: 0 ($gutter * 2) ($gutter * 3);
+  background: $backgroundColor;
+
+  @include media-query(medium) {
+    padding: 0 ($gutter * 4) ($gutter * 2);
+  }
+
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .view-all {
+    text-align: center;
+  }
+}
