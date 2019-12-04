@@ -1,8 +1,7 @@
-<nav class="get_started_links">
-    <h3>Good to go?</h3>
-    <p>Everything you need to know about getting your Wagtail build up and running</p>
-
+<div class="get-started">
+    <h3 class="get-started__heading">Good to go?</h3>
+    <p class="get-started__description">Everything you need to know about getting your Wagtail build up and running</p>
     {% for link in links %}
-        <a href="{{ link.link_URL }}" class="btn btn--outline btn--outline--light btn--transparent">{{ link.link_text }}</a>
+        <a href="{{ link.link_URL }}" class="btn btn--primary">{{ link.link_text }}</a>
     {% endfor %}
-</nav>
+</div>

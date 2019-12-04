@@ -1,10 +1,4 @@
-/* ============================================
-
-  Footer
-
-*/
-
-footer.global {
+.footer {
   position: relative;
   z-index: 3;
   display: block;
@@ -15,6 +9,11 @@ footer.global {
 
   @include media-query(medium) {
     padding: ($gutter * 3);
+  }
+
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
   }
 
   h3 {
