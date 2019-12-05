@@ -2,9 +2,27 @@
   &__input-container {
     border: 0;
     padding: 0;
-    margin: 0;
+    margin: $gutter 0 0 0;
     overflow: hidden;
-    padding: 0 0 20px;
+  }
+
+  input {
+    height: 44px;
+    width: 60%;
+    padding-left: ($gutter / 2);
+  }
+
+  button {
+    height: 42px;
+    color: $color--white;
+    border: 0;
+    padding: 0 $gutter;
+    background-color: $color--interaction;
+    transition: background-color $anim-speed-primary ease;
+
+    &:hover {
+      background-color: $color--interaction-hover;
+    }
   }
   .footer & {
     @include media-query(medium) {

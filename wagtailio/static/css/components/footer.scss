@@ -22,8 +22,9 @@
     padding-bottom: ($gutter * 2);
   }
 
-  h3 {
+  &__heading {
     font-size: 28px;
+    font-weight: 700;
     border-bottom: 1px solid rgba($color--border, 0.2);
     padding-bottom: ($gutter / 2);
 
