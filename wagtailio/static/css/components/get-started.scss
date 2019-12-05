@@ -1,9 +1,13 @@
 .get-started {
+  &__heading {
+    margin-bottom: $gutter;
+  }
   .footer & {
     @include media-query(medium) {
       flex-basis: 33.333%;
       max-width: 33.333%;
       min-width: 33.333%;
+      padding-right: ($gutter * 2);
     }
   }
 }

@@ -1,9 +1,22 @@
 .network-links {
+  &__item {
+    list-style-type: none;
+    border-bottom: 1px solid rgba($color--border, 0.2);
+    padding: ($gutter) 0;
+    margin: 0;
+  }
+  &__description {
+    font-size: 15px;
+    margin-bottom: 0;
+    color: $color--base;
+    font-size: 13px;
+  }
   .footer & {
     @include media-query(medium) {
       flex-basis: 33.333%;
       max-width: 33.333%;
       min-width: 33.333%;
+      padding-right: ($gutter * 2);
     }
   }
 }

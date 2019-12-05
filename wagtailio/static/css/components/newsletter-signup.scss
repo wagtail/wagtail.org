@@ -1,9 +1,17 @@
 .newsletter-signup {
+  &__input-container {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 20px;
+  }
   .footer & {
     @include media-query(medium) {
       flex-basis: 66.66%;
       max-width: 66.66%;
       min-width: 66.66%;
+      padding-right: ($gutter * 2);
     }
   }
 }

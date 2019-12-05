@@ -1,24 +1,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="latest-blog">
-	<h3>Blog</h3>
+	<h3 class="latest-blog__heading">Blog</h3>
 	{% if blog %}
-        <ul>
-            <li>
+        <div class="latest-blog__item">
+            <div class="latest-blog__info">
                 <span class="date">{{ blog.date|date }}</span>
                 <a class="title" href="{% pageurl blog %}">{{ blog.title }}</a>
-                {% if blog.author %}
-                    <div class="author">
-                        <span class="image">
-                            {% image blog.author.image fill-55x55 alt=blog.author.name %}
-                        </span>
-                        <span class="details">
-                            <a class="name" href="{{ blog.author.url }}">{{ blog.author.name }}</a>
-                            <span class="role">{{ blog.author.job_title }}</span>
-                        </span>
-                    </div>
-                {% endif %}
-            </li>
-        </ul>
+            </div>
+            {% if blog.author %}
+            <div class="latest-blog__author">
+                <div class="author">
+                    <span class="image">
+                        {% image blog.author.image fill-55x55 alt=blog.author.name %}
+                    </span>
+                    <span class="details">
+                        <a class="name" href="{{ blog.author.url }}">{{ blog.author.name }}</a>
+                        <span class="role">{{ blog.author.job_title }}</span>
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
 	{% endif %}
 </div>
