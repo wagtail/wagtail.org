@@ -24,19 +24,23 @@ html {
 a {
   text-decoration: none;
   color: $color--interaction;
-
-  @include transition(
-    color $anim-speed-primary linear,
-    padding $anim-speed-primary linear,
-    background-color $anim-speed-primary linear,
-    opacity $anim-speed-primary linear
-  );
+  @include transition(color $anim-speed-primary ease);
 
   &:hover {
-    color: $color--interaction;
+    color: $color--interaction-hover;
   }
+
   &:focus {
     outline-color: $color--interaction;
+  }
+
+  .bg--dark & {
+    color: $color--white;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color--quaternary;
+    }
   }
 }
 

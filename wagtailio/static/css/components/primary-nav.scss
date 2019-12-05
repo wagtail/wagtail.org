@@ -13,12 +13,5 @@
     padding: 0;
     margin: 0;
     list-style: none;
-
-    // fade out links when hovering UL
-    &:hover {
-      .nav-item {
-        opacity: 0.5;
-      }
-    }
   }
 }

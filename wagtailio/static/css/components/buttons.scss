@@ -1,93 +1,30 @@
-.btn {
+.button {
   display: inline-block;
-  padding: 10px 20px;
-  background: $color--interaction;
+  color: $color--primary;
+  padding: 15px;
+  font-weight: 700;
+  border-bottom: 3px solid $color--secondary;
+  line-height: 1;
+
+  @include transition(
+    color $anim-speed-primary ease,
+    padding $anim-speed-primary ease,
+    background-color $anim-speed-primary ease
+  );
 
   &:hover {
-    background: darken($color--interaction, 10%);
+    color: $color--black;
+    padding: 15px 30px;
+    border-radius: 4px;
+    background-color: $color--secondary;
   }
 
-  &--outline {
-    border: 1px solid $color--border-dark;
-    border-radius: 3px;
-
-    &--light {
-      border-color: $color--white;
-    }
-  }
-
-  &--transparent {
-    background: transparent;
+  .bg--dark & {
+    color: $color--white;
+    text-decoration: none;
 
     &:hover {
-      background: rgba($color--black, 0.1);
-    }
-  }
-
-  &--opaque {
-    background: rgba($color--white, 0.6);
-
-    &:hover {
-      background: rgba($color--white, 1);
-    }
-  }
-
-  &--dark {
-  }
-
-  &--key-action {
-    cursor: pointer;
-    float: left;
-    margin: 0 20px 0 0;
-    padding: 20px;
-    width: 140px;
-    height: 140px;
-    line-height: 1.2;
-    display: block;
-    background: $color--interaction;
-    color: #fff;
-    font-weight: bold;
-    position: relative;
-
-    &.highlight {
-      background: $color--interaction;
-    }
-
-    &:first-child {
-      svg {
-        transform: translateX(0) rotate(-90deg);
-      }
-
-      &:hover {
-        svg {
-          transform: translateX(5px) rotate(-90deg);
-          bottom: 20px;
-        }
-      }
-    }
-
-    &:hover {
-      background: darken($color--interaction, 20%);
-
-      svg {
-        transform: translateY(5px);
-      }
-    }
-
-    span {
-      display: block;
-      font-weight: normal;
-    }
-
-    svg {
-      position: absolute;
-      transform: translate3d(0, 0, 0);
-      transition: transform 0.2s ease-in-out 0;
-      bottom: 20px;
-      right: 20px;
-      fill: $color--white;
-      width: 30px;
-      height: 30px;
+      color: $color--black;
     }
   }
 }

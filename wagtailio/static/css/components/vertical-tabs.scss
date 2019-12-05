@@ -50,6 +50,10 @@
       margin-left: ($gutter * 1.5);
       font-weight: 500;
 
+      &:hover {
+        color: $color--interaction-hover;
+      }
+
       svg {
         fill: $color--interaction;
       }
@@ -65,8 +69,10 @@
         margin: 0 0 5px;
         color: #555;
         background-color: $color--background-light;
+        @include transition(background-color $anim-speed-primary ease);
 
         &:hover {
+          background-color: $color--quaternary;
           p {
             color: $color--black;
           }
@@ -156,15 +162,6 @@
       height: auto;
       object-fit: cover;
       object-position: top;
-      height: 250px;
-
-      @include media-query(medium) {
-        height: 550px;
-      }
-
-      @include media-query(large) {
-        height: 755px;
-      }
     }
   }
 

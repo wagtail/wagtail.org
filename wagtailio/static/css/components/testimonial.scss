@@ -34,8 +34,6 @@
   }
 
   blockquote {
-    background: $color--white;
-    padding: ($gutter * 2);
     font-size: 28px;
     margin: 0 ($gutter * 2);
 
@@ -49,17 +47,6 @@
       font-size: 16px;
       display: block;
       color: rgba($color--white, 0.6);
-
-      a {
-        background: rgba($color--interaction, 0.9);
-        color: $color--white;
-        padding: 5px 10px;
-
-        &:hover {
-          color: $color--white;
-          background: darken($color--interaction, 20%);
-        }
-      }
     }
   }
 

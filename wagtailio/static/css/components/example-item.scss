@@ -42,12 +42,14 @@
     overflow: hidden;
     width: 100%;
     margin: 0 0 $gutter;
-    box-shadow: 0 -5px 10px rgba($color--black, 0.2);
+    border: 1px solid $color--border-light;
   }
 
   &__heading {
-    color: $color--black;
-    font-weight: 500;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
   &__description {

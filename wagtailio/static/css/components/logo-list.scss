@@ -11,25 +11,17 @@
     margin: 0 auto;
   }
 
-  h2 {
-    display: inline-block;
-    border-top: 2px solid $color--primary;
+  &__heading {
     color: $color--primary;
-    font-size: 15px;
-    font-weight: 700;
-    padding-top: ($gutter * 0.75);
     margin-left: ($gutter);
     margin-right: ($gutter);
     margin-bottom: 0;
 
     @include media-query(medium) {
+      text-align: left;
       font-size: 18px;
       margin-left: ($gutter * 2);
       margin-right: ($gutter * 2);
-    }
-
-    @include media-query(large) {
-      text-align: left;
     }
   }
 
@@ -44,12 +36,8 @@
     img {
       display: block;
       width: 100%;
-      padding: 0 40px;
+      padding: 0 ($gutter * 2);
       opacity: 1;
-
-      // &:hover {
-      //     opacity: 1;
-      // }
     }
 
     .owl-wrapper-outer {

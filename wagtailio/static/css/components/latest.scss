@@ -1,10 +1,9 @@
 .latest {
-  padding: 0 ($gutter * 2) ($gutter * 3);
-  background: $color--background;
-  margin-bottom: $section-space;
+  padding: ($section-space / 2) ($gutter * 2);
+  background: $color--background-light;
 
   @include media-query(medium) {
-    padding: 0 ($gutter * 4) ($gutter * 2);
+    padding: ($section-space / 2) ($gutter * 4);
   }
 
   &__container {
@@ -19,7 +18,11 @@
 
   &__content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    @include media-query(medium) {
+      flex-direction: row;
+    }
   }
 
   .view-all {

@@ -1,4 +1,20 @@
-// Used on prototype to render heading text in a more 'slender' way
+.heading {
+  &--secondary {
+    font-size: 15px;
+    font-weight: 700;
+
+    @include media-query(medium) {
+      font-size: 18px;
+    }
+  }
+
+  &--top-border {
+    display: inline-block;
+    padding-top: ($gutter * 0.75);
+    border-top: 2px solid $color--primary;
+  }
+}
+
 h1,
 h2,
 h3,

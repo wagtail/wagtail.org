@@ -81,7 +81,7 @@
         header {
           text-align: left;
 
-          .btn {
+          .button {
             margin-bottom: ($gutter * 2);
 
             @include media-query(medium) {

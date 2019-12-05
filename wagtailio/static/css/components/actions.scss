@@ -20,10 +20,11 @@
     height: 140px;
     line-height: 1.2;
     display: block;
-    background: $color--interaction;
+    background-color: rgba($color--black, 0.2);
     color: #fff;
     font-weight: bold;
     position: relative;
+    @include transition(background-color 0.5s ease, color 0.5s ease);
 
     &:nth-child(2) {
       svg {
@@ -39,7 +40,8 @@
     }
 
     &:hover {
-      background: darken($color--interaction, 20%);
+      background-color: $color--quaternary;
+      color: $color--black;
 
       svg {
         transform: translateY(5px);
@@ -60,6 +62,13 @@
       fill: $color--white;
       width: 30px;
       height: 30px;
+    }
+  }
+
+  &--secondary {
+    a {
+      background-color: $color--quaternary;
+      color: $color--black;
     }
   }
 }

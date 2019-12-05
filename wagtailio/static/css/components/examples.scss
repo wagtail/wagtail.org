@@ -6,9 +6,13 @@
   max-width: $max-width;
   margin: 0 auto $section-space;
 
-  .btn {
+  .button {
     position: relative;
     z-index: 2;
+
+    svg {
+      display: none;
+    }
   }
 
   header {
@@ -26,7 +30,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0;
-    margin: 0;
+    margin: 0 0 ($gutter * 2);
 
     @include media-query(medium) {
       padding: 0 $gutter * 3;

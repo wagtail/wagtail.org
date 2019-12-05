@@ -9,7 +9,7 @@ $font-primary: "Apercu Pro", arial, helvetica, sans-serif;
 $color--blue: #2f128d;
 $color--dark-blue: #251657;
 $color--coral: #fd5765;
-$color--green: #3beccd;
+$color--lagoon: #3beccd;
 
 $color--grey: #555;
 $color--grey-light: #f4f3f6;
@@ -20,11 +20,12 @@ $color--black: #000;
 $color--white: #fff;
 
 $color--primary: $color--dark-blue;
-$color--secondary: $color--coral;
+$color--secondary: $color--lagoon;
 $color--tertiary: $color--blue;
-$color--quaternary: $color--green;
+$color--quaternary: $color--lagoon;
 
-$color--interaction: $color--blue;
+$color--interaction: $color--dark-blue;
+$color--interaction-hover: $color--blue;
 
 // Heading and body text colours
 $color--headings: $color--dark-blue;
@@ -43,7 +44,7 @@ $anim-speed-primary: 250ms;
 $anim-ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // Header vars
-$headerHeight: 74px;
+$headerHeight: 70px;
 $headerHeightMobile: 54px;
 
 // Grid

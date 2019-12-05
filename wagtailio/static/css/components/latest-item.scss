@@ -2,11 +2,12 @@
   $root: &;
   flex-basis: 100%;
   max-width: 100%;
-  padding: 0 $gutter ($gutter * 2);
+  padding: 0 0 $gutter;
 
   @include media-query(medium) {
     flex-basis: 33.333%;
     max-width: 33.333%;
+    padding: 0 ($gutter * 2) ($gutter * 2) 0;
   }
 
   &__link {
@@ -15,7 +16,7 @@
 
     &:hover {
       #{$root}__heading {
-        color: $color--interaction;
+        color: $color--interaction-hover;
       }
     }
   }
@@ -30,11 +31,13 @@
     overflow: hidden;
     position: relative;
     background-size: cover;
-    background-color: $color--background-light;
-    box-shadow: 0 -5px 10px rgba($color--black, 0.2);
+    background-color: $color--white;
   }
 
   &__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 0 0 ($gutter * 1.5);
   }
 
@@ -47,7 +50,7 @@
   &__date {
     text-transform: uppercase;
     font-size: 15px;
-    color: $color--secondary;
-    margin: 0;
+    color: $color--tertiary;
+    margin: 0 0 5px;
   }
 }

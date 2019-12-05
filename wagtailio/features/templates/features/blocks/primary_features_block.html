@@ -13,7 +13,7 @@
             </div> <!-- /introduction -->
 
             {% for link in value.links %}
-                {% include_block link with link_classes="view-all view-all--internal btn btn--outline btn--transparent" %}
+                {% include_block link with link_classes="view-all view-all--internal button  " %}
             {% endfor %}
 
         </header> <!-- /text-container -->
@@ -52,7 +52,7 @@
                             <header>
                                 <h3>{{ feature.title }}</h3>
                                 {% if feature.documentation_link %}
-                                    <a href="{{ feature.documentation_link }}" class="view-all btn btn--transparent btn--outline">
+                                    <a href="{{ feature.documentation_link }}" class="view-all button  ">
                                         {{ feature.title }} documentation
                                         <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                                     </a>
@@ -87,7 +87,7 @@
 
                             {% with prev_feature=value.features|carousel_prev:forloop.counter0 %}
 
-                                <a class="btn btn--outline view-all js-tabs-proxy-link" href="#{{ prev_feature.title|slugify }}">
+                                <a class="button  view-all js-tabs-proxy-link" href="#{{ prev_feature.title|slugify }}">
                                     {{ prev_feature.title }}
                                     <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                                 </a>
@@ -96,7 +96,7 @@
 
                             {% with next_feture=value.features|carousel_next:forloop.counter0 %}
 
-                                <a class="btn btn--outline view-all js-tabs-proxy-link" href="#{{ next_feture.title|slugify }}">
+                                <a class="button  view-all js-tabs-proxy-link" href="#{{ next_feture.title|slugify }}">
                                     {{ next_feture.title }}
                                     <svg height="30px" width="30px"><use xlink:href="#arrow"></use></svg>
                                 </a>

@@ -6,7 +6,7 @@
   overflow: hidden;
   padding-top: $headerHeightMobile;
   height: auto;
-  max-height: 840px;
+  max-height: 800px;
 
   @include media-query(medium) {
     height: 700px;
@@ -26,7 +26,7 @@
     height: 0;
     border-style: solid;
     border-width: 0 0 700px 1200px;
-    border-color: transparent transparent rgba($color--secondary, 0.85)
+    border-color: transparent transparent rgba($color--tertiary, 0.85)
       transparent;
     opacity: 1;
     z-index: 0;
@@ -60,10 +60,9 @@
       font-size: 16px;
       text-transform: uppercase;
       font-weight: 700;
-      color: $color--secondary;
+      color: $color--quaternary;
 
       @include media-query(medium) {
-        margin-top: $gutter;
         font-size: 18px;
       }
     }
