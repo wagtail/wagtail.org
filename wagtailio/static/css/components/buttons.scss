@@ -19,6 +19,17 @@
     background-color: $color--secondary;
   }
 
+  &--hover {
+    color: $color--black;
+    padding: 15px 30px;
+    border-radius: 4px;
+    background-color: $color--secondary;
+
+    &:hover {
+      background-color: darken($color--secondary, 10%);
+    }
+  }
+
   .bg--dark & {
     color: $color--white;
     text-decoration: none;

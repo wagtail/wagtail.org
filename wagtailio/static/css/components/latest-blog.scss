@@ -3,6 +3,23 @@
     margin-bottom: $gutter;
   }
 
+  &__subheading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: ($gutter * 1.25);
+  }
+
+  &__date {
+    margin-bottom: ($gutter / 4);
+    color: rgba($color--grey, 0.7);
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    font-size: 15px;
+  }
+
   .footer & {
     @include media-query(medium) {
       flex-basis: 33.333%;

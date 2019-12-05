@@ -6,10 +6,10 @@
         <div class="latest-blog__item">
             <div class="latest-blog__info">
                 <a class="latest-blog__link" href="{% pageurl blog %}">
-                    <h3 class="latest-blog__heading">{{ blog.title }}</h3>
+                    <h3 class="latest-blog__subheading">{{ blog.title }}</h3>
                 </a>
-                <span class="latest-blog__date">{{ blog.date|date }}</span>
-                <p>{{ blog.introduction|truncatechars:225 }}</p>
+                <div class="latest-blog__date">{{ blog.date|date }}</div>
+                <p class="latest-blog__description">{{ blog.introduction|truncatechars:300 }}</p>
             </div>
         </div>
 	{% endif %}

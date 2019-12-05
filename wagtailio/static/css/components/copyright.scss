@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     border-top: 1px solid rgba($color--border, 0.2);
-    padding-top: $gutter;
+    padding-top: ($gutter * 2);
   }
 
   &__text {
