@@ -1,8 +1,10 @@
 .actions {
+  display: flex;
+  flex-direction: row;
   position: relative;
   z-index: 2;
   padding-left: 0;
-  margin-bottom: $gutter * 7;
+  margin-bottom: ($gutter * 2);
   overflow: hidden;
 
   @include media-query(medium) {
@@ -13,9 +15,8 @@
   a {
     text-align: left;
     cursor: pointer;
-    float: left;
-    margin: 0 20px 0 0;
-    padding: 20px;
+    margin: 0 $gutter 0 0;
+    padding: $gutter;
     width: 140px;
     height: 140px;
     line-height: 1.2;
@@ -34,7 +35,7 @@
       &:hover {
         svg {
           transform: translateX(5px) rotate(-90deg);
-          bottom: 20px;
+          bottom: $gutter;
         }
       }
     }
@@ -57,8 +58,8 @@
       position: absolute;
       transform: translate3d(0, 0, 0);
       transition: transform 0.2s ease-in-out 0;
-      bottom: 20px;
-      right: 20px;
+      bottom: $gutter;
+      right: $gutter;
       fill: $color--white;
       width: 30px;
       height: 30px;
@@ -69,6 +70,32 @@
     a {
       background-color: $color--quaternary;
       color: $color--black;
+    }
+  }
+
+  .terminal & {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+
+    @include media-query(medium) {
+      right: $gutter;
+    }
+
+    @include media-query(large) {
+      right: 20%;
+    }
+
+    svg {
+      transform: translateX(0) rotate(-90deg);
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(5px) rotate(-90deg);
+        bottom: $gutter;
+      }
     }
   }
 }

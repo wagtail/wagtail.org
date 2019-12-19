@@ -2,7 +2,7 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  padding: $gutter 0 ($gutter * 4);
+  padding: ($gutter * 2) 0 ($gutter * 4);
 
   @include media-query(medium) {
     padding: $section-space 0 0;
@@ -18,8 +18,11 @@
   }
 
   h2 {
-    font-size: 42px;
-    margin: 0 0 60px;
+    margin: 0 ($gutter) ($gutter * 2);
+
+    @include media-query(medium) {
+      margin: 0 0 ($gutter * 3);
+    }
   }
 
   .mobile-only {
@@ -132,7 +135,22 @@
 
   .tab-content {
     width: 100%;
-    padding: 0 $gutter * 2 $gutter;
+    padding: 0 ($gutter * 2) $gutter;
+
+    @include media-query(medium) {
+      display: inherit;
+      width: 60%;
+      padding: 0 ($gutter * 3) 0 0;
+      float: left;
+    }
+
+    @include media-query(large) {
+      width: 70%;
+    }
+
+    @include media-query(mobileOnly) {
+      display: block !important;
+    }
 
     &:after {
       content: "";
@@ -140,21 +158,11 @@
       width: 20%;
       background: $color--border-light;
       display: block;
-      margin: $gutter * 2 auto;
-    }
+      margin: ($gutter * 2) auto;
 
-    @include media-query(medium) {
-      width: 60%;
-      padding: 0 $gutter * 3 0 0;
-      float: left;
-
-      &:after {
+      @include media-query(medium) {
         display: none;
       }
-    }
-
-    @include media-query(large) {
-      width: 70%;
     }
 
     img {

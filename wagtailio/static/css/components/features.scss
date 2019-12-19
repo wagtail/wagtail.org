@@ -120,7 +120,7 @@
           margin-bottom: $gutter;
           margin-left: $gutter;
           position: relative;
-          padding-top: 20px;
+          padding-top: $gutter;
           float: right;
           max-width: 60%;
         }
@@ -193,7 +193,7 @@
     margin: 0 auto;
     font-weight: normal;
     color: rgba($color--white, 1);
-    padding: 20px 0;
+    padding: $gutter 0;
     text-transform: uppercase;
     font-size: 15px;
     font-weight: bold;
@@ -201,7 +201,7 @@
     @include media-query(medium) {
       font-size: 18px;
       top: -61px;
-      padding: 20px $gutter * 3;
+      padding: $gutter $gutter * 3;
     }
 
     @include media-query(large) {

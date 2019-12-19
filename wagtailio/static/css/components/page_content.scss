@@ -14,7 +14,7 @@
   ul {
     margin: 0 0 ($gutter / 2);
     li {
-      font-size: 20px;
+      font-size: $gutter;
       font-weight: 300;
       line-height: 1.5;
       @include media-query(medium) {
@@ -31,7 +31,7 @@
       line-height: 1.25;
       @include font-smoothing;
       @include media-query(medium) {
-        font-size: 20px;
+        font-size: $gutter;
       }
     }
   }
@@ -55,7 +55,7 @@
       @include font-smoothing;
       font-style: italic;
       font-weight: bold;
-      padding-top: 20px;
+      padding-top: $gutter;
       color: $color--white;
       @include transform(skew(20deg));
 

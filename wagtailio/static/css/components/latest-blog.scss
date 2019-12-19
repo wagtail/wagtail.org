@@ -1,4 +1,6 @@
 .latest-blog {
+  margin-bottom: ($gutter * 2);
+
   &__heading {
     margin-bottom: $gutter;
   }
@@ -22,6 +24,11 @@
 
   .footer & {
     @include media-query(medium) {
+      flex-basis: 50%;
+      max-width: 50%;
+      min-width: 50%;
+    }
+    @include media-query(large) {
       flex-basis: 33.333%;
       max-width: 33.333%;
       min-width: 33.333%;

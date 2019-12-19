@@ -34,7 +34,7 @@
             <div class="tab-content-container">
                 {% for feature in value.features %}
 
-                    <div id="{{ feature.title|slugify }}" class="tab-content current">
+                    <div id="{{ feature.title|slugify }}" class="tab-content{% if forloop.first %} current{% endif %}">
                         <div class="mobile-only">
                             <h3>{{ feature.title }}</h3>
                             <p>{{ feature.subtitle }}</p>

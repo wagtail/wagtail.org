@@ -13,8 +13,9 @@
 
   &__heading {
     color: $color--primary;
-    margin-left: ($gutter);
-    margin-right: ($gutter);
+    text-align: center;
+    margin-left: $gutter;
+    margin-right: $gutter;
     margin-bottom: 0;
 
     @include media-query(medium) {
@@ -25,9 +26,13 @@
     }
   }
 
-  .carousel {
+  &__carousel {
     display: none;
-    padding: $gutter ($gutter * 2) ($gutter * 3);
+    padding: $gutter $gutter ($gutter * 2);
+
+    @include media-query(medium) {
+      padding: $gutter ($gutter * 2) ($gutter * 3);
+    }
 
     @include media-query(large) {
       padding: $gutter ($gutter * 2) ($gutter * 2);
@@ -47,10 +52,14 @@
     .owl-controls {
       position: absolute;
       z-index: 2;
-      bottom: $gutter;
+      bottom: 0;
       left: 0;
       right: 0;
       text-align: center;
+
+      @include media-query(medium) {
+        bottom: $gutter;
+      }
 
       @include media-query(large) {
         position: absolute;
@@ -63,7 +72,7 @@
     .owl-pagination {
       .owl-page {
         span {
-          background-color: rgba($color--white, 1);
+          background-color: rgba($color--secondary, 1);
           opacity: 1;
         }
 

@@ -1,6 +1,6 @@
 // Primary Navigation
 .primary-nav {
-  float: right;
+  $root: &;
   display: none;
 
   @include media-query(medium) {
@@ -8,10 +8,31 @@
   }
 
   &__container {
-    display: flex;
-    flex-direction: row;
     padding: 0;
     margin: 0;
     list-style: none;
+
+    @include media-query(medium) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .mobile_nav-open .menu-overlay & {
+    opacity: 1;
+    display: block;
+  }
+
+  .menu-overlay & {
+    transition: color 0.2s ease, opacity 0.2s ease 0.4s;
+    opacity: 0;
+
+    #{$root}__container {
+      float: none;
+      margin: 0 auto;
+      padding: 0;
+      list-style-type: none;
+      width: 90%;
+    }
   }
 }

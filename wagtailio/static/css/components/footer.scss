@@ -3,7 +3,7 @@
   z-index: 3;
   display: block;
   overflow: hidden;
-  padding: $gutter;
+  padding: ($gutter * 2) $gutter $gutter;
   text-align: left;
   background-color: $color--background-light;
 
@@ -17,9 +17,11 @@
   }
 
   &__row {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: ($gutter * 2);
+    @include media-query(medium) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   &__heading {
@@ -153,7 +155,7 @@
         font-size: 21px;
       }
       .author {
-        margin: 20px 0;
+        margin: $gutter 0;
       }
     }
   }
@@ -173,7 +175,7 @@
     margin: 0;
     // Clear floats
     overflow: hidden;
-    padding: 0 0 20px;
+    padding: 0 0 $gutter;
     input {
       float: left;
       width: 60%;

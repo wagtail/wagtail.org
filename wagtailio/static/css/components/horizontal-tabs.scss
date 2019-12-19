@@ -33,7 +33,7 @@
   }
 
   .tabs {
-    margin: 0 40px 20px 60px;
+    margin: 0 40px $gutter 60px;
     z-index: 3;
     position: relative;
     text-align: center;
@@ -58,14 +58,14 @@
         font-size: 21px;
         font-weight: bold;
         padding: 0 0 5px;
-        margin: 0 20px 5px;
+        margin: 0 $gutter 5px;
         border-bottom: 2px solid rgba($color--secondary, 0.5);
         //text-shadow: 1px 1px 1px rgba($color--black, 0.2);
         color: $color--interaction;
         transition: color 0.2s ease 0s, border 0.2s ease 0s;
 
         @include media-query(medium) {
-          margin: 0 20px 40px;
+          margin: 0 $gutter 40px;
         }
 
         &:hover {
@@ -85,17 +85,19 @@
     position: relative;
     z-index: 2;
 
+    @include media-query(mobileOnly) {
+      display: block !important;
+    }
+
     &:after {
       content: "";
       height: 1px;
       width: 20%;
       background: $color--border-dark;
       display: block;
-      margin: $gutter * 2 auto;
-    }
+      margin: ($gutter * 2) auto;
 
-    @include media-query(medium) {
-      &:after {
+      @include media-query(medium) {
         display: none;
       }
     }
@@ -114,7 +116,6 @@
 
       h3 {
         font-size: 32px;
-        //text-align: center;
 
         span {
           color: #000;
