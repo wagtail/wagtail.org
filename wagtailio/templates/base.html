@@ -1,7 +1,7 @@
 {% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en-US">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -109,7 +109,7 @@
                     <a class="branding" href="/">
                         <img class="branding__logo" src="{% static "img/wagtail.svg" %}" alt="Wagtail" />
                     </a>
-                    <a href="#primary_navigation" class="menu-toggle">
+                    <a href="#primary_navigation" class="menu-toggle" aria-label="Toggle menu">
                         <span></span>
                     </a>
                     {% menu_primary %}

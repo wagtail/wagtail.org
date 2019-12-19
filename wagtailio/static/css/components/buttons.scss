@@ -24,6 +24,7 @@
     padding: 15px 30px;
     border-radius: 4px;
     background-color: $color--secondary;
+    border-bottom: 0;
 
     &:hover {
       background-color: darken($color--secondary, 10%);

@@ -5,8 +5,8 @@
     <div class="hero__container">
 
         <div class="text-container">
-            <h2 class="js-fade">{{ value.title }}</h2>
-            <p class="js-fade">{{ value.sub_title }}</p>
+            <h2>{{ value.title }}</h2>
+            <p>{{ value.sub_title }}</p>
 
             <div class="actions">
                 {% for link in value.links %}
@@ -16,7 +16,7 @@
 
         </div> <!-- /text-container -->
 
-        {% image value.image original as main_image  %}
+        {% image value.image width-700 as main_image  %}
         <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
         
     </div>
