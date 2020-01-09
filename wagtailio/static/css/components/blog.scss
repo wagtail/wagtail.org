@@ -5,7 +5,8 @@
   margin: 0 auto;
 
   .share {
-    background-color: rgba($color--black, 0.1);
+    background-color: $color--grey-light;
+    box-shadow: 0 0 $gutter rgba($color--white, 0.6);
   }
 }
 
