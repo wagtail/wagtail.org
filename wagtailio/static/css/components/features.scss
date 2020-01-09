@@ -72,11 +72,14 @@
       }
 
       .content {
-        background-color: $color--white;
-        padding: $gutter * 2 $gutter * 2 $gutter * 3;
+        padding: ($gutter * 2) ($gutter * 2) ($gutter * 3);
         border-radius: 0 5px 0 0;
-        //text-align: center;
         margin-bottom: 0;
+        border: $gutter solid $color--primary;
+
+        @include media-query(medium) {
+          border: ($gutter * 2) solid $color--primary;
+        }
 
         header {
           text-align: left;
@@ -131,7 +134,7 @@
 
 .tab-nav {
   margin-bottom: $gutter * 6;
-  background-color: rgba($color--white, 0.6);
+  background-color: $color--primary;
   padding: $gutter $gutter * 2;
   text-align: center;
   border-radius: 0 0 5px 5px;
@@ -139,26 +142,33 @@
   display: none;
 
   @include media-query(medium) {
-    display: block;
+    display: flex;
+    justify-content: space-between;
   }
 
   a {
     text-align: left;
     margin: 0;
-    width: 20%;
     color: $color--white;
+    display: flex;
+
+    &:hover {
+      svg {
+        fill: $color--primary;
+      }
+    }
 
     svg {
       position: relative;
-      top: 7px;
+      fill: $color--white;
+      margin: 0 ($gutter / 4);
     }
 
     &:nth-child(1) {
-      float: left;
+      flex-direction: row-reverse;
       text-align: right;
 
       svg {
-        float: left;
         transform: rotate(90deg) translateY(0px);
       }
 
@@ -166,14 +176,6 @@
         svg {
           transform: rotate(90deg) translateY(5px);
         }
-      }
-    }
-
-    &:nth-child(2) {
-      float: right;
-
-      svg {
-        float: right;
       }
     }
   }
