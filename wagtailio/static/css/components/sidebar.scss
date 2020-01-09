@@ -4,12 +4,25 @@
   @include media-query(medium) {
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 2;
-    overflow: hidden;
     height: 100%;
-    width: 25%;
+    width: 100%;
     padding: 0 0;
+    max-width: $sidebarWidth;
+  }
+
+  @include media-query(extra-large) {
+    max-width: $sidebarWidthWide;
+
+    &::before {
+      content: '';
+      background-color: $color--headings;
+      position: absolute;
+      left: 1px;
+      height: 100%;
+      width: 200%;
+      transform: translate(-100%, 0);
+    }
   }
 
   h2 {

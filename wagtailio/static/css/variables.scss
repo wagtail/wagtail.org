@@ -48,6 +48,10 @@ $anim-ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
 $headerHeight: 70px;
 $headerHeightMobile: 54px;
 
+// Sidebar
+$sidebarWidth: 300px;
+$sidebarWidthWide: 450px;
+
 // Grid
 $grid: 20px;
 $gutter: $grid;
@@ -66,5 +70,6 @@ $max-width: 1400px;
 $breakpoints: (
   "medium" "(min-width: 599px)",
   "large" "(min-width: 1023px)",
+  "extra-large" "(min-width: 1440px)",
   "mobileOnly" "(max-width: 599px)"
 );

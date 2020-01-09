@@ -1,6 +1,8 @@
 .blog-container {
   position: relative;
   height: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
 
   .share {
     background-color: rgba($color--black, 0.1);
@@ -9,12 +11,16 @@
 
 .blog-item {
   direction: ltr;
-  padding: $headerHeight 6%;
+  padding: $headerHeight $gutter;
   background-color: $color--white;
 
   @include media-query(medium) {
-    width: 75%;
-    margin-left: 25%;
+    margin-left: $sidebarWidth;
+    padding: $headerHeight ($gutter * 2);
+  }
+
+  @include media-query(extra-large) {
+    margin-left: $sidebarWidthWide;
   }
 
   .container {
@@ -101,12 +107,13 @@
     color: $color--white;
     font-size: 24px;
     font-weight: 300;
-    transition: background-color 0.2s ease;
+    transition: background-color, border, 0.2s ease;
     border-bottom: 1px solid $color--headings;
 
     &:hover {
       background-color: $color--tertiary;
       border-color: $color--border-light;
+      color: $color--white;
     }
 
     span {
