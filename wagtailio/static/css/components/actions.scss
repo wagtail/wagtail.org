@@ -57,7 +57,7 @@
     svg {
       position: absolute;
       transform: translate3d(0, 0, 0);
-      transition: transform 0.2s ease-in-out 0;
+      transition: transform 0.2s ease-in-out;
       bottom: $gutter;
       right: $gutter;
       fill: $color--white;
