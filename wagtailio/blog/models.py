@@ -9,21 +9,19 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.utils.blocks import StoryBlock
-from wagtailio.utils.models import (
-    SocialMediaMixin,
-    CrossPageMixin,
-)
+from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
-    subpage_types = ['blog.BlogPage']
+    subpage_types = ["blog.BlogPage"]
 
     def serve(self, request):
-        latest_blog = BlogPage.objects.live().order_by('-date').first()
+        latest_blog = BlogPage.objects.live().order_by("-date").first()
         return redirect(latest_blog.url)
 
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
 
 
 @register_snippet
@@ -31,10 +29,11 @@ class Author(models.Model):
     name = models.CharField(max_length=255)
     job_title = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
-        'images.WagtailIOImage',
-        null=True, blank=True,
+        "images.WagtailIOImage",
+        null=True,
+        blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     url = models.URLField(blank=True)
 
@@ -42,10 +41,10 @@ class Author(models.Model):
         return self.name
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('job_title'),
-        ImageChooserPanel('image'),
-        FieldPanel('url')
+        FieldPanel("name"),
+        FieldPanel("job_title"),
+        ImageChooserPanel("image"),
+        FieldPanel("url"),
     ]
 
 
@@ -53,16 +52,18 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
-        'blog.Author',
-        null=True, blank=True,
+        "blog.Author",
+        null=True,
+        blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     main_image = models.ForeignKey(
-        'images.WagtailIOImage',
-        null=True, blank=True,
+        "images.WagtailIOImage",
+        null=True,
+        blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     date = models.DateField()
     introduction = models.CharField(max_length=511)
@@ -70,22 +71,19 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
 
     @property
     def siblings(self):
-        return self.__class__.objects.live(
-        ).sibling_of(self).order_by('-date')
+        return self.__class__.objects.live().sibling_of(self).order_by("-date")
 
     content_panels = Page.content_panels + [
-        SnippetChooserPanel('author'),
-        ImageChooserPanel('main_image'),
-        FieldPanel('date'),
-        FieldPanel('introduction'),
-        StreamFieldPanel('body')
+        SnippetChooserPanel("author"),
+        ImageChooserPanel("main_image"),
+        FieldPanel("date"),
+        FieldPanel("introduction"),
+        StreamFieldPanel("body"),
     ]
 
     promote_panels = (
-        Page.promote_panels +
-        SocialMediaMixin.panels +
-        CrossPageMixin.panels +
-        [
-            FieldPanel('canonical_url'),
-        ]
+        Page.promote_panels
+        + SocialMediaMixin.panels
+        + CrossPageMixin.panels
+        + [FieldPanel("canonical_url")]
     )

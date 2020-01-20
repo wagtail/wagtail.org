@@ -6,26 +6,29 @@ from wagtail.images.models import AbstractImage, AbstractRendition
 
 
 class WagtailIOImage(AbstractImage):
-    alternative_text = models.CharField(max_length=255, blank=True, help_text="The alternative text for the image, provided for the benefit of visually impaired users")
+    alternative_text = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="The alternative text for the image, provided for the benefit of visually impaired users",
+    )
     admin_form_fields = (
-        'title',
-        'file',
-        'tags',
-        'focal_point_x',
-        'focal_point_y',
-        'focal_point_width',
-        'focal_point_height',
+        "title",
+        "file",
+        "tags",
+        "focal_point_x",
+        "focal_point_y",
+        "focal_point_width",
+        "focal_point_height",
     )
 
 
 class WagtailIORendition(AbstractRendition):
-    image = models.ForeignKey('WagtailIOImage', models.CASCADE,
-                              related_name='renditions')
+    image = models.ForeignKey(
+        "WagtailIOImage", models.CASCADE, related_name="renditions"
+    )
 
     class Meta:
-        unique_together = (
-            ('image', 'filter_spec', 'focal_point_key'),
-        )
+        unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
 # Receive the pre_delete signal and delete the file associated with the model instance.

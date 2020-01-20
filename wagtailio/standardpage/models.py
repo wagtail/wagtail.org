@@ -13,9 +13,10 @@ class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction'),
-        StreamFieldPanel('body')
+        FieldPanel("introduction"),
+        StreamFieldPanel("body"),
     ]
 
-    promote_panels = Page.promote_panels + SocialMediaMixin.panels + \
-        CrossPageMixin.panels
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )

@@ -12,7 +12,7 @@ from wagtailio.newsletter.models import NewsletterEmailAddress
 def newsletter_signup(request):
     success = False
     try:
-        email = request.POST.get('email', '')
+        email = request.POST.get("email", "")
         validate_email(email)
         nea = NewsletterEmailAddress()
         nea.email = email
@@ -20,6 +20,4 @@ def newsletter_signup(request):
         success = True
     except ValidationError:
         pass
-    return render(request, 'newsletter/newsletter_thanks.html', {
-        'success': success
-    })
+    return render(request, "newsletter/newsletter_thanks.html", {"success": success})
