@@ -7,14 +7,14 @@ from .base import env
 COMPRESS_OFFLINE = True
 
 # Use local cache for Django compressor so we can build it in Docker
-CACHES['compressor_cache'] = {  # noqa
-    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+CACHES["compressor_cache"] = {  # noqa
+    "BACKEND": "django.core.cache.backends.locmem.LocMemCache"
 }
 COMPRESS_CACHE_BACKEND = "compressor_cache"
 
 COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
+    "compressor.filters.css_default.CssAbsoluteFilter",
+    "compressor.filters.cssmin.CSSMinFilter",
 ]
 
 FB_APP_ID = 710333029076622
