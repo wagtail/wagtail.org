@@ -30,6 +30,14 @@ a {
     }
 }
 
+code {
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    font-size: .85em;
+    padding: 0 3px;
+}
+
 img {
     height: auto; // overwrite inline height added via django templating (possibly a bad assumption to make!)
     vertical-align: top; // render images as we would just expect them to render (without mystical padding bottom)
