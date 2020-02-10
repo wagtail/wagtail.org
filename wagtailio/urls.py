@@ -27,8 +27,8 @@ private_urlpatterns = [
 
 urlpatterns = [
     path("newsletter-signup/", views.newsletter_signup, name="newsletter_signup"),
-    path("blog/feed/", BlogFeed(), name="blog_feed"),
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
+    path("blog/feed/", BlogFeed(), name="blog_feed"),
     path("sitemap.xml", sitemap),
     path("favicon.ico", favicon),
     path("robots.txt", robots),
