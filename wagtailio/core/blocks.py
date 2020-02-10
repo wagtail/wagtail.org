@@ -17,35 +17,51 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
     def clean(self, value):
         struct_value = super(PageOrExternalLinkBlock, self).clean(value)
 
-        if not value.get('link_page') and not value.get('link_url'):
-            raise ValidationError("Validation error while saving block", params={
-                'link_url': ValidationError("You must specify link page or link url."),
-                'link_page': ValidationError("You must specify link page or link url."),
-            })
+        if not value.get("link_page") and not value.get("link_url"):
+            raise ValidationError(
+                "Validation error while saving block",
+                params={
+                    "link_url": ValidationError(
+                        "You must specify link page or link url."
+                    ),
+                    "link_page": ValidationError(
+                        "You must specify link page or link url."
+                    ),
+                },
+            )
 
-        if value.get('link_page') and value.get('link_url'):
-            raise ValidationError("Validation error while saving block", params={
-                'link_url': ValidationError("You must specify link page or link url. You can't use both."),
-                'link_page': ValidationError("You must specify link page or link url. You can't use both."),
-            })
+        if value.get("link_page") and value.get("link_url"):
+            raise ValidationError(
+                "Validation error while saving block",
+                params={
+                    "link_url": ValidationError(
+                        "You must specify link page or link url. You can't use both."
+                    ),
+                    "link_page": ValidationError(
+                        "You must specify link page or link url. You can't use both."
+                    ),
+                },
+            )
 
         return struct_value
 
     def get_context(self, value, parent_context=None):
-        link_url = value.get('link_url')
+        link_url = value.get("link_url")
 
         context = super(PageOrExternalLinkBlock, self).get_context(
-            value,
-            parent_context=parent_context
+            value, parent_context=parent_context
         )
-        context.update({
-            'is_anchor': isinstance(link_url, six.text_type) and link_url.startswith('#')
-        })
+        context.update(
+            {
+                "is_anchor": isinstance(link_url, six.text_type)
+                and link_url.startswith("#")
+            }
+        )
 
         return context
 
     class Meta:
-        template = 'core/blocks/page_or_external_link_block.html'
+        template = "core/blocks/page_or_external_link_block.html"
 
 
 class BannerBlock(blocks.StructBlock):
@@ -56,7 +72,7 @@ class BannerBlock(blocks.StructBlock):
     links = blocks.ListBlock(PageOrExternalLinkBlock())
 
     class Meta:
-        template = 'core/blocks/banner_block.html'
+        template = "core/blocks/banner_block.html"
 
 
 class BrandsBlock(blocks.StructBlock):
@@ -64,18 +80,18 @@ class BrandsBlock(blocks.StructBlock):
     brands = blocks.ListBlock(ImageChooserBlock())
 
     class Meta:
-        icon = 'pick'
-        template = 'core/blocks/brands_block.html'
+        icon = "pick"
+        template = "core/blocks/brands_block.html"
 
 
 class HomePageFeaturesBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     subtitle = blocks.CharBlock(required=False)
     all_features_page = blocks.PageChooserBlock(required=False)
-    features = blocks.ListBlock(SnippetChooserBlock('features.FeatureDescription'))
+    features = blocks.ListBlock(SnippetChooserBlock("features.FeatureDescription"))
 
     class Meta:
-        template = 'core/blocks/home_page_features_block.html'
+        template = "core/blocks/home_page_features_block.html"
 
 
 class TestimonialBlock(blocks.StructBlock):
@@ -85,7 +101,7 @@ class TestimonialBlock(blocks.StructBlock):
     link = blocks.URLBlock(required=False)
 
     class Meta:
-        template = 'core/blocks/testimonial_block.html'
+        template = "core/blocks/testimonial_block.html"
 
 
 class CodePromoBlock(blocks.StructBlock):
@@ -95,45 +111,50 @@ class CodePromoBlock(blocks.StructBlock):
     link = PageOrExternalLinkBlock()
 
     class Meta:
-        icon = 'code'
-        template = 'core/blocks/code_with_link_block.html'
+        icon = "code"
+        template = "core/blocks/code_with_link_block.html"
 
 
 class ShowcasesBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     subtitle = blocks.CharBlock(required=False)
     more_link = PageOrExternalLinkBlock(required=False)
-    items = blocks.ListBlock(blocks.StructBlock((
-        ('title', blocks.CharBlock()),
-        ('subtitle', blocks.CharBlock(required=False)),
-        ('link_url', blocks.URLBlock(required=False)),
-        ('image', ImageChooserBlock()),
-    )))
+    items = blocks.ListBlock(
+        blocks.StructBlock(
+            (
+                ("title", blocks.CharBlock()),
+                ("subtitle", blocks.CharBlock(required=False)),
+                ("link_url", blocks.URLBlock(required=False)),
+                ("image", ImageChooserBlock()),
+            )
+        )
+    )
 
     class Meta:
-        icon = 'view'
-        template = 'core/blocks/showcases_block.html'
+        icon = "view"
+        template = "core/blocks/showcases_block.html"
 
 
 class PromoTextsBlock(blocks.StructBlock):
     title = blocks.CharBlock()
-    texts = blocks.ListBlock(blocks.StructBlock((
-        ('title', blocks.CharBlock()),
-        ('text', blocks.RichTextBlock()),
-    )))
+    texts = blocks.ListBlock(
+        blocks.StructBlock(
+            (("title", blocks.CharBlock()), ("text", blocks.RichTextBlock()))
+        )
+    )
 
     class Meta:
-        template = 'core/blocks/promo_texts_block.html'
+        template = "core/blocks/promo_texts_block.html"
 
 
 class HomePageBlock(blocks.StreamBlock):
     banner = BannerBlock()
     brands = BrandsBlock()
     features = HomePageFeaturesBlock()
-    testimonials = blocks.ListBlock(TestimonialBlock(), icon='group')
+    testimonials = blocks.ListBlock(TestimonialBlock(), icon="group")
     code = CodePromoBlock()
     showcases = ShowcasesBlock()
     promo_texts = PromoTextsBlock()
 
     class Meta:
-        template = 'core/blocks/home_page_block.html'
+        template = "core/blocks/home_page_block.html"

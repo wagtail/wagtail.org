@@ -10,7 +10,7 @@ class BlogFeed(Feed):
     link = "/blog/"
 
     def items(self):
-        return BlogPage.objects.live().public().order_by('-date')[:20]
+        return BlogPage.objects.live().public().order_by("-date")[:20]
 
     def item_title(self, item):
         return item.title

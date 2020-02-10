@@ -13,15 +13,15 @@ class NewsletterPage(Page):
     body = RichTextField()
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
+        FieldPanel("date"),
+        FieldPanel("intro", classname="full"),
+        FieldPanel("body", classname="full"),
     ]
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        if request.GET.get('email', 'false') == 'true':
-            context['is_email'] = True
+        if request.GET.get("email", "false") == "true":
+            context["is_email"] = True
 
         return context
 
@@ -36,7 +36,7 @@ class NewsletterIndexPage(Page):
         newsletters = NewsletterPage.objects.live().descendant_of(self)
 
         # Order by most recent date first
-        newsletters = newsletters.order_by('-date')
+        newsletters = newsletters.order_by("-date")
 
         return newsletters
 
@@ -45,7 +45,7 @@ class NewsletterIndexPage(Page):
         newsletters = self.newsletters
 
         # Pagination
-        page = request.GET.get('page')
+        page = request.GET.get("page")
         paginator = Paginator(newsletters, 5)  # Show 5 blogs per page
         try:
             newsletters = paginator.page(page)
@@ -54,14 +54,13 @@ class NewsletterIndexPage(Page):
         except EmptyPage:
             newsletters = paginator.page(paginator.num_pages)
 
-        return render(request, self.template, {
-            'self': self,
-            'newsletters': newsletters,
-        })
+        return render(
+            request, self.template, {"self": self, "newsletters": newsletters}
+        )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
+        FieldPanel("intro", classname="full"),
+        FieldPanel("body", classname="full"),
     ]
 
 

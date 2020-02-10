@@ -8,48 +8,42 @@ from wagtailio.utils.models import MenuSnippet, LinkGroupSnippet
 
 register = template.Library()
 
-@register.inclusion_tag('includes/menu_primary.html', takes_context=True)
+
+@register.inclusion_tag("includes/menu_primary.html", takes_context=True)
 def menu_primary(context):
-    menu = MenuSnippet.objects.get(menu_name__iexact='primary')
+    try:
+        menu = MenuSnippet.objects.get(menu_name__iexact="primary")
+    except MenuSnippet.DoesNotExist:
+        return {}
 
-    return {
-        'links': menu.links.all(),
-        'request': context['request'],
-    }
+    return {"links": menu.links.all(), "request": context["request"]}
 
 
-@register.inclusion_tag('includes/latest_blog.html', takes_context=True)
+@register.inclusion_tag("includes/latest_blog.html", takes_context=True)
 def latest_blog(context):
-    blog = BlogPage.objects.live().order_by('-date').first()
+    blog = BlogPage.objects.live().order_by("-date").first()
 
-    return {
-        'blog': blog,
-        'request': context['request'],
-    }
+    return {"blog": blog, "request": context["request"]}
 
-@register.inclusion_tag('includes/menu_good_to_go.html', takes_context=True)
+
+@register.inclusion_tag("includes/menu_good_to_go.html", takes_context=True)
 def menu_good_to_go(context):
     try:
-        menu = LinkGroupSnippet.objects.get(name__iexact='good to go')
+        menu = LinkGroupSnippet.objects.get(name__iexact="good to go")
     except LinkGroupSnippet.DoesNotExist:
         return None
 
-    return {
-        'links': menu.links.all(),
-        'request': context['request'],
-    }
+    return {"links": menu.links.all(), "request": context["request"]}
 
-@register.inclusion_tag('includes/menu_network.html', takes_context=True)
+
+@register.inclusion_tag("includes/menu_network.html", takes_context=True)
 def menu_network(context):
     try:
-        menu = LinkGroupSnippet.objects.get(name__iexact='network')
+        menu = LinkGroupSnippet.objects.get(name__iexact="network")
     except LinkGroupSnippet.DoesNotExist:
         return None
 
-    return {
-        'links': menu.links.all(),
-        'request': context['request'],
-    }
+    return {"links": menu.links.all(), "request": context["request"]}
 
 
 # TODO: Get rid of `responsiveimage` and `ResponsiveImageNode`. It doesn't look like we use it.
@@ -60,7 +54,7 @@ def responsiveimage(parser, token):
     filter_spec = bits[1]
     bits = bits[2:]
 
-    if len(bits) == 2 and bits[0] == 'as':
+    if len(bits) == 2 and bits[0] == "as":
         # token is of the form {% image self.photo max-320x200 as img %}
         return ImageNode(image_var, filter_spec, output_var_name=bits[1])
     else:
@@ -69,23 +63,28 @@ def responsiveimage(parser, token):
         attrs = {}
         for bit in bits:
             try:
-                name, value = bit.split('=')
+                name, value = bit.split("=")
             except ValueError:
-                raise template.TemplateSyntaxError("'image' tag should be of the form {% image self.photo max-320x200 [ custom-attr=\"value\" ... ] %} or {% image self.photo max-320x200 as img %}")
+                raise template.TemplateSyntaxError(
+                    "'image' tag should be of the form {% image self.photo max-320x200 [ custom-attr=\"value\" ... ] %} or {% image self.photo max-320x200 as img %}"
+                )
 
-            attrs[name] = parser.compile_filter(value) # setup to resolve context variables as value
+            attrs[name] = parser.compile_filter(
+                value
+            )  # setup to resolve context variables as value
 
         return ResponsiveImageNode(image_var, filter_spec, attrs=attrs)
+
 
 class ResponsiveImageNode(ImageNode, template.Node):
     def render(self, context):
         try:
             image = self.image_expr.resolve(context)
         except template.VariableDoesNotExist:
-            return ''
+            return ""
 
         if not image:
-            return ''
+            return ""
 
         try:
             rendition = image.get_rendition(self.filter)
@@ -96,22 +95,23 @@ class ResponsiveImageNode(ImageNode, template.Node):
             # create the resized version of a non-existent image. Since this is a
             # bit catastrophic for a missing image, we'll substitute a dummy
             # Rendition object so that we just output a broken link instead.
-            Rendition = image.renditions.model  # pick up any custom Image / Rendition classes that may be in use
+            Rendition = (
+                image.renditions.model
+            )  # pick up any custom Image / Rendition classes that may be in use
             rendition = Rendition(image=image, width=0, height=0)
-            rendition.file.name = 'not-found'
-
+            rendition.file.name = "not-found"
 
         # Parse srcset format into array
         try:
-            raw_sources = str(self.attrs['srcset']).replace('"', '').split(',')
+            raw_sources = str(self.attrs["srcset"]).replace('"', "").split(",")
 
             srcset_renditions = []
             widths = []
             newsrcseturls = []
 
             for source in raw_sources:
-                flt = source.strip().split(' ')[0]
-                width = source.strip().split(' ')[1]
+                flt = source.strip().split(" ")[0]
+                width = source.strip().split(" ")[1]
 
                 # cache widths to be re-appended after filter has been converted to URL
                 widths.append(width)
@@ -119,12 +119,14 @@ class ResponsiveImageNode(ImageNode, template.Node):
                 try:
                     srcset_renditions.append(image.get_rendition(flt))
                 except SourceImageIOError:
-                    TmpRendition = image.renditions.model  # pick up any custom Image / Rendition classes that may be in use
+                    TmpRendition = (
+                        image.renditions.model
+                    )  # pick up any custom Image / Rendition classes that may be in use
                     tmprend = TmpRendition(image=image, width=0, height=0)
-                    tmprend.file.name = 'not-found'
+                    tmprend.file.name = "not-found"
 
             for index, rend in enumerate(srcset_renditions):
-                newsrcseturls.append(' '.join([rend.url, widths[index]]))
+                newsrcseturls.append(" ".join([rend.url, widths[index]]))
 
         except KeyError:
             newsrcseturls = []
@@ -133,13 +135,13 @@ class ResponsiveImageNode(ImageNode, template.Node):
         if self.output_var_name:
             # return the rendition object in the given variable
             context[self.output_var_name] = rendition
-            return ''
+            return ""
         else:
             # render the rendition's image tag now
             resolved_attrs = {}
             for key in self.attrs:
-                if key == 'srcset':
-                    resolved_attrs[key] = ','.join(newsrcseturls)
+                if key == "srcset":
+                    resolved_attrs[key] = ",".join(newsrcseturls)
                     continue
 
                 resolved_attrs[key] = self.attrs[key].resolve(context)
