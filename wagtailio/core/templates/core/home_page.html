@@ -24,7 +24,7 @@
                         <a class="latest-item__link" href="{% pageurl blog_post %}">
                             <div class="latest-item__image-container"
                                 {% if blog_post.listing_image or blog_post.main_image %}
-                                    {% image blog_post.listing_image|default:blog_post.main_image fill-360x400 as bg_image %}
+                                    {% image blog_post.listing_image|default:blog_post.main_image fill-360x400-c85 as bg_image %}
                                     style="background-image: url({{ bg_image.url }});"
                                 {% else %}
                                     style="background-image: url({% static 'img/hero_bg_3.jpg' %});"
