@@ -11,6 +11,8 @@
   &__container {
     display: grid;
     grid-template-columns: 1fr;
+    column-gap: $gutter;
+    row-gap: $gutter;
     justify-content: center;
     list-style-type: none;
     padding: 0;
