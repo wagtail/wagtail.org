@@ -17,11 +17,11 @@
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
 
-    @include media-query(medium) {
-      flex-direction: row;
+    @include media-query(large) {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 

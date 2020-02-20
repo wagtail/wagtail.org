@@ -1,12 +1,8 @@
 .latest-item {
   $root: &;
-  flex-basis: 100%;
-  max-width: 100%;
   padding: 0 0 $gutter;
 
   @include media-query(medium) {
-    flex-basis: 33.333%;
-    max-width: 33.333%;
     padding: 0 ($gutter * 2) ($gutter * 2) 0;
   }
 
