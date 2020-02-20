@@ -17,7 +17,7 @@
       font-size: $gutter;
       font-weight: 300;
       line-height: 1.5;
-      @include media-query(medium) {
+      @include media-query(small) {
         font-size: 18px;
         line-height: 1.35;
       }
@@ -30,7 +30,7 @@
       font-size: 24px;
       line-height: 1.25;
       @include font-smoothing;
-      @include media-query(medium) {
+      @include media-query(small) {
         font-size: $gutter;
       }
     }
@@ -45,7 +45,7 @@
     background-color: $color--interaction;
     @include transform(skew(-20deg));
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding: 10px !important;
       @include transform(skew(0deg));
     }
@@ -59,7 +59,7 @@
       color: $color--white;
       @include transform(skew(20deg));
 
-      @include media-query(medium) {
+      @include media-query(small) {
         @include transform(skew(0deg));
         padding-top: 0px;
         margin: 0px;

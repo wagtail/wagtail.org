@@ -4,7 +4,7 @@
   overflow: hidden;
   padding: ($gutter * 2) 0 ($gutter * 4);
 
-  @include media-query(medium) {
+  @include media-query(small) {
     padding: $section-space 0 0;
   }
 
@@ -20,7 +20,7 @@
   h2 {
     margin: 0 ($gutter) ($gutter * 2);
 
-    @include media-query(medium) {
+    @include media-query(small) {
       margin: 0 0 ($gutter * 3);
     }
   }
@@ -35,7 +35,7 @@
     width: 30%;
     padding: 40px 0 0 60px;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       display: block;
       width: 40%;
     }
@@ -121,7 +121,7 @@
           max-width: 260px;
           transition: color 0.2s ease 0s;
 
-          @include media-query(medium) {
+          @include media-query(small) {
             display: none;
           }
 
@@ -137,7 +137,7 @@
     width: 100%;
     padding: 0 ($gutter * 2) $gutter;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       display: inherit;
       width: 60%;
       padding: 0 ($gutter * 3) 0 0;
@@ -160,7 +160,7 @@
       display: block;
       margin: ($gutter * 2) auto;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         display: none;
       }
     }

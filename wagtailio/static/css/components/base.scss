@@ -112,7 +112,7 @@ Other global items
 .mobile-only {
   display: block;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     display: none;
   }
 }

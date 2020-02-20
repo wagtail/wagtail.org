@@ -11,7 +11,7 @@
     margin: 0 auto;
     padding: 0 $gutter;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding: 0 ($gutter * 2);
     }
 

@@ -27,7 +27,7 @@
   .body {
     padding-top: $headerHeightMobile;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding-top: $headerHeight;
     }
   }

@@ -39,7 +39,7 @@
     text-align: center;
     display: none;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       margin-bottom: 0;
       display: block;
     }
@@ -47,7 +47,7 @@
     li {
       display: block;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         display: inline-block;
       }
 
@@ -64,7 +64,7 @@
         color: $color--interaction;
         transition: color 0.2s ease 0s, border 0.2s ease 0s;
 
-        @include media-query(medium) {
+        @include media-query(small) {
           margin: 0 $gutter 40px;
         }
 
@@ -97,7 +97,7 @@
       display: block;
       margin: ($gutter * 2) auto;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         display: none;
       }
     }
@@ -110,7 +110,7 @@
 
       text-shadow: 1px 1px 1px rgba($color--white, 0.2);
 
-      @include media-query(medium) {
+      @include media-query(small) {
         font-size: 21px;
       }
 

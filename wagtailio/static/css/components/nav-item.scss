@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   margin: 0;
-  white-space: nowrap;
 
   .primary-nav & {
     @include font-smoothing();

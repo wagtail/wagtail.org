@@ -15,7 +15,7 @@
   padding: $headerHeight $gutter;
   background-color: $color--white;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     margin-left: $sidebarWidth;
     padding: $headerHeight ($gutter * 2);
   }
@@ -86,7 +86,7 @@
   margin: 0;
   padding: 0;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     position: absolute;
     top: 0;
     left: 0;
@@ -151,7 +151,7 @@
     opacity: 0;
     transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       transform: translate3d(0, 0%, 0);
       position: relative;
       background-color: transparent;
@@ -174,7 +174,7 @@
     position: relative;
     transition: padding 0.2s ease 0s;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding: ($gutter * 5) 40px ($gutter);
       text-align: left;
     }
@@ -182,7 +182,7 @@
     h2 {
       display: none;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         display: block;
       }
     }
@@ -192,7 +192,7 @@
       font-weight: bold;
       text-transform: uppercase;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         visibility: hidden;
       }
 
@@ -219,7 +219,7 @@
 .template-blog-page .body {
   padding-top: 0;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     padding-top: $headerHeight;
   }
 }
@@ -228,7 +228,7 @@
   .blog-nav__header {
     padding: 26px 40px ($gutter);
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding: 26px 40px ($gutter);
       text-align: left;
     }

@@ -1,7 +1,7 @@
 .sidebar {
   background-color: $color--headings;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     position: fixed;
     top: 0;
     z-index: 2;

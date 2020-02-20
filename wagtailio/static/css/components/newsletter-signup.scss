@@ -35,7 +35,7 @@
     }
   }
   .footer & {
-    @include media-query(medium) {
+    @include media-query(small) {
       flex-basis: 66.66%;
       max-width: 66.66%;
       min-width: 66.66%;

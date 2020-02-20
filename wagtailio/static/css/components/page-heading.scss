@@ -5,7 +5,7 @@
   text-align: center;
   margin: 0;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     margin: 0 0 $gutter * 4;
     padding: 0;
   }
@@ -20,7 +20,7 @@
     max-width: 1000px;
     margin: 0 auto;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       font-size: 24px;
     }
   }
@@ -38,7 +38,7 @@
     margin: 0 ($gutter / 2) ($gutter / 2);
     color: $color--white;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       margin: 0 $gutter / 2;
     }
 
