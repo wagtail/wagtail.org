@@ -200,10 +200,6 @@
         fill: $color--white;
         transition: transform 0.2s ease 0s;
       }
-
-      &:hover {
-        color: $color--black;
-      }
     }
 
     .sidebar-open & {
