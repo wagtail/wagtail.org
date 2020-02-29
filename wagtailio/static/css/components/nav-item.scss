@@ -28,9 +28,7 @@
       display: block;
       padding: ($gutter / 2) 0;
       color: $color--white;
-      text-transform: uppercase;
       font-size: 16px;
-      font-weight: 500;
       border: solid 1px transparent;
       transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 
@@ -39,6 +37,10 @@
         color: $color--primary;
         background-color: $color--white;
       }
+    }
+
+    #{$root}__icon {
+      fill: $color--white;
     }
   }
 }
