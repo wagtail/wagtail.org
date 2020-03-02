@@ -27,6 +27,10 @@
   .container {
     max-width: 800px;
     margin: 0 auto;
+
+    a {
+      border-bottom: 2px solid $color--lagoon;
+    }
   }
 
   img {
