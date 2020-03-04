@@ -10,6 +10,10 @@
   }
 }
 
+.blog-author {
+  border-bottom: none !important;
+}
+
 .blog-item {
   direction: ltr;
   padding: $headerHeight $gutter;
@@ -30,6 +34,10 @@
 
     a {
       border-bottom: 2px solid $color--lagoon;
+
+      &:hover {
+        border-bottom-color: $color--coral;
+      }
     }
   }
 

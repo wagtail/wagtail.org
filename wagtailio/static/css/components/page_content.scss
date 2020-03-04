@@ -10,6 +10,10 @@
   a {
     word-wrap: break-word;
     border-bottom: 2px solid $color--lagoon;
+
+    &:hover {
+      border-bottom-color: $color--coral;
+    }
   }
   ol,
   ul {
@@ -105,6 +109,17 @@
         .name {
         }
       }
+    }
+  }
+}
+
+.rich-text {
+
+  a {
+    border-bottom: 2px solid $color--lagoon;
+
+    &:hover {
+      border-bottom-color: $color--coral;
     }
   }
 }
