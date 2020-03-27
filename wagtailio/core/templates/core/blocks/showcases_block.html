@@ -16,15 +16,15 @@
             {% image item.image width-400 as item_image %}
 
             <div class="example-item">
+                {% if item.link_url %}<a class="example-item__link" href="{{ item.link_url }}">{% endif %}
                 <div class="example-item__image-container">
                     <img class="example-item__image" src="{{ item_image.url }}" alt="{{ item.iamge.title }}" />
                 </div>
                 <div class="text-container">
-                    {% if item.link_url %}<a class="example-item__link" href="{{ item.link_url }}">{% endif %}
                         <h3 class="example-item__heading">{{ item.title }}</h3>
                         {% if item.subtitle %}<p class="example-item__description">{{ item.subtitle }}</p>{% endif %}
-                    {% if item.link_url %}</a>{% endif %}
                 </div>
+                {% if item.link_url %}</a>{% endif %}
             </div>
 
         {% endfor %}
