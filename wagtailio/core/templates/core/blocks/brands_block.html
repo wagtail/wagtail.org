@@ -14,9 +14,9 @@
 
                     {% image brand.image width-300 as brand_image %}
                     {% if brand.url %}
-                        <a href="{{ brand.url }}">
+                    <a href="{{ brand.url }}" target="_blank">
                         <img src="{{ brand_image.url }}" alt="{{ brand_image.title }}" />
-                        </a>
+                    </a>
                     {% else %}
                     <div>
                         <img src="{{ brand_image.url }}" alt="{{ brand_image.title }}" />
