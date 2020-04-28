@@ -1,0 +1,31 @@
+.latest {
+  padding: ($section-space / 2) ($gutter * 2);
+  background: $color--background-light;
+
+  @include media-query(medium) {
+    padding: ($section-space / 2) ($gutter * 4);
+  }
+
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include media-query(medium) {
+      flex-direction: row;
+    }
+  }
+
+  .view-all {
+    text-align: center;
+  }
+}

@@ -1,0 +1,25 @@
+.follow-links {
+  margin-bottom: ($gutter * 2);
+
+  &__heading {
+    margin-bottom: $gutter;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: $gutter;
+  }
+
+  .footer & {
+    @include media-query(medium) {
+      flex-basis: 33.33%;
+      max-width: 33.33%;
+      min-width: 33.33%;
+    }
+  }
+}

@@ -97,6 +97,7 @@ class HomePageFeaturesBlock(blocks.StructBlock):
 class TestimonialBlock(blocks.StructBlock):
     quote = blocks.TextBlock()
     author = blocks.CharBlock()
+    image = ImageChooserBlock()
     link = blocks.URLBlock(required=False)
 
     class Meta:

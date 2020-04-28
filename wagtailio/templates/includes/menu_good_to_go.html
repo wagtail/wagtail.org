@@ -1,8 +1,10 @@
-<nav class="get_started_links">
-    <h3>Good to go?</h3>
-    <p>Everything you need to know about getting your Wagtail build up and running</p>
-
+<div class="get-started">
+    <h3 class="get-started__heading footer__heading">Good to go?</h3>
+    <p class="get-started__description">Everything you need to know about getting your Wagtail build up and running</p>
     {% for link in links %}
-        <a href="{{ link.link_URL }}" class="btn btn--outline btn--outline--light btn--transparent">{{ link.link_text }}</a>
+        <a href="{{ link.link_URL }}" class="button button--primary button--hover">
+            {{ link.link_text }}
+            <svg class="nav-item__icon"xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        </a>
     {% endfor %}
-</nav>
+</div>

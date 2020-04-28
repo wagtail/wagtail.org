@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<section class="pane__showcase border--after">
+<section class="examples">
 
     <header>
         <h2>{{ value.title }}</h2>
@@ -9,28 +9,28 @@
         {% endif %}
     </header>
 
-    <div class="showcase">
+    <div class="examples__content">
 
         {% for item in value.items %}
 
-            {% image item.image width-600 as item_image %}
+            {% image item.image width-400 as item_image %}
 
-            <div class="showcase--item">
-                <div class="image-container">
-                    <img src="{{ item_image.url }}" alt="{{ item.iamge.title }}" />
+            <div class="example-item">
+                <div class="example-item__image-container">
+                    <img class="example-item__image" src="{{ item_image.url }}" alt="{{ item.iamge.title }}" />
                 </div>
                 <div class="text-container">
-                    {% if item.link_url %}<a href="{{ item.link_url }}">{% endif %}
-                        <h3>{{ item.title }}</h3>
-                        {% if item.subtitle %}<p>{{ item.subtitle }}</p>{% endif %}
+                    {% if item.link_url %}<a class="example-item__link" href="{{ item.link_url }}">{% endif %}
+                        <h3 class="example-item__heading">{{ item.title }}</h3>
+                        {% if item.subtitle %}<p class="example-item__description">{{ item.subtitle }}</p>{% endif %}
                     {% if item.link_url %}</a>{% endif %}
                 </div>
-            </div> <!-- /showcase--item -->
+            </div>
 
         {% endfor %}
 
-    </div> <!-- /carousel -->
+    </div>
 
-    {% include_block value.more_link with link_classes="view-all btn btn--outline btn--outline--light btn--opaque btn--dark" %}
+    {% include_block value.more_link with link_classes="button button--primary" %}
 
 </section> <!-- /case-studies -->
