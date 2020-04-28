@@ -53,11 +53,15 @@
 
             {% image page.main_image original %}
             {% include_block page.body %}
+
         </div>
     </div>
 
     {% include "core/includes/share.html" %}
-
 </div> <!-- /blog-container -->
 
+{% endblock %}
+
+{# Override the footer block to remove the footer from this page #}
+{% block footer %}
 {% endblock %}
