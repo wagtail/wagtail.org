@@ -32,7 +32,7 @@
     padding: 0;
     margin: 0 0 ($gutter * 2);
 
-    @include media-query(medium) {
+    @include media-query(small) {
       padding: 0 $gutter * 3;
     }
   }

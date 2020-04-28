@@ -68,7 +68,8 @@ $max-width: 1400px;
 
 // Breakpoints
 $breakpoints: (
-  "medium" "(min-width: 599px)",
+  "small" "(min-width: 599px)",
+  "medium" "(min-width: 899px)",
   "large" "(min-width: 1023px)",
   "extra-large" "(min-width: 1440px)",
   "mobileOnly" "(max-width: 599px)"

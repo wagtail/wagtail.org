@@ -1,20 +1,10 @@
 .feature-item {
-  flex-basis: 100%;
-  max-width: 100%;
-  min-width: 100%;
   margin-bottom: ($gutter * 2);
-
-  @include media-query(medium) {
-    flex-basis: 25%;
-    max-width: 25%;
-    min-width: 25%;
-    padding: 0 ($gutter);
-  }
 
   &__heading {
     font-size: 16px;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       font-size: 18px;
     }
   }
@@ -22,7 +12,7 @@
   &__description {
     font-size: 13px;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       font-size: 14px;
     }
   }

@@ -5,7 +5,7 @@
   &__logo {
     width: 70px;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       width: 90px;
     }
   }

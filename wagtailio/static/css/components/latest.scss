@@ -2,7 +2,7 @@
   padding: ($section-space / 2) ($gutter * 2);
   background: $color--background-light;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     padding: ($section-space / 2) ($gutter * 4);
   }
 
@@ -17,11 +17,11 @@
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
 
-    @include media-query(medium) {
-      flex-direction: row;
+    @include media-query(large) {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 

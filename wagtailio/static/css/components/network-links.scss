@@ -13,7 +13,7 @@
     font-size: 13px;
   }
   .footer & {
-    @include media-query(medium) {
+    @include media-query(small) {
       flex-basis: 50%;
       max-width: 50%;
       min-width: 50%;

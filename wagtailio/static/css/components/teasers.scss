@@ -3,33 +3,32 @@
   margin-bottom: ($gutter * 4);
 
   &__main-heading {
-    color: $color--white;
     font-size: 42px;
     margin: 0 0 60px;
     text-align: center;
   }
 
   &__container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $gutter;
+    row-gap: $gutter;
     justify-content: center;
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
     max-width: $max-width;
+
+    @include media-query(small) {  
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__item {
-    flex: 0 1 auto;
-    flex-basis: 50%;
     list-style-type: none;
     padding: 0 $gutter 0;
     margin: 0 0 ($gutter * 2);
     text-align: center;
-
-    @include media-query(medium) {
-      flex-basis: 33.333%;
-    }
 
     &__link {
       display: block;
@@ -39,7 +38,7 @@
       padding: ($gutter * 2) $gutter $gutter;
       transition: transform 0.2s ease 0s;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         min-height: 245px;
       }
 

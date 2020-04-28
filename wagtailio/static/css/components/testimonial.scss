@@ -11,7 +11,7 @@
   min-height: 400px;
   margin: 0 auto $section-space;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     min-height: 300px;
   }
 

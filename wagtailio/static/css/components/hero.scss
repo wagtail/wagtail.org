@@ -8,7 +8,7 @@
   height: auto;
   max-height: 800px;
 
-  @include media-query(medium) {
+  @include media-query(small) {
     height: 700px;
     padding-top: $headerHeight;
   }
@@ -32,7 +32,7 @@
     z-index: 0;
     display: none;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       display: block;
     }
   }
@@ -41,13 +41,14 @@
     position: relative;
     max-width: $max-width;
     margin: 0 auto;
+    z-index: 1;
   }
 
   .text-container {
     width: 100%;
     padding: ($gutter * 2);
 
-    @include media-query(medium) {
+    @include media-query(small) {
       width: 50%;
       padding: ($gutter * 5) 0 0 ($gutter * 3);
     }
@@ -62,7 +63,7 @@
       font-weight: 700;
       color: $color--quaternary;
 
-      @include media-query(medium) {
+      @include media-query(small) {
         font-size: 18px;
       }
     }
@@ -89,7 +90,7 @@
     width: 50%;
     height: auto;
 
-    @include media-query(medium) {
+    @include media-query(small) {
       display: block;
       width: 40%;
     }

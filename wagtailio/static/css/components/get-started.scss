@@ -6,7 +6,7 @@
   }
 
   .footer & {
-    @include media-query(medium) {
+    @include media-query(small) {
       flex-basis: 100%;
       max-width: 100%;
       min-width: 100%;

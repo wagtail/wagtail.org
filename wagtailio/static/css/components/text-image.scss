@@ -1,8 +1,8 @@
 .textimage {
   background-color: $color--background-light;
   text-align: left;
-  margin-bottom: ($gutter * 2);
-  padding: ($gutter * 3) 0;
+  margin: 0 (-$gutter) ($gutter * 2);
+  padding: ($gutter * 3) $gutter;
 
   .container {
     max-width: 800px;

@@ -86,9 +86,13 @@ $(function() {
 
   // Window resize
   $(window).on("resize", function() {
+    // Scrolling inside the sidebar list
+    // causes the resize event to fire on Chrome Android.
+    // Disabled to fix this bug
+
     // Close nav on resize
-    $("body").removeClass("mobile_nav-open");
-    $("body").removeClass("sidebar-open");
+    // $("body").removeClass("mobile_nav-open");
+    // $("body").removeClass("sidebar-open");
   });
 
   /***
