@@ -1,6 +1,12 @@
-<blockquote>
-    <p>
+{% load wagtailcore_tags wagtailimages_tags staticfiles %}
+
+<blockquote class="testimonial-item">
+    {% if value.image %}
+        {% image value.image fill-120x120 as testimonial_image  %}
+        <img src="{{ testimonial_image.url }}" alt="{{ value.image.title }}" class="testimonial-item__image">
+    {% endif %}
+    <p class="testimonial-item__quote">
         <span>“</span>{{ value.quote }}<span>”</span>
     </p>
-    <cite><a href="{{ value.link }}">{{ value.author }}</a></cite>
+    <cite class="testimonial-item__author"><a href="{{ value.link }}">{{ value.author }}</a></cite>
 </blockquote>

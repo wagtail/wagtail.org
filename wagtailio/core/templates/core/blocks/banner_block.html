@@ -1,22 +1,24 @@
 {% load wagtailcore_tags wagtailimages_tags staticfiles %}
 
-{% image value.background original as bg_image %}
+<section class="hero">
 
-<section class="hero" style="background-image:url({% if value.background %}{{ bg_image.url }}{% else %}{% static 'img/hero_bg_3.jpg' %}{% endif %})">
+    <div class="hero__container">
 
-    <div class="text-container">
-        <h2 class="js-fade">{{ value.title }}</h2>
-        <p class="js-fade">{{ value.sub_title }}</p>
+        <div class="text-container">
+            <h2>{{ value.title }}</h2>
+            <p>{{ value.sub_title }}</p>
 
-        <div class="actions">
-            {% for link in value.links %}
-                {% include_block link %}
-            {% endfor %}
-        </div> <!-- /actions -->
+            <div class="actions">
+                {% for link in value.links %}
+                    {% include_block link %}
+                {% endfor %}
+            </div> <!-- /actions -->
 
-    </div> <!-- /text-container -->
+        </div> <!-- /text-container -->
 
-    {% image value.image original as main_image  %}
-    <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
+        {% image value.image width-700 as main_image  %}
+        <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
+        
+    </div>
 
 </section> <!-- /hero -->

@@ -1,11 +1,11 @@
-<nav class="network_links">
-    <h3 class="network_links__heading">Network </h3>
-    <ul class="network_links__container">
+<nav class="network-links">
+    <h3 class="network-links__heading footer__heading">Network </h3>
+    <ul class="network-links__container">
         {% for link in links %}
-            <li class="network_links__item">
-                <a class="network_links__link" href="{{ link.link_URL }}">
-                    <h4 class="network_links__subheading">{{ link.link_text }}</h4>
-                    <p>{{ link.link_description }}</p>
+            <li class="network-links__item">
+                <a class="network-links__link" href="{{ link.link_URL }}">
+                    <h4 class="network-links__subheading">{{ link.link_text }}</h4>
+                    <p class="network-links__description">{{ link.link_description }}</p>
                 </a>
             </li>
         {% endfor %}

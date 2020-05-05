@@ -2,18 +2,31 @@
 
 {% image value.background original as bg_image %}
 
-{% if value.brands %}
-    <section class="pane pane__logo-list">
+{% if value.brands2 %}
+    <section class="logo-list">
 
-        <h2>{{ value.title }}</h2>
+        <div class="logo-list__container">
 
-        <div class="carousel">
-            {% for brand in value.brands %}
-                {% image brand width-300 as brand_image %}
-                <div><img src="{{ brand_image.url }}" alt="{{ brand.title }}" /></div>
-            {% endfor %}
+            <h2 class="logo-list__heading heading heading--secondary heading--top-border">{{ value.title }}</h2>
 
-        </div> <!-- /carousel -->
+            <div class="logo-list__carousel carousel">
+                {% for brand in value.brands2 %}
 
-    </section> <!-- /pane__logo-list -->
+                    {% image brand.image width-300 as brand_image %}
+                    {% if brand.url %}
+                    <a href="{{ brand.url }}" target="_blank">
+                        <img src="{{ brand_image.url }}" alt="{{ brand_image.title }}" />
+                    </a>
+                    {% else %}
+                    <div>
+                        <img src="{{ brand_image.url }}" alt="{{ brand_image.title }}" />
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div> <!-- /carousel -->
+        
+        </div>
+
+    </section> <!-- /logo-list -->
 {% endif %}

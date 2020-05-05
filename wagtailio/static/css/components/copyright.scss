@@ -1,0 +1,37 @@
+.copyright {
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba($color--border, 0.2);
+    padding-top: ($gutter * 2);
+  }
+
+  &__text {
+    font-size: 15px;
+  }
+
+  .torchbox {
+    &__container {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    &__logo {
+      opacity: 0.6;
+      fill: $color--black;
+      width: 100px;
+      height: 25px;
+      transform: translate3D(80%, 0, 0);
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+        transform: translate3D(0, 0, 0);
+      }
+    }
+  }
+}

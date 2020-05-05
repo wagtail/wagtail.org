@@ -1,7 +1,7 @@
 {% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en-US">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -60,20 +60,14 @@
             <!-- End Google Tag Manager -->
         {% endif %}
 
-        <!-- Font: Effra -->
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400" rel="stylesheet">
-        <script src="//use.typekit.net/mah8zuf.js"></script>
-        <script>try{Typekit.load();}catch(e){}</script>
-
         {% compress css %}
-            <link rel="stylesheet" href="{% static 'css/vendor/normalize.css' %}" />
             <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
         {% endcompress %}
 
         {% block extra_css %}{% endblock %}
 
     </head>
-    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} pane__contours">
+    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} ">
         {% if not DEBUG %}
             <!-- Google Tag Manager (noscript) -->
             <noscript>
@@ -111,17 +105,17 @@
 
         <div class="page">
 
-            <header class="global">
-                <div class="container">
+            <header class="header">
+                <div class="header__container">
                     <a class="branding" href="/">
                         <img class="branding__logo" src="{% static "img/wagtail.svg" %}" alt="Wagtail" />
                     </a>
-                    <a href="#primary_navigation" class="menu-toggle">
+                    <a href="#primary_navigation" class="menu-toggle" aria-label="Toggle menu">
                         <span></span>
                     </a>
                     {% menu_primary %}
                 </div>
-            </header> <!-- /global -->
+            </header> <!-- /header -->
 
             {% include "includes/svg_sprites.html" %}
 
@@ -133,16 +127,9 @@
                     {% block content %}{% endblock %}
                 </section>
 
-                <footer class="global">
-                    <div class="container">
-                        {% menu_good_to_go %}
-                        {% menu_network %}
-                        {% latest_blog %}
-                        {% include "includes/newsletter_signup.html" %}
-                        {% include "includes/follow.html" %}
-                        {% include "includes/copyright.html" %}
-                    </div>
-                </footer> <!-- /global -->
+                {% block footer %}
+                {% include "includes/footer.html" %}
+                {% endblock %}
 
             </div> <!-- /body -->
 
@@ -173,7 +160,6 @@
         {% endif %}
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
-        <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
 
         {% compress js %}

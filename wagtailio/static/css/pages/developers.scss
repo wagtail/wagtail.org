@@ -4,17 +4,9 @@
 
 */
 
-
 .template-developers-page {
-    background: $color-primary-highlight;
-
-    .page-heading {
-        padding-top: ($grid * 4);
-        margin-bottom: ($grid * 2);
-    }
-
-    .pane__code {
-        margin-bottom: ($grid * 4);
-    }
-
+  .page-heading {
+    padding-top: ($gutter * 4);
+    margin-bottom: ($gutter * 2);
+  }
 }

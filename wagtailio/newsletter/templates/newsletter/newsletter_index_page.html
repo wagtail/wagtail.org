@@ -7,10 +7,10 @@
 
 {% block content %}
     <div class="page-content">
-        <header class="page-heading pane__contours">
-            <h1>This week in Wagtail</h1>
+        <header class="page-heading ">
+            <h1 class="page-heading__heading">This week in Wagtail</h1>
 
-            <div class="introduction">
+            <div class="page-heading__introduction">
                 A (most) weekly email with updates from the Wagtail core team.
             </div>
         </header>
@@ -63,7 +63,7 @@
                 </ul>
 
                 {% if newsletters.has_next %}
-                    <a class="btn pagination" href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
+                    <a class="button pagination" href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
                 {% endif %}
             {% else %}
                 <p>There are currently no newsletters</p>

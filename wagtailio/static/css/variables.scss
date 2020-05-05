@@ -1,58 +1,76 @@
 /* ============================================
-
   Vars
-
 */
 
-
 // Fonts
-$font-primary: "effra", sans-serif;
-$font-secondary: 'Playfair Display', serif;
+$font-primary: "Apercu Pro", arial, helvetica, sans-serif;
 
-// Colours (could do with tidying this up)
-$color-primary-dark: #222; // dark grey
-$color-primary-light: #fff; // white (duh!)
-$color-primary-highlight: #ff574a; // wagtail brand salmony-orangey-pink
-$color-primary-bg: #f6f2f2; // off-white
-$color-secondary-light: rgba($color-primary-light, 0.7);
-$color-secondary-highlight: #43b1b0; // wagtail brand teal
-$color-green: #3cb65b;
+// Colours
+$color--blue: #2f128d;
+$color--dark-blue: #251657;
+$color--coral: #fd5765;
+$color--lagoon: #3beccd;
 
-$color--primary:            $color-primary-highlight;   // orange
-$color--secondary:          $color-secondary-highlight;  // teal
-$color--tertiary:           $color-primary-dark; // grey
-$color--quaternary:         $color-primary-bg; // offwhite
+$color--grey: #555;
+$color--grey-light: #f4f3f6;
+$color--grey-dark: #333;
+$color--grey-darker: #222;
 
-// Generic colours
-$color-white: #fff;
-$color-black: #000;
+$color--black: #000;
+$color--white: #fff;
+
+$color--primary: $color--dark-blue;
+$color--secondary: $color--lagoon;
+$color--tertiary: $color--blue;
+$color--quaternary: $color--lagoon;
+
+$color--interaction: $color--dark-blue;
+$color--interaction-hover: $color--blue;
 
 // Heading and body text colours
-$headingColor: #333;
-$bodyColor: #555;
+$color--headings: $color--dark-blue;
+$color--base: $color--grey;
 
 // Borders
-$borderColorLight: rgba($color-white, 0.3);
-$borderColorDark: rgba($color-black, 0.3);
+$color--border-light: $color--grey-light;
+$color--border: $color--grey;
+$color--border-dark: $color--grey-darker;
 
 // Background colours
-$backgroundColor: #f4f1ea;
+$color--background: $color--white;
+$color--background-light: $color--grey-light;
 
 // Animations
 $anim-speed-primary: 250ms;
-$anim-ease-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$anim-ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // Header vars
-$headerHeight: 74px;
+$headerHeight: 70px;
 $headerHeightMobile: 54px;
+
+// Sidebar
+$sidebarWidth: 300px;
+$sidebarWidthWide: 450px;
 
 // Grid
 $grid: 20px;
+$gutter: $grid;
+
+$section-space: ($gutter * 5);
 
 // Carousel
 $carousel-fadeInSpeed: 1500ms;
 $carousel-fadeOutSpeed: 1500ms;
-$carousel-highlightColour: $color-primary-highlight;
+$carousel-highlightColour: $color--interaction;
 
 // Max width
-$website-width-max: 1600px;
+$max-width: 1400px;
+
+// Breakpoints
+$breakpoints: (
+  "small" "(min-width: 599px)",
+  "medium" "(min-width: 899px)",
+  "large" "(min-width: 1023px)",
+  "extra-large" "(min-width: 1440px)",
+  "mobileOnly" "(max-width: 599px)"
+);

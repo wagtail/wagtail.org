@@ -77,7 +77,12 @@ class BannerBlock(blocks.StructBlock):
 
 class BrandsBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
-    brands = blocks.ListBlock(ImageChooserBlock())
+
+    # Name changed to avoid conflicts with previous revisions of pages
+    brands2 = blocks.ListBlock(blocks.StructBlock([
+        ("url", blocks.URLBlock(required=False)),
+        ("image", ImageChooserBlock())
+    ]))
 
     class Meta:
         icon = "pick"
@@ -97,6 +102,7 @@ class HomePageFeaturesBlock(blocks.StructBlock):
 class TestimonialBlock(blocks.StructBlock):
     quote = blocks.TextBlock()
     author = blocks.CharBlock()
+    image = ImageChooserBlock()
     link = blocks.URLBlock(required=False)
 
     class Meta:

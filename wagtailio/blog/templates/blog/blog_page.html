@@ -39,25 +39,29 @@
 
             <div class="date"><span>{{ page.date|date }}<span></div>
             <div class="heading"><h1>{{ page.title }}</h1></div>
-            <div class="introduction"><p>{{ page.introduction }}</p></div> <!-- /introduction -->
+            <div class="page-heading__introduction"><p>{{ page.introduction }}</p></div> <!-- /introduction -->
 
             <div class="author">
                 <div class="image">
                     {% image page.author.image fill-55x55 alt=page.author.name %}
                 </div>
                 <div class="details">
-                    <h2><a href="{{ page.author.url }}">{{ page.author.name }}</a></h2>
+                    <h2><a class="blog-author" href="{{ page.author.url }}">{{ page.author.name }}</a></h2>
                     <span class="role">{{ page.author.job_title }}</span>
                 </div>
             </div>
 
             {% image page.main_image original %}
             {% include_block page.body %}
+
         </div>
     </div>
 
     {% include "core/includes/share.html" %}
-
 </div> <!-- /blog-container -->
 
+{% endblock %}
+
+{# Override the footer block to remove the footer from this page #}
+{% block footer %}
 {% endblock %}

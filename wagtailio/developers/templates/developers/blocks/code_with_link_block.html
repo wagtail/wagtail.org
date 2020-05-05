@@ -1,21 +1,21 @@
 {% load wagtailcore_tags %}
 
 <header class="page-heading">
-    <h1>{{ page.title }}</h1>
-    <div class="introduction">
+    <h1 class="page-heading__heading">{{ page.title }}</h1>
+    <div class="page-heading__introduction">
         {{ value.title }}
-        {% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}
+        {% if value.subtitle %}{{ value.subtitle }}{% endif %}
     </div>
 </header> <!-- /page-heading -->
 
-<section class="pane__code">
+<section class="terminal">
 
     <div class="text-container">
 
 
         <div class="pre-container">
 
-            <div class="app-header">
+            <div class="app-bar">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -26,7 +26,7 @@
         </div> <!-- /pre-container -->
 
         {% if value.link %}
-            <div class="actions">
+            <div class="actions actions--secondary">
                 {% include_block value.link %}
             </div> <!-- /actions -->
         {% endif %}

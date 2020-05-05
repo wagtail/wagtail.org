@@ -1,14 +1,14 @@
 {% load wagtailcore_tags %}
 
-<section class="pane__code border--after">
+<section class="terminal">
 
     <div class="text-container">
 
-        <h2>{{ value.title }}{% if value.subtitle %} <span>{{ value.subtitle }}</span>{% endif %}</h2>
+        <h2>{{ value.title }}{% if value.subtitle %} {{ value.subtitle }}{% endif %}</h2>
 
         <div class="pre-container">
 
-            <div class="app-header">
+            <div class="app-bar">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -19,7 +19,7 @@
         </div> <!-- /pre-container -->
 
         {% if value.link %}
-            <div class="actions">
+            <div class="actions actions--secondary">
                 {% include_block value.link %}
             </div> <!-- /actions -->
         {% endif %}
