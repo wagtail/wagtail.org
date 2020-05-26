@@ -44,7 +44,7 @@
     &__link {
         color: $color--blue;
         text-decoration: underline;
-        pointer-events: auto;
+        pointer-events: visible;
 
         &:hover {
             color: $color--secondary;
