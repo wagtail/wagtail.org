@@ -1,6 +1,6 @@
 .cookie {
     $root: &;
-    padding: 0px 10px 10px 10px;
+    padding: 0px 10px 10px;
     position: fixed;
     right: auto;
     bottom: 0;
@@ -13,12 +13,12 @@
     // Applied if cookie just added
     &.inactive {
         display: block;
-        transform: translate3d(0, 100%, 0);
+        transform: translateY(100%);
     }
 
     &.active {
         display: block;
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0);
     }
 
     &__container {
