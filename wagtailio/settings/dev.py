@@ -11,6 +11,7 @@ FB_APP_ID = 0
 
 SECURE_SSL_REDIRECT = False
 
+ALLOWED_HOSTS = ["*"]
 
 try:
     from .local import *  # noqa
