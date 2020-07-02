@@ -58,6 +58,9 @@ INSTALLED_APPS = (
     "taggit",
     "modelcluster",
     "wagtail.core",
+    "wagtail_content_import",
+    "wagtail_content_import.pickers.google",
+    "wagtail_content_import.pickers.local",
     "wagtail.admin",
     "wagtail.documents",
     "wagtail.snippets",
@@ -416,3 +419,5 @@ if "FRONTEND_CACHE_CLOUDFLARE_TOKEN" in env:
             "ZONEID": env["FRONTEND_CACHE_CLOUDFLARE_ZONEID"],
         }
     }
+
+WAGTAILCONTENTIMPORT_DOCX_PARSER = "wagtailio.utils.parsers.DocxHTMLParser"

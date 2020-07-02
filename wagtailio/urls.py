@@ -12,6 +12,8 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
+from wagtail_content_import import urls as wagtail_content_import_urls
+
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter import views
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
@@ -23,6 +25,7 @@ from wagtailio.utils.cache import get_default_cache_control_decorator
 private_urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
+    path("", include(wagtail_content_import_urls)),
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
