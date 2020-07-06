@@ -7,8 +7,10 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtail_content_import.models import ContentImportMixin
 
 from wagtailio.utils.blocks import StoryBlock
+from wagtailio.utils.mappers import StreamFieldMapper
 from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 
 
@@ -48,7 +50,7 @@ class Author(models.Model):
     ]
 
 
-class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
+class BlogPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
@@ -72,6 +74,8 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     @property
     def siblings(self):
         return self.__class__.objects.live().sibling_of(self).order_by("-date")
+
+    mapper_class = StreamFieldMapper
 
     content_panels = Page.content_panels + [
         SnippetChooserPanel("author"),
