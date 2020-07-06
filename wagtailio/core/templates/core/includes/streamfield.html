@@ -2,7 +2,6 @@
 
 
 {% for child in value %}
-
     {% if child.block_type == 'h2' %}
 
         <h2>{{ child }}</h2>
@@ -34,6 +33,8 @@
             </blockquote>
         </div>
 
+    {% elif child.block_type == 'image' %}
+        <div class="paragraph">{% image child.value width-800 %}</div>
     {% elif child.block_type == 'imagecaption' %}{# img-full-text #}
 
         <div class="imagecaption">
