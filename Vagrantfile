@@ -20,6 +20,29 @@ Vagrant.configure(2) do |config|
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false
 
+  # Workaround to prevent missing linux headers making new installs fail.
+  # Adapted from https://github.com/dotless-de/vagrant-vbguest/issues/351#issuecomment-536282015
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    class WorkaroundVbguest < VagrantVbguest::Installers::Linux
+        def install(opts=nil, &block)
+              puts 'Ensuring we\'ve got the correct build environment for vbguest...'
+              communicate.sudo('apt-get -y --force-yes update', (opts || {}).merge(:error_check => false), &block)
+              communicate.sudo('apt-get -y --force-yes install -y build-essential linux-headers-amd64 linux-image-amd64', (opts || {}).merge(:error_check => false), &block)
+              puts 'Continuing with vbguest installation...'
+            super
+              puts 'Performing vbguest post-installation steps...'
+                communicate.sudo('usermod -a -G vboxsf vagrant', (opts || {}).merge(:error_check => false), &block)
+        end
+        def reboot_after_install?(opts=nil, &block)
+          true
+        end
+      end
+
+
+    config.vbguest.installer = WorkaroundVbguest
+  end
+  # End workaround
+
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8000" will access port 8000 on the guest machine.

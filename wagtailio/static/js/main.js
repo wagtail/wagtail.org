@@ -138,4 +138,25 @@ $(function() {
       unpinned: "site-header--slideup"
     }
   });
+
+  // Cookie message
+  var messageContainer = $("[data-cookie-message]")
+  var dismissButton = $("[data-cookie-dismiss]")
+  if(messageContainer) {
+    // If cookie doesn't exists
+    if(!Cookies.get('client-cookie')) {
+      messageContainer.addClass('active')
+    }
+  }
+  // Bind cookie dismiss handler
+  if(dismissButton) {
+    dismissButton.click(function () {
+      Cookies.set('client-cookie', 'agree to cookies', {
+        expires: 365, // Cookie expires after 365 days
+      });
+      messageContainer.removeClass('active')
+      messageContainer.addClass('inactive')
+    })
+  }
+
 });

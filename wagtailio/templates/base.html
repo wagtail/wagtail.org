@@ -139,6 +139,8 @@
 
         </div> <!-- /page -->
 
+       {% include "includes/cookie_message.html" %}
+
         {% if not DEBUG %}
             <!-- twitter campaign tracking code -->
             <script src="https://platform.twitter.com/oct.js"></script>
@@ -164,6 +166,7 @@
 
         {% compress js %}
             <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+            <script src="{% static 'js/vendor/js-cookie.min.js' %}"></script>
             <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
             <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
             <script src="{% static 'js/vendor/headroom.min.js' %}"></script>

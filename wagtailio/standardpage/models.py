@@ -6,11 +6,15 @@ from wagtail.core.models import Page
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtail_content_import.models import ContentImportMixin
+from wagtailio.utils.mappers import StreamFieldMapper
 
 
-class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
+class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
     body = StreamField(StoryBlock())
+
+    mapper_class = StreamFieldMapper
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),

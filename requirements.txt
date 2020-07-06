@@ -1,6 +1,6 @@
-Django==2.2.10
+Django==2.2.12
 dj-database-url==0.5.0
-wagtail==2.8
+wagtail==2.8.1
 psycopg2==2.7.4
 libsass==0.8.3
 Pillow==5.4.1
@@ -18,6 +18,9 @@ django-redis==4.9.0
 django-basic-auth-ip-whitelist==0.2.1
 scout-apm==1.1.7
 django-referrer-policy==1.0
+wagtailaltgenerator==4.1.1
+wagtail-content-import==0.4.1
+mammoth==1.4.10
 
 
 # Pinned as django-redis has incompatibility with later versions
