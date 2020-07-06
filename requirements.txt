@@ -19,6 +19,8 @@ django-basic-auth-ip-whitelist==0.2.1
 scout-apm==1.1.7
 django-referrer-policy==1.0
 wagtailaltgenerator==4.1.1
+wagtail-content-import==0.4.1
+mammoth==1.4.10
 
 
 # Pinned as django-redis has incompatibility with later versions
