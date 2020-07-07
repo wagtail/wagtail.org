@@ -895,7 +895,8 @@
                         <table class="twelve columns">
                           <tr>
                             <td class="twelve sub-columns">
-                              <img src="{{ request.site.url }}{% static 'img/this-week-in-wagtail.png' %}" alt="This Week in Wagtail" />
+                              {% wagtail_site as site %}
+                              <img src="{{ site.url }}{% static 'img/this-week-in-wagtail.png' %}" alt="This Week in Wagtail" />
                             </td>
                             <td class="expander"></td>
                           </tr>
