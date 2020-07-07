@@ -1,5 +1,4 @@
 {% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
-
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -21,7 +20,8 @@
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://{{ request.site.hostname }}{{ page.url }}" />
+        {% wagtail_site as site %}
+        <meta property="og:url" content="https://{{ site.hostname }}{{ page.url }}" />
         <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
         <meta property="og:image" content="{% if page.social_image %}{% image page.social_image width-1024 as img %}{{ img.url }}{% elif page.main_image %}{% image page.main_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
         <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
