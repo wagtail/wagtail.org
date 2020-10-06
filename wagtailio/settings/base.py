@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     "taggit",
     "modelcluster",
     "wagtail.core",
+    "wagtail_image_import",
     "wagtail_content_import",
     "wagtail_content_import.pickers.google",
     "wagtail_content_import.pickers.local",
@@ -429,3 +430,17 @@ WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY = env.get(
 WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG = env.get(
     "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
 )
+
+WAGTAILIMAGEIMPORT_GOOGLE_PICKER_API_KEY = env.get(
+    "WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY"
+)
+WAGTAILIMAGEIMPORT_GOOGLE_OAUTH_CLIENT_SECRET = env.get(
+    "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
+)
+
+WAGTAILIMAGEIMPORT_FIELD_MAPPING = {
+    "id": "driveidmapping__drive_id", 
+    "name": "title",
+    "imageMediaMetadata__time": "exif_datetime",
+    "md5Checksum": "md5_hash"
+}
