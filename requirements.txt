@@ -19,6 +19,7 @@ django-basic-auth-ip-whitelist==0.3.4
 scout-apm==1.1.7
 django-referrer-policy==1.0
 wagtailaltgenerator==4.1.2
+wagtail-airtable==0.1.4
 wagtail-content-import==0.4.1
 wagtail-image-import==0.0.1
 mammoth==1.4.10
