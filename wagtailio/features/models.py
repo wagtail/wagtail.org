@@ -10,6 +10,8 @@ from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
+from wagtail_airtable.mixins import AirtableMixin
+
 from wagtailio.features.blocks import FeatureIndexPageBlock
 
 
@@ -54,7 +56,7 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
 
 
 @register_snippet
-class FeatureDescription(ClusterableModel):
+class FeatureDescription(AirtableMixin, ClusterableModel):
     title = models.CharField(max_length=255)
     introduction = models.CharField(max_length=255, blank=True)
     documentation_link = models.URLField(max_length=255, blank=True)
@@ -67,6 +69,28 @@ class FeatureDescription(ClusterableModel):
 
     def __str__(self):
         return self.title
+
+    @classmethod
+    def map_import_fields(cls):
+        """
+        Maps Airtable columns to Django Model Fields.
+        """
+        mappings = {
+            "Title": "title",
+            "Introduction": "introduction",
+            "Documentation": "documentation_link"
+        }
+        return mappings
+
+    def get_export_fields(self):
+        """
+        Get field mappings for Airtable when saving a model object.
+        """
+        return {
+            "Title": self.title,
+            "Introduction": self.introduction,
+            "Documentation": self.documentation_link
+        }
 
 
 class FeatureIndexPageMenuOption(models.Model):

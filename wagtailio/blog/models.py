@@ -9,6 +9,8 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail_content_import.models import ContentImportMixin
 
+from wagtail_airtable.mixins import AirtableMixin
+
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
 from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
@@ -50,7 +52,7 @@ class Author(models.Model):
     ]
 
 
-class BlogPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
+class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
@@ -91,3 +93,22 @@ class BlogPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
         + CrossPageMixin.panels
         + [FieldPanel("canonical_url")]
     )
+
+    @classmethod
+    def map_import_fields(cls):
+        """
+        Maps Airtable columns to Django Model Fields.
+        """
+        mappings = {
+            "Title": "title",
+            # "slug" not included so Airtable cannot overwrite the Page slug as that could cause a lot of trouble with URLs and SEO. But it's possible to do this assuming there aren't two pages with the same slug.
+        }
+        return mappings
+
+    def get_export_fields(self):
+        return {
+            "Title": self.title,
+            "Live": self.live,
+            "Slug": self.slug,
+            "Author": getattr(self.author, 'name', '')
+        }
