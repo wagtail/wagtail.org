@@ -87,6 +87,7 @@ class FeatureDescription(AirtableMixin, ClusterableModel):
         Get field mappings for Airtable when saving a model object.
         """
         return {
+            "ID": self.id,
             "Title": self.title,
             "Introduction": self.introduction,
             "Documentation": self.documentation_link

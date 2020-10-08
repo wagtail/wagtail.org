@@ -107,6 +107,7 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
 
     def get_export_fields(self):
         return {
+            "ID": self.id,
             "Title": self.title,
             "Live": self.live,
             "Slug": self.slug,
