@@ -8,4 +8,4 @@ class BlogPageSerializer(AirtableSerializer):
     """
 
     title = serializers.CharField(max_length=255, required=True)
-    slug = serializers.CharField(max_length=200, required=False)
+    live = serializers.BooleanField(default=False)

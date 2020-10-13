@@ -101,6 +101,7 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
         """
         mappings = {
             "Title": "title",
+            "Live": "live",
             # "slug" not included so Airtable cannot overwrite the Page slug as that could cause a lot of trouble with URLs and SEO. But it's possible to do this assuming there aren't two pages with the same slug.
         }
         return mappings
@@ -113,3 +114,25 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
             "Slug": self.slug,
             "Author": getattr(self.author, 'name', '')
         }
+
+    def save(self, user=None, **kwargs):
+        publishing = False
+        if self.pk and self._skip_signals:
+            # if updating an existing instance from airtable
+            old_live_status = BlogPage.objects.get(pk=self.pk).live
+            # work out whether the live status is being updated from airtable
+            # if so, publish or unpublish the page to achieve the change instead
+            # to ensure all other corresponding fields (eg `live_revision`) are updated
+            # too
+            if not self.live and old_live_status:
+                self.live = True
+                self.unpublish(user=user, commit=False)
+            elif self.live and not old_live_status:
+                publishing = True
+                self.live = False
+
+        super().save(user=user, **kwargs)
+
+        if publishing:
+            new_revision = self.save_revision(user=user)
+            new_revision.publish(user=user)
