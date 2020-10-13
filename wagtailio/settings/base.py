@@ -469,7 +469,7 @@ AIRTABLE_IMPORT_SETTINGS = {
         'AIRTABLE_BASE_KEY': BLOG_AIRTABLE_BASE_KEY,
         'AIRTABLE_TABLE_NAME': 'Posts',
         'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'Slug': 'slug',
+            'ID': 'id',
         },
         'AIRTABLE_SERIALIZER': 'wagtailio.blog.serializers.BlogPageSerializer',
         'AIRTABLE_BASE_URL': BLOG_AIRTABLE_URL,
@@ -478,7 +478,7 @@ AIRTABLE_IMPORT_SETTINGS = {
         'AIRTABLE_BASE_KEY': FEATURES_AIRTABLE_BASE_KEY,
         'AIRTABLE_TABLE_NAME': 'Feature Descriptions',
         'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'Title': 'title',
+            'ID': 'id',
         },
         'AIRTABLE_SERIALIZER': 'wagtailio.features.serializers.FeatureDescriptionSerializer',
         'AIRTABLE_BASE_URL': FEATURES_AIRTABLE_URL,
