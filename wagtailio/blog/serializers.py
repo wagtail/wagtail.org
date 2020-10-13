@@ -8,4 +8,4 @@ class BlogPageSerializer(AirtableSerializer):
     """
 
     title = serializers.CharField(max_length=255, required=True)
-    live = serializers.BooleanField()
+    live = serializers.BooleanField(default=False)

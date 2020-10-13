@@ -114,3 +114,25 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
             "Slug": self.slug,
             "Author": getattr(self.author, 'name', '')
         }
+
+    def save(self, user=None, **kwargs):
+        publishing = False
+        if self.pk and self._skip_signals:
+            # if updating an existing instance from airtable
+            old_live_status = BlogPage.objects.get(pk=self.pk).live
+            # work out whether the live status is being updated from airtable
+            # if so, publish or unpublish the page to achieve the change instead
+            # to ensure all other corresponding fields (eg `live_revision`) are updated
+            # too
+            if not self.live and old_live_status:
+                self.live = True
+                self.unpublish(user=user, commit=False)
+            elif self.live and not old_live_status:
+                publishing = True
+                self.live = False
+
+        super().save(user=user, **kwargs)
+
+        if publishing:
+            new_revision = self.save_revision(user=user)
+            new_revision.publish(user=user)
