@@ -101,6 +101,7 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
         """
         mappings = {
             "Title": "title",
+            "Live": "live",
             # "slug" not included so Airtable cannot overwrite the Page slug as that could cause a lot of trouble with URLs and SEO. But it's possible to do this assuming there aren't two pages with the same slug.
         }
         return mappings
