@@ -1,0 +1,46 @@
+.service {
+    &__block {
+        border-bottom: 1px dashed rgba($color--white, 0.1);
+        border-right: 1px dashed rgba($color--white, 0.1);
+        color: $color--grey-light;
+        font-size: 16px;
+        padding: $gutter;
+        text-align: center;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &:nth-child(2n) {
+            border-right: 0;
+        }
+
+        @include media-query(small) {
+            font-size: 18px;
+
+            &:nth-child(2n) {
+                border-right: 1px dashed rgba($color--white, 0.1);
+            }
+
+            &:nth-child(4n) {
+                border-right: 0;
+            }
+
+            &:nth-last-child(-n+3) {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    &__block-icon {
+        fill: rgba($color--lagoon, 0.35);
+        height: 60px;
+        width: 60px;
+    }
+}
+
+.services {
+    &__button {
+        margin-bottom: ($gutter * 3);
+    }
+}

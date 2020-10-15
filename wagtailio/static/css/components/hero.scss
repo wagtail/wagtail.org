@@ -100,4 +100,55 @@
       top: ($gutter * 3);
     }
   }
+
+  &--services {
+      height: auto;
+      max-height: none;
+
+    &::after {
+        display: none;
+    }
+
+    .text-container {
+        @include media-query(small) {
+          width: 70%;
+        }
+
+        @include media-query(large) {
+          width: 60%;
+        }
+
+        p {
+            font-weight: 600;
+
+            @include media-query(small) {
+                font-size: 56px;
+                max-width: 70%;
+            }
+        }
+
+        &__intro {
+            color: $color--grey-light;
+            font-size: 24px;
+            font-weight: 200;
+            line-height: 1.5;
+
+            &::before {
+                content: "";
+                background-color: $color--lagoon;
+                display: block;
+                height: 7px;
+                margin: ($gutter * 2) 0 ($gutter * 4);
+                width: ($gutter * 2);
+            }
+        }
+    }
+
+    .screenshot {
+        fill: rgba($color--white, 0.1);
+        height: 50%;
+        margin-top: ($gutter * 2);
+        width: 50%;
+    }
+  }
 }
