@@ -1,0 +1,13 @@
+.template-services {
+    background-color: $color--dark-blue;
+
+    .page-content {
+        margin: 0 auto;
+        padding: 0 ($gutter / 2);
+
+        @include media-query(small) {
+            padding-left: ($gutter * 3);
+            max-width: $max-width;
+        }
+    }
+}

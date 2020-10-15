@@ -19,6 +19,13 @@
     background-color: $color--secondary;
   }
 
+  &__icon {
+      fill: $color--dark-blue;
+      display: inline-block;
+      margin-left: 5px;
+      vertical-align: middle;
+  }
+
   &--hover {
     color: $color--black;
     padding: 15px 30px;
