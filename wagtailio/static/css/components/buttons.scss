@@ -1,4 +1,5 @@
 .button {
+  $root: &;
   display: inline-block;
   color: $color--primary;
   padding: 15px;
@@ -17,6 +18,10 @@
     padding: 15px 30px;
     border-radius: 4px;
     background-color: $color--secondary;
+
+    #{$root}__icon {
+        transform: translateX(5px);
+    }
   }
 
   &__icon {
@@ -24,6 +29,7 @@
       display: inline-block;
       margin-left: 5px;
       vertical-align: middle;
+      transition: transform 0.235s;
   }
 
   &--hover {
