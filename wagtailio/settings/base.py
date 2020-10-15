@@ -506,4 +506,4 @@ WAGTAILTRANSFER_SECRET_KEY = env.get(
     "WAGTAILTRANSFER_SECRET_KEY"
 )
 
-WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['images.wagtailioimage', 'features.featureaspect', 'features.featuredescription']
+WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['features.featureaspect', 'features.featuredescription']
