@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     "wagtail_content_import",
     "wagtail_content_import.pickers.google",
     "wagtail_content_import.pickers.local",
+    "wagtail.contrib.modeladmin",
     "wagtail.admin",
     "wagtail.documents",
     "wagtail.snippets",
@@ -83,6 +84,7 @@ INSTALLED_APPS = (
     "wagtailio.developers",
     "wagtailio.blog",
     "wagtailio.features",
+    "wagtailio.packages",
     "wagtailaltgenerator",
 )
 
