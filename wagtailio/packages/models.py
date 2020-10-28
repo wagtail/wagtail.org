@@ -5,6 +5,7 @@ from django.db.models import Prefetch
 from django.db.models.functions import Lower
 from django.urls import reverse
 from wagtail.admin.edit_handlers import FieldPanel, HelpPanel, MultiFieldPanel
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
@@ -19,9 +20,25 @@ warning = """
 
 readonly = forms.TextInput(attrs={"readonly": True})
 
+default_about_text = " ".join(
+    """
+    <p>
+        Projects listed on Wagtail.io are <i>third-party</i> packages.<br/>
+        They are not vetted nor endorsed by Wagtail.<br/>
+        Use them at your own risk.</p>
+        <p>This page collects girds and packages from djangopackages.org.<br/>
+        Please add or update Wagtail grids and Wagtail packages on djangopackages.org.
+    </p>
+""".split()
+)  # Split/join to normalise whitespace
+
 
 class PackagesPage(Page, SocialMediaMixin, CrossPageMixin):
     subtitle = models.CharField(max_length=255)
+    about_title = models.CharField(max_length=255, default="About")
+    about_text = RichTextField(
+        default=default_about_text, features=["bold", "italic", "link", "br"]
+    )
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
@@ -37,6 +54,8 @@ class PackagesPage(Page, SocialMediaMixin, CrossPageMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel("subtitle"),
+        FieldPanel("about_title"),
+        FieldPanel("about_text"),
     ]
 
 

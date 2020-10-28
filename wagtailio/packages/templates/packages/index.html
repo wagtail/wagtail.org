@@ -1,15 +1,14 @@
 {% extends "wagtailadmin/base.html" %}
-{% load wagtailadmin_tags i18n %}
+{% load wagtailadmin_tags %}
 
-{% block titletag %}{% trans 'Styleguide' %}{% endblock %}
-{% block bodyclass %}styleguide{% endblock %}
+{% block titletag %}DjangoPackages{% endblock %}
 
 {% block content %}
     {% include "wagtailadmin/shared/header.html" with title='DjangoPackages' icon='image' %}
 
     <div class="nice-padding">
         <h2>Import</h2>
-        <p>Import all Wagtail Grids and Wagtail Packages from djangopackages.org</p>
+        <p>Import all Wagtail Grids and Wagtail Packages from djangopackages.org.</p>
         <p>
           Note: This import is a long running process. The request will timeout (on Heroku).<br>
           Heroku will finish the the import. Be patient and inspect the Packages page for the update.

@@ -9,9 +9,16 @@
         <div class="page-heading__introduction">
           {{ page.subtitle }}
         </div>
+        <div>
+          <p>
+            <a href="#{{ page.about_title|slugify }}" class="button button--packages">
+              {{ page.about_title }}
+            </a>
+          </p>
+        </div>
     </header>
 
-    <div class="features" id="additional">
+    <div class="features feature--packages" id="additional">
 
         <div class="features__container page-content">
           <div class="container packages__jumplinks">
@@ -70,6 +77,14 @@
                 </div>
             {% endfor %}
         </div>
+
+        <header class="page-heading" id="{{ page.about_title|slugify }}">
+            <h2 class="page-heading__heading">{{ page.about_title }}</h2>
+            <div class="page-heading__introduction">
+              {{ page.about_text|richtext }}
+            </div>
+        </header>
+
     </div>
 
 {% endblock %}
