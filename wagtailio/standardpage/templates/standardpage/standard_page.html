@@ -2,133 +2,28 @@
 
 {% load static compress wagtailadmin_tags wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
-
-{% block body_class %}
-    {% if page.title == 'Wagtail developer support service' %}
-        template-services
-    {% else %}{% endif %}
-{% endblock %}
+{% block body_class %}{% endblock %}
 
 {% block content %}
 
-    {% if page.title == 'Wagtail developer support service' %}
+    <div class="page-content">
 
-        <section class="hero hero--services">
+        <header class="page-heading ">
 
-            <div class="hero__container">
+            <h1 class="page-heading__heading">{{ page.title }}</h1>
 
-                <div class="text-container">
-                    <h2>Wagtail developer support service</h2>
-                    <p>Expert support and consultancy from the creators of Wagtail</p>
+            <div class="page-heading__introduction">
+                {{ page.introduction }}
+            </div> <!-- /introduction -->
 
-                    <span class="text-container__intro">
-                        We provide a tiered support service, giving your in-house developers direct access to the creators of Wagtail...
-                    </span>
-                </div> <!-- /text-container -->
+        </header> <!-- /page-heading -->
 
-                <svg class="screenshot">
-                    <use xlink:href="#tbx-flame"></use>
-                </svg>
-
-            </div>
-
-        </section> <!-- /hero -->
-
-        <div class="page-content">
-
-            <div class="grid grid--services">
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#tooling"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Set up your infrastructure and tooling
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#architecture"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Ensure the best architecture for your project
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#review"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Carry out code reviews and pair programming
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#api"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Improve workflows and API configuration
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#develop"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Develop or support complex features
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#migration"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        Plan and execute large-scale migrations
-                    </p>
-                </div>
-                <div class="service__block">
-                    <svg class="service__block-icon">
-                        <use xlink:href="#more"></use>
-                    </svg>
-                    <p class="service__block-copy">
-                        ...and much more
-                    </p>
-                </div>
-            </div>
-
-            <div class="services__button">
-                <a href="/" class="button button--hover">
-                    Find out more and how to sign up here
-
-                    <svg width="24" height="24" class="button__icon">
-                        <use xlink:href="#block-arrow"></use>
-                    </svg>
-                </a>
-            </div>
+    	<div class="container">
+	        {% include_block page.body %}
         </div>
+    </div>
 
-        {% include "core/includes/share.html" %}
+    {% include "core/includes/contact_torchbox.html" %}
+    {% include "core/includes/share.html" %}
 
-{% else %}
-
-        <div class="page-content">
-
-            <header class="page-heading ">
-
-                <h1 class="page-heading__heading">{{ page.title }}</h1>
-
-                <div class="page-heading__introduction">
-                    {{ page.introduction }}
-                </div> <!-- /introduction -->
-
-            </header> <!-- /page-heading -->
-
-        	<div class="container">
-    	        {% include_block page.body %}
-            </div>
-        </div>
-
-        {% include "core/includes/contact_torchbox.html" %}
-        {% include "core/includes/share.html" %}
-
-    {% endif %}
 {% endblock %}
