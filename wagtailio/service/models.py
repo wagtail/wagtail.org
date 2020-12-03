@@ -1,5 +1,3 @@
-from wagtail.core.models import Page
-
 from wagtailio.standardpage.models import StandardPage
 
 
