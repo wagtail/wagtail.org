@@ -2,6 +2,7 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.core.models import Page, Orderable
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail_content_import.models import ContentImportMixin
 
 from wagtailio.core import blocks
@@ -12,11 +13,18 @@ class ServicePage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     template = "service/services_page.html"
     strapline = models.CharField(max_length=255)
     intro = models.TextField(blank=True)
-
+    cta = models.ForeignKey(
+        'utils.CallToActionSnippet',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     content_panels = Page.content_panels + [
         FieldPanel("strapline", classname="full"),
         FieldPanel("intro", classname="full"),
         InlinePanel("services", label="Services"),
+        SnippetChooserPanel('cta'),
     ]
 
     promote_panels = (

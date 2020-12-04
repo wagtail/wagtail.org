@@ -44,15 +44,17 @@
             </div>
         {% endif %}
 
-        <div class="services__button">
-            <a href="/" class="button button--hover">
-                Find out more and how to sign up here
+        {% if page.cta %}
+            <div class="services__button">
+                <a href="{{ page.cta.get_link_url }}" class="button button--hover">
+                    {{ page.cta.get_link_text }}
 
-                <svg width="24" height="24" class="button__icon">
-                    <use xlink:href="#block-arrow"></use>
-                </svg>
-            </a>
-        </div>
+                    <svg width="24" height="24" class="button__icon">
+                        <use xlink:href="#block-arrow"></use>
+                    </svg>
+                </a>
+            </div>
+        {% endif %}
     </div>
 
     {% include "core/includes/share.html" %}

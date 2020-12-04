@@ -4,6 +4,7 @@ from django.utils.translation import ugettext as _
 
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
+from wagtail.core.fields import StreamField
 
 from wagtail.core.models import Page
 from wagtail.core.models import Orderable
@@ -11,12 +12,13 @@ from wagtail.admin.edit_handlers import (
     FieldPanel,
     MultiFieldPanel,
     PageChooserPanel,
-    InlinePanel,
+    InlinePanel, StreamFieldPanel,
 )
 
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.core import blocks
 
 
 class LinkGroupLink(Orderable, models.Model):
@@ -143,3 +145,56 @@ class CrossPageMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+@register_snippet
+class CallToActionSnippet(models.Model):
+    title = models.CharField(max_length=255)
+    link = StreamField(
+        blocks.StreamBlock([
+            (
+                'external_link', blocks.StructBlock([
+                    ('text', blocks.CharBlock()),
+                    ('url', blocks.URLBlock()),
+                ], icon='link')
+            ),
+            (
+                'internal_link', blocks.StructBlock([
+                    ('text', blocks.CharBlock(required=False)),
+                    ('page', blocks.PageChooserBlock()),
+                ], icon='link'),
+            ),
+        ], max_num=1, required=True),
+        blank=True
+    )
+
+    panels = [
+        FieldPanel('title'),
+        StreamFieldPanel('link'),
+    ]
+
+    def get_link_text(self):
+        # Link is required, so we should always have
+        # an element with index 0
+        block = self.link[0]
+
+        text = block.value['text']
+        if block.block_type == 'external_link':
+            return text
+
+        # Title is optional for internal_link
+        # so fallback to page's title, if it's empty
+        return text or block.value['page'].title
+
+    def get_link_url(self):
+        # Link is required, so we should always have
+        # an element with index 0
+        block = self.link[0]
+
+        if block.block_type == 'external_link':
+            return block.value['url']
+
+        return block.value['page'].get_url()
+
+    def __str__(self):
+        return self.title
