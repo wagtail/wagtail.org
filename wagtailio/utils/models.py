@@ -164,9 +164,7 @@ class CallToActionSnippet(models.Model):
                     ('page', blocks.PageChooserBlock()),
                 ], icon='link'),
             ),
-        ], max_num=1, required=True),
-        blank=True
-    )
+        ], max_num=1, required=True))
 
     panels = [
         FieldPanel('title'),
