@@ -12,10 +12,10 @@
 
             <div class="text-container">
                 <h2>Wagtail developer support service</h2>
-                <p>Expert support and consultancy from the creators of Wagtail</p>
+                <p>{{ page.strapline }}</p>
 
                 <span class="text-container__intro">
-                    We provide a tiered support service, giving your in-house developers direct access to the creators of Wagtail...
+                    {{ page.intro }}
                 </span>
             </div> <!-- /text-container -->
 
@@ -28,65 +28,21 @@
     </section> <!-- /hero -->
 
     <div class="page-content">
+        {% if page.services.all %}
+            <div class="grid grid--services">
 
-        <div class="grid grid--services">
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#tooling"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Set up your infrastructure and tooling
-                </p>
+                {% for service in page.services.all %}
+                <div class="service__block">
+                    <svg class="service__block-icon">
+                        <use xlink:href="#{{ service.icon_name }}"></use>
+                    </svg>
+                    <p class="service__block-copy">
+                        {{ service.text }}
+                    </p>
+                </div>
+                {% endfor %}
             </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#architecture"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Ensure the best architecture for your project
-                </p>
-            </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#review"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Carry out code reviews and pair programming
-                </p>
-            </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#api"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Improve workflows and API configuration
-                </p>
-            </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#develop"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Develop or support complex features
-                </p>
-            </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#migration"></use>
-                </svg>
-                <p class="service__block-copy">
-                    Plan and execute large-scale migrations
-                </p>
-            </div>
-            <div class="service__block">
-                <svg class="service__block-icon">
-                    <use xlink:href="#more"></use>
-                </svg>
-                <p class="service__block-copy">
-                    ...and much more
-                </p>
-            </div>
-        </div>
+        {% endif %}
 
         <div class="services__button">
             <a href="/" class="button button--hover">
