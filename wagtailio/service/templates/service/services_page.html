@@ -46,9 +46,8 @@
 
         {% if page.cta %}
             <div class="services__button">
-                <a href="{{ page.cta.get_link_url }}" class="button button--hover">
+                <a href="{{ page.cta.get_link_url }}" class="button button--hover" {% if page.cta.is_external %}target="_blank"{% endif %}>
                     {{ page.cta.get_link_text }}
-
                     <svg width="24" height="24" class="button__icon">
                         <use xlink:href="#block-arrow"></use>
                     </svg>

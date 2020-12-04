@@ -11,7 +11,8 @@ from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 
 class ServicePage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     template = "service/services_page.html"
-    strapline = models.CharField(max_length=255)
+
+    strapline = models.CharField(max_length=255, blank=True)
     intro = models.TextField(blank=True)
     cta = models.ForeignKey(
         'utils.CallToActionSnippet',
@@ -47,4 +48,3 @@ class ServicePageService(Orderable, models.Model):
             ("more", "More"),
         ),
     )
-

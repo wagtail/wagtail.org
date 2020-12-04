@@ -179,7 +179,7 @@ class CallToActionSnippet(models.Model):
         block = self.link[0]
 
         text = block.value['text']
-        if block.block_type == 'external_link':
+        if self.is_external():
             return text
 
         # Title is optional for internal_link
@@ -191,10 +191,15 @@ class CallToActionSnippet(models.Model):
         # an element with index 0
         block = self.link[0]
 
-        if block.block_type == 'external_link':
+        if self.is_external():
             return block.value['url']
 
         return block.value['page'].get_url()
+
+    def is_external(self):
+        block = self.link[0]
+
+        return block.block_type == 'external_link'
 
     def __str__(self):
         return self.title
