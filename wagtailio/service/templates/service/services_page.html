@@ -28,10 +28,10 @@
     </section> <!-- /hero -->
 
     <div class="page-content">
-        {% if page.services.all %}
+        {% with services=page.services.all %}
+            {% if services %}
             <div class="grid grid--services">
-
-                {% for service in page.services.all %}
+                {% for service in services %}
                 <div class="service__block">
                     <svg class="service__block-icon">
                         <use xlink:href="#{{ service.icon_name }}"></use>
@@ -42,7 +42,8 @@
                 </div>
                 {% endfor %}
             </div>
-        {% endif %}
+            {% endif %}
+        {% endwith %}
 
         {% if page.cta %}
             <div class="services__button">
