@@ -197,9 +197,7 @@ class CallToActionSnippet(models.Model):
         return block.value['page'].get_url()
 
     def is_external(self):
-        block = self.link[0]
-
-        return block.block_type == 'external_link'
+        return self.link[0].block_type == 'external_link'
 
     def __str__(self):
         return self.title
