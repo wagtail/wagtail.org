@@ -19,6 +19,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         "developers.DevelopersPage",
         "features.FeatureIndexPage",
         "newsletter.NewsletterIndexPage",
+        "service.ServicePage",
         "standardpage.StandardPage",
     ]
     content_panels = Page.content_panels + [StreamFieldPanel("body")]

@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     "wagtailio.images",
     "wagtailio.standardpage",
     "wagtailio.newsletter",
+    "wagtailio.service",
     "wagtailio.developers",
     "wagtailio.blog",
     "wagtailio.features",

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load static compress wagtailadmin_tags wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+
+{% block body_class %}template-services{% endblock %}
+
+{% block content %}
+
+    <section class="hero hero--services">
+
+        <div class="hero__container">
+
+            <div class="text-container">
+                <h2>{{ page.title }}</h2>
+                <p>{{ page.strapline }}</p>
+
+                <span class="text-container__intro">
+                    {{ page.intro }}
+                </span>
+            </div> <!-- /text-container -->
+
+            <svg class="screenshot">
+                <use xlink:href="#tbx-flame"></use>
+            </svg>
+
+        </div>
+
+    </section> <!-- /hero -->
+
+    <div class="page-content">
+        {% with services=page.services.all %}
+            {% if services %}
+            <div class="grid grid--services">
+                {% for service in services %}
+                <div class="service__block">
+                    <svg class="service__block-icon">
+                        <use xlink:href="#{{ service.icon_name }}"></use>
+                    </svg>
+                    <p class="service__block-copy">
+                        {{ service.text }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if page.cta %}
+            <div class="services__button">
+                <a href="{{ page.cta.get_link_url }}" class="button button--hover" {% if page.cta.is_external %}target="_blank"{% endif %}>
+                    {{ page.cta.get_link_text }}
+                    <svg width="24" height="24" class="button__icon">
+                        <use xlink:href="#block-arrow"></use>
+                    </svg>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    {% include "core/includes/share.html" %}
+
+{% endblock %}
