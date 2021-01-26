@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('width', models.IntegerField(editable=False)),
                 ('height', models.IntegerField(editable=False)),
                 ('focal_point_key', models.CharField(blank=True, default='', max_length=255, editable=False)),
-                ('filter', models.ForeignKey(to='wagtailimages.Filter', related_name='+', on_delete=models.CASCADE)),
+                ('filter', models.IntegerField(blank=True, null=True)),
                 ('image', models.ForeignKey(to='images.WagtailIOImage', related_name='renditions', on_delete=models.CASCADE)),
             ],
             options={

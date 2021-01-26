@@ -4,8 +4,6 @@ from __future__ import unicode_literals
 
 from django.db import migrations
 
-from wagtail.images.utils import get_fill_filter_spec_migrations
-
 
 class Migration(migrations.Migration):
 
@@ -13,7 +11,5 @@ class Migration(migrations.Migration):
         ('images', '0005_upgrade_to_wagtail17_schema'),
     ]
 
-    forward, reverse = get_fill_filter_spec_migrations('images', 'WagtailIORendition')
     operations = [
-        migrations.RunPython(forward, reverse),
     ]
