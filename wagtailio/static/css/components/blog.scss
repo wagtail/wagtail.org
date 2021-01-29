@@ -122,6 +122,7 @@
     font-weight: 300;
     transition: background-color, border, 0.2s ease;
     border-bottom: 1px solid $color--headings;
+    pointer-events: none;
 
     &:hover {
       background-color: $color--tertiary;
