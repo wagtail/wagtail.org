@@ -162,21 +162,21 @@
     z-index: 4;
     opacity: 0;
     transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
-    pointer-events: none;
+    overflow: hidden;
 
     @include media-query(small) {
       transform: translate3d(0, 0%, 0);
       position: relative;
       background-color: transparent;
       opacity: 1;
-      pointer-events: auto;
+      overflow: auto;
     }
 
     .sidebar-open & {
       transform: translate3d(0, 0%, 0);
       opacity: 1;
       padding-top: 127px;
-      pointer-events: auto;
+      overflow: auto;
     }
   }
 }
