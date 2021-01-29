@@ -173,12 +173,12 @@ class BackersBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", classname="title")
-    h3 = CharBlock(icon="title", classname="title")
-    h4 = CharBlock(icon="title", classname="title")
+    h2 = CharBlock(icon="title", form_classname="title")
+    h3 = CharBlock(icon="title", form_classname="title")
+    h4 = CharBlock(icon="title", form_classname="title")
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
-    blockquote = CharBlock(icon="openquote", classname="title")
+    blockquote = CharBlock(icon="openquote", form_classname="title")
     image = ImageChooserBlock(icon="image")
     document = DocumentChooserBlock(icon="doc-full-inverse")
     imagecaption = ImageAndCaptionBlock(label="Image caption")
