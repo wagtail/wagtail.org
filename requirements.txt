@@ -1,6 +1,6 @@
 Django==2.2.13
 dj-database-url==0.5.0
-wagtail==2.10.2
+wagtail==2.12
 psycopg2==2.7.4
 libsass==0.8.3
 Pillow==7.1.2
@@ -20,8 +20,8 @@ scout-apm==1.1.7
 django-referrer-policy==1.0
 wagtailaltgenerator==4.1.2
 wagtail-airtable==0.1.4
-wagtail-content-import==0.4.1
-wagtail-image-import==0.0.1
+wagtail-content-import==0.4.2
+wagtail-image-import==0.1.0
 wagtail-transfer==0.5.1
 mammoth==1.4.10
 
