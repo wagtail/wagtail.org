@@ -21,7 +21,7 @@ django-referrer-policy==1.0
 wagtailaltgenerator==4.1.2
 wagtail-airtable==0.1.4
 wagtail-content-import==0.4.2
-wagtail-image-import==0.0.3
+wagtail-image-import==0.1.0
 wagtail-transfer==0.5.1
 mammoth==1.4.10
 
