@@ -3,6 +3,7 @@ from django.core.files.storage import get_storage_class
 from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
 from django.utils.html import format_html, format_html_join
+from django.templatetags.static import static
 from wagtail.core import hooks
 from wagtail.core.whitelist import allow_without_attributes
 from wagtail.documents import get_document_model
@@ -81,3 +82,8 @@ def serve_document_from_s3(document, request):
     del response["Cache-control"]
     add_never_cache_headers(response)
     return response
+
+
+@hooks.register('insert_global_admin_css')
+def global_admin_css():
+    return format_html('<link rel="stylesheet" href="{}">', static('css/admin/custom.css'))

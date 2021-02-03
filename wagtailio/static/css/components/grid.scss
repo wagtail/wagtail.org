@@ -1,0 +1,44 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        flex-basis: calc(100% - 20px);
+        margin: 10px;
+
+        @media all and (min-width: 480px) {
+            flex-basis: calc(50% - 20px);
+        }
+
+        @media all and (min-width: 1024px) {
+            flex-basis: calc(30% - 20px);
+        }
+    }
+}
+
+@supports (display: grid) {
+    .grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(calc(50% - 20px), 1fr));
+
+        > * {
+            flex-basis: initial;
+            margin: 0;
+        }
+
+        &--services {
+            grid-gap: 0;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(calc(50% - 10px), 1fr)
+            );
+            margin: $gutter 0;
+
+            @include media-query(small) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(25% - 20px), 1fr));
+                margin: ($gutter * 3) 0;
+            }
+        }
+    }
+}
