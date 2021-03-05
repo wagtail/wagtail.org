@@ -41,9 +41,20 @@ async function handleRequest(request) {
   const originUrl = request.url.replace(proxyRoot, originRoot);
   const resp = await fetch(originUrl, {redirect: 'manual'});
 
-  // Only rewrite responses with an html content type
+  const location = resp.headers.get('Location');
   const contentType = resp.headers.get('Content-Type');
-  if (contentType && contentType.split(';')[0].endsWith('html')) {
+
+  if (location) {
+    // Rewrite redirect headers to use the proxy domain instead of the origin
+    const newResp = new Response(resp.body, {
+      status: resp.status,
+      statusText: resp.statusText,
+      headers: resp.headers,
+    });
+    newResp.headers.set('Location', location.replace(originRoot, proxyRoot));
+    return newResp;
+  } else if (contentType && contentType.split(';')[0].endsWith('html')) {
+    // Rewrite responses with an html content type
     return new HTMLRewriter().on(
       'link[rel="canonical"]', new CanonicalLinkHandler()
     ).transform(resp);
