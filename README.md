@@ -14,6 +14,14 @@ vagrant up
 
 This will download the base image and provision a local VM that will run the site locally.
 
+You will need to apply migrations, create a super user, and create a cache table once the vagrant environment is setup.
+```
+vagrant ssh
+./manage.py migrate
+./manage.py createsuperuser
+./manage.py createcachetable
+```
+
 ## Usage
 
 Common Vagrant commands:
