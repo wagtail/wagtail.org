@@ -21,6 +21,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         "newsletter.NewsletterIndexPage",
         "standardpage.StandardPage",
         "packages.PackagesPage",
+        "services.ServicesPage",
     ]
     content_panels = Page.content_panels + [StreamFieldPanel("body")]
 
