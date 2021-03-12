@@ -3,7 +3,12 @@ from wagtail.core import fields
 
 
 class SectionContentBlock(blocks.StreamBlock):
-    heading = blocks.CharBlock(max_length=250, form_classname="full")
+    subheading = blocks.CharBlock(
+        max_length=250,
+        form_classname="full",
+        template="services/blocks/section_subheading.html",
+    )
+
 
 class SectionBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True,  form_classname="full title")
