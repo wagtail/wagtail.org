@@ -49,11 +49,20 @@ class CardsSectionBlock(blocks.StreamBlock):
         template = "services/blocks/cards_section.html"
 
 
+class LinkButtonBlock(blocks.StructBlock):
+    text = blocks.RichTextBlock(required=True, features=["bold"])
+    link = blocks.URLBlock(required=True)
+
+    class Meta:
+        icon = "link"
+
+
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
     paragraph = ParagraphBlock()
     card_section = CardsSectionBlock()
+    link_button = LinkButtonBlock()
 
 
 class SectionBlock(blocks.StructBlock):
