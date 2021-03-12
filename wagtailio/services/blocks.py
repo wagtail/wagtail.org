@@ -17,9 +17,17 @@ class DividerBlock(blocks.StaticBlock):
         template = "services/blocks/divider.html"
 
 
+class ParagraphBlock(blocks.RichTextBlock):
+
+    def __init__(self, **kwargs):
+        super().__init__(features=["bold", "italic", "link",  "ul", "ol"], **kwargs)
+    class Meta:
+        icon = "pilcrow"
+
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
+    paragraph = ParagraphBlock()
 
 
 class SectionBlock(blocks.StructBlock):
