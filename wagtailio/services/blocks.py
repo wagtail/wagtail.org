@@ -1,12 +1,12 @@
 from wagtail.core import blocks
 from wagtail.core import fields
+from wagtail.images import blocks as image_blocks
 
 
 class SubheadingBlock(blocks.CharBlock):
     class Meta:
         max_length = 250
         icon = "title"
-        form_classname = "full"
         template = "services/blocks/subheading.html"
 
 
@@ -24,10 +24,36 @@ class ParagraphBlock(blocks.RichTextBlock):
     class Meta:
         icon = "pilcrow"
 
+
+class CardTextBlock(blocks.RichTextBlock):
+    def __init__(self, **kwargs):
+        super().__init__(features=["bold", "italic"], **kwargs)
+    class Meta:
+        icon = "pilcrow"
+
+
+class CardBlock(blocks.StructBlock):
+    image = image_blocks.ImageChooserBlock(required=True)
+    text = CardTextBlock(required=True)
+    link = blocks.URLBlock(required=True)
+
+    class Meta:
+        icon = "tag"
+        template = "services/blocks/cards.html"
+
+class CardsSectionBlock(blocks.StreamBlock):
+    card = CardBlock()
+
+    class Meta:
+        icon = "table"
+        template = "services/blocks/cards_section.html"
+
+
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
     paragraph = ParagraphBlock()
+    card_section = CardsSectionBlock()
 
 
 class SectionBlock(blocks.StructBlock):
@@ -37,7 +63,7 @@ class SectionBlock(blocks.StructBlock):
     # image = ImageAndCaptionBlock(required=False)
     # TODO: Section background color
 
-    content = SectionContentBlock(required=False, form_classname="full")
+    content = SectionContentBlock(required=False)
 
     class Meta:
         icon = "form"
