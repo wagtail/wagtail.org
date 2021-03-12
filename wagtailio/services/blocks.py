@@ -53,12 +53,29 @@ class LinkButtonBlock(blocks.StructBlock):
         template = "services/blocks/link_button.html"
 
 
+class QuoteBlock(blocks.StructBlock):
+    text = blocks.TextBlock(required=True)
+    source = blocks.CharBlock(required=True)
+    reference = blocks.CharBlock(
+        required=False,
+        help_text=(
+            "Additional information about the source. "
+            "E.g. a persons job title and company."
+        )
+    )
+
+    class Meta:
+        icon = "openquote"
+        template = "services/blocks/quote.html"
+
+
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
     paragraph = blocks.RichTextBlock(features=["bold", "italic", "link",  "ul", "ol"])
     card_section = CardsSectionBlock()
     link_button = LinkButtonBlock()
+    quote = QuoteBlock()
 
 
 class SectionBlock(blocks.StructBlock):

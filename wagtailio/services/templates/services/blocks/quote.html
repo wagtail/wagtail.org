@@ -1,0 +1,13 @@
+{% with value as quote %}
+    <blockquote>
+        <p>
+            {{ quote.text }}
+        </p>
+        <footer>
+            <cite>
+                {{ quote.source }}
+                {% if quote.reference  %} — {{ quote.reference }}{% endif %}
+            </cite>
+        </footer>
+    </blockquote>
+{% endwith %}
