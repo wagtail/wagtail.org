@@ -25,13 +25,6 @@ class ParagraphBlock(blocks.RichTextBlock):
         icon = "pilcrow"
 
 
-class CardTextBlock(blocks.RichTextBlock):
-    def __init__(self, **kwargs):
-        super().__init__(features=["bold", "italic"], **kwargs)
-    class Meta:
-        icon = "pilcrow"
-
-
 class CardBlock(blocks.StructBlock):
     image = image_blocks.ImageChooserBlock(required=True)
     text = blocks.RichTextBlock(required=True, features=["bold", "italic"])
@@ -56,6 +49,7 @@ class LinkButtonBlock(blocks.StructBlock):
 
     class Meta:
         icon = "link"
+        template = "services/blocks/link_button.html"
 
 
 class SectionContentBlock(blocks.StreamBlock):
