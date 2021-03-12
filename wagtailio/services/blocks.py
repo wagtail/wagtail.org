@@ -17,14 +17,6 @@ class DividerBlock(blocks.StaticBlock):
         template = "services/blocks/divider.html"
 
 
-class ParagraphBlock(blocks.RichTextBlock):
-
-    def __init__(self, **kwargs):
-        super().__init__(features=["bold", "italic", "link",  "ul", "ol"], **kwargs)
-    class Meta:
-        icon = "pilcrow"
-
-
 class CardBlock(blocks.StructBlock):
     image = image_blocks.ImageChooserBlock(required=True)
     text = blocks.RichTextBlock(required=True, features=["bold", "italic"])

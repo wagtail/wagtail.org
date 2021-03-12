@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='servicespage',
             name='body',
-            field=wagtail.core.fields.StreamField([('section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(form_classname='full title', required=True)), ('content', wagtail.core.blocks.StreamBlock([('subheading', wagtailio.services.blocks.SubheadingBlock()), ('divider', wagtailio.services.blocks.DividerBlock()), ('paragraph', wagtailio.services.blocks.ParagraphBlock())], form_classname='full', required=False))]))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField([('section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock(form_classname='full title', required=True)), ('content', wagtail.core.blocks.StreamBlock([('subheading', wagtailio.services.blocks.SubheadingBlock()), ('divider', wagtailio.services.blocks.DividerBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock(features=["bold", "italic", "link",  "ul", "ol"]))], form_classname='full', required=False))]))], blank=True, null=True),
         ),
     ]
