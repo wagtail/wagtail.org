@@ -34,12 +34,13 @@ class CardTextBlock(blocks.RichTextBlock):
 
 class CardBlock(blocks.StructBlock):
     image = image_blocks.ImageChooserBlock(required=True)
-    text = CardTextBlock(required=True)
+    text = blocks.RichTextBlock(required=True, features=["bold", "italic"])
     link = blocks.URLBlock(required=True)
 
     class Meta:
         icon = "tag"
         template = "services/blocks/card.html"
+
 
 class CardsSectionBlock(blocks.StreamBlock):
     card = CardBlock()
@@ -60,7 +61,7 @@ class LinkButtonBlock(blocks.StructBlock):
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
-    paragraph = ParagraphBlock()
+    paragraph = blocks.RichTextBlock(features=["bold", "italic", "link",  "ul", "ol"])
     card_section = CardsSectionBlock()
     link_button = LinkButtonBlock()
 
