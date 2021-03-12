@@ -1,6 +1,10 @@
+{% load wagtailcore_tags %}
 {% with value as section  %}
     <section>
         <h2>{{ section.title }}</h2>
         A section block
+        {% for block in section.content %}
+            {% include_block block %}
+        {% endfor %}
     </section>
 {% endwith %}
