@@ -36,7 +36,16 @@ class CardsSectionBlock(blocks.StreamBlock):
 
 
 class LinkButtonBlock(blocks.StructBlock):
-    text = blocks.RichTextBlock(required=True, features=["bold"])
+    lead_text = blocks.CharBlock(
+        required=False,
+        max_length=50,
+        help_text="Text leading up the action text of the button.",
+    )
+    action_text = blocks.CharBlock(
+        required=True,
+        max_length=50,
+        help_text="Emphasised text for the button action.",
+    )
     link = blocks.URLBlock(required=True)
 
     class Meta:
