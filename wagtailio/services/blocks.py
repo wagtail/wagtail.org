@@ -4,13 +4,22 @@ from wagtail.core import fields
 
 class SubheadingBlock(blocks.CharBlock):
     class Meta:
-        max_length=250,
-        form_classname="full",
-        template="services/blocks/section_subheading.html",
+        max_length = 250
+        icon = "title"
+        form_classname = "full"
+        template = "services/blocks/subheading.html"
+
+
+class DividerBlock(blocks.StaticBlock):
+    class Meta:
+        icon = "horizontalrule"
+        admin_text = "Visual divider to differentiate between parts of content."
+        template = "services/blocks/divider.html"
 
 
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
+    divider = DividerBlock()
 
 
 class SectionBlock(blocks.StructBlock):
@@ -23,5 +32,5 @@ class SectionBlock(blocks.StructBlock):
     content = SectionContentBlock(required=False, form_classname="full")
 
     class Meta:
-        icon = "cogs"
+        icon = "form"
         template = "services/blocks/section.html"
