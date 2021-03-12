@@ -2,12 +2,15 @@ from wagtail.core import blocks
 from wagtail.core import fields
 
 
-class SectionContentBlock(blocks.StreamBlock):
-    subheading = blocks.CharBlock(
+class SubheadingBlock(blocks.CharBlock):
+    class Meta:
         max_length=250,
         form_classname="full",
         template="services/blocks/section_subheading.html",
-    )
+
+
+class SectionContentBlock(blocks.StreamBlock):
+    subheading = SubheadingBlock()
 
 
 class SectionBlock(blocks.StructBlock):
