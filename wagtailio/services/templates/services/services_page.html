@@ -5,5 +5,7 @@
 {% block content %}
     <h1>{{ page.title }}</h1>
     {% if page.intro %}<p>{{ page.intro}}</p>{% endif %}
-
+    {% for block in page.body %}
+        {% include_block block %}
+    {% endfor %}
 {% endblock %}

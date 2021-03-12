@@ -7,3 +7,4 @@ class SectionBlock(blocks.StructBlock):
 
     class Meta:
         icon = "cogs"
+        template = "services/blocks/section.html"
