@@ -39,7 +39,7 @@ class CardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "tag"
-        template = "services/blocks/cards.html"
+        template = "services/blocks/card.html"
 
 class CardsSectionBlock(blocks.StreamBlock):
     card = CardBlock()

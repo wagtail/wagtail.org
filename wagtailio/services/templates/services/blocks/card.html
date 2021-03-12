@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% with value as card %}
+<div>
+    <p>CARD</p>
+    <div>
+        {% image card.image fill-138x110%}
+    </div>
+    <p>
+        {{ card.text }}
+    </p>
+    <a href="{{card.link}}">Find out more</a>
+</div>
+{% endwith %}
