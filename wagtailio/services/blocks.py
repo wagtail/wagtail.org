@@ -27,12 +27,15 @@ class CardBlock(blocks.StructBlock):
         template = "services/blocks/card.html"
 
 
-class CardsSectionBlock(blocks.StreamBlock):
-    card = CardBlock()
+class CardsBlock(blocks.ListBlock):
+    def __init__(self, **kwargs):
+        child_block = CardBlock()
+        super().__init__(child_block, **kwargs)
 
     class Meta:
         icon = "table"
-        template = "services/blocks/cards_section.html"
+        template = "services/blocks/cards.html"
+
 
 
 class LinkButtonBlock(blocks.StructBlock):
@@ -73,7 +76,7 @@ class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
     paragraph = blocks.RichTextBlock(features=["bold", "italic", "link",  "ul", "ol"])
-    card_section = CardsSectionBlock()
+    cards = CardsBlock()
     link_button = LinkButtonBlock()
     quote = QuoteBlock()
 
