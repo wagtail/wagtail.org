@@ -4,13 +4,6 @@
 
 */
 .template-services-page {
-  $font-size-1: 16px;
-  $font-size-2: 18px;
-  $font-size-3: 24px;
-  $font-size-4: 28px;
-  $font-size-5: 40px;
-  $font-size-6: 44px;
-  $font-size-7: 72px;
 
   color: $color--primary;
 
@@ -50,19 +43,37 @@
     &__heading {
       margin: 0 0 24px;
       max-width: 800px;
-      font-size: $font-size-7;
+      font-size: 72px;
       line-height: 1;
     }
 
     &__introduction {
       margin: 0 0 24px;
       max-width: 800px;
-      font-size: $font-size-3;
+      font-size: 24px;
     }
 
     &__links {
-      font-size: $font-size-2;
+      font-size: 18px;
       font-weight: 400;
     }
+  }
+
+  .cards-section {
+    display: flex;
+    height: 332px;
+    align-items: stretch;
+  }
+
+  .card {
+    width: 280px;
+    border: 1px solid $color--border-light;
+
+    &__text {
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
   }
 }

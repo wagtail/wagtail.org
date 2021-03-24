@@ -34,7 +34,7 @@ class CardsBlock(blocks.ListBlock):
 
     class Meta:
         icon = "table"
-        template = "services/blocks/cards.html"
+        template = "services/blocks/cards-section.html"
 
 
 class LinkButtonBlock(blocks.StructBlock):
