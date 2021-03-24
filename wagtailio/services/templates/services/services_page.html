@@ -11,7 +11,7 @@
                     {{ page.intro }}
                 </div>
             {% endif %}
-            <ul>
+            <ul class="page-heading__links">
                 {% for section in page.body %}
                     <li><a href="#{{ section.value.title|slugify }}">{{ section.value.title }}</a></li>
                 {% endfor %}

@@ -12,11 +12,33 @@
   $font-size-6: 44px;
   $font-size-7: 72px;
 
+  color: $color--primary;
+
   .page-content {
     margin: 0 $gutter;
+    padding: 112px 0 0;
 
-    h1 {
-      font-size: $font-size-7;
+    .page-heading {
+      margin: 0 auto;
+      max-width: calc(1440px - 286px - 210px);
+      text-align: left;
+
+      &__heading {
+        margin: 0 0 24px;
+        font-size: $font-size-7;
+        line-height: 1;
+      }
+
+      &__introduction {
+        margin: 0 0 24px;
+        max-width: 800px;
+        font-size: $font-size-3;
+      }
+
+      &__links {
+        font-size: $font-size-2;
+        font-weight: 400;
+      }
     }
 
     h2,
