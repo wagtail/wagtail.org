@@ -5,17 +5,19 @@
 {% block content %}
     <div class="page-content">
         <header class="page-heading ">
-            <h1 class="page-heading__heading">{{ page.title }}</h1>
-            {% if page.intro %}
-                <div class="page-heading__introduction">
-                    {{ page.intro }}
-                </div>
-            {% endif %}
-            <ul class="page-heading__links">
-                {% for section in page.body %}
-                    <li><a href="#{{ section.value.title|slugify }}">{{ section.value.title }}</a></li>
-                {% endfor %}
-            </ul>
+            <div class="page-heading__content">
+                <h1 class="page-heading__heading">{{ page.title }}</h1>
+                {% if page.intro %}
+                    <div class="page-heading__introduction">
+                        {{ page.intro }}
+                    </div>
+                {% endif %}
+                <ul class="page-heading__links">
+                    {% for section in page.body %}
+                        <li><a href="#{{ section.value.title|slugify }}">{{ section.value.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </header>
         <div class="container">
             {% include_block page.body %}

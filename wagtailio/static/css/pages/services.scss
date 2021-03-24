@@ -18,29 +18,6 @@
     margin: 0 $gutter;
     padding: 112px 0 0;
 
-    .page-heading {
-      margin: 0 auto;
-      max-width: calc(1440px - 286px - 210px);
-      text-align: left;
-
-      &__heading {
-        margin: 0 0 24px;
-        font-size: $font-size-7;
-        line-height: 1;
-      }
-
-      &__introduction {
-        margin: 0 0 24px;
-        max-width: 800px;
-        font-size: $font-size-3;
-      }
-
-      &__links {
-        font-size: $font-size-2;
-        font-weight: 400;
-      }
-    }
-
     h2,
     h3,
     h4 {
@@ -62,9 +39,30 @@
     }
   }
 
-  .paragraph,
-  .calltoaction {
-    max-width: 800px;
-    margin: 0 auto ($gutter * 3);
+  .page-heading {
+    text-align: left;
+
+    &__content {
+      margin: 0 auto;
+      max-width: calc(1440px - 286px - 210px);
+    }
+
+    &__heading {
+      margin: 0 0 24px;
+      max-width: 800px;
+      font-size: $font-size-7;
+      line-height: 1;
+    }
+
+    &__introduction {
+      margin: 0 0 24px;
+      max-width: 800px;
+      font-size: $font-size-3;
+    }
+
+    &__links {
+      font-size: $font-size-2;
+      font-weight: 400;
+    }
   }
 }
