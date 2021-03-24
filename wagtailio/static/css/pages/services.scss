@@ -1,0 +1,48 @@
+/* ============================================
+
+  Services page
+
+*/
+.template-services-page {
+  $font-size-1: 16px;
+  $font-size-2: 18px;
+  $font-size-3: 24px;
+  $font-size-4: 28px;
+  $font-size-5: 40px;
+  $font-size-6: 44px;
+  $font-size-7: 72px;
+
+  .page-content {
+    margin: 0 $gutter;
+
+    h1 {
+      font-size: $font-size-7;
+    }
+
+    h2,
+    h3,
+    h4 {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto ($gutter);
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 21px;
+    }
+
+    h4 {
+      font-size: $gutter;
+    }
+  }
+
+  .paragraph,
+  .calltoaction {
+    max-width: 800px;
+    margin: 0 auto ($gutter * 3);
+  }
+}
