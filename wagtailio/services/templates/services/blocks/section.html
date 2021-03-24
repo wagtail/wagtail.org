@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 {% with value as section  %}
     <section id="{{ section.title|slugify }}">
-        <h2>{{ section.title }}</h2>
+        <a href="#{{ section.title|slugify }}"><h2>{{ section.title }}</h2></a>
         {% for block in section.content %}
             {% include_block block %}
         {% endfor %}
