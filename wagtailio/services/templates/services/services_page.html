@@ -3,9 +3,22 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    {% if page.intro %}<p>{{ page.intro}}</p>{% endif %}
-    {% for block in page.body %}
-        {% include_block block %}
-    {% endfor %}
+    <div class="page-content">
+        <header class="page-heading ">
+            <h1 class="page-heading__heading">{{ page.title }}</h1>
+            {% if page.intro %}
+                <div class="page-heading__introduction">
+                    {{ page.intro }}
+                </div>
+            {% endif %}
+            <ul>
+                {% for section in page.body %}
+                    <li><a href="#{{ section.value.title|slugify }}">{{ section.value.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </header>
+        <div class="container">
+            {% include_block page.body %}
+        </div>
+    </div>
 {% endblock %}
