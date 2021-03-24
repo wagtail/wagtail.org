@@ -1,5 +1,4 @@
 from wagtail.core import blocks
-from wagtail.core import fields
 from wagtail.images import blocks as image_blocks
 
 
@@ -35,7 +34,6 @@ class CardsBlock(blocks.ListBlock):
     class Meta:
         icon = "table"
         template = "services/blocks/cards.html"
-
 
 
 class LinkButtonBlock(blocks.StructBlock):
@@ -75,7 +73,9 @@ class QuoteBlock(blocks.StructBlock):
 class SectionContentBlock(blocks.StreamBlock):
     subheading = SubheadingBlock()
     divider = DividerBlock()
-    paragraph = blocks.RichTextBlock(features=["bold", "italic", "link",  "ul", "ol"])
+    paragraph = blocks.RichTextBlock(
+        features=["bold", "italic", "link",  "ul", "ol"]
+    )
     cards = CardsBlock()
     link_button = LinkButtonBlock()
     quote = QuoteBlock()
