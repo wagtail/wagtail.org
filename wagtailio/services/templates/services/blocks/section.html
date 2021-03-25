@@ -4,7 +4,11 @@
     <div class="section__inner-wrapper">
         {% if section.section_image %}
             <div class="section__image">
-                {% image section.section_image fill-390x390 %}
+                <div class="section__image-inner">
+                    <div class="section__image-overlay section__image-overlay--var1"></div>
+                    <div class="section__image-overlay section__image-overlay--var2"></div>
+                    {% image section.section_image fill-390x390 %}
+                </div>
             </div>
         {% endif %}
         <div class="section__content">
