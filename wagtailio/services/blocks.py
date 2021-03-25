@@ -82,12 +82,13 @@ class SectionContentBlock(blocks.StreamBlock):
     quote = QuoteBlock()
 
 
+
 class SectionBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True,  form_classname="full title")
     # TODO: Section icon
-    # TODO: Section image (optional)
-    # image = ImageAndCaptionBlock(required=False)
-    # TODO: Section background color
+
+    section_image = image_blocks.ImageChooserBlock(required=False)
+    section_image_caption = blocks.CharBlock(required=False)
 
     content = SectionContentBlock(required=False)
 
