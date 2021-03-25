@@ -110,9 +110,20 @@
       background-color: $color--wagtailio-grey;
     }
 
+    &__inner-wrapper {
+      max-width: 1300px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &__image img {
+      border-radius: 390px;
+    }
+
     &__content {
-      margin: 0 auto;
       max-width: $content-width;
+      overflow: auto;
     }
 
     &__heading-line {
@@ -129,14 +140,21 @@
   }
 
   .cards-section {
-    margin: 60px 0 0;
-    display: flex;
     height: 332px;
-    align-items: stretch;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
   }
 
   .card {
+    flex: 0 0 auto;
+
     width: 280px;
+    height: 332px;
+
     border: 1px solid $color--border-light;
     background-color: $color--white;
 
