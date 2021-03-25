@@ -20,7 +20,10 @@
             </div>
         </header>
         <div class="container">
-            {% include_block page.body %}
+            {% for section in page.body  %}
+                {% cycle 'var1' 'var2' 'var3' as section_modifier silent %}
+                {% include_block section with section_modifier=section_modifier %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

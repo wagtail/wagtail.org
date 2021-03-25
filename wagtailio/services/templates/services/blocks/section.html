@@ -1,12 +1,14 @@
 {% load wagtailcore_tags %}
-{% with value as section  %}
-    <section id="{{ section.title|slugify }}" class="section">
-        <div class="section__content">
-            <hr class="section__heading-line">
-            <a href="#{{ section.title|slugify }}"><h2 class="section__heading">{{ section.title }}</h2></a>
-            {% for block in section.content %}
-                {% include_block block %}
-            {% endfor %}
-        </div>
-    </section>
+{% with value as section %}
+<section id="{{ section.title|slugify }}" class="section section--{{ section_modifier }}">
+    <div class="section__content">
+        <hr class="section__heading-line">
+        <a href="#{{ section.title|slugify }}">
+            <h2 class="section__heading">{{ section.title }}</h2>
+        </a>
+        {% for block in section.content %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
+</section>
 {% endwith %}

@@ -7,7 +7,18 @@
 
   $content-width: 800px;
 
+  $color--primary: $color--deep-indigo;
   color: $color--primary;
+
+  a h2,
+  a h3 {
+    color: $color--primary;
+  }
+
+  a:hover h2,
+  a:hover h3 {
+    color: $color--primary;
+  }
 
   .page-content {
     margin: 0 $gutter;
@@ -65,6 +76,29 @@
   .section {
     margin: 0 (-$gutter);
     padding: 120px $gutter;
+
+    &--var1 {
+      background-color: $color--white;
+    }
+
+    &--var2 {
+      background-color: $color--deep-indigo;
+      color: $color--white;
+
+      a h2,
+      a h3 {
+        color: $color--white;
+      }
+
+      a:hover h2,
+      a:hover h3 {
+        color: $color--white;
+      }
+    }
+
+    &--var3 {
+      background-color: $color--wagtailio-grey;
+    }
 
     &__content {
       margin: 0 auto;
