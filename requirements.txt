@@ -24,6 +24,7 @@ wagtail-content-import==0.4.2
 wagtail-image-import==0.1.0
 wagtail-transfer==0.5.1
 mammoth==1.4.10
+wagtail-ab-testing==0.2
 
 
 # Pinned as django-redis has incompatibility with later versions

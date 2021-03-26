@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     "compressor",
     "taggit",
     "modelcluster",
+    "wagtail_ab_testing",
     "wagtail_transfer",
     "wagtail_airtable",
     "wagtail.core",
@@ -384,7 +385,7 @@ WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
 if "PRIMARY_HOST" in env:
     BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
-    
+
 # https://docs.wagtail.io/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 
@@ -443,7 +444,7 @@ WAGTAILIMAGEIMPORT_GOOGLE_OAUTH_CLIENT_SECRET = env.get(
 )
 
 WAGTAILIMAGEIMPORT_FIELD_MAPPING = {
-    "id": "driveidmapping__drive_id", 
+    "id": "driveidmapping__drive_id",
     "name": "title",
     "imageMediaMetadata__time": "exif_datetime",
     "md5Checksum": "md5_hash"
