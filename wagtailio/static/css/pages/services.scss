@@ -155,14 +155,41 @@
     &__content {
       width: 100%;
       max-width: $content-width;
-      overflow: auto;
+      overflow: visible;
+    }
+
+    &__icon {
+      $iconsize: 70px;
+      position: relative;
+      top: -$iconsize + 18px;
+      left: -15px;
+      height: 0;
+      width: 0;
+      font-size: $iconsize;
+      line-height: 1.0;
+      color: $color--lagoon;
+
+      @include media-query(medium) {
+        $iconsize: 80px;
+        top: -$iconsize + 18px;
+        font-size: $iconsize;
+        left: -59px;
+      }
     }
 
     &__heading-line {
-      margin: 0 0 30px;
-      width: 50px;
-      border: 2.5px solid $color--lagoon;
-      border-radius: 5px;
+      margin: 0 0 15px;
+      width: 5px;
+      height: 35px;
+      background-color: $color--lagoon;
+      border-radius: 2px;
+      border: 0;
+
+      @include media-query(medium) {
+        margin: 0 0 30px;
+        width: 50px;
+        height: 5px;
+      }
     }
 
     &__heading {

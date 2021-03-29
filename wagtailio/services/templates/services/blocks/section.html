@@ -12,6 +12,9 @@
             </div>
         {% endif %}
         <div class="section__content">
+            <div class="section__icon">
+                <i class="fas {{ section.icon }}"></i>
+            </div>
             <hr class="section__heading-line">
             <a href="#{{ section.title|slugify }}">
                 <h2 class="section__heading">{{ section.title }}</h2>

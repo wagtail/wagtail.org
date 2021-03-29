@@ -85,7 +85,11 @@ class SectionContentBlock(blocks.StreamBlock):
 
 class SectionBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True,  form_classname="full title")
-    # TODO: Section icon
+    icon = blocks.CharBlock(
+        required=False,
+        max_length=50,
+        help_text="Font awesome idenfifier (e.g. fa-cloud)",
+    )
 
     section_image = image_blocks.ImageChooserBlock(required=False)
     section_image_caption = blocks.CharBlock(required=False)
