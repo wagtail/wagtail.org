@@ -202,10 +202,26 @@
     height: 332px;
   }
 
+  .cards-scroller {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    overflow-x: auto;
+  }
+
+  .cards-padder {
+    width: min-content;
+
+    --gutter: $gutter;
+    padding-left: calc(50vw - 400px - var(--gutter));
+    padding-right: $gutter;
+    margin-left: $gutter;
+  }
+
   .cards-container {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
   }
 
   .card {
