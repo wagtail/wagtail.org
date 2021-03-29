@@ -36,7 +36,7 @@ def editor_css():
     return format_html(
         '<link rel="stylesheet" href="'
         + settings.STATIC_URL
-        + 'css/vendor/font-awesome.min.css">'
+        + 'css/vendor/fontawesome-free-5.15.3-web/css/all.min.css">'
     )
 
 

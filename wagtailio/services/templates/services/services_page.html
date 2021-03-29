@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/fontawesome-free-5.15.3-web/css/all.min.css' %}" />
+{% endblock extra_css %}
+
 
 {% block content %}
     <div class="page-content">
@@ -9,7 +14,7 @@
                 <h1 class="page-heading__heading">{{ page.title }}</h1>
                 {% if page.intro %}
                     <div class="page-heading__introduction">
-                        {{ page.intro }}
+                        {{ page.intro }} <i class="fas fa-camera"></i>
                     </div>
                 {% endif %}
                 <ul class="page-heading__links">
