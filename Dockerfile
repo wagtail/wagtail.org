@@ -14,7 +14,7 @@ EXPOSE 8000
 
 # Install operating system dependencies.
 RUN apt-get update -y && \
-    apt-get install -y apt-transport-https rsync && \
+    apt-get install -y apt-transport-https rsync libmagickwand-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Gunicorn.

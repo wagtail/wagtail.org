@@ -28,6 +28,9 @@ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle
 unzip /tmp/awscli-bundle.zip -d /tmp
 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
+# Install ImageMagick (for Wagtail GIF support through Wand)
+apt-get install -y libmagickwand-dev
+
 # Virtualenv setup for project
 su - vagrant -c "virtualenv --python=python3 $VIRTUALENV_DIR"
 su - vagrant -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
