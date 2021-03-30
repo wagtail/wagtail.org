@@ -274,8 +274,8 @@
       background-color: $color--white;
       @include transition(background-color $anim-speed-primary ease);
 
-      .external-link::after {
-        padding-left: 5px;
+      .external-link {
+        height: 12px;
       }
     }
 
@@ -288,11 +288,10 @@
     }
   }
 
-  .external-link::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f35d";
-    display: inline-block;
-    font-weight: 900;
+  .external-link {
+    vertical-align: text-top;
+    height: 14px;
+    padding-left: 6px;
   }
 
   .button {
@@ -312,10 +311,6 @@
 
     &:hover {
       background-color: darken($color--secondary, 10%);
-    }
-
-    & .external-link::after {
-      padding-left: 6px
     }
   }
 
