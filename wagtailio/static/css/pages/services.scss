@@ -68,14 +68,10 @@
       background-color: $color--deep-indigo;
       color: $color--white;
 
-      a h2,
-      a h3 {
-        color: $color--white;
-      }
-
-      a:hover h2,
-      a:hover h3 {
-        color: $color--white;
+      a, a:hover {
+        h2, h3 {
+          color: $color--white;
+        }
       }
     }
 
