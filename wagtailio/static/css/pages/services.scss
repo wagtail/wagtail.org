@@ -210,6 +210,8 @@
     width: min-content;
 
     --gutter: $gutter;
+    padding-top: $gutter;
+    padding-bottom: $gutter;
     padding-left: calc(50vw - 400px - var(--gutter));
     padding-right: $gutter;
     margin-left: $gutter;
@@ -227,6 +229,9 @@
     width: 280px;
     height: 332px;
     padding: 30px 25px 20px;
+    &:not(:last-child) {
+      margin-right: 52px;
+    }
 
     display: flex;
     flex-direction: column;
