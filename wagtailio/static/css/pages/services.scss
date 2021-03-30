@@ -10,14 +10,10 @@
   $color--primary: $color--deep-indigo;
   color: $color--primary;
 
-  a h2,
-  a h3 {
-    color: $color--primary;
-  }
-
-  a:hover h2,
-  a:hover h3 {
-    color: $color--primary;
+  a, a:hover {
+    h2, h3 {
+      color: $color--primary;
+    }
   }
 
   .page-content {
