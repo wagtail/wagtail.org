@@ -238,7 +238,9 @@
 
     text-align: center;
 
-    border: 1px solid $color--grey-3;
+    border: 1px solid;
+    border-color: $color--grey-3;
+    @include transition(border-color $anim-speed-primary ease);
     border-radius: 4px;
     background-color: $color--white;
 
@@ -271,6 +273,13 @@
       right: 0;
     }
 
+    // Overrride for .page-content > .container a
+    &, &:hover {
+      > a.card__link {
+        border: 0;
+      }
+    }
+
     &__button {
       width: 100%;
       padding: 10px 10px;
@@ -280,6 +289,15 @@
       font-weight: bold;
 
       background-color: $color--white;
+      @include transition(background-color $anim-speed-primary ease);
+    }
+
+    &:hover {
+      border-color: $color--grey-4;
+
+      .card__button {
+        background-color: $color--lagoon;
+      }
     }
   }
 }
