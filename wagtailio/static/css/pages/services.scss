@@ -20,35 +20,12 @@
     margin: 0 $gutter;
     padding: 112px 0 0;
 
-    .button--hover {
-      font-weight: normal;
-      color: $color--primary;
+
+    & > .container a {
+      // Override .page-content > .container a
+      word-wrap: inherit;
+      border: none;
     }
-
-    & > .container .button--hover:hover {
-      // Override for .page-content > .container a
-      border-bottom-color: $color--lagoon;
-    }
-
-    // h2,
-    // h3,
-    // h4 {
-    //   text-align: left;
-    //   max-width: 800px;
-    //   margin: 0 auto ($gutter);
-    // }
-
-    // h2 {
-    //   font-size: 28px;
-    // }
-
-    // h3 {
-    //   font-size: 21px;
-    // }
-
-    // h4 {
-    //   font-size: $gutter;
-    // }
   }
 
   .page-heading {
@@ -311,5 +288,28 @@
     content: "\f35d";
     display: inline-block;
     font-weight: 900;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 16px 40px;
+    margin: 40px 0;
+
+    border-radius: 3px;
+
+    font-size: 16px;
+    font-weight: normal;
+
+    color: $color--primary;
+    background-color: $color--lagoon;
+    @include transition(background-color $anim-speed-primary ease);
+
+    &:hover {
+      background-color: darken($color--secondary, 10%);
+    }
+
+    & .external-link::after {
+      padding-left: 6px
+    }
   }
 }
