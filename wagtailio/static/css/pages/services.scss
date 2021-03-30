@@ -16,6 +16,63 @@
     }
   }
 
+  blockquote {
+    margin: 0;
+
+    font-size: 24px;
+    line-height: 1.5;
+
+    opacity: 0.8;
+
+    p:last-of-type {
+      margin-bottom: 17px;
+    }
+
+    footer cite {
+      font-size: 15px;
+      font-style: normal;
+    }
+  }
+
+  .icon__external-link {
+    vertical-align: text-top;
+    height: 14px;
+    padding-left: 6px;
+  }
+
+  .button {
+    display: block;
+    width: max-content;
+    padding: 16px 40px;
+    margin: 40px 0;
+
+    border-radius: 3px;
+
+    font-size: 16px;
+    font-weight: normal;
+
+    color: $color--primary;
+    background-color: $color--lagoon;
+    @include transition(background-color $anim-speed-primary ease);
+
+    &:hover {
+      background-color: darken($color--secondary, 10%);
+    }
+  }
+
+  .divider {
+    display: block;
+    width: 50px;
+    height: 5px;
+    margin: 57px 0 27px;
+
+    border-radius: 2px;
+    border: 0;
+
+    background-color: $color--lagoon;
+    opacity: 0.2;
+  }
+
   .page-content {
     margin: 0 $gutter;
     padding: 112px 0 0;
@@ -286,44 +343,5 @@
         background-color: $color--lagoon;
       }
     }
-  }
-
-  .external-link {
-    vertical-align: text-top;
-    height: 14px;
-    padding-left: 6px;
-  }
-
-  .button {
-    display: block;
-    width: max-content;
-    padding: 16px 40px;
-    margin: 40px 0;
-
-    border-radius: 3px;
-
-    font-size: 16px;
-    font-weight: normal;
-
-    color: $color--primary;
-    background-color: $color--lagoon;
-    @include transition(background-color $anim-speed-primary ease);
-
-    &:hover {
-      background-color: darken($color--secondary, 10%);
-    }
-  }
-
-  .divider {
-    display: block;
-    width: 50px;
-    height: 5px;
-    margin: 57px 0 27px;
-
-    border-radius: 2px;
-    border: 0;
-
-    background-color: $color--lagoon;
-    opacity: 0.2;
   }
 }
