@@ -8,7 +8,7 @@
   $content-width: 800px;
 
   $color--primary: $color--deep-indigo;
-  color: $color--primary;
+  color: $color--lighter-indigo;
 
   a, a:hover {
     h2, h3 {
@@ -185,14 +185,6 @@
       }
     }
 
-
-
-    &__content {
-      width: 100%;
-      max-width: $content-width;
-      overflow: visible;
-    }
-
     &__icon {
       $iconsize: 70px;
       position: relative;
@@ -230,6 +222,21 @@
     &__heading {
       font-size: 44px;
       line-height: 1.1;
+    }
+
+
+    &__content {
+      width: 100%;
+      max-width: $content-width;
+      overflow: visible;
+
+      h3 {
+        margin: 0 0 15px;
+
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.5;
+      }
     }
   }
 
@@ -277,11 +284,12 @@
     justify-content: space-between;
 
     text-align: center;
-
     border: 1px solid;
+    border-radius: 4px;
+
+    color: $color--primary;
     border-color: $color--grey-3;
     @include transition(border-color $anim-speed-primary ease);
-    border-radius: 4px;
     background-color: $color--white;
 
     &__upper {
