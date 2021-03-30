@@ -73,10 +73,19 @@
           color: $color--white;
         }
       }
+
+      .divider {
+        background-color: $color--white;
+      }
     }
 
     &--var3 {
       background-color: $color--wagtailio-grey;
+
+      .divider {
+        background-color: $color--deep-indigo;
+        opacity: 0.1;
+      }
     }
 
     &__inner-wrapper {
@@ -287,7 +296,8 @@
   }
 
   .button {
-    display: inline-block;
+    display: block;
+    width: max-content;
     padding: 16px 40px;
     margin: 40px 0;
 
@@ -307,5 +317,18 @@
     & .external-link::after {
       padding-left: 6px
     }
+  }
+
+  .divider {
+    display: block;
+    width: 50px;
+    height: 5px;
+    margin: 57px 0 27px;
+
+    border-radius: 2px;
+    border: 0;
+
+    background-color: $color--lagoon;
+    opacity: 0.2;
   }
 }
