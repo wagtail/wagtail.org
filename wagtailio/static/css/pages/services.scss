@@ -237,11 +237,40 @@
         font-weight: bold;
         line-height: 1.5;
       }
+
+      p {
+        margin: 0 0 37px;
+      }
+
+      ul {
+        margin: 28px 0;
+        padding-left: 30px;
+
+        li {
+          position: relative;
+
+          list-style: none;
+
+          &::before {
+            display: inline-block;
+            content: '';
+            width: 15px;
+            height: 3px;
+            position: absolute;
+            top: 10px;
+            left: -30px;
+
+            border-radius: 2px;
+
+            background-color: $color--lagoon;
+          }
+        }
+      }
     }
   }
 
   .cards-section {
-    height: 332px;
+    height: 332px + 2 * $gutter;
   }
 
   .cards-scroller {
