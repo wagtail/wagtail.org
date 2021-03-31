@@ -12,9 +12,11 @@
             </div>
         {% endif %}
         <div class="section__content">
-            <svg class="section__icon">
-                <use href="#{{ section.icon }}"></use>
-            </svg>
+            <div class="section__icon">
+                <svg>
+                    <use href="#{{ section.icon }}"></use>
+                </svg>
+            </div>
             <hr class="section__heading-line">
             <a href="#{{ section.title|slugify }}">
                 <h2 class="section__heading">{{ section.title }}</h2>

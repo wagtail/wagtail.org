@@ -202,16 +202,21 @@
     }
 
     &__icon {
-      height: 70px;
-      width: 150px;
-      position: relative;
-      top: 30px;
-      left: -50px;
-      fill: $color--lagoon;
+      height: 0;
 
-      @include media-query(medium) {
-        height: 80px;
-        left: -95px;
+      svg {
+        height: 70px;
+        width: 150px;
+        position: relative;
+        top: -52px;
+        left: -50px;
+        fill: $color--lagoon;
+
+        @include media-query(medium) {
+          height: 80px;
+          top: -62px;
+          left: -95px;
+        }
       }
     }
 
