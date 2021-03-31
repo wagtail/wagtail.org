@@ -34,10 +34,18 @@
     }
   }
 
-  .icon__external-link {
-    vertical-align: text-top;
+  .external-link::after {
+    display: inline-block;
+    content: '';
+    width: 14px;
     height: 14px;
-    padding-left: 6px;
+    position: relative;
+    top: 1px;
+    left: 6px;
+
+    mask: url("/static/img/svg/external-link.svg");
+    mask-size: cover;
+    background-color: $color--primary;
   }
 
   .button {
