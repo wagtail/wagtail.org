@@ -59,6 +59,11 @@
     &:hover {
       background-color: darken($color--secondary, 10%);
     }
+
+  }
+  a.button {
+    // Overrride for .page-content > .container a
+    border: 0
   }
 
   .divider {
@@ -77,13 +82,6 @@
   .page-content {
     margin: 0 $gutter;
     padding: 112px 0 0;
-
-
-    & > .container a {
-      // Override .page-content > .container a
-      word-wrap: inherit;
-      border: none;
-    }
   }
 
   .page-heading {
