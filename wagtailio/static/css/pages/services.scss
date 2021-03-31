@@ -38,6 +38,7 @@
     vertical-align: text-top;
     height: 14px;
     padding-left: 6px;
+    fill: currentColor;
   }
 
   .button {
@@ -108,8 +109,25 @@
 
     &__links {
       margin: 0;
+      padding-left: 0;
+
+      list-style: none;
       font-size: 18px;
-      font-weight: 400;
+      font-weight: bold;
+
+      li  {
+        margin-bottom: 23px;
+
+        .icon__arrow {
+          vertical-align: text-top;
+          height: 20px;
+
+          margin-right: 16px;
+
+          fill: $color--lagoon;
+        }
+      }
+
     }
   }
 
