@@ -204,21 +204,15 @@
     }
 
     &__icon {
-      $iconsize: 70px;
+      height: 70px;
       position: relative;
-      top: -$iconsize + 18px;
+      top: 30px;
       left: -15px;
-      height: 0;
-      width: 0;
-      font-size: $iconsize;
-      line-height: 1.0;
-      color: $color--lagoon;
+      fill: $color--lagoon;
 
       @include media-query(medium) {
-        $iconsize: 80px;
-        top: -$iconsize + 18px;
-        font-size: $iconsize;
-        left: -59px;
+        height: 80px;
+        left: -85px;
       }
     }
 
