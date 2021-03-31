@@ -13,7 +13,7 @@
         {% endif %}
         <div class="section__content">
             <svg class="section__icon">
-                <use href="#cloud"></use>
+                <use href="#{{ section.icon }}"></use>
             </svg>
             <hr class="section__heading-line">
             <a href="#{{ section.title|slugify }}">

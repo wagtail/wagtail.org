@@ -88,7 +88,7 @@ class SectionBlock(blocks.StructBlock):
     icon = blocks.CharBlock(
         required=False,
         max_length=50,
-        help_text="Font awesome idenfifier (e.g. fa-cloud)",
+        help_text="Icon name in SVG sprite (e.g. cloud)",
     )
 
     section_image = image_blocks.ImageChooserBlock(required=False)

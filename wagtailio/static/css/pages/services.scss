@@ -205,14 +205,15 @@
 
     &__icon {
       height: 70px;
+      width: 150px;
       position: relative;
       top: 30px;
-      left: -15px;
+      left: -50px;
       fill: $color--lagoon;
 
       @include media-query(medium) {
         height: 80px;
-        left: -85px;
+        left: -95px;
       }
     }
 
