@@ -94,13 +94,17 @@
     display: block;
     width: 50px;
     height: 5px;
-    margin: 57px 0 27px;
+    margin: 40px 0 25px;
 
     border-radius: 2px;
     border: 0;
 
     background-color: $color--lagoon;
     opacity: 0.2;
+
+    @include media-query(small) {
+      margin: 57px 0 27px;
+    }
   }
 
   .card {
@@ -385,7 +389,10 @@
       }
 
       > p {
-        margin: 0 0 37px;
+        margin: 0 0 30px;
+        @include media-query(small) {
+          margin: 0 0 40px;
+        }
       }
 
       > ul {
