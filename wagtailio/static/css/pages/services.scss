@@ -174,8 +174,6 @@
       overflow-x: auto;
       scroll-snap-type: x proximity;
       scroll-behavior: smooth;
-
-      border: 5px solid green;
     }
 
     &__card-wrapper {
@@ -380,13 +378,13 @@
     }
 
     &__introduction {
-      margin: 0 0 24px;
+      margin: 0 0 35px;
       font-size: 18px;
 
       @include media-query(small) {
         margin: 0 0 24px;
         font-size: 24px;
-        }
+      }
     }
 
     &__links {
@@ -394,18 +392,29 @@
       padding-left: 0;
 
       list-style: none;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: bold;
 
       color: $color--deep-indigo;
 
+      @include media-query(small) {
+        font-size: 18px;
+      }
+
       li  {
         margin-bottom: 23px;
 
+        a {
+          display: flex;
+          align-items: start;
+        }
+
         .icon__arrow {
+          flex: 0 0 auto;
           vertical-align: text-top;
           height: 20px;
 
+          margin-top: 3px;
           margin-right: 16px;
 
           fill: $color--lagoon;
