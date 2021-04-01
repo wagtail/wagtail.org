@@ -202,7 +202,11 @@
 
   .section {
     margin: 0 (-$gutter);
-    padding: 120px $gutter;
+    padding: 60px $gutter;
+
+    @include media-query(medium) {
+      padding: 120px $gutter;
+    }
 
     &--var1 {
       background-color: $color--white;
@@ -329,8 +333,12 @@
     }
 
     &__heading {
-      font-size: 44px;
+      font-size: 28px;
       line-height: 1.1;
+
+      @include media-query(medium) {
+        font-size: 44px;
+      }
     }
 
 
