@@ -398,24 +398,24 @@
 
       > ul {
         margin: 28px 0;
-        padding-left: 30px;
+        padding-left: 0;
 
         li {
-          position: relative;
-
           list-style: none;
+          padding-left: 30px;
 
-          &::before {
+          &::before{
             display: inline-block;
             content: '';
-            width: 15px;
-            height: 3px;
-            position: absolute;
-            top: 10px;
-            left: -30px;
+            width: 10px;
+            height: 10px;
+            margin-left: -30px;
+            margin-right: 20px;
 
-            border-radius: 2px;
-
+            -webkit-mask: url("/static/img/svg/list-dash.svg");
+            mask: url("/static/img/svg/list-dash.svg");
+            -webkit-mask-size: cover;
+            mask-size: cover;
             background-color: $color--lagoon;
           }
         }
