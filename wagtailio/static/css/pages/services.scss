@@ -96,12 +96,9 @@
     flex: 0 0 auto;
 
     position: relative;
-    width: 280px;
+    width: 242px;
     height: 332px;
-    padding: 30px 25px 20px;
-    &:not(:last-child) {
-      margin-right: 52px;
-    }
+    padding: 30px 23px 20px;
 
     display: flex;
     flex-direction: column;
@@ -116,6 +113,10 @@
     @include transition(border-color $anim-speed-primary ease);
     background-color: $color--white;
 
+    @include media-query(medium) {
+      width: 280px;
+    }
+
     &__upper {
       overflow-y: hidden;
     }
@@ -129,8 +130,12 @@
     }
 
     &__text {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.5;
+
+      @include media-query(medium) {
+        font-size: 14px;
+      }
 
       & p {
         margin: 20px 0;
@@ -191,10 +196,16 @@
 
     &__card-wrapper {
       flex: 0 0 auto;
-      padding-right: 52px;
+      margin-left: -$gutter;
+      padding-left: $gutter;
+      padding-right: 16px;
       width: min-contents;
 
       scroll-snap-align: center;
+
+      @include media-query(medium) {
+        padding-right: 52px
+      }
     }
 
 
