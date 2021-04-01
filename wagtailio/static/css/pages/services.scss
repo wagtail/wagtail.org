@@ -383,9 +383,14 @@
       > h3 {
         margin: 0 0 15px;
 
-        font-size: 22px;
+        font-size: 18px;
         font-weight: bold;
-        line-height: 1.5;
+        line-height: 1.3;
+
+        @include media-query(small) {
+          font-size: 22px;
+          line-height: 1.5;
+        }
       }
 
       > p {
