@@ -3,12 +3,17 @@
 <section id="{{ section.title|slugify }}" class="section section--{{ section_modifier }}">
     <div class="section__inner-wrapper">
         {% if section.section_image %}
-            <div class="section__image">
-                <div class="section__image-inner">
+            <div class="section__image-wrapper">
+                <div class="section__image">
                     <div class="section__image-overlay section__image-overlay--var1"></div>
                     <div class="section__image-overlay section__image-overlay--var2"></div>
                     {% image section.section_image fill-390x390 %}
                 </div>
+                {% if section.section_image_caption %}
+                    <div class="section__image-caption">
+                        {{ section.section_image_caption }}
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
         <div class="section__content">

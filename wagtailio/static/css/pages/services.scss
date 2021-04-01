@@ -172,16 +172,16 @@
     }
 
     &__image {
-      margin: 0 90px 0 0;
+      position: relative;
+      height: max-content;
+      width: max-content;
 
       img {
         border-radius: 390px;
       }
 
-      &-inner {
-        position: relative;
-        height: max-content;
-        width: max-content;
+      &-wrapper {
+        margin: 0 90px 0 0;
       }
 
       &-overlay {
@@ -200,6 +200,14 @@
       &-overlay--var2 {
         opacity: 0.1;
         left: -120px;
+      }
+
+      &-caption {
+        margin: 30px 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: $color--deep-indigo;
       }
     }
 
