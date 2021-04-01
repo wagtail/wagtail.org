@@ -369,14 +369,24 @@
     }
 
     &__heading {
-      margin: 0 0 24px;
-      font-size: 72px;
+      margin: 0 0 10px;
+      font-size: 44px;
       line-height: 1;
+
+      @include media-query(small) {
+        margin: 0 0 24px;
+        font-size: 72px;
+      }
     }
 
     &__introduction {
       margin: 0 0 24px;
-      font-size: 24px;
+      font-size: 18px;
+
+      @include media-query(small) {
+        margin: 0 0 24px;
+        font-size: 24px;
+        }
     }
 
     &__links {
@@ -401,7 +411,6 @@
           fill: $color--lagoon;
         }
       }
-
     }
   }
 }
