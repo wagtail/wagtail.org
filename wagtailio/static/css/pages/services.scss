@@ -99,8 +99,8 @@
     border-radius: 2px;
     border: 0;
 
-    background-color: $color--lagoon;
-    opacity: 0.2;
+    background-color: $color--deep-indigo;
+    opacity: 0.1;
 
     @include media-query(small) {
       margin: 57px 0 27px;
@@ -250,16 +250,12 @@
 
       .divider {
         background-color: $color--white;
+        opacity: 0.2;
       }
     }
 
     &--var3 {
       background-color: $color--wagtailio-grey;
-
-      .divider {
-        background-color: $color--deep-indigo;
-        opacity: 0.1;
-      }
     }
 
     &__inner-wrapper {
