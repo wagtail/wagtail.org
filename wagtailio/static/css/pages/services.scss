@@ -236,7 +236,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       justify-content: center;
 
       @include media-query(medium) {
@@ -246,15 +246,25 @@
 
     &__image {
       position: relative;
-      height: max-content;
-      width: max-content;
+      max-width: 390px;
+      margin: 30px auto 0;
+
+      @include media-query(medium) {
+        margin: 0 auto;
+      }
 
       img {
-        border-radius: 390px;
+        width: 100%;
+        border-radius: 100%;
       }
 
       &-wrapper {
-        margin: 0 90px 0 0;
+        flex: 0 0 390px;
+        margin: 0;
+
+        @include media-query(medium) {
+          margin-right: 90px;
+        }
       }
 
       &-overlay {
