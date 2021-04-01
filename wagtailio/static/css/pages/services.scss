@@ -166,32 +166,27 @@
 
   .cards {
     &__section {
-      height: 332px + 2 * $gutter;
-    }
-
-    &__scroller {
-      position: absolute;
-      left: 0;
-      right: 0;
+      // m#{i}n is a hack to use the CSS min function instead of SCSS (which does not allow nesting calc) -- https://github.com/sass/sass/issues/2849#issuecomment-762039570
+      margin: 0 m#{i}n(calc(-1 * (50vw - 400px)), -$gutter);
+      padding: $gutter 0 $gutter m#{a}x(calc(50vw - 400px), $gutter);
+      display: flex;
 
       overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-behavior: smooth;
+
+      border: 5px solid green;
     }
 
-    &__padder {
-      width: min-content;
+    &__card-wrapper {
+      flex: 0 0 auto;
+      padding-right: 52px;
+      width: min-contents;
 
-      --gutter: $gutter;
-      padding-top: $gutter;
-      padding-bottom: $gutter;
-      padding-left: calc(50vw - 400px - var(--gutter));
-      padding-right: $gutter;
-      margin-left: $gutter;
+      scroll-snap-align: center;
     }
 
-    &__container {
-      display: flex;
-      flex-wrap: nowrap;
-    }
+
   }
 
   .section {
