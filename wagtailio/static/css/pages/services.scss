@@ -402,21 +402,35 @@
 
         li {
           list-style: none;
-          padding-left: 30px;
+          padding-left: 20px;
+
+          font-size: 16px;
+
+          @include media-query(small) {
+            font-size: 18px;
+            padding-left: 30px;
+          }
 
           &::before{
             display: inline-block;
             content: '';
             width: 10px;
             height: 10px;
-            margin-left: -30px;
-            margin-right: 20px;
+            margin-left: -20px;
+            margin-right: 10px;
 
             -webkit-mask: url("/static/img/svg/list-dash.svg");
             mask: url("/static/img/svg/list-dash.svg");
             -webkit-mask-size: cover;
             mask-size: cover;
             background-color: $color--lagoon;
+
+            @include media-query(small) {
+              width: 15px;
+              height: 15px;
+              margin-left: -30px;
+              margin-right: 15px;
+            }
           }
         }
       }
