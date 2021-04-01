@@ -16,21 +16,32 @@
     }
   }
 
-  blockquote {
+  .quote {
     margin: 0;
-
-    font-size: 24px;
-    line-height: 1.5;
 
     opacity: 0.8;
 
-    p:last-of-type {
-      margin-bottom: 17px;
+    > p {
+      margin: 0 0 16px;
+
+      font-size: 18px;
+      line-height: 1.5;
+
+      @include media-query(small) {
+        font-size: 24px;
+      }
     }
 
-    footer cite {
-      font-size: 15px;
-      font-style: normal;
+    > footer {
+      font-size: 12px;
+
+      @include media-query(small) {
+        font-size: 15px;
+      }
+
+      cite {
+        font-style: normal;
+      }
     }
   }
 
@@ -365,7 +376,7 @@
         font-size: 18px;
       }
 
-      h3 {
+      > h3 {
         margin: 0 0 15px;
 
         font-size: 22px;
@@ -373,11 +384,11 @@
         line-height: 1.5;
       }
 
-      p {
+      > p {
         margin: 0 0 37px;
       }
 
-      ul {
+      > ul {
         margin: 28px 0;
         padding-left: 30px;
 
