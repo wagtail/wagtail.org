@@ -1,4 +1,9 @@
-<a href="{{ value.link }}" class="button">
-    {% if value.lead_text %}{{value.lead_text}} {% endif %}
-    <strong >{{value.action_text}}</strong><svg class="icon__external-link" viewBox="0 0 100 100"><use href="#external-link"></svg>
+<a href="{{ value.link }}" class="link-button">
+    {% if value.lead_text %}
+        <span class="link-button__lead">{{value.lead_text}} </span>
+    {% endif %}
+    <strong >{{value.action_text}}</strong>
+    <svg class="icon__external-link" viewBox="0 0 100 100">
+        <use href="#external-link">
+    </svg>
 </a>
