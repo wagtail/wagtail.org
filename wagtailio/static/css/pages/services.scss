@@ -228,7 +228,7 @@
 
   .section {
     margin: 0 (-$gutter);
-    padding: 80px $gutter;
+    padding: 110px $gutter 60px;
 
     @include media-query(medium) {
       padding: 120px $gutter;
