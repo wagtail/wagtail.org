@@ -358,6 +358,13 @@
       max-width: $content-width;
       overflow: visible;
 
+      font-size: 16px;
+      line-height: 1.5;
+
+      @include media-query(small) {
+        font-size: 18px;
+      }
+
       h3 {
         margin: 0 0 15px;
 
