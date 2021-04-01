@@ -79,55 +79,118 @@
     opacity: 0.2;
   }
 
-  .page-content {
-    margin: 0 $gutter;
-    padding: 112px 0 0;
-  }
+  .card {
+    flex: 0 0 auto;
 
-  .page-heading {
-    margin: 0;
-    padding: 0 0 20px;
-    text-align: left;
-
-    &__content {
-      margin: 0 auto;
-      max-width: $content-width;
+    position: relative;
+    width: 280px;
+    height: 332px;
+    padding: 30px 25px 20px;
+    &:not(:last-child) {
+      margin-right: 52px;
     }
 
-    &__heading {
-      margin: 0 0 24px;
-      font-size: 72px;
-      line-height: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-align: center;
+    border: 1px solid;
+    border-radius: 4px;
+
+    color: $color--primary;
+    border-color: $color--grey-3;
+    @include transition(border-color $anim-speed-primary ease);
+    background-color: $color--white;
+
+    &__upper {
+      overflow-y: hidden;
     }
 
-    &__introduction {
-      margin: 0 0 24px;
-      font-size: 24px;
+    &__divider {
+      width: 100%;
+      height: 1px;
+      margin: 20px 0 20px;
+      border: none;
+      background-color: $color--wagtailio-grey;
     }
 
-    &__links {
-      margin: 0;
-      padding-left: 0;
+    &__text {
+      font-size: 14px;
+      line-height: 1.5;
 
-      list-style: none;
-      font-size: 18px;
+      & p {
+        margin: 20px 0;
+      }
+    }
+
+    &__link {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    // Overrride for .page-content > .container a
+    &, &:hover {
+      > a.card__link {
+        border: 0;
+      }
+    }
+
+    &__button {
+      width: 100%;
+      padding: 10px 10px;
+
+      border-radius: 3px;
+      font-size: 14px;
       font-weight: bold;
 
-      color: $color--deep-indigo;
+      background-color: $color--white;
+      @include transition(background-color $anim-speed-primary ease);
 
-      li  {
-        margin-bottom: 23px;
-
-        .icon__arrow {
-          vertical-align: text-top;
-          height: 20px;
-
-          margin-right: 16px;
-
-          fill: $color--lagoon;
-        }
+      .external-link {
+        height: 12px;
       }
+    }
 
+    &:hover {
+      border-color: $color--grey-4;
+
+      .card__button {
+        background-color: $color--lagoon;
+      }
+    }
+  }
+
+  .cards {
+    &__section {
+      height: 332px + 2 * $gutter;
+    }
+
+    &__scroller {
+      position: absolute;
+      left: 0;
+      right: 0;
+
+      overflow-x: auto;
+    }
+
+    &__padder {
+      width: min-content;
+
+      --gutter: $gutter;
+      padding-top: $gutter;
+      padding-bottom: $gutter;
+      padding-left: calc(50vw - 400px - var(--gutter));
+      padding-right: $gutter;
+      margin-left: $gutter;
+    }
+
+    &__container {
+      display: flex;
+      flex-wrap: nowrap;
     }
   }
 
@@ -295,116 +358,55 @@
     }
   }
 
-  .cards-section {
-    height: 332px + 2 * $gutter;
+  .page-content {
+    margin: 0 $gutter;
+    padding: 112px 0 0;
   }
 
-  .cards-scroller {
-    position: absolute;
-    left: 0;
-    right: 0;
+  .page-heading {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: left;
 
-    overflow-x: auto;
-  }
-
-  .cards-padder {
-    width: min-content;
-
-    --gutter: $gutter;
-    padding-top: $gutter;
-    padding-bottom: $gutter;
-    padding-left: calc(50vw - 400px - var(--gutter));
-    padding-right: $gutter;
-    margin-left: $gutter;
-  }
-
-  .cards-container {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .card {
-    flex: 0 0 auto;
-
-    position: relative;
-    width: 280px;
-    height: 332px;
-    padding: 30px 25px 20px;
-    &:not(:last-child) {
-      margin-right: 52px;
+    &__content {
+      margin: 0 auto;
+      max-width: $content-width;
     }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    text-align: center;
-    border: 1px solid;
-    border-radius: 4px;
-
-    color: $color--primary;
-    border-color: $color--grey-3;
-    @include transition(border-color $anim-speed-primary ease);
-    background-color: $color--white;
-
-    &__upper {
-      overflow-y: hidden;
+    &__heading {
+      margin: 0 0 24px;
+      font-size: 72px;
+      line-height: 1;
     }
 
-    &__divider {
-      width: 100%;
-      height: 1px;
-      margin: 20px 0 20px;
-      border: none;
-      background-color: $color--wagtailio-grey;
+    &__introduction {
+      margin: 0 0 24px;
+      font-size: 24px;
     }
 
-    &__text {
-      font-size: 14px;
-      line-height: 1.5;
+    &__links {
+      margin: 0;
+      padding-left: 0;
 
-      & p {
-        margin: 20px 0;
-      }
-    }
-
-    &__link {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    // Overrride for .page-content > .container a
-    &, &:hover {
-      > a.card__link {
-        border: 0;
-      }
-    }
-
-    &__button {
-      width: 100%;
-      padding: 10px 10px;
-
-      border-radius: 3px;
-      font-size: 14px;
+      list-style: none;
+      font-size: 18px;
       font-weight: bold;
 
-      background-color: $color--white;
-      @include transition(background-color $anim-speed-primary ease);
+      color: $color--deep-indigo;
 
-      .external-link {
-        height: 12px;
+      li  {
+        margin-bottom: 23px;
+
+        .icon__arrow {
+          vertical-align: text-top;
+          height: 20px;
+
+          margin-right: 16px;
+
+          fill: $color--lagoon;
+        }
       }
-    }
 
-    &:hover {
-      border-color: $color--grey-4;
-
-      .card__button {
-        background-color: $color--lagoon;
-      }
     }
   }
 }

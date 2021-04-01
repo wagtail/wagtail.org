@@ -1,9 +1,9 @@
 {% load wagtailcore_tags %}
 {% with value  as card_section %}
-    <div class="cards-section">
-        <div class="cards-scroller">
-            <div class="cards-padder">
-                <div class="cards-container">
+    <div class="cards__section">
+        <div class="cards__scroller">
+            <div class="cards__padder">
+                <div class="cards__container">
                     {% for card in card_section  %}
                         {% include_block card %}
                     {% endfor %}
