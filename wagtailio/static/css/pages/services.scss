@@ -23,13 +23,6 @@
     }
   }
 
-  .icon__external-link {
-    vertical-align: text-top;
-    height: 14px;
-    padding-left: 6px;
-    fill: currentColor;
-  }
-
   .cards {
     &__section {
       // m#{i}n is a hack to use the CSS min function instead of SCSS (which does not allow nesting calc) -- https://github.com/sass/sass/issues/2849#issuecomment-762039570
