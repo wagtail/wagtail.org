@@ -95,23 +95,6 @@
     border: 0;
   }
 
-  .divider {
-    display: block;
-    width: 50px;
-    height: 5px;
-    margin: 40px 0 25px;
-
-    border-radius: 2px;
-    border: 0;
-
-    background-color: $color--deep-indigo;
-    opacity: 0.1;
-
-    @include media-query(small) {
-      margin: 57px 0 27px;
-    }
-  }
-
   .cards {
     &__section {
       // m#{i}n is a hack to use the CSS min function instead of SCSS (which does not allow nesting calc) -- https://github.com/sass/sass/issues/2849#issuecomment-762039570
