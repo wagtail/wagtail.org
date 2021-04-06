@@ -29,6 +29,8 @@ wagtail-image-import==0.1.0
 wagtail-transfer==0.5.1
 wagtail-ab-testing==0.3rc1
 Wand==0.6.6
+wagtailmedia==0.7.0
+
 
 # Pinned as django-redis has incompatibility with later versions
 redis==2.10.6
