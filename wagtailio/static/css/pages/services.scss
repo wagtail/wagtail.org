@@ -83,6 +83,10 @@
         border-radius: 100%;
       }
 
+      video {
+        max-height: 100%;
+      }
+
       &-wrapper {
         flex: 0 0 390px;
         margin: 0;

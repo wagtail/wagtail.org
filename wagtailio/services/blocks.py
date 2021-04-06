@@ -1,6 +1,10 @@
+from django.forms import utils
+from django.utils import html
+
 from wagtail.core import blocks
 from wagtail.images import blocks as image_blocks
 
+from wagtailmedia import blocks as media_blocks
 
 class SubheadingBlock(blocks.CharBlock):
     class Meta:
@@ -82,6 +86,35 @@ class SectionContentBlock(blocks.StreamBlock):
     quote = QuoteBlock()
 
 
+class SectionMediaBlock(media_blocks.AbstractMediaChooserBlock):
+    def render_basic(self, value, context=None):
+        if not value:
+            return ''
+
+        if value.type == 'video':
+            player_code = '''
+            <div>
+                <video width="320" height="240" controls>
+                    {0}
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            '''
+        else:
+            player_code = '''
+            <div>
+                <audio controls>
+                    {0}
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            '''
+
+        return html.format_html(player_code, html.format_html_join(
+            '\n', "<source{0}>",
+            [[utils.flatatt(s)] for s in value.sources]
+        ))
+
 
 class SectionBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True,  form_classname="full title")
@@ -91,6 +124,7 @@ class SectionBlock(blocks.StructBlock):
         help_text="Icon name in SVG sprite (e.g. cloud)",
     )
 
+    section_media = SectionMediaBlock(required=False)
     section_image = image_blocks.ImageChooserBlock(required=False)
     section_image_caption = blocks.CharBlock(required=False)
 
