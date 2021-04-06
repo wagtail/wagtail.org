@@ -23,33 +23,6 @@
     }
   }
 
-  .cards {
-    &__section {
-      // m#{i}n is a hack to use the CSS min function instead of SCSS (which does not allow nesting calc) -- https://github.com/sass/sass/issues/2849#issuecomment-762039570
-      margin: 0 m#{i}n(calc(-1 * (50vw - 400px)), -$gutter);
-      padding: $gutter 0 $gutter m#{a}x(calc(50vw - 400px), $gutter);
-      display: flex;
-
-      overflow-x: auto;
-      scroll-snap-type: x proximity;
-      scroll-behavior: smooth;
-    }
-
-    &__card-wrapper {
-      flex: 0 0 auto;
-      margin-left: -$gutter;
-      padding-left: $gutter;
-      padding-right: 16px;
-      width: min-contents;
-
-      scroll-snap-align: center;
-
-      @include media-query(medium) {
-        padding-right: 52px;
-      }
-    }
-  }
-
   .section {
     margin: 0 (-$gutter);
     padding: 110px $gutter 60px;
@@ -262,9 +235,31 @@
     }
   }
 
-  .page-content {
-    margin: 0 $gutter;
-    padding: 112px 0 0;
+  .cards {
+    &__section {
+      // m#{i}n is a hack to use the CSS min function instead of SCSS (which does not allow nesting calc) -- https://github.com/sass/sass/issues/2849#issuecomment-762039570
+      margin: 0 m#{i}n(calc(-1 * (50vw - 400px)), -$gutter);
+      padding: $gutter 0 $gutter m#{a}x(calc(50vw - 400px), $gutter);
+      display: flex;
+
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-behavior: smooth;
+    }
+
+    &__card-wrapper {
+      flex: 0 0 auto;
+      margin-left: -$gutter;
+      padding-left: $gutter;
+      padding-right: 16px;
+      width: min-contents;
+
+      scroll-snap-align: center;
+
+      @include media-query(medium) {
+        padding-right: 52px;
+      }
+    }
   }
 
   .page-heading {
@@ -332,5 +327,10 @@
         }
       }
     }
+  }
+
+  .page-content {
+    margin: 0 $gutter;
+    padding: 112px 0 0;
   }
 }
