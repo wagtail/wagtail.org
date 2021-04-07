@@ -2,26 +2,23 @@
 {% load static %}
 {% with value as section %}
 <section id="{{ section.title|slugify }}" class="section section--{{ section_modifier }}">
-    {% comment %} <div class="vid-wrapper">
-        <video width="390" autoplay loop>
-            <source type="{{ section.section_media.type }}/{{section.section_media.file_extension}}" src="{{ section.section_media.url }}">
-        </video>
-    </div> {% endcomment %}
-<div class="vid-wrapper" style="border-radius: 100%;width: 390px;height: 390px;overflow: hidden;">
-        <video autoplay="" loop="" style="/*! width: 100%; */height: 100%;">
-            <source type="video/mp4" src="/media/media/test.mp4">
-        </video>
-    </div>
     <div class="section__inner-wrapper">
         {% if section.section_image %}
-            <div class="section__image-wrapper">
-                <div class="section__image">
-                    <div class="section__image-overlay section__image-overlay--var1"></div>
-                    <div class="section__image-overlay section__image-overlay--var2"></div>
-                    {% image section.section_image fill-390x390 %}
+            <div class="section-image__wrapper">
+                <div class="section-image">
+                    <div class="section-image__overlay section-image__overlay--var1"></div>
+                    <div class="section-image__overlay section-image__overlay--var2"></div>
+                    {% comment %} {% image section.section_image fill-390x390 %} {% endcomment %}
+                    <div class="section-image__video-container">
+                        <div class="section-image__video-wrapper">
+                            <video autoplay="autoplay" loop="loop">
+                                <source type="{{ section.section_media.type }}/{{section.section_media.file_extension}}" src="{{ section.section_media.url }}">
+                            </video>
+                        </div>
+                    </div>
                 </div>
                 {% if section.section_image_caption %}
-                    <div class="section__image-caption">
+                    <div class="section-image__caption">
                         {{ section.section_image_caption }}
                     </div>
                 {% endif %}
