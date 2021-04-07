@@ -87,33 +87,7 @@ class SectionContentBlock(blocks.StreamBlock):
 
 
 class SectionMediaBlock(media_blocks.AbstractMediaChooserBlock):
-    def render_basic(self, value, context=None):
-        if not value:
-            return ''
-
-        if value.type == 'video':
-            player_code = '''
-            <div>
-                <video width="320" height="240" controls>
-                    {0}
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            '''
-        else:
-            player_code = '''
-            <div>
-                <audio controls>
-                    {0}
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-            '''
-
-        return html.format_html(player_code, html.format_html_join(
-            '\n', "<source{0}>",
-            [[utils.flatatt(s)] for s in value.sources]
-        ))
+    pass
 
 
 class SectionBlock(blocks.StructBlock):
@@ -125,8 +99,15 @@ class SectionBlock(blocks.StructBlock):
     )
 
     section_media = SectionMediaBlock(required=False)
-    section_image = image_blocks.ImageChooserBlock(required=False)
-    section_image_caption = blocks.CharBlock(required=False)
+    section_image = image_blocks.ImageChooserBlock(
+        required=False,
+        help_text="Section image is used as a fallback when no media is defined."
+    )
+    section_image_caption = blocks.CharBlock(
+        required=False,
+        label="Section image/media caption",
+        help_text="Rendered below the image/media"
+    )
 
     content = SectionContentBlock(required=False)
 

@@ -3,19 +3,22 @@
 {% with value as section %}
 <section id="{{ section.title|slugify }}" class="section section--{{ section_modifier }}">
     <div class="section__inner-wrapper">
-        {% if section.section_image %}
+        {% if section.section_media or section.section_image %}
             <div class="section-image__wrapper">
                 <div class="section-image">
                     <div class="section-image__overlay section-image__overlay--var1"></div>
                     <div class="section-image__overlay section-image__overlay--var2"></div>
-                    {% comment %} {% image section.section_image fill-390x390 %} {% endcomment %}
-                    <div class="section-image__video-container">
-                        <div class="section-image__video-wrapper">
-                            <video autoplay="autoplay" loop="loop" muted="muted">
-                                <source type="{{ section.section_media.type }}/{{section.section_media.file_extension}}" src="{{ section.section_media.url }}">
-                            </video>
+                    {% if section.section_media %}
+                        <div class="section-image__video-container">
+                            <div class="section-image__video-wrapper">
+                                <video autoplay="autoplay" loop="loop" muted="muted">
+                                    <source type="{{ section.section_media.type }}/{{section.section_media.file_extension}}" src="{{ section.section_media.url }}">
+                                </video>
+                            </div>
                         </div>
-                    </div>
+                    {% else %}
+                        {% image section.section_image fill-390x390 %}
+                    {% endif %}
                 </div>
                 {% if section.section_image_caption %}
                     <div class="section-image__caption">
