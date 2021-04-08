@@ -89,6 +89,7 @@
           width: 100%;
           height: 0;
           padding-top: 100%;
+          z-index: 1;  // Needed for hiding the video in Safari
           overflow-x: hidden;
           border-radius: 50%;
         }
