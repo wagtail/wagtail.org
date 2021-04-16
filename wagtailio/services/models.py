@@ -14,7 +14,6 @@ class ServicesPage(Page):
             min_num=4,
             max_num=4,
         ),
-        null=True,
         blank=False,
     )
 
