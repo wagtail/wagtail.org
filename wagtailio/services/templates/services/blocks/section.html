@@ -11,7 +11,7 @@
                     {% if section.section_media %}
                         <div class="section-image__video-container">
                             <div class="section-image__video-wrapper">
-                                <video autoplay="autoplay" loop="loop" muted="muted">
+                                <video autoplay loop muted>
                                     <source type="{{ section.section_media.type }}/{{section.section_media.file_extension}}" src="{{ section.section_media.url }}">
                                 </video>
                             </div>
