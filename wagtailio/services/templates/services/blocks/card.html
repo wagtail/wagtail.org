@@ -2,9 +2,7 @@
 {% with value as card %}
 <div class="card">
     <div class="card__upper">
-        <div>
-            {% image card.image fill-138x110 %}
-        </div>
+        {% image card.image fill-138x110 %}
         <hr class="card__divider">
         <div class="card__text">
             {{ card.text }}
