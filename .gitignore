@@ -3,6 +3,7 @@
 *.swp
 .vscode/
 /venv/
+/env/
 /static/
 /media/
 /.vagrant/
