@@ -10,9 +10,17 @@
   color: $color--lighter-indigo;
 
   // Overrride for .page-content > .container a
-  .container .card .card__link,
   .container a.link-button {
     border: 0;
+  }
+
+  // Overrride for .page-content > .container a
+  .container a.card {
+    border-width: 1px;
+
+    &:hover {
+      border-color: $color--grey-4;
+    }
   }
 
   a,
