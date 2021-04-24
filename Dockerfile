@@ -1,5 +1,5 @@
 # Build Python app.
-FROM python:3.6.5-stretch
+FROM python:3.8-buster
 
 WORKDIR /app
 
