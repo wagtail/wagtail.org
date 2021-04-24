@@ -1,0 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+@FORWARD_PORT = 8001
+@NFS = False
+@MEMORY_MB = 2048
