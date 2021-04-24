@@ -8,11 +8,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 import os
+import sys
 from os.path import abspath, dirname, join
 
 import dj_database_url
-import raven
-from raven.exceptions import InvalidGitRepository
 
 
 # Configuration from environment variables
@@ -342,10 +341,6 @@ LOGGING = {
             "class": "django.utils.log.AdminEmailHandler",
             "formatter": "verbose",
         },
-        "sentry": {
-            "level": "ERROR",
-            "class": "raven.contrib.django.raven_compat.handlers.SentryHandler",
-        },
     },
     "formatters": {
         "verbose": {
@@ -354,22 +349,22 @@ LOGGING = {
     },
     "loggers": {
         "wagtailio": {
-            "handlers": ["console", "sentry", "mail_admins"],
+            "handlers": ["console", "mail_admins"],
             "level": "INFO",
             "propagate": False,
         },
         "wagtail": {
-            "handlers": ["console", "sentry", "mail_admins"],
+            "handlers": ["console", "mail_admins"],
             "level": "INFO",
             "propagate": False,
         },
         "django.request": {
-            "handlers": ["mail_admins", "sentry", "console"],
+            "handlers": ["mail_admins", "console"],
             "level": "ERROR",
             "propagate": False,
         },
         "django.security": {
-            "handlers": ["mail_admins", "sentry", "console"],
+            "handlers": ["mail_admins", "console"],
             "level": "ERROR",
             "propagate": False,
         },
@@ -397,19 +392,41 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 
-# Sentry
+# Sentry configuration.
+is_in_shell = len(sys.argv) > 1 and sys.argv[1] in ["shell", "shell_plus"]
 
-if "SENTRY_DSN" in env:
-    INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
-    RAVEN_CONFIG = {"dsn": env["SENTRY_DSN"]}
-    try:
-        RAVEN_CONFIG["release"] = raven.fetch_git_sha(PROJECT_ROOT)  # noqa
-    except InvalidGitRepository:
+if "SENTRY_DSN" in env and not is_in_shell:
+
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    from sentry_sdk.utils import get_default_release
+
+    sentry_kwargs = {
+        "dsn": env["SENTRY_DSN"],
+        "integrations": [DjangoIntegration()],
+    }
+
+    # There's a chooser to toggle between environments at the top right corner on sentry.io
+    # Values are typically 'staging' or 'production' but can be set to anything else if needed.
+    # heroku config:set SENTRY_ENVIRONMENT=production
+    if "SENTRY_ENVIRONMENT" in env:
+        sentry_kwargs.update({"environment": env["SENTRY_ENVIRONMENT"]})
+
+    release = get_default_release()
+    if release is None:
         try:
-            RAVEN_CONFIG["release"] = env["GIT_REV"]
+            release = env["GIT_REV"]
         except KeyError:
-            # Do not set the Sentry 'release' parameter
-            pass
+            try:
+                # Assume this is a Heroku-hosted app with the "runtime-dyno-metadata" lab enabled
+                release = env["HEROKU_RELEASE_VERSION"]
+            except KeyError:
+                # If there's no commit hash, we do not set a specific release.
+                release = None
+
+    sentry_kwargs.update({"release": release})
+    sentry_sdk.init(**sentry_kwargs)
+
 
 # Favicon path
 FAVICON_PATH = "img/favicons/favicon.ico"
