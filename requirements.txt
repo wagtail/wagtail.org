@@ -1,31 +1,33 @@
-Django==2.2.13
-dj-database-url==0.5.0
+Django==2.2.20
 wagtail==2.12.4
-psycopg2==2.7.4
-libsass==0.8.3
-Pillow==7.1.2
+dj-database-url==0.5.0
+psycopg2==2.8.6
+libsass==0.20.1
+Pillow==8.1.2
 embedly==0.5.0
-Markdown==2.6.11
-Pygments==2.2.0
+Markdown==3.3.4
+Pygments==2.7.4
 django-compressor==2.2
 django-libsass>=0.7
-raven==6.7.0
-whitenoise==3.3.1
+whitenoise==5.2.0
 brotlipy==0.7.0
 django-storages==1.6.6
 boto3==1.7.82
 django-redis==4.9.0
+sentry-sdk==1.0.0
+scout-apm==2.18.0
+mammoth==1.4.10  # used for curstom wagtail content import parser
+
 django-basic-auth-ip-whitelist==0.3.4
-scout-apm==1.1.7
 django-referrer-policy==1.0
+
+# wagtail packages
 wagtailaltgenerator==4.1.2
 wagtail-airtable==0.1.7
 wagtail-content-import==0.4.2
 wagtail-image-import==0.1.0
 wagtail-transfer==0.5.1
-mammoth==1.4.10
 wagtail-ab-testing==0.2.1
-
 
 # Pinned as django-redis has incompatibility with later versions
 redis==2.10.6
