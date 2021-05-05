@@ -44,7 +44,7 @@ su - vagrant -c "$PIP install --upgrade pip"
 su - vagrant -c "$PIP install --upgrade setuptools"
 
 # Install PIP requirements
-su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
+su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements-dev.txt"
 
 
 # Set execute permissions on manage.py as they get lost if we build from a zip file

@@ -131,7 +131,7 @@ class MarkDownBlock(TextBlock):
         icon = "code"
 
     def render_basic(self, value, context=None):
-        md = markdown(value, ["markdown.extensions.fenced_code", "codehilite"])
+        md = markdown(value, extensions=["markdown.extensions.fenced_code", "codehilite"])
         return mark_safe(md)
 
 
