@@ -11,10 +11,6 @@ PIP=$VIRTUALENV_DIR/bin/pip
 apt-get update -y
 apt-get install -y unzip
 
-# Upgrade PostgreSQL to match version on Heroku
-service postgresql stop
-apt-get remove -y --purge postgresql-*
-apt-get install -y postgresql-11 postgresql-client-10 postgresql-contrib-10 postgresql-10-postgis-2.5
 su - postgres -c "createuser -s vagrant"
 
 # Create database
@@ -44,7 +40,7 @@ su - vagrant -c "$PIP install --upgrade pip"
 su - vagrant -c "$PIP install --upgrade setuptools"
 
 # Install PIP requirements
-su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt"
+su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements-dev.txt"
 
 
 # Set execute permissions on manage.py as they get lost if we build from a zip file
