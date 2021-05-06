@@ -52,3 +52,8 @@ To staging
 To production
 
 `fab deploy_production`
+
+
+## docs.wagtail.io
+
+Wagtail documentation is hosted at [readthedocs](https://readthedocs.org/). A Cloudflare worker is in place to rewrite canonical URLs on old versions of the documentation - see `conf/wagtaildocs-cloudflare-worker.js`.
