@@ -527,3 +527,7 @@ WAGTAILTRANSFER_SECRET_KEY = env.get(
 )
 
 WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['features.featureaspect', 'features.featuredescription']
+
+WAGTAIL_AB_TESTING = {
+    'MODE': 'external',
+}
