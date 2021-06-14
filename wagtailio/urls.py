@@ -12,7 +12,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
-from wagtail_ab_testing import api as ab_testing_api
+from wagtail_ab_testing import urls as ab_testing_urls
 from wagtail_content_import import urls as wagtail_content_import_urls
 from wagtail_transfer import urls as wagtailtransfer_urls
 
@@ -31,7 +31,7 @@ private_urlpatterns = [
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
-    path('abtestingapi/', include(ab_testing_api)),
+    path('abtesting/', include(ab_testing_urls)),
     path("newsletter-signup/", views.newsletter_signup, name="newsletter_signup"),
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),

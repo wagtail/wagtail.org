@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils %}
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -97,6 +97,8 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
+
+        {% wagtail_ab_testing_script %}
 
         {% wagtailuserbar %}
 
