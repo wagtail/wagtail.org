@@ -92,10 +92,17 @@ class SectionMediaBlock(media_blocks.AbstractMediaChooserBlock):
 
 class SectionBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True,  form_classname="full title")
-    icon = blocks.CharBlock(
+
+    # Ensure that new choices are available in the icon sprite `./templates/services/includes/svg_sprite.html`
+    ICON_CHOICES = [
+        ("astronaut", "Astronaut"),
+        ("cloud", "Cloud"),
+        ("money-check", "Money check"),
+        ("tools", "Tools"),
+    ]
+    icon = blocks.ChoiceBlock(
+        choices=ICON_CHOICES,
         required=False,
-        max_length=50,
-        help_text="Icon name in SVG sprite (e.g. cloud)",
     )
 
     section_media = SectionMediaBlock(required=False)
