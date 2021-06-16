@@ -380,10 +380,6 @@ WAGTAIL_SITE_NAME = "wagtailio"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
-WAGTAILIMAGES_FORMAT_CONVERSIONS = {
-    'gif': 'gif',
-}
-
 if "PRIMARY_HOST" in env:
     BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
 
