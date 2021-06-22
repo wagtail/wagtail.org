@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    {% include "services/includes/svg_sprites.html" %}
+    <div class="page-content">
+        <header class="page-heading ">
+            <div class="page-heading__content">
+                <h1 class="page-heading__heading">{{ page.title }}</h1>
+                {% if page.intro %}
+                    <div class="page-heading__introduction">
+                        {{ page.intro }}
+                    </div>
+                {% endif %}
+                <ul class="page-heading__links">
+                    {% for section in page.body %}
+                        <li>
+                            <a href="#{{ section.value.title|slugify }}">
+                                <svg class="icon__arrow" viewBox="0 0 100 100">
+                                    <use xlink:href="#arrow-alt">
+                                </svg>
+                                {{ section.value.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </header>
+        <div class="container">
+            {% for section in page.body  %}
+                {% cycle 'var1' 'var2' 'var3' as section_modifier silent %}
+                {% include_block section with section_modifier=section_modifier %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

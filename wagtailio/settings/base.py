@@ -85,7 +85,9 @@ INSTALLED_APPS = (
     "wagtailio.blog",
     "wagtailio.features",
     "wagtailio.packages",
+    "wagtailio.services",
     "wagtailaltgenerator",
+    "wagtailmedia",
 )
 
 MIDDLEWARE = [
