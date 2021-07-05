@@ -1,36 +1,15 @@
-.blog-container {
-  position: relative;
-  height: 100%;
-  max-width: $max-width;
-  margin: 0 auto;
-
-  .share {
-    background-color: $color--grey-light;
-    box-shadow: 0 0 $gutter rgba($color--white, 0.6);
-  }
-}
-
-.blog-author {
-  border-bottom: none !important;
-}
-
-.blog-item {
+.template-blog {
   direction: ltr;
-  padding: $headerHeight $gutter;
   background-color: $color--white;
 
-  @include media-query(small) {
-    margin-left: $sidebarWidth;
-    padding: $headerHeight ($gutter * 2);
-  }
-
-  @include media-query(extra-large) {
-    margin-left: $sidebarWidthWide;
-  }
-
-  .container {
-    max-width: 800px;
+  .page-content {
     margin: 0 auto;
+    max-width: 800px;
+    padding: $headerHeight $gutter;
+
+    @include media-query(small) {
+      padding: $headerHeight ($gutter * 2);
+    }
 
     a {
       border-bottom: 2px solid $color--lagoon;
@@ -61,6 +40,11 @@
 
   h4 {
     font-size: $gutter;
+  }
+
+  .share {
+    background-color: $color--grey-light;
+    box-shadow: 0 0 $gutter rgba($color--white, 0.6);
   }
 }
 
@@ -94,148 +78,26 @@
   }
 }
 
+.blog-author {
+  border-bottom: none !important;
+}
+
+
 .blog-listing {
   margin: 0;
   padding: 0;
 
-  @include media-query(small) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    overflow-y: scroll;
-    width: 100%;
-    height: 100%;
-  }
-
   &__item {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 2em;
     padding: 0;
+    border-bottom: 1px solid $color--grey-3;
   }
 
-  &__link {
-    display: block;
-    padding: $gutter ($gutter * 2);
-    color: $color--white;
-    font-size: 24px;
-    font-weight: 300;
-    transition: background-color, border, 0.2s ease;
-    border-bottom: 1px solid $color--headings;
-
-    &:hover {
-      background-color: $color--tertiary;
-      border-color: $color--border-light;
-      color: $color--white;
-    }
-
-    span {
-      display: block;
-    }
-
-    .date {
-      color: rgba($color--white, 0.6);
-      font-size: 16px;
-      margin-bottom: $gutter / 4;
-      font-weight: 300;
-      text-transform: uppercase;
-    }
-
-    &--current {
-      background-color: $color--tertiary;
-      border-color: $color--tertiary;
-      cursor: default;
-
-      &:hover {
-        background-color: $color--tertiary;
-        border-color: $color--tertiary;
-      }
-    }
-  }
-
-  &__container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translate3d(0, -300%, 0);
-    background-color: $color--headings;
-    z-index: 4;
-    opacity: 0;
-    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
-    overflow: hidden;
-
-    @include media-query(small) {
-      transform: translate3d(0, 0%, 0);
-      position: relative;
-      background-color: transparent;
-      opacity: 1;
-      overflow: auto;
-    }
-
-    .sidebar-open & {
-      transform: translate3d(0, 0%, 0);
-      opacity: 1;
-      padding-top: 127px;
-      overflow: auto;
-    }
-  }
-}
-
-.blog-nav {
-  &__header {
-    padding: ($gutter * 4) 40px ($gutter);
-    background-color: $color--interaction;
-    text-align: center;
-    position: relative;
-    transition: padding 0.2s ease 0s;
-
-    @include media-query(small) {
-      padding: ($gutter * 5) 40px ($gutter);
-      text-align: left;
-    }
-
-    h2 {
-      display: none;
-
-      @include media-query(small) {
-        display: block;
-      }
-    }
-
+  &__title {
     a {
-      color: rgba($color--white, 1);
-      font-weight: bold;
-      text-transform: uppercase;
-
-      @include media-query(small) {
-        visibility: hidden;
-      }
-
-      svg {
-        fill: $color--white;
-        transition: transform 0.2s ease 0s;
-      }
+      color: $color--dark-blue;
     }
-
-    .sidebar-open & {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 5;
-
-      svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
-}
-
-.template-blog-page .body {
-  padding-top: 0;
-
-  @include media-query(small) {
-    padding-top: $headerHeight;
   }
 }
 
