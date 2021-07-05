@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if post %}
+<div class="latest-post">
+	<h2 class="latest-post__heading footer__heading">Latest post</h2>
+        <div class="latest-post__item">
+            <div class="latest-post__info">
+                <a class="latest-post__link" href="{% pageurl post %}">
+                    <h3 class="latest-post__subheading">{{ post.title }}</h3>
+                </a>
+                <div class="latest-post__date">{{ post.date|date }}</div>
+                <p class="latest-post__description">{{ post.introduction|truncatechars:300 }}</p>
+            </div>
+        </div>
+</div>
+{% endif %}

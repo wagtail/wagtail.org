@@ -30,11 +30,11 @@ def menu_primary(context, calling_page=None):
     return {"links": links, "request": context["request"]}
 
 
-@register.inclusion_tag("includes/latest_blog.html", takes_context=True)
+@register.inclusion_tag("includes/latest_post.html", takes_context=True)
 def latest_blog(context):
-    blog = BlogPage.objects.live().order_by("-date").first()
+    post = BlogPage.objects.live().order_by("-date").first()
 
-    return {"blog": blog, "request": context["request"]}
+    return {"post": post, "request": context["request"]}
 
 
 @register.inclusion_tag("includes/menu_good_to_go.html", takes_context=True)
