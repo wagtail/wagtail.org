@@ -13,9 +13,16 @@
   }
 
   .torchbox {
+    $root: &;
+
     &__container {
       display: inline-block;
       overflow: hidden;
+    }
+
+    &__logo--flame {
+      float: right;
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s, display 0.2s ease 0s;
     }
 
     &__logo {
@@ -23,14 +30,18 @@
       fill: $color--black;
       width: 100px;
       height: 25px;
-      transform: translate3D(80%, 0, 0);
+      transform: translate3D(120%, 0, 0);
       transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     }
 
     &:hover {
-      svg {
+      .torchbox__logo {
         opacity: 1;
         transform: translate3D(0, 0, 0);
+      }
+      .torchbox__logo--flame {
+        opacity: 0;
+        transform: translate3D(-500%, 0, 0);
       }
     }
   }
