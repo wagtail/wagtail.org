@@ -4,17 +4,17 @@
 	<ul class="primary-nav__container">
     {% for link in links %}
     	<li class="nav-item">
-        	<a class="nav-item__link" href="{% pageurl link.link_page %}">
-                <span class="nav-item__label">{{ link.link_text }}</span>
+        	<a class="nav-item__link{% if link.active %} nav-item__link--active{% endif %}" href="{{ link.url }}">
+                <span class="nav-item__label">{{ link.text }}</span>
             </a>
         </li>
     {% empty %}
         No navigation links
     {% endfor %}
         <li class="nav-item">
-            <a class="nav-item__link" href="http://docs.wagtail.io/" >
+            <a class="nav-item__link" href="https://docs.wagtail.io/" >
                 <span class="nav-item__label">Documentation</span>
-                <svg class="nav-item__icon"xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                <svg class="nav-item__icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
             </a>
     	</li>
     </ul>

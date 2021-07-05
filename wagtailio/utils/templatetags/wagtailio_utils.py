@@ -1,4 +1,5 @@
 from django import template
+from wagtail.core.templatetags.wagtailcore_tags import pageurl
 
 from wagtail.images.templatetags.wagtailimages_tags import ImageNode
 from wagtail.images.models import SourceImageIOError
@@ -10,13 +11,23 @@ register = template.Library()
 
 
 @register.inclusion_tag("includes/menu_primary.html", takes_context=True)
-def menu_primary(context):
+def menu_primary(context, calling_page=None):
     try:
         menu = MenuSnippet.objects.get(menu_name__iexact="primary")
     except MenuSnippet.DoesNotExist:
         return {}
 
-    return {"links": menu.links.all(), "request": context["request"]}
+    links = []
+    for item in menu.links.all():
+        calling_page_path = calling_page.url_path if calling_page else ''
+        item_path = item.link_page.url_path
+        links.append({
+            "text": item.link_text,
+            "url": pageurl(context, item.link_page),
+            "active": calling_page_path.startswith(item_path) or calling_page_path == item_path
+        })
+
+    return {"links": links, "request": context["request"]}
 
 
 @register.inclusion_tag("includes/latest_blog.html", takes_context=True)

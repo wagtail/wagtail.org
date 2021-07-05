@@ -14,8 +14,13 @@
     border: solid 1px transparent;
     @include transition(color 0.5s ease-out, opacity 0.5s ease-out);
 
-    &:hover {
-      color: $color--interaction;
+    #{$root}__link {
+      display: block;
+
+      &:hover,
+      &--active {
+        border-bottom: 2px solid $color--secondary;
+      }
     }
   }
 
@@ -32,7 +37,8 @@
       border: solid 1px transparent;
       transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 
-      &:hover {
+      &:hover,
+      &--active {
         opacity: 1;
         color: $color--primary;
         background-color: $color--white;

@@ -10,11 +10,9 @@
             <div class="container">
                 <a id="branding" href="/"><img src="{% static "img/wagtail.svg" %}" alt="Wagtail" /></a>
                 <a href="#primary_navigation">Menu</a>
-                {% menu_primary %}
+                {% menu_primary calling_page=page %}
             </div>
         </header>
-
-        {% block sidebar %}{% endblock %}
 
         <div class="body">
 
@@ -36,7 +34,7 @@
         </div>
 
         <div id="menu_overlay">
-            {% menu_primary %}
+            {% menu_primary calling_page=page %}
         </div>
 
     </div>
