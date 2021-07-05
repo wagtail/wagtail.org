@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load static compress wagtailcore_tags wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
+
+{% block body_class %}template-blog{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/vendor/code-highlighting.css' %}" />{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+    <div class="page-content">
+        <h1>Blog</h1>
+
+        <ul class="blog-listing">
+            {% for post in posts %}
+            <li class="blog-listing__item">
+                <div class="date"><span>{{ post.date|date }}</span></div>
+                <h2 class="blog-item__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+
+                <p>{{ post.introduction }}</p>
+
+                {% if post.author %}
+                    {% include "blog/includes/post_author.html" with author=post.author only %}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </div>
+{% endblock %}

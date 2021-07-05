@@ -4,56 +4,18 @@
 
 {% block body_class %}template-blog{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/vendor/code-highlighting.css' %}" />{% endblock %}
-{% block sidebar %}
-
-<div class="blog-container" id="blog-top">
-
-    <div class="sidebar blog-nav">
-
-        <header class="blog-nav__header">
-
-            <a class="blog-index-button" href="#blog-top">blog index <svg height="15px" width="15px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow"></use></svg></a>
-            <h2>Blog</h2>
-
-        </header>
-
-        <div class="blog-listing__container">
-            <ul class="blog-listing">
-                {% for sibling in self.siblings %}
-                    <li class="blog-listing__item">
-                        <a href="{% pageurl sibling %}" class="blog-listing__link {% if sibling == self %}blog-listing__link--current{% endif %}">
-                            <span class="date">{{ sibling.date|date }}</span>
-                            <span class="title">{{ sibling.title }}</span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div> <!-- /blog-listing__container -->
-
-    </div> <!-- /sidebar -->
-{% endblock %}
 
 {% block content %}
-    <div class="blog-item">
-        <div class="container">
-
-            <div class="date"><span>{{ page.date|date }}</span></div>
-            <div class="heading"><h1>{{ page.title }}</h1></div>
-            <div class="page-heading__introduction"><p>{{ page.introduction }}</p></div> <!-- /introduction -->
+    <div class="page-content">
+        <div class="date"><span>{{ page.date|date }}</span></div>
+        <div class="heading"><h1>{{ page.title }}</h1></div>
+        <div class="page-heading__introduction"><p>{{ page.introduction }}</p></div>
 
         {% include "blog/includes/post_author.html" with author=page.author only %}
 
-            {% image page.main_image original %}
-            {% include_block page.body %}
-
-        </div>
+        {% image page.main_image width-800 %}
+        {% include_block page.body %}
     </div>
 
     {% include "core/includes/share.html" %}
-</div> <!-- /blog-container -->
-
-{% endblock %}
-
-{# Override the footer block to remove the footer from this page #}
-{% block footer %}
 {% endblock %}
