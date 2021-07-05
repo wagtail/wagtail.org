@@ -1,5 +1,6 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import models
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
@@ -19,9 +20,36 @@ from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     subpage_types = ["blog.BlogPage"]
 
+    @property
+    def posts(self):
+        # Get list of blog pages that are descendants of this page, ordered by date
+        return (
+            BlogPage.objects.live()
+            .descendant_of(self)
+            .select_related("author", "author__image")
+            .order_by("-date", "pk")
+        )
+
     def serve(self, request):
-        latest_blog = BlogPage.objects.live().order_by("-date").first()
-        return redirect(latest_blog.url)
+        # Pagination
+        paginator = Paginator(self.posts, 10)  # Show 10 blog posts per page
+
+        page = request.GET.get("page")
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = None
+
+        return render(
+            request,
+            self.template,
+            {
+                "page": self,
+                "posts": posts,
+            },
+        )
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
@@ -77,7 +105,7 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
     def siblings(self):
         return self.__class__.objects.live().sibling_of(self).order_by("-date")
 
-    mapper_class = StreamFieldMapper
+    mapper_class = StreamFieldMapper  # used for content import
 
     content_panels = Page.content_panels + [
         SnippetChooserPanel("author"),
@@ -101,7 +129,9 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
         """
         mappings = {
             "Title": "title",
-            # "slug" not included so Airtable cannot overwrite the Page slug as that could cause a lot of trouble with URLs and SEO. But it's possible to do this assuming there aren't two pages with the same slug.
+            # "slug" not included so Airtable cannot overwrite the Page slug as
+            # that could cause a lot of trouble with URLs and SEO. But it's possible
+            # to do this assuming there aren't two pages with the same slug.
         }
         return mappings
 
