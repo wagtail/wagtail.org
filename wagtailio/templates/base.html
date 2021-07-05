@@ -116,7 +116,7 @@
                     <a href="#primary_navigation" class="menu-toggle" aria-label="Toggle menu">
                         <span></span>
                     </a>
-                    {% menu_primary %}
+                    {% menu_primary calling_page=page %}
                 </div>
             </header> <!-- /header -->
 
@@ -137,8 +137,8 @@
             </div> <!-- /body -->
 
             <div class="menu-overlay">
-                {% menu_primary %}
-            </div> <!-- /menu-overlay -->
+                {% menu_primary calling_page=page %}
+            </div> {# /menu-overlay #}
 
         </div> <!-- /page -->
 
