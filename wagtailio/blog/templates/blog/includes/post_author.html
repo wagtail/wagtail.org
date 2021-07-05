@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+<div class="author">
+    <div class="image">
+        {% image author.image fill-55x55 alt=author.name %}
+    </div>
+    <div class="details">
+        <h2><a class="blog-author" href="{{ author.url }}">{{ author.name }}</a></h2>
+        <span class="role">{{ author.job_title }}</span>
+    </div>
+</div>
