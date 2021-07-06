@@ -11,15 +11,15 @@
     color: $color--primary;
     font-size: 16px;
     font-weight: 600;
-    border: solid 1px transparent;
     @include transition(color 0.5s ease-out, opacity 0.5s ease-out);
 
     #{$root}__link {
       display: block;
+      border: 2px solid transparent;
 
       &:hover,
       &--active {
-        border-bottom: 2px solid $color--secondary;
+        border-bottom-color: $color--secondary;
       }
     }
   }
@@ -34,7 +34,7 @@
       padding: ($gutter / 2) 0;
       color: $color--white;
       font-size: 16px;
-      border: solid 1px transparent;
+      border: none;
       transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 
       &:hover,
