@@ -11,6 +11,7 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
 from wagtail_airtable.mixins import AirtableMixin
+from wagtailmedia.edit_handlers import MediaChooserPanel
 
 from wagtailio.features.blocks import FeatureIndexPageBlock
 
@@ -34,6 +35,13 @@ class FeatureAspect(ClusterableModel):
         blank=True,
         related_name="+",
     )
+    video = models.ForeignKey(
+        'wagtailmedia.Media',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     def __str__(self):
         return self.title
@@ -43,6 +51,7 @@ class FeatureAspect(ClusterableModel):
         InlinePanel("bullets", label="Bullets"),
         ImageChooserPanel("screenshot"),
         FieldPanel("video_url"),
+        MediaChooserPanel('video'),
     ]
 
 

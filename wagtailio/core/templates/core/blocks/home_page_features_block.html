@@ -41,7 +41,13 @@
                         </div>
 
                         {% with f=feature.feature_aspects.first %}
-                            {% if f.feature_aspect.video_url %}
+                            {% if f.feature_aspect.video and f.feature_aspect.video.type == 'video' %}
+                                <div class="video-embed">
+                                    <video autoplay loop muted>
+                                        <source type="{{ f.feature_aspect.video.type }}/{{ f.feature_aspect.video.file_extension }}" src="{{ f.feature_aspect.video.url }}">
+                                    </video>
+                                </div>
+                            {% elif f.feature_aspect.video_url %}
                                 <div class="video-embed">
                                     {% embed f.feature_aspect.video_url 1000 %}
                                 </div>
@@ -62,7 +68,7 @@
                     </a>
                 </div>
             {% endif %}
-        
+
         </div>
 
     </section> <!-- /features -->
