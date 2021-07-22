@@ -16,9 +16,14 @@
 
         </div> <!-- /text-container -->
 
-        {% image value.image width-700 as main_image  %}
-        <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
-        
+        {% if value.video %}
+            <video class="screenshot" autoplay loop muted>
+                <source type="{{ value.video.type }}/{{ value.video.file_extension }}" src="{{ value.video.url }}">
+            </video>
+        {% else %}
+            {% image value.image width-700 as main_image  %}
+            <img src="{{ main_image.url }}" alt="{{ value.image.title }}" class="screenshot">
+        {% endif %}
     </div>
 
 </section> <!-- /hero -->
