@@ -1,6 +1,8 @@
 import six
 from django.core.exceptions import ValidationError
+from django import forms
 from django.forms.utils import ErrorList
+from django.utils.functional import cached_property
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
@@ -67,7 +69,15 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
 
 
 class BannerVideoBlock(media_blocks.AbstractMediaChooserBlock):
-    pass
+    @cached_property
+    def field(self):
+        return forms.ModelChoiceField(
+            queryset=self.target_model.objects.filter(type="video"),
+            widget=self.widget,
+            required=self._required,
+            validators=self._validators,
+            help_text=self._help_text,
+        )
 
 
 class BannerBlock(blocks.StructBlock):
