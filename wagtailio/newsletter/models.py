@@ -66,3 +66,4 @@ class NewsletterIndexPage(Page):
 
 class NewsletterEmailAddress(models.Model):
     email = models.EmailField()
+    signed_up_at = models.DateTimeField(null=True, auto_now_add=True)
