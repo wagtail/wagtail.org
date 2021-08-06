@@ -150,7 +150,8 @@ $(function() {
   }
   // Bind cookie dismiss handler
   if(dismissButton) {
-    dismissButton.click(function () {
+    dismissButton.click(function (event) {
+      event.preventDefault(); // ensure the href is not used (scrolls user to the top)
       Cookies.set('client-cookie', 'agree to cookies', {
         expires: 365, // Cookie expires after 365 days
       });
