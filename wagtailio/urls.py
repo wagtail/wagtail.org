@@ -17,7 +17,6 @@ from wagtail_content_import import urls as wagtail_content_import_urls
 from wagtail_transfer import urls as wagtailtransfer_urls
 
 from wagtailio.blog.feeds import BlogFeed
-from wagtailio.newsletter import views
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.utils.views import favicon, robots
 from wagtailio.utils.cache import get_default_cache_control_decorator
@@ -32,7 +31,6 @@ private_urlpatterns = [
 
 urlpatterns = [
     path('abtesting/', include(ab_testing_urls)),
-    path("newsletter-signup/", views.newsletter_signup, name="newsletter_signup"),
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
     path("sitemap.xml", sitemap),
