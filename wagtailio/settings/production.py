@@ -12,10 +12,12 @@ CACHES["compressor_cache"] = {  # noqa
 }
 COMPRESS_CACHE_BACKEND = "compressor_cache"
 
-COMPRESS_CSS_FILTERS = [
-    "compressor.filters.css_default.CssAbsoluteFilter",
-    "compressor.filters.cssmin.CSSMinFilter",
-]
+COMPRESS_FILTERS = {
+    "css": [
+        "compressor.filters.css_default.CssAbsoluteFilter",
+        "compressor.filters.cssmin.CSSMinFilter",
+    ]
+}
 
 COMPUTER_VISION_API_KEY = env.get('COMPUTER_VISION_API_KEY')
 COMPUTER_VISION_REGION = env.get('COMPUTER_VISION_REGION')
