@@ -37,7 +37,7 @@ class PackagesPage(Page, SocialMediaMixin, CrossPageMixin):
     subtitle = models.CharField(max_length=255)
     about_title = models.CharField(max_length=255, default="About")
     about_text = RichTextField(
-        default=default_about_text, features=["bold", "italic", "link", "br"]
+        default=default_about_text, features=["bold", "italic", "link"]
     )
 
     def get_context(self, request, *args, **kwargs):
