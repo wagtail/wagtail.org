@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StandardpageConfig(AppConfig):
-    name = "wagtailio.standardpage"
+class UtilsConfig(AppConfig):
+    name = "wagtailio.utils"
     default_auto_field = "django.db.models.AutoField"
