@@ -1,5 +1,5 @@
 # Build Python app.
-FROM python:3.8-buster
+FROM python:3.8
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Gunicorn.
-RUN pip install "gunicorn>=19.8,<19.9"
+RUN pip install "gunicorn>=20.1,<20.2"
 
 # Install Python requirements.
 COPY requirements.txt /
