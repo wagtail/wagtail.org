@@ -1,6 +1,8 @@
 build:
   docker:
-    web: Dockerfile
+    web:
+      dockerfile: Dockerfile
+      target: prod
 release:
   image: web
   command:
