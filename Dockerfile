@@ -1,5 +1,5 @@
 # Build Python app.
-FROM python:3.8
+FROM python:3.8-buster AS backend
 
 WORKDIR /app
 
@@ -17,6 +17,10 @@ RUN apt-get update -y && \
     apt-get install -y apt-transport-https rsync libmagickwand-dev && \
     rm -rf /var/lib/apt/lists/*
 
+# Don't use the root user.
+ARG UID=1000
+RUN useradd wagtailio -u $UID
+
 # Install Gunicorn.
 RUN pip install "gunicorn>=20.1,<20.2"
 
@@ -24,11 +28,11 @@ RUN pip install "gunicorn>=20.1,<20.2"
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
+FROM backend AS prod
+
 # Install application code.
 COPY . .
 
-# Don't use the root user.
-RUN useradd wagtailio
 RUN chown -R wagtailio .
 USER wagtailio
 
@@ -40,3 +44,5 @@ RUN SECRET_KEY=none django-admin compress
 
 # Run application
 CMD gunicorn wagtailio.wsgi:application
+
+FROM backend AS dev
