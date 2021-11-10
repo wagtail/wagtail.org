@@ -4,6 +4,13 @@
   margin: 0 (-$gutter) ($gutter * 2);
   padding: ($gutter * 3) $gutter;
 
+  h2, h3, h4 {
+    &,
+    .template-blog & {
+      margin-top: 0;
+    }
+  }
+
   .container {
     max-width: 800px;
     margin: 0 auto;

@@ -4,14 +4,20 @@
 {% for child in value %}
 
     {% if child.block_type == 'h2' %}
-        <h2>{{ child }}</h2>
+        <div class="sf-block sf-block--heading">
+            <h2>{{ child }}</h2>
+        </div>
 
     {% elif child.block_type == 'h3' %}
-        <div class="heading">
-        <h3>{{ child }}</h3>
+        <div class="sf-block sf-block--heading">
+            <div class="heading">
+            <h3>{{ child }}</h3>
+        </div>
 
     {% elif child.block_type == 'h4' %}
-        <h4>{{ child }}</h4>
+        <div class="sf-block sf-block--heading">
+            <h4>{{ child }}</h4>
+        </div>
 
     {% elif child.block_type == 'intro' %}
         <div class="sf-block sf-block--bottom-only">
@@ -21,13 +27,11 @@
         </div>
 
     {% elif child.block_type == 'paragraph' %}
-        <div class="sf-block sf-block--bottom-only">
-            <div class="paragraph">{{ child.value|richtext }}</div>
-        </div>
+        <div class="paragraph">{{ child.value|richtext }}</div>
 
     {% elif child.block_type == 'blockquote' %}
         <div class="sf-block">
-            <div class="blockquote">
+            <div class="sf-blockquote">
                 <blockquote>
                     "{{ child.value }}"
                 </blockquote>
@@ -46,6 +50,7 @@
                 </div>
             </div>
         </div>
+
 
     {% elif child.block_type == 'textimage' %}
         <div class="sf-block">
@@ -103,8 +108,6 @@
             </div>
         </div>
     {% else %}
-        <div class="sf-block sf-block--bottom-only">
-            <div class="paragraph">{{ child }}</div>
-        </div>
+        <div class="paragraph">{{ child }}</div>
     {% endif %}
 {% endfor %}
