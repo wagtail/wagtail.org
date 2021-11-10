@@ -2,40 +2,40 @@
 
 
 {% for child in value %}
-    <div class="sf-block">
-        {% if child.block_type == 'h2' %}
 
-            <h2>{{ child }}</h2>
+    {% if child.block_type == 'h2' %}
+        <h2>{{ child }}</h2>
 
-        {% elif child.block_type == 'h3' %}
-            <div class="heading">
-            <h3>{{ child }}</h3>
-            </div>
+    {% elif child.block_type == 'h3' %}
+        <div class="heading">
+        <h3>{{ child }}</h3>
 
-        {% elif child.block_type == 'h4' %}
+    {% elif child.block_type == 'h4' %}
+        <h4>{{ child }}</h4>
 
-            <h4>{{ child }}</h4>
-
-        {% elif child.block_type == 'intro' %}
-
+    {% elif child.block_type == 'intro' %}
+        <div class="sf-block sf-block--bottom-only">
             <div class="intro">
                 <p>{{ child }}</p>
             </div>
+        </div>
 
-        {% elif child.block_type == 'paragraph' %}
-
+    {% elif child.block_type == 'paragraph' %}
+        <div class="sf-block sf-block--bottom-only">
             <div class="paragraph">{{ child.value|richtext }}</div>
+        </div>
 
-        {% elif child.block_type == 'blockquote' %}
-
+    {% elif child.block_type == 'blockquote' %}
+        <div class="sf-block">
             <div class="blockquote">
                 <blockquote>
                     "{{ child.value }}"
                 </blockquote>
             </div>
+        </div>
 
-        {% elif child.block_type == 'imagecaption' %}{# img-full-text #}
-
+    {% elif child.block_type == 'imagecaption' %}{# img-full-text #}
+        <div class="sf-block">
             <div class="imagecaption">
                 <div class="image">
                     {% image child.value.image fill-1600x700 %}
@@ -45,8 +45,10 @@
                     <p>{{ child.value.caption|richtext }}</p>
                 </div>
             </div>
+        </div>
 
-        {% elif child.block_type == 'textimage' %}
+    {% elif child.block_type == 'textimage' %}
+        <div class="sf-block">
 
             {% image child.value.image original as img %}
             <div class="textimage {{ child.value.alignment }} {{child.value.background }}">
@@ -64,29 +66,30 @@
                 </div>
 
             </div> <!-- /textimage -->
+        </div>
 
-        {% elif child.block_type == 'colourtext' %}{# quote #}
-
+    {% elif child.block_type == 'colourtext' %}{# quote #}
+        <div class="sf-block">
             <div class="colourtext {{ child.value.background }}">
                 <div class="text">{{ child.value.text|richtext }}</div>
             </div>
-
-        {% elif child.block_type == 'calltoaction' %}{# img-full-title #}
-
+        </div>
+    {% elif child.block_type == 'calltoaction' %}{# img-full-title #}
+        <div class="sf-block">
             <div class="calltoaction {{ child.value.background }}">
                 <div class="text">{{ child.value.text|richtext }}</div>
             </div>
-
-        {% elif child.block_type == 'tripleimage' %}
-
+        </div>
+    {% elif child.block_type == 'tripleimage' %}
+        <div class="sf-block">
             <div class="tripleimage">
                 {% image child.value.first_image fill-375x375 %}
                 {% image child.value.second_image fill-375x375 %}
                 {% image child.value.third_image fill-375x375 %}
             </div>
-
-        {% elif child.block_type == 'stats' %}
-
+        </div>
+    {% elif child.block_type == 'stats' %}
+        <div class="sf-block">
             <div class="stats">
                 <ul>
                 {% for v in child.value %}
@@ -98,9 +101,10 @@
                 {% endfor %}
                 </ul>
             </div>
-
-        {% else %}
+        </div>
+    {% else %}
+        <div class="sf-block sf-block--bottom-only">
             <div class="paragraph">{{ child }}</div>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 {% endfor %}
