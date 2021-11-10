@@ -4,4 +4,13 @@
   @include media-query(large) {
     margin: ($gutter * 4) 0;
   }
+
+  &--bottom-only {
+    margin: 0 0 ($gutter * 3);
+
+    @include media-query(large) {
+      margin: 0 0 ($gutter * 4);
+    }
+  }
 }
+
