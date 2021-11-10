@@ -12,5 +12,13 @@
       margin: 0 0 ($gutter * 4);
     }
   }
+
+  &--heading {
+    margin: ($gutter * 2) 0 0;
+
+    @include media-query(large) {
+      margin: ($gutter * 3) 0 0;
+    }
+  }
 }
 
