@@ -31,24 +31,34 @@
 
     h2 {
       font-size: 28px;
-      margin-top: 5px;
-      margin-top: 50px;
     }
 
     h3 {
       font-size: 21px;
-      margin-top: 40px;
     }
 
     h4 {
       font-size: $gutter;
-      margin-top: 30px;
     }
   }
 
   .share {
     background-color: $color--grey-light;
     box-shadow: 0 0 $gutter rgba($color--white, 0.6);
+  }
+}
+
+.template-blog-page {
+  h2 {
+    margin-top: 50px;
+  }
+
+  h3 {
+    margin-top: 40px;
+  }
+
+  h4 {
+    margin-top: 30px;
   }
 }
 
@@ -103,6 +113,8 @@
   }
 
   &__title {
+    margin-top: 5px;
+
     a {
       color: $color--dark-blue;
     }

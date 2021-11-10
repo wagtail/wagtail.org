@@ -13,7 +13,7 @@
             {% for post in posts %}
             <li class="blog-listing__item">
                 <div class="date"><span>{{ post.date|date }}</span></div>
-                <h2 class="blog-item__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                <h2 class="blog-listing__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
 
                 <p>{{ post.introduction }}</p>
 
