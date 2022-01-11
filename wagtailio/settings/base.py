@@ -383,7 +383,7 @@ WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 if "PRIMARY_HOST" in env:
     BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
 
-# https://docs.wagtail.io/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
+# https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 
 

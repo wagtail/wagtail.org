@@ -1,6 +1,6 @@
 # Wagtail.io
 
-This is the source code to [Wagtail's website](https://wagtail.io)
+This is the source code to [Wagtail's website](https://wagtail.org)
 
 ## Installation
 
@@ -54,6 +54,6 @@ To production
 `fab deploy_production`
 
 
-## docs.wagtail.io
+## docs.wagtail.org
 
 Wagtail documentation is hosted at [readthedocs](https://readthedocs.org/). A Cloudflare worker is in place to rewrite canonical URLs on old versions of the documentation - see `conf/wagtaildocs-cloudflare-worker.js`.

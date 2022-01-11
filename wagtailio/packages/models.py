@@ -13,7 +13,7 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 warning = """
     <p>
-        Edit this data on Djangopackages.org.<br> 
+        Edit this data on Djangopackages.org.<br>
         `Settings > Django Packages > Import` will override this data.
     </p>
 """
@@ -23,7 +23,7 @@ readonly = forms.TextInput(attrs={"readonly": True})
 default_about_text = " ".join(
     """
     <p>
-        Projects listed on Wagtail.io are <i>third-party</i> packages.<br/>
+        Projects listed on Wagtail.org are <i>third-party</i> packages.<br/>
         They are not vetted nor endorsed by Wagtail.<br/>
         Use them at your own risk.</p>
         <p>This page collects girds and packages from djangopackages.org.<br/>
