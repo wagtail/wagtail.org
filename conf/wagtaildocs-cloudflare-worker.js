@@ -14,7 +14,7 @@ versions over the current stable one.
 // The hostname we will fetch documentation pages from. This is configured in readthedocs
 // as an alternative (non-default) hostname with HTTPS disabled; this avoids any issues
 // with the docs.wagtail.org DNS and SSL certificate being handled by us vs. readthedocs.
-const originDomain = 'wagtaildocs.demozoo.org';
+const originDomain = 'docs-internal.wagtail.org';
 
 // The hostname that incoming requests will come in on
 const proxyDomain = 'docs.wagtail.org';
