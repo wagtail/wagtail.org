@@ -15,8 +15,7 @@
         <meta name="twitter:creator" content="@wagtailcms" />
         <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
         <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:160 }}{% endif %}" />
-        <meta name="twitter:image" content="{% if page.social_image %}{% image page.social_image width-400 as img %}{{ img.url }}
-        {% elif page.main_image %}{% image page.main_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
+        <meta name="twitter:image" content="{% if page.social_image %}{% image page.social_image width-400 as img %}{{ img.url }}{% elif page.main_image %}{% image page.main_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
 
         <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
         <meta property="og:type" content="website" />
