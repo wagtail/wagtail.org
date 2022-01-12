@@ -1,4 +1,4 @@
-# Wagtail.io
+# Wagtail.org
 
 This is the source code to [Wagtail's website](https://wagtail.org)
 
@@ -7,8 +7,8 @@ This is the source code to [Wagtail's website](https://wagtail.org)
 You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
 
 ```
-git clone https://github.com/wagtail/wagtail.io.git
-cd wagtail.io
+git clone https://github.com/wagtail/wagtail.org.git
+cd wagtail.org
 vagrant up
 ```
 
