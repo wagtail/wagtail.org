@@ -11,6 +11,11 @@ PIP=$VIRTUALENV_DIR/bin/pip
 apt-get update -y
 apt-get install -y unzip
 
+# PostgreSQL
+export DEBIAN_FRONTEND=noninteractive
+apt-get remove -y --purge postgresql*
+apt-get update -y
+apt-get install -y postgresql-13 postgresql-client-13 postgresql-contrib-13 libpq-dev
 su - postgres -c "createuser -s vagrant"
 
 # Create database
