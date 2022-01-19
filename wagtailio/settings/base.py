@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     "wagtailio.features",
     "wagtailio.packages",
     "wagtailio.services",
+    "wagtailio.areweheadlessyet",
     "wagtailaltgenerator",
     "wagtailmedia",
 )
