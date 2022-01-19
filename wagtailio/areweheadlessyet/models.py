@@ -4,9 +4,10 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 
 from wagtailio.areweheadlessyet.blocks import HomePageBlock
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
-class AreWeHeadlessYetHomePage(Page):
+class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
     THUMBS_UP = "thumbs up"
     THUMBS_DOWN = "thumbs down"
     ICON_CHOICES = [
@@ -31,6 +32,10 @@ class AreWeHeadlessYetHomePage(Page):
         ),
         StreamFieldPanel("body"),
     ]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
 
     max_count = 1
     parent_page_types = ["wagtailcore.Page"]
