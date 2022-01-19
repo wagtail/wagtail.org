@@ -1,10 +1,13 @@
 from django.db import models
+
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
-class AreWeHeadlessYetHomePage(Page):
+
+class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
     THUMBS_UP = "thumbs up"
     THUMBS_DOWN = "thumbs down"
     ICON_CHOICES = [
@@ -27,6 +30,10 @@ class AreWeHeadlessYetHomePage(Page):
             "strapline",
         ),
     ]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
 
     max_count = 1
     parent_page_types = ["wagtailcore.Page"]
