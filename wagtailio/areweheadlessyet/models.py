@@ -7,8 +7,8 @@ from wagtailio.areweheadlessyet.blocks import HomePageBlock
 
 
 class AreWeHeadlessYetHomePage(Page):
-    THUMBS_UP = "\U0001f44D"
-    THUMBS_DOWN = "\U0001f44E"
+    THUMBS_UP = "thumbs up"
+    THUMBS_DOWN = "thumbs down"
     ICON_CHOICES = [
         (THUMBS_UP, THUMBS_UP),
         (THUMBS_DOWN, THUMBS_DOWN),
