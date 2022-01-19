@@ -1,13 +1,12 @@
 from django.db import models
-
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
 
 class AreWeHeadlessYetHomePage(Page):
-    THUMBS_UP = "\U0001f44D"
-    THUMBS_DOWN = "\U0001f44E"
+    THUMBS_UP = "thumbs up"
+    THUMBS_DOWN = "thumbs down"
     ICON_CHOICES = [
         (THUMBS_UP, THUMBS_UP),
         (THUMBS_DOWN, THUMBS_DOWN),
