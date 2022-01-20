@@ -9,6 +9,12 @@ services:
       SECRET_KEY: fake
       DJANGO_SETTINGS_MODULE: wagtailio.settings.dev
       DATABASE_URL: postgres://wagtailio:wagtailio@db:5432/wagtailio
+
+      # The env vars get picked up by postgresql client tools (psql, pg_dump, etc)
+      PGHOST: db
+      PGUSER: wagtailio
+      PGPASSWORD: wagtailio
+      PGDATABASE: wagtailio
     ports:
       - 8000:8000
     volumes:
