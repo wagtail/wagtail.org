@@ -1,5 +1,5 @@
 # Build Python app.
-FROM python:3.8-buster AS backend
+FROM python:3.8-bullseye AS backend
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app \
