@@ -1,10 +1,34 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from modelcluster.fields import ParentalKey
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    PageChooserPanel,
+    StreamFieldPanel,
+)
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
+from wagtail.core.models import Orderable, Page
 
 from wagtailio.areweheadlessyet.blocks import HomePageBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+
+
+class AreWeHeadlessYetNews(Orderable):
+    page = ParentalKey(
+        "areweheadlessyet.AreWeHeadlessYetHomePage",
+        on_delete=models.CASCADE,
+        related_name="news",
+    )
+    blog_post = models.ForeignKey(
+        "blog.BlogPage",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="+",
+    )
+
+    panels = [PageChooserPanel("blog_post")]
 
 
 class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
@@ -31,6 +55,7 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
             "strapline",
         ),
         StreamFieldPanel("body"),
+        InlinePanel("news", label="News", max_num=3),
     ]
 
     promote_panels = (
