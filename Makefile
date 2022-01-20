@@ -1,4 +1,4 @@
-.PHONY: setup rebuild start superuser migrations migrate
+.PHONY: setup rebuild start superuser migrations migrate pull-production-data pull-production-media pull-staging-data pull-staging-media
 
 setup:
 	make rebuild
@@ -19,3 +19,15 @@ migrations:
 
 migrate:
 	docker-compose run web django-admin migrate
+
+pull-production-data:
+	docker-compose run web fab pull_production_data
+
+pull-production-media:
+	docker-compose run web fab pull_production_media
+
+pull-staging-data:
+	docker-compose run web fab pull_staging_data
+
+pull-staging-media:
+	docker-compose run web fab pull_staging_media

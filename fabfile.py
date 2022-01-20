@@ -6,7 +6,7 @@ from fabric.context_managers import warn_only
 PRODUCTION_APP_INSTANCE = 'wagtailio-production'
 STAGING_APP_INSTANCE = 'wagtailio-staging'
 
-LOCAL_MEDIA_FOLDER = '/vagrant/media'
+LOCAL_MEDIA_FOLDER = './media'
 LOCAL_DATABASE_NAME = 'wagtailio'
 
 
@@ -113,6 +113,19 @@ def deploy_prompt(app_instance):
 ########
 
 
+def check_heroku_authenticated():
+    """
+    Call before running any methods that capture output of the heroku command, such as get_heroku_variable.
+
+    This ensures that the user is prompted to log in if they are not currently authenticated.
+    """
+    with warn_only():
+        result = local('heroku auth:whoami', capture=True)
+
+    if result.return_code != 0:
+        local('heroku auth:login')
+
+
 def get_heroku_variable(app_instance, variable):
     return local('heroku config:get {var} --app {app}'.format(
         app=app_instance,
@@ -121,6 +134,8 @@ def get_heroku_variable(app_instance, variable):
 
 
 def pull_media_from_s3_heroku(app_instance):
+    check_heroku_authenticated()
+
     aws_access_key_id = get_heroku_variable(app_instance, 'AWS_ACCESS_KEY_ID')
     aws_secret_access_key = get_heroku_variable(app_instance,
                                                 'AWS_SECRET_ACCESS_KEY')
@@ -137,6 +152,9 @@ def push_media_to_s3_heroku(app_instance):
                  'proceed:\n>>> '.format(app_instance=colors.red(app_instance,
                                                                  bold=True))
     prompt(prompt_msg, validate=app_instance)
+
+    check_heroku_authenticated()
+
     aws_access_key_id = get_heroku_variable(app_instance, 'AWS_ACCESS_KEY_ID')
     aws_secret_access_key = get_heroku_variable(app_instance,
                                                 'AWS_SECRET_ACCESS_KEY')
