@@ -54,14 +54,14 @@ FROM backend AS dev
 RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 # Install AWS CLI
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip"
-RUN unzip /tmp/awscli-bundle.zip -d /tmp
-RUN /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" && \
+    unzip /tmp/awscli-bundle.zip -d /tmp && \
+    /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+    rm /tmp/awscli-bundle.zip && rm -r /tmp/awscli-bundle
 
 # Switch to application user.
 USER wagtailio
 
 # Install development Python requirements.
-COPY --chown=wagtailio requirements.txt /
-COPY --chown=wagtailio requirements-dev.txt /
+COPY --chown=wagtailio requirements.txt requirements-dev.txt /
 RUN pip install -r /requirements-dev.txt
