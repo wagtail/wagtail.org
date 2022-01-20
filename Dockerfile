@@ -1,8 +1,6 @@
 # Build Python app.
 FROM python:3.8-buster AS backend
 
-WORKDIR /app
-
 ENV PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app \
     DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
@@ -10,32 +8,35 @@ ENV PYTHONUNBUFFERED=1 \
     WEB_CONCURRENCY=3 \
     GUNICORN_CMD_ARGS="--max-requests 1200 --access-logfile -"
 
-EXPOSE 8000
-
 # Install operating system dependencies.
 RUN apt-get update -y && \
     apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-13 && \
     rm -rf /var/lib/apt/lists/*
 
-# Don't use the root user.
-ARG UID=1000
-RUN useradd wagtailio -u $UID
+WORKDIR /app
+EXPOSE 8000
 
-# Install Gunicorn.
-RUN pip install "gunicorn>=20.1,<20.2"
+# Create a non-root application user.
+ARG UID=1000
+RUN useradd wagtailio -u $UID -m
+RUN chown -R wagtailio /app
+ENV PATH="/home/wagtailio/.local/bin:$PATH"
 
 
 FROM backend AS prod
 
+# Switch to application user.
+USER wagtailio
+
+# Install Gunicorn.
+RUN pip install "gunicorn>=20.1,<20.2"
+
 # Install production Python requirements.
-COPY requirements.txt /
+COPY --chown=wagtailio requirements.txt /
 RUN pip install -r /requirements.txt
 
 # Install application code.
-COPY . .
-
-RUN chown -R wagtailio .
-USER wagtailio
+COPY --chown=wagtailio . .
 
 # Install assets
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
@@ -57,7 +58,10 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bu
 RUN unzip /tmp/awscli-bundle.zip -d /tmp
 RUN /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
+# Switch to application user.
+USER wagtailio
+
 # Install development Python requirements.
-COPY requirements.txt /
-COPY requirements-dev.txt /
+COPY --chown=wagtailio requirements.txt /
+COPY --chown=wagtailio requirements-dev.txt /
 RUN pip install -r /requirements-dev.txt
