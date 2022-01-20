@@ -14,7 +14,7 @@ class AreWeHeadlessYetHomePage(Page):
         (THUMBS_DOWN, THUMBS_DOWN),
     ]
     strapline_icon = models.CharField(
-        max_length=255,
+        max_length=15,
         choices=ICON_CHOICES,
         default=THUMBS_UP,
     )
