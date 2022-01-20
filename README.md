@@ -2,6 +2,7 @@
 
 This is the source code to [Wagtail's website](https://wagtail.org)
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/wagtail/wagtail.org)
 
 ## Installation (Docker Compose)
 
