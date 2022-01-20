@@ -37,6 +37,9 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
 
-    max_count = 1
+    # Set this so that this page type can only be created under the root page.
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = []
+
+    # Ensure that only one page of this type can be created.
+    max_count = 1
