@@ -170,6 +170,7 @@ def pull_database_from_heroku(app_instance):
         app=app_instance,
         local_database=LOCAL_DATABASE_NAME
     ))
+    local('django-admin createcachetable')
 
 
 def push_database_to_heroku(app_instance):
