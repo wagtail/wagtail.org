@@ -2,7 +2,49 @@
 
 This is the source code to [Wagtail's website](https://wagtail.org)
 
-## Installation
+
+## Installation (Docker Compose)
+
+You firstly need to install [git](https://git-scm.com), [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
+
+```
+git clone https://github.com/wagtail/wagtail.org.git
+cd wagtail.org
+make setup
+```
+
+This will create a set of docker containers on your local machine and also create a blank database.
+
+### Starting the development environment
+
+Run the following command to start the development server:
+
+```
+make start
+```
+
+This will launch the containers and serve Wagtail on http://localhost:8000/
+
+### Creating a superuser
+
+To create a new superuser locally, run:
+
+```
+make superuser
+```
+
+### Pulling production data / media
+
+If you'd like to work with production data and have access, run the following commands:
+
+```
+make pull-production-data
+make pull-production-media
+```
+
+(you will be prompted to log in to Heroku both times. To log in, hit enter when it asks you and copy and paste the URL it gives you into a browser)
+
+## Installation (Vagrant)
 
 You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
 
@@ -22,7 +64,7 @@ vagrant ssh
 ./manage.py createcachetable
 ```
 
-## Usage
+## Usage (Vagrant)
 
 Common Vagrant commands:
 
