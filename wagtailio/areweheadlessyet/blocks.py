@@ -31,8 +31,12 @@ class NewsBlock(StreamBlock):
         max_num = 3
 
 
-class IssuesBlock(StreamBlock):
-    issue = SnippetChooserBlock("areweheadlessyet.WagtailHeadlessIssue")
+class IssuesBlock(StructBlock):
+    title = CharBlock()
+    summary = CharBlock(required=False)
+    issues = StreamBlock(
+        [("issue", SnippetChooserBlock("areweheadlessyet.WagtailHeadlessIssue"))]
+    )
 
 
 class HomePageBlock(StreamBlock):
