@@ -3,9 +3,20 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamField
 from wagtail.api import APIField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
+from wagtail.snippets.models import register_snippet
 
 from wagtailio.areweheadlessyet.blocks import HomePageBlock, TopicPageBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+
+
+@register_snippet
+class WagtailHeadlessIssue(models.Model):
+    number = models.PositiveIntegerField(primary_key=True)
+    title = models.CharField(max_length=255)
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title
 
 
 class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
