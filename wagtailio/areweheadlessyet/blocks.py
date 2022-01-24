@@ -1,5 +1,6 @@
 from wagtail.core.blocks import (
     CharBlock,
+    PageChooserBlock,
     RichTextBlock,
     StreamBlock,
     StructBlock,
@@ -22,5 +23,16 @@ class SectionBlock(StructBlock):
     content = ContentBlock()
 
 
+class NewsBlock(StreamBlock):
+    blog_post = PageChooserBlock(page_type="blog.BlogPage")
+
+    class Meta:
+        max_num = 3
+
+
 class HomePageBlock(StreamBlock):
     section = SectionBlock()
+    news = NewsBlock()
+
+    class Meta:
+        block_counts = {"news": {"max_num": 1}}
