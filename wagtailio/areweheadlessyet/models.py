@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.api import APIField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 
@@ -31,6 +32,12 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
             "strapline",
         ),
         StreamFieldPanel("body"),
+    ]
+
+    api_fields = [
+        APIField("strapline_icon"),
+        APIField("strapline_text"),
+        APIField("body"),
     ]
 
     promote_panels = (
