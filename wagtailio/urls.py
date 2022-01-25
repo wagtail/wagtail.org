@@ -16,6 +16,7 @@ from wagtail_ab_testing import urls as ab_testing_urls
 from wagtail_content_import import urls as wagtail_content_import_urls
 from wagtail_transfer import urls as wagtailtransfer_urls
 
+from wagtailio.api import api_router
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.utils.views import favicon, robots
@@ -27,6 +28,7 @@ private_urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("", include(wagtail_content_import_urls)),
     path("wagtail-transfer/", include(wagtailtransfer_urls)),
+    path('api/v2/', api_router.urls),
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
