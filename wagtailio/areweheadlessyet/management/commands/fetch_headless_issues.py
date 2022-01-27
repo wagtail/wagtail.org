@@ -18,30 +18,28 @@ class Command(BaseCommand):
         issues_in_db = set(
             WagtailHeadlessIssue.objects.values_list("number", flat=True)
         )
-        to_delete, to_create = ([], [])
+        to_delete = []
+        new_issues_count = 0
         for issue in issues:
-            if (issue_number := issue["number"]) in issues_in_db:
-                # Delete issue when it's closed.
-                if issue["state"] == "closed":
-                    to_delete.append(issue_number)
+            # Delete issue when it's closed.
+            if (issue_number := issue["number"]) in issues_in_db and issue["state"] == "closed":
+                to_delete.append(issue_number)
             else:
-                to_create.append(
-                    WagtailHeadlessIssue(
-                        number=issue_number,
-                        title=issue["title"],
-                        url=issue["url"],
-                    )
+                _, created = WagtailHeadlessIssue.objects.update_or_create(
+                    number=issue_number,
+                    defaults={"title": issue["title"]},
                 )
+                if created:
+                    new_issues_count += 1
 
-        if not to_create and not to_delete:
+        if not new_issues_count and not to_delete:
             self.stdout.write("No closed or new issues tagged #headless found.")
             return
 
-        if to_create:
-            created = WagtailHeadlessIssue.objects.bulk_create(to_create)
+        if new_issues_count:
             self.stdout.write(
                 self.style.SUCCESS(
-                    f"Successfully created {len(created)} new issue(s) tagged #headless."
+                    f"Successfully created {new_issues_count} new issue(s) tagged #headless."
                 )
             )
 
