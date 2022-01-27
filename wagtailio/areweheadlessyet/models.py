@@ -13,12 +13,15 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 class WagtailHeadlessIssue(models.Model):
     number = models.PositiveIntegerField(primary_key=True)
     title = models.CharField(max_length=255)
-    url = models.URLField()
 
     panels = [FieldPanel("title")]
 
     def __str__(self):
         return self.title
+
+    @property
+    def url(self):
+        return f"https://github.com/wagtail/wagtail/issues/{self.number}/"
 
 
 class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
