@@ -72,6 +72,12 @@ class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
         StreamFieldPanel("body"),
     ]
 
+    api_fields = [
+        APIField("status_color"),
+        APIField("introduction"),
+        APIField("body"),
+    ]
+
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
