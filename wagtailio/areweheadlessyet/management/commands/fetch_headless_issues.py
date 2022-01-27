@@ -12,15 +12,7 @@ class Command(BaseCommand):
             "https://api.github.com/repos/wagtail/wagtail/issues",
             params={"labels": "headless"},
         )
-
-        if not response.ok:
-            message = response.json()["message"]
-            self.stdout.write(
-                self.style.ERROR(
-                    f"Fetching from Github's API failed for the following reason: {message}"
-                )
-            )
-            return
+        response.raise_for_status()
 
         issues = response.json()
         issues_in_db = set(
