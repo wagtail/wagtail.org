@@ -33,6 +33,19 @@ class NewsBlock(StreamBlock):
 class HomePageBlock(StreamBlock):
     section = SectionBlock()
     news = NewsBlock()
+    topics = StructBlock([("title", CharBlock())])
+
+    class Meta:
+        block_counts = {
+            "news": {"max_num": 1},
+            "topics": {"max_num": 1},
+        }
+
+
+class TopicPageBlock(StreamBlock):
+    text = RichTextBlock()
+    section = SectionBlock()
+    news = NewsBlock()
 
     class Meta:
         block_counts = {"news": {"max_num": 1}}

@@ -3,7 +3,7 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 
-from wagtailio.areweheadlessyet.blocks import HomePageBlock
+from wagtailio.areweheadlessyet.blocks import HomePageBlock, TopicPageBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
@@ -39,7 +39,35 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
 
     # Set this so that this page type can only be created under the root page.
     parent_page_types = ["wagtailcore.Page"]
-    subpage_types = []
+
+    subpage_types = ["areweheadlessyet.AreWeHeadlessYetTopicPage"]
 
     # Ensure that only one page of this type can be created.
     max_count = 1
+
+
+class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
+    GREEN = "green"
+    AMBER = "amber"
+    RED = "red"
+    COLOR_CHOICES = [
+        (GREEN, GREEN),
+        (AMBER, AMBER),
+        (RED, RED),
+    ]
+    status_color = models.CharField(max_length=5, choices=COLOR_CHOICES)
+    introduction = models.TextField(blank=True)
+    body = StreamField(TopicPageBlock())
+
+    content_panels = Page.content_panels + [
+        FieldPanel("status_color"),
+        FieldPanel("introduction"),
+        StreamFieldPanel("body"),
+    ]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
+
+    parent_page_types = ["areweheadlessyet.AreWeHeadlessYetHomePage"]
+    subpage_types = []
