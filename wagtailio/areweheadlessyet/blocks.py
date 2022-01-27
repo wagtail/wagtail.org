@@ -6,6 +6,7 @@ from wagtail.core.blocks import (
     StructBlock,
     URLBlock,
 )
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 
 class LinkBlock(StructBlock):
@@ -30,15 +31,25 @@ class NewsBlock(StreamBlock):
         max_num = 3
 
 
+class IssuesBlock(StructBlock):
+    title = CharBlock()
+    summary = CharBlock(required=False)
+    issues = StreamBlock(
+        [("issue", SnippetChooserBlock("areweheadlessyet.WagtailHeadlessIssue"))]
+    )
+
+
 class HomePageBlock(StreamBlock):
     section = SectionBlock()
     news = NewsBlock()
     topics = StructBlock([("title", CharBlock())])
+    issues = IssuesBlock()
 
     class Meta:
         block_counts = {
             "news": {"max_num": 1},
             "topics": {"max_num": 1},
+            "issues": {"max_num": 1},
         }
 
 
