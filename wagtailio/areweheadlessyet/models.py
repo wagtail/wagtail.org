@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.api import APIField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 
@@ -33,6 +34,12 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
         StreamFieldPanel("body"),
     ]
 
+    api_fields = [
+        APIField("strapline_icon"),
+        APIField("strapline_text"),
+        APIField("body"),
+    ]
+
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
@@ -63,6 +70,12 @@ class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
         FieldPanel("status_color"),
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
+    ]
+
+    api_fields = [
+        APIField("status_color"),
+        APIField("introduction"),
+        APIField("body"),
     ]
 
     promote_panels = (

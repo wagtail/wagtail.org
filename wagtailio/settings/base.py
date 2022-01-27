@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
     "wagtail.contrib.postgres_search",
+    "wagtail.api.v2",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
