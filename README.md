@@ -1,14 +1,14 @@
-# Wagtail.io
+# Wagtail.org
 
-This is the source code to [Wagtail's website](https://wagtail.io)
+This is the source code to [Wagtail's website](https://wagtail.org)
 
 ## Installation
 
 You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
 
 ```
-git clone https://github.com/wagtail/wagtail.io.git
-cd wagtail.io
+git clone https://github.com/wagtail/wagtail.org.git
+cd wagtail.org
 vagrant up
 ```
 
@@ -54,6 +54,6 @@ To production
 `fab deploy_production`
 
 
-## docs.wagtail.io
+## docs.wagtail.org
 
 Wagtail documentation is hosted at [readthedocs](https://readthedocs.org/). A Cloudflare worker is in place to rewrite canonical URLs on old versions of the documentation - see `conf/wagtaildocs-cloudflare-worker.js`.
