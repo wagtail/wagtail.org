@@ -25,10 +25,11 @@ class SectionBlock(StructBlock):
 
 
 class NewsBlock(StreamBlock):
+    title = CharBlock()
     blog_post = PageChooserBlock(page_type="blog.BlogPage")
 
     class Meta:
-        max_num = 3
+        block_counts = {"blog_post": {"max_num": 3}}
 
 
 class IssuesBlock(StructBlock):
