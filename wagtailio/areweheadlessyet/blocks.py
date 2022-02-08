@@ -24,18 +24,42 @@ class SectionBlock(StructBlock):
     content = ContentBlock()
 
 
-class NewsBlock(StreamBlock):
-    blog_post = PageChooserBlock(page_type="blog.BlogPage")
+class BlogPostChooserBlock(PageChooserBlock):
+    def get_api_representation(self, value, context=None):
+        if value is None:
+            return None
+        return {
+            "date": value.date,
+            "title": value.title,
+            "url": value.full_url,
+            "introduction": value.introduction,
+        }
+
+
+class BlogPostsBlock(StreamBlock):
+    blog_post = BlogPostChooserBlock(page_type="blog.BlogPage")
 
     class Meta:
         max_num = 3
+
+
+class NewsBlock(StructBlock):
+    title = CharBlock()
+    blog_posts = BlogPostsBlock()
+
+
+class IssueChooserBlock(SnippetChooserBlock):
+    def get_api_representation(self, value, context=None):
+        if value is None:
+            return None
+        return {"title": value.title, "url": value.url}
 
 
 class IssuesBlock(StructBlock):
     title = CharBlock()
     summary = CharBlock(required=False)
     issues = StreamBlock(
-        [("issue", SnippetChooserBlock("areweheadlessyet.WagtailHeadlessIssue"))]
+        [("issue", IssueChooserBlock("areweheadlessyet.WagtailHeadlessIssue"))]
     )
 
 
