@@ -51,6 +51,7 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
     ]
 
     api_fields = [
+        APIField("last_published_at"),
         APIField("strapline_icon"),
         APIField("strapline_text"),
         APIField("body"),
@@ -89,6 +90,7 @@ class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
     ]
 
     api_fields = [
+        APIField("last_published_at"),
         APIField("status_color"),
         APIField("introduction"),
         APIField("body"),
