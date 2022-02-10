@@ -14,17 +14,23 @@ cd wagtail.org
 make setup
 ```
 
-This will create a set of docker containers on your local machine and also create a blank database.
+This will create a set of Docker containers on your local machine and also create a blank database.
 
 ### Starting the development environment
 
-Run the following command to start the development server:
+Run the following command to start the Docker containers:
 
 ```
 make start
 ```
 
-This will launch the containers and serve Wagtail on http://localhost:8000/
+Then, to start the development server, run:
+
+```
+make runserver
+```
+
+This will launch ``django-admin runserver`` in the web container, which serves Wagtail on http://localhost:8000/
 
 ### Creating a superuser
 
