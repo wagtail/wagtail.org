@@ -29,7 +29,7 @@ class BlogPostChooserBlock(PageChooserBlock):
         if value is None:
             return None
         return {
-            "date": value.date,
+            "date": value.date.strftime("%d %b %Y"),
             "title": value.title,
             "url": value.full_url,
             "introduction": value.introduction,
