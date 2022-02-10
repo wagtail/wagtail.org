@@ -11,6 +11,9 @@ rebuild:
 start:
 	docker-compose up
 
+runserver:
+	docker-compose exec web django-admin runserver 0.0.0.0:8000
+
 superuser:
 	docker-compose run web django-admin createsuperuser
 

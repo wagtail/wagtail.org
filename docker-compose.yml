@@ -4,7 +4,10 @@ services:
       context: .
       target: dev
     init: true
-    command: django-admin runserver 0.0.0.0:8000
+    # This command just starts the container and keeps it running.
+    # To run a command within the container run docker-compose exec web <command>
+    # A Makefile task exists that starts a development server in the container: make runserver
+    command: tail -f /dev/null
     environment:
       SECRET_KEY: fake
       DJANGO_SETTINGS_MODULE: wagtailio.settings.dev
