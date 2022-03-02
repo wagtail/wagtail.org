@@ -165,9 +165,7 @@ $(function() {
     $.getJSON($alert_container.data("alert"), function(data) {
       if (data.text) {
         $alert_container.html(data.text);
-        var styles = {
-          'top': $('.header')[0].getBoundingClientRect().bottom + 'px'
-        };
+        var styles = {};
         if (data.bg_colour) {
           styles['background-color'] = '#' + data.bg_colour;
         }
