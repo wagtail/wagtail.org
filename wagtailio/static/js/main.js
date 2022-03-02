@@ -173,7 +173,7 @@ $(function() {
           styles['color'] = '#' + data.text_colour;
         }
         $alert_container.css(styles).toggleClass('alert--default', !(data.bg_colour || data.text_colour));
-        $alert_container.prop('aria-expanded', true).addClass('alert--active');
+        $alert_container.addClass('alert--active');
       }
     })
   }
