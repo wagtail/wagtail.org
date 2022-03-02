@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
     "wagtail.contrib.postgres_search",
+    "wagtail.contrib.settings",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -86,6 +87,7 @@ INSTALLED_APPS = (
     "wagtailio.features",
     "wagtailio.packages",
     "wagtailio.services",
+    "wagtailio.sitewide_alert",
     "wagtailaltgenerator",
     "wagtailmedia",
 )
@@ -248,6 +250,15 @@ except ValueError:
 CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get("CACHE_CONTROL_STALE_WHILE_REVALIDATE", 30)
 )
+
+SITEWIDE_ALERT_MAXAGE = int(
+    env.get("SITEWIDE_ALERT_MAXAGE", 300)
+)
+
+SITEWIDE_ALERT_SMAXAGE = int(
+    env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7)
+)
+
 
 
 # Cache

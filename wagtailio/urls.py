@@ -18,6 +18,7 @@ from wagtail_transfer import urls as wagtailtransfer_urls
 
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
+from wagtailio.sitewide_alert import urls as sitewide_alert_urls
 from wagtailio.utils.views import favicon, robots
 from wagtailio.utils.cache import get_default_cache_control_decorator
 
@@ -25,6 +26,7 @@ from wagtailio.utils.cache import get_default_cache_control_decorator
 private_urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
+    path("sitewide_alert/", include(sitewide_alert_urls, namespace="sitewide_alert")),
     path("", include(wagtail_content_import_urls)),
     path("wagtail-transfer/", include(wagtailtransfer_urls)),
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
