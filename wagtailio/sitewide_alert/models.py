@@ -25,10 +25,26 @@ class SiteWideAlertSettings(BaseSetting):
         verbose_name="Alert text",
     )
 
+    background_colour = models.CharField(
+        max_length=6,
+        blank=True,
+        help_text="Background RGB value. e.g. <code>fd5765</code>"
+    )
+    text_colour = models.CharField(
+        max_length=6,
+        blank=True,
+        help_text="Text colour RGB value. e.g. <code>ffffff</code>"
+    )
+
     panels = [
         MultiFieldPanel(
             [FieldPanel("sitewide_alert_enabled"), FieldPanel("sitewide_alert_text")],
             "Sitewide alert",
+        ),
+        MultiFieldPanel(
+            [FieldPanel("background_colour"), FieldPanel("text_colour")],
+            "Style",
+            classname="collapsible"
         ),
     ]
 

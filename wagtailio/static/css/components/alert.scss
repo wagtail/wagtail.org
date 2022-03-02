@@ -6,21 +6,33 @@
   &--active {
     display: block;
     opacity: 1;
-    background-color: $color--coral;
-    color: $color--white;
     padding: 1rem;
     position: relative;
     z-index: 10;
   }
 
   a {
-    color: $color--grey-darker;
-    border-bottom: 2px solid $color--grey-dark;
+    color: inherit;
+    border-bottom: 2px solid;
 
-    &:hover,
-    &:active {
-      color: $color--grey-dark;
-      border-bottom-color: $color--grey;
+    &:hover {
+      border-bottom-color: transparent;
+    }
+  }
+
+  &--default {
+    background-color: $color--coral;
+    color: $color--white;
+
+    a {
+      color: $color--grey-darker;
+      border-bottom-color: $color--grey-dark;
+
+      &:hover,
+      &:active {
+        color: $color--grey-dark;
+        border-bottom-color: $color--grey;
+      }
     }
   }
 }

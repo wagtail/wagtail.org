@@ -165,7 +165,16 @@ $(function() {
     $.getJSON($alert_container.data("alert"), function(data) {
       if (data.text) {
         $alert_container.html(data.text);
-        $alert_container.css('top', $('.header')[0].getBoundingClientRect().bottom + 'px');
+        var styles = {
+          'top': $('.header')[0].getBoundingClientRect().bottom + 'px'
+        };
+        if (data.bg_colour) {
+          styles['background-color'] = '#' + data.bg_colour;
+        }
+        if (data.text_colour) {
+          styles['color'] = '#' + data.text_colour;
+        }
+        $alert_container.css(styles).toggleClass('alert--default', data.bg_colour || data.text_colour);
         $alert_container.prop('aria-expanded', true).addClass('alert--active');
       }
     })
