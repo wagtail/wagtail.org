@@ -20,13 +20,17 @@ EXPOSE 8000
 ARG UID=1000
 RUN useradd wagtailio -u $UID -m
 RUN chown -R wagtailio /app
-ENV PATH="/home/wagtailio/.local/bin:$PATH"
 
 
 FROM backend AS prod
 
 # Switch to application user.
 USER wagtailio
+
+# Create a virtual environment
+RUN python3 -m venv /home/wagtailio/venv
+ENV PATH="/home/wagtailio/venv/bin:$PATH"
+RUN pip install --upgrade pip wheel
 
 # Install Gunicorn.
 RUN pip install "gunicorn>=20.1,<20.2"
@@ -63,5 +67,6 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bu
 USER wagtailio
 
 # Install development Python requirements.
+ENV PATH="/home/wagtailio/.local/bin:$PATH"
 COPY --chown=wagtailio requirements.txt requirements-dev.txt /
 RUN pip install -r /requirements-dev.txt
