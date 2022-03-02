@@ -16,6 +16,11 @@ def sitewide_alert(request):
         data = {
             "text": expand_db_html(alert_settings.sitewide_alert_text),
         }
+        if alert_settings.background_colour:
+            data["bg_colour"] = alert_settings.background_colour
+        if alert_settings.text_colour:
+            data["text_colour"] = alert_settings.text_colour
+
     response = JsonResponse(data)
 
     # Browser should cache only briefly
