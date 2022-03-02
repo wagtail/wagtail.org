@@ -103,6 +103,8 @@
         <![endif]-->
 
         <div class="page">
+            <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
+
             <header class="header">
                 <div class="header__container">
                     <a class="branding" href="/">
@@ -116,8 +118,6 @@
             </header> <!-- /header -->
 
             {% include "includes/svg_sprites.html" %}
-
-            <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
 
             {% block sidebar %}{% endblock %}
 
