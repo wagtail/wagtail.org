@@ -1,0 +1,26 @@
+.alert {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+
+  &--active {
+    display: block;
+    opacity: 1;
+    background-color: $color--coral;
+    color: $color--white;
+    padding: 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  a {
+    color: $color--grey-darker;
+    border-bottom: 2px solid $color--grey-dark;
+
+    &:hover,
+    &:active {
+      color: $color--grey-dark;
+      border-bottom-color: $color--grey;
+    }
+  }
+}

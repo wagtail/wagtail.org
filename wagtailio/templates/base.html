@@ -77,15 +77,12 @@
             <!-- End Google Tag Manager (noscript) -->
         {% endif %}
 
+        {% if FB_APP_ID %}
         <div id="fb-root"></div>
 
         <script>
             window.fbAsyncInit = function() {
-                FB.init({
-                    appId: {{ FB_APP_ID }},
-                    xfbml: true,
-                    version: 'v2.1'
-                });
+                FB.init({appId: {{ FB_APP_ID }}, xfbml: true, version: 'v2.1'});
             };
 
             (function(d, s, id){
@@ -96,7 +93,7 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
-
+        {% endif %}
         {% wagtail_ab_testing_script %}
 
         {% wagtailuserbar %}
@@ -106,7 +103,6 @@
         <![endif]-->
 
         <div class="page">
-
             <header class="header">
                 <div class="header__container">
                     <a class="branding" href="/">
@@ -120,6 +116,8 @@
             </header> <!-- /header -->
 
             {% include "includes/svg_sprites.html" %}
+
+            <div class="alert" data-alert="{% url 'sitewide_alert:sitewide_alert' %}" aria-expanded="false"></div>
 
             {% block sidebar %}{% endblock %}
 
