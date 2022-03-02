@@ -160,4 +160,14 @@ $(function() {
     })
   }
 
+  var $alert_container = $("[data-alert]");
+  if ($alert_container.data("alert")) {
+    $.getJSON($alert_container.data("alert"), function(data) {
+      if (data.text) {
+        $alert_container.html(data.text);
+        $alert_container.css('top', $('.header')[0].getBoundingClientRect().bottom + 'px');
+        $alert_container.prop('aria-expanded', true).addClass('alert--active');
+      }
+    })
+  }
 });
