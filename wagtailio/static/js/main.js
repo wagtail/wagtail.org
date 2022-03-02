@@ -174,7 +174,9 @@ $(function() {
           styles['color'] = '#' + data.text_colour;
         }
         $aside.css(styles).toggleClass('alert--default', !(data.bg_colour || data.text_colour));
-        $aside.addClass('alert--active');
+        setTimeout(() => {
+          $aside.addClass('alert--active');
+        }, 1);
       }
     })
   }
