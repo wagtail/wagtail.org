@@ -1,7 +1,7 @@
 /*
-docs.wagtail.io canonical URL rewriter
+docs.wagtail.org canonical URL rewriter
 
-This script is installed as a Cloudflare worker on docs.wagtail.io to ensure that the
+This script is installed as a Cloudflare worker on docs.wagtail.org to ensure that the
 <link rel="canonical"> tag on all pages is pointing to the 'stable' version of the docs.
 Certain older versions of the docs were built at a time when the 'default' version set
 on readthedocs was pointing to the specific then-current release, and due to changes in
@@ -13,11 +13,11 @@ versions over the current stable one.
 
 // The hostname we will fetch documentation pages from. This is configured in readthedocs
 // as an alternative (non-default) hostname with HTTPS disabled; this avoids any issues
-// with the docs.wagtail.io DNS and SSL certificate being handled by us vs. readthedocs.
-const originDomain = 'wagtaildocs.demozoo.org';
+// with the docs.wagtail.org DNS and SSL certificate being handled by us vs. readthedocs.
+const originDomain = 'docs-internal.wagtail.org';
 
 // The hostname that incoming requests will come in on
-const proxyDomain = 'docs.wagtail.io';
+const proxyDomain = 'docs.wagtail.org';
 
 const originRoot = 'http://' + originDomain + '/';
 const proxyRoot = 'https://' + proxyDomain + '/';
@@ -30,7 +30,7 @@ class CanonicalLinkHandler {
   element(element) {
     const oldUrl = element.getAttribute('href');
     // Rewrite any URL paths within /latest/ or /vN.N/ to the corresponding path in /stable/
-    const newUrl = oldUrl.replace(/^(https?\:\/\/docs\.wagtail\.io\/\w+)\/(v[\d\.]+|latest)\//, '$1/stable/');
+    const newUrl = oldUrl.replace(/^(https?\:\/\/docs\.wagtail\.org\/\w+)\/(v[\d\.]+|latest)\//, '$1/stable/');
     element.setAttribute('href', newUrl);
   }
 }

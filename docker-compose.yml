@@ -1,0 +1,47 @@
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    init: true
+    # This command just starts the container and keeps it running.
+    # To run a command within the container run docker-compose exec web <command>
+    # A Makefile task exists that starts a development server in the container: make runserver
+    command: tail -f /dev/null
+    environment:
+      SECRET_KEY: fake
+      DJANGO_SETTINGS_MODULE: wagtailio.settings.dev
+      DATABASE_URL: postgres://wagtailio:wagtailio@db:5432/wagtailio
+
+      # The env vars get picked up by postgresql client tools (psql, pg_dump, etc)
+      PGHOST: db
+      PGUSER: wagtailio
+      PGPASSWORD: wagtailio
+      PGDATABASE: wagtailio
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app/
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:13
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: wagtailio
+      POSTGRES_USER: wagtailio
+      POSTGRES_PASSWORD: wagtailio
+      PGDATABASE: wagtailio
+      PGUSER: wagtailio
+      PGPASSWORD: wagtailio
+      POSTGRES_HOST_AUTH_METHOD: trust
+    logging:
+      driver: none
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

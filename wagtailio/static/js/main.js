@@ -160,4 +160,24 @@ $(function() {
     })
   }
 
+  var $alert_container = $("[data-alert]");
+  if ($alert_container.data("alert")) {
+    $.getJSON($alert_container.data("alert"), function(data) {
+      if (data.text) {
+        $alert_container.html('<aside class="alert">' + data.text + '</aside>');
+        var $aside = $alert_container.find("aside");
+        var styles = {};
+        if (data.bg_colour) {
+          styles['background-color'] = '#' + data.bg_colour;
+        }
+        if (data.text_colour) {
+          styles['color'] = '#' + data.text_colour;
+        }
+        $aside.css(styles).toggleClass('alert--default', !(data.bg_colour || data.text_colour));
+        setTimeout(() => {
+          $aside.addClass('alert--active');
+        }, 1);
+      }
+    })
+  }
 });

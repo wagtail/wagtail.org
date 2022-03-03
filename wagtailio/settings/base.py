@@ -76,7 +76,11 @@ INSTALLED_APPS = (
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
     "wagtail.contrib.postgres_search",
+<<<<<<< HEAD
     "wagtail.api.v2",
+=======
+    "wagtail.contrib.settings",
+>>>>>>> main
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -88,6 +92,7 @@ INSTALLED_APPS = (
     "wagtailio.packages",
     "wagtailio.services",
     "wagtailio.areweheadlessyet",
+    "wagtailio.sitewide_alert",
     "wagtailaltgenerator",
     "wagtailmedia",
 )
@@ -251,6 +256,15 @@ CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get("CACHE_CONTROL_STALE_WHILE_REVALIDATE", 30)
 )
 
+SITEWIDE_ALERT_MAXAGE = int(
+    env.get("SITEWIDE_ALERT_MAXAGE", 300)
+)
+
+SITEWIDE_ALERT_SMAXAGE = int(
+    env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7)
+)
+
+
 
 # Cache
 # Use Redis or database as the cache backend
@@ -385,7 +399,7 @@ WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 if "PRIMARY_HOST" in env:
     BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
 
-# https://docs.wagtail.io/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
+# https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 
 

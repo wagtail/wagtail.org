@@ -1,0 +1,12 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: make setup
+    command: make start
+  - command: make runserver
+ports:
+  - port: 8000
+vscode:
+  extensions:
+    - ms-python.python
+    - ms-azuretools.vscode-docker

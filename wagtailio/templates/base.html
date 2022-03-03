@@ -77,15 +77,12 @@
             <!-- End Google Tag Manager (noscript) -->
         {% endif %}
 
+        {% if FB_APP_ID %}
         <div id="fb-root"></div>
 
         <script>
             window.fbAsyncInit = function() {
-                FB.init({
-                    appId: {{ FB_APP_ID }},
-                    xfbml: true,
-                    version: 'v2.1'
-                });
+                FB.init({appId: {{ FB_APP_ID }}, xfbml: true, version: 'v2.1'});
             };
 
             (function(d, s, id){
@@ -96,7 +93,7 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
-
+        {% endif %}
         {% wagtail_ab_testing_script %}
 
         {% wagtailuserbar %}
@@ -106,6 +103,7 @@
         <![endif]-->
 
         <div class="page">
+            <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
 
             <header class="header">
                 <div class="header__container">
@@ -141,7 +139,12 @@
 
         </div> <!-- /page -->
 
-       {% include "includes/cookie_message.html" %}
+        {% include "includes/cookie_message.html" %}
+
+        <a href="https://tally.so/r/wQqagw" target="_blank" class="survey-link">
+            <img src="{% static 'img/clipboard.svg' %}" alt="Help improve wagtail.org clipboard icon">
+            <span>Help improve wagtail.org</span>
+        </a>
 
         {% if not DEBUG %}
             <!-- twitter campaign tracking code -->
