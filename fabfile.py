@@ -36,7 +36,7 @@ def push_production_data():
 
 @task
 def deploy_production():
-    deploy_to_heroku(PRODUCTION_APP_INSTANCE, local_branch='master',
+    deploy_to_heroku(PRODUCTION_APP_INSTANCE, local_branch='main',
                      remote_branch='master')
 
 
