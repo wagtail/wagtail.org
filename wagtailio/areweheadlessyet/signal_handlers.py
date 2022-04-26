@@ -24,7 +24,10 @@ def postpone(function):
 def deploy(sender, **kwargs):
     """Triggers a build on Vercel."""
 
-    response = requests.post(settings.VERCEL_DEPLOY_HOOK_URL)
+    response = requests.post(
+        settings.VERCEL_DEPLOY_HOOK_URL,
+        timeout=settings.VERCEL_DEPLOY_REQUEST_TIMEOUT,
+    )
     response.raise_for_status()
 
 
