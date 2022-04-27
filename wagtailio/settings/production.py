@@ -16,7 +16,8 @@ COMPRESS_FILTERS = {
     "css": [
         "compressor.filters.css_default.CssAbsoluteFilter",
         "compressor.filters.cssmin.CSSMinFilter",
-    ]
+    ],
+    'js': ['compressor.filters.jsmin.JSMinFilter']
 }
 
 COMPUTER_VISION_API_KEY = env.get('COMPUTER_VISION_API_KEY')
