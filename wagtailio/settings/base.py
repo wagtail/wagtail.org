@@ -311,6 +311,9 @@ if "EMAIL_SUBJECT_PREFIX" in env:
 if "SERVER_EMAIL" in env:
     SERVER_EMAIL = DEFAULT_FROM_EMAIL = env["SERVER_EMAIL"]
 
+# Notification emails
+
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = False
 
 # Security configuration
 # https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
