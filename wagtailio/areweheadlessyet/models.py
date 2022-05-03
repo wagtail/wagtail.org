@@ -1,10 +1,9 @@
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.api import APIField
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
-
 from wagtailio.areweheadlessyet.blocks import HomePageBlock, TopicPageBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
@@ -37,7 +36,7 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
         default=THUMBS_UP,
     )
     strapline_text = RichTextField(features=["bold", "italic"])
-    body = StreamField(HomePageBlock())
+    body = StreamField(HomePageBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -47,7 +46,7 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
             ],
             "strapline",
         ),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     api_fields = [
@@ -81,12 +80,12 @@ class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
     ]
     status_color = models.CharField(max_length=5, choices=COLOR_CHOICES)
     introduction = models.TextField(blank=True)
-    body = StreamField(TopicPageBlock())
+    body = StreamField(TopicPageBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("status_color"),
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     api_fields = [

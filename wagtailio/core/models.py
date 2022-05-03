@@ -1,18 +1,15 @@
 from django.db import models
-
 from modelcluster.models import ClusterableModel
+from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
-
-from wagtail.models import Page, Orderable
-from wagtail.admin.panels import StreamFieldPanel
-
+from wagtail.models import Orderable, Page
 from wagtailio.blog.models import BlogPage
 from wagtailio.core.blocks import HomePageBlock
-from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
-    body = StreamField(HomePageBlock())
+    body = StreamField(HomePageBlock(), use_json_field=True)
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "blog.BlogIndexPage",
@@ -23,7 +20,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         "packages.PackagesPage",
         "services.ServicesPage",
     ]
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    content_panels = Page.content_panels + [FieldPanel("body")]
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels

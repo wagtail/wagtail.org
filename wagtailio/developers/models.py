@@ -1,16 +1,9 @@
 from django.db import models
-
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
-)
+from wagtail.admin.panels import (FieldPanel, InlinePanel, MultiFieldPanel,
+                                  PageChooserPanel)
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
-
 from wagtailio.core.blocks import CodePromoBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
@@ -44,7 +37,7 @@ class DevelopersPageOptions(Orderable, models.Model):
         FieldPanel("title"),
         FieldPanel("summary"),
         MultiFieldPanel(
-            [PageChooserPanel("internal_link"), FieldPanel("external_link")], "Link"
+            [FieldPanel("internal_link"), FieldPanel("external_link")], "Link"
         ),
     ]
 
@@ -56,10 +49,10 @@ class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
                 "code",
                 CodePromoBlock(template="developers/blocks/code_with_link_block.html"),
             ),
-        )
+        ), use_json_field=True
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
         InlinePanel("options", label="Options"),
     ]

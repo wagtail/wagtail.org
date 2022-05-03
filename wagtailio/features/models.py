@@ -1,19 +1,14 @@
 from django.db import models
-
-from wagtail.admin.panels import FieldPanel, InlinePanel, StreamFieldPanel
-from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Page, Orderable
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from wagtail.snippets.models import register_snippet
-
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Orderable, Page
+from wagtail.snippets.models import register_snippet
 from wagtail_airtable.mixins import AirtableMixin
-from wagtailmedia.edit_handlers import MediaChooserPanel
-
 from wagtailio.features.blocks import FeatureIndexPageBlock
+from wagtailmedia.edit_handlers import MediaChooserPanel
 
 
 class Bullet(Orderable, models.Model):
@@ -49,7 +44,7 @@ class FeatureAspect(ClusterableModel):
     panels = [
         FieldPanel("title"),
         InlinePanel("bullets", label="Bullets"),
-        ImageChooserPanel("screenshot"),
+        FieldPanel("screenshot"),
         FieldPanel("video_url"),
         MediaChooserPanel('video'),
     ]
@@ -61,7 +56,7 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
         "features.FeatureAspect", models.CASCADE, related_name="+"
     )
 
-    panels = [SnippetChooserPanel("feature_aspect")]
+    panels = [FieldPanel("feature_aspect")]
 
 
 @register_snippet
@@ -112,6 +107,6 @@ class FeatureIndexPageMenuOption(models.Model):
 
 
 class FeatureIndexPage(Page):
-    body = StreamField(FeatureIndexPageBlock())
+    body = StreamField(FeatureIndexPageBlock(), use_json_field=True)
 
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    content_panels = Page.content_panels + [FieldPanel("body")]
