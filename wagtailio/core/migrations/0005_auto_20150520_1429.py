@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.core.fields
+import wagtail.fields
 import modelcluster.fields
 
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('sort_order', models.IntegerField(blank=True, null=True, editable=False)),
                 ('title', models.CharField(max_length=255)),
-                ('text', wagtail.core.fields.RichTextField()),
+                ('text', wagtail.fields.RichTextField()),
                 ('snippet', modelcluster.fields.ParentalKey(related_name='bullets', to='core.FeatureAspect')),
             ],
             options={

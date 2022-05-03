@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sitewide_alert_enabled', models.BooleanField(default=False, verbose_name='Enable sitewide alert')),
-                ('sitewide_alert_text', wagtail.core.fields.RichTextField(blank=True, verbose_name='Alert text')),
+                ('sitewide_alert_text', wagtail.fields.RichTextField(blank=True, verbose_name='Alert text')),
                 ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.site')),
             ],
             options={

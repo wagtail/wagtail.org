@@ -1,7 +1,7 @@
 from django.db import models
 from wagtail.admin import edit_handlers
-from wagtail.core import blocks, fields
-from wagtail.core.models import Page
+from wagtail import blocks, fields
+from wagtail.models import Page
 
 from wagtailio.services.blocks import SectionBlock
 

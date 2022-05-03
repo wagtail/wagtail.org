@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                         ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                         ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
                         ('title', models.CharField(max_length=255)),
-                        ('text', wagtail.core.fields.RichTextField()),
+                        ('text', wagtail.fields.RichTextField()),
                     ],
                     options={
                         'db_table': 'core_bullet',

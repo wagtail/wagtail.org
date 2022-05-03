@@ -5,9 +5,9 @@ from django.utils.translation import ugettext as _
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 
-from wagtail.core.models import Page
-from wagtail.core.models import Orderable
-from wagtail.admin.edit_handlers import (
+from wagtail.models import Page
+from wagtail.models import Orderable
+from wagtail.admin.panels import (
     FieldPanel,
     MultiFieldPanel,
     PageChooserPanel,

@@ -1,10 +1,10 @@
 from django.db import models
 
 from modelcluster.models import ClusterableModel
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 
-from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.models import Page, Orderable
+from wagtail.admin.panels import StreamFieldPanel
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.core.blocks import HomePageBlock

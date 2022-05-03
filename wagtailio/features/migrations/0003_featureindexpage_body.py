@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.snippets.blocks
 
 
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='featureindexpage',
             name='body',
-            field=wagtail.core.fields.StreamField((('primary_features', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock()), ('introduction', wagtail.core.blocks.RichTextBlock()), ('features', wagtail.core.blocks.ListBlock(wagtail.snippets.blocks.SnippetChooserBlock('features.FeatureDescription'))), ('links', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('link_text', wagtail.core.blocks.CharBlock()), ('link_text_bold', wagtail.core.blocks.CharBlock(required=False)), ('link_page', wagtail.core.blocks.PageChooserBlock(required=False)), ('link_url', wagtail.core.blocks.CharBlock(required=False))))))))), ('additional_features', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock()), ('features_groups', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('name', wagtail.core.blocks.CharBlock()), ('features', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock()), ('text', wagtail.core.blocks.RichTextBlock()))))))))))))), default={}),
+            field=wagtail.fields.StreamField((('primary_features', wagtail.blocks.StructBlock((('title', wagtail.blocks.CharBlock()), ('introduction', wagtail.blocks.RichTextBlock()), ('features', wagtail.blocks.ListBlock(wagtail.snippets.blocks.SnippetChooserBlock('features.FeatureDescription'))), ('links', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock((('link_text', wagtail.blocks.CharBlock()), ('link_text_bold', wagtail.blocks.CharBlock(required=False)), ('link_page', wagtail.blocks.PageChooserBlock(required=False)), ('link_url', wagtail.blocks.CharBlock(required=False))))))))), ('additional_features', wagtail.blocks.StructBlock((('title', wagtail.blocks.CharBlock()), ('features_groups', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock((('name', wagtail.blocks.CharBlock()), ('features', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock((('title', wagtail.blocks.CharBlock()), ('text', wagtail.blocks.RichTextBlock()))))))))))))), default={}),
             preserve_default=False,
         ),
     ]

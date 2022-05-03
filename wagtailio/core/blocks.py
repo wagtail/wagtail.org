@@ -1,7 +1,7 @@
 import six
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
-from wagtail.core import blocks
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock

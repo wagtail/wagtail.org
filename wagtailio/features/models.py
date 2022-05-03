@@ -1,8 +1,8 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page, Orderable
+from wagtail.admin.panels import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet

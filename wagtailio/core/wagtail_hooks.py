@@ -3,8 +3,8 @@ from django.core.files.storage import get_storage_class
 from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
 from django.utils.html import format_html, format_html_join
-from wagtail.core import hooks
-from wagtail.core.whitelist import allow_without_attributes
+from wagtail import hooks
+from wagtail.whitelist import allow_without_attributes
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
 

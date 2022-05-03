@@ -1,5 +1,5 @@
 from django import template
-from wagtail.core.templatetags.wagtailcore_tags import pageurl
+from wagtail.templatetags.wagtailcore_tags import pageurl
 
 from wagtail.images.templatetags.wagtailimages_tags import ImageNode
 from wagtail.images.models import SourceImageIOError

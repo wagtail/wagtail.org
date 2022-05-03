@@ -1,4 +1,4 @@
-from wagtail.core.blocks import (
+from wagtail.blocks import (
     CharBlock,
     PageChooserBlock,
     RichTextBlock,

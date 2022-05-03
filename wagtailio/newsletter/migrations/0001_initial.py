@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -32,8 +32,8 @@ class Migration(migrations.Migration):
                     name='NewsletterIndexPage',
                     fields=[
                         ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                        ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                        ('body', wagtail.core.fields.RichTextField()),
+                        ('intro', wagtail.fields.RichTextField(blank=True)),
+                        ('body', wagtail.fields.RichTextField()),
                     ],
                     options={
                         'db_table': 'core_newsletterindexpage',
@@ -45,8 +45,8 @@ class Migration(migrations.Migration):
                     fields=[
                         ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                         ('date', models.DateField(verbose_name='Newsletter date')),
-                        ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                        ('body', wagtail.core.fields.RichTextField()),
+                        ('intro', wagtail.fields.RichTextField(blank=True)),
+                        ('body', wagtail.fields.RichTextField()),
                     ],
                     options={
                         'db_table': 'core_newsletterpage',

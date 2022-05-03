@@ -60,7 +60,7 @@ INSTALLED_APPS = (
     "wagtail_ab_testing",
     "wagtail_transfer",
     "wagtail_airtable",
-    "wagtail.core",
+    "wagtail",
     "wagtail_image_import",
     "wagtail_content_import",
     "wagtail_content_import.pickers.google",
