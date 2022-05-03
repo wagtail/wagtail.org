@@ -15,9 +15,10 @@ class ServicesPage(Page):
             max_num=4,
         ),
         blank=False,
+        use_json_field=True
     )
 
     content_panels = Page.content_panels + [
         edit_handlers.FieldPanel("intro"),
-        edit_handlers.StreamFieldPanel("body"),
+        edit_handlers.FieldPanel("body"),
     ]

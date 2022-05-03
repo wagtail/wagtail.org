@@ -4,8 +4,7 @@ from django.utils.translation import ugettext as _
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.admin.panels import (FieldPanel, InlinePanel, MultiFieldPanel,
-                                  PageChooserPanel)
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
 
