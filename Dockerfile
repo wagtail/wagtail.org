@@ -102,7 +102,8 @@ USER root
 RUN apt-get update && apt-get install -y postgresql-client
 
 # Restore user
-USER wagtailio
+# I found this will remove required permissions when developing in gitpod.
+# USER wagtailio
 
 # do nothing forever - exec commands elsewhere
 CMD tail -f /dev/null
