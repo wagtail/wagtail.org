@@ -1,9 +1,13 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: make setup
-    command: make start
-  - command: make runserver
+  - before: |
+      curl https://cli-assets.heroku.com/install.sh | sh
+      pip install fabric
+    init: fab build
+    command: |
+      fab start
+      fab migrate
 ports:
   - port: 8000
 vscode:
