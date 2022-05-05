@@ -6,9 +6,8 @@
 /env/
 /static/
 /media/
-/.vagrant/
-/Vagrantfile.local
 /docs/_build/
 .npm-debug.log
 media.old
 node_modules
+/database_dumps/
