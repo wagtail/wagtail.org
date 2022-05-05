@@ -4,104 +4,146 @@ This is the source code to [Wagtail's website](https://wagtail.org)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/wagtail/wagtail.org)
 
-## Installation (Docker Compose)
+If you use the gitpod development environment these commands are run at startup.
 
-You firstly need to install [git](https://git-scm.com), [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
-
+```bash
+fab build
+fab migrate
+fab start
 ```
-git clone https://github.com/wagtail/wagtail.org.git
+
+# Setting up a local build
+
+This repository includes `docker-compose` configuration for running the project in local Docker containers,
+and a fabfile for provisioning and managing this.
+
+There are a number of other commands to help with development using the fabric script. To see them all, run:
+
+```bash
+fab -l
+```
+
+## Dependencies
+
+The following are required to run the local environment. The minimum versions specified are confirmed to be working:
+if you have older versions already installed they _may_ work, but are not guaranteed to do so.
+
+- [Docker](https://www.docker.com/), version 19.0.0 or up
+  - [Docker Desktop for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac) installer
+  - [Docker Engine for Linux](https://hub.docker.com/search?q=&type=edition&offering=community&sort=updated_at&order=desc&operating_system=linux) installers
+- [Docker Compose](https://docs.docker.com/compose/), version 1.24.0 or up
+  - [Install instructions](https://docs.docker.com/compose/install/) (Linux-only: Compose is already installed for Mac users as part of Docker Desktop.)
+- [Fabric](https://www.fabfile.org/), version 2.4.0 or up
+  - [Install instructions](https://www.fabfile.org/installing.html)
+- Python, version 3.6.9 or up
+
+Note that on Mac OS, if you have an older version of fabric installed, you may need to uninstall the old one and then install the new version with pip3:
+
+```bash
+pip uninstall fabric
+pip3 install fabric
+```
+
+You can manage different python versions by setting up `pyenv`: https://realpython.com/intro-to-pyenv/
+
+Additionally, for interacting with production / staging environments, you'll need:
+
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+
+## Running the local build for the first time
+
+If you are using Docker Desktop, ensure the Resources:File Sharing settings allow the cloned directory to be mounted in the web container (avoiding `mounting` OCI runtime failures at the end of the build step).
+
+Starting a local build can be done by running:
+
+```bash
+git clone git@github.com:wagtail/wagtail.org.git
 cd wagtail.org
-make setup
+fab build
+fab migrate
+fab start
 ```
 
-This will create a set of Docker containers on your local machine and also create a blank database.
+This will start the containers in the background, but not Django. To do this, connect to the web container with `fab sh` and run `honcho start` to start both Django and the Webpack dev server in the foreground.
 
-### Starting the development environment
+Then, connect to the running container again (`fab sh`) and:
 
-Run the following command to start the Docker containers:
-
-```
-make start
-```
-
-Then, to start the development server, run:
-
-```
-make runserver
+```bash
+dj createcachetable
+dj createsuperuser
 ```
 
-This will launch ``django-admin runserver`` in the web container, which serves Wagtail on http://localhost:8000/
+The site should be available on the host machine at: http://127.0.0.1:8000/
 
-### Creating a superuser
-
-To create a new superuser locally, run:
-
-```
-make superuser
-```
+If you only wish to run the frontend or backend tooling, the commands `honcho` runs are in `docker/Procfile`.
 
 ### Pulling production data / media
 
 If you'd like to work with production data and have access, run the following commands:
 
 ```
-make pull-production-data
-make pull-production-media
+fab pull-production-data
+fab pull-production-media
 ```
 
 (you will be prompted to log in to Heroku both times. To log in, hit enter when it asks you and copy and paste the URL it gives you into a browser)
 
-## Installation (Vagrant)
-
-You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
-
-```
-git clone https://github.com/wagtail/wagtail.org.git
-cd wagtail.org
-vagrant up
-```
-
-This will download the base image and provision a local VM that will run the site locally.
-
-You will need to apply migrations, create a super user, and create a cache table once the vagrant environment is setup.
-```
-vagrant ssh
-./manage.py migrate
-./manage.py createsuperuser
-./manage.py createcachetable
-```
-
-## Usage (Vagrant)
-
-Common Vagrant commands:
-
- - ``vagrant up`` starts the VM
- - ``vagrant halt`` stops the VM
- - ``vagrant ssh`` opens a shell in the VM
- - ``vagrant destroy`` deletes the VM
-
-Shortcut commands:
-
-Within the VM shell, you can run ``./manage.py`` to run any Django management command. But we have added a couple of shortcuts to save on typing:
-
- - ``dj <command> [args]`` - Runs a management command (eg, ``dj shell``)
- - ``djrun`` - Starts the webserver on port 8000
-
-
 ## Deployment
 
-The site is hosted on heroku, and is deployed by pushing to the heroku remote.
+To deploy the application to staging / production:
 
-Creating and pushing to the heroku branch is handled automatically by fabric command.
+Make sure you have access to the relevant app on Heroku. Ask a Torchbox admin if you require access.
 
-To staging
+Also make sure you are logged in:
 
-`fab deploy_staging`
+```sh
+heroku login -i
+```
 
-To production
+### Deploying to staging
 
-`fab deploy_production`
+Run the following command to add a git remote called heroku-staging:
 
+```sh
+heroku git:remote -a wagtailio-staging -r heroku-staging
+```
+
+Now push your local staging branch to the heroku remote:
+
+```sh
+git push heroku-staging staging:master
+```
+
+### Deploying to production
+
+Run the following command to add a git remote called heroku-production:
+
+```sh
+heroku git:remote -a wagtailio-production -r heroku-production
+```
+
+Now push your local production branch to the heroku remote:
+
+```sh
+git push heroku-production production:master
+```
+
+## Installing python packages
+
+Python packages can be installed using `poetry` in the web container:
+
+```
+fab sh
+poetry add wagtail-guide
+```
+
+To reset installed dependencies back to how they are in the `poetry.lock` file:
+
+```
+fab sh
+poetry install --no-root
+```
 
 ## docs.wagtail.org
 
