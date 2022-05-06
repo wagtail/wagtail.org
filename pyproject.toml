@@ -2,7 +2,7 @@
 name = "wagtailio"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Wagtail <hello@wagtail.org>"]
 
 [tool.poetry.dependencies]
 python = "3.8"
