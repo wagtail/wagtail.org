@@ -41,7 +41,7 @@ services:
       - redis
 
   db:
-    image: postgres:12.3
+    image: postgres:13
     expose:
       - 5432
     environment:
