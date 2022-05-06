@@ -37,8 +37,11 @@ services:
       - ./poetry.lock:/app/poetry.lock:rw
 
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+        
 
   db:
     image: postgres:13
@@ -54,6 +57,11 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     logging:
       driver: none
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     volumes:
       - .:/app:ro
 
