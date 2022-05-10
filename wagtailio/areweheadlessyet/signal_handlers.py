@@ -6,7 +6,8 @@ from .models import AreWeHeadlessYetHomePage, AreWeHeadlessYetTopicPage
 
 
 def register_signal_handlers():
-    if not getattr(settings, "VERCEL_DEPLOY_HOOK_URL", None):
+    deploy_url = getattr(settings, "VERCEL_DEPLOY_HOOK_URL", None)
+    if not deploy_url:
         return
 
     from .thread_pool import run_in_thread_pool
@@ -15,11 +16,10 @@ def register_signal_handlers():
     def deploy(sender, **kwargs):
         """Triggers a build on Vercel."""
 
-        response = requests.post(
-            settings.VERCEL_DEPLOY_HOOK_URL,
-            timeout=settings.VERCEL_DEPLOY_REQUEST_TIMEOUT,
-        )
-        response.raise_for_status()
+        try:
+            requests.post(deploy_url, timeout=settings.VERCEL_DEPLOY_REQUEST_TIMEOUT)
+        except requests.exceptions.Timeout:
+            pass  # Ignore this error
 
     page_published.connect(deploy, sender=AreWeHeadlessYetHomePage)
     page_published.connect(deploy, sender=AreWeHeadlessYetTopicPage)
