@@ -17,7 +17,9 @@ ARG POETRY_INSTALLER_SHA=eedf0fe5a31e5bb899efa581cbe4df59af02ea5f
 # Install dependencies in a virtualenv
 ENV VIRTUAL_ENV=/venv
 
-RUN useradd wagtailio --create-home && mkdir /app $VIRTUAL_ENV && chown -R wagtailio /app $VIRTUAL_ENV
+# Create a non-root application user.
+ARG UID=1000
+RUN useradd wagtailio -u $UID --create-home && mkdir /app $VIRTUAL_ENV && chown -R wagtailio /app $VIRTUAL_ENV
 
 WORKDIR /app
 
@@ -102,8 +104,7 @@ USER root
 RUN apt-get update && apt-get install -y postgresql-client
 
 # Restore user
-# I found this will remove required permissions when developing in gitpod.
-# USER wagtailio
+USER wagtailio
 
 # do nothing forever - exec commands elsewhere
 CMD tail -f /dev/null
