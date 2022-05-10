@@ -11,3 +11,5 @@
 media.old
 node_modules
 /database_dumps/
+/.vscode/
+!/.vscode/launch.json
