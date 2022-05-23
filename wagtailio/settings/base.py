@@ -313,7 +313,7 @@ if "SERVER_EMAIL" in env:
 
 # Notification emails
 
-WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = False
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = env.get("MODERATION_NOTIFY_SUPERUSERS", False)
 
 # Security configuration
 # https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
