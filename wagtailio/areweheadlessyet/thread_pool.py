@@ -26,3 +26,16 @@ def run_in_thread_pool(function):
         thread_pool.send((function, args, kwargs))
 
     return decorator
+
+
+@run_in_thread_pool
+def deploy(sender, **kwargs):
+    """Triggers a build on Vercel."""
+
+    try:
+        requests.post(
+            settings.VERCEL_DEPLOY_HOOK_URL,
+            timeout=settings.VERCEL_DEPLOY_REQUEST_TIMEOUT,
+        )
+    except requests.exceptions.Timeout:
+        pass  # Ignore this error
