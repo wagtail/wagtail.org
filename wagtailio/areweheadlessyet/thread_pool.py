@@ -1,6 +1,10 @@
+import logging
 from concurrent.futures import ThreadPoolExecutor
 
+import requests
 from django.conf import settings
+
+logger = logging.getLogger("wagtailio")
 
 
 def run_thread_pool():
@@ -33,9 +37,17 @@ def deploy(sender, **kwargs):
     """Triggers a build on Vercel."""
 
     try:
-        requests.post(
+        logger.info("Triggering build on Vercel.")
+        response = requests.post(
             settings.VERCEL_DEPLOY_HOOK_URL,
             timeout=settings.VERCEL_DEPLOY_REQUEST_TIMEOUT,
         )
+        response.raise_for_status()
+        logger.info("Build triggered on Vercel.")
+
     except requests.exceptions.Timeout:
-        pass  # Ignore this error
+        logger.warning("The request to trigger a new build on Vercel has timed out.")
+        return  # Ignore this error
+
+    except Exception as e:
+        logger.warning(f"The request to trigger a new build on Vercel has failed: {e}.")

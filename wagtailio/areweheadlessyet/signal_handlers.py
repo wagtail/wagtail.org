@@ -1,4 +1,3 @@
-import requests
 from django.conf import settings
 from wagtail.core.signals import page_published, page_unpublished
 
