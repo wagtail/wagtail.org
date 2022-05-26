@@ -49,5 +49,8 @@ def deploy(sender, **kwargs):
         logger.warning("The request to trigger a new build on Vercel has timed out.")
         return  # Ignore this error
 
+    except (KeyboardInterrupt, SystemExit):
+        raise
+
     except Exception:
         logger.exception("The request to trigger a new build on Vercel has failed.")
