@@ -84,7 +84,7 @@ class HomePageBlock(StreamBlock):
 
 
 class TopicPageBlock(StreamBlock):
-    text = RichTextBlock()
+    text = RichTextBlockWithExpandedApiRepresentation()
     section = SectionBlock()
     news = NewsBlock()
 
