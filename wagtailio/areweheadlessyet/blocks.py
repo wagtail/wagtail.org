@@ -6,6 +6,7 @@ from wagtail.core.blocks import (
     StructBlock,
     URLBlock,
 )
+from wagtail.core.rich_text import expand_db_html
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 
@@ -14,8 +15,13 @@ class LinkBlock(StructBlock):
     link_text = CharBlock(required=True)
 
 
+class RichTextBlockWithExpandedApiRepresentation(RichTextBlock):
+    def get_api_representation(self, value, context=None):
+        return expand_db_html(value.source) if value is not None else None
+
+
 class ContentBlock(StreamBlock):
-    text = RichTextBlock()
+    text = RichTextBlockWithExpandedApiRepresentation()
     link_group = StreamBlock([("link", LinkBlock())])
 
 
