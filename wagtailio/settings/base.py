@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     "compressor",
     "taggit",
     "modelcluster",
+    "rest_framework",
     "wagtail_ab_testing",
     "wagtail_transfer",
     "wagtail_airtable",
