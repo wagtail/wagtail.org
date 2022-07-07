@@ -24,7 +24,7 @@ Run the following command to start the Docker containers:
 make start
 ```
 
-Then, to start the development server, run:
+Then, to start the development server, open a new terminal window and run:
 
 ```
 make runserver

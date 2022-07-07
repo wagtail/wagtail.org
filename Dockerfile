@@ -54,8 +54,13 @@ CMD gunicorn wagtailio.wsgi:application
 
 FROM backend AS dev
 
+# Install Node.js because newer versions of Heroku CLI have a node binary dependency
+
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+
 # Install Heroku CLI
-RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+RUN curl https://cli-assets.heroku.com/install.sh | sh
 
 # Install AWS CLI
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" && \
