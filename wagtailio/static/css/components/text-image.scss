@@ -14,9 +14,15 @@
   .container {
     max-width: 800px;
     margin: 0 auto;
+    overflow: hidden;
 
     .text {
       max-width: 50%;
+
+      @include media-query(mobileOnly) {
+        max-width: 100%;
+        padding-top: 50px;
+      }
     }
 
     .image {
@@ -28,6 +34,12 @@
         display: block;
         width: 100%;
         height: auto;
+      }
+
+      @include media-query(mobileOnly){
+        max-width: 100%;
+        padding-left: 0px;
+        float: none;
       }
     }
   }
