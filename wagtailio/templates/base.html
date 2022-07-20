@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils %}
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils %}
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -60,9 +60,7 @@
             <!-- End Google Tag Manager -->
         {% endif %}
 
-        {% compress css %}
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
-        {% endcompress %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}" />
 
         {% block extra_css %}{% endblock %}
 
@@ -168,15 +166,12 @@
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-        {% compress js %}
-            <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
-            <script src="{% static 'js/vendor/js-cookie.min.js' %}"></script>
-            <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
-            <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
-            <script src="{% static 'js/vendor/headroom.min.js' %}"></script>
-            <script src="{% static 'js/main.js' %}"></script>
-        {% endcompress %}
+        <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+        <script src="{% static 'js/vendor/js-cookie.min.js' %}"></script>
+        <script src="{% static 'js/vendor/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/vendor/jQuery.headroom.min.js' %}"></script>
+        <script src="{% static 'js/vendor/headroom.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
 
         {% block extra_js %}{% endblock %}
     </body>

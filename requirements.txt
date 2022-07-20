@@ -6,7 +6,6 @@ libsass==0.20.1
 Pillow==9.0.1
 Markdown==3.3.6
 Pygments==2.10.0
-django-compressor==3.1
 django-libsass>=0.7
 whitenoise==5.3.0
 brotlipy==0.7.0
