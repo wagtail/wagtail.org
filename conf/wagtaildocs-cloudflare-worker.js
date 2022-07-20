@@ -22,15 +22,18 @@ const proxyDomain = 'docs.wagtail.org';
 const originRoot = 'http://' + originDomain + '/';
 const proxyRoot = 'https://' + proxyDomain + '/';
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+addEventListener('fetch', (event) => {
+  event.respondWith(handleRequest(event.request));
+});
 
 class CanonicalLinkHandler {
   element(element) {
     const oldUrl = element.getAttribute('href');
     // Rewrite any URL paths within /latest/ or /vN.N/ to the corresponding path in /stable/
-    const newUrl = oldUrl.replace(/^(https?\:\/\/docs\.wagtail\.org\/\w+)\/(v[\d\.]+|latest)\//, '$1/stable/');
+    const newUrl = oldUrl.replace(
+      /^(https?\:\/\/docs\.wagtail\.org\/\w+)\/(v[\d\.]+|latest)\//,
+      '$1/stable/',
+    );
     element.setAttribute('href', newUrl);
   }
 }
@@ -39,7 +42,7 @@ class CanonicalLinkHandler {
 async function handleRequest(request) {
   // Fetch from the origin host
   const originUrl = request.url.replace(proxyRoot, originRoot);
-  const resp = await fetch(originUrl, {redirect: 'manual'});
+  const resp = await fetch(originUrl, { redirect: 'manual' });
 
   const location = resp.headers.get('Location');
   const contentType = resp.headers.get('Content-Type');
@@ -55,9 +58,9 @@ async function handleRequest(request) {
     return newResp;
   } else if (contentType && contentType.split(';')[0].endsWith('html')) {
     // Rewrite responses with an html content type
-    return new HTMLRewriter().on(
-      'link[rel="canonical"]', new CanonicalLinkHandler()
-    ).transform(resp);
+    return new HTMLRewriter()
+      .on('link[rel="canonical"]', new CanonicalLinkHandler())
+      .transform(resp);
   } else {
     return resp;
   }
