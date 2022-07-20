@@ -1,0 +1,8 @@
+static_compiled
+*.html
+venv
+.venv
+.git
+media
+node_modules
+static
