@@ -1,0 +1,50 @@
+{
+  "name": "wagtail.org",
+  "version": "1.0.0",
+  "description": "This is the source code to [Wagtail's website](https://wagtail.org)",
+  "scripts": {
+    "//[ Linting & formatting ]//": "",
+    "lint:css": "stylelint --report-needless-disables './wagtailio/static/sass'",
+    "lint:js": "eslint --ext .js,.ts,.tsx --report-unused-disable-directives .",
+    "lint:format": "prettier --check '**/?(.)*.{md,css,scss,js,ts,tsx,json,yaml,yml}'",
+    "lint": "npm run lint:format && npm run lint:js && npm run lint:css",
+    "format": "prettier --write '**/?(.)*.{md,css,scss,js,ts,tsx,json,yaml,yml}'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "//[ Build tasks ]//": "",
+    "build": "webpack --mode development --progress",
+    "build:prod": "webpack --mode production",
+    "start": "webpack --mode development --progress --watch",
+    "start:reload": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wagtail/wagtail.org.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wagtail/wagtail.org/issues"
+  },
+  "homepage": "https://github.com/wagtail/wagtail.org#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.12",
+    "eslint": "^8.20.0",
+    "eslint-config-torchbox": "^1.1.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss-loader": "^7.0.1",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "stylelint-config-torchbox": "^1.1.0",
+    "stylelint-webpack-plugin": "^3.3.0",
+    "ts-loader": "^9.3.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}

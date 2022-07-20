@@ -13,3 +13,4 @@
 .npm-debug.log
 media.old
 node_modules
+/wagtailio/static_compiled

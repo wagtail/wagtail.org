@@ -131,7 +131,7 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
-STATICFILES_DIRS = (join(PROJECT_ROOT, "static"),)
+STATICFILES_DIRS = (join(PROJECT_ROOT, "static_compiled"),)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
