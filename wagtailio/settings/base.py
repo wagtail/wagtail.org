@@ -546,5 +546,5 @@ WAGTAIL_AB_TESTING = {
 
 
 MANIFEST_LOADER = {
-    "output_dir": STATICFILES_DIRS,
+    "output_dir": None,
 }
