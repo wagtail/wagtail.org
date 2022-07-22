@@ -543,3 +543,8 @@ WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['features.featureaspect', 'features.fea
 WAGTAIL_AB_TESTING = {
     'MODE': 'external',
 }
+
+
+MANIFEST_LOADER = {
+    "output_dir": STATICFILES_DIRS,
+}
