@@ -21,6 +21,8 @@ try:
 except ValueError:
     VERCEL_DEPLOY_MAX_WORKERS = 10
 
+MANIFEST_LOADER["cache"] = True  # noqa
+
 
 try:
     from .local import *  # noqa

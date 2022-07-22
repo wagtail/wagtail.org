@@ -7,6 +7,7 @@ const sass = require('sass');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const projectRoot = 'wagtailio';
 
@@ -47,6 +48,7 @@ const options = {
     }),
     //  Automatically remove all unused webpack assets on rebuild
     new CleanWebpackPlugin(),
+    new WebpackManifestPlugin(),
   ],
   module: {
     rules: [

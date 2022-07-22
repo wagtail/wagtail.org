@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils %}
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils manifest %}
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -59,7 +59,7 @@
             <!-- End Google Tag Manager -->
         {% endif %}
 
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% manifest 'css/main.css' %}">
 
         {% block extra_css %}{% endblock %}
 
@@ -149,7 +149,7 @@
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% manifest 'js/main.js' %}"></script>
 
         {% block extra_js %}{% endblock %}
     </body>
