@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     "taggit",
     "modelcluster",
     "rest_framework",
+    "manifest_loader",
     "wagtail_ab_testing",
     "wagtail_transfer",
     "wagtail_airtable",
