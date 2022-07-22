@@ -1,0 +1,91 @@
+html {
+    font-size: 1rem;
+    line-height: 1.25;
+
+    @include media-query(large) {
+        font-size: 1.25rem;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 20px;
+    font-weight: $weight--bold;
+}
+
+p {
+    margin: 0;
+}
+
+h1,
+.heading-one {
+    font-size: 2.8125rem;
+    line-height: 3.375rem;
+
+    @include media-query(large) {
+        font-size: 4.5rem;
+        line-height: 5.4rem;
+    }
+}
+
+h2,
+.heading-two {
+    font-size: 1.875rem;
+    line-height: 2.8125rem;
+
+    @include media-query(large) {
+        font-size: 2.25rem;
+        line-height: 2.9rem;
+    }
+}
+
+h3,
+.heading-three {
+    font-size: 1.375rem;
+    line-height: 2.0625rem;
+
+    @include media-query(large) {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+    }
+}
+
+h4,
+.heading-four {
+    font-size: 1.25rem;
+    line-height: 1.9375rem;
+
+    @include media-query(large) {
+        font-size: 1.1rem;
+        line-height: 1.65rem;
+    }
+}
+
+.intro-small {
+    font-size: 1.25rem;
+    line-height: 1.9375rem;
+
+    @include media-query(large) {
+        font-size: 1.25rem;
+        line-height: 1.85rem;
+    }
+}
+
+.intro-big {
+    font-size: 1.5625rem;
+    line-height: 2.3125rem;
+
+    @include media-query(large) {
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+}
+
+small {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}

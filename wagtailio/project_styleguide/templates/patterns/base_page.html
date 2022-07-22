@@ -1,4 +1,6 @@
-{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils manifest %}
+{% load static wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils manifest %}
+{% include "patterns/templates/base.html" %}
+
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -47,6 +49,7 @@
         <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-144x144.png' %}"/>
         <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}" />
         <meta name="theme-color" content="#43b1b0"/>
+        {% include "includes/svg_sprites.html" %}
 
         {% if not DEBUG %}
             <!-- Google Tag Manager -->
@@ -59,10 +62,6 @@
             <!-- End Google Tag Manager -->
         {% endif %}
 
-        <link rel="stylesheet" href="{% manifest 'css/main.css' %}">
-
-        {% block extra_css %}{% endblock %}
-
     </head>
     <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} ">
         {% if not DEBUG %}
@@ -74,9 +73,6 @@
             <!-- End Google Tag Manager (noscript) -->
         {% endif %}
 
-        {% include "includes/svg_sprites.html" %}
-
-        {% wagtailuserbar %}
 
         <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
 
@@ -149,8 +145,5 @@
 
         <script src="https://platform.twitter.com/widgets.js" async></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <script src="{% manifest 'js/main.js' %}"></script>
-
-        {% block extra_js %}{% endblock %}
     </body>
 </html>

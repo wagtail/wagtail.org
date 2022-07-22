@@ -1,0 +1,6 @@
+<a href="{{ url }}" class="button {% if classes %}{{ classes }}{% endif %}">
+    <p class="button__text">{{ title }}</p>
+    {% if arrow %}
+        {% include "patterns/atoms/svgs/arrow.html" with classes="arrow" %}
+    {% endif %}
+</a>

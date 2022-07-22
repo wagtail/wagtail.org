@@ -1,0 +1,24 @@
+// Colors
+$color--black: #000;
+$color--off-black: #262626;
+$color--indigo: #2E1F5E;
+$color--teal: #007D7E;
+$color--teal-100: #80D7D8;
+$color--eggshell: #B3E7E8;
+$color--light-grey: #EDEAF3;
+$color--white:#FFF;
+$color--pink: #F9CBCE;
+
+// Fonts
+$font--primary: 'Kumbh Sans', sans-serif;
+
+// Font weights
+$weight--bold: 700;
+$weight--regular: 400;
+
+// Breakpoints
+$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+
+// Site grid
+$site-width: 1440px;
+$gutter: 30px;

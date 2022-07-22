@@ -1,0 +1,27 @@
+.rich-text {
+    a {
+        color: $color--teal;
+
+        &:hover {
+            // Design TBC
+        }
+    }
+
+    b {
+        font-weight: $weight--bold;
+    }
+
+    ul, ol {
+        li {
+            margin-bottom: 10px;
+        }
+    }
+
+    p {
+        margin: 0 0 20px;
+
+        @include media-query(large) {
+            margin: 0 0 40px;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 from django.urls import include, path
+from django.apps import apps
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
@@ -52,6 +53,10 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if apps.is_installed("pattern_library"):
+    urlpatterns += [
+        path("pattern-library/", include("pattern_library.urls")),
+    ]
 
 # Set public URLs to use public cache.
 urlpatterns = decorate_urlpatterns(urlpatterns, get_default_cache_control_decorator())
