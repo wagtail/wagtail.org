@@ -65,6 +65,15 @@
 
     </head>
     <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} ">
+        {% if not DEBUG %}
+            <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <!-- End Google Tag Manager (noscript) -->
+        {% endif %}
+
         {% include "includes/svg_sprites.html" %}
 
         {% wagtailuserbar %}
@@ -98,15 +107,6 @@
         <a href="https://tally.so/r/wQqagw" target="_blank" class="survey-link">
             <span>Help improve wagtail.org</span>
         </a>
-
-        {% if not DEBUG %}
-            <!-- Google Tag Manager (noscript) -->
-            <noscript>
-                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-            </noscript>
-            <!-- End Google Tag Manager (noscript) -->
-        {% endif %}
 
         {% if FB_APP_ID %}
             <div id="fb-root"></div>
