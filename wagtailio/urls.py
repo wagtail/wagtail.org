@@ -53,7 +53,9 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if apps.is_installed("pattern_library"):
+if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
+    "pattern_library"
+):
     urlpatterns += [
         path("pattern-library/", include("pattern_library.urls")),
     ]

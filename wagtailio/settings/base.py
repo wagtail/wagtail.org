@@ -551,6 +551,8 @@ MANIFEST_LOADER = {
     "output_dir": STATICFILES_DIRS,
 }
 
+PATTERN_LIBRARY_ENABLED = env.get("PATTERN_LIBRARY_ENABLED", "false").lower() == "true"
+
 # Pattern library
 PATTERN_LIBRARY = {
     # Groups of templates for the pattern library navigation. The keys
