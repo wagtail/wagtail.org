@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
 docs.wagtail.org canonical URL rewriter
 
