@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    // Only support modern browsers.
+    "target": "es2020",
     // Webpack will convert ES modules to the required format.
     "module": "esnext",
     "esModuleInterop": true,
