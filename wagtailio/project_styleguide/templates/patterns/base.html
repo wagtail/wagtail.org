@@ -18,7 +18,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        
+        {# Global iconography #}
+        {% include "patterns/includes/svg_sprites.html" %}
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -33,7 +36,7 @@
         {% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
