@@ -58,9 +58,6 @@ COPY --chown=wagtailio . .
 # Install assets
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
-# Compress
-RUN SECRET_KEY=none django-admin compress
-
 # Run application
 CMD gunicorn wagtailio.wsgi:application
 
