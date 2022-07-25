@@ -1,3 +1,14 @@
+# (Keep the version in sync with the node install below)
+FROM node:18 as frontend
+
+# Install front-end dependencies.
+COPY package.json package-lock.json tsconfig.json webpack.config.js ./
+RUN npm ci --no-optional --no-audit --progress=false
+
+# Compile static files
+COPY ./wagtailio/static/ ./wagtailio/static/
+RUN npm run build:prod
+
 # Build Python app.
 FROM python:3.8-bullseye AS backend
 
@@ -39,14 +50,13 @@ RUN pip install "gunicorn>=20.1,<20.2"
 COPY --chown=wagtailio requirements.txt /
 RUN pip install -r /requirements.txt
 
+COPY --chown=wagtailio --from=frontend ./wagtailio/static_compiled ./wagtailio/static_compiled
+
 # Install application code.
 COPY --chown=wagtailio . .
 
 # Install assets
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
-
-# Compress
-RUN SECRET_KEY=none django-admin compress
 
 # Run application
 CMD gunicorn wagtailio.wsgi:application
@@ -65,6 +75,9 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bu
 
 # Switch to application user.
 USER wagtailio
+
+# Pull in the node modules for the frontend
+COPY --chown=wagtailio --from=frontend ./node_modules ./node_modules
 
 # Install development Python requirements.
 ENV PATH="/home/wagtailio/.local/bin:$PATH"
