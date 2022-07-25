@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar manifest %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% manifest "css/main.css" %}">
         
         {# Global iconography #}
         {% include "patterns/includes/svg_sprites.html" %}
@@ -36,7 +36,7 @@
         {% endblock %}
 
         {# Global javascript #}
-        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% manifest 'js/main.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

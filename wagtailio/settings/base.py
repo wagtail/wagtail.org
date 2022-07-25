@@ -221,7 +221,8 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(PROJECT_ROOT, "project_styleguide/templates"),
-        ],        "APP_DIRS": True,
+        ],        
+        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -548,7 +549,7 @@ WAGTAIL_AB_TESTING = {
 
 
 MANIFEST_LOADER = {
-    "output_dir": STATICFILES_DIRS,
+    "output_dir": STATICFILES_DIRS[0],
 }
 
 PATTERN_LIBRARY_ENABLED = env.get("PATTERN_LIBRARY_ENABLED", "false").lower() == "true"
