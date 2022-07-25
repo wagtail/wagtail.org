@@ -1,0 +1,14 @@
+.grid {
+    display: grid;
+    grid-template-columns: $gutter 1fr 1fr $gutter;
+    max-width: $site-width;
+    margin: 0 auto;
+
+    @include media-query(medium) {
+        grid-template-columns: calc($gutter * 2) 1fr 1fr 1fr calc($gutter * 2);
+    }
+
+    @include media-query(large) {
+        grid-template-columns: calc($gutter * 3) 1fr 1fr 1fr 1fr 1fr calc($gutter * 3);
+    }
+}

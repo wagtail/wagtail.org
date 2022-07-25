@@ -1,0 +1,15 @@
+// Media queries
+@mixin media-query($queries...) {
+    @each $query in $queries {
+        @each $breakpoint in $breakpoints {
+            $name: nth($breakpoint, 1);
+            $declaration: nth($breakpoint, 2);
+
+            @if $query == $name and $declaration {
+                @media only screen and #{$declaration} {
+                    @content;
+                }
+            }
+        }
+    }
+}

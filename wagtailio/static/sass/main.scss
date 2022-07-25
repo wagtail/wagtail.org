@@ -1,5 +1,19 @@
-@import 'variables';
+// Vendor
+@import 'vendor/normalize';
 
-body {
-  color: $black;
-}
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Base
+@import 'base/fonts';
+@import 'base/base';
+@import 'base/typography';
+
+// Components
+@import 'components/buttons';
+@import 'components/grid';
+@import 'components/rich-text';
+
+// Atoms
+@import 'atoms/icons';
