@@ -1,0 +1,61 @@
+.hero {
+    position: relative;
+    grid-column: 2 / span 2;
+    margin-bottom: 50px;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        margin-bottom: 100px;
+        grid-column: 2 / span 5;
+    }
+
+    &__inner {
+        padding-top: 20px;
+
+        @include media-query(medium) {
+            padding-top: 40px;
+            max-width: 80%;
+        }
+
+        @include media-query(large) {
+            padding-top: 80px;
+            max-width: 70%;
+        }
+    }
+
+    &__intro {
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+    }
+
+    &__icon {
+        position: absolute;
+        top: -30px;
+        right: -50px;
+        width: 170px;
+        height: 170px;
+
+        @include media-query(medium) {
+            top: 0;
+            right: -70px;
+            width: 250px;
+            height: 250px;
+        }
+
+        @include media-query(large) {
+            right: 0;
+            width: 450px;
+            height: 450px;
+        }
+    }
+}
