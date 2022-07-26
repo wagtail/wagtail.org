@@ -4,20 +4,13 @@ module.exports = {
     'scss/at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: [
-          'tailwind',
-          'apply',
-          'variants',
-          'responsive',
-          'screen',
-          'layer',
-        ],
+        ignoreAtRules: ['apply', 'variants', 'responsive', 'screen', 'layer'],
       },
     ],
     'no-invalid-position-at-import-rule': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'use'],
+        ignoreAtRules: ['use'],
       },
     ],
     // Would be valuable for strict BEM components but is too hard to enforce with legacy code.
