@@ -9,6 +9,7 @@ import six
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.utils.blocks import CodeBlock
+from wagtailio.utils.models import SVGIcon
 
 
 class PageOrExternalLinkBlock(blocks.StructBlock):
@@ -224,3 +225,70 @@ class CTABlock(blocks.StructBlock):
         icon = "tick-inverse"
         # template = "" # TODO: add template
         label = "CTA"
+
+
+class CardBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    description = blocks.RichTextBlock(
+        required=False, features=["bold", "italic"]
+    )
+    meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    meta_text = blocks.TextBlock(max_length=50)
+    cta = CTABlock(required=False)
+
+    class Meta:
+        icon = "placeholder"
+        # template = "" # TODO: add template
+        label = "Card"
+
+
+class LogoCardBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    description = blocks.RichTextBlock(
+        required=False, features=["bold", "italic"]
+    )
+    meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    meta_text = blocks.TextBlock(max_length=50)
+    logo = ImageChooserBlock(required=False)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    def clean(self, value):
+        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
+
+        if value.get("cta_page") and value.get("cta_url"):
+            raise ValidationError(
+                "Validation error while saving block",
+                params={
+                    "cta_url": ValidationError(
+                        "You must specify CTA page or CTA URL. You can't use both."
+                    ),
+                    "cta_page": ValidationError(
+                        "You must specify CTA page or CTA URL. You can't use both."
+                    ),
+                },
+            )
+
+        return struct_value
+
+    class Meta:
+        icon = "placeholder"
+        # template = "" # TODO: add template
+        label = "Logo card"
+
+
+class CardsBlock(blocks.StructBlock):
+    cards = blocks.ListBlock(CardBlock())
+
+    class Meta:
+        # template = "" # TODO: add template
+        label = "Cards"
+
+
+class LogoCardsBlock(blocks.StructBlock):
+    cards = blocks.ListBlock(LogoCardBlock())
+
+
+    class Meta:
+        # template = "" # TODO: add template
+        label = "Logo cards"
