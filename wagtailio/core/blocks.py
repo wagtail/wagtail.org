@@ -182,3 +182,45 @@ class HomePageBlock(blocks.StreamBlock):
 
     class Meta:
         template = "core/blocks/home_page_block.html"
+
+
+class CTABlock(blocks.StructBlock):
+    cta_text = blocks.CharBlock(label="CTA text", max_length=255)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    def clean(self, value):
+        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
+
+        if not value.get("cta_page") and not value.get("cta_url"):
+            raise ValidationError(
+                "Validation error while saving block",
+                params={
+                    "cta_url": ValidationError(
+                        "You must specify CTA page or CTA URL."
+                    ),
+                    "cta_page": ValidationError(
+                        "You must specify CTA page or CTA URL."
+                    ),
+                },
+            )
+
+        if value.get("cta_page") and value.get("cta_url"):
+            raise ValidationError(
+                "Validation error while saving block",
+                params={
+                    "cta_url": ValidationError(
+                        "You must specify CTA page or CTA URL. You can't use both."
+                    ),
+                    "cta_page": ValidationError(
+                        "You must specify CTA page or CTA URL. You can't use both."
+                    ),
+                },
+            )
+
+        return struct_value
+
+    class Meta:
+        icon = "tick-inverse"
+        # template = "" # TODO: add template
+        label = "CTA"
