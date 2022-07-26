@@ -53,10 +53,5 @@ module.exports = {
         ],
       },
     ],
-    'property-disallowed-list': [
-      {
-        ignoreValues: ['left', 'right', 'text-transform'],
-      },
-    ],
   },
 };
