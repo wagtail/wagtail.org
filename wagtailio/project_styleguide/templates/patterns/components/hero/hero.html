@@ -1,0 +1,25 @@
+<div class="grid">
+    <div class="hero">
+        <div class="hero__inner">
+            <h1 class="hero__heading">{{ value.heading }}</h1>
+
+            {% if value.subheading %}
+                <h2 class="hero__subheading intro-big">{{ value.subheading }}</h2>
+            {% endif %}
+
+            {% if value.intro %}
+                <p class="hero__intro">{{ value.intro }}</p>
+            {% endif %}
+
+            {% if value.cta_url or value.cta_page %}
+                {% include "patterns/components/buttons/button.html" with arrow=True url=url title=value.cta_text classes="hero__button" %}
+            {% endif %}
+        </div>
+
+        {% if value.icon %}
+            <svg class="hero__icon" aria-hidden="true">
+                <use xlink:href="#{{ value.icon }}" />
+            </svg>
+        {% endif %}
+    </div>
+</div>
