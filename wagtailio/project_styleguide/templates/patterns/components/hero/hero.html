@@ -11,10 +11,8 @@
                 <p class="hero__intro">{{ value.intro }}</p>
             {% endif %}
 
-            {% if value.cta_url %}
-                {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta_url title=value.cta_text classes="hero__button" %}
-            {% elif value.cta_page %}
-                {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta_page.url title=value.cta_text classes="hero__button" %}
+            {% if value.cta_url or value.cta_page %}
+                {% include "patterns/components/buttons/button.html" with arrow=True url=url title=value.cta_text classes="hero__button" %}
             {% endif %}
         </div>
 
