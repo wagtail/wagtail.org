@@ -339,3 +339,18 @@ class HeadlineBlock(blocks.StructBlock):
         icon = "title"
         label = "Headline"
         template = ""  # TODO: add template
+
+
+class HighlightBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=100)
+    description = blocks.TextBlock(required=False)
+    image = ImageChooserBlock()
+    image_on_right = blocks.BooleanBlock(required=False, default=False)
+    meta_text = blocks.CharBlock(required=False, max_length=50)
+    meta_icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
+    cta = CTABlock(required=False)
+
+    class Meta:
+        icon = "placeholder"
+        label = "Highlight"
+        template = ""  # TODO: add template
