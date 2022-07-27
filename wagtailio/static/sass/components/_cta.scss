@@ -1,0 +1,51 @@
+.cta {
+    $root: &;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color--off-black;
+    border-radius: 10px;
+
+    @include media-query(large) {
+        padding: 25px 30px;
+
+        > svg {
+            margin: 0 0 0 auto;
+        }
+    }
+
+    > svg {
+        transition: transform 0.3s;
+        margin: 0 15px 0 auto;
+        flex-shrink: 0
+    }
+    
+    &:hover {
+        background-color: $color--indigo;
+
+        #{$root}__title,
+         #{$root}__description {
+            color: $color--white;
+        }
+
+        > svg {
+            transform: translateX(10px) scale(1.25);
+        }
+    }
+
+    &__title {
+        color: $color--teal;
+    }
+
+    &__description {
+        color: $color--off-black;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
