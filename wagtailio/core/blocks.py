@@ -3,6 +3,7 @@ from django.forms.utils import ErrorList
 
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.core import blocks
+from wagtail.core.blocks.struct_block import StructBlockValidationError
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
@@ -10,7 +11,7 @@ import six
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.utils.blocks import CodeBlock
-from wagtailio.utils.models import SVGIcon
+from wagtailio.utils.choices import SVGIcon
 
 
 class PageOrExternalLinkBlock(blocks.StructBlock):
@@ -192,33 +193,31 @@ class CTABlock(blocks.StructBlock):
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
     def clean(self, value):
-        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
+        errors = {}
+        struct_value = super().clean(value)
 
         if not value.get("cta_page") and not value.get("cta_url"):
-            raise ValidationError(
-                "Validation error while saving block",
-                params={
-                    "cta_url": ValidationError(
+            e = ErrorList(
+                [
+                    ValidationError(
                         "You must specify CTA page or CTA URL."
-                    ),
-                    "cta_page": ValidationError(
-                        "You must specify CTA page or CTA URL."
-                    ),
-                },
+                    )
+                ]
             )
+            errors["cta_url"] = errors["cta_page"] = e
 
         if value.get("cta_page") and value.get("cta_url"):
-            raise ValidationError(
-                "Validation error while saving block",
-                params={
-                    "cta_url": ValidationError(
+            e = ErrorList(
+                [
+                    ValidationError(
                         "You must specify CTA page or CTA URL. You can't use both."
-                    ),
-                    "cta_page": ValidationError(
-                        "You must specify CTA page or CTA URL. You can't use both."
-                    ),
-                },
+                    )
+                ]
             )
+            errors["cta_url"] = errors["cta_page"] = e
+
+        if errors:
+            raise StructBlockValidationError(errors)
 
         return struct_value
 
