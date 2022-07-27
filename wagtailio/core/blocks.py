@@ -4,6 +4,7 @@ from django.forms.utils import ErrorList
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.core import blocks
 from wagtail.core.blocks.struct_block import StructBlockValidationError
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
@@ -402,7 +403,7 @@ class StandaloneQuoteBlock(blocks.StructBlock):
     class Meta:
         icon = "openquote"
         label = "Standalone quote"
-        template = "patterns/components/streamfield/standalone_quote_block.html",
+        template = "patterns/components/streamfield/standalone_quote_block.html"
 
 
 class MultipleQuoteBlock(blocks.StructBlock):
@@ -412,4 +413,129 @@ class MultipleQuoteBlock(blocks.StructBlock):
     class Meta:
         icon = "openquote"
         label = "Multiple quotes"
-        template = "patterns/components/streamfield/multiple_quotes_block.html",
+        template = "patterns/components/streamfield/multiple_quotes_block.html"
+
+
+class RichTextBlock(blocks.StructBlock):
+    rich_text = blocks.RichTextBlock(
+        required=True,
+        features=["bold", "italic", "h2", "h3", "ol", "ul", "link", "document"],
+    )
+
+    class Meta:
+        icon = "bold"
+        label = "Rich text"
+        template = "patterns/components/streamfield/rich_text_block.html"
+
+class StandaloneCTABlock(blocks.StructBlock):
+    short_description = blocks.TextBlock(required=False, max_length=100)
+    cta = CTABlock()
+
+    class Meta:
+        icon = "arrow-right"
+        label = "Standalone CTA"
+        template = "patterns/components/streamfield/standalone_cta_block.html"
+
+
+class TeaserBlock(blocks.StructBlock):
+    blog_post_chooser = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
+    url_chooser = blocks.URLBlock(required=False)
+    image_for_external_link = ImageChooserBlock(required=False)
+    heading_for_external_link = blocks.TextBlock(required=False)
+    subheading_for_ext_link = blocks.TextBlock(
+        label="Subheading for external link", required=False
+    )
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        # We want the logical AND of three values
+        sum_external_link_values = (
+            bool(value.get("image_for_external_link"))
+            + bool(value.get("heading_for_external_link"))
+            + bool(value.get("subheading_for_ext_link"))
+        )
+
+        if not value.get("blog_post_chooser") and not value.get("url_chooser"):
+            e = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify a blog post or a URL."
+                    )
+                ]
+            )
+            errors["blog_post_chooser"] = errors["url_chooser"] = e
+
+        if value.get("blog_post_chooser") and value.get("url_chooser"):
+            e = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify a blog post or a URL. You can't use both."
+                    )
+                ]
+            )
+            errors["blog_post_chooser"] = errors["url_chooser"] = e
+
+        if value.get("url_chooser") and sum_external_link_values < 3:
+            e = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify an image, heading and subheading for the external URL."
+                    )
+                ]
+            )
+            errors["image_for_external_link"] = errors["heading_for_external_link"] = errors["subheading_for_ext_link"] = e
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
+
+    class Meta:
+        icon = "placeholder"
+        label = "Teaser"
+        template = "patterns/components/streamfield/teaser_block.html"
+
+
+class TextAndMediaBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=False)
+    embed = EmbedBlock(required=False)
+    image_on_right = blocks.BooleanBlock(required=False, default=False)
+    heading = blocks.TextBlock(required=True)
+    description = blocks.TextBlock(required=True)
+    cta = CTABlock(required=False)
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        if not value.get("image") and not value.get("embed"):
+            e = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify Image or Embed."
+                    )
+                ]
+            )
+            errors["image"] = errors["embed"] = e
+
+        if value.get("embed") and value.get("image"):
+            e = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify Image or Embed. You can't use both."
+                    )
+                ]
+            )
+            errors["image"] = errors["embed"] = e
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
+
+    class Meta:
+        icon = "media"
+        label = "Text and Media"
+        template = "patterns/components/streamfield/text_and_media_block.html"
