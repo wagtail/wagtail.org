@@ -3,7 +3,7 @@
 This directory contains templates that we are going to use
 only in the pattern library.
 
-For example, we can have a pattern template for evry Wagtail streamfield
+For example, we can have a pattern template for every Wagtail streamfield
 block and one pattern that contains wrapper layout for
 all streamfield blocks.
 
