@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 
+from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
@@ -292,3 +293,35 @@ class LogoCardsBlock(blocks.StructBlock):
     class Meta:
         # template = "" # TODO: add template
         label = "Logo cards"
+
+
+class ComparisonTableBlock(blocks.StructBlock):
+    comparison_table = TypedTableBlock([
+        ('rich_text', blocks.RichTextBlock(features=["bold", "italic", "link"])),
+        ('image', ImageChooserBlock()),
+    ])
+
+    def get_context(self, value, parent_context=None):
+        ctx = super().get_context(value, parent_context)
+
+        rows = []
+        columns = next(ctx["value"]["table"].rows, [])
+        num_rows = 0
+
+        for column_data in columns:
+            # column_data.value contains the cells of a single column
+            block_name = column_data.block.name
+            curr_row = 0
+            for row_data in column_data.value:
+                if num_rows <= curr_row:
+                    rows.append([])
+                    num_rows += 1
+                rows[curr_row].append({"block_name": block_name, "value": row_data})
+                curr_row += 1
+
+        ctx["value"]["rows"] = rows
+        return ctx
+
+    class Meta:
+        icon = "table"
+        template = ""  # TODO: add template

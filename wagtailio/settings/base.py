@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     "wagtail.contrib.postgres_search",
     "wagtail.api.v2",
     "wagtail.contrib.settings",
+    "wagtail.contrib.typed_table_block",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
