@@ -1,6 +1,6 @@
 .cta {
     $root: &;
-    padding: 25px 30px;
+    padding: 15px 20px;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -8,20 +8,25 @@
     border: 1px solid $color--off-black;
     border-radius: 10px;
 
+    @include media-query(large) {
+        padding: 25px 30px;
+
+        > svg {
+            margin: 0 0 0 auto;
+        }
+    }
+
     > svg {
         transition: transform 0.3s;
         margin: 0 15px 0 auto;
+        flex-shrink: 0
     }
     
     &:hover {
         background-color: $color--indigo;
-        color: $color--white;
 
-        #{$root}__title {
-            color: $color--white;
-        }
-    
-        #{$root}__description {
+        #{$root}__title,
+         #{$root}__description {
             color: $color--white;
         }
 
