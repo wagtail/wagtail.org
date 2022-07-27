@@ -376,3 +376,40 @@ class IconBulletsBlock(blocks.StructBlock):
     class Meta:
         # template = "" # TODO: add template
         label = "Icon bullets"
+
+
+class StandaloneQuoteBlock(blocks.StructBlock):
+    quote = blocks.TextBlock(required=True)
+    author = blocks.RichTextBlock(
+        required=True,
+        features=[
+            "bold",
+            "italic",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "ol",
+            "ul",
+            "link",
+            "image",
+            "document",
+            "embed",
+        ],
+    )
+    author_image = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = "openquote"
+        label = "Standalone quote"
+        template = "patterns/components/streamfield/standalone_quote_block.html",
+
+
+class MultipleQuoteBlock(blocks.StructBlock):
+    heading = blocks.TextBlock(required=True)
+    quotes = blocks.ListBlock(StandaloneQuoteBlock(), min_num=2)
+
+    class Meta:
+        icon = "openquote"
+        label = "Multiple quotes"
+        template = "patterns/components/streamfield/multiple_quotes_block.html",
