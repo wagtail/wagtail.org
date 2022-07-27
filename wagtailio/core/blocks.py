@@ -325,3 +325,17 @@ class ComparisonTableBlock(blocks.StructBlock):
     class Meta:
         icon = "table"
         template = ""  # TODO: add template
+
+
+class HeadlineBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    sub_heading = blocks.TextBlock(required=False)
+    intro = blocks.TextBlock(required=False)
+    cta = CTABlock(required=False)
+    icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
+    dark_background = blocks.BooleanBlock(required=False, default=False)
+
+    class Meta:
+        icon = "title"
+        label = "Headline"
+        template = ""  # TODO: add template
