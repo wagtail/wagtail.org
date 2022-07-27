@@ -354,3 +354,26 @@ class HighlightBlock(blocks.StructBlock):
         icon = "placeholder"
         label = "Highlight"
         template = ""  # TODO: add template
+
+
+class IconBulletBlock(blocks.StructBlock):
+    icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    heading = blocks.CharBlock(max_length=255)
+    description = blocks.RichTextBlock(
+        required=False,
+        features=["bold", "italic", "link"],
+    )
+    cta = CTABlock(required=False)
+
+    class Meta:
+        icon = "tick-inverse"
+        label = "Icon bullet"
+        template = ""  # TODO: add template
+
+
+class IconBulletsBlock(blocks.StructBlock):
+    icon_bullet = blocks.ListBlock(IconBulletBlock())
+
+    class Meta:
+        # template = "" # TODO: add template
+        label = "Icon bullets"
