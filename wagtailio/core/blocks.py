@@ -224,7 +224,7 @@ class CTABlock(blocks.StructBlock):
 
     class Meta:
         icon = "tick-inverse"
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/cta_block.html"
         label = "CTA"
 
 
@@ -239,7 +239,7 @@ class CardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "placeholder"
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/card_block.html"
         label = "Card"
 
 
@@ -274,7 +274,7 @@ class LogoCardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "placeholder"
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/logo_card_block.html"
         label = "Logo card"
 
 
@@ -282,7 +282,7 @@ class CardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(CardBlock())
 
     class Meta:
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/cards_list_block.html"
         label = "Cards"
 
 
@@ -291,7 +291,7 @@ class LogoCardsBlock(blocks.StructBlock):
 
 
     class Meta:
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/logo_cards_list_block.html"
         label = "Logo cards"
 
 
@@ -324,7 +324,7 @@ class ComparisonTableBlock(blocks.StructBlock):
 
     class Meta:
         icon = "table"
-        template = ""  # TODO: add template
+        template = "patterns/components/streamfield/comparison_table_block.html"
 
 
 class HeadlineBlock(blocks.StructBlock):
@@ -338,7 +338,7 @@ class HeadlineBlock(blocks.StructBlock):
     class Meta:
         icon = "title"
         label = "Headline"
-        template = ""  # TODO: add template
+        template = "patterns/components/streamfield/headline_block.html"
 
 
 class HighlightBlock(blocks.StructBlock):
@@ -353,7 +353,7 @@ class HighlightBlock(blocks.StructBlock):
     class Meta:
         icon = "placeholder"
         label = "Highlight"
-        template = ""  # TODO: add template
+        template = "patterns/components/streamfield/highlight_block.html"
 
 
 class IconBulletBlock(blocks.StructBlock):
@@ -368,14 +368,14 @@ class IconBulletBlock(blocks.StructBlock):
     class Meta:
         icon = "tick-inverse"
         label = "Icon bullet"
-        template = ""  # TODO: add template
+        template = "patterns/components/streamfield/icon_bullet_block.html"
 
 
 class IconBulletsBlock(blocks.StructBlock):
     icon_bullet = blocks.ListBlock(IconBulletBlock())
 
     class Meta:
-        # template = "" # TODO: add template
+        template = "patterns/components/streamfield/icon_bullets_list_block.html"
         label = "Icon bullets"
 
 
