@@ -1,4 +1,4 @@
-<div class="headline {% if value.dark_background %}headline--dark-theme{% endif %}">
+<div class="headline {% if value.dark_background or dark_background %}headline--dark-theme{% endif %}">
     <div class="grid">
         {% if value.icon %}
             <svg class="headline__icon" aria-hidden="true">
