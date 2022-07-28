@@ -94,6 +94,7 @@ INSTALLED_APPS = (
     "wagtailaltgenerator",
     "wagtailmedia",
     "pattern_library",
+    "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
 )
 
 MIDDLEWARE = [
@@ -230,7 +231,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtailio.context_processors.global_pages",
-            ]
+            ],
+            "builtins": ["pattern_library.loader_tags"],
         },
     }
 ]
