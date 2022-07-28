@@ -7,25 +7,25 @@
     <header class="page-heading">
         <h1 class="page-heading__heading">{{ page.title }}</h1>
         <div class="page-heading__introduction">
-          {{ page.subtitle }}
+            {{ page.subtitle }}
         </div>
         <div>
-          <p>
-            <a href="#{{ page.about_title|slugify }}" class="button button--packages">
-              {{ page.about_title }}
-            </a>
-          </p>
+            <p>
+                <a href="#{{ page.about_title|slugify }}" class="button button--packages">
+                    {{ page.about_title }}
+                </a>
+            </p>
         </div>
     </header>
 
     <div class="features feature--packages" id="additional">
 
         <div class="features__container page-content">
-          <div class="container packages__jumplinks">
-              {% for grid in grids %}
-                <a href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
-              {% endfor %}
-          </div>
+            <div class="container packages__jumplinks">
+                {% for grid in grids %}
+                    <a href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+                {% endfor %}
+            </div>
         </div>
 
         <div class="features__container">
@@ -34,16 +34,16 @@
                 <div class="features__section" id="{{ grid.slug }}">
 
                     <div class="packages__sub-heading">
-                      <h3 class="features__sub-heading">
-                        <a href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
-                        {% if perms.packages.change_grid %}
-                          <a href="{{ grid.get_admin_url }}">✏️</a>
-                        {% endif %}
-                      </h3>
-                      <p>
-                        {{ grid.description }}<br>
-                        <a class="packages__xs" href="{{ grid.get_absolute_url }}">Full grid on Djangopackages.org</a>
-                      </p>
+                        <h3 class="features__sub-heading">
+                            <a href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
+                            {% if perms.packages.change_grid %}
+                                <a href="{{ grid.get_admin_url }}">✏️</a>
+                            {% endif %}
+                        </h3>
+                        <p>
+                            {{ grid.description }}<br>
+                            <a class="packages__xs" href="{{ grid.get_absolute_url }}">Full grid on Djangopackages.org</a>
+                        </p>
                     </div>
 
                     <div class="features__content">
@@ -52,20 +52,20 @@
 
                             <article class="feature-item">
                                 <h4 class="feature-item__heading">
-                                  <a href="{{ package.get_absolute_url }}">
-                                    {{ package.title }}
-                                    {% if perms.packages.change_package %}
-                                      <a href="{{ package.get_admin_url }}">✏️</a>
-                                    {% endif %}
-                                  </a>
+                                    <a href="{{ package.get_absolute_url }}">
+                                        {{ package.title }}
+                                        {% if perms.packages.change_package %}
+                                            <a href="{{ package.get_admin_url }}">✏️</a>
+                                        {% endif %}
+                                    </a>
                                 </h4>
                                 <div class="feature-item__description">
                                     {% if package.repo_description %}
-                                      {{ package.repo_description }}<br>
+                                        {{ package.repo_description }}<br>
                                     {% endif %}
                                     {% for url, label in package.links %}
-                                      <a href="{{ url }}">{{ label }}</a>
-                                      {% if not forloop.last %}–{% endif %}
+                                        <a href="{{ url }}">{{ label }}</a>
+                                        {% if not forloop.last %}–{% endif %}
                                     {% endfor %}
                                 </div>
                             </article>
@@ -81,7 +81,7 @@
         <header class="page-heading" id="{{ page.about_title|slugify }}">
             <h2 class="page-heading__heading">{{ page.about_title }}</h2>
             <div class="page-heading__introduction">
-              {{ page.about_text|richtext }}
+                {{ page.about_text|richtext }}
             </div>
         </header>
 

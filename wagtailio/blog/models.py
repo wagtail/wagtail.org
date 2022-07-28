@@ -1,6 +1,6 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
@@ -8,13 +8,13 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
-from wagtail_content_import.models import ContentImportMixin
 
 from wagtail_airtable.mixins import AirtableMixin
+from wagtail_content_import.models import ContentImportMixin
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
-from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
@@ -80,7 +80,9 @@ class Author(models.Model):
     ]
 
 
-class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
+class BlogPage(
+    AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin
+):
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
@@ -141,5 +143,5 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
             "Title": self.title,
             "Live": self.live,
             "Slug": self.slug,
-            "Author": getattr(self.author, 'name', '')
+            "Author": getattr(self.author, "name", ""),
         }

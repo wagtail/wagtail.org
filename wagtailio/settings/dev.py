@@ -1,6 +1,5 @@
 from .base import *  # noqa
 
-
 # Debugging to be enabled locally only
 DEBUG = True
 

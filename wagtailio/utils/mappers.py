@@ -1,11 +1,11 @@
-from wagtail_content_import.mappers.converters import (
-    ImageConverter,
-    RichTextConverter,
-    # TableConverter,
-    TextConverter,
-)
 import base64
 import re
+
+from wagtail_content_import.mappers.converters import (  # TableConverter,
+    ImageConverter,
+    RichTextConverter,
+    TextConverter,
+)
 from wagtail_content_import.mappers.streamfield import (
     StreamFieldMapper as _StreamFieldMapper,
 )

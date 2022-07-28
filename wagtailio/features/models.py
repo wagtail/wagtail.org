@@ -1,14 +1,13 @@
 from django.db import models
 
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
-
-from modelcluster.fields import ParentalKey
-from modelcluster.models import ClusterableModel
 
 from wagtail_airtable.mixins import AirtableMixin
 from wagtailmedia.edit_handlers import MediaChooserPanel
@@ -36,11 +35,11 @@ class FeatureAspect(ClusterableModel):
         related_name="+",
     )
     video = models.ForeignKey(
-        'wagtailmedia.Media',
+        "wagtailmedia.Media",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
     def __str__(self):
@@ -51,7 +50,7 @@ class FeatureAspect(ClusterableModel):
         InlinePanel("bullets", label="Bullets"),
         ImageChooserPanel("screenshot"),
         FieldPanel("video_url"),
-        MediaChooserPanel('video'),
+        MediaChooserPanel("video"),
     ]
 
 
@@ -87,7 +86,7 @@ class FeatureDescription(AirtableMixin, ClusterableModel):
         mappings = {
             "Title": "title",
             "Introduction": "introduction",
-            "Documentation": "documentation_link"
+            "Documentation": "documentation_link",
         }
         return mappings
 
@@ -99,7 +98,7 @@ class FeatureDescription(AirtableMixin, ClusterableModel):
             "ID": self.id,
             "Title": self.title,
             "Introduction": self.introduction,
-            "Documentation": self.documentation_link
+            "Documentation": self.documentation_link,
         }
 
 

@@ -6,101 +6,115 @@ from django.db import migrations
 
 
 def forwards_func(apps, schema_editor):
-    ContentType = apps.get_model('contenttypes.ContentType')
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    ContentType.objects.filter(app_label='features', model='bullet').delete()
-    ContentType.objects.filter(app_label='core', model='bullet').update(app_label='features', model='bullet')
+    ContentType.objects.filter(app_label="features", model="bullet").delete()
+    ContentType.objects.filter(app_label="core", model="bullet").update(
+        app_label="features", model="bullet"
+    )
 
-    ContentType.objects.filter(app_label='features', model='featureaspect').delete()
-    ContentType.objects.filter(app_label='core', model='featureaspect').update(app_label='features', model='featureaspect')
+    ContentType.objects.filter(app_label="features", model="featureaspect").delete()
+    ContentType.objects.filter(app_label="core", model="featureaspect").update(
+        app_label="features", model="featureaspect"
+    )
 
-    ContentType.objects.filter(app_label='features', model='featurepagefeatureaspect').delete()
-    ContentType.objects.filter(app_label='core', model='featurepagefeatureaspect').update(app_label='features', model='featurepagefeatureaspect')
+    ContentType.objects.filter(
+        app_label="features", model="featurepagefeatureaspect"
+    ).delete()
+    ContentType.objects.filter(
+        app_label="core", model="featurepagefeatureaspect"
+    ).update(app_label="features", model="featurepagefeatureaspect")
 
-    ContentType.objects.filter(app_label='features', model='featurepage').delete()
-    ContentType.objects.filter(app_label='core', model='featurepage').update(app_label='features', model='featurepage')
+    ContentType.objects.filter(app_label="features", model="featurepage").delete()
+    ContentType.objects.filter(app_label="core", model="featurepage").update(
+        app_label="features", model="featurepage"
+    )
 
-    ContentType.objects.filter(app_label='features', model='featureindexpagemenuoption').delete()
-    ContentType.objects.filter(app_label='core', model='featureindexpagemenuoption').update(app_label='features', model='featureindexpagemenuoption')
+    ContentType.objects.filter(
+        app_label="features", model="featureindexpagemenuoption"
+    ).delete()
+    ContentType.objects.filter(
+        app_label="core", model="featureindexpagemenuoption"
+    ).update(app_label="features", model="featureindexpagemenuoption")
 
-    ContentType.objects.filter(app_label='features', model='featureindexpage').delete()
-    ContentType.objects.filter(app_label='core', model='featureindexpage').update(app_label='features', model='featureindexpage')
+    ContentType.objects.filter(app_label="features", model="featureindexpage").delete()
+    ContentType.objects.filter(app_label="core", model="featureindexpage").update(
+        app_label="features", model="featureindexpage"
+    )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailredirects', '0005_capitalizeverbose'),
-        ('wagtailcore', '0028_merge'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('core', '0032_auto_20160729_1044'),
+        ("wagtailredirects", "0005_capitalizeverbose"),
+        ("wagtailcore", "0028_merge"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("core", "0032_auto_20160729_1044"),
     ]
 
     operations = [
         migrations.RunPython(forwards_func),
-
         migrations.SeparateDatabaseAndState(
             state_operations=[
-
                 migrations.RemoveField(
-                    model_name='bullet',
-                    name='snippet',
+                    model_name="bullet",
+                    name="snippet",
                 ),
                 migrations.RemoveField(
-                    model_name='featureaspect',
-                    name='screenshot',
+                    model_name="featureaspect",
+                    name="screenshot",
                 ),
                 migrations.RemoveField(
-                    model_name='featureindexpage',
-                    name='page_ptr',
+                    model_name="featureindexpage",
+                    name="page_ptr",
                 ),
                 migrations.RemoveField(
-                    model_name='featureindexpagemenuoption',
-                    name='link',
+                    model_name="featureindexpagemenuoption",
+                    name="link",
                 ),
                 migrations.RemoveField(
-                    model_name='featureindexpagemenuoption',
-                    name='page',
+                    model_name="featureindexpagemenuoption",
+                    name="page",
                 ),
                 migrations.RemoveField(
-                    model_name='featurepage',
-                    name='listing_image',
+                    model_name="featurepage",
+                    name="listing_image",
                 ),
                 migrations.RemoveField(
-                    model_name='featurepage',
-                    name='page_ptr',
+                    model_name="featurepage",
+                    name="page_ptr",
                 ),
                 migrations.RemoveField(
-                    model_name='featurepage',
-                    name='social_image',
+                    model_name="featurepage",
+                    name="social_image",
                 ),
                 migrations.RemoveField(
-                    model_name='featurepagefeatureaspect',
-                    name='feature_aspect',
+                    model_name="featurepagefeatureaspect",
+                    name="feature_aspect",
                 ),
                 migrations.RemoveField(
-                    model_name='featurepagefeatureaspect',
-                    name='page',
+                    model_name="featurepagefeatureaspect",
+                    name="page",
                 ),
                 migrations.DeleteModel(
-                    name='Bullet',
+                    name="Bullet",
                 ),
                 migrations.DeleteModel(
-                    name='FeatureAspect',
+                    name="FeatureAspect",
                 ),
                 migrations.DeleteModel(
-                    name='FeatureIndexPage',
+                    name="FeatureIndexPage",
                 ),
                 migrations.DeleteModel(
-                    name='FeatureIndexPageMenuOption',
+                    name="FeatureIndexPageMenuOption",
                 ),
                 migrations.DeleteModel(
-                    name='FeaturePage',
+                    name="FeaturePage",
                 ),
                 migrations.DeleteModel(
-                    name='FeaturePageFeatureAspect',
+                    name="FeaturePageFeatureAspect",
                 ),
             ],
             database_operations=[],
-        )
+        ),
     ]

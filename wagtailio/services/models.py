@@ -1,4 +1,5 @@
 from django.db import models
+
 from wagtail.admin import edit_handlers
 from wagtail.core import blocks, fields
 from wagtail.core.models import Page
@@ -10,7 +11,7 @@ class ServicesPage(Page):
     intro = models.TextField(null=True, blank=True)
     body = fields.StreamField(
         blocks.StreamBlock(
-            [('section', SectionBlock())],
+            [("section", SectionBlock())],
             min_num=4,
             max_num=4,
         ),

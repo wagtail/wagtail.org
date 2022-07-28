@@ -1,26 +1,25 @@
 from django import forms
-
 from django.utils.safestring import mark_safe
+
+from wagtail.core.blocks import (
+    CharBlock,
+    ChoiceBlock,
+    FieldBlock,
+    ListBlock,
+    RichTextBlock,
+    StreamBlock,
+    StructBlock,
+    TextBlock,
+    URLBlock,
+)
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+
 from markdown import markdown
 from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
-
-from wagtail.core.blocks import (
-    TextBlock,
-    StructBlock,
-    ListBlock,
-    StreamBlock,
-    FieldBlock,
-    CharBlock,
-    RichTextBlock,
-    ChoiceBlock,
-    URLBlock,
-)
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.documents.blocks import DocumentChooserBlock
-from wagtail.embeds.blocks import EmbedBlock
-
 
 # Common Streamfield blocks
 
@@ -125,13 +124,15 @@ class CodeBlock(StructBlock):
 
 
 class MarkDownBlock(TextBlock):
-    """ MarkDown Block """
+    """MarkDown Block"""
 
     class Meta:
         icon = "code"
 
     def render_basic(self, value, context=None):
-        md = markdown(value, extensions=["markdown.extensions.fenced_code", "codehilite"])
+        md = markdown(
+            value, extensions=["markdown.extensions.fenced_code", "codehilite"]
+        )
         return mark_safe(md)
 
 

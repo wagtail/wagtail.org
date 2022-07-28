@@ -13,7 +13,6 @@ from os.path import abspath, dirname, join
 
 import dj_database_url
 
-
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
 
@@ -221,7 +220,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(PROJECT_ROOT, "project_styleguide/templates"),
-        ],        
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -250,14 +249,9 @@ CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get("CACHE_CONTROL_STALE_WHILE_REVALIDATE", 30)
 )
 
-SITEWIDE_ALERT_MAXAGE = int(
-    env.get("SITEWIDE_ALERT_MAXAGE", 300)
-)
+SITEWIDE_ALERT_MAXAGE = int(env.get("SITEWIDE_ALERT_MAXAGE", 300))
 
-SITEWIDE_ALERT_SMAXAGE = int(
-    env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7)
-)
-
+SITEWIDE_ALERT_SMAXAGE = int(env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7))
 
 
 # Cache
@@ -310,7 +304,9 @@ if "SERVER_EMAIL" in env:
 
 # Notification emails
 
-WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = env.get("MODERATION_NOTIFY_SUPERUSERS", False)
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = env.get(
+    "MODERATION_NOTIFY_SUPERUSERS", False
+)
 
 # Security configuration
 # https://docs.djangoproject.com/en/stable/ref/middleware/#module-django.middleware.security
@@ -479,44 +475,42 @@ WAGTAILIMAGEIMPORT_FIELD_MAPPING = {
     "id": "driveidmapping__drive_id",
     "name": "title",
     "imageMediaMetadata__time": "exif_datetime",
-    "md5Checksum": "md5_hash"
+    "md5Checksum": "md5_hash",
 }
 
 
-AIRTABLE_API_KEY = env.get(
-    "AIRTABLE_API_KEY"
+AIRTABLE_API_KEY = env.get("AIRTABLE_API_KEY")
+BLOG_AIRTABLE_BASE_KEY = env.get("BLOG_AIRTABLE_BASE_KEY")
+BLOG_AIRTABLE_URL = env.get("BLOG_AIRTABLE_URL")
+FEATURES_AIRTABLE_BASE_KEY = env.get("FEATURES_AIRTABLE_BASE_KEY")
+FEATURES_AIRTABLE_URL = env.get("FEATURES_AIRTABLE_URL")
+WAGTAIL_AIRTABLE_ENABLED = all(
+    (
+        AIRTABLE_API_KEY,
+        BLOG_AIRTABLE_BASE_KEY,
+        BLOG_AIRTABLE_URL,
+        FEATURES_AIRTABLE_BASE_KEY,
+        FEATURES_AIRTABLE_URL,
+    )
 )
-BLOG_AIRTABLE_BASE_KEY = env.get(
-    "BLOG_AIRTABLE_BASE_KEY"
-)
-BLOG_AIRTABLE_URL = env.get(
-    "BLOG_AIRTABLE_URL"
-)
-FEATURES_AIRTABLE_BASE_KEY = env.get(
-    "FEATURES_AIRTABLE_BASE_KEY"
-)
-FEATURES_AIRTABLE_URL = env.get(
-    "FEATURES_AIRTABLE_URL"
-)
-WAGTAIL_AIRTABLE_ENABLED = all((AIRTABLE_API_KEY, BLOG_AIRTABLE_BASE_KEY, BLOG_AIRTABLE_URL, FEATURES_AIRTABLE_BASE_KEY, FEATURES_AIRTABLE_URL))
 AIRTABLE_IMPORT_SETTINGS = {
-    'blog.BlogPage': {
-        'AIRTABLE_BASE_KEY': BLOG_AIRTABLE_BASE_KEY,
-        'AIRTABLE_TABLE_NAME': 'Posts',
-        'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'ID': 'id',
+    "blog.BlogPage": {
+        "AIRTABLE_BASE_KEY": BLOG_AIRTABLE_BASE_KEY,
+        "AIRTABLE_TABLE_NAME": "Posts",
+        "AIRTABLE_UNIQUE_IDENTIFIER": {
+            "ID": "id",
         },
-        'AIRTABLE_SERIALIZER': 'wagtailio.blog.serializers.BlogPageSerializer',
-        'AIRTABLE_BASE_URL': BLOG_AIRTABLE_URL,
+        "AIRTABLE_SERIALIZER": "wagtailio.blog.serializers.BlogPageSerializer",
+        "AIRTABLE_BASE_URL": BLOG_AIRTABLE_URL,
     },
-    'features.FeatureDescription': {
-        'AIRTABLE_BASE_KEY': FEATURES_AIRTABLE_BASE_KEY,
-        'AIRTABLE_TABLE_NAME': 'Feature Descriptions',
-        'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'ID': 'id',
+    "features.FeatureDescription": {
+        "AIRTABLE_BASE_KEY": FEATURES_AIRTABLE_BASE_KEY,
+        "AIRTABLE_TABLE_NAME": "Feature Descriptions",
+        "AIRTABLE_UNIQUE_IDENTIFIER": {
+            "ID": "id",
         },
-        'AIRTABLE_SERIALIZER': 'wagtailio.features.serializers.FeatureDescriptionSerializer',
-        'AIRTABLE_BASE_URL': FEATURES_AIRTABLE_URL,
+        "AIRTABLE_SERIALIZER": "wagtailio.features.serializers.FeatureDescriptionSerializer",
+        "AIRTABLE_BASE_URL": FEATURES_AIRTABLE_URL,
     },
 }
 
@@ -530,21 +524,32 @@ WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY = env.get(
     "WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY"
 )
 
-WAGTAILTRANSFER_SOURCES = {
-    WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME: {
-        'BASE_URL': WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
-        'SECRET_KEY': WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
-    },
-} if all((WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME, WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL, WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY)) else {}
-
-WAGTAILTRANSFER_SECRET_KEY = env.get(
-    "WAGTAILTRANSFER_SECRET_KEY"
+WAGTAILTRANSFER_SOURCES = (
+    {
+        WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME: {
+            "BASE_URL": WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
+            "SECRET_KEY": WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
+        },
+    }
+    if all(
+        (
+            WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME,
+            WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
+            WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
+        )
+    )
+    else {}
 )
 
-WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['features.featureaspect', 'features.featuredescription']
+WAGTAILTRANSFER_SECRET_KEY = env.get("WAGTAILTRANSFER_SECRET_KEY")
+
+WAGTAILTRANSFER_UPDATE_RELATED_MODELS = [
+    "features.featureaspect",
+    "features.featuredescription",
+]
 
 WAGTAIL_AB_TESTING = {
-    'MODE': 'external',
+    "MODE": "external",
 }
 
 
@@ -564,14 +569,11 @@ PATTERN_LIBRARY = {
         ("Components", ["patterns/components"]),
         ("Pages", ["patterns/pages"]),
     ),
-
     # Configure which files to detect as templates.
     "TEMPLATE_SUFFIX": ".html",
-
     # Set which template components should be rendered inside of,
     # so they may use page-level component dependencies like CSS.
     "PATTERN_BASE_TEMPLATE_NAME": "patterns/base.html",
-
     # Any template in BASE_TEMPLATE_NAMES or any template that extends a template in
     # BASE_TEMPLATE_NAMES is a "page" and will be rendered as-is without being wrapped.
     "BASE_TEMPLATE_NAMES": ["patterns/base_page.html"],

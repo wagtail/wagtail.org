@@ -4,12 +4,12 @@ from django.db import models
 from django.db.models import Prefetch
 from django.db.models.functions import Lower
 from django.urls import reverse
+
 from wagtail.admin.edit_handlers import FieldPanel, HelpPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
-
 
 warning = """
     <p>

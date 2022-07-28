@@ -1,9 +1,11 @@
-import six
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
+
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
+
+import six
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.utils.blocks import CodeBlock
@@ -77,13 +79,13 @@ class BannerBlock(blocks.StructBlock):
     def clean(self, value):
         errors = {}
 
-        if not value.get('image') and not value.get('video'):
-            error_message = 'You must select either an image or a video.'
-            errors['image'] = ErrorList([error_message])
-            errors['video'] = ErrorList([error_message])
+        if not value.get("image") and not value.get("video"):
+            error_message = "You must select either an image or a video."
+            errors["image"] = ErrorList([error_message])
+            errors["video"] = ErrorList([error_message])
 
         if errors:
-            raise ValidationError('Validation error in StructBlock', params=errors)
+            raise ValidationError("Validation error in StructBlock", params=errors)
 
         return super().clean(value)
 
@@ -95,10 +97,11 @@ class BrandsBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
 
     # Name changed to avoid conflicts with previous revisions of pages
-    brands2 = blocks.ListBlock(blocks.StructBlock([
-        ("url", blocks.URLBlock(required=False)),
-        ("image", ImageChooserBlock())
-    ]))
+    brands2 = blocks.ListBlock(
+        blocks.StructBlock(
+            [("url", blocks.URLBlock(required=False)), ("image", ImageChooserBlock())]
+        )
+    )
 
     class Meta:
         icon = "pick"

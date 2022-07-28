@@ -8,20 +8,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('developers', '0001_initial'),
+        ("developers", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='developerspageoptions',
-            options={'ordering': ['sort_order']},
+            name="developerspageoptions",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelTable(
-            name='developerspage',
+            name="developerspage",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='developerspageoptions',
+            name="developerspageoptions",
             table=None,
         ),
     ]

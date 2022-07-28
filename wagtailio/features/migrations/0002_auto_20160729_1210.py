@@ -8,40 +8,40 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('features', '0001_initial'),
+        ("features", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='bullet',
-            options={'ordering': ['sort_order']},
+            name="bullet",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelOptions(
-            name='featurepagefeatureaspect',
-            options={'ordering': ['sort_order']},
+            name="featurepagefeatureaspect",
+            options={"ordering": ["sort_order"]},
         ),
         migrations.AlterModelTable(
-            name='bullet',
+            name="bullet",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='featureaspect',
+            name="featureaspect",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='featureindexpage',
+            name="featureindexpage",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='featureindexpagemenuoption',
+            name="featureindexpagemenuoption",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='featurepage',
+            name="featurepage",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='featurepagefeatureaspect',
+            name="featurepagefeatureaspect",
             table=None,
         ),
     ]

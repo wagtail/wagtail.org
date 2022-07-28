@@ -8,23 +8,23 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('features', '0006_featurepage_and_related_models'),
+        ("features", "0006_featurepage_and_related_models"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='featureindexpagemenuoption',
-            name='link',
+            model_name="featureindexpagemenuoption",
+            name="link",
         ),
         migrations.RemoveField(
-            model_name='featureindexpagemenuoption',
-            name='page',
+            model_name="featureindexpagemenuoption",
+            name="page",
         ),
         migrations.RemoveField(
-            model_name='featureindexpage',
-            name='introduction',
+            model_name="featureindexpage",
+            name="introduction",
         ),
         migrations.DeleteModel(
-            name='FeatureIndexPageMenuOption',
+            name="FeatureIndexPageMenuOption",
         ),
     ]

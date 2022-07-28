@@ -3,9 +3,9 @@ import logging
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
-from wagtail.contrib.frontend_cache.utils import PurgeBatch
 
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.contrib.frontend_cache.utils import PurgeBatch
 from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
 from wagtail.core.fields import RichTextField
@@ -28,12 +28,12 @@ class SiteWideAlertSettings(BaseSetting):
     background_colour = models.CharField(
         max_length=6,
         blank=True,
-        help_text="Background RGB value. e.g. <code>fd5765</code>"
+        help_text="Background RGB value. e.g. <code>fd5765</code>",
     )
     text_colour = models.CharField(
         max_length=6,
         blank=True,
-        help_text="Text colour RGB value. e.g. <code>ffffff</code>"
+        help_text="Text colour RGB value. e.g. <code>ffffff</code>",
     )
 
     panels = [
@@ -44,7 +44,7 @@ class SiteWideAlertSettings(BaseSetting):
         MultiFieldPanel(
             [FieldPanel("background_colour"), FieldPanel("text_colour")],
             "Style",
-            classname="collapsible"
+            classname="collapsible",
         ),
     ]
 

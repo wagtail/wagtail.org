@@ -8,20 +8,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
+        ("blog", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelTable(
-            name='author',
+            name="author",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='blogindexpage',
+            name="blogindexpage",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='blogpage',
+            name="blogpage",
             table=None,
         ),
     ]

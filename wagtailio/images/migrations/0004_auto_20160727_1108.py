@@ -3,19 +3,24 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+
 import wagtail.images.models
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0003_wagtailioimage_collection'),
+        ("images", "0003_wagtailioimage_collection"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='wagtailiorendition',
-            name='file',
-            field=models.ImageField(height_field='height', upload_to=wagtail.images.models.get_rendition_upload_to, width_field='width'),
+            model_name="wagtailiorendition",
+            name="file",
+            field=models.ImageField(
+                height_field="height",
+                upload_to=wagtail.images.models.get_rendition_upload_to,
+                width_field="width",
+            ),
         ),
     ]
