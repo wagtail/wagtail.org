@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+<li class="icon-bullet grid">
+    <svg class="icon-bullet__svg" aria-hidden="true">
+        <use xlink:href="#{{ value.icon }}" />
+    </svg>
+
+    <div class="icon-bullet__content">
+        <h2 class="icon-bullet__heading">{{ value.heading }}</h2>
+
+        {% if value.description %}
+            <div class="icon-bullet__description rich-text">{{ value.description|richtext }}</div>
+        {% endif %}
+
+        {% if value.cta_url or value.cta_page %}
+            {% include "patterns/components/buttons/button.html" with arrow=True url=url title=value.cta_text classes="icon-bullet__button" %}
+        {% endif %}
+    </div>
+</li>
