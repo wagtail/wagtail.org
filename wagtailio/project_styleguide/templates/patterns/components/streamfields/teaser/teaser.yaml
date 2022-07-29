@@ -1,0 +1,20 @@
+context:
+  value:
+    link: '#'
+    meta_icon: rocket
+    meta_text: Adventures on Wagtail
+    publication_date: !!timestamp '2022-07-29'
+    heading: Sending robots into space with Wagtail Localise
+    intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+    author: Meagen Voss
+    author_meta: Wagtail community manager
+    author_image: True
+
+tags:
+  image:
+    value.listing_image fill-495x495 class="teaser__image":
+      raw: |
+        <img src="http://via.placeholder.com/495x495" width="495" height="495" alt="Some alt" class="teaser__image">
+    value.author_image fill-90x90 class="author__image":
+      raw: |
+        <img src="http://via.placeholder.com/90x90" width="90" height="90" alt="Some alt" class="author__image">

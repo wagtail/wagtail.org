@@ -1,0 +1,17 @@
+{% load wagtailimages_tags %}
+
+<a href="{{ value.link }}" class="teaser grid">
+    {% image value.listing_image fill-495x495 class="teaser__image" %}
+
+    <div class="teaser__content">
+        {% include "patterns/components/meta/meta.html" with classes="teaser__meta" %}
+
+        <h2 class="teaser__heading">{{ value.heading }}</h2>
+
+        {% if value.intro %}
+            <p class="teaser__intro">{{ value.intro }}</p>
+        {% endif %}
+
+        {% include "patterns/components/author/author.html" with classes="author--teaser" %}
+    </div>
+</a>
