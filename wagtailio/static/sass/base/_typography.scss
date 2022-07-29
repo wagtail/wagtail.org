@@ -107,6 +107,15 @@ h4,
     }
 }
 
+.mini-meta {
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+
+    &--bold {
+        font-weight: $weight--bold;
+    }
+}
+
 small {
     font-size: 1rem;
     line-height: 1.5rem;

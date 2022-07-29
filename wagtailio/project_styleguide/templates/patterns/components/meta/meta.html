@@ -1,0 +1,13 @@
+<div class="meta{% if classes %} {{ classes }}{% endif %}">
+    {% if value.meta_icon %}
+        <svg class="meta__icon" aria-hidden="true">
+            <use xlink:href="#{{ value.meta_icon }}" />
+        </svg>
+    {% endif %}
+
+    <p class="mini-meta mini-meta--bold">{{ value.meta_text }}</p>
+
+    {% if value.publication_date %}
+        <p class="mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>
+    {% endif %}
+</div>
