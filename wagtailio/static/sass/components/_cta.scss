@@ -21,12 +21,12 @@
         margin: 0 15px 0 auto;
         flex-shrink: 0
     }
-    
+
     &:hover {
         background-color: $color--indigo;
 
         #{$root}__title,
-         #{$root}__description {
+        #{$root}__description {
             color: $color--white;
         }
 
