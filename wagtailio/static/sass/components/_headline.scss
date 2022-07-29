@@ -78,12 +78,12 @@
         width: 230px;
         height: 300px;
         top: 0;
-        right: -40px; // stylelint-disable-line property-disallowed-list
+        right: -40px;
 
         @include media-query(large) {
             width: 420px;
             height: 545px;
-            right: 10%; // stylelint-disable-line property-disallowed-list
+            right: 10%;
         }
     }
 
