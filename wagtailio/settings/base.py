@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     "wagtailaltgenerator",
     "wagtailmedia",
     "pattern_library",
+    "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
 )
 
 MIDDLEWARE = [
