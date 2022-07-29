@@ -1,0 +1,58 @@
+.quotes {
+    &__header {
+        color: $color--off-black;
+        padding-bottom: 60px;
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        padding: 30px 0 0 0;
+        color: $color--off-black
+    }
+
+    &__author-image{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+    }
+
+    &__grid {
+        display: grid;
+        grid-gap: 40px;
+
+        @include media-query(medium) {
+            grid-template-columns: repeat(2, 40%);
+            grid-gap: 60px;
+            max-width: 80%;
+
+        }
+
+        @include media-query(large) {
+            grid-template-columns: repeat(2, 40%);
+            grid-gap: 80px 100px;
+            max-width: 80%;
+        }
+    }
+
+    &__icon {
+        fill: $color--teal-200;
+        position: absolute;
+        inset: -30px -55px auto auto;
+        width: 273px;
+        height: 184px;
+
+        @include media-query(medium) {
+            inset: -10% 10% auto auto;
+            width: 360px;
+            height: 450px;
+        }
+
+        @include media-query(large) {
+            inset: -15% 15% auto auto;
+            height: 546px;
+            width: 368px;
+        }
+    }
+}

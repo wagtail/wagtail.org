@@ -1,0 +1,21 @@
+{% load wagtailcore_tags %}
+
+<div class="quotes">
+    <div class="quotes__header">
+        <p class="quotes__title heading-one">{{ value.title }}</p>
+        <div>
+            <svg aria-hidden="true" class="quotes__icon"><use xlink:href="#quotes"></use></svg>
+        </div>
+    </div>
+    <div class="quotes__grid">
+        {% for item in value.items.all %}
+        <div>
+            <p class="heading-four">{{ item.quote }}</p>
+            <span class="quotes__author">
+                {% if item.image %}<img class="quotes__author-image" src="{{ item.image.url }}">{% endif %}
+                <p class="mini-meta">{{ item.author|richtext }}</p>
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</div>

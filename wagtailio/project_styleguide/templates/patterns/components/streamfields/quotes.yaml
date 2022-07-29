@@ -1,0 +1,19 @@
+context: 
+    value:
+        title: "People love Wagtail"
+        items:
+            all:
+            - author: "Wagtail - @Wagtail"
+              quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+              image:
+                url: "https://via.placeholder.com/50"
+            - author: "Wagtail - @Wagtail"
+              quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+            - author: "Wagtail - @Wagtail"
+              quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+              image:
+                url: "https://via.placeholder.com/50"
+            - author: "Wagtail - @Wagtail"
+              quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+              image:
+                url: "https://via.placeholder.com/50"
