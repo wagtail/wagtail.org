@@ -39,7 +39,6 @@
     }
 
     &__icon {
-        // stylelint-disable property-disallowed-list
         fill: $color--teal-200;
         position: absolute;
         top: -30px;
@@ -59,6 +58,5 @@
             width: 450px;
             height: 450px;
         }
-        // stylelint-enable property-disallowed-list
     }
 }

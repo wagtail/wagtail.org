@@ -53,5 +53,7 @@ module.exports = {
         ],
       },
     ],
+    // Allow use of 'right', 'left' and 'text-transform'
+    'property-disallowed-list': null,
   },
 };
