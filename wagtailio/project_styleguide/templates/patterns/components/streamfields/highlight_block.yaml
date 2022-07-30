@@ -1,0 +1,17 @@
+context:
+  value:
+    heading: Heading Text
+    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Omnis incidunt vero voluptas aut impedit in, quasi quia voluptatem dolores dolores quibusdam aperiam exercitationem.
+    image: fake
+    image_on_right: False
+    meta_icon: explanation
+    meta_text: Consequatur aliquid ut
+    cta:
+      text: Check this out
+      url: '#'
+
+tags:
+  image:
+    value.image fill-400x400:
+      raw: |
+        <img src="https://via.placeholder.com/400x400" alt="Some alt">
