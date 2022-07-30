@@ -1,0 +1,31 @@
+context:
+  value:
+    cards:
+      - heading: Card 1
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: briefcase
+        meta_text: Placeholder text 1
+        cta:
+          text: Check it out
+          url: '#'
+      - heading: Card 2
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: blog
+        meta_text: Placeholder text 2
+        cta:
+          text: Learn more
+          url: '#'
+      - heading: Card 3
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: moon
+        meta_text: Placeholder text 3
+        cta:
+          text: Subscribe
+          url: '#'
+      - heading: Card 4
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: eye
+        meta_text: Placeholder text 4
+        cta:
+          text: Sign up now
+          url: '#'
