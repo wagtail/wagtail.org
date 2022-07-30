@@ -198,33 +198,41 @@ class CTABlock(blocks.StructBlock):
         struct_value = super().clean(value)
 
         if not value.get("cta_page") and not value.get("cta_url"):
-            e = ErrorList(
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify CTA page or CTA URL."
                     )
                 ]
             )
-            errors["cta_url"] = errors["cta_page"] = e
+            errors["cta_url"] = errors["cta_page"] = error
 
         if value.get("cta_page") and value.get("cta_url"):
-            e = ErrorList(
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify CTA page or CTA URL. You can't use both."
                     )
                 ]
             )
-            errors["cta_url"] = errors["cta_page"] = e
+            errors["cta_url"] = errors["cta_page"] = error
 
         if errors:
             raise StructBlockValidationError(errors)
 
         return struct_value
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        if value["cta_url"]:
+            context["value"]["url"] = value["cta_url"]
+        if value["cta_page"]:
+            context["value"]["url"] = value["cta_page"].get_url
+        return context
+
     class Meta:
         icon = "tick-inverse"
-        template = "patterns/components/streamfield/cta_block.html"
+        template = "patterns/components/streamfields/cta_block.html"
         label = "CTA"
 
 
@@ -239,7 +247,7 @@ class CardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "placeholder"
-        template = "patterns/components/streamfield/card_block.html"
+        template = "patterns/components/streamfields/card_block.html"
         label = "Card"
 
 
@@ -255,26 +263,36 @@ class LogoCardBlock(blocks.StructBlock):
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
     def clean(self, value):
-        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
+        errors = {}
+        struct_value = super().clean(value)
 
         if value.get("cta_page") and value.get("cta_url"):
-            raise ValidationError(
-                "Validation error while saving block",
-                params={
-                    "cta_url": ValidationError(
+            error = ErrorList(
+                [
+                    ValidationError(
                         "You must specify CTA page or CTA URL. You can't use both."
-                    ),
-                    "cta_page": ValidationError(
-                        "You must specify CTA page or CTA URL. You can't use both."
-                    ),
-                },
+                    )
+                ]
             )
+            errors["cta_url"] = errors["cta_page"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
 
         return struct_value
 
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        if value["cta_url"]:
+            context["value"]["link_url"] = value["cta_url"]
+        if value["cta_page"]:
+            context["value"]["link_url"] = value["cta_page"].get_url
+        return context
+
     class Meta:
         icon = "placeholder"
-        template = "patterns/components/streamfield/logo_card_block.html"
+        template = "patterns/components/streamfields/logo_card_block.html"
         label = "Logo card"
 
 
@@ -282,7 +300,7 @@ class CardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(CardBlock())
 
     class Meta:
-        template = "patterns/components/streamfield/cards_list_block.html"
+        template = "patterns/components/streamfields/cards_list_block.html"
         label = "Cards"
 
 
@@ -291,40 +309,25 @@ class LogoCardsBlock(blocks.StructBlock):
 
 
     class Meta:
-        template = "patterns/components/streamfield/logo_cards_list_block.html"
+        template = "patterns/components/streamfields/logo_cards_list_block.html"
         label = "Logo cards"
 
 
+class TableContentBlock(blocks.StreamBlock):
+    rich_text = blocks.RichTextBlock(required=False, features=["bold", "italic", "link"])
+    image = ImageChooserBlock(required=False)
+
+
 class ComparisonTableBlock(blocks.StructBlock):
-    comparison_table = TypedTableBlock([
-        ('rich_text', blocks.RichTextBlock(features=["bold", "italic", "link"])),
-        ('image', ImageChooserBlock()),
-    ])
-
-    def get_context(self, value, parent_context=None):
-        ctx = super().get_context(value, parent_context)
-
-        rows = []
-        columns = next(ctx["value"]["table"].rows, [])
-        num_rows = 0
-
-        for column_data in columns:
-            # column_data.value contains the cells of a single column
-            block_name = column_data.block.name
-            curr_row = 0
-            for row_data in column_data.value:
-                if num_rows <= curr_row:
-                    rows.append([])
-                    num_rows += 1
-                rows[curr_row].append({"block_name": block_name, "value": row_data})
-                curr_row += 1
-
-        ctx["value"]["rows"] = rows
-        return ctx
+    comparison_table = TypedTableBlock(
+        [
+            ("content", TableContentBlock(max_num=1)),
+        ]
+    )
 
     class Meta:
         icon = "table"
-        template = "patterns/components/streamfield/comparison_table_block.html"
+        template = "patterns/components/streamfields/comparison_table_block.html"
 
 
 class HeadlineBlock(blocks.StructBlock):
@@ -338,7 +341,7 @@ class HeadlineBlock(blocks.StructBlock):
     class Meta:
         icon = "title"
         label = "Headline"
-        template = "patterns/components/streamfield/headline_block.html"
+        template = "patterns/components/streamfields/headline_block.html"
 
 
 class HighlightBlock(blocks.StructBlock):
@@ -350,10 +353,35 @@ class HighlightBlock(blocks.StructBlock):
     meta_icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
     cta = CTABlock(required=False)
 
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        # meta_icon goes together with meta_text
+        sum_meta_values = (
+            bool(value.get("meta_text"))
+            + bool(value.get("meta_icon"))
+        )
+
+        if sum_meta_values == 1:
+            error = ErrorList(
+                [
+                    ValidationError(
+                        "meta icon goes hand-in-hand with meta text, you cannot specify one without the other"
+                    )
+                ]
+            )
+            errors["meta_text"] = errors["meta_icon"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
+
     class Meta:
         icon = "placeholder"
         label = "Highlight"
-        template = "patterns/components/streamfield/highlight_block.html"
+        template = "patterns/components/streamfields/highlight_block.html"
 
 
 class IconBulletBlock(blocks.StructBlock):
@@ -368,14 +396,14 @@ class IconBulletBlock(blocks.StructBlock):
     class Meta:
         icon = "tick-inverse"
         label = "Icon bullet"
-        template = "patterns/components/streamfield/icon_bullet_block.html"
+        template = "patterns/components/streamfields/icon_bullet_block.html"
 
 
 class IconBulletsBlock(blocks.StructBlock):
-    icon_bullet = blocks.ListBlock(IconBulletBlock())
+    icon_bullets = blocks.ListBlock(IconBulletBlock())
 
     class Meta:
-        template = "patterns/components/streamfield/icon_bullets_list_block.html"
+        template = "patterns/components/streamfields/icon_bullets_list_block.html"
         label = "Icon bullets"
 
 
@@ -383,27 +411,14 @@ class StandaloneQuoteBlock(blocks.StructBlock):
     quote = blocks.TextBlock(required=True)
     author = blocks.RichTextBlock(
         required=True,
-        features=[
-            "bold",
-            "italic",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "ol",
-            "ul",
-            "link",
-            "image",
-            "document",
-            "embed",
-        ],
+        features=["link"],
     )
     author_image = ImageChooserBlock(required=False)
 
     class Meta:
         icon = "openquote"
         label = "Standalone quote"
-        template = "patterns/components/streamfield/standalone_quote_block.html"
+        template = "patterns/components/streamfields/standalone_quote_block.html"
 
 
 class MultipleQuoteBlock(blocks.StructBlock):
@@ -413,7 +428,7 @@ class MultipleQuoteBlock(blocks.StructBlock):
     class Meta:
         icon = "openquote"
         label = "Multiple quotes"
-        template = "patterns/components/streamfield/multiple_quotes_block.html"
+        template = "patterns/components/streamfields/multiple_quotes_block.html"
 
 
 class RichTextBlock(blocks.StructBlock):
@@ -425,7 +440,7 @@ class RichTextBlock(blocks.StructBlock):
     class Meta:
         icon = "bold"
         label = "Rich text"
-        template = "patterns/components/streamfield/rich_text_block.html"
+        template = "patterns/components/streamfields/rich_text_block.html"
 
 class StandaloneCTABlock(blocks.StructBlock):
     short_description = blocks.TextBlock(required=False, max_length=100)
@@ -434,11 +449,11 @@ class StandaloneCTABlock(blocks.StructBlock):
     class Meta:
         icon = "arrow-right"
         label = "Standalone CTA"
-        template = "patterns/components/streamfield/standalone_cta_block.html"
+        template = "patterns/components/streamfields/standalone_cta_block.html"
 
 
 class TeaserBlock(blocks.StructBlock):
-    blog_post_chooser = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
+    page = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
     url_chooser = blocks.URLBlock(required=False)
     image_for_external_link = ImageChooserBlock(required=False)
     heading_for_external_link = blocks.TextBlock(required=False)
@@ -457,35 +472,35 @@ class TeaserBlock(blocks.StructBlock):
             + bool(value.get("subheading_for_ext_link"))
         )
 
-        if not value.get("blog_post_chooser") and not value.get("url_chooser"):
-            e = ErrorList(
+        if not value.get("page") and not value.get("url_chooser"):
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify a blog post or a URL."
                     )
                 ]
             )
-            errors["blog_post_chooser"] = errors["url_chooser"] = e
+            errors["page"] = errors["url_chooser"] = error
 
-        if value.get("blog_post_chooser") and value.get("url_chooser"):
-            e = ErrorList(
+        if value.get("page") and value.get("url_chooser"):
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify a blog post or a URL. You can't use both."
                     )
                 ]
             )
-            errors["blog_post_chooser"] = errors["url_chooser"] = e
+            errors["page"] = errors["url_chooser"] = error
 
         if value.get("url_chooser") and sum_external_link_values < 3:
-            e = ErrorList(
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify an image, heading and subheading for the external URL."
                     )
                 ]
             )
-            errors["image_for_external_link"] = errors["heading_for_external_link"] = errors["subheading_for_ext_link"] = e
+            errors["image_for_external_link"] = errors["heading_for_external_link"] = errors["subheading_for_ext_link"] = error
 
         if errors:
             raise StructBlockValidationError(errors)
@@ -495,7 +510,7 @@ class TeaserBlock(blocks.StructBlock):
     class Meta:
         icon = "placeholder"
         label = "Teaser"
-        template = "patterns/components/streamfield/teaser_block.html"
+        template = "patterns/components/streamfields/teaser_block.html"
 
 
 class TextAndMediaBlock(blocks.StructBlock):
@@ -511,24 +526,24 @@ class TextAndMediaBlock(blocks.StructBlock):
         struct_value = super().clean(value)
 
         if not value.get("image") and not value.get("embed"):
-            e = ErrorList(
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify Image or Embed."
                     )
                 ]
             )
-            errors["image"] = errors["embed"] = e
+            errors["image"] = errors["embed"] = error
 
         if value.get("embed") and value.get("image"):
-            e = ErrorList(
+            error = ErrorList(
                 [
                     ValidationError(
                         "You must specify Image or Embed. You can't use both."
                     )
                 ]
             )
-            errors["image"] = errors["embed"] = e
+            errors["image"] = errors["embed"] = error
 
         if errors:
             raise StructBlockValidationError(errors)
@@ -538,4 +553,4 @@ class TextAndMediaBlock(blocks.StructBlock):
     class Meta:
         icon = "media"
         label = "Text and Media"
-        template = "patterns/components/streamfield/text_and_media_block.html"
+        template = "patterns/components/streamfields/text_and_media_block.html"
