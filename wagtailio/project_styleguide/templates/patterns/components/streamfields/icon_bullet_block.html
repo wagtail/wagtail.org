@@ -1,0 +1,35 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% comment "temporary styles for testing." %}
+Remove once the styling for these css classes is defined globally
+{% endcomment %}
+<style>
+    .eggshell {
+        fill: #B3E7E8;
+    }
+
+    .off-black {
+        fill: #262626;
+    }
+
+    .teal {
+        fill: #00b0b1;
+    }
+
+    .teal-light {
+        fill: #80d7d8;
+    }
+</style>
+<div>
+    <div>
+        <svg><use xlink:href="#{{ value.icon }}"></use></svg>
+    </div>
+    <h4>{{ value.heading }}</h4>
+    {% if value.description %}
+        <div>
+            {{ value.description }}
+        </div>
+    {% endif %}
+    {% if value.cta %}
+        {% include "patterns/components/streamfields/cta_block.html" with value=value.cta %}
+    {% endif %}
+</div>

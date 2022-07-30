@@ -1,0 +1,8 @@
+context:
+  value:
+    icon: slack
+    heading: Heading Text
+    description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+    cta:
+      text: Check this out
+      url: '#'
