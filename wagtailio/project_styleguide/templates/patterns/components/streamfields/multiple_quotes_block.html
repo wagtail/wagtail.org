@@ -1,0 +1,6 @@
+<h4>{{ value.heading }}</h4>
+{% for quote in value.quotes %}
+    <div>
+        {% include "patterns/components/streamfields/standalone_quote_block.html" with value=quote %}
+    </div>
+{% endfor %}

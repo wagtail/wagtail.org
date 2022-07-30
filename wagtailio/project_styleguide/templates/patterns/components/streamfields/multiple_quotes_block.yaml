@@ -1,0 +1,22 @@
+context:
+  value:
+    heading: People love Wagtail
+    quotes:
+      - quote: If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField
+        author: <p><a href="https://twitter.com/pelliportraits">JB - @pelliportraits</a></p>
+        author_image: fake
+      - quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        author: <p>Anonymous</p>
+        author_image: fake
+      - quote: Excepteur sint occaecat cupidatat non proident
+        author: <p><a href="https://en.wikipedia.org/wiki/Jane_Doe_(disambiguation)">Jane Doe</a></p>
+        author_image: fake
+      - quote: Duis aute irure dolor in reprehenderit in voluptate velit esse
+        author: <p><a href="https://en.wikipedia.org/wiki/John_Doe">John Doe</a></p>
+        author_image: fake
+
+tags:
+  image:
+    value.author_image fill-100x100:
+      raw: |
+        <img src="https://via.placeholder.com/100x100" alt="Some alt">
