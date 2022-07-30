@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+
+{% if value.short_description %}
+    <p>{{ value.short_description }}</p>
+{% endif %}
+{% include "patterns/components/streamfields/cta_block.html" with value=value.cta %}
