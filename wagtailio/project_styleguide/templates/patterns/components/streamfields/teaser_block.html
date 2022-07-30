@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div>
+    {% if value.page %}
+        <div>
+            {# TODO: add page content #}
+        </div>
+    {% endif %}
+    {% if value.url_chooser %}
+        <div>
+            {% image value.image_for_external_link fill-450x300 %}
+            <h4><a class="" href="{{ value.url_chooser }}">{{ value.heading_for_external_link }}</a></h4>
+            <p> {{ value.subheading_for_ext_link }}</p>
+        </div>
+    {% endif %}
+</div>
