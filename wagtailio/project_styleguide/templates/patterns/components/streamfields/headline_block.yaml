@@ -1,0 +1,10 @@
+context:
+  value:
+    heading: Find a professional
+    sub_heading: Looking for a Wagtail professional to work with you?
+    intro: Explore the services offered by Torchbox, Wagtail's creator, and many other agencies and freelance pros.
+    icon: person-in-tie
+    dark_background: False
+    cta:
+      text: Find a professional
+      url: '#'
