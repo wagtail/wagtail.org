@@ -1,0 +1,14 @@
+context:
+  value:
+    heading: Heading Text
+    description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+    meta_icon: slack
+    meta_text: Placeholder text
+    logo: fake
+    link_url: '#'
+
+tags:
+  image:
+    value.logo fill-180x50:
+      raw: |
+        <img src="https://via.placeholder.com/180x50" alt="Some alt">
