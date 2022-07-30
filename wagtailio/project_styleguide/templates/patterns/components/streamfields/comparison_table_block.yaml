@@ -1,0 +1,39 @@
+context:
+  value:
+    comparison_table:
+      columns:
+        - heading: ''
+          type: content
+        - heading: Wagtail
+          type: content
+        - heading: Ghost
+          type: content
+        - heading: Wordpress
+          type: content
+      rows:
+        - - block
+          - block
+          - block
+          - block
+        - - block
+          - block
+          - block
+          - block
+        - - block
+          - block
+          - block
+          - block
+        - - block
+          - block
+          - block
+          - block
+
+tags:
+  # include_block:
+    # block:
+      # raw: |
+        # <p>Lorem Ipsum <strong>nostrum hic nisi quis</strong> explicabo <em>praesentium</em> ex facilis beatae quas.</p>
+  include_block:
+    block:
+      raw: |
+        <img src="https://via.placeholder.com/180x50" alt="Some alt">
