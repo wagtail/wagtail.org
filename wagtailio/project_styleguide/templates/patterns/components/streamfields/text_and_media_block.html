@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="classname{% if value.image_on_right %}--right{% endif %}">
+    {% if value.image %}
+        {% image value.image fill-450x300 %}
+    {% else %}
+        {{ value.embed }}
+    {% endif %}
+    <h4>{{ value.heading }}</h4>
+    <p>{{ value.description }}</p>
+    {% if value.cta %}
+        {% include "patterns/components/streamfields/cta_block.html" with value=value.cta %}
+    {% endif %}
+</div>
