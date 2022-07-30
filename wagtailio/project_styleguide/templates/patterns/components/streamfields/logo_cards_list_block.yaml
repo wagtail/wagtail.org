@@ -1,0 +1,33 @@
+context:
+  value:
+    cards:
+      - heading: Card 1
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: rollback
+        meta_text: Placeholder text 1
+        logo: fake
+        link_url: 'https://docs.djangoproject.com/'
+      - heading: Card 2
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: speech-bubble
+        meta_text: Placeholder text 2
+        logo: fake
+        link_url: 'https://www.python.org/'
+      - heading: Card 3
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: table-tennis
+        meta_text: Placeholder text 3
+        logo: fake
+        link_url: 'https://reactjs.org/'
+      - heading: Card 4
+        description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+        meta_icon: release-cycle
+        meta_text: Placeholder text 4
+        logo: fake
+        link_url: 'https://vuejs.org/'
+
+tags:
+  image:
+    value.logo fill-180x50:
+      raw: |
+        <img src="https://via.placeholder.com/180x50" alt="Some alt">
