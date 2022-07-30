@@ -1,0 +1,11 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div>
+    <div>{{ value.quote }}</div>
+    <div>
+        {% if value.author_image %}
+            {% image value.author_image fill-100x100 %}
+        {% endif %}
+        <span>{{ value.author }}</span>
+    </div>
+</div>

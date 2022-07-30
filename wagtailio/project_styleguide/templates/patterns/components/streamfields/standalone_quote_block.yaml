@@ -1,0 +1,11 @@
+context:
+  value:
+    quote: premature optimization is the root of all evil (or at least most of it) in programming
+    author: <p><a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a></p>
+    author_image: fake
+
+tags:
+  image:
+    value.author_image fill-100x100:
+      raw: |
+        <img src="https://via.placeholder.com/100x100" alt="Some alt">
