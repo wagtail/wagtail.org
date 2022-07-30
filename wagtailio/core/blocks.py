@@ -12,7 +12,7 @@ import six
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.utils.blocks import CodeBlock
-from wagtailio.utils.choices import SVGIcon
+from wagtailio.core.choices import SVGIcon
 
 
 class PageOrExternalLinkBlock(blocks.StructBlock):
