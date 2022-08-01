@@ -10,12 +10,12 @@
         <h2>Import</h2>
         <p>Import all Wagtail Grids and Wagtail Packages from djangopackages.org.</p>
         <p>
-          Note: This import is a long running process. The request will timeout (on Heroku).<br>
-          Heroku will finish the the import. Be patient and inspect the Packages page for the update.
+            Note: This import is a long running process. The request will timeout (on Heroku).<br>
+            Heroku will finish the the import. Be patient and inspect the Packages page for the update.
         </p>
         <form method="post">
-          {% csrf_token %}
-          <button type="submit" class="button button-longrunning">Import</button>
+            {% csrf_token %}
+            <button type="submit" class="button button-longrunning">Import</button>
         </form>
     </div>
 

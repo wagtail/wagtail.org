@@ -10,16 +10,16 @@
 
         <ul class="blog-listing">
             {% for post in posts %}
-            <li class="blog-listing__item">
-                <div class="date"><span>{{ post.date|date }}</span></div>
-                <h2 class="blog-listing__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                <li class="blog-listing__item">
+                    <div class="date"><span>{{ post.date|date }}</span></div>
+                    <h2 class="blog-listing__title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
 
-                <p>{{ post.introduction }}</p>
+                    <p>{{ post.introduction }}</p>
 
-                {% if post.author %}
-                    {% include "blog/includes/post_author.html" with author=post.author only %}
-                {% endif %}
-            </li>
+                    {% if post.author %}
+                        {% include "blog/includes/post_author.html" with author=post.author only %}
+                    {% endif %}
+                </li>
             {% endfor %}
         </ul>
 
