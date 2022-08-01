@@ -252,7 +252,7 @@ def aws(command, aws_access_key_id, aws_secret_access_key, **kwargs):
             secret_key=aws_secret_access_key,
             command=command,
         ),
-        **kwargs
+        **kwargs,
     )
 
 
