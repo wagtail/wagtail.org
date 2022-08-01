@@ -1,24 +1,27 @@
 context:
   value:
-    items:
-      all:
-        - icon: arrows
-          heading: Flexibility for developers
-          description: Anything you can do in Python or Django, you can do in Wagtail.
-          cta_url: '#'
-          cta_text: Find out more
-        - icon: sun-cloud-dark
-          heading: Frontend freedom for designers
-          description: The simple templating system gives you precise control over style.
-          cta_url: '#'
-          cta_text: Find out more
-        - icon: padlock-dark
-          heading: No lock-in for business leaders
-          description: Wagtail has no licensing fees and professionals around the world to work with you.
-          cta_url: '#'
-          cta_text: Find out more
-        - icon: pen-checkbox
-          heading: Creative control for editors
-          description: Editors can structure and publish content the way they want to without a developer.
-          cta_url: '#'
-          cta_text: Find out more
+    icon_bullets:
+      - icon: arrows
+        heading: Flexibility for developers
+        description: Anything you can do in Python or Django, you can do in Wagtail.
+        cta:
+          url: '#'
+          text: Find out more
+      - icon: sun-cloud-dark
+        heading: Frontend freedom for designers
+        description: The simple templating system gives you precise control over style.
+        cta:
+          url: '#'
+          text: Find out more
+      - icon: padlock-dark
+        heading: No lock-in for business leaders
+        description: Wagtail has no licensing fees and professionals around the world to work with you.
+        cta:
+          url: '#'
+          text: Find out more
+      - icon: pen-checkbox
+        heading: Creative control for editors
+        description: Editors can structure and publish content the way they want to without a developer.
+        cta:
+          url: '#'
+          text: Find out more
