@@ -1,6 +1,4 @@
-from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext as _
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -10,9 +8,8 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
     PageChooserPanel,
 )
-from wagtail.core.models import Orderable, Page
+from wagtail.core.models import Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 

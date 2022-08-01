@@ -1,5 +1,3 @@
-import urllib
-
 from django.conf import settings
 
 

@@ -53,5 +53,5 @@ def deploy(sender, **kwargs):
     except (KeyboardInterrupt, SystemExit):
         raise
 
-    except Exception:
+    except Exception:  # noqa: B902
         logger.exception("The request to trigger a new build on Vercel has failed.")

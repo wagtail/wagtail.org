@@ -1,6 +1,3 @@
-from django.forms import utils
-from django.utils import html
-
 from wagtail.core import blocks
 from wagtail.images import blocks as image_blocks
 

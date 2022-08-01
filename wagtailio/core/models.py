@@ -1,9 +1,6 @@
-from django.db import models
-
-from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Page
+from wagtail.core.models import Page
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.core.blocks import HomePageBlock

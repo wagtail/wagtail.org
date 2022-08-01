@@ -2,7 +2,6 @@ from datetime import datetime, time
 
 from django.contrib.syndication.views import Feed
 from django.http import Http404
-from django.urls import reverse
 
 from wagtailio.newsletter.models import NewsletterIndexPage, NewsletterPage
 
