@@ -228,7 +228,7 @@ class CTABlock(blocks.StructBlock):
 
     class Meta:
         icon = "tick-inverse"
-        template = "patterns/components/streamfields/cta_block.html"
+        template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
 
 
@@ -241,7 +241,7 @@ class CardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "placeholder"
-        template = "patterns/components/streamfields/card_block.html"
+        template = "patterns/components/streamfields/cards/card_block.html"
         label = "Card"
 
 
@@ -283,7 +283,7 @@ class LogoCardBlock(blocks.StructBlock):
 
     class Meta:
         icon = "placeholder"
-        template = "patterns/components/streamfields/logo_card_block.html"
+        template = "patterns/components/streamfields/cards/logo_card_block.html"
         label = "Logo card"
 
 
@@ -291,7 +291,7 @@ class CardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(CardBlock())
 
     class Meta:
-        template = "patterns/components/streamfields/cards_list_block.html"
+        template = "patterns/components/streamfields/cards/cards_list_block.html"
         label = "Cards"
 
 
@@ -299,7 +299,7 @@ class LogoCardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(LogoCardBlock())
 
     class Meta:
-        template = "patterns/components/streamfields/logo_cards_list_block.html"
+        template = "patterns/components/streamfields/cards/logo_cards_list_block.html"
         label = "Logo cards"
 
 
@@ -319,7 +319,7 @@ class ComparisonTableBlock(blocks.StructBlock):
 
     class Meta:
         icon = "table"
-        template = "patterns/components/streamfields/comparison_table_block.html"
+        template = "patterns/components/streamfields/comparison_table_block/comparison_table_block.html"
 
 
 class HeadlineBlock(blocks.StructBlock):
@@ -433,7 +433,9 @@ class RichTextBlock(blocks.StructBlock):
     class Meta:
         icon = "bold"
         label = "Rich text"
-        template = "patterns/components/streamfields/rich_text_block.html"
+        template = (
+            "patterns/components/streamfields/rich_text_block/rich_text_block.html"
+        )
 
 
 class StandaloneCTABlock(blocks.StructBlock):
@@ -502,7 +504,7 @@ class TeaserBlock(blocks.StructBlock):
     class Meta:
         icon = "placeholder"
         label = "Teaser"
-        template = "patterns/components/streamfields/teaser_block.html"
+        template = "patterns/components/streamfields/teaser_block/teaser_block.html"
 
 
 class TextAndMediaBlock(blocks.StructBlock):
@@ -539,4 +541,4 @@ class TextAndMediaBlock(blocks.StructBlock):
     class Meta:
         icon = "media"
         label = "Text and Media"
-        template = "patterns/components/streamfields/text_and_media_block.html"
+        template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
