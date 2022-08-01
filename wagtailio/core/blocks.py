@@ -385,14 +385,16 @@ class IconBulletBlock(blocks.StructBlock):
     class Meta:
         icon = "tick-inverse"
         label = "Icon bullet"
-        template = "patterns/components/streamfields/icon_bullet_block.html"
+        template = (
+            "patterns/components/streamfields/icon_bullet_block/icon_bullet_block.html"
+        )
 
 
 class IconBulletsBlock(blocks.StructBlock):
     icon_bullets = blocks.ListBlock(IconBulletBlock())
 
     class Meta:
-        template = "patterns/components/streamfields/icon_bullets_list_block.html"
+        template = "patterns/components/streamfields/icon_bullets_list_block/icon_bullets_list_block.html"
         label = "Icon bullets"
 
 
