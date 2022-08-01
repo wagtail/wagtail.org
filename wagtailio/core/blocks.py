@@ -409,7 +409,7 @@ class StandaloneQuoteBlock(blocks.StructBlock):
     class Meta:
         icon = "openquote"
         label = "Standalone quote"
-        template = "patterns/components/streamfields/standalone_quote_block.html"
+        template = "patterns/components/streamfields/quotes/standalone_quote_block.html"
 
 
 class MultipleQuoteBlock(blocks.StructBlock):
@@ -419,7 +419,7 @@ class MultipleQuoteBlock(blocks.StructBlock):
     class Meta:
         icon = "openquote"
         label = "Multiple quotes"
-        template = "patterns/components/streamfields/multiple_quotes_block.html"
+        template = "patterns/components/streamfields/quotes/quotes.html"
 
 
 class RichTextBlock(blocks.StructBlock):
