@@ -10,3 +10,14 @@ context:
     title: Want to do something swell?
     description: Click here to get started
     url: #
+    meta_icon: explanation
+    meta_text: Streamfield
+    cta:
+      text: Check this out
+      url: '#'
+
+tags:
+  image:
+    value.image fill-650x500 class="highlight__image":
+      raw: |
+        <img src="https://via.placeholder.com/650x500" alt="Some alt" class="highlight__image">
