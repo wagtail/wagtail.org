@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('features', '0008_auto_20180604_1605'),
+        ("features", "0008_auto_20180604_1605"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='featuredescription',
-            name='airtable_record_id',
+            model_name="featuredescription",
+            name="airtable_record_id",
             field=models.CharField(blank=True, db_index=True, max_length=35),
         ),
     ]

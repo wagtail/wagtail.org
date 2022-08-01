@@ -9,13 +9,15 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0004_auto_20160727_1108'),
+        ("images", "0004_auto_20160727_1108"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='wagtailiorendition',
-            name='filter_spec',
-            field=models.CharField(blank=True, db_index=True, default='', max_length=255),
+            model_name="wagtailiorendition",
+            name="filter_spec",
+            field=models.CharField(
+                blank=True, db_index=True, default="", max_length=255
+            ),
         ),
     ]

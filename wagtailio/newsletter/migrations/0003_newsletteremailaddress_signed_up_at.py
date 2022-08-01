@@ -6,20 +6,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletter', '0002_auto_20160728_1115'),
+        ("newsletter", "0002_auto_20160728_1115"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='newsletteremailaddress',
-            name='signed_up_at',
+            model_name="newsletteremailaddress",
+            name="signed_up_at",
             field=models.DateTimeField(null=True),
         ),
-
         # Add this in separate operation to prevent Django from backfilling existing records
         migrations.AlterField(
-            model_name='newsletteremailaddress',
-            name='signed_up_at',
+            model_name="newsletteremailaddress",
+            name="signed_up_at",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
     ]

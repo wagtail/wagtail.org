@@ -10,33 +10,66 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('features', '0003_featureindexpage_body'),
+        ("features", "0003_featureindexpage_body"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FeatureDescription',
+            name="FeatureDescription",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('introduction', models.CharField(blank=True, max_length=255)),
-                ('documentation_link', models.URLField(blank=True, max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("introduction", models.CharField(blank=True, max_length=255)),
+                ("documentation_link", models.URLField(blank=True, max_length=255)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='FeatureDescriptionFeatureAspect',
+            name="FeatureDescriptionFeatureAspect",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('feature_aspect', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='features.FeatureAspect')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='feature_aspects', to='features.FeatureDescription')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                (
+                    "feature_aspect",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="features.FeatureAspect",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="feature_aspects",
+                        to="features.FeatureDescription",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
     ]

@@ -125,13 +125,15 @@ class CodeBlock(StructBlock):
 
 
 class MarkDownBlock(TextBlock):
-    """ MarkDown Block """
+    """MarkDown Block"""
 
     class Meta:
         icon = "code"
 
     def render_basic(self, value, context=None):
-        md = markdown(value, extensions=["markdown.extensions.fenced_code", "codehilite"])
+        md = markdown(
+            value, extensions=["markdown.extensions.fenced_code", "codehilite"]
+        )
         return mark_safe(md)
 
 

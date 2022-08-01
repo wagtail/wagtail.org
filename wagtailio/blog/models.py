@@ -80,7 +80,9 @@ class Author(models.Model):
     ]
 
 
-class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
+class BlogPage(
+    AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin
+):
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
@@ -141,5 +143,5 @@ class BlogPage(AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossP
             "Title": self.title,
             "Live": self.live,
             "Slug": self.slug,
-            "Author": getattr(self.author, 'name', '')
+            "Author": getattr(self.author, "name", ""),
         }

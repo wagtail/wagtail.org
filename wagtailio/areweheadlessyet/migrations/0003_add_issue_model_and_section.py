@@ -9,20 +9,115 @@ import wagtail.snippets.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('areweheadlessyet', '0002_add_topic_page_model'),
+        ("areweheadlessyet", "0002_add_topic_page_model"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='WagtailHeadlessIssue',
+            name="WagtailHeadlessIssue",
             fields=[
-                ('number', models.PositiveIntegerField(primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=255)),
+                (
+                    "number",
+                    models.PositiveIntegerField(primary_key=True, serialize=False),
+                ),
+                ("title", models.CharField(max_length=255)),
             ],
         ),
         migrations.AlterField(
-            model_name='areweheadlessyethomepage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('content', wagtail.core.blocks.StreamBlock([('text', wagtail.core.blocks.RichTextBlock()), ('link_group', wagtail.core.blocks.StreamBlock([('link', wagtail.core.blocks.StructBlock([('link', wagtail.core.blocks.URLBlock(required=True)), ('link_text', wagtail.core.blocks.CharBlock(required=True))]))]))]))])), ('news', wagtail.core.blocks.StreamBlock([('blog_post', wagtail.core.blocks.PageChooserBlock(page_type=['blog.BlogPage']))])), ('topics', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock())])), ('issues', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('summary', wagtail.core.blocks.CharBlock(required=False)), ('issues', wagtail.core.blocks.StreamBlock([('issue', wagtail.snippets.blocks.SnippetChooserBlock('areweheadlessyet.WagtailHeadlessIssue'))]))]))]),
+            model_name="areweheadlessyethomepage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "content",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "text",
+                                                wagtail.core.blocks.RichTextBlock(),
+                                            ),
+                                            (
+                                                "link_group",
+                                                wagtail.core.blocks.StreamBlock(
+                                                    [
+                                                        (
+                                                            "link",
+                                                            wagtail.core.blocks.StructBlock(
+                                                                [
+                                                                    (
+                                                                        "link",
+                                                                        wagtail.core.blocks.URLBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                    (
+                                                                        "link_text",
+                                                                        wagtail.core.blocks.CharBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                ]
+                                                            ),
+                                                        )
+                                                    ]
+                                                ),
+                                            ),
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "news",
+                        wagtail.core.blocks.StreamBlock(
+                            [
+                                (
+                                    "blog_post",
+                                    wagtail.core.blocks.PageChooserBlock(
+                                        page_type=["blog.BlogPage"]
+                                    ),
+                                )
+                            ]
+                        ),
+                    ),
+                    (
+                        "topics",
+                        wagtail.core.blocks.StructBlock(
+                            [("title", wagtail.core.blocks.CharBlock())]
+                        ),
+                    ),
+                    (
+                        "issues",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "summary",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                                (
+                                    "issues",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "issue",
+                                                wagtail.snippets.blocks.SnippetChooserBlock(
+                                                    "areweheadlessyet.WagtailHeadlessIssue"
+                                                ),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                ]
+            ),
         ),
     ]

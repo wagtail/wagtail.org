@@ -19,13 +19,16 @@ def menu_primary(context, calling_page=None):
 
     links = []
     for item in menu.links.all():
-        calling_page_path = calling_page.url_path if calling_page else ''
+        calling_page_path = calling_page.url_path if calling_page else ""
         item_path = item.link_page.url_path
-        links.append({
-            "text": item.link_text,
-            "url": pageurl(context, item.link_page),
-            "active": calling_page_path.startswith(item_path) or calling_page_path == item_path
-        })
+        links.append(
+            {
+                "text": item.link_text,
+                "url": pageurl(context, item.link_page),
+                "active": calling_page_path.startswith(item_path)
+                or calling_page_path == item_path,
+            }
+        )
 
     return {"links": links, "request": context["request"]}
 

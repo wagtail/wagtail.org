@@ -17,7 +17,7 @@ class NewsLetterIssuesFeed(Feed):
         return root.full_url
 
     def items(self):
-        return NewsletterPage.objects.live().public().order_by('-date')[:20]
+        return NewsletterPage.objects.live().public().order_by("-date")[:20]
 
     def item_title(self, item):
         return item.title

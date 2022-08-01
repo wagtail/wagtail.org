@@ -8,17 +8,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0007_upgrade_to_wagtail18'),
+        ("images", "0007_upgrade_to_wagtail18"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='wagtailiorendition',
-            name='filter',
+            model_name="wagtailiorendition",
+            name="filter",
         ),
         migrations.AlterField(
-            model_name='wagtailiorendition',
-            name='focal_point_key',
-            field=models.CharField(blank=True, default='', editable=False, max_length=16),
+            model_name="wagtailiorendition",
+            name="focal_point_key",
+            field=models.CharField(
+                blank=True, default="", editable=False, max_length=16
+            ),
         ),
     ]

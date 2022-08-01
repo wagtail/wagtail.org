@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0002_auto_20160729_1056'),
+        ("blog", "0002_auto_20160729_1056"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpage',
-            name='canonical_url',
+            model_name="blogpage",
+            name="canonical_url",
             field=models.URLField(blank=True),
         ),
     ]

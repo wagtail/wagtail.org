@@ -31,11 +31,11 @@ private_urlpatterns = [
     path("sitewide_alert/", include(sitewide_alert_urls, namespace="sitewide_alert")),
     path("", include(wagtail_content_import_urls)),
     path("wagtail-transfer/", include(wagtailtransfer_urls)),
-    path('api/v2/', api_router.urls),
+    path("api/v2/", api_router.urls),
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
-    path('abtesting/', include(ab_testing_urls)),
+    path("abtesting/", include(ab_testing_urls)),
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
     path("sitemap.xml", sitemap),

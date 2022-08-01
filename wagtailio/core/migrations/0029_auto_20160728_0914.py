@@ -6,20 +6,20 @@ from django.db import migrations
 
 
 def forwards_func(apps, schema_editor):
-    ContentType = apps.get_model('contenttypes.ContentType')
-    ContentType.objects.filter(app_label='standardpage', model='standardpage')\
-        .delete()
-    ContentType.objects.filter(app_label='core', model='standardpage') \
-        .update(app_label='standardpage', model='standardpage')
+    ContentType = apps.get_model("contenttypes.ContentType")
+    ContentType.objects.filter(app_label="standardpage", model="standardpage").delete()
+    ContentType.objects.filter(app_label="core", model="standardpage").update(
+        app_label="standardpage", model="standardpage"
+    )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailredirects', '0005_capitalizeverbose'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailcore', '0028_merge'),
-        ('core', '0028_homepagenew'),
+        ("wagtailredirects", "0005_capitalizeverbose"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailcore", "0028_merge"),
+        ("core", "0028_homepagenew"),
     ]
 
     operations = [
@@ -27,21 +27,21 @@ class Migration(migrations.Migration):
         migrations.SeparateDatabaseAndState(
             state_operations=[
                 migrations.RemoveField(
-                    model_name='standardpage',
-                    name='listing_image',
+                    model_name="standardpage",
+                    name="listing_image",
                 ),
                 migrations.RemoveField(
-                    model_name='standardpage',
-                    name='page_ptr',
+                    model_name="standardpage",
+                    name="page_ptr",
                 ),
                 migrations.RemoveField(
-                    model_name='standardpage',
-                    name='social_image',
+                    model_name="standardpage",
+                    name="social_image",
                 ),
                 migrations.DeleteModel(
-                    name='StandardPage',
+                    name="StandardPage",
                 ),
             ],
             database_operations=[],
-        )
+        ),
     ]

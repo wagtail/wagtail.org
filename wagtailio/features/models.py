@@ -36,11 +36,11 @@ class FeatureAspect(ClusterableModel):
         related_name="+",
     )
     video = models.ForeignKey(
-        'wagtailmedia.Media',
+        "wagtailmedia.Media",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
     def __str__(self):
@@ -51,7 +51,7 @@ class FeatureAspect(ClusterableModel):
         InlinePanel("bullets", label="Bullets"),
         ImageChooserPanel("screenshot"),
         FieldPanel("video_url"),
-        MediaChooserPanel('video'),
+        MediaChooserPanel("video"),
     ]
 
 
@@ -87,7 +87,7 @@ class FeatureDescription(AirtableMixin, ClusterableModel):
         mappings = {
             "Title": "title",
             "Introduction": "introduction",
-            "Documentation": "documentation_link"
+            "Documentation": "documentation_link",
         }
         return mappings
 
@@ -99,7 +99,7 @@ class FeatureDescription(AirtableMixin, ClusterableModel):
             "ID": self.id,
             "Title": self.title,
             "Introduction": self.introduction,
-            "Documentation": self.documentation_link
+            "Documentation": self.documentation_link,
         }
 
 

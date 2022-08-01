@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0008_upgrade_to_wagtail19'),
+        ("images", "0008_upgrade_to_wagtail19"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='wagtailioimage',
-            name='file_hash',
+            model_name="wagtailioimage",
+            name="file_hash",
             field=models.CharField(blank=True, editable=False, max_length=40),
         ),
     ]

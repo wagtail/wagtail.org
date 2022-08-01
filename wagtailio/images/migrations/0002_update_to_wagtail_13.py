@@ -12,48 +12,68 @@ import wagtail.images.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0001_initial'),
+        ("images", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='wagtailioimage',
-            name='file_size',
+            model_name="wagtailioimage",
+            name="file_size",
             field=models.PositiveIntegerField(editable=False, null=True),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='created_at',
-            field=models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='created at'),
+            model_name="wagtailioimage",
+            name="created_at",
+            field=models.DateTimeField(
+                auto_now_add=True, db_index=True, verbose_name="created at"
+            ),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='file',
-            field=models.ImageField(height_field='height', upload_to=wagtail.images.models.get_upload_to, verbose_name='file', width_field='width'),
+            model_name="wagtailioimage",
+            name="file",
+            field=models.ImageField(
+                height_field="height",
+                upload_to=wagtail.images.models.get_upload_to,
+                verbose_name="file",
+                width_field="width",
+            ),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='height',
-            field=models.IntegerField(editable=False, verbose_name='height'),
+            model_name="wagtailioimage",
+            name="height",
+            field=models.IntegerField(editable=False, verbose_name="height"),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='tags',
-            field=taggit.managers.TaggableManager(blank=True, help_text=None, through='taggit.TaggedItem', to='taggit.Tag', verbose_name='tags'),
+            model_name="wagtailioimage",
+            name="tags",
+            field=taggit.managers.TaggableManager(
+                blank=True,
+                help_text=None,
+                through="taggit.TaggedItem",
+                to="taggit.Tag",
+                verbose_name="tags",
+            ),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='title',
-            field=models.CharField(max_length=255, verbose_name='title'),
+            model_name="wagtailioimage",
+            name="title",
+            field=models.CharField(max_length=255, verbose_name="title"),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='uploaded_by_user',
-            field=models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='uploaded by user'),
+            model_name="wagtailioimage",
+            name="uploaded_by_user",
+            field=models.ForeignKey(
+                blank=True,
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="uploaded by user",
+            ),
         ),
         migrations.AlterField(
-            model_name='wagtailioimage',
-            name='width',
-            field=models.IntegerField(editable=False, verbose_name='width'),
+            model_name="wagtailioimage",
+            name="width",
+            field=models.IntegerField(editable=False, verbose_name="width"),
         ),
     ]

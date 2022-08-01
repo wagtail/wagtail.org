@@ -7,18 +7,20 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('packages', '0001_initial'),
+        ("packages", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='packagespage',
-            name='about_text',
-            field=wagtail.core.fields.RichTextField(default='<p> Projects listed on Wagtail.io are <i>third-party</i> packages.<br/> They are not vetted nor endorsed by Wagtail.<br/> Use them at your own risk.</p> <p>This page collects girds and packages from djangopackages.org.<br/> Please add or update Wagtail grids and Wagtail packages on djangopackages.org. </p>'),
+            model_name="packagespage",
+            name="about_text",
+            field=wagtail.core.fields.RichTextField(
+                default="<p> Projects listed on Wagtail.io are <i>third-party</i> packages.<br/> They are not vetted nor endorsed by Wagtail.<br/> Use them at your own risk.</p> <p>This page collects girds and packages from djangopackages.org.<br/> Please add or update Wagtail grids and Wagtail packages on djangopackages.org. </p>"
+            ),
         ),
         migrations.AddField(
-            model_name='packagespage',
-            name='about_title',
-            field=models.CharField(default='About', max_length=255),
+            model_name="packagespage",
+            name="about_title",
+            field=models.CharField(default="About", max_length=255),
         ),
     ]

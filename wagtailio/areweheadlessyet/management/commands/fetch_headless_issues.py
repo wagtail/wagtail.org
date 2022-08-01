@@ -22,7 +22,9 @@ class Command(BaseCommand):
         new_issues_count = 0
         for issue in issues:
             # Delete issue when it's closed.
-            if (issue_number := issue["number"]) in issues_in_db and issue["state"] == "closed":
+            if (issue_number := issue["number"]) in issues_in_db and issue[
+                "state"
+            ] == "closed":
                 to_delete.append(issue_number)
             else:
                 _, created = WagtailHeadlessIssue.objects.update_or_create(

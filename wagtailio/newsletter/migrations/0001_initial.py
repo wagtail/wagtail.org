@@ -12,46 +12,74 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0028_merge'),
+        ("wagtailcore", "0028_merge"),
     ]
 
     operations = [
         migrations.SeparateDatabaseAndState(
             state_operations=[
                 migrations.CreateModel(
-                    name='NewsletterEmailAddress',
+                    name="NewsletterEmailAddress",
                     fields=[
-                        ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
-                        ('email', models.EmailField(max_length=254)),
+                        (
+                            "id",
+                            models.AutoField(
+                                primary_key=True,
+                                serialize=False,
+                                verbose_name="ID",
+                                auto_created=True,
+                            ),
+                        ),
+                        ("email", models.EmailField(max_length=254)),
                     ],
                     options={
-                        'db_table': 'core_newsletteremailaddress',
+                        "db_table": "core_newsletteremailaddress",
                     },
                 ),
                 migrations.CreateModel(
-                    name='NewsletterIndexPage',
+                    name="NewsletterIndexPage",
                     fields=[
-                        ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                        ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                        ('body', wagtail.core.fields.RichTextField()),
+                        (
+                            "page_ptr",
+                            models.OneToOneField(
+                                auto_created=True,
+                                on_delete=django.db.models.deletion.CASCADE,
+                                parent_link=True,
+                                primary_key=True,
+                                serialize=False,
+                                to="wagtailcore.Page",
+                            ),
+                        ),
+                        ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                        ("body", wagtail.core.fields.RichTextField()),
                     ],
                     options={
-                        'db_table': 'core_newsletterindexpage',
+                        "db_table": "core_newsletterindexpage",
                     },
-                    bases=('wagtailcore.page',),
+                    bases=("wagtailcore.page",),
                 ),
                 migrations.CreateModel(
-                    name='NewsletterPage',
+                    name="NewsletterPage",
                     fields=[
-                        ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                        ('date', models.DateField(verbose_name='Newsletter date')),
-                        ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                        ('body', wagtail.core.fields.RichTextField()),
+                        (
+                            "page_ptr",
+                            models.OneToOneField(
+                                auto_created=True,
+                                on_delete=django.db.models.deletion.CASCADE,
+                                parent_link=True,
+                                primary_key=True,
+                                serialize=False,
+                                to="wagtailcore.Page",
+                            ),
+                        ),
+                        ("date", models.DateField(verbose_name="Newsletter date")),
+                        ("intro", wagtail.core.fields.RichTextField(blank=True)),
+                        ("body", wagtail.core.fields.RichTextField()),
                     ],
                     options={
-                        'db_table': 'core_newsletterpage',
+                        "db_table": "core_newsletterpage",
                     },
-                    bases=('wagtailcore.page',),
+                    bases=("wagtailcore.page",),
                 ),
             ],
             database_operations=[],

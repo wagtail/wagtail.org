@@ -8,13 +8,13 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0022_remove_homepagemaincarouselitem_tab_title'),
+        ("core", "0022_remove_homepagemaincarouselitem_tab_title"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='developerspage',
-            name='body',
+            model_name="developerspage",
+            name="body",
             field=wagtail.core.fields.RichTextField(blank=True),
             preserve_default=True,
         ),

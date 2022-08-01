@@ -9,18 +9,188 @@ import wagtailio.areweheadlessyet.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('areweheadlessyet', '0003_add_issue_model_and_section'),
+        ("areweheadlessyet", "0003_add_issue_model_and_section"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='areweheadlessyethomepage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('content', wagtail.core.blocks.StreamBlock([('text', wagtail.core.blocks.RichTextBlock()), ('link_group', wagtail.core.blocks.StreamBlock([('link', wagtail.core.blocks.StructBlock([('link', wagtail.core.blocks.URLBlock(required=True)), ('link_text', wagtail.core.blocks.CharBlock(required=True))]))]))]))])), ('news', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('blog_posts', wagtail.core.blocks.StreamBlock([('blog_post', wagtailio.areweheadlessyet.blocks.BlogPostChooserBlock(page_type=['blog.BlogPage']))]))])), ('topics', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock())])), ('issues', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('summary', wagtail.core.blocks.CharBlock(required=False)), ('issues', wagtail.core.blocks.StreamBlock([('issue', wagtailio.areweheadlessyet.blocks.IssueChooserBlock('areweheadlessyet.WagtailHeadlessIssue'))]))]))]),
+            model_name="areweheadlessyethomepage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        "section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "content",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "text",
+                                                wagtail.core.blocks.RichTextBlock(),
+                                            ),
+                                            (
+                                                "link_group",
+                                                wagtail.core.blocks.StreamBlock(
+                                                    [
+                                                        (
+                                                            "link",
+                                                            wagtail.core.blocks.StructBlock(
+                                                                [
+                                                                    (
+                                                                        "link",
+                                                                        wagtail.core.blocks.URLBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                    (
+                                                                        "link_text",
+                                                                        wagtail.core.blocks.CharBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                ]
+                                                            ),
+                                                        )
+                                                    ]
+                                                ),
+                                            ),
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "news",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "blog_posts",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "blog_post",
+                                                wagtailio.areweheadlessyet.blocks.BlogPostChooserBlock(
+                                                    page_type=["blog.BlogPage"]
+                                                ),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "topics",
+                        wagtail.core.blocks.StructBlock(
+                            [("title", wagtail.core.blocks.CharBlock())]
+                        ),
+                    ),
+                    (
+                        "issues",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "summary",
+                                    wagtail.core.blocks.CharBlock(required=False),
+                                ),
+                                (
+                                    "issues",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "issue",
+                                                wagtailio.areweheadlessyet.blocks.IssueChooserBlock(
+                                                    "areweheadlessyet.WagtailHeadlessIssue"
+                                                ),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                ]
+            ),
         ),
         migrations.AlterField(
-            model_name='areweheadlessyettopicpage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('text', wagtail.core.blocks.RichTextBlock()), ('section', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('content', wagtail.core.blocks.StreamBlock([('text', wagtail.core.blocks.RichTextBlock()), ('link_group', wagtail.core.blocks.StreamBlock([('link', wagtail.core.blocks.StructBlock([('link', wagtail.core.blocks.URLBlock(required=True)), ('link_text', wagtail.core.blocks.CharBlock(required=True))]))]))]))])), ('news', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('blog_posts', wagtail.core.blocks.StreamBlock([('blog_post', wagtailio.areweheadlessyet.blocks.BlogPostChooserBlock(page_type=['blog.BlogPage']))]))]))]),
+            model_name="areweheadlessyettopicpage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    ("text", wagtail.core.blocks.RichTextBlock()),
+                    (
+                        "section",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "content",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "text",
+                                                wagtail.core.blocks.RichTextBlock(),
+                                            ),
+                                            (
+                                                "link_group",
+                                                wagtail.core.blocks.StreamBlock(
+                                                    [
+                                                        (
+                                                            "link",
+                                                            wagtail.core.blocks.StructBlock(
+                                                                [
+                                                                    (
+                                                                        "link",
+                                                                        wagtail.core.blocks.URLBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                    (
+                                                                        "link_text",
+                                                                        wagtail.core.blocks.CharBlock(
+                                                                            required=True
+                                                                        ),
+                                                                    ),
+                                                                ]
+                                                            ),
+                                                        )
+                                                    ]
+                                                ),
+                                            ),
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "news",
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                ("title", wagtail.core.blocks.CharBlock()),
+                                (
+                                    "blog_posts",
+                                    wagtail.core.blocks.StreamBlock(
+                                        [
+                                            (
+                                                "blog_post",
+                                                wagtailio.areweheadlessyet.blocks.BlogPostChooserBlock(
+                                                    page_type=["blog.BlogPage"]
+                                                ),
+                                            )
+                                        ]
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                ]
+            ),
         ),
     ]

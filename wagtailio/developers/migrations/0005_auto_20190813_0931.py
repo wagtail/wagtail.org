@@ -7,13 +7,21 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('developers', '0004_update_fields_on_developers_page'),
+        ("developers", "0004_update_fields_on_developers_page"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='developerspage',
-            name='social_image',
-            field=models.ForeignKey(blank=True, help_text="Image to appear alongside 'Meta description', particularly for sharing on social networks", null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='images.WagtailIOImage', verbose_name='Meta image'),
+            model_name="developerspage",
+            name="social_image",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Image to appear alongside 'Meta description', particularly for sharing on social networks",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="images.WagtailIOImage",
+                verbose_name="Meta image",
+            ),
         ),
     ]
