@@ -11,8 +11,8 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 import six
 from wagtailmedia.blocks import VideoChooserBlock
 
-from wagtailio.utils.blocks import CodeBlock
 from wagtailio.core.choices import SVGIcon
+from wagtailio.utils.blocks import CodeBlock
 
 
 class PageOrExternalLinkBlock(blocks.StructBlock):
@@ -199,11 +199,7 @@ class CTABlock(blocks.StructBlock):
 
         if not value.get("cta_page") and not value.get("cta_url"):
             error = ErrorList(
-                [
-                    ValidationError(
-                        "You must specify CTA page or CTA URL."
-                    )
-                ]
+                [ValidationError("You must specify CTA page or CTA URL.")]
             )
             errors["cta_url"] = errors["cta_page"] = error
 
@@ -238,9 +234,7 @@ class CTABlock(blocks.StructBlock):
 
 class CardBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
-    description = blocks.RichTextBlock(
-        required=False, features=["bold", "italic"]
-    )
+    description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
     cta = CTABlock(required=False)
@@ -253,9 +247,7 @@ class CardBlock(blocks.StructBlock):
 
 class LogoCardBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
-    description = blocks.RichTextBlock(
-        required=False, features=["bold", "italic"]
-    )
+    description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
     logo = ImageChooserBlock(required=False)
@@ -280,7 +272,6 @@ class LogoCardBlock(blocks.StructBlock):
             raise StructBlockValidationError(errors)
 
         return struct_value
-
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
@@ -307,14 +298,15 @@ class CardsBlock(blocks.StructBlock):
 class LogoCardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(LogoCardBlock())
 
-
     class Meta:
         template = "patterns/components/streamfields/logo_cards_list_block.html"
         label = "Logo cards"
 
 
 class TableContentBlock(blocks.StreamBlock):
-    rich_text = blocks.RichTextBlock(required=False, features=["bold", "italic", "link"])
+    rich_text = blocks.RichTextBlock(
+        required=False, features=["bold", "italic", "link"]
+    )
     image = ImageChooserBlock(required=False)
 
 
@@ -358,10 +350,7 @@ class HighlightBlock(blocks.StructBlock):
         struct_value = super().clean(value)
 
         # meta_icon goes together with meta_text
-        sum_meta_values = (
-            bool(value.get("meta_text"))
-            + bool(value.get("meta_icon"))
-        )
+        sum_meta_values = bool(value.get("meta_text")) + bool(value.get("meta_icon"))
 
         if sum_meta_values == 1:
             error = ErrorList(
@@ -442,6 +431,7 @@ class RichTextBlock(blocks.StructBlock):
         label = "Rich text"
         template = "patterns/components/streamfields/rich_text_block.html"
 
+
 class StandaloneCTABlock(blocks.StructBlock):
     short_description = blocks.TextBlock(required=False, max_length=100)
     cta = CTABlock()
@@ -474,11 +464,7 @@ class TeaserBlock(blocks.StructBlock):
 
         if not value.get("page") and not value.get("url_chooser"):
             error = ErrorList(
-                [
-                    ValidationError(
-                        "You must specify a blog post or a URL."
-                    )
-                ]
+                [ValidationError("You must specify a blog post or a URL.")]
             )
             errors["page"] = errors["url_chooser"] = error
 
@@ -500,7 +486,9 @@ class TeaserBlock(blocks.StructBlock):
                     )
                 ]
             )
-            errors["image_for_external_link"] = errors["heading_for_external_link"] = errors["subheading_for_ext_link"] = error
+            errors["image_for_external_link"] = errors[
+                "heading_for_external_link"
+            ] = errors["subheading_for_ext_link"] = error
 
         if errors:
             raise StructBlockValidationError(errors)
@@ -526,13 +514,7 @@ class TextAndMediaBlock(blocks.StructBlock):
         struct_value = super().clean(value)
 
         if not value.get("image") and not value.get("embed"):
-            error = ErrorList(
-                [
-                    ValidationError(
-                        "You must specify Image or Embed."
-                    )
-                ]
-            )
+            error = ErrorList([ValidationError("You must specify Image or Embed.")])
             errors["image"] = errors["embed"] = error
 
         if value.get("embed") and value.get("image"):
