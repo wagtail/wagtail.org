@@ -435,13 +435,15 @@ class RichTextBlock(blocks.StructBlock):
 
 
 class StandaloneCTABlock(blocks.StructBlock):
-    short_description = blocks.TextBlock(required=False, max_length=100)
     cta = CTABlock()
+    description = blocks.TextBlock(
+        label="Short description", required=False, max_length=100
+    )
 
     class Meta:
         icon = "arrow-right"
         label = "Standalone CTA"
-        template = "patterns/components/streamfields/standalone_cta_block.html"
+        template = "patterns/components/streamfields/cta/cta.html"
 
 
 class TeaserBlock(blocks.StructBlock):
