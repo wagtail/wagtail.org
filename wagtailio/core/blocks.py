@@ -370,7 +370,9 @@ class HighlightBlock(blocks.StructBlock):
     class Meta:
         icon = "placeholder"
         label = "Highlight"
-        template = "patterns/components/streamfields/highlight_block.html"
+        template = (
+            "patterns/components/streamfields/highlight_block/highlight_block.html"
+        )
 
 
 class IconBulletBlock(blocks.StructBlock):
