@@ -463,16 +463,14 @@ class TeaserBlock(blocks.StructBlock):
         )
 
         if not value.get("page") and not value.get("url_chooser"):
-            error = ErrorList(
-                [ValidationError("You must specify a blog post or a URL.")]
-            )
+            error = ErrorList([ValidationError("You must specify a page or a URL.")])
             errors["page"] = errors["url_chooser"] = error
 
         if value.get("page") and value.get("url_chooser"):
             error = ErrorList(
                 [
                     ValidationError(
-                        "You must specify a blog post or a URL. You can't use both."
+                        "You must specify a page or a URL. You can't use both."
                     )
                 ]
             )
