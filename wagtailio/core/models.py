@@ -1,14 +1,13 @@
 from django.db import models
 
 from modelcluster.models import ClusterableModel
-from wagtail.core.fields import StreamField
-
-from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Orderable, Page
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.core.blocks import HomePageBlock
-from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):

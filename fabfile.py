@@ -2,7 +2,6 @@ from fabric import colors
 from fabric.api import local, prompt, task
 from fabric.context_managers import warn_only
 
-
 PRODUCTION_APP_INSTANCE = "wagtailio-production"
 STAGING_APP_INSTANCE = "wagtailio-staging"
 

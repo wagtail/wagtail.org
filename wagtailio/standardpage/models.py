@@ -4,10 +4,11 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
-from wagtailio.utils.blocks import StoryBlock
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 from wagtail_content_import.models import ContentImportMixin
+
+from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):

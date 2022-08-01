@@ -1,16 +1,16 @@
-from django.urls import include, path
 from django.apps import apps
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
-from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
 from wagtail.core.models import Page
+from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from wagtail_ab_testing import urls as ab_testing_urls
@@ -21,8 +21,8 @@ from wagtailio.api import api_router
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
-from wagtailio.utils.views import favicon, robots
 from wagtailio.utils.cache import get_default_cache_control_decorator
+from wagtailio.utils.views import favicon, robots
 
 # Private URLs are not meant to be cached.
 private_urlpatterns = [

@@ -13,7 +13,6 @@ from os.path import abspath, dirname, join
 
 import dj_database_url
 
-
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
 

@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import redirect, render
 
@@ -8,13 +8,13 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
-from wagtail_content_import.models import ContentImportMixin
 
 from wagtail_airtable.mixins import AirtableMixin
+from wagtail_content_import.models import ContentImportMixin
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
-from wagtailio.utils.models import SocialMediaMixin, CrossPageMixin
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):

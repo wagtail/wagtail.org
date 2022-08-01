@@ -1,9 +1,6 @@
-from bs4 import BeautifulSoup, NavigableString
-
-from wagtail_content_import.parsers.base import DocumentParser
-
-
 import mammoth
+from bs4 import BeautifulSoup, NavigableString
+from wagtail_content_import.parsers.base import DocumentParser
 
 
 class DocxHTMLParser(DocumentParser):

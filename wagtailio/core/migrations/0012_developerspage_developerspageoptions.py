@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
 import django.db.models.deletion
-import wagtail.core.fields
+from django.db import migrations, models
+
 import modelcluster.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):

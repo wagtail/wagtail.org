@@ -1,5 +1,6 @@
-import requests
 from django.core.management.base import BaseCommand
+
+import requests
 
 from wagtailio.areweheadlessyet.models import WagtailHeadlessIssue
 

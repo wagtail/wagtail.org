@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
-import wagtail.search.index
-import wagtail.images.models
 from django.conf import settings
+from django.db import migrations, models
+
+import wagtail.images.models
+import wagtail.search.index
+
 import taggit.managers
 
 

@@ -1,4 +1,5 @@
 from django.db import models
+
 from wagtail.admin import edit_handlers
 from wagtail.core import blocks, fields
 from wagtail.core.models import Page

@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
+
 import wagtail.core.blocks
 import wagtail.core.fields
 import wagtail.snippets.blocks
