@@ -333,7 +333,7 @@ class HeadlineBlock(blocks.StructBlock):
     class Meta:
         icon = "title"
         label = "Headline"
-        template = "patterns/components/streamfields/headline_block.html"
+        template = "patterns/components/streamfields/headline/headline.html"
 
 
 class HighlightBlock(blocks.StructBlock):
