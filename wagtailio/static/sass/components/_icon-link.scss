@@ -1,0 +1,53 @@
+.icon-link {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+
+    @include media-query(large) {
+        display: flex;
+    }
+
+    &__svg {
+        width: 70px;
+        height: 70px;
+
+        @include media-query(medium) {
+            width: 100px;
+            height: 100px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    &__content {
+        @include media-query(medium) {
+            margin-left: 30px;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 5px;
+        transition: color 0.3s ease;
+    }
+
+    &__subheading {
+        font-weight: $weight--regular;
+        color: $color--teal;
+        margin-bottom: 5px;
+    }
+
+    &:hover {
+        #{$root}__heading {
+            color: $color--teal;
+        }
+
+        // Icon overrides
+        .icon__svg-bg {
+            transform: rotate(5deg);
+            color: $color--teal;
+        }
+    }
+}
