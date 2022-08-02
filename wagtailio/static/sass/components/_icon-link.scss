@@ -10,6 +10,7 @@
     &__svg {
         width: 70px;
         height: 70px;
+        flex-shrink: 0;
 
         @include media-query(medium) {
             width: 100px;
@@ -19,6 +20,11 @@
         svg {
             width: inherit;
             height: inherit;
+        }
+
+        // Icon overrides
+        .icon__svg-fg {
+            stroke-width: 1;
         }
     }
 

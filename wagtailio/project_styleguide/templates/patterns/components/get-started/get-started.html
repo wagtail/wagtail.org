@@ -1,0 +1,13 @@
+<div class="get-started grid">
+    <h2 class="get-started__heading heading-one">{{ value.heading }}</h2>
+
+    {% if value.items.all %}
+        <ul class="get-started__list">
+            {% for item in value.items.all %}
+                <li class="get-started__list-item">
+                    {% include "patterns/components/icon-link/icon-link.html" with value=item %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

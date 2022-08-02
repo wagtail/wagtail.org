@@ -1,0 +1,27 @@
+.get-started {
+    &__heading {
+        @include media-query(large) {
+            grid-column: 2 / span 4;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include media-query(large) {
+            grid-column: 2 / span 5;
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 100px;
+        }
+    }
+
+    &__list-item {
+        @include media-query(large) {
+            flex-basis: 50%;
+            padding-right: 10%;
+        }
+    }
+}

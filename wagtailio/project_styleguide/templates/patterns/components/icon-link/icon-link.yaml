@@ -1,7 +1,7 @@
 context:
   value:
     url: '#'
-    icon: world
+    icon: moon
     heading: Try the demo
     subheading: The Wagtail Bakery
     description: Login to our demo site to see what it's like editing and updating as an editor
