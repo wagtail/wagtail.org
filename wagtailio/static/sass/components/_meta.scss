@@ -5,12 +5,13 @@
 
     &__icon {
         width: 30px;
+        height: 30px;
 
         svg {
             top: 0;
             flex-shrink: 0;
-            width: 30px;
-            height: 30px;
+            width: inherit;
+            height: inherit;
         }
     }
 }

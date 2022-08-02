@@ -58,14 +58,9 @@
         }
 
         svg {
-            width: 40px;
             flex-shrink: 0;
-            height: 40px;
-
-            @include media-query(large) {
-                width: 60px;
-                height: 60px;
-            }
+            width: inherit;
+            height: inherit;
         }
     }
 

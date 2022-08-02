@@ -88,13 +88,8 @@
         }
 
         svg {
-            width: 230px;
-            height: 300px;
-
-            @include media-query(large) {
-                width: 500px;
-                height: 545px;
-            }
+            width: inherit;
+            height: inherit;
         }
 
         // Icon overrides
