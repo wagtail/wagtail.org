@@ -1,6 +1,8 @@
 // Hover states should be handled on a component basis - not in here
 .icon {
-    position: relative;
+    &--relative {
+        position: relative;
+    }
 
     &__svg {
         position: absolute;
