@@ -1,0 +1,14 @@
+.author {
+    display: flex;
+    align-items: center;
+
+    &__image {
+        width: 65px;
+        height: 65px;
+        margin: 0 20px 0 0;
+    }
+
+    &__name {
+        font-weight: $weight--bold;
+    }
+}

@@ -12,6 +12,7 @@
 @import 'base/typography';
 
 // Components
+@import 'components/author';
 @import 'components/buttons';
 @import 'components/cta';
 @import 'components/grid';
@@ -19,7 +20,9 @@
 @import 'components/hero';
 @import 'components/icon-bullet';
 @import 'components/icon-bullets';
+@import 'components/meta';
 @import 'components/rich-text';
+@import 'components/teaser';
 
 // Atoms
 @import 'atoms/icons';

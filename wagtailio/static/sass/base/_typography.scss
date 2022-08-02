@@ -36,7 +36,7 @@ h1,
 h2,
 .heading-two {
     font-size: 1.875rem;
-    line-height: 2.8125rem;
+    line-height: 2.5125rem;
 
     @include media-query(large) {
         font-size: 2.25rem;
@@ -104,6 +104,15 @@ h4,
     @include media-query(large) {
         font-size: 2rem;
         line-height: 2.6rem;
+    }
+}
+
+.mini-meta {
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+
+    &--bold {
+        font-weight: $weight--bold;
     }
 }
 
