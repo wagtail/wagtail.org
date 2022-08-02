@@ -367,6 +367,12 @@ class HighlightBlock(blocks.StructBlock):
 
         return struct_value
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        if value["image_on_right"]:
+            context["image_on_right"] = value["image_on_right"]
+        return context
+
     class Meta:
         icon = "placeholder"
         label = "Highlight"
