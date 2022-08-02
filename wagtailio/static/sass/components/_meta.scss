@@ -4,8 +4,13 @@
     gap: 10px;
 
     &__icon {
-        flex-shrink: 0;
         width: 30px;
-        height: 30px;
+
+        svg {
+            top: 0;
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+        }
     }
 }

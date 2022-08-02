@@ -31,28 +31,45 @@
 
         @include media-query(medium) {
             margin-bottom: 40px;
-        }
+    }
     }
 
     &__icon {
-        fill: $color--teal-200;
         position: absolute;
-        top: -30px;
-        right: -50px;
-        width: 170px;
-        height: 170px;
+        top: 0;
+        right: 140px;
+        z-index: -1;
 
         @include media-query(medium) {
-            top: 0;
-            right: -70px;
-            width: 250px;
-            height: 250px;
+            right: 0;
+            top: 40px;
         }
 
-        @include media-query(large) {
-            right: 0;
-            width: 450px;
-            height: 450px;
+        svg {
+            width: 170px;
+            height: 170px;
+
+            @include media-query(medium) {
+                top: 0;
+                right: -70px;
+                width: 250px;
+                height: 250px;
+            }
+
+            @include media-query(large) {
+                right: 0;
+                width: 410px;
+                height: 410px;
+            }
+        }
+
+        // Icon overrides
+        .icon__svg-fg {
+            stroke: $color--teal-200;
+        }
+
+        .icon__svg-bg {
+            color: $color--eggshell;
         }
     }
 }
