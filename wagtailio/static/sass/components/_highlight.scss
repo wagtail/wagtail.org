@@ -48,14 +48,24 @@
     }
 
     &__meta-icon {
+        margin-right: 10px;
         width: 40px;
         height: 40px;
-        margin-right: 10px;
-        flex-shrink: 0;
 
-        @include media-query(medium) {
+        @include media-query(large) {
             width: 60px;
             height: 60px;
+        }
+
+        svg {
+            width: 40px;
+            flex-shrink: 0;
+            height: 40px;
+
+            @include media-query(large) {
+                width: 60px;
+                height: 60px;
+            }
         }
     }
 
