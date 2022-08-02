@@ -2,8 +2,6 @@ context:
   value:
     heading: This intuitive interface gives editors creative control over content
     description: The Wagtail StreamField interface is intuitive and gives editors creative control over content.
-    image: fake
-    image_on_right: False
     meta_icon: explanation
     meta_text: Consequatur aliquid ut
     cta:
