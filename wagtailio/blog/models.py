@@ -12,9 +12,9 @@ from wagtail.snippets.models import register_snippet
 from wagtail_airtable.mixins import AirtableMixin
 from wagtail_content_import.models import ContentImportMixin
 
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):

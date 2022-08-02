@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.areweheadlessyet.blocks import HomePageBlock, TopicPageBlock
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 
 
 @register_snippet

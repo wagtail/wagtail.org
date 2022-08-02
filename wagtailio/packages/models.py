@@ -9,7 +9,7 @@ from wagtail.admin.edit_handlers import FieldPanel, HelpPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 
 warning = """
     <p>

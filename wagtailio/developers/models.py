@@ -12,7 +12,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Orderable, Page
 
 from wagtailio.core.blocks import CodePromoBlock
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 
 
 class DevelopersPageOptions(Orderable, models.Model):

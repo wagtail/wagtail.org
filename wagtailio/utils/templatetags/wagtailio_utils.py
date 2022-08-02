@@ -5,7 +5,7 @@ from wagtail.images.models import SourceImageIOError
 from wagtail.images.templatetags.wagtailimages_tags import ImageNode
 
 from wagtailio.blog.models import BlogPage
-from wagtailio.utils.models import LinkGroupSnippet, MenuSnippet
+from wagtailio.core.models import LinkGroupSnippet, MenuSnippet
 
 register = template.Library()
 

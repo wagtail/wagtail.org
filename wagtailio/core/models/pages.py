@@ -4,7 +4,7 @@ from wagtail.core.models import Page
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.core.blocks import HomePageBlock
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):

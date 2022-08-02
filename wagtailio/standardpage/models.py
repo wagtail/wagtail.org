@@ -6,9 +6,9 @@ from wagtail.core.models import Page
 
 from wagtail_content_import.models import ContentImportMixin
 
+from wagtailio.core.models import CrossPageMixin, SocialMediaMixin
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
-from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
