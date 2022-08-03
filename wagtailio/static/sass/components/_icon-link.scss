@@ -2,17 +2,24 @@
     $root: &;
     color: $color--off-black;
     text-decoration: none;
+    display: flex;
+    column-gap: 15px;
 
-    @include media-query(large) {
-        display: flex;
+    @include media-query(medium) {
+        column-gap: 20px;
     }
 
     &__svg {
-        width: 70px;
-        height: 70px;
+        width: 30px;
+        height: 45px;
         flex-shrink: 0;
 
         @include media-query(medium) {
+            width: 70px;
+            height: 70px;
+        }
+
+        @include media-query(large) {
             width: 100px;
             height: 100px;
         }
