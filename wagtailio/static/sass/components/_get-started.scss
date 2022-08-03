@@ -1,4 +1,14 @@
 .get-started {
+    padding-bottom: 50px;
+
+    @include media-query(medium) {
+        padding-bottom: 100px;
+    }
+
+    @include media-query(large) {
+        padding-bottom: 200px;
+    }
+
     &__heading {
         grid-column: 2 / span 2;
 
