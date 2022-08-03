@@ -1,7 +1,12 @@
 from django.db import models
 
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from wagtailio.core.blocks import CTABlock
+from wagtailio.core.choices import SVGIcon
 
 
 class SocialMediaMixin(models.Model):
@@ -50,6 +55,34 @@ class CrossPageMixin(models.Model):
         MultiFieldPanel(
             [FieldPanel("listing_intro"), ImageChooserPanel("listing_image")],
             "Cross-page behaviour",
+        )
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class HeroMixin(models.Model):
+    heading = models.TextField(verbose_name="Heading")
+    sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
+    intro = RichTextField(
+        verbose_name="Intro",
+        blank=True,
+        features=["bold", "italic", "link"],
+    )
+    icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    cta = CTABlock(required=False)
+
+    panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("heading"),
+                FieldPanel("sub_heading"),
+                FieldPanel("intro"),
+                FieldPanel("icon"),
+                FieldPanel("cta"),
+            ],
+            "Hero",
         )
     ]
 
