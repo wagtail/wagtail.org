@@ -12,6 +12,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "blog.BlogIndexPage",
+        "core.ContentPage",
         "developers.DevelopersPage",
         "features.FeatureIndexPage",
         "newsletter.NewsletterIndexPage",
