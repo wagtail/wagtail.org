@@ -1,8 +1,7 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtailio.core.blocks import CTABlock
@@ -70,8 +69,8 @@ class HeroMixin(models.Model):
         blank=True,
         features=["bold", "italic", "link"],
     )
-    icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
-    cta = CTABlock(required=False)
+    icon = models.CharField(choices=SVGIcon.choices, max_length=255)
+    cta = StreamField([("cta", CTABlock())], blank=True, max_num=1)
 
     panels = [
         MultiFieldPanel(
@@ -80,7 +79,7 @@ class HeroMixin(models.Model):
                 FieldPanel("sub_heading"),
                 FieldPanel("intro"),
                 FieldPanel("icon"),
-                FieldPanel("cta"),
+                StreamFieldPanel("cta"),
             ],
             "Hero",
         )
