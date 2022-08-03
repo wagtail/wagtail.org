@@ -1,11 +1,16 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div>
-    <div>{{ value.quote }}</div>
-    <div>
+<figure class="standalone-quote grid">
+    <svg class="standalone-quote__icon" aria-hidden="true">
+        <use xlink:href="#quotes" />
+    </svg>
+    <blockquote class="standalone-quote__text heading-three">
+        <p>&ldquo;{{ value.quote }}&rdquo;</p>
+    </blockquote>
+    <figcaption class="standalone-quote__meta">
         {% if value.author_image %}
-            {% image value.author_image fill-100x100 %}
+            {% image value.author_image fill-40x40 class="standalone-quote__image" %}
         {% endif %}
-        <span>{{ value.author }}</span>
-    </div>
-</div>
+        <p class="mini-meta">{{ value.author }}</p>
+    </figcaption>
+</figure>
