@@ -26,7 +26,6 @@ h1,
 .heading-one {
     font-size: 5.625rem;
     line-height: 5.625rem;
-    font-weight: $weight--bold;
     letter-spacing: -0.01em;
 
     @include media-query(large) {
@@ -61,7 +60,6 @@ h4,
 .heading-four {
     font-size: 1.37rem;
     line-height: 2.063rem;
-    font-weight: $weight--bold;
 
     @include media-query(large) {
         font-size: 1.1rem;

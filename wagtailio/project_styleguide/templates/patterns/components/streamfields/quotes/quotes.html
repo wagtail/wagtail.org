@@ -1,6 +1,19 @@
-<h4>{{ value.heading }}</h4>
-{% for quote in value.quotes %}
-    <div>
-        {% include "patterns/components/streamfields/standalone_quote_block.html" with value=quote %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="quotes grid">
+    <div class="quotes__header">
+        <p class="quotes__title heading-one">{{ value.heading }}</p>
+        <svg aria-hidden="true" class="quotes__icon"><use xlink:href="#quotes"></use></svg>
     </div>
-{% endfor %}
+     {% for item in value.quotes %}
+            <blockquote class="quotes__item">
+             <p class="heading-four">{{ item.quote }}</p>
+             <span class="quotes__author">
+                 {% if item.author_image %}{% image item.author_image fill-50x50 classname="quotes__author-image" %}{% endif %}
+                 <figcaption class="mini-meta">
+                    <div class="rich-text">{{ item.author|richtext }}</div>
+                </figcaption>
+             </span>
+         </blockquote>
+     {% endfor %}
+</div>

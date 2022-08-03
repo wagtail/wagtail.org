@@ -1,56 +1,70 @@
 .quotes {
     &__header {
         color: $color--off-black;
-        padding-bottom: 60px;
+        padding-bottom: 30px;
+        grid-column: 2 / span 4;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 7;
+            padding-bottom: 60px;
+        }
     }
 
+    &__item {
+        grid-column: 2 / span 3;
+        padding: 0 0 25px 0;
+
+        @include media-query(large) {
+            &:nth-child(odd) {
+                grid-column: 4 / span 2;
+                padding: 0 0 100px 0;
+            }
+            
+            &:nth-child(even) {
+                grid-column: 2 / span 2;
+                padding: 0 80px 100px 0;
+            }
+        }
+
+    }
+    
     &__author {
         display: flex;
         align-items: center;
-        padding: 30px 0 0 0;
-        color: $color--off-black
+        padding: 15px 0 0 0;
+        color: $color--off-black;
+
+        @include media-query(large) {
+            padding: 30px 0 0 0;
+        }
     }
 
-    &__author-image{
+    &__author-image {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin: 0 10px 0 0;
     }
 
-    &__grid {
-        display: grid;
-        grid-gap: 40px;
-
-        @include media-query(medium) {
-            grid-template-columns: repeat(2, 40%);
-            grid-gap: 60px;
-            max-width: 80%;
-
-        }
-
-        @include media-query(large) {
-            grid-template-columns: repeat(2, 40%);
-            grid-gap: 80px 100px;
-            max-width: 80%;
-        }
-    }
-
     &__icon {
         fill: $color--teal-200;
         position: absolute;
-        inset: -30px -55px auto auto;
+        inset: -5% -40% auto auto;
         width: 273px;
         height: 184px;
 
         @include media-query(medium) {
-            inset: -10% 10% auto auto;
+            inset: -15% 0% auto auto;
             width: 360px;
             height: 450px;
         }
 
         @include media-query(large) {
-            inset: -15% 15% auto auto;
+            inset: -20% 10% auto auto;
             height: 546px;
             width: 368px;
         }

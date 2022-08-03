@@ -1,22 +1,21 @@
 context:
   value:
-    heading: People love Wagtail
-    quotes:
-      - quote: If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField
-        author: <p><a href="https://twitter.com/pelliportraits">JB - @pelliportraits</a></p>
-        author_image: fake
-      - quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        author: <p>Anonymous</p>
-        author_image: fake
-      - quote: Excepteur sint occaecat cupidatat non proident
-        author: <p><a href="https://en.wikipedia.org/wiki/Jane_Doe_(disambiguation)">Jane Doe</a></p>
-        author_image: fake
-      - quote: Duis aute irure dolor in reprehenderit in voluptate velit esse
-        author: <p><a href="https://en.wikipedia.org/wiki/John_Doe">John Doe</a></p>
-        author_image: fake
-
+    title: 'People love Wagtail'
+    items:
+      all:
+        - author: 'Wagtail - @Wagtail'
+          quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+          image: True
+        - author: 'Wagtail - @Wagtail'
+          quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+        - author: 'Wagtail - @Wagtail'
+          quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+          image: True
+        - author: 'Wagtail - @Wagtail'
+          quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+          image: True
 tags:
   image:
-    value.author_image fill-100x100:
+    item.image fill-50x50 classname="quotes__author-image":
       raw: |
-        <img src="https://via.placeholder.com/100x100" alt="Some alt">
+        <img src="https://via.placeholder.com/50x50" class="quotes__author-image" alt="Some alt">
