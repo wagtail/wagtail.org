@@ -11,6 +11,6 @@
         {% if value.author_image %}
             {% image value.author_image fill-40x40 class="standalone-quote__image" %}
         {% endif %}
-        <p class="mini-meta">{{ value.author }}</p>
+        <div class="mini-meta">{{ value.author|richtext }}</div>
     </figcaption>
 </figure>

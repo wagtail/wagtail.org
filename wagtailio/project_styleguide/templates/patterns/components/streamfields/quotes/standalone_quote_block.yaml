@@ -1,7 +1,8 @@
 context:
   value:
     quote: If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField
-    author: Donald Knuth - @wagtail
+    author: |
+      Donald Knuth - <b>@wagtail</b>
     author_image: fake
 
 tags:
