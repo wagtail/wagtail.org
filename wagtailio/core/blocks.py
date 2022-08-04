@@ -227,7 +227,7 @@ class CTABlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "tick-inverse"
+        icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
 
@@ -240,7 +240,7 @@ class CardBlock(blocks.StructBlock):
     cta = CTABlock(required=False)
 
     class Meta:
-        icon = "placeholder"
+        icon = "address-card"
         template = "patterns/components/streamfields/cards/card_block.html"
         label = "Card"
 
@@ -282,7 +282,7 @@ class LogoCardBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "placeholder"
+        icon = "image"
         template = "patterns/components/streamfields/cards/logo_card_block.html"
         label = "Logo card"
 
@@ -374,7 +374,7 @@ class HighlightBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "placeholder"
+        icon = "newspaper"
         label = "Highlight"
         template = (
             "patterns/components/streamfields/highlight_block/highlight_block.html"
@@ -451,7 +451,7 @@ class StandaloneCTABlock(blocks.StructBlock):
     )
 
     class Meta:
-        icon = "arrow-right"
+        icon = "bullhorn"
         label = "Standalone CTA"
         template = "patterns/components/streamfields/cta/cta.html"
 
@@ -508,7 +508,7 @@ class TeaserBlock(blocks.StructBlock):
         return struct_value
 
     class Meta:
-        icon = "placeholder"
+        icon = "gem"
         label = "Teaser"
         template = "patterns/components/streamfields/teaser_block/teaser_block.html"
 
@@ -602,15 +602,17 @@ class ContentStoryBlock(blocks.StreamBlock):
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     teaser = TeaserBlock()
-    icon_bullets = IconBulletsBlock()
-    cards = CardsBlock(group="Cards")
-    logo_cards = LogoCardsBlock(group="Cards")
+    icon_bullets = IconBulletsBlock(icon="list-alt")
+    cards = CardsBlock(icon="th-list", group="Cards")
+    logo_cards = LogoCardsBlock(icon="images", group="Cards")
     cta = CTABlock(group="Call to action")
     standalone_cta = StandaloneCTABlock(group="Call to action")
     standalone_quote = StandaloneQuoteBlock(group="Quotes")
     multiple_quotes = MultipleQuoteBlock(group="Quotes")
-    get_started_block = SnippetChooserBlock("core.GetStartedSnippet")
-    sign_up_form = SnippetChooserBlock("core.SignupFormSnippet")
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
+    sign_up_form = SnippetChooserBlock(
+        "core.SignupFormSnippet", icon="envelope-open-text"
+    )
     comparison_table = ComparisonTableBlock()
 
     class Meta:
