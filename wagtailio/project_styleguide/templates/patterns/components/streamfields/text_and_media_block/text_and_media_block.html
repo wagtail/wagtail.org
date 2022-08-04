@@ -1,10 +1,10 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 <div class="text-media {% if value.image_on_right %}text-media--right{% endif %} grid">
     {% if value.image %}
         {% image value.image fill-400x400 class="text-media__media" %}
     {% else %}
-        {{ value.embed }}
+        {% embed value.embed %}
     {% endif %}
     <div class="text-media__content">
         <h2>{{ value.heading }}</h2>

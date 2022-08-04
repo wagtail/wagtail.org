@@ -22,7 +22,12 @@
         margin: 35px 0 0 0;
     }
 
-    &__media {
+    &__media, 
+    iframe {
+        // Force the iframe to be full width
+        width: 100%;
+        height: 100%;
+
         grid-column: 3;
         margin: auto;
 
@@ -50,7 +55,8 @@
             }
         }
         
-        #{$root}__media {
+        #{$root}__media,
+        iframe {
             grid-column: 2;
             padding: 0 10px 0 0;
         
