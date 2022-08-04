@@ -1,11 +1,12 @@
 context:
   value:
-    quote: premature optimization is the root of all evil (or at least most of it) in programming
-    author: <p><a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a></p>
+    quote: If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField
+    author: |
+      Donald Knuth - <b>@wagtail</b>
     author_image: fake
 
 tags:
   image:
-    value.author_image fill-100x100:
+    value.author_image fill-40x40 class="standalone-quote__image":
       raw: |
-        <img src="https://via.placeholder.com/100x100" alt="Some alt">
+        <img src="https://via.placeholder.com/40x40" alt="Some alt" class="standalone-quote__image">

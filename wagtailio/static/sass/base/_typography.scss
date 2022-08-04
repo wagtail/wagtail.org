@@ -111,6 +111,11 @@ h4,
     font-size: 0.875rem;
     line-height: 1.3125rem;
 
+    @include media-query(large) {
+        font-size: 0.7rem;
+        line-height: 1.05rem;
+    }
+
     &--bold {
         font-weight: $weight--bold;
     }
