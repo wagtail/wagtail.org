@@ -1,9 +1,7 @@
 <div class="headline {% if value.dark_background or dark_background %}headline--dark-theme{% endif %}">
-    <div class="grid">
+    <div class="headline__grid grid">
         {% if value.icon %}
-            <svg class="headline__icon" aria-hidden="true">
-                <use xlink:href="#{{ value.icon }}" />
-            </svg>
+            {% include "patterns/components/icon/icon.html" with icon=value.icon classes="headline__icon" %}
         {% endif %}
 
         <h2 class="headline__heading heading-one">{{ value.heading }}</h2>

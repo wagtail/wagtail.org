@@ -1,14 +1,16 @@
 {# This is a pattern library file to display available icons #}
 <style>
     .icon-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
     }
 
-    .icon-grid div {
+    .icon-grid > div {
         border: 1px solid #f5f5f5;
         padding: 10px;
         text-align: center;
+        flex-basis: 250px;
+        height: 220px;
     }
 
     .icon-grid svg {
@@ -16,20 +18,9 @@
         max-width: 50%;
     }
 
-    .eggshell {
-        fill: #B3E7E8;
-    }
-
-    .off-black {
-        fill: #262626;
-    }
-
-    .teal {
-        fill: #00b0b1;
-    }
-
-    .teal-light {
-        fill: #80d7d8;
+    .icon {
+        display: flex;
+        justify-content: center;
     }
 </style>
 <div class="icon-grid">
@@ -39,123 +30,123 @@
     </div>
     <div>
         <p>Arrow alt</p>
-        <svg><use xlink:href="#arrow-alt"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="arrow-alt" %}
     </div>
     <div>
         <p>Arrow in circle</p>
-        <svg><use xlink:href="#arrow-in-circle"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="arrow-in-circle" %}
     </div>
     <div>
         <p>Arrow in square</p>
-        <svg><use xlink:href="#arrow-in-square"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="arrow-in-square" %}
     </div>
     <div>
         <p>Arrows</p>
-        <svg><use xlink:href="#arrows"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="arrows" %}
     </div>
     <div>
         <p>Blog</p>
-        <svg><use xlink:href="#blog"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="blog" %}
     </div>
     <div>
         <p>Bread</p>
-        <svg><use xlink:href="#bread"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="bread" %}
     </div>
     <div>
         <p>Briefcase</p>
-        <svg><use xlink:href="#briefcase"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="briefcase" %}
     </div>
     <div>
         <p>Building</p>
-        <svg><use xlink:href="#building"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="building" %}
     </div>
     <div>
         <p>Calendar</p>
-        <svg><use xlink:href="#calendar"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="calendar" %}
+    </div>
+    <div>
+        <p>Code file</p>
+        {% include "patterns/components/icon/icon.html" with icon="code-file" %}
     </div>
     <div>
         <p>Document</p>
-        <svg><use xlink:href="#document"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="document" %}
     </div>
     <div>
         <p>Envelope</p>
-        <svg><use xlink:href="#envelope"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="envelope" %}
     </div>
     <div>
         <p>Explanation</p>
-        <svg><use xlink:href="#explanation"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="explanation" %}
     </div>
     <div>
         <p>Eye</p>
-        <svg><use xlink:href="#eye"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="eye" %}
     </div>
     <div>
         <p>Flame</p>
-        <svg><use xlink:href="#flame"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="flame" %}
     </div>
     <div>
         <p>Friends</p>
-        <svg><use xlink:href="#friends"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="friends" %}
     </div>
     <div>
         <p>Github</p>
-        <svg><use xlink:href="#github"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="github" %}
     </div>
     <div>
         <p>Handshake</p>
-        <svg><use xlink:href="#handshake"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="handshake" %}
     </div>
     <div>
         <p>Heart</p>
-        <svg><use xlink:href="#heart"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="heart" %}
     </div>
     <div>
         <p>History</p>
-        <svg><use xlink:href="#history"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="history" %}
     </div>
     <div>
         <p>ID Card</p>
-        <svg><use xlink:href="#id-card"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="id-card" %}
     </div>
     <div>
         <p>Image</p>
-        <svg><use xlink:href="#image"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="image" %}
     </div>
     <div>
         <p>Knife Fork</p>
-        <svg><use xlink:href="#knife-fork"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="knife-fork" %}
     </div>
     <div>
         <p>Leaf</p>
-        <svg><use xlink:href="#leaf"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="leaf" %}
     </div>
     <div>
         <p>Location Pin</p>
-        <svg><use xlink:href="#location-pin"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="location-pin" %}
     </div>
     <div>
         <p>Map</p>
-        <svg><use xlink:href="#map"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="map" %}
     </div>
     <div>
         <p>Money</p>
-        <svg><use xlink:href="#money"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="money" %}
     </div>
     <div>
         <p>Moon</p>
-        <svg><use xlink:href="#moon"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="moon" %}
     </div>
     <div>
         <p>One Two Steps</p>
-        <svg><use xlink:href="#one-two-steps"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="one-two-steps" %}
     </div>
     <div>
-        <p>Padlock Dark</p>
-        <svg><use xlink:href="#padlock-dark"></use></svg>
-    </div>
-    <div>
-        <p>Padlock Light</p>
-        <svg><use xlink:href="#padlock-light"></use></svg>
+        <p>Padlock</p>
+        {% include "patterns/components/icon/icon.html" with icon="padlock" %}
     </div>
     <div>
         <p>Paper Plane</p>
@@ -163,74 +154,70 @@
     </div>
     <div>
         <p>Paper Stack</p>
-        <svg><use xlink:href="#paper-stack"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="paper-stack" %}
     </div>
     <div>
         <p>Pen Checkbox</p>
-        <svg><use xlink:href="#pen-checkbox"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="pen-checkbox" %}
     </div>
     <div>
         <p>Person in Tie</p>
-        <svg><use xlink:href="#person-in-tie"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="person-in-tie" %}
     </div>
     <div>
         <p>Python</p>
-        <svg><use xlink:href="#python"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="python" %}
     </div>
     <div>
         <p>Question Mark Circle</p>
-        <svg><use xlink:href="#question-mark-circle"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="question-mark-circle" %}
     </div>
     <div>
         <p>Quotes</p>
-        <svg><use xlink:href="#quotes"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="quotes" %}
     </div>
     <div>
         <p>Release Cycle</p>
-        <svg><use xlink:href="#release-cycle"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="release-cycle" %}
     </div>
     <div>
         <p>Roadmap</p>
-        <svg><use xlink:href="#roadmap"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="roadmap" %}
     </div>
     <div>
         <p>Rocket</p>
-        <svg><use xlink:href="#rocket"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="rocket" %}
     </div>
     <div>
         <p>Rollback</p>
-        <svg><use xlink:href="#rollback"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="rollback" %}
     </div>
     <div>
         <p>Slack</p>
-        <svg><use xlink:href="#slack"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="slack" %}
     </div>
     <div>
         <p>Speech Bubble</p>
-        <svg><use xlink:href="#speech-bubble"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="speech-bubble" %}
     </div>
     <div>
-        <p>Sun Cloud Dark</p>
-        <svg><use xlink:href="#sun-cloud-dark"></use></svg>
-    </div>
-    <div>
-        <p>Sun Cloud Light</p>
-        <svg><use xlink:href="#sun-cloud-light"></use></svg>
+        <p>Sun Cloud</p>
+        {% include "patterns/components/icon/icon.html" with icon="sun-cloud" %}
     </div>
     <div>
         <p>Table Tennis</p>
-        <svg><use xlink:href="#table-tennis"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="table-tennis" %}
     </div>
     <div>
         <p>Tree</p>
-        <svg><use xlink:href="#tree"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="tree" %}
     </div>
     <div>
         <p>Wordpress</p>
-        <svg><use xlink:href="#wordpress"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="wordpress" %}
     </div>
     <div>
         <p>World</p>
-        <svg><use xlink:href="#world"></use></svg>
+        {% include "patterns/components/icon/icon.html" with icon="world" %}
     </div>
 </div>

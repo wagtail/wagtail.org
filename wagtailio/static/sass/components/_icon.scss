@@ -1,0 +1,26 @@
+// Hover states should be handled on a component basis - not in here
+.icon {
+    &--relative {
+        position: relative;
+    }
+
+    &__svg {
+        position: absolute;
+        overflow: visible;
+    }
+
+    &__svg-bg {
+        color: $color--eggshell;
+        transform: scale(1.15);
+        transform-origin: center;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    &__svg-fg {
+        color: transparent;
+        stroke: $color--black;
+        stroke-width: 2;
+        transform: rotate(7deg);
+        transform-origin: center;
+    }
+}

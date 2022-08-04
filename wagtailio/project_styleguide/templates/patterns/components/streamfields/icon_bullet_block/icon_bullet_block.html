@@ -1,8 +1,6 @@
 {% load wagtailcore_tags %}
 <li class="icon-bullet grid">
-    <svg class="icon-bullet__svg" aria-hidden="true">
-        <use xlink:href="#{{ value.icon }}" />
-    </svg>
+    {% include "patterns/components/icon/icon.html" with icon=value.icon classes="icon-bullet__svg" %}
 
     <div class="icon-bullet__content">
         <h2 class="icon-bullet__heading">{{ value.heading }}</h2>

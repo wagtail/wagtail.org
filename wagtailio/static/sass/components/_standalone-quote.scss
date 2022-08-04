@@ -14,14 +14,21 @@
         display: none;
 
         @include media-query(medium) {
-            width: 100%;
-            padding: 0 40px;
+            margin: 0 auto;
             display: block;
             grid-column: 2 / span 1;
+            width: 150px;
+            height: 125px;
         }
 
         @include media-query(large) {
-            padding: 0 20px;
+            width: 150px;
+            height: 125px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
         }
     }
 

@@ -15,6 +15,10 @@
         margin-bottom: 200px;
     }
 
+    &__grid {
+        position: relative;
+    }
+
     &__heading {
         position: relative;
         grid-column: 2 / span 2;
@@ -73,13 +77,24 @@
         position: absolute;
         width: 230px;
         height: 300px;
-        top: 0;
-        right: -40px;
+        right: -20px;
+        top: -110px;
 
         @include media-query(large) {
-            width: 420px;
+            width: 500px;
             height: 545px;
-            right: 10%;
+            right: 70px;
+            top: -200px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+
+        // Icon overrides
+        .icon__svg-fg {
+            stroke: $color--teal;
         }
     }
 

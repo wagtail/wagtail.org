@@ -4,8 +4,15 @@
     gap: 10px;
 
     &__icon {
-        flex-shrink: 0;
         width: 30px;
         height: 30px;
+        position: relative;
+
+        svg {
+            top: 0;
+            flex-shrink: 0;
+            width: inherit;
+            height: inherit;
+        }
     }
 }

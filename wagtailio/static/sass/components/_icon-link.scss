@@ -1,0 +1,61 @@
+.icon-link {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+    display: flex;
+    column-gap: 15px;
+
+    @include media-query(medium) {
+        column-gap: 20px;
+    }
+
+    &__svg {
+        width: 30px;
+        height: 45px;
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            width: 70px;
+            height: 85px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+
+        // Icon overrides
+        .icon__svg-fg {
+            stroke-width: 1;
+        }
+    }
+
+    &__content {
+        @include media-query(medium) {
+            margin-left: 30px;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 5px;
+        transition: color 0.3s ease;
+    }
+
+    &__subheading {
+        font-weight: $weight--regular;
+        color: $color--teal;
+        margin-bottom: 5px;
+    }
+
+    &:hover {
+        #{$root}__heading {
+            color: $color--teal;
+        }
+
+        // Icon overrides
+        .icon__svg-bg {
+            transform: rotate(5deg);
+            color: $color--teal;
+        }
+    }
+}

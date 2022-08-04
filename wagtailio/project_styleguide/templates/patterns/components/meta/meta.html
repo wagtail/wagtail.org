@@ -1,8 +1,6 @@
 <div class="meta{% if classes %} {{ classes }}{% endif %}">
     {% if value.meta_icon %}
-        <svg class="meta__icon" aria-hidden="true">
-            <use xlink:href="#{{ value.meta_icon }}" />
-        </svg>
+        {% include "patterns/components/icon/icon.html" with icon=value.meta_icon classes="meta__icon" %}
     {% endif %}
 
     <p class="mini-meta mini-meta--bold">{{ value.meta_text }}</p>

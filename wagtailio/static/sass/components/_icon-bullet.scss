@@ -16,6 +16,11 @@
             height: 75px;
             margin: 0 auto;
         }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
     }
 
     &__content {

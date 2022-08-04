@@ -6,7 +6,7 @@
     <div class="highlight__content">
         {% if value.meta_icon and value.meta_text %}
             <div class="highlight__meta">
-                <svg class="highlight__meta-icon"><use xlink:href="#{{ value.meta_icon }}"></use></svg>
+                {% include "patterns/components/icon/icon.html" with icon=value.meta_icon classes="highlight__meta-icon" %}
                 <span class="highlight__meta-text heading-four">{{ value.meta_text }}</span>
             </div>
         {% endif %}
