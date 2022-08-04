@@ -1,9 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <figure class="standalone-quote grid">
-    <svg class="standalone-quote__icon" aria-hidden="true">
-        <use xlink:href="#quotes" />
-    </svg>
+    {% include "patterns/components/icon/icon.html" with icon="quotes" classes="standalone-quote__icon" %}
     <blockquote class="standalone-quote__text heading-three">
         <p>&ldquo;{{ value.quote }}&rdquo;</p>
     </blockquote>
