@@ -550,6 +550,52 @@ class TextAndMediaBlock(blocks.StructBlock):
         template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
 
 
+class GetStartedItem(blocks.StructBlock):
+    """This is meant to be used as part of GetStartedBlock"""
+
+    heading = blocks.CharBlock(max_length=255)
+    subheading = blocks.CharBlock(max_length=255)
+    description = blocks.TextBlock()
+    icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    page = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        if not value.get("page") and not value.get("external_link"):
+            error = ErrorList([ValidationError("You must specify a page or a URL.")])
+            errors["page"] = errors["external_link"] = error
+
+        if value.get("page") and value.get("external_link"):
+            error = ErrorList(
+                [ValidationError("You must specify a page or URL. You can't use both.")]
+            )
+            errors["external_link"] = errors["page"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        if value["external_link"]:
+            context["value"]["url"] = value["external_link"]
+        if value["page"]:
+            context["value"]["url"] = value["page"].get_url
+        return context
+
+
+class GetStartedBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    items = blocks.ListBlock(GetStartedItem(), min_num=2)
+
+    class Meta:
+        template = "patterns/components/get-started/get-started.html"
+
+
 class ContentStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
     text_and_media = TextAndMediaBlock()
@@ -563,6 +609,8 @@ class ContentStoryBlock(blocks.StreamBlock):
     standalone_cta = StandaloneCTABlock(group="Call to action")
     standalone_quote = StandaloneQuoteBlock(group="Quotes")
     multiple_quotes = MultipleQuoteBlock(group="Quotes")
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet")
+    sign_up_form = SnippetChooserBlock("core.SignupFormSnippet")
     comparison_table = ComparisonTableBlock()
 
     class Meta:
