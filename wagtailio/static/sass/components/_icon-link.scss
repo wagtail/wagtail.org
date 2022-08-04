@@ -16,12 +16,7 @@
 
         @include media-query(medium) {
             width: 70px;
-            height: 70px;
-        }
-
-        @include media-query(large) {
-            width: 100px;
-            height: 100px;
+            height: 85px;
         }
 
         svg {
