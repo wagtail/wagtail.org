@@ -47,7 +47,7 @@
     &__list-item {
         @include media-query(large) {
             flex-basis: 50%;
-            padding-right: 10%;
+            padding: 0 calc(5% + 40px) 0 40px;
         }
     }
 }
