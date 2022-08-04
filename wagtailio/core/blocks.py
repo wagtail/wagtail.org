@@ -548,3 +548,22 @@ class TextAndMediaBlock(blocks.StructBlock):
         icon = "media"
         label = "Text and Media"
         template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
+
+
+class ContentStoryBlock(blocks.StreamBlock):
+    rich_text = RichTextBlock()
+    text_and_media = TextAndMediaBlock()
+    headline = HeadlineBlock()
+    highlight = HighlightBlock()
+    teaser = TeaserBlock()
+    icon_bullets = IconBulletsBlock()
+    cards = CardsBlock(group="Cards")
+    logo_cards = LogoCardsBlock(group="Cards")
+    cta = CTABlock(group="Call to action")
+    standalone_cta = StandaloneCTABlock(group="Call to action")
+    standalone_quote = StandaloneQuoteBlock(group="Quotes")
+    multiple_quotes = MultipleQuoteBlock(group="Quotes")
+    comparison_table = ComparisonTableBlock()
+
+    class Meta:
+        template = "patterns/components/streamfields/content_story_block.html"

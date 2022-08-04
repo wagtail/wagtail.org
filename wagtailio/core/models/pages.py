@@ -3,7 +3,8 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
 from wagtailio.blog.models import BlogPage
-from wagtailio.core.blocks import HomePageBlock
+from wagtailio.core.blocks import ContentStoryBlock, HomePageBlock
+from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
@@ -12,6 +13,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "blog.BlogIndexPage",
+        "core.ContentPage",
         "developers.DevelopersPage",
         "features.FeatureIndexPage",
         "newsletter.NewsletterIndexPage",
@@ -30,3 +32,16 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         context.update({"blog_posts": BlogPage.objects.live().order_by("-date")})
 
         return context
+
+
+class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
+    parent_page_types = ["core.HomePage"]
+    # subpage_types = []  # TODO
+
+    body = StreamField(ContentStoryBlock())
+
+    content_panels = Page.content_panels + HeroMixin.panels + [StreamFieldPanel("body")]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
