@@ -17,8 +17,8 @@
             margin: 0 auto;
             display: block;
             grid-column: 2 / span 1;
-            width: 150px;
-            height: 125px;
+            width: 120px;
+            height: 85px;
         }
 
         @include media-query(large) {
