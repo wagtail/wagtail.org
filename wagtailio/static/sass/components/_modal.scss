@@ -1,4 +1,17 @@
 .modal {
+    $root: &;
+
+    &--get-started {
+        // hide the modal if it's open below medium breakpoint
+        &.micromodal-slide.is-open {
+            display: none;
+
+            @include media-query(medium) {
+                display: block;
+            }
+        }
+    }
+
     &__overlay {
         position: fixed;
         top: 0;
@@ -20,13 +33,34 @@
         border-radius: 15px;
         overflow-y: auto;
         box-sizing: border-box;
-        width: 100%;
-        inset: 10% 0;
+        width: calc(100% - 40px);
+        inset: 140px 0;
         position: relative;
     }
 
     &__content {
-        color: $color--black;
+        padding: 0 20px 20px;
+
+        @include media-query(large) {
+            padding: 0 40px 40px;
+        }
+    }
+
+    &__grid {
+        &--get-started {
+            list-style: none;
+            display: grid;
+            row-gap: 40px;
+
+            @include media-query(large) {
+                row-gap: 80px;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #{$root}__grid-item {
+                max-width: 75%;
+            }
+        }
     }
 
     &__close-button {
@@ -38,6 +72,14 @@
         color: $color--off-black;
         width: 20px;
         height: 20px;
+    }
+
+    &__title {
+        margin-bottom: 40px;
+
+        @include media-query(large) {
+            margin-bottom: 60px;
+        }
     }
 }
 
