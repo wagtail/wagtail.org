@@ -1,0 +1,112 @@
+.modal {
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $color--off-black-30;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 10;
+    }
+
+    &__container {
+        background-color: $color--white;
+        padding: 30px;
+        max-width: 1295px;
+        max-height: 100vh;
+        border-radius: 15px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        width: 100%;
+        inset: 10% 0;
+        position: relative;
+    }
+
+    &__content {
+        color: $color--black;
+    }
+
+    &__close-button {
+        display: block;
+        margin-left: auto;
+    }
+
+    &__close-icon {
+        color: $color--off-black;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+// Micromodal
+@keyframes mmfadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes mmfadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes mmslideIn {
+  from {
+    transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes mmslideOut {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.micromodal-slide {
+    display: none;
+}
+
+.micromodal-slide.is-open {
+    display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mmfadeIn .25s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mmslideIn .25s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mmfadeOut .25s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mmslideOut .25s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+    will-change: transform;
+}
