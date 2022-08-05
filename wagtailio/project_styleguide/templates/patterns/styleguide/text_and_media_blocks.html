@@ -1,0 +1,14 @@
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .container > div {
+        margin-bottom: 100px;
+    }
+</style>
+<div class="container">
+    {% for text_media in values %}
+        {% include "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"  with value=text_media.value %}
+    {% endfor %}
+</div>
