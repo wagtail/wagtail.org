@@ -5,14 +5,23 @@
         </svg>
     </a>
 
-    {% if get_started_menu_items %}
-        <button class="header__button header__button--get-started button" data-get-started>
-            Get Started
-            <svg class="modal__close-icon" aria-hidden="true">
-                <use xlink:href="#chevron"></use>
+    <div class="header__items-wrap">
+        <button class="header__button header__button--search" aria-label="Open the search" data-site-search>
+            <svg class="header__search-icon" aria-hidden="true">
+                <use xlink:href="#magnifying-glass"></use>
             </svg>
         </button>
-    {% endif %}
+
+        {% if get_started_menu_items %}
+            <button class="header__button header__button--get-started button" data-get-started>
+                Get Started
+                <svg class="modal__close-icon" aria-hidden="true">
+                    <use xlink:href="#chevron"></use>
+                </svg>
+            </button>
+        {% endif %}
+    </div>
 </header>
 
 {% include "patterns/includes/menu_get_started.html" %}
+{% include "patterns/includes/search.html" %}

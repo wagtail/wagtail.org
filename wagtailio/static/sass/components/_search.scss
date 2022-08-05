@@ -1,0 +1,19 @@
+.search {
+    &__wrap {
+        display: flex;
+    }
+
+    &__button {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    &__input {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        width: 100%;
+        border: 1px solid $color--black;
+        padding: 10px 20px;
+        color: $color--off-black;
+    }
+}

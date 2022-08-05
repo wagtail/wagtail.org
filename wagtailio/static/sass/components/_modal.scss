@@ -10,6 +10,37 @@
                 display: block;
             }
         }
+
+        #{$root}__content {
+            padding: 0 20px 20px;
+
+            @include media-query(large) {
+                padding: 0 40px 40px;
+            }
+        }
+    }
+
+    &--search {
+        #{$root}__container {
+            max-width: 850px;
+            overflow: visible;
+        }
+
+        #{$root}__close-button {
+            position: absolute;
+            inset: -10px -10px auto auto;
+            background-color: $color--off-black;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            border: 3px solid $color--white;
+
+            svg {
+                color: $color--white;
+                width: 13px;
+                height: 17px;
+            }
+        }
     }
 
     &__overlay {
@@ -33,14 +64,6 @@
         width: calc(100% - 40px);
         inset: 140px 0;
         position: relative;
-    }
-
-    &__content {
-        padding: 0 20px 20px;
-
-        @include media-query(large) {
-            padding: 0 40px 40px;
-        }
     }
 
     &__grid {
