@@ -1,5 +1,5 @@
 default_language_version:
-  node: system
+  node: 18.7.0
   python: python3
 repos:
   - repo: https://github.com/psf/black
