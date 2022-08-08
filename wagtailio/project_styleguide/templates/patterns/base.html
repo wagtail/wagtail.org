@@ -31,6 +31,8 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        {% block header %}{% endblock %}
+
         {% block content %}
             {{ pattern_library_rendered_pattern }}
         {% endblock %}

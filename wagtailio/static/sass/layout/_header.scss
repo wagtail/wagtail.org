@@ -1,0 +1,23 @@
+.header {
+    max-width: $site-width;
+    margin: 0 auto;
+    padding: 15px;
+
+    @include media-query(medium) {
+        padding: 15px 30px;
+    }
+
+    @include media-query(large) {
+        padding: 35px 50px;
+    }
+
+    &__logo {
+        width: 100px;
+        height: 40px;
+
+        @include media-query(medium) {
+            width: 155px;
+            height: 65px;
+        }
+    }
+}

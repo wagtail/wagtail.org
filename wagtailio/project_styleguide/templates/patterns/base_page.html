@@ -75,17 +75,9 @@
 
         <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
 
-        <header class="header">
-            <div class="header__container">
-                <a class="branding" href="/">
-                    <img class="branding__logo" src="{% static "img/wagtail.svg" %}" alt="Wagtail" />
-                </a>
-                <a href="#primary_navigation" class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                </a>
-                {% menu_primary calling_page=page %}
-            </div>
-        </header> <!-- /header -->
+        {% block header %}
+            {% include "patterns/includes/header.html" %}
+        {% endblock %}
 
         {% block sidebar %}{% endblock %}
 
