@@ -1,38 +1,22 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-{% comment "temporary styles for testing." %}
-Remove once the styling for these css classes is defined globally
-{% endcomment %}
-<style>
-    .eggshell {
-        fill: #B3E7E8;
-    }
+{% if value.link_url %}
+    <a href="{{ value.link_url }}" class="logo-card">
+{% else %}
+    <div class="logo-card">
+{% endif %}
+        {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
 
-    .off-black {
-        fill: #262626;
-    }
+        <h4 class="logo-card__heading teaser-heading">{{ value.heading }}</h4>
 
-    .teal {
-        fill: #00b0b1;
-    }
+        {% if value.description %}
+            <p class="logo-card__description">{{ value.description }}</p>
+        {% endif %}
 
-    .teal-light {
-        fill: #80d7d8;
-    }
-</style>
-{% if value.link_url %}<a href="{{ value.link_url }}">{% endif %}
-<div>
-    <div>
-        <svg><use xlink:href="#{{ value.meta_icon }}"></use></svg>
-        <span>{{ value.meta_text }}</span>
+        {% if value.logo %}
+            {% image value.logo fill-100x40 class="logo-card__image" %}
+        {% endif %}
+{% if value.link_url %}
+    </a>
+{% else %}
     </div>
-    <h4>{{ value.heading }}</h4>
-    {% if value.description %}
-        <div>
-            {{ value.description }}
-        </div>
-    {% endif %}
-    {% if value.logo %}
-        {% image value.logo fill-180x50 %}
-    {% endif %}
-</div>
-{% if value.link_url %}</a>{% endif %}
+{% endif %}

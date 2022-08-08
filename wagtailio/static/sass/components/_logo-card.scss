@@ -1,0 +1,34 @@
+.logo-card {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+
+    &__meta {
+        margin-bottom: 10px;
+
+        p {
+            font-weight: $weight--regular;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 10px;
+        transition: color .3s ease;
+    }
+
+    &__description {
+        color: $color--grey;
+        padding-bottom: 20px;
+
+        @include media-query(large) {
+            padding-bottom: 35px;
+            font-size: 0.8rem;
+        }
+    }
+
+    &:hover {
+        #{$root}__heading {
+            color: $color--teal;
+        }
+    }
+}
