@@ -20,7 +20,6 @@ class SiteSearch {
     openMenu() {
         MicroModal.show(this.modalId, {
             awaitCloseAnimation: true,
-            // disableFocus: true,
         });
     }
 }
