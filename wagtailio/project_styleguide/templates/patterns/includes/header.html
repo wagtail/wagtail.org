@@ -5,12 +5,14 @@
         </svg>
     </a>
 
-    <button class="header__button header__button--get-started button" data-get-started>
-        Get Started
-        <svg class="modal__close-icon" aria-hidden="true">
-            <use xlink:href="#chevron"></use>
-        </svg>
-    </button>
+    {% if get_started_menu_items %}
+        <button class="header__button header__button--get-started button" data-get-started>
+            Get Started
+            <svg class="modal__close-icon" aria-hidden="true">
+                <use xlink:href="#chevron"></use>
+            </svg>
+        </button>
+    {% endif %}
 </header>
 
 {% include "patterns/includes/menu_get_started.html" %}
