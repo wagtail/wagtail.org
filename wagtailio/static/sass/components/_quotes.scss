@@ -1,0 +1,86 @@
+.quotes {
+    position: relative;
+
+    &__header {
+        color: $color--off-black;
+        padding-bottom: 30px;
+        grid-column: 2 / span 1;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 7;
+            padding-bottom: 60px;
+        }
+    }
+
+    &__item {
+        grid-column: 2 / span 1;
+        padding: 0 0 25px 0;
+
+        @include media-query(large) {
+            &:nth-child(even) {
+                grid-column: 4 / span 2;
+                padding: 0 0 100px 0;
+            }
+            
+            &:nth-child(odd) {
+                grid-column: 2 / span 2;
+                padding: 0 80px 100px 0;
+            }
+        }
+
+    }
+    
+    &__author {
+        display: flex;
+        align-items: center;
+        padding: 15px 0 0;
+        color: $color--off-black;
+
+        @include media-query(large) {
+            padding: 30px 0 0;
+        }
+    }
+
+    &__author-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+    }
+
+    &__icon {
+        fill: $color--teal-200;
+        position: absolute;
+        inset: -5% -80% auto auto;
+        width: 273px;
+        height: 184px;
+        z-index: -1;
+
+        > svg {
+            width: 273px;
+            height: 184px;
+        }
+
+        @include media-query(medium) {
+            inset: -10% -5% auto auto;
+            
+            > svg {
+                width: 360px;
+                height: 450px;
+            }
+        }
+
+        @include media-query(large) {
+            inset: -20% -10% auto auto;
+
+            > svg {
+                height: 546px;
+                width: 368px;
+            }
+        }
+    }
+}
