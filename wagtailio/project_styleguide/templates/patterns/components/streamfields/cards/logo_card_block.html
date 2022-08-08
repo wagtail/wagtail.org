@@ -4,17 +4,17 @@
 {% else %}
     <div class="logo-card">
 {% endif %}
-        {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
+{% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
 
-        <h4 class="logo-card__heading teaser-heading">{{ value.heading }}</h4>
+<h4 class="logo-card__heading teaser-heading">{{ value.heading }}</h4>
 
-        {% if value.description %}
-            <p class="logo-card__description">{{ value.description }}</p>
-        {% endif %}
+{% if value.description %}
+    <p class="logo-card__description">{{ value.description }}</p>
+{% endif %}
 
-        {% if value.logo %}
-            {% image value.logo fill-100x40 class="logo-card__image" %}
-        {% endif %}
+{% if value.logo %}
+    {% image value.logo fill-100x40 class="logo-card__image" %}
+{% endif %}
 {% if value.link_url %}
     </a>
 {% else %}
