@@ -8,19 +8,17 @@
         border-top-left-radius: 0;
         padding: 10px;
 
-        &:hover {
-            svg {
-                // remove hover on mobile to save space
-                transform: none;
-
-                @include media-query(medium) {
-                    transform: translateX(10px) scale(1.25);
-                }
-            }
-        }
-
         @include media-query(medium) {
             padding: 15px 30px;
+        }
+
+        &:hover svg {
+            // remove hover on mobile to save space
+            transform: none;
+
+            @include media-query(medium) {
+                transform: translateX(10px) scale(1.25);
+            }
         }
     }
 
