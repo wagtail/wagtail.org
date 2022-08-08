@@ -14,6 +14,10 @@
                 {% endif %}
 
                 <ul class="modal__grid modal__grid--get-started">
+                    {% comment %}
+                        This loop will most likely be replaced with something like {% menu_get_started %}
+                        once the BE is done. Below is done for demonstration purposes.
+                    {% endcomment %}
                     {% for menu_item in get_started_menu_items %}
                         <li class="modal__grid-item">
                             {% include "patterns/components/icon-link/icon-link.html" with value=menu_item %}
