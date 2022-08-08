@@ -24,6 +24,13 @@
         #{$root}__container {
             max-width: 850px;
             overflow: visible;
+            padding: 10px;
+            inset: 50px 0;
+
+            @include media-query(medium) {
+                padding: 30px;
+                inset: 140px 0;
+            }
         }
 
         #{$root}__close-button {
@@ -37,8 +44,13 @@
 
             svg {
                 color: $color--white;
-                width: 13px;
-                height: 17px;
+                width: 12px;
+                height: 22px;
+
+                @include media-query(medium) {
+                    width: 13px;
+                    height: 17px;
+                }
             }
         }
     }
