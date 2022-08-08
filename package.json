@@ -61,5 +61,8 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3",
     "webpack-manifest-plugin": "^5.0.0"
+  },
+  "dependencies": {
+    "micromodal": "^0.4.10"
   }
 }

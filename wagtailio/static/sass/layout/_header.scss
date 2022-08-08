@@ -2,6 +2,9 @@
     max-width: $site-width;
     margin: 0 auto;
     padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     @include media-query(medium) {
         padding: 15px 30px;
@@ -18,6 +21,38 @@
         @include media-query(medium) {
             width: 155px;
             height: 65px;
+        }
+    }
+
+    &__button {
+        margin: 0;
+        width: auto;
+
+        &--get-started {
+            display: none;
+
+            @include media-query(medium) {
+                padding: 15px 20px;
+                display: inline-flex;
+                font-weight: $weight--bold;
+                font-size: 1rem;
+            }
+
+            @include media-query(large) {
+                font-size: 0.8rem;
+            }
+
+            svg {
+                color: $color--teal;
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        &:hover {
+            svg {
+                transform: none;
+            }
         }
     }
 }
