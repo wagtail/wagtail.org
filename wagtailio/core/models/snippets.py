@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
@@ -48,11 +48,22 @@ class SignupFormSnippet(models.Model):
     )
 
     panels = [
-        FieldPanel("name"),
-        FieldPanel("heading"),
-        FieldPanel("sub_heading"),
-        FieldPanel("mailchimp_account_id"),
-        FieldPanel("mailchimp_newsletter_id"),
+        MultiFieldPanel(
+            [
+                FieldPanel("name"),
+                FieldPanel("heading"),
+                FieldPanel("sub_heading"),
+            ],
+            "Title",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("mailchimp_account_id"),
+                FieldPanel("mailchimp_newsletter_id"),
+            ],
+            "Mailchimp",
+            classname="collapsible",
+        ),
     ]
 
     def __str__(self):
