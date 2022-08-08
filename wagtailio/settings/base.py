@@ -43,7 +43,7 @@ APP_NAME = env.get("APP_NAME", "wagtailio")
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     "scout_apm.django",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -97,7 +97,7 @@ INSTALLED_APPS = (
     "pattern_library",
     "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailfontawesomesvg",
-)
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
