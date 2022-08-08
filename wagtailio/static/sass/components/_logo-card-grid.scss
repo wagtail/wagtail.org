@@ -1,0 +1,31 @@
+.logo-card-grid {
+    list-style: none;
+    row-gap: 20px;
+    margin-bottom: 20px;
+
+    @include media-query(medium) {
+        row-gap: 50px;
+        margin-bottom: 50px;
+    }
+
+    @include media-query(large) {
+        row-gap: 100px;
+        margin-bottom: 100px;
+    }
+
+    &__item {
+        grid-column: 2 / span 2;
+
+        @include media-query(large) {
+            &:nth-child(odd) {
+                grid-column: 2 / span 2;
+                max-width: 75%;
+            }
+
+            &:nth-child(even) {
+                grid-column: 4 / span 2;
+                max-width: 75%;
+            }
+        }
+    }
+}

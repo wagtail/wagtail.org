@@ -26,7 +26,7 @@
         }
     }
 
-    &:hover {
+    &:is(a):hover {
         #{$root}__heading {
             color: $color--teal;
         }
