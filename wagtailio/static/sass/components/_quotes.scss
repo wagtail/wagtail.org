@@ -1,8 +1,10 @@
 .quotes {
+    position: relative;
+
     &__header {
         color: $color--off-black;
         padding-bottom: 30px;
-        grid-column: 2 / span 4;
+        grid-column: 2 / span 1;
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
@@ -15,16 +17,16 @@
     }
 
     &__item {
-        grid-column: 2 / span 3;
+        grid-column: 2 / span 1;
         padding: 0 0 25px 0;
 
         @include media-query(large) {
-            &:nth-child(odd) {
+            &:nth-child(even) {
                 grid-column: 4 / span 2;
                 padding: 0 0 100px 0;
             }
             
-            &:nth-child(even) {
+            &:nth-child(odd) {
                 grid-column: 2 / span 2;
                 padding: 0 80px 100px 0;
             }
@@ -35,11 +37,11 @@
     &__author {
         display: flex;
         align-items: center;
-        padding: 15px 0 0 0;
+        padding: 15px 0 0;
         color: $color--off-black;
 
         @include media-query(large) {
-            padding: 30px 0 0 0;
+            padding: 30px 0 0;
         }
     }
 
@@ -53,20 +55,32 @@
     &__icon {
         fill: $color--teal-200;
         position: absolute;
-        inset: -5% -40% auto auto;
+        inset: -5% -80% auto auto;
         width: 273px;
         height: 184px;
+        z-index: -1;
+
+        > svg {
+            width: 273px;
+            height: 184px;
+        }
 
         @include media-query(medium) {
-            inset: -15% 0% auto auto;
-            width: 360px;
-            height: 450px;
+            inset: -10% -5% auto auto;
+            
+            > svg {
+                width: 360px;
+                height: 450px;
+            }
         }
 
         @include media-query(large) {
-            inset: -20% 10% auto auto;
-            height: 546px;
-            width: 368px;
+            inset: -20% -10% auto auto;
+
+            > svg {
+                height: 546px;
+                width: 368px;
+            }
         }
     }
 }
