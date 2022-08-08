@@ -46,11 +46,6 @@
                 color: $color--white;
                 width: 12px;
                 height: 22px;
-
-                @include media-query(medium) {
-                    width: 13px;
-                    height: 17px;
-                }
             }
         }
     }
