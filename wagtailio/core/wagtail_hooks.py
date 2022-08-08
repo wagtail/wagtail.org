@@ -65,6 +65,7 @@ def register_icons(icons):
         "wagtailfontawesomesvg/solid/list-alt.svg",
         "wagtailfontawesomesvg/solid/newspaper.svg",
         "wagtailfontawesomesvg/solid/th-list.svg",
+        "wagtailfontawesomesvg/solid/rocket.svg",
     ]
 
 
