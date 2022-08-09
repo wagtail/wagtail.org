@@ -300,8 +300,8 @@ class TableContentBlock(blocks.StreamBlock):
 class ComparisonTableBlock(blocks.StructBlock):
     comparison_table = TypedTableBlock(
         [
-            ("content", TableContentBlock(max_num=1)),
-        ]
+            ("content", TableContentBlock(max_num=1, required=False)),
+        ],
     )
 
     class Meta:
@@ -603,4 +603,4 @@ class ContentStoryBlock(blocks.StreamBlock):
     comparison_table = ComparisonTableBlock()
 
     class Meta:
-        template = "patterns/components/streamfields/content_story_block.html"
+        template = "patterns/components/content_story_block.html"
