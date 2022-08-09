@@ -188,6 +188,13 @@ class HomePageBlock(blocks.StreamBlock):
         template = "core/blocks/home_page_block.html"
 
 
+class CTALinkStructValue(blocks.StructValue):
+    def url(self):
+        cta_url = self.get("cta_url")
+        cta_page = self.get("cta_page")
+        return cta_url or cta_page.url
+
+
 class CTABlock(blocks.StructBlock):
     cta_text = blocks.CharBlock(label="CTA text", max_length=255)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
@@ -230,6 +237,7 @@ class CTABlock(blocks.StructBlock):
         icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
+        value_class = CTALinkStructValue
 
 
 class CardBlock(blocks.StructBlock):
@@ -616,4 +624,4 @@ class ContentStoryBlock(blocks.StreamBlock):
     comparison_table = ComparisonTableBlock()
 
     class Meta:
-        template = "patterns/components/streamfields/content_story_block.html"
+        template = "patterns/components/content_story_block.html"
