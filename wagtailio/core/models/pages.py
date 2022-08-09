@@ -35,6 +35,8 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
 
 
 class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
+    template = "patterns/pages/content_page/content_page.html"
+
     parent_page_types = ["core.HomePage"]
     # subpage_types = []  # TODO
 
