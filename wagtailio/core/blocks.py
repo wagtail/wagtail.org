@@ -227,7 +227,7 @@ class CTABlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "tick-inverse"
+        icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
 
@@ -240,7 +240,7 @@ class CardBlock(blocks.StructBlock):
     cta = CTABlock(required=False)
 
     class Meta:
-        icon = "placeholder"
+        icon = "address-card"
         template = "patterns/components/streamfields/cards/card_block.html"
         label = "Card"
 
@@ -282,7 +282,7 @@ class LogoCardBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "placeholder"
+        icon = "image"
         template = "patterns/components/streamfields/cards/logo_card_block.html"
         label = "Logo card"
 
@@ -374,7 +374,7 @@ class HighlightBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        icon = "placeholder"
+        icon = "newspaper"
         label = "Highlight"
         template = (
             "patterns/components/streamfields/highlight_block/highlight_block.html"
@@ -451,7 +451,7 @@ class StandaloneCTABlock(blocks.StructBlock):
     )
 
     class Meta:
-        icon = "arrow-right"
+        icon = "bullhorn"
         label = "Standalone CTA"
         template = "patterns/components/streamfields/cta/cta.html"
 
@@ -508,7 +508,7 @@ class TeaserBlock(blocks.StructBlock):
         return struct_value
 
     class Meta:
-        icon = "placeholder"
+        icon = "gem"
         label = "Teaser"
         template = "patterns/components/streamfields/teaser_block/teaser_block.html"
 
@@ -550,19 +550,69 @@ class TextAndMediaBlock(blocks.StructBlock):
         template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
 
 
+class GetStartedItem(blocks.StructBlock):
+    """This is meant to be used as part of GetStartedBlock"""
+
+    heading = blocks.CharBlock(max_length=255)
+    subheading = blocks.CharBlock(max_length=255)
+    description = blocks.TextBlock()
+    icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
+    page = blocks.PageChooserBlock(required=False)
+    external_link = blocks.URLBlock(required=False)
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        if not value.get("page") and not value.get("external_link"):
+            error = ErrorList([ValidationError("You must specify a page or a URL.")])
+            errors["page"] = errors["external_link"] = error
+
+        if value.get("page") and value.get("external_link"):
+            error = ErrorList(
+                [ValidationError("You must specify a page or URL. You can't use both.")]
+            )
+            errors["external_link"] = errors["page"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        if value["page"]:
+            context["value"]["url"] = value["page"].get_url
+        else:
+            context["value"]["url"] = value["external_link"]
+        return context
+
+
+class GetStartedBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    items = blocks.ListBlock(GetStartedItem(), min_num=2)
+
+    class Meta:
+        template = "patterns/components/get-started/get-started.html"
+
+
 class ContentStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
     text_and_media = TextAndMediaBlock()
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     teaser = TeaserBlock()
-    icon_bullets = IconBulletsBlock()
-    cards = CardsBlock(group="Cards")
-    logo_cards = LogoCardsBlock(group="Cards")
+    icon_bullets = IconBulletsBlock(icon="list-alt")
+    cards = CardsBlock(icon="th-list", group="Cards")
+    logo_cards = LogoCardsBlock(icon="images", group="Cards")
     cta = CTABlock(group="Call to action")
     standalone_cta = StandaloneCTABlock(group="Call to action")
     standalone_quote = StandaloneQuoteBlock(group="Quotes")
     multiple_quotes = MultipleQuoteBlock(group="Quotes")
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
+    sign_up_form = SnippetChooserBlock(
+        "core.SignupFormSnippet", icon="envelope-open-text"
+    )
     comparison_table = ComparisonTableBlock()
 
     class Meta:

@@ -53,6 +53,22 @@ def whitelister_element_rules():
     }
 
 
+@hooks.register("register_icons")
+def register_icons(icons):
+    return icons + [
+        "wagtailfontawesomesvg/solid/address-card.svg",
+        "wagtailfontawesomesvg/solid/bullhorn.svg",
+        "wagtailfontawesomesvg/solid/envelope-open-text.svg",
+        "wagtailfontawesomesvg/solid/gem.svg",
+        "wagtailfontawesomesvg/solid/image.svg",
+        "wagtailfontawesomesvg/solid/images.svg",
+        "wagtailfontawesomesvg/solid/list-alt.svg",
+        "wagtailfontawesomesvg/solid/newspaper.svg",
+        "wagtailfontawesomesvg/solid/th-list.svg",
+        "wagtailfontawesomesvg/solid/rocket.svg",
+    ]
+
+
 # It's important that this hooks runs after all the other hooks,
 # hence order is set to "100".
 @hooks.register("before_serve_document", order=100)
