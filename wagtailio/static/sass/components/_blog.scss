@@ -32,4 +32,28 @@
             margin-bottom: 30px;
         }
     }
+
+    &__content {
+        grid-column: 2 / span 2;
+
+        @include media-query(large) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 3 / span 3;
+        }
+    }
+
+    &__header {
+        padding-bottom: 50px;
+
+        @include media-query(medium) {
+            padding-bottom: 100px;
+        }
+
+        @include media-query(large) {
+            padding-bottom: 200px;
+        }
+    }
 }
