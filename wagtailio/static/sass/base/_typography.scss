@@ -122,6 +122,16 @@ h4,
     }
 }
 
+.article-heading {
+    font-size: 2.25rem;
+    line-height: 2.9rem;
+
+    @include media-query(large) {
+        font-size: 3.25rem;
+        line-height: 3.9rem;
+    }
+}
+
 small {
     font-size: 1rem;
     line-height: 1.5rem;

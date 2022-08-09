@@ -1,0 +1,35 @@
+.blog {
+    &__meta,
+    &__intro,
+    &__author,
+    &__heading {
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 4;
+        }
+    }
+
+    &__intro {
+        font-weight: $weight--regular;
+
+        @include media-query(large) {
+            grid-column: 2 / span 3;
+        }
+    }
+
+    &__meta {
+        margin-bottom: 20px;
+    }
+
+    &__intro,
+    &__heading {
+        @include media-query(large) {
+            margin-bottom: 30px;
+        }
+    }
+}

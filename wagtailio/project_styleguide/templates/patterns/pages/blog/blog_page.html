@@ -1,1 +1,21 @@
 {% extends "patterns/base_page.html" %}
+
+{% block content %}
+    <article class="blog">
+        {# Header #}
+        <header class="grid">
+            {% include "patterns/components/meta/meta.html" with classes="blog__meta" %}
+
+            <h1 class="blog__heading article-heading">{{ page.title }}</h1>
+
+            <h2 class="blog__intro intro-small">{{ page.intro }}</h2>
+
+            {% include "patterns/components/author/author.html" with classes="blog__author author--blog" %}
+        </header>
+
+        {# Body Content #}
+
+    </article>
+
+    {# Related articles #}
+{% endblock %}
