@@ -4,7 +4,7 @@ context:
     subheading: Created by the digital agency Torchbox in 2014
     intro: Once Wagtail was released as an open source project, 46 external contributors participated in creating version 1.0. Since then, hundreds of contributors from around the world have contributed to Wagtail. The first Wagtail conference, called Wagtail Space, was held in March 2017 in Arnhem in the Netherlands. The name Wagtail comes from the pretty little birds that gather on the lawns outside Torchbox’s offices from spring to autumn. Torchbox wanted a charming name that had a sense of light and delight to it. Plus, birds make easy logos.
     cta:
-      cta_text: Find out more
+      text: Find out more
       url: '#'
     icon: world
     dark_background: false

@@ -6,5 +6,5 @@ context:
     cta:
       - value:
           url: '#'
-          cta_text: Find out more
+          text: Find out more
     icon: roadmap

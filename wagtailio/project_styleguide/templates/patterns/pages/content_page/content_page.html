@@ -1,22 +1,11 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
-{% block extra_css %}
-{% endblock %}
-
-{% block body_class %}{% endblock %}
-
 {% block content %}
-    {# title #}
     <h1>{{ page.title }}</h1>
 
-    {# hero #}
     {% include "patterns/components/hero/hero.html" with value=page classes="hero__icon" %}
 
-    {# body StreamField #}
     {% include_block page.body %}
 
-{% endblock %}
-
-{% block extra_js %}
 {% endblock %}
