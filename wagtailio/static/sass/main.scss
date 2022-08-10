@@ -15,6 +15,7 @@
 @import 'components/author';
 @import 'components/buttons';
 @import 'components/cta';
+@import 'components/form.scss';
 @import 'components/get-started';
 @import 'components/grid';
 @import 'components/headline';
@@ -30,6 +31,7 @@
 @import 'components/modal';
 @import 'components/quotes';
 @import 'components/rich-text';
+@import 'components/search-result';
 @import 'components/search';
 @import 'components/standalone-quote';
 @import 'components/teaser';
@@ -40,6 +42,7 @@
 
 // Layout
 @import 'layout/header';
+@import 'layout/search';
 
 // Utilities
 @import 'utilities/utilities';

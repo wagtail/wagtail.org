@@ -1,0 +1,12 @@
+context:
+  page:
+    results:
+      - title: The first result
+        introduction: The introduction for the page
+        url: '#'
+      - title: The second result
+        introduction: The introduction for the page
+        url: '#'
+      - title: The third result
+        introduction: The introduction for the page
+        url: '#'

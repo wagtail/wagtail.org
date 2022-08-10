@@ -1,0 +1,40 @@
+{% extends "patterns/base_page.html" %}
+
+{% block content %}
+    <div class="grid">
+        <div class="hero hero--search">
+            <div class="hero__inner">
+                <h1 class="hero__heading">Search results</h1>
+
+                <div>
+                    <p class="hero__intro">Showing results for</p>
+                    <form action="" class="form">
+                        <fieldset class="form__field form__field--with-button">
+                            <label for="search" class="u-sr-only">Search</label>
+                            <input id="search" type="search" placeholder="Enter your search term" class="form__input"/>
+                            {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            {% include "patterns/components/icon/icon.html" with icon='magnifying-glass' classes="hero__icon" %}
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="search__results">
+            <p class="intro-small">50 Results</p>
+
+            {% for page in page.results %}
+                <div class="search-result">
+                    <h3>Preparations for Wagtail Space NL are in full swing</h3>
+                    <p>The preparations for Wagtail Space NL are going great. I want to inform you about the latest
+                        developments.</p>
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.url title='View page' classes="hero__button button--dark" %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
