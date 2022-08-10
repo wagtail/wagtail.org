@@ -19,7 +19,6 @@ SECURE_SSL_REDIRECT = False
 
 # Enable FE component library
 PATTERN_LIBRARY_ENABLED = True
-settings,
 ALLOWED_HOSTS = ["*"]
 
 # Remove wagtailaltgenerator from INSTALLED_APPS
