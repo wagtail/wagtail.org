@@ -1,13 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-{% if value and value.comparison_table and value.comparison_table.columns %} {# Don't show if table is empty. #}
-    <table>
-        <thead>
-            <tr>
-                {% for col in value.comparison_table.columns %}
-                    <th scope="col">{{ col.heading }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
+
+{% if value and value.comparison_table %}
+    <table class="grid comparison-table">
         <tbody>
             {% for row in value.comparison_table.rows %}
                 <tr>
@@ -18,6 +12,15 @@
                     {% endfor %}
                 </tr>
             {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+{% if pattern_library %}
+    {# This renders the pattern-library values only #}
+    <table class="grid comparison-table">
+        <tbody>
+            {% include_block example_pattern %}
         </tbody>
     </table>
 {% endif %}

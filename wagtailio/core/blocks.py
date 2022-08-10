@@ -603,4 +603,4 @@ class ContentStoryBlock(blocks.StreamBlock):
     comparison_table = ComparisonTableBlock()
 
     class Meta:
-        template = "patterns/components/content_story_block.html"
+        template = "patterns/components/streamfields/content_story_block.html"
