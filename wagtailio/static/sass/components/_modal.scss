@@ -99,6 +99,7 @@
         color: $color--off-black;
         width: 20px;
         height: 20px;
+        pointer-events: none;
     }
 
     &__title {
