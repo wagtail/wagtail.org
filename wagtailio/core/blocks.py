@@ -196,7 +196,7 @@ class CTALinkStructValue(blocks.StructValue):
 
 
 class CTABlock(blocks.StructBlock):
-    cta_text = blocks.CharBlock(label="CTA text", max_length=255)
+    text = blocks.CharBlock(label="CTA text", max_length=255)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
@@ -624,4 +624,4 @@ class ContentStoryBlock(blocks.StreamBlock):
     comparison_table = ComparisonTableBlock()
 
     class Meta:
-        template = "patterns/components/content_story_block.html"
+        template = "patterns/components/streamfields/content_story_block.html"
