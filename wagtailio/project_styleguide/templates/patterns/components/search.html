@@ -28,9 +28,9 @@
 
             {% for page in page.results %}
                 <div class="search-result">
-                    <h3>{{ page.title }}</h3>
+                    <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
                     <p>{{ page.introduction }}</p>
-                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.url title='View page' classes="hero__button button--dark" %}
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.url title='View page' classes="hero__button button--dark" aria_label=page.title %}
                 </div>
             {% endfor %}
         </div>

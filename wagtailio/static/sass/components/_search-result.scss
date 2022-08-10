@@ -2,6 +2,11 @@
   padding-bottom: 40px;
   border-bottom: 1px solid $color--black;
 
+  &__title {
+    color: $color--black;
+    text-decoration: none;
+  }
+
   .button {
     margin-top: 20px;
   }
