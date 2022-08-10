@@ -26,4 +26,5 @@
     </article>
 
     {# Related articles #}
+    {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages.all %}
 {% endblock %}
