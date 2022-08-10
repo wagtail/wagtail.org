@@ -1,4 +1,5 @@
 context:
+  result_count: 3
   page:
     results:
       - title: The first result
