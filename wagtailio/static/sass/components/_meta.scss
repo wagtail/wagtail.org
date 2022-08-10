@@ -21,4 +21,11 @@
             transform: rotate(-10deg);
         }
     }
+
+    // Overrides
+    .logo-card--article & {
+        &__text {
+            font-weight: $weight--bold;
+        }
+    }
 }
