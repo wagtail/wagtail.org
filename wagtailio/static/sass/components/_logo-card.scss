@@ -2,6 +2,10 @@
     $root: &;
     color: $color--off-black;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
 
     &__meta {
         margin-bottom: 10px;
@@ -24,6 +28,10 @@
             padding-bottom: 35px;
             font-size: 0.8rem;
         }
+    }
+
+    &__image {
+        margin-top: auto;
     }
 
     &:is(a):hover {
