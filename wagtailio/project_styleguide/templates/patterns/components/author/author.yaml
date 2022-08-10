@@ -8,4 +8,4 @@ tags:
   image:
     value.author_image fill-90x90 class="author__image":
       raw: |
-        <img src="http://via.placeholder.com/90x90" width="90" height="90" alt="Some alt" class="author__image">
+        <img src="https://placehold.co/90x90" width="90" height="90" alt="Some alt" class="author__image">

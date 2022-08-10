@@ -39,7 +39,7 @@ tags:
   image:
     value.image fill-400x400 class="text-media__media":
       raw: |
-        <img src="https://via.placeholder.com/400x400" class="text-media__media" alt="Some alt">
+        <img src="https://placehold.co/400x400" class="text-media__media" alt="Some alt">
   embed:
     value.embed:
       raw: |

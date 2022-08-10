@@ -9,4 +9,4 @@ tags:
   image:
     value.author_image fill-40x40 class="standalone-quote__image":
       raw: |
-        <img src="https://via.placeholder.com/40x40" alt="Some alt" class="standalone-quote__image">
+        <img src="https://placehold.co/40x40" alt="Some alt" class="standalone-quote__image">
