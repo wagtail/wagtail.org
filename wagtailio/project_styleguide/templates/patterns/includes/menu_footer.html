@@ -1,24 +1,24 @@
-<nav class="footer__nav" aria-label="Main menu">
+<nav class="footer-menu" aria-label="Main menu">
     <div class="grid">
         {% for menu_section in footer_menu_sections %}
-            <div class="footer__column" data-footer-menu-column>
-                <div class="footer__column-header">
-                    <button class="footer__menu-toggle" aria-label="Open the {{ menu_section.heading }} menu" data-footer-menu-toggle>
-                        <svg class="footer__menu-icon footer__menu-icon--open" aria-hidden="true" data-footer-menu-open-icon>
+            <div class="footer-menu__column" data-footer-menu-column>
+                <div class="footer-menu__column-header">
+                    <button class="footer-menu__toggle" aria-label="Open the {{ menu_section.heading }} menu" data-footer-menu-toggle>
+                        <svg class="footer-menu__icon footer-menu__icon--open" aria-hidden="true" data-footer-menu-open-icon>
                             <use xlink:href="#plus-in-circle"></use>
                         </svg>
-                        <svg class="footer__menu-icon footer__menu-icon--close" aria-hidden="true" data-footer-menu-close-icon>
+                        <svg class="footer-menu__icon footer-menu__icon--close" aria-hidden="true" data-footer-menu-close-icon>
                             <use xlink:href="#minus-in-circle"></use>
                         </svg>
                     </button>
 
-                    <p class="footer__column-heading">{{ menu_section.heading }}</p>
+                    <p class="footer-menu__column-heading">{{ menu_section.heading }}</p>
                 </div>
 
-                <ul class="footer__menu-list" data-footer-menu-list>
+                <ul class="footer-menu__list" data-footer-menu-list>
                     {% for menu_item in menu_section.links %}
-                        <li>
-                            <a href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
