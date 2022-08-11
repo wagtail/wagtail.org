@@ -10,6 +10,9 @@ function initComponent(ComponentClass) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove no-js class if JS is enabled
+    document.documentElement.classList.remove('no-js');
+
     initComponent(GetStartedMenu);
     initComponent(SiteSearch);
     initComponent(FooterMenuColumn);
