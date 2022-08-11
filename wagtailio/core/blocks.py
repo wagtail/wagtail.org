@@ -188,6 +188,13 @@ class HomePageBlock(blocks.StreamBlock):
         template = "core/blocks/home_page_block.html"
 
 
+class CTALinkStructValue(blocks.StructValue):
+    def url(self):
+        cta_url = self.get("cta_url")
+        cta_page = self.get("cta_page")
+        return cta_url or cta_page.url
+
+
 class CTALinkMixin(blocks.StructBlock):
     def is_link_required(self):
         """
@@ -231,24 +238,19 @@ class CTALinkMixin(blocks.StructBlock):
             context["value"]["url"] = value["cta_page"].get_url
         return context
 
-
-class CTALinkStructValue(blocks.StructValue):
-    def url(self):
-        cta_url = self.get("cta_url")
-        cta_page = self.get("cta_page")
-        return cta_url or cta_page.url
+    class Meta:
+        value_class = CTALinkStructValue
 
 
-class CTABlock(CTALinkMixin, blocks.StructBlock):
+class CTABlock(CTALinkMixin):
     text = blocks.CharBlock(label="CTA text", max_length=255)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
-    class Meta:
+    class Meta(CTALinkMixin.Meta):
         icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
-        value_class = CTALinkStructValue
 
 
 class CardBlock(blocks.StructBlock):
@@ -264,7 +266,7 @@ class CardBlock(blocks.StructBlock):
         label = "Card"
 
 
-class LogoCardBlock(CTALinkMixin, blocks.StructBlock):
+class LogoCardBlock(CTALinkMixin):
     heading = blocks.CharBlock(max_length=255)
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
@@ -276,7 +278,7 @@ class LogoCardBlock(CTALinkMixin, blocks.StructBlock):
     def is_link_required(self):
         return False
 
-    class Meta:
+    class Meta(CTALinkMixin.Meta):
         icon = "image"
         template = "patterns/components/streamfields/cards/logo_card_block.html"
         label = "Logo card"
