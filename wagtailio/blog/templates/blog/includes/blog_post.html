@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 <div class="blog-post {% if featured %} blog-post--featured{% endif %}">
     {% if featured %}
-        <a href="{{ post.url }}" class="blog-post__image-wrapper">
+        <a href="{{ post.url }}" class="blog-post__image-wrapper" aria-hidden="true">
             {% if post.listing_image %}
                 {% image post.listing_image fill-500x500 class='blog-post__image' %}
             {% else %}
@@ -12,12 +12,12 @@
 
     <div class="blog-post__content">
         <div class="blog-post__meta">
-            {% include "patterns/components/icon/icon.html" with icon=post.icon classes="blog-post__icon" %}
-            <span><strong>{{ post.category }}</strong></span>
+            {% include "patterns/components/icon/icon.html" with icon='arrow-alt' classes="blog-post__icon" %}
+            {% if post.category %}<span><strong>{{ post.category }}</strong></span>{% endif %}
             <span>{{ post.date|date }}</span>
         </div>
-        <a href="{{ post.url }}" class="blog-post__title"><h3>{{ post.title }}</h3></a>
-        <p>{% firstof post.listing_text post.introduction %}</p>
+        <a href="{{ post.url }}" class="blog-post__title"><h3 class="{% if featured %}heading-two{% endif %}">{{ post.title }}</h3></a>
+        <p class="blog-post__listing-text">{% firstof post.listing_text post.introduction %}</p>
         {% include 'blog/includes/post_author.html' with author=post.author %}
     </div>
 

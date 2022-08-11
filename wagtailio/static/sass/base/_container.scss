@@ -1,8 +1,8 @@
 .container {
   max-width: $site-width;
   margin: 0 auto;
-  padding-left: $gutter-small;
-  padding-right: $gutter-small;
+  padding-left: $gutter-sm;
+  padding-right: $gutter-sm;
 
   @include media-query(medium) {
     padding-left: $gutter;

@@ -5,8 +5,15 @@
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
+
     <div class="container">
-        <h1>Latest Chirps <span class="u-sr-only">and blog posts</span></h1>
+        <div class="hero">
+            <div class="hero__inner">
+                <h1 aria-hidden="true">Latest Chirps</h1>
+                <span class="u-sr-only">Latest blog posts</span>
+            </div>
+        </div>
+
 
         <section class="blog-listing">
             {% for post in posts %}
