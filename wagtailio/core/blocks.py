@@ -247,7 +247,7 @@ class CTABlock(CTALinkMixin):
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
-    class Meta(CTALinkMixin.Meta):
+    class Meta:
         icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
@@ -278,7 +278,7 @@ class LogoCardBlock(CTALinkMixin):
     def is_link_required(self):
         return False
 
-    class Meta(CTALinkMixin.Meta):
+    class Meta:
         icon = "image"
         template = "patterns/components/streamfields/cards/logo_card_block.html"
         label = "Logo card"
