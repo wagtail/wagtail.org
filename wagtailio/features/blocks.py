@@ -39,9 +39,37 @@ class AdditionalFeaturesBlock(blocks.StructBlock):
         template = "features/blocks/additional_features_block.html"
 
 
-class FeatureIndexPageBlock(blocks.StreamBlock):
-    primary_features = PrimaryFeaturesBlock()
-    additional_features = AdditionalFeaturesBlock()
+class FeatureBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(label="Feature heading", required=False, max_length=255)
+    description = blocks.RichTextBlock(
+        label="Feature description",
+        required=True,
+        features=["bold", "italic", "link", "document"],
+    )
+    link = blocks.URLBlock(label="Feature link", required=False)
 
     class Meta:
-        template = "features/blocks/feature_index_page_block.html"
+        icon = "gem"
+        label = "Feature"
+        template = "patterns/components/streamfields/features/feature_block.html"
+
+
+class FeatureCategoryBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(required=False, max_length=255)
+    features = blocks.ListBlock(FeatureBlock(), min_num=2)
+
+    class Meta:
+        icon = "folder-inverse"
+        label = "Feature Category"
+        template = (
+            "patterns/components/streamfields/features/feature_category_block.html"
+        )
+
+
+class FeatureIndexPageBlock(blocks.StreamBlock):
+    feature_category = FeatureCategoryBlock()
+
+    class Meta:
+        template = (
+            "patterns/components/streamfields/features/feature_index_page_block.html"
+        )

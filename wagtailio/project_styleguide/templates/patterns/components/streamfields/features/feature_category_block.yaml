@@ -1,0 +1,22 @@
+context:
+  value:
+    heading: Editing
+    features:
+      - heading: StreamField
+        description: Editors love it because they have the freedom to build pages the way they want to without coding. Developers love it because StreamField gives them precise control over how content is displayed and how data is organised.
+        link: https://docs.wagtail.org/en/stable/reference/streamfield/blocks.html
+      - heading: Preview
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        link: https://docs.wagtail.org/en/stable/editor_manual/new_pages/previewing_and_submitting_for_moderation.html#previewing-and-submitting-pages-for-moderation
+      - heading: Tables
+        description: Mi ipsum faucibus vitae aliquet nec. Sit amet luctus venenatis lectus magna fringilla urna porttitor.
+        link: https://docs.wagtail.org/en/stable/reference/contrib/table_block.html#tableblock
+      - heading: Revisions
+        description: Mattis ullamcorper velit sed ullamcorper. Ut faucibus pulvinar elementum integer enim neque volutpat ac. Orci phasellus egestas tellus rutrum tellus pellentesque eu.
+        link: https://docs.wagtail.org/en/stable/reference/pages/model_reference.html#page-revision-model-ref
+      - heading: Intelligent copy and paste
+        description: Tempus quam pellentesque nec nam aliquam sem. At in tellus integer feugiat scelerisque varius morbi. Gravida in fermentum et sollicitudin.
+        link: https://docs.wagtail.org/en/stable/editor_manual/editing_existing_pages.html
+      - heading: Form builder
+        description: Faucibus scelerisque eleifend donec pretium. Ullamcorper velit sed ullamcorper morbi. Dictumst quisque sagittis purus sit amet volutpat consequat. Turpis in eu mi bibendum neque egestas congue quisque.
+        link: https://docs.wagtail.org/en/stable/reference/contrib/forms/

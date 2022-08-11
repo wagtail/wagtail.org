@@ -1,0 +1,7 @@
+{% load static wagtailcore_tags %}
+
+<div>
+    <h4>{{ value.heading }}</h4>
+    <div class="rich-text">{{ value.description|richtext }}</div>
+    <a href="{{ value.link }}">View docs</a>
+</div>

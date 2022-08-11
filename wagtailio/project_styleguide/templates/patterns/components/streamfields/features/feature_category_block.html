@@ -1,0 +1,6 @@
+<div>
+    <h3>{{ value.heading }}</h3>
+    {% for feature in value.features %}
+        {% include "patterns/components/streamfields/features/feature_block.html" with value=feature %}
+    {% endfor %}
+</div>

@@ -1,0 +1,5 @@
+context:
+  value:
+    heading: StreamField
+    description: Editors love it because they have the freedom to build pages the way they want to without coding. Developers love it because StreamField gives them precise control over how content is displayed and how data is organised.
+    link: https://docs.wagtail.org/en/stable/reference/streamfield/blocks.html
