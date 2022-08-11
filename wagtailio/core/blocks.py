@@ -189,7 +189,7 @@ class HomePageBlock(blocks.StreamBlock):
 
 
 class CTALinkMixin(blocks.StructBlock):
-    def is_required(self):
+    def is_link_required(self):
         """
         If the CTA link isn't mandatory, override this method in child class
         and set return value to False to avoid raising a ValidationError when
@@ -201,7 +201,7 @@ class CTALinkMixin(blocks.StructBlock):
         errors = {}
         struct_value = super().clean(value)
 
-        if self.is_required():
+        if self.is_link_required():
             if not value.get("cta_page") and not value.get("cta_url"):
                 error = ErrorList(
                     [ValidationError("You must specify CTA page or CTA URL.")]
@@ -273,7 +273,7 @@ class LogoCardBlock(CTALinkMixin, blocks.StructBlock):
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
-    def is_required(self):
+    def is_link_required(self):
         return False
 
     class Meta:
