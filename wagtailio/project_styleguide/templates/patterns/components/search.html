@@ -24,7 +24,7 @@
     </div>
 
     <div class="grid">
-        <div class="search__results">
+        <div class="search-page__results">
             {% if search_results %}
                 {% with count=search_results.count %}
                     <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %} {{ search_query }}{% endif %}</p>
