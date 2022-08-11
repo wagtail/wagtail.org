@@ -1,0 +1,28 @@
+<nav class="footer__nav" aria-label="Main menu">
+    <div class="grid">
+        {% for menu_section in footer_menu_sections %}
+            <div class="footer__column" data-menu-column>
+                <div class="footer__column-header">
+                    <button class="footer__menu-toggle" aria-label="Open the {{ menu_section.heading }} menu" data-menu-toggle>
+                        <svg class="footer__menu-icon" aria-hidden="true">
+                            <use xlink:href="#plus-in-circle"></use>
+                        </svg>
+                        <svg class="footer__menu-icon u-is-hidden" aria-hidden="true">
+                            <use xlink:href="#minus-in-circle"></use>
+                        </svg>
+                    </button>
+
+                    <p class="footer__column-heading">{{ menu_section.heading }}</p>
+                </div>
+
+                <ul class="footer__menu-list u-is-hidden" data-menu-list>
+                    {% for menu_item in menu_section.links %}
+                        <li>
+                            <a href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</nav>

@@ -2,4 +2,8 @@
     &-sr-only {
         @include hidden();
     }
+
+    &-is-hidden {
+        display: none;
+    }
 }
