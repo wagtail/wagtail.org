@@ -20,6 +20,7 @@
       @include media-query(medium) {
         gap: 0;
 
+        // stylelint-disable max-nesting-depth
         #{$root}__input {
           border-radius: $rounded-md 0 0 $rounded-md;
           border-right: 0;
