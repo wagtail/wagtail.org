@@ -1,5 +1,6 @@
 .footer {
     $root: &;
+
     &__nav {
         background-color: $color--teal-300;
         padding: 40px 0;
@@ -57,6 +58,12 @@
         }
 
         #{$root}__menu-list {
+            display: block;
+        }
+    }
+
+    .no-js & {
+        &__menu-list {
             display: block;
         }
     }
