@@ -1,4 +1,5 @@
 .footer {
+    $root: &;
     &__nav {
         background-color: $color--teal-300;
         padding: 40px 0;
@@ -10,7 +11,9 @@
     }
 
     &__menu-list {
+        display: none;
         list-style: none;
+        margin-top: 18px;
     }
 
     &__menu-icon {
@@ -20,6 +23,10 @@
         flex-shrink: 0;
 
         @include media-query(large) {
+            display: none;
+        }
+
+        &--close {
             display: none;
         }
     }
@@ -36,5 +43,21 @@
         font-weight: $weight--bold;
         font-size: 1.25rem;
         margin-left: 10px;
+    }
+
+    &__column.is-open {
+        #{$root}__menu-icon {
+            &--open {
+                display: none;
+            }
+
+            &--close {
+                display: block;
+            }
+        }
+
+        #{$root}__menu-list {
+            display: block;
+        }
     }
 }
