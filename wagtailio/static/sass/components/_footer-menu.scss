@@ -7,6 +7,16 @@
     &__column {
         grid-column: 2 / span 2;
         margin-bottom: 17px;
+
+        @include media-query(large) {
+            grid-column: auto;
+        }
+
+        &:first-child {
+            @include media-query(large) {
+                grid-column-start: 2;
+            }
+        }
     }
 
     &__list {
@@ -14,6 +24,11 @@
         list-style: none;
         margin-top: 18px;
         margin-left: 40px;
+
+        @include media-query(large) {
+            display: block;
+            margin-left: 0;
+        }
     }
 
     &__icon {
@@ -33,20 +48,41 @@
 
     &__toggle {
         padding: 5px;
+
+        @include media-query(large) {
+            display: none;
+        }
+    }
+
+    &__item {
+        margin-bottom: 10px;
     }
 
     &__link {
+        color: $color--off-black;
+        text-decoration: none;
 
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &__column-header {
         display: flex;
+
+        @include media-query(large) {
+            display: block;
+        }
     }
 
     &__column-heading {
         font-weight: $weight--bold;
         font-size: 1.25rem;
         margin-left: 10px;
+
+        @include media-query(large) {
+            margin-left: 0;
+        }
     }
 
     &__column.is-open {
