@@ -1,13 +1,21 @@
 context:
-  result_count: 3
-  page:
-    results:
-      - title: The first result
+  search_query: test query
+  search_results:
+    - specific:
+        title: Page title one
+        listing_intro: Listing summary
         introduction: The introduction for the page
+        depth: 6
         url: '#'
-      - title: The second result
+    - specific:
+        title: Page title two
+        listing_intro: Listing summary
         introduction: The introduction for the page
+        depth: 6
         url: '#'
-      - title: The third result
-        introduction: The introduction for the page
-        url: '#'
+
+tags:
+  url:
+    'search':
+      raw: |
+        '#'

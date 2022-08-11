@@ -1,4 +1,5 @@
 {% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags %}
 
 {% block content %}
     <div class="grid">
@@ -7,11 +8,11 @@
                 <h1 class="hero__heading">Search results</h1>
 
                 <div>
-                    <p class="hero__intro">Showing results for</p>
-                    <form action="" class="form">
+                    <form action="{% url 'search' %}" class="form" method="get">
                         <fieldset class="form__field form__field--with-button">
                             <label for="search" class="u-sr-only">Search</label>
-                            <input id="search" type="search" placeholder="Enter your search term" class="form__input"/>
+                            <input id="search" type="search" placeholder="Enter your search term" class="form__input"
+                                {% if search_query %} value="{{ search_query }}"{% endif %}/>
                             {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
                         </fieldset>
                     </form>
@@ -24,15 +25,22 @@
 
     <div class="grid">
         <div class="search__results">
-            <p class="intro-small">{{ result_count }} Results</p>
+            {% if search_results %}
+                {% with count=search_results.count %}
+                    <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %} {{ search_query }}{% endif %}</p>
+                {% endwith %}
 
-            {% for page in page.results %}
-                <div class="search-result">
-                    <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                    <p>{{ page.introduction }}</p>
-                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.url title='View page' classes="hero__button button--dark" aria_label=page.title %}
-                </div>
-            {% endfor %}
+                {% for result in search_results %}
+                    {% with page=result.specific %}
+                        <div class="search-result">
+                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
+                            <p>{% firstof page.listing_intro page.introduction %}</p>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            {% else %}
+                <p>No results found. Please try again.</p>
+            {% endif %}
         </div>
     </div>
 
