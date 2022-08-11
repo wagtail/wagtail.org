@@ -1,0 +1,34 @@
+.search {
+    &__wrap {
+        display: flex;
+    }
+
+    &__button {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        padding: 10px;
+
+        @include media-query(medium) {
+            padding: 15px 30px;
+        }
+
+        &:hover svg {
+            // remove hover on mobile to save space
+            transform: none;
+
+            @include media-query(medium) {
+                transform: translateX(10px) scale(1.25);
+            }
+        }
+    }
+
+    &__input {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        width: 100%;
+        border: 1px solid $color--black;
+        padding: 15px 20px;
+        color: $color--off-black;
+        height: 100%;
+    }
+}

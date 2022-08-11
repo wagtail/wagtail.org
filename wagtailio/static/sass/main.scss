@@ -30,6 +30,7 @@
 @import 'components/modal';
 @import 'components/quotes';
 @import 'components/rich-text';
+@import 'components/search';
 @import 'components/standalone-quote';
 @import 'components/teaser';
 @import 'components/text-media';
@@ -39,3 +40,6 @@
 
 // Layout
 @import 'layout/header';
+
+// Utilities
+@import 'utilities/utilities';

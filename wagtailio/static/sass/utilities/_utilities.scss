@@ -1,0 +1,5 @@
+.u {
+    &-sr-only {
+        @include hidden();
+    }
+}

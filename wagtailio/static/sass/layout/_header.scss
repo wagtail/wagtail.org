@@ -24,6 +24,16 @@
         }
     }
 
+    &__items-wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @include media-query(medium) {
+            gap: 40px;
+        }
+    }
+
     &__button {
         margin: 0;
         width: auto;
@@ -46,6 +56,17 @@
                 color: $color--teal;
                 width: 15px;
                 height: 15px;
+            }
+        }
+
+        &--search {
+            width: 25px;
+            height: 25px;
+            padding: 0;
+
+            svg {
+                width: inherit;
+                height: inherit;
             }
         }
 
