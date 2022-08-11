@@ -1,0 +1,19 @@
+.blog-listing {
+  display: grid;
+  margin-top: 80px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.blog-post {
+  display: flex;
+
+  &__title {
+    text-decoration: none;
+  }
+
+  &--featured {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column: 1 / span 2;
+  }
+}
