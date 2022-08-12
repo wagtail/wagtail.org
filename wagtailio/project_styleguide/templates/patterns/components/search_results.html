@@ -7,16 +7,14 @@
             <div class="hero__inner">
                 <h1 class="hero__heading">Search results</h1>
 
-                <div>
-                    <form action="{% url 'search' %}" class="form" method="get">
-                        <fieldset class="form__field form__field--with-button">
-                            <label for="search" class="u-sr-only">Search</label>
-                            <input id="search" type="search" placeholder="Enter your search term" class="form__input"
-                                {% if search_query %} value="{{ search_query }}"{% endif %}/>
-                            {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
-                        </fieldset>
-                    </form>
-                </div>
+                <form action="{% url 'search' %}" class="form" method="get">
+                    <fieldset class="form__field form__field--with-button">
+                        <label for="search" class="u-sr-only">Search</label>
+                        <input id="search" type="search" placeholder="Enter your search term" class="form__input"
+                            {% if search_query %} value="{{ search_query }}"{% endif %}/>
+                        {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
+                    </fieldset>
+                </form>
             </div>
 
             {% include "patterns/components/icon/icon.html" with icon='magnifying-glass' classes="hero__icon" %}
@@ -27,7 +25,8 @@
         <div class="search-page__results">
             {% if search_results %}
                 {% with count=search_results.count %}
-                    <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %} {{ search_query }}{% endif %}</p>
+                    <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %}
+                        {{ search_query }}{% endif %}</p>
                 {% endwith %}
 
                 {% for result in search_results %}
