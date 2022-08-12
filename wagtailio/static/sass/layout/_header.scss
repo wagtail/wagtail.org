@@ -60,6 +60,7 @@
             }
 
             &:hover {
+                // stylelint-disable-next-line max-nesting-depth
                 svg {
                     color: $color--teal-100;
                 }
