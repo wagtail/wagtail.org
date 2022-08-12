@@ -2,6 +2,8 @@
   $root: &;
 
   &__input {
+    appearance: none;
+    border: 1px solid $color--off-black;
     font-size: 1rem;
     padding: 11px 20px;
     border-radius: $rounded-md;
