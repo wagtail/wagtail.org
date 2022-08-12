@@ -1,19 +1,22 @@
+{% load wagtailcore_tags %}
+
 <div class="grid">
     <div class="hero">
         <div class="hero__inner">
             <h1 class="hero__heading">{{ value.heading }}</h1>
 
-            {% if value.subheading %}
-                <h2 class="hero__subheading intro-big">{{ value.subheading }}</h2>
+            {% if value.sub_heading %}
+                <h2 class="hero__subheading intro-big">{{ value.sub_heading }}</h2>
             {% endif %}
 
             {% if value.intro %}
-                <p class="hero__intro">{{ value.intro }}</p>
+                <p class="hero__intro">{{ value.intro|richtext }}</p>
             {% endif %}
 
-            {% if value.cta_url or value.cta_page %}
-                {% include "patterns/components/buttons/button.html" with arrow=True url=url title=value.cta_text classes="hero__button" %}
-            {% endif %}
+            {# We're actually only dealing with 1 block, since `max_num=1` #}
+            {% for block in value.cta %}
+                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="hero__button" %}
+            {% endfor %}
         </div>
 
         {% if value.icon %}

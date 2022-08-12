@@ -188,20 +188,32 @@ class HomePageBlock(blocks.StreamBlock):
         template = "core/blocks/home_page_block.html"
 
 
-class CTABlock(blocks.StructBlock):
-    cta_text = blocks.CharBlock(label="CTA text", max_length=255)
-    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
-    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+class CTALinkStructValue(blocks.StructValue):
+    def url(self):
+        cta_url = self.get("cta_url")
+        cta_page = self.get("cta_page")
+        return cta_url or cta_page.url
+
+
+class CTALinkMixin(blocks.StructBlock):
+    def is_link_required(self):
+        """
+        If the CTA link isn't mandatory, override this method in child class
+        and set return value to False to avoid raising a ValidationError when
+        neither the CTA page nor CTA URL are specified.
+        """
+        return True
 
     def clean(self, value):
         errors = {}
         struct_value = super().clean(value)
 
-        if not value.get("cta_page") and not value.get("cta_url"):
-            error = ErrorList(
-                [ValidationError("You must specify CTA page or CTA URL.")]
-            )
-            errors["cta_url"] = errors["cta_page"] = error
+        if self.is_link_required():
+            if not value.get("cta_page") and not value.get("cta_url"):
+                error = ErrorList(
+                    [ValidationError("You must specify CTA page or CTA URL.")]
+                )
+                errors["cta_url"] = errors["cta_page"] = error
 
         if value.get("cta_page") and value.get("cta_url"):
             error = ErrorList(
@@ -227,6 +239,15 @@ class CTABlock(blocks.StructBlock):
         return context
 
     class Meta:
+        value_class = CTALinkStructValue
+
+
+class CTABlock(CTALinkMixin):
+    text = blocks.CharBlock(label="CTA text", max_length=255)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    class Meta:
         icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
         label = "CTA"
@@ -245,7 +266,7 @@ class CardBlock(blocks.StructBlock):
         label = "Card"
 
 
-class LogoCardBlock(blocks.StructBlock):
+class LogoCardBlock(CTALinkMixin):
     heading = blocks.CharBlock(max_length=255)
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
@@ -254,32 +275,8 @@ class LogoCardBlock(blocks.StructBlock):
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
-    def clean(self, value):
-        errors = {}
-        struct_value = super().clean(value)
-
-        if value.get("cta_page") and value.get("cta_url"):
-            error = ErrorList(
-                [
-                    ValidationError(
-                        "You must specify CTA page or CTA URL. You can't use both."
-                    )
-                ]
-            )
-            errors["cta_url"] = errors["cta_page"] = error
-
-        if errors:
-            raise StructBlockValidationError(errors)
-
-        return struct_value
-
-    def get_context(self, value, parent_context=None):
-        context = super().get_context(value, parent_context=parent_context)
-        if value["cta_url"]:
-            context["value"]["link_url"] = value["cta_url"]
-        if value["cta_page"]:
-            context["value"]["link_url"] = value["cta_page"].get_url
-        return context
+    def is_link_required(self):
+        return False
 
     class Meta:
         icon = "image"

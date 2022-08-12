@@ -1,8 +1,10 @@
 context:
   value:
     heading: Wagtail vision
-    subheading: Wagtail supports everyone's creativity.
+    sub_heading: Wagtail supports everyone's creativity.
     intro: Tens of thousands of organisations worldwide, including Google, NASA, and the British NHS, are powering their digital operations with Wagtail - here's why.
-    cta_url: '#'
-    cta_text: Find out more
+    cta:
+      - value:
+          url: '#'
+          text: Find out more
     icon: roadmap
