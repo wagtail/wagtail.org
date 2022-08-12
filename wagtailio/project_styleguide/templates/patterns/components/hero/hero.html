@@ -10,7 +10,7 @@
             {% endif %}
 
             {% if value.intro %}
-                <p class="hero__intro">{{ value.intro|richtext }}</p>
+                <div class="hero__intro">{{ value.intro|richtext }}</div>
             {% endif %}
 
             {# We're actually only dealing with 1 block, since `max_num=1` #}

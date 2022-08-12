@@ -9,7 +9,7 @@
 <h4 class="logo-card__heading teaser-heading">{{ value.heading }}</h4>
 
 {% if value.description %}
-    <p class="logo-card__description">{{ value.description }}</p>
+    <div class="logo-card__description">{{ value.description|richtext }}</div>
 {% endif %}
 
 {% if value.logo %}
