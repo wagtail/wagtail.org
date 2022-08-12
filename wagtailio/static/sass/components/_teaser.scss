@@ -11,7 +11,10 @@
 
         #{$root}__content {
             &::after {
-                transform: rotate(-2deg) translate3d(-15px,10px,0);
+                // stylelint-disable-next-line max-nesting-depth
+                @include media-query(medium) {
+                    transform: rotate(-2deg) translate3d(-15px, 10px, 0);
+                }
             }
         }
     }
@@ -21,7 +24,7 @@
         grid-column: 2 / span 2;
 
         @include media-query(medium) {
-            grid-column: 2 / span 1;
+            grid-column: 2 / span 3;
         }
 
         @include media-query(large) {
@@ -37,7 +40,7 @@
 
         @include media-query(medium) {
             padding: 30px 40px;
-            grid-column: 3 / span 2;
+            grid-column: 2 / span 3;
         }
 
         @include media-query(large) {
@@ -46,19 +49,22 @@
         }
 
         &::after {
+            content: '';
+            background-color: $color--eggshell;
+            opacity: 0.75;
+            border-radius: 15px;
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            top: 20px;
+            right: 0;
+            transform: rotate(-3deg);
+            z-index: -1;
+            transition: transform 0.3s;
+
             @include media-query(medium) {
-                content: '';
-                background-color: $color--eggshell;
-                opacity: 0.75;
-                border-radius: 15px;
-                position: absolute;
-                width: 80%;
-                height: 100%;
                 top: 10px;
                 right: -20px;
-                transform: rotate(-3deg);
-                z-index: -1;
-                transition: transform 0.3s;
             }
         }
     }
