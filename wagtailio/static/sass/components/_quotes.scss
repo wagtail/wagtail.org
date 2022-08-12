@@ -72,20 +72,18 @@
 
         @include media-query(medium) {
             inset: -10% -5% auto auto;
-
-            > svg {
-                width: 220px;
-                height: 220px;
-            }
+            width: 220px;
+            height: 220px;
         }
 
         @include media-query(large) {
-            inset: -40% 10% auto auto;
-
-            > svg {
-                height: 546px;
-                width: 368px;
-            }
+            inset: -10% -10% auto auto;
+            height: 316px;
+            width: 368px;
         }
+    }
+
+    .icon__svg-fg {
+        transform: rotate(185deg) translate(-40px, 10px);
     }
 }
