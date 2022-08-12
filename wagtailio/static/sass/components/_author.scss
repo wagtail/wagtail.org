@@ -7,10 +7,12 @@
         width: 65px;
         height: 65px;
         margin: 0 20px 0 0;
+        border-radius: 50%;
     }
 
     &__name {
         font-weight: $weight--bold;
+      font-size: 16px;
     }
 
     &--blog {
