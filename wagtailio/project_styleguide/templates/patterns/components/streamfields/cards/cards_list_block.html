@@ -1,5 +1,5 @@
-{% for card in value.cards %}
-    <div>
+<div class="card-grid">
+    {% for card in value.cards %}
         {% include "patterns/components/streamfields/cards/card_block.html" with value=card %}
-    </div>
-{% endfor %}
+    {% endfor %}
+</div>

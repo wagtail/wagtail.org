@@ -1,0 +1,58 @@
+.card {
+    $root: &;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > a {
+        margin: 0 auto 0 0;
+    }
+    
+    &__meta {
+        margin-bottom: 38px;
+
+        p {
+            font-weight: $weight--regular;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 14px;
+        transition: color .3s ease;
+    }
+
+    &__description {
+        color: $color--grey;
+        padding-bottom: 30px;
+
+        @include media-query(large) {
+            padding-bottom: 40px;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.card-grid {
+    row-gap: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media-query(medium) {
+        row-gap: 50px;
+        margin-bottom: 50px;
+    }
+    
+    @include media-query(large) {
+        row-gap: 120px;
+    }
+
+    > div {
+        width: auto;
+
+        @include media-query(medium) {
+            width: 50%;
+        }
+    }
+
+}
