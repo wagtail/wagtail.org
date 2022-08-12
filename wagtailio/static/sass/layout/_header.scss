@@ -56,6 +56,13 @@
                 color: $color--teal;
                 width: 15px;
                 height: 15px;
+                transition: color 0.3s;
+            }
+
+            &:hover {
+                svg {
+                    color: $color--teal-100;
+                }
             }
         }
 
