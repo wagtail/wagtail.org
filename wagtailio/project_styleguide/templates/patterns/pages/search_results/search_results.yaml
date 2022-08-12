@@ -1,0 +1,21 @@
+context:
+  search_query: test query
+  search_results:
+    - specific:
+        title: Page title one
+        listing_intro: Listing summary
+        introduction: The introduction for the page
+        depth: 6
+        url: '#'
+    - specific:
+        title: Page title two
+        listing_intro: Listing summary
+        introduction: The introduction for the page
+        depth: 6
+        url: '#'
+
+tags:
+  url:
+    'search':
+      raw: |
+        '#'

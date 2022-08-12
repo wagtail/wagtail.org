@@ -1,0 +1,46 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <div class="grid">
+        <div class="hero hero--search">
+            <div class="hero__inner">
+                <h1 class="hero__heading">Search results</h1>
+
+                <form action="{% url 'search' %}" class="form" method="get" role="search">
+                    <fieldset class="form__field form__field--with-button">
+                        <label for="search" class="u-sr-only">Search</label>
+                        <input id="search" type="search" placeholder="Enter your search term" class="form__input"
+                            {% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content"/>
+                        {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
+                    </fieldset>
+                </form>
+            </div>
+
+            {% include "patterns/components/icon/icon.html" with icon='magnifying-glass' classes="hero__icon" %}
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="search-page__results">
+            {% if search_results %}
+                {% with count=search_results.count %}
+                    <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %}
+                        {{ search_query }}{% endif %}</p>
+                {% endwith %}
+
+                {% for result in search_results %}
+                    {% with page=result.specific %}
+                        <div class="search-result">
+                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
+                            <p>{% firstof page.listing_intro page.introduction %}</p>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            {% else %}
+                <p>No results found. Please try again.</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

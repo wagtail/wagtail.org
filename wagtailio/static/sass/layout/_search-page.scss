@@ -1,0 +1,18 @@
+.search-page {
+  &__results {
+    display: grid;
+    gap: 40px;
+    margin: 40px 0;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+      margin: 60px 0;
+      grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+      margin: 80px 0;
+      grid-column: 2 / span 5;
+    }
+  }
+}

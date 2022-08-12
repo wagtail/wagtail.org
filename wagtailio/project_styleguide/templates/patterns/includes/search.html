@@ -10,7 +10,7 @@
                 <form action="#" method="get" role="search" class="search">
                     <div class="search__wrap">
                         <label class="u-sr-only" for="search-page">Enter a search term</label>
-                        <input class="search__input" id="search-page" type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+                        <input class="search__input" id="search-page" type="search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content">
                         <button type="submit" class="button button--dark search__button">
                             <p class="button__text">Search</p>
                             <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>

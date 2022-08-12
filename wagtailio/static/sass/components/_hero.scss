@@ -72,4 +72,10 @@
             color: $color--eggshell;
         }
     }
+
+  &--search {
+    .icon__svg-fg {
+      stroke-width: 1px;
+    }
+  }
 }

@@ -1,0 +1,37 @@
+.form {
+  $root: &;
+
+  &__input {
+    appearance: none;
+    border: 1px solid $color--off-black;
+    font-size: 1rem;
+    padding: 11px 20px;
+    border-radius: $rounded-md;
+
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+
+  &__field {
+    &--with-button {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      @include media-query(medium) {
+        gap: 0;
+
+        // stylelint-disable max-nesting-depth
+        #{$root}__input {
+          border-radius: $rounded-md 0 0 $rounded-md;
+          border-right: 0;
+        }
+
+        .button {
+          border-radius: 0 $rounded-md $rounded-md 0;
+        }
+      }
+    }
+  }
+}
