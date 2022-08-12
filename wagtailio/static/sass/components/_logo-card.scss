@@ -6,6 +6,9 @@
     flex-direction: column;
     height: 100%;
     align-items: flex-start;
+    border-radius: 15px;
+    background-color: $color--white;
+    padding: 20px;
 
     &__meta {
         margin-bottom: 10px;
@@ -34,9 +37,29 @@
         margin-top: auto;
     }
 
-    &:is(a):hover {
-        #{$root}__heading {
-            color: $color--teal;
+    &:is(a) {
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 80%;
+            height: 85%;
+            background-color: $color--eggshell;
+            opacity: 0.75;
+            position: absolute;
+            z-index: -1;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        &:hover {
+            #{$root}__heading {
+                color: $color--teal;
+            }
+
+            &::after {
+                transform: rotate(-5deg) translate3d(-30px, 45px, 0);
+            }
         }
     }
 }
