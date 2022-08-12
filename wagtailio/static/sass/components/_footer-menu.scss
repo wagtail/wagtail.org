@@ -4,6 +4,12 @@
     background-color: $color--teal-300;
     padding: 40px 0;
 
+    &__grid {
+        @include media-query(large) {
+            grid-column-gap: 15px;
+        }
+    }
+
     &__column {
         grid-column: 2 / span 2;
         margin-bottom: 17px;
