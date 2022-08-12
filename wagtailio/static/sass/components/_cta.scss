@@ -1,5 +1,6 @@
 .cta {
     $root: &;
+    @include sf-spacing();
     padding: 15px 20px;
     text-decoration: none;
     display: flex;

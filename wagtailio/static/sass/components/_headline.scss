@@ -1,18 +1,16 @@
 .headline {
     $root: &;
+    @include sf-spacing();
     position: relative;
     padding: 80px 0 0;
-    margin-bottom: 50px;
     overflow: hidden;
 
     @include media-query(medium) {
         padding: 130px 0 0;
-        margin-bottom: 100px;
     }
 
     @include media-query(large) {
         padding: 230px 0 0;
-        margin-bottom: 200px;
     }
 
     &__grid {

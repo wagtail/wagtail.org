@@ -23,5 +23,13 @@
         @include media-query(large) {
             margin: 0 0 40px;
         }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &--sf {
+        @include sf-spacing();
     }
 }

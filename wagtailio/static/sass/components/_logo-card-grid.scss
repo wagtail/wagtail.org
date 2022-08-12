@@ -1,16 +1,14 @@
 .logo-card-grid {
+    @include sf-spacing();
     list-style: none;
     row-gap: 20px;
-    margin-bottom: 20px;
 
     @include media-query(medium) {
         row-gap: 50px;
-        margin-bottom: 50px;
     }
 
     @include media-query(large) {
         row-gap: 100px;
-        margin-bottom: 100px;
     }
 
     &__item {

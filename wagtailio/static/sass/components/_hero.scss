@@ -1,14 +1,13 @@
 .hero {
+    @include sf-spacing();
     position: relative;
     grid-column: 2 / span 2;
-    margin-bottom: 50px;
 
     @include media-query(medium) {
         grid-column: 2 / span 3;
     }
 
     @include media-query(large) {
-        margin-bottom: 100px;
         grid-column: 2 / span 5;
     }
 

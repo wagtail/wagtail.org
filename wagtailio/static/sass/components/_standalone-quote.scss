@@ -1,14 +1,6 @@
 .standalone-quote {
+    @include sf-spacing();
     align-items: center;
-    margin-bottom: 50px;
-
-    @include media-query(medium) {
-        margin-bottom: 100px;
-    }
-
-    @include media-query(large) {
-        margin-bottom: 150px;
-    }
 
     &__icon {
         display: none;
