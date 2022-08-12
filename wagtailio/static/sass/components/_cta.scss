@@ -9,6 +9,7 @@
     border: 1px solid $color--off-black;
     border-radius: 10px;
     grid-column: 2 / span 2;
+    transition: background-color 0.3s;
 
     @include media-query(medium) {
         grid-column: 2 / span 3;
