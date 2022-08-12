@@ -11,8 +11,8 @@
     <div class="text-media__content">
         <h2>{{ value.heading }}</h2>
         <p>{{ value.description }}</p>
-        {% if value.cta %}
-            {% include "patterns/components/buttons/button.html" with url=value.cta.url title=value.cta.text arrow=True classes="text-media__button" %}
+        {% if value.cta.text %}
+            {% include "patterns/components/streamfields/cta/cta_block.html" with value=value.cta classes="text-media__button" %}
         {% endif %}
     </div>
 </div>

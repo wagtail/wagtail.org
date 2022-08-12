@@ -196,24 +196,17 @@ class CTALinkStructValue(blocks.StructValue):
 
 
 class CTALinkMixin(blocks.StructBlock):
-    def is_link_required(self):
-        """
-        If the CTA link isn't mandatory, override this method in child class
-        and set return value to False to avoid raising a ValidationError when
-        neither the CTA page nor CTA URL are specified.
-        """
-        return True
+    class Meta:
+        value_class = CTALinkStructValue
 
     def clean(self, value):
         errors = {}
         struct_value = super().clean(value)
-
-        if self.is_link_required():
-            if not value.get("cta_page") and not value.get("cta_url"):
-                error = ErrorList(
-                    [ValidationError("You must specify CTA page or CTA URL.")]
-                )
-                errors["cta_url"] = errors["cta_page"] = error
+        if self.required and not value.get("cta_page") and not value.get("cta_url"):
+            error = ErrorList(
+                [ValidationError("You must specify CTA page or CTA URL.")]
+            )
+            errors["cta_url"] = errors["cta_page"] = error
 
         if value.get("cta_page") and value.get("cta_url"):
             error = ErrorList(
@@ -225,9 +218,12 @@ class CTALinkMixin(blocks.StructBlock):
             )
             errors["cta_url"] = errors["cta_page"] = error
 
+        if not value.get("text") and (value.get("cta_page") or value.get("cta_url")):
+            error = ErrorList([ValidationError("You must specify CTA text.")])
+            errors["text"] = error
+
         if errors:
             raise StructBlockValidationError(errors)
-
         return struct_value
 
     def get_context(self, value, parent_context=None):
@@ -238,12 +234,9 @@ class CTALinkMixin(blocks.StructBlock):
             context["value"]["url"] = value["cta_page"].get_url
         return context
 
-    class Meta:
-        value_class = CTALinkStructValue
-
 
 class CTABlock(CTALinkMixin):
-    text = blocks.CharBlock(label="CTA text", max_length=255)
+    text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
@@ -274,9 +267,6 @@ class LogoCardBlock(CTALinkMixin):
     logo = ImageChooserBlock(required=False)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
-
-    def is_link_required(self):
-        return False
 
     class Meta:
         icon = "image"
