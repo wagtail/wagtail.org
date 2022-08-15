@@ -2,7 +2,6 @@ from django.db import models
 
 
 class SVGIcon(models.TextChoices):
-    ARROW = "arrow", "Arrow"
     ARROW_ALT = "arrow-alt", "Arrow alt"
     ARROW_IN_CIRCLE = "arrow-in-circle", "Arrow in circle"
     ARROW_IN_SQUARE = "arrow-in-square", "Arrow in square"
