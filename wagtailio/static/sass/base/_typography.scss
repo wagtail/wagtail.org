@@ -36,8 +36,8 @@ h1,
 
 h2,
 .heading-two {
-    font-size: 1.875rem;
-    line-height: 2.5125rem;
+    font-size: 1.7rem;
+    line-height: 2.125rem;
 
     @include media-query(large) {
         font-size: 2.25rem;
@@ -79,7 +79,7 @@ h4,
 
 .teaser-heading {
     font-size: 1.875rem;
-    line-height: 2.438rem;
+    line-height: 2.125rem;
     font-weight: $weight--bold;
 
     @include media-query(large) {

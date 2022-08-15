@@ -4,7 +4,9 @@
     {% if value.image %}
         {% image value.image fill-400x400 class="text-media__media" %}
     {% else %}
-        {% embed value.embed %}
+        <div class="text-media__embed-wrap responsive-object" style="padding-bottom: 56.25%">
+            {% embed value.embed %}
+        </div>
     {% endif %}
     <div class="text-media__content">
         <h2>{{ value.heading }}</h2>

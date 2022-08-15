@@ -15,4 +15,10 @@
             height: inherit;
         }
     }
+
+    &--offset-icon {
+        .icon__svg-bg {
+            transform: rotate(-10deg);
+        }
+    }
 }

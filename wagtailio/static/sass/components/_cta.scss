@@ -1,7 +1,7 @@
 .cta {
     $root: &;
     @include sf-spacing();
-    padding: 15px 20px;
+    padding: 30px;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@
 
     > svg {
         transition: transform 0.3s;
-        margin: 0 15px 0 auto;
+        margin: 0 0 0 auto;
         flex-shrink: 0
     }
 
@@ -45,6 +45,11 @@
 
     &__title {
         color: $color--teal;
+        margin-bottom: 10px;
+
+        @include media-query(medium) {
+            margin-bottom: 5px;
+        }
     }
 
     &__description {

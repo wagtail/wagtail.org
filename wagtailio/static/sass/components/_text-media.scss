@@ -24,20 +24,11 @@
     }
 
     &__media,
-    iframe {
-        // Force the iframe to be full width
-        width: 100%;
-        height: 100%;
+    &__embed-wrap {
+        margin-bottom: 20px;
         grid-column: 2 /span 2;
-        grid-row: 1;
-        margin: auto;
-
-        @include media-query(medium) {
-            height: 300px;
-        }
 
         @include media-query(large) {
-            height: 100%;
             grid-column: 5 / span 2;
         }
     }
@@ -51,9 +42,7 @@
         }
 
         #{$root}__media,
-        iframe {
-            padding: 0 10px 0 0;
-
+        #{$root}__embed-wrap {
             @include media-query(large) {
                 grid-column: 2 / span 2;
             }

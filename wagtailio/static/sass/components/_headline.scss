@@ -75,24 +75,19 @@
         position: absolute;
         width: 230px;
         height: 300px;
-        right: -20px;
+        right: -70px;
         top: -110px;
 
         @include media-query(large) {
             width: 500px;
             height: 545px;
             right: 70px;
-            top: -200px;
+            top: -100px;
         }
 
         svg {
             width: inherit;
             height: inherit;
-        }
-
-        // Icon overrides
-        .icon__svg-fg {
-            stroke: $color--teal;
         }
     }
 
@@ -113,6 +108,19 @@
         #{$root}__heading,
         #{$root}__subheading {
             color: $color--white;
+        }
+
+        // Icon overrides
+        .icon__svg-bg {
+            stroke: $color--teal-100;
+            color: transparent;
+            opacity: 0.6;
+        }
+
+        .icon__svg-fg {
+            color: $color--teal-100;
+            opacity: 0.5;
+            transform: rotate(7deg) translate(40px, -30px) scale(0.9);
         }
     }
 }

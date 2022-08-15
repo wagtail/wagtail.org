@@ -56,6 +56,14 @@
                 color: $color--teal;
                 width: 15px;
                 height: 15px;
+                transition: color 0.3s;
+            }
+
+            &:hover {
+                // stylelint-disable-next-line max-nesting-depth
+                svg {
+                    color: $color--teal-100;
+                }
             }
         }
 

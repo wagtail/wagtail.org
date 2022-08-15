@@ -9,6 +9,7 @@
         grid-column: 2 / span 2;
         width: 60px;
         height: 60px;
+        margin-bottom: 10px;
 
         @include media-query(medium) {
             grid-column: 2 / span 1;
@@ -36,7 +37,7 @@
     }
 
     &__heading {
-        margin-bottom: 14px;
+        margin-bottom: 5px;
     }
 
     &__description {

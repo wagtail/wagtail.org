@@ -3,11 +3,15 @@
     align-items: center;
     text-decoration: none;
     border-radius: 6px;
-    border: 1px solid $color--off-black;
+    border: 1px solid $color--indigo;
     padding: 15px 30px;
     color: $color--off-black;
     transition: background-color 0.3s, color 0.3s;
     background-color: $color--white;
+
+    @include media-query(large) {
+        font-size: 0.8rem;
+    }
 
     > svg {
         transition: transform 0.3s;
@@ -15,16 +19,16 @@
     }
 
     &:hover {
-        background-color: $color--off-black;
+        background-color: $color--indigo;
         color: $color--white;
 
         > svg {
-            transform: translateX(10px) scale(1.25);
+            transform: translateX(6px) scale(1.15);
         }
     }
 
     &--dark {
-        background-color: $color--off-black;
+        background-color: $color--indigo;
         color: $color--white;
 
         &:hover {
@@ -43,7 +47,7 @@
 
         &:hover {
             > svg {
-                transform: rotate(180deg) translateX(10px) scale(1.25);
+                transform: rotate(180deg) translateX(6px) scale(1.15);
             }
         }
     }
