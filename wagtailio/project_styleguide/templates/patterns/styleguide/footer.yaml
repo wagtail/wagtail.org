@@ -1,0 +1,86 @@
+context:
+  footer_menu_sections:
+    - heading: Product
+      links:
+        - name: About
+          url: '#'
+        - name: Features
+          url: '#'
+        - name: Roadmap
+          url: '#'
+        - name: Core team
+          url: '#'
+        - name: Code of conduct
+          url: '#'
+        - name: Sponsors
+          url: '#'
+    - heading: Resources
+      links:
+        - name: Get Started
+          url: '#'
+        - name: Try Wagtail
+          url: '#'
+        - name: Developer docs
+          url: '#'
+        - name: Editor's guide
+          url: '#'
+        - name: Packages
+          url: '#'
+        - name: Tutorials
+          url: '#'
+        - name: FAQs
+          url: '#'
+        - name: Are we headless yet?
+          url: '#'
+    - heading: Community
+      links:
+        - name: Blog
+          url: '#'
+        - name: Github
+          url: '#'
+        - name: Slack
+          url: '#'
+        - name: Contact
+          url: '#'
+        - name: Jobs
+          url: '#'
+        - name: Events
+          url: '#'
+        - name: Wagtail Space
+          url: '#'
+    - heading: Solutions
+      links:
+        - name: For governments
+          url: '#'
+        - name: For non-profits
+          url: '#'
+        - name: For developers
+          url: '#'
+        - name: For content creators
+          url: '#'
+        - name: For businesses
+          url: '#'
+        - name: Static websites
+          url: '#'
+        - name: Open source enterprise CMS
+          url: '#'
+        - name: Wagtail vs Django CMS
+          url: '#'
+        - name: Wagtail vs Wordpress
+          url: '#'
+        - name: Headless CMS
+          url: '#'
+        - name: How to change your CMS
+          url: '#'
+    - heading: Services
+      links:
+        - name: Hosting
+          url: '#'
+        - name: Training
+          url: '#'
+        - name: Support
+          url: '#'
+        - name: Products
+          url: '#'
+        - name: Partners/Agencies
+          url: '#'

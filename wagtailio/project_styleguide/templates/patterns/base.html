@@ -33,9 +33,13 @@
 
         {% block header %}{% endblock %}
 
-        {% block content %}
-            {{ pattern_library_rendered_pattern }}
-        {% endblock %}
+        <main>
+            {% block content %}
+                {{ pattern_library_rendered_pattern }}
+            {% endblock %}
+        </main>
+
+        {% block footer %}{% endblock %}
 
         {# Global javascript #}
         <script src="{% manifest 'js/main.js' %}"></script>

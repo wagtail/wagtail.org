@@ -1,0 +1,115 @@
+.footer-menu {
+    $root: &;
+
+    background-color: $color--teal-300;
+    padding: 40px 0;
+
+    &__grid {
+        @include media-query(large) {
+            grid-column-gap: 15px;
+        }
+    }
+
+    &__column {
+        grid-column: 2 / span 2;
+        margin-bottom: 17px;
+
+        @include media-query(large) {
+            grid-column: auto;
+        }
+
+        &:first-child {
+            @include media-query(large) {
+                grid-column-start: 2;
+            }
+        }
+    }
+
+    &__list {
+        display: none;
+        list-style: none;
+        margin-top: 18px;
+        margin-left: 40px;
+
+        @include media-query(large) {
+            display: block;
+            margin-left: 0;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        color: $color--teal;
+        flex-shrink: 0;
+
+        @include media-query(large) {
+            display: none;
+        }
+
+        &--close {
+            display: none;
+        }
+    }
+
+    &__toggle {
+        padding: 5px;
+
+        @include media-query(large) {
+            display: none;
+        }
+    }
+
+    &__item {
+        margin-bottom: 10px;
+    }
+
+    &__link {
+        color: $color--off-black;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__column-header {
+        display: flex;
+
+        @include media-query(large) {
+            display: block;
+        }
+    }
+
+    &__column-heading {
+        font-weight: $weight--bold;
+        font-size: 1.25rem;
+        margin-left: 10px;
+
+        @include media-query(large) {
+            margin-left: 0;
+        }
+    }
+
+    &__column.is-open {
+        #{$root}__icon {
+            &--open {
+                display: none;
+            }
+
+            &--close {
+                display: block;
+            }
+        }
+
+        #{$root}__list {
+            display: block;
+        }
+    }
+
+    .no-js & {
+        &__list {
+            display: block;
+        }
+    }
+}
