@@ -14,7 +14,7 @@ tags:
   image:
     value.listing_image fill-495x495 class="teaser__image":
       raw: |
-        <img src="http://via.placeholder.com/495x495" width="495" height="495" alt="Some alt" class="teaser__image">
+        <img src="https://placehold.co/495x495" width="495" height="495" alt="Some alt" class="teaser__image">
     value.author_image fill-90x90 class="author__image":
       raw: |
-        <img src="http://via.placeholder.com/90x90" width="90" height="90" alt="Some alt" class="author__image">
+        <img src="https://placehold.co/90x90" width="90" height="90" alt="Some alt" class="author__image">

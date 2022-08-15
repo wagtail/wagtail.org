@@ -36,4 +36,4 @@ tags:
   include_block:
     block:
       raw: |
-        <img src="https://via.placeholder.com/180x50" alt="Some alt">
+        <img src="https://placehold.co/180x50" alt="Some alt">

@@ -10,4 +10,4 @@ tags:
   image:
     value.image_for_external_link fill-450x300:
       raw: |
-        <img src="https://via.placeholder.com/450x300" alt="Some alt">
+        <img src="https://placehold.co/450x300" alt="Some alt">

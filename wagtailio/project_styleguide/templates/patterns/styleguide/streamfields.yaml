@@ -18,7 +18,7 @@ tags:
   image:
     value.image fill-650x500 class="highlight__image":
       raw: |
-        <img src="https://via.placeholder.com/650x500" alt="Some alt" class="highlight__image">
+        <img src="https://placehold.co/650x500" alt="Some alt" class="highlight__image">
     item.author_image fill-50x50 classname="quotes__author-image":
       raw: |
-        <img src="https://via.placeholder.com/50x50" class="quotes__author-image" alt="Some alt">
+        <img src="https://placehold.co/50x50" class="quotes__author-image" alt="Some alt">
