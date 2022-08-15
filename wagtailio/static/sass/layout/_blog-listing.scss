@@ -1,7 +1,7 @@
 .blog-listing {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $gutter-sm;
+  gap: $gutter;
 
   @include media-query(medium) {
     gap: $gutter-lg;
@@ -118,18 +118,24 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        width: 50%;
+        width: 80%;
         height: 95%;
         border-radius: 15px;
         background: #B3E7E8;
         opacity: 0.75;
-        transform: rotate(-4deg) translate3d(18px, 20px, 0);
+        transform: rotate(-2deg) translate3d(10px, 10px, 0);
         z-index: -1;
-
       }
 
       @include media-query(medium) {
         padding: $gutter $gutter-lg;
+
+        // stylelint-disable-next-line max-nesting-depth
+        &::after {
+          transform: rotate(-4deg) translate3d(18px, 18px, 0);
+          width: 50%;
+
+        }
       }
 
       @include media-query(large) {

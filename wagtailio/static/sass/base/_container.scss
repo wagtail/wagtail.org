@@ -8,4 +8,9 @@
     padding-left: $gutter;
     padding-right: $gutter;
   }
+
+  @include media-query(large) {
+    padding-left: $gutter-lg;
+    padding-right: $gutter-lg;
+  }
 }
