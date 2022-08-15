@@ -1,3 +1,22 @@
 context:
   value:
-    rich_text: <p><a href="https://loremipsum.io/">Lorem ipsum</a> is <em>placeholder text</em> commonly used in the graphic, print, and publishing industries for <strong>previewing layouts and visual mockups</strong>.</p>
+    rich_text: |
+      <div class="rich-text">
+        <h2>Wagtails are ground nesters, laying up to six speckled eggs at a time</h2>
+        <h3>Wagtails are ground nesters, laying up to six speckled eggs at a time</h3>
+        <h4>Wagtails are ground nesters, laying up to six speckled eggs at a time</h4>
+        <h5>Wagtails are ground nesters, laying up to six speckled eggs at a time</h5>
+        <p>Wagtails are ground nesters, laying up to six speckled eggs at a time</p>
+        <p>Wagtail is built in <b>Python</b>, the fastest-growing major <i>programming language</i> and is <u>built on top</u> of Django, a scalable Python web <a href="#">framework known</a> for its reliability and security.</p>
+        <ol>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time, Wagtails are ground nesters, laying up to six speckled eggs at a time, Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+        </ol>
+        <ul>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time, Wagtails are ground nesters, laying up to six speckled eggs at a time, Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+            <li>Wagtails are ground nesters, laying up to six speckled eggs at a time</li>
+        </ul>
+        <small>Wagtails are ground nesters, laying up to six speckled eggs at a time</small>
+      </div>
