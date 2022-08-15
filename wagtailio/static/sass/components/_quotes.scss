@@ -1,31 +1,36 @@
 .quotes {
+    @include sf-spacing();
     position: relative;
 
     &__header {
         color: $color--off-black;
         padding-bottom: 30px;
-        grid-column: 2 / span 1;
+        grid-column: 2 / span 2;
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
         @include media-query(large) {
-            grid-column: 2 / span 7;
+            grid-column: 2 / span 5;
             padding-bottom: 60px;
         }
     }
 
     &__item {
-        grid-column: 2 / span 1;
+        grid-column: 2 / span 2;
         padding: 0 0 25px 0;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
 
         @include media-query(large) {
             &:nth-child(even) {
                 grid-column: 4 / span 2;
                 padding: 0 0 100px 0;
             }
-            
+
             &:nth-child(odd) {
                 grid-column: 2 / span 2;
                 padding: 0 80px 100px 0;
@@ -33,7 +38,7 @@
         }
 
     }
-    
+
     &__author {
         display: flex;
         align-items: center;
@@ -55,27 +60,27 @@
     &__icon {
         fill: $color--teal-200;
         position: absolute;
-        inset: -5% -80% auto auto;
-        width: 273px;
-        height: 184px;
+        inset: -5% 5% auto auto;
+        width: 133px;
+        height: 124px;
         z-index: -1;
 
         > svg {
-            width: 273px;
-            height: 184px;
+            width: inherit;
+            height: inherit;
         }
 
         @include media-query(medium) {
             inset: -10% -5% auto auto;
-            
+
             > svg {
-                width: 360px;
-                height: 450px;
+                width: 220px;
+                height: 220px;
             }
         }
 
         @include media-query(large) {
-            inset: -20% -10% auto auto;
+            inset: -40% 10% auto auto;
 
             > svg {
                 height: 546px;

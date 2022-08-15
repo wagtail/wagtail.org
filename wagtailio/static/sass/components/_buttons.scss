@@ -63,4 +63,9 @@
         font-weight: $weight--bold;
         line-height: 1.25rem;
     }
+
+    .grid--sf & {
+        @include sf-spacing();
+        grid-column: 2;
+    }
 }

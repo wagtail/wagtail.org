@@ -1,12 +1,8 @@
 .highlight {
     $root: &;
+    @include sf-spacing();
     align-items: center;
     grid-auto-flow: dense;
-    margin-bottom: 50px;
-
-    @include media-query(large) {
-        margin-bottom: 100px;
-    }
 
     &__image {
         grid-column: 2 / span 2;

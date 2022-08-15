@@ -1,5 +1,6 @@
 .text-media {
     $root: &;
+    @include sf-spacing();
 
     &__content {
         margin: auto;
@@ -22,7 +23,7 @@
         margin: 35px 0 0 0;
     }
 
-    &__media, 
+    &__media,
     iframe {
         // Force the iframe to be full width
         width: 100%;
@@ -48,11 +49,11 @@
                 padding: 0 0 0 95px;
             }
         }
-        
+
         #{$root}__media,
         iframe {
             padding: 0 10px 0 0;
-        
+
             @include media-query(large) {
                 grid-column: 2 / span 2;
             }

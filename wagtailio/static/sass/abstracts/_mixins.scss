@@ -28,3 +28,12 @@
     white-space: nowrap;
     border: 0;
 }
+
+// Streamfield spacing
+@mixin sf-spacing() {
+    margin-bottom: 50px;
+
+    @include media-query(large) {
+        margin-bottom: 100px;
+    }
+}
