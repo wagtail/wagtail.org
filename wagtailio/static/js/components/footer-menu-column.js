@@ -27,11 +27,13 @@ class FooterMenuColumn {
     handleClose() {
         this.node.classList.remove(this.openClass);
         this.toggleButton.ariaLabel = this.toggleButton.ariaLabel.replace('Close', 'Open');
+        this.toggleButton.ariaExpanded = false;
     }
 
     handleOpen() {
         this.node.classList.add(this.openClass);
         this.toggleButton.ariaLabel = this.toggleButton.ariaLabel.replace('Open', 'Close');
+        this.toggleButton.ariaExpanded = true;
     }
 }
 
