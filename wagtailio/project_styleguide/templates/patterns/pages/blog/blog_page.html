@@ -1,0 +1,29 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <article class="blog">
+        {# Header #}
+        <header class="blog__header grid">
+            {% include "patterns/components/meta/meta.html" with classes="blog__meta" %}
+
+            <h1 class="blog__heading article-heading">{{ page.title }}</h1>
+
+            {% if page.intro %}
+                <h2 class="blog__intro intro-small">{{ page.intro }}</h2>
+            {% endif %}
+
+            {% include "patterns/components/author/author.html" with classes="blog__author author--blog" %}
+        </header>
+
+        {# Body Content #}
+        <div class="grid">
+            <div class="blog__content">
+                {% include_block page.body %}
+            </div>
+        </div>
+    </article>
+
+    {# Related articles #}
+    {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages.all %}
+{% endblock %}

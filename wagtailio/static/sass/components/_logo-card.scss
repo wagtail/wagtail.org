@@ -34,7 +34,16 @@
     }
 
     &__image {
-        margin-top: auto;
+        flex-shrink: 0;
+    }
+
+    &__author-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    &__author {
+        margin-left: 10px;
     }
 
     &:is(a) {
@@ -60,6 +69,12 @@
             &::after {
                 transform: rotate(-5deg) translate3d(-30px, 45px, 0);
             }
+        }
+    }
+
+    &--article {
+        #{$root}__image {
+            border-radius: 50%;
         }
     }
 }

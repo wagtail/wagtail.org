@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% if value.link_url %}
-    <a href="{{ value.link_url }}" class="logo-card">
+    <a href="{{ value.link_url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
 {% else %}
     <div class="logo-card">
 {% endif %}
@@ -12,9 +12,15 @@
     <div class="logo-card__description">{{ value.description|richtext }}</div>
 {% endif %}
 
-{% if value.logo %}
+{% if value.author and value.logo %}
+    <div class="logo-card__author-wrap">
+        {% image value.logo fill-40x40 class="logo-card__image" %}
+        <p class="logo-card__author mini-meta">{{ value.author }}</p>
+    </div>
+{% elif value.logo %}
     {% image value.logo fill-140x90 class="logo-card__image" %}
 {% endif %}
+
 {% if value.link_url %}
     </a>
 {% else %}

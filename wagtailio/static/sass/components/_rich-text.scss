@@ -1,9 +1,10 @@
 .rich-text {
     a {
         color: $color--teal;
+        transition: color 0.3s;
 
         &:hover {
-            // Design TBC
+            color: $color--indigo;
         }
     }
 
@@ -11,9 +12,13 @@
         font-weight: $weight--bold;
     }
 
-    ul, ol {
-        li {
-            margin-bottom: 10px;
+    ul,
+    ol {
+        list-style: inside;
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
         }
     }
 
