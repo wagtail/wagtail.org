@@ -36,17 +36,29 @@
     &__icon {
         position: absolute;
         top: 0;
-        right: 140px;
+        right: -80px;
         z-index: -1;
+        width: 170px;
+        height: 170px;
 
         @include media-query(medium) {
-            right: 0;
+            right: -50px;
             top: 40px;
+            width: 250px;
+            height: 250px;
+        }
+
+        @include media-query(large) {
+            right: 0;
+            width: 410px;
+            height: 410px;
         }
 
         svg {
-            width: 170px;
-            height: 170px;
+            width: inherit;
+            height: inherit;
+        }
+
         // stylelint-disable max-nesting-depth
         &--paper-plane {
             right: 0;
