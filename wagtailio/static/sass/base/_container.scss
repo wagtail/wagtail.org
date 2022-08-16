@@ -1,0 +1,16 @@
+.container {
+  max-width: $site-width;
+  margin: 0 auto;
+  padding-left: $gutter-sm;
+  padding-right: $gutter-sm;
+
+  @include media-query(medium) {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+
+  @include media-query(large) {
+    padding-left: $gutter-lg;
+    padding-right: $gutter-lg;
+  }
+}

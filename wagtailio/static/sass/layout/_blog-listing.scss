@@ -1,0 +1,14 @@
+.blog-listing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $gutter;
+
+  @include media-query(medium) {
+    gap: $gutter-lg;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-query(large) {
+    gap: $gutter-xl;
+  }
+}

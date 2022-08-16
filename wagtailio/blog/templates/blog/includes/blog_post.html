@@ -1,0 +1,29 @@
+{% load wagtailimages_tags %}
+<a href="{{ post.url }}" class="blog-post {% if featured %} blog-post--featured{% else %} blog-post--small{% endif %}">
+    {% if featured %}
+        <div class="blog-post__image-wrapper" aria-hidden="true">
+            {% if post.listing_image %}
+                {% image post.listing_image fill-500x500 class='blog-post__image' %}
+            {% elif post.main_image %}
+                {% image post.main_image fill-500x500 class='blog-post__image' %}
+            {% else %}
+                {# TODO: Render a default image #}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="blog-post__content">
+        <div class="blog-post__meta mini-meta">
+            {% include "patterns/components/icon/icon.html" with icon='arrow-alt' classes="blog-post__icon" %}
+            {% if post.category %}<span><strong>{{ post.category }}</strong></span>{% endif %}
+            <span>{{ post.date|date }}</span>
+        </div>
+
+        <h3 class="blog-post__title {% if featured %}heading-two{% endif %}">{{ post.title }}</h3>
+        <p class="blog-post__listing-text">{% firstof post.listing_text post.introduction %}</p>
+
+        {% if post.author %}
+            {% include 'patterns/components/author/author.html' with author=post.author %}
+        {% endif %}
+    </div>
+</a>

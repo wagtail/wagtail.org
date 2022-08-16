@@ -9,8 +9,8 @@
 
             <h1 class="blog__heading article-heading">{{ page.title }}</h1>
 
-            {% if page.intro %}
-                <h2 class="blog__intro intro-small">{{ page.intro }}</h2>
+            {% if page.introduction %}
+                <h2 class="blog__intro intro-small">{{ page.introduction }}</h2>
             {% endif %}
 
             {% include "patterns/components/author/author.html" with classes="blog__author author--blog" %}

@@ -10,12 +10,7 @@
         }
 
         #{$root}__content {
-            &::after {
-                // stylelint-disable-next-line max-nesting-depth
-                @include media-query(medium) {
-                    transform: rotate(-2deg) translate3d(-15px, 10px, 0);
-                }
-            }
+            @include offset-bg-hover-right();
         }
     }
 
@@ -33,7 +28,7 @@
     }
 
     &__content {
-        position: relative;
+        @include offset-bg-right();
         background-color: $color--white;
         grid-column: 2 / span 2;
         padding: 20px;
@@ -46,26 +41,6 @@
         @include media-query(large) {
             padding: 60px 80px;
             grid-column: 4 / span 3;
-        }
-
-        &::after {
-            content: '';
-            background-color: $color--eggshell;
-            opacity: 0.75;
-            border-radius: 15px;
-            position: absolute;
-            width: 80%;
-            height: 100%;
-            top: 20px;
-            right: 0;
-            transform: rotate(-3deg);
-            z-index: -1;
-            transition: transform 0.3s;
-
-            @include media-query(medium) {
-                top: 10px;
-                right: -20px;
-            }
         }
     }
 
