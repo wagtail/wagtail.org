@@ -1,6 +1,8 @@
 .quotes {
     @include sf-spacing();
     position: relative;
+    padding-top: 50px;
+    overflow: hidden;
 
     &__header {
         color: $color--off-black;
@@ -77,9 +79,9 @@
         }
 
         @include media-query(large) {
-            inset: -10% -10% auto auto;
-            height: 316px;
-            width: 368px;
+            inset: 0 5% auto auto;
+            height: 275px;
+            width: 280px;
         }
     }
 
