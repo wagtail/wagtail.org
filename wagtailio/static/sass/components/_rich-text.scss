@@ -14,7 +14,8 @@
 
     ul,
     ol {
-        list-style: inside;
+        list-style: outside;
+        padding-left: 20px;
         margin-bottom: 20px;
 
         @include media-query(medium) {

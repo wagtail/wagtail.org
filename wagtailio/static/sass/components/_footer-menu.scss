@@ -4,6 +4,10 @@
     background-color: $color--teal-300;
     padding: 40px 0;
 
+    @include media-query(medium) {
+        padding: 80px 0;
+    }
+
     &__grid {
         @include media-query(large) {
             grid-column-gap: 15px;
@@ -15,6 +19,8 @@
         margin-bottom: 17px;
 
         @include media-query(large) {
+            display: flex;
+            flex-direction: column;
             grid-column: auto;
         }
 
@@ -103,6 +109,17 @@
         }
 
         #{$root}__list {
+            display: block;
+        }
+    }
+
+    &__logo {
+        display: none;
+
+        @include media-query(large) {
+            margin-top: auto;
+            width: 155px;
+            height: 65px;
             display: block;
         }
     }

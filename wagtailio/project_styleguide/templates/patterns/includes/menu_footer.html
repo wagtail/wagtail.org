@@ -23,6 +23,12 @@
                             </li>
                         {% endfor %}
                     </ul>
+
+                    {% if forloop.first %}
+                        <svg class="footer-menu__logo" aria-hidden="true">
+                            <use xlink:href="#wagtail" />
+                        </svg>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
