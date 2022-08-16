@@ -10,7 +10,6 @@
         }
 
         #{$root}__content {
-            // stylelint-disable-next-line max-nesting-depth
             @include offset-bg-hover-right();
         }
     }
