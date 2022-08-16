@@ -1,0 +1,128 @@
+// TODO: Separate file and convert font px to rem
+.blog-post {
+    $root: &;
+    display: flex;
+    text-decoration: none;
+    color: $color--off-black;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+
+            #{$root}__image {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+
+            #{$root}__content {
+                @include offset-bg-hover-right();
+            }
+
+            #{$root}__title {
+                color: $color--teal;
+            }
+        }
+    }
+
+    &__title {
+        text-decoration: none;
+        color: $color--off-black;
+        transition: color 0.3s;
+
+        > h3 {
+            margin-bottom: 0;
+        }
+    }
+
+    &__image-wrapper {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        min-height: 350px;
+    }
+
+    &__listing-text {
+        color: $color--grey;
+        font-size: 16px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        background: $color--white;
+        padding: $gutter-sm;
+    }
+
+    &__image {
+        object-fit: cover;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s;
+        max-width: none;
+        width: 100%;
+
+        @include media-query(large) {
+            width: auto;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+        //font-size: 0.875rem;
+    }
+
+    &__icon {
+        width: 22px;
+        height: 22px;
+
+        svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    &--featured {
+        display: grid;
+
+        @include media-query(medium) {
+            grid-column: 1 / span 2;
+
+            #{$root}__listing-text {
+                font-size: 20px;
+            }
+        }
+
+        @include media-query(large) {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        #{$root}__content {
+            @include offset-bg-right();
+            border-radius: 0 15px 15px 0;
+            gap: 20px;
+
+            @include media-query(medium) {
+                padding: $gutter $gutter-lg;
+
+                // stylelint-disable-next-line max-nesting-depth
+                &::after {
+                    transform: rotate(-4deg) translate3d(18px, 18px, 0);
+                    width: 50%;
+                }
+            }
+
+            @include media-query(large) {
+                padding: $gutter-lg $gutter-xl;
+            }
+        }
+    }
+}
