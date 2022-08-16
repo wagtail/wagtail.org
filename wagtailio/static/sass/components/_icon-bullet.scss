@@ -32,7 +32,7 @@
         }
 
         @include media-query(large) {
-            grid-column: 3 / span 4;
+            grid-column: 3 / span 3;
         }
     }
 
