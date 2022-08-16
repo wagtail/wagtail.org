@@ -61,6 +61,7 @@
     gap: 10px;
     position: relative;
     background: $color--white;
+    padding: $gutter-sm;
   }
 
   &__image {
@@ -72,6 +73,10 @@
     transition: transform 1s ease;
     max-width: none;
     width: 100%;
+
+    @include media-query(large) {
+      width: auto;
+    }
   }
 
   &__meta {
@@ -109,7 +114,6 @@
     }
 
     #{$root}__content {
-      padding-top: $gutter-sm;
       border-radius: 0 15px 15px 0;
       gap: 20px;
 
