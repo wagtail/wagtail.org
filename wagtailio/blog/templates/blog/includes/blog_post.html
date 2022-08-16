@@ -13,7 +13,7 @@
     {% endif %}
 
     <div class="blog-post__content">
-        <div class="blog-post__meta">
+        <div class="blog-post__meta mini-meta">
             {% include "patterns/components/icon/icon.html" with icon='arrow-alt' classes="blog-post__icon" %}
             {% if post.category %}<span><strong>{{ post.category }}</strong></span>{% endif %}
             <span>{{ post.date|date }}</span>
