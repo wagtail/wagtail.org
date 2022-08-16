@@ -4,6 +4,8 @@
         <a href="{{ post.url }}" class="blog-post__image-wrapper" aria-hidden="true">
             {% if post.listing_image %}
                 {% image post.listing_image fill-500x500 class='blog-post__image' %}
+            {% elif post.main_image %}
+                {% image post.main_image fill-500x500 class='blog-post__image' %}
             {% else %}
                 {# TODO: Render a default image #}
             {% endif %}
