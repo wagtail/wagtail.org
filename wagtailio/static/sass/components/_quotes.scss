@@ -62,7 +62,7 @@
     &__icon {
         fill: $color--teal-200;
         position: absolute;
-        inset: -5% 5% auto auto;
+        inset: 5% 0 auto auto;
         width: 133px;
         height: 124px;
         z-index: -1;
@@ -73,13 +73,12 @@
         }
 
         @include media-query(medium) {
-            inset: -10% -5% auto auto;
+            inset: 0 5% auto auto;
             width: 220px;
             height: 220px;
         }
 
         @include media-query(large) {
-            inset: 0 5% auto auto;
             height: 275px;
             width: 280px;
         }
