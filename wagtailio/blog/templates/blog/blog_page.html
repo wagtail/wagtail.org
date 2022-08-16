@@ -10,7 +10,7 @@
         <div class="heading"><h1>{{ page.title }}</h1></div>
         <div class="page-heading__introduction"><p>{{ page.introduction }}</p></div>
 
-        {% include "blog/includes/post_author.html" with author=page.author only %}
+        {% include "patterns/components/author/author.html" with author=page.author only %}
 
         {% image page.main_image width-800 %}
         {% include_block page.body %}
