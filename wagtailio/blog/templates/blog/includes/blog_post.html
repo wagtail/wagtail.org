@@ -18,9 +18,12 @@
             {% if post.category %}<span><strong>{{ post.category }}</strong></span>{% endif %}
             <span>{{ post.date|date }}</span>
         </div>
-        <a href="{{ post.url }}" class="blog-post__title"><h3
-            class="{% if featured %}heading-two{% endif %}">{{ post.title }}</h3></a>
+
+        <a href="{{ post.url }}" class="blog-post__title">
+            <h3 class="{% if featured %}heading-two{% endif %}">{{ post.title }}</h3>
+        </a>
         <p class="blog-post__listing-text">{% firstof post.listing_text post.introduction %}</p>
+
         {% if post.author %}
             {% include 'patterns/components/author/author.html' with author=post.author %}
         {% endif %}
