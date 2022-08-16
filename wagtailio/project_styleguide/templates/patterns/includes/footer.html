@@ -1,3 +1,56 @@
 <footer class="footer">
     {% include "patterns/includes/menu_footer.html" %}
+    <div class="footer__base">
+        <div class="grid">
+            {# Links #}
+            <ul class="footer__links-wrap">
+                <li class="footer__link-item">
+                    <a class="footer__icon-link" href="/sponsors">
+                        <p>Sponsor Wagtail</p>
+                        <p class="mini-meta">Help build Wagtail enhancements and support the long-term health of the project</p>
+                    </a>
+                </li>
+                <li class="footer__link-item">
+                    <a class="footer__icon-link" href="https://docs.wagtail.org/en/stable/contributing/index.html#contributing-to-wagtail">
+                        <p>Contribute code</p>
+                        <p class="mini-meta">200+ contributors in 2022!</p>
+                    </a>
+                </li>
+            </ul>
+
+            {# Form sign up #}
+            <div class="footer__sign-up">
+                <p class="teaser-heading">This Week in Wagtail</p>
+                <div class="footer__socials">
+                    <p class="footer__social-heading heading-four">Follow us</p>
+                    <ul class="footer__social-list">
+                        <li>
+                            <a href="" aria-label="Wagtail on Github">
+                                <svg class="footer__social-icon" height="28px" width="36px" aria-hidden="true">
+                                    <use xlink:href="#github"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="Wagtail on Twitter">
+                                <svg class="footer__social-icon" height="28px" width="36px" aria-hidden="true">
+                                    <use xlink:href="#twitter"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="Wagtail on YouTube">
+                                <svg class="footer__social-icon" height="28px" width="36px" aria-hidden="true">
+                                    <use xlink:href="#youtube"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {# Credit #}
+            <p class="footer__credit">Wagtail is an open source project by <a class="footer__link" href="https://torchbox.com/">Torchbox</a>. &copy; {% now "Y" %}</p>
+        </div>
+    </div>
 </footer>
