@@ -38,8 +38,10 @@
     }
 }
 
-// Adds coloured offset background
+// Adds coloured offset background on the right
 @mixin offset-bg-right() {
+    position: relative;
+
     &::after {
         content: '';
         background-color: $color--eggshell;
@@ -67,5 +69,29 @@
         @include media-query(medium) {
             transform: rotate(-2deg) translate3d(-15px, 10px, 0);
         }
+    }
+}
+
+// Adds coloured offset background on the left
+@mixin offset-bg-left() {
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 80%;
+        height: 85%;
+        background-color: $color--eggshell;
+        opacity: 0.75;
+        position: absolute;
+        z-index: -1;
+        border-radius: 15px;
+        transition: transform 0.3s;
+    }
+}
+
+// To be used with offset-bg-left() - apply this on hover of parent
+@mixin offset-bg-hover-left() {
+    &::after {
+        transform: rotate(-5deg) translate3d(-30px, 45px, 0);
     }
 }

@@ -30,7 +30,6 @@
 
     &__content {
         @include offset-bg-right();
-        position: relative;
         background-color: $color--white;
         grid-column: 2 / span 2;
         padding: 20px;

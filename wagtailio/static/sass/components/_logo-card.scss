@@ -47,27 +47,13 @@
     }
 
     &:is(a) {
-        position: relative;
-
-        &::after {
-            content: '';
-            width: 80%;
-            height: 85%;
-            background-color: $color--eggshell;
-            opacity: 0.75;
-            position: absolute;
-            z-index: -1;
-            border-radius: 15px;
-            transition: transform 0.3s;
-        }
+        @include offset-bg-left();
 
         &:hover {
+            @include offset-bg-hover-left();
+
             #{$root}__heading {
                 color: $color--teal;
-            }
-
-            &::after {
-                transform: rotate(-5deg) translate3d(-30px, 45px, 0);
             }
         }
     }

@@ -1,27 +1,16 @@
 // TODO: Separate file and convert font px to rem
 .blog-post {
     $root: &;
-    display: flex;
     text-decoration: none;
     color: $color--off-black;
 
-    @media screen and (prefers-reduced-motion: no-preference) {
-        &:hover,
-        &:active,
-        &:focus {
-            text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
 
-            #{$root}__image {
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-
-            #{$root}__content {
-                @include offset-bg-hover-right();
-            }
-
-            #{$root}__title {
-                color: $color--teal;
-            }
+        #{$root}__title {
+            color: $color--teal;
         }
     }
 
@@ -51,7 +40,6 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        position: relative;
         background: $color--white;
         padding: $gutter-sm;
     }
@@ -105,6 +93,20 @@
             grid-template-columns: 1fr 2fr;
         }
 
+        @media screen and (prefers-reduced-motion: no-preference) {
+            &:hover,
+            &:active,
+            &:focus {
+                #{$root}__image {
+                    transform: translate(-50%, -50%) scale(1.05);
+                }
+
+                #{$root}__content {
+                    @include offset-bg-hover-right();
+                }
+            }
+        }
+
         #{$root}__content {
             @include offset-bg-right();
             border-radius: 0 15px 15px 0;
@@ -122,6 +124,22 @@
 
             @include media-query(large) {
                 padding: $gutter-lg $gutter-xl;
+            }
+        }
+    }
+
+    &--small {
+        #{$root}__content {
+            @include offset-bg-left();
+        }
+
+        @media screen and (prefers-reduced-motion: no-preference) {
+            &:hover,
+            &:active,
+            &:focus {
+                #{$root}__content {
+                    @include offset-bg-hover-left();
+                }
             }
         }
     }

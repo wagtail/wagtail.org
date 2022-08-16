@@ -1,5 +1,5 @@
 {% load wagtailimages_tags %}
-<a href="{{ post.url }}" class="blog-post {% if featured %} blog-post--featured{% endif %}">
+<a href="{{ post.url }}" class="blog-post {% if featured %} blog-post--featured{% else %} blog-post--small{% endif %}">
     {% if featured %}
         <div class="blog-post__image-wrapper" aria-hidden="true">
             {% if post.listing_image %}
