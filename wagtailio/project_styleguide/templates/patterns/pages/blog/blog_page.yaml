@@ -1,7 +1,7 @@
 context:
   page:
     title: Do you need Headless Wagtail? A guide for decision makers
-    intro: Here is a handy guide for decision makers who are considering Headless Wagtail.
+    introduction: Here is a handy guide for decision makers who are considering Headless Wagtail.
     related_pages:
       all:
         - heading: Preparations for Wagtail Space NL are in full swing
