@@ -1,0 +1,22 @@
+.card-grid {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media-query(medium) {
+        margin-bottom: 50px;
+    }
+
+    > div {
+        padding: 0 0 50px 0;
+
+        @include media-query(medium) {
+            padding: 0 50px 50px 0;
+            width: 50%;
+        }
+
+        @include media-query(large) {
+            padding: 0 120px 120px 0;
+        }
+    }
+}

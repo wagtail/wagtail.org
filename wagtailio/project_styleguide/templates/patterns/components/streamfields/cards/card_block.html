@@ -1,14 +1,14 @@
 <div class="card">
-    <div>
+    <span>
         {% include "patterns/components/meta/meta.html" with classes="card__meta" %}
 
-        <h4 class="card__heading">{{ value.heading }}</h4>
+        <h4 class="card__heading heading-three">{{ value.heading }}</h4>
         {% if value.description %}
-            <div class="card__description">
+            <p class="card__description mini-meta">
                 {{ value.description }}
-            </div>
+            </p>
         {% endif %}
-    </div>
+    </span>
     {% if value.cta %}
         {% include "patterns/components/streamfields/cta/cta_block.html" with value=value.cta %}
     {% endif %}
