@@ -13,7 +13,7 @@ class CategoryModelAdmin(ModelAdmin):
 
 
 class TaxonomiesModelAdminGroup(ModelAdminGroup):
-    menu_label = "Taxonomies"
+    menu_label = "Taxonomy"
     items = (CategoryModelAdmin,)
     menu_icon = "folder-inverse"
 
