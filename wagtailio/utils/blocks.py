@@ -140,14 +140,14 @@ class NamedBackerBlock(StructBlock):
     name = CharBlock()
 
     class Meta:
-        template = "blog/blocks/named_backer.html"
+        template = "patterns/components/streamfields/backers/named_backer.html"
 
 
 class LinkedBackerBlock(NamedBackerBlock):
     url = URLBlock(required=False)
 
     class Meta:
-        template = "blog/blocks/linked_backer.html"
+        template = "patterns/components/streamfields/backers/linked_backer.html"
 
 
 class ImageBackerBlock(StructBlock):
@@ -156,7 +156,7 @@ class ImageBackerBlock(StructBlock):
     url = URLBlock(required=False)
 
     class Meta:
-        template = "blog/blocks/image_backer.html"
+        template = "patterns/components/streamfields/backers/image_backer.html"
 
 
 class BackersBlock(StructBlock):
@@ -167,7 +167,7 @@ class BackersBlock(StructBlock):
     named_backers = ListBlock(NamedBackerBlock())
 
     class Meta:
-        template = "blog/blocks/backers.html"
+        template = "patterns/components/streamfields/backers/backers.html"
 
 
 # Main streamfield block to be inherited by Pages
@@ -194,4 +194,4 @@ class StoryBlock(StreamBlock):
     backers = BackersBlock()
 
     class Meta:
-        template = "core/includes/streamfield.html"
+        template = "patterns/components/streamfields/content_story_block.html"
