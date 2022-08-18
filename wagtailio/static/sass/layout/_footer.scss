@@ -170,13 +170,17 @@
 
     &__social-icon {
         color: $color--white;
-        width: 36px;
-        height: 28px;
+        width: 34px;
+        height: 34px;
         transition: color 0.3s;
 
         &:hover {
             color: $color--teal-100;
             transition: color 0.3s;
+        }
+
+        &--github {
+            transform: rotate(8deg);
         }
     }
 }
