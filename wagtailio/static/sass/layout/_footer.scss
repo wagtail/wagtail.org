@@ -1,4 +1,6 @@
 .footer {
+    $root: &;
+
     &__base {
         background-color: $color--indigo;
         padding: 60px 0;
@@ -15,6 +17,10 @@
     &__link-item {
         list-style: none;
 
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         @include media-query(large) {
             margin-bottom: 40px;
         }
@@ -27,7 +33,11 @@
     }
 
     &__credit {
+        font-size: 1rem;
+
         @include media-query(large) {
+            margin-top: 45px;
+            font-size: 0.7rem;
             grid-column: 2 / span 3;
         }
     }
@@ -35,6 +45,68 @@
     &__icon-link {
         color: $color--white;
         text-decoration: none;
+        display: flex;
+        gap: 15px;
+
+        &:hover {
+            #{$root}__icon-link-heading {
+                color: $color--teal-100;
+            }
+
+            #{$root}__icon {
+                stroke: $color--teal-100;
+            }
+        }
+
+        &--sponsor {
+            #{$root}__icon {
+                transform: rotate(4deg);
+            }
+        }
+
+        &--contribute {
+            position: relative;
+
+            &::after {
+                content: '200+';
+                background-color: $color--teal-100;
+                border: 2px solid $color--off-black;
+                color: $color--off-black;
+                font-size: 0.5rem;
+                font-weight: $weight--bold;
+                border-radius: 50%;
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                transform: rotate(-15deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                inset: -10px;
+
+            }
+
+            #{$root}__icon {
+                transform: rotate(8deg);
+            }
+        }
+    }
+
+    &__icon-link-heading {
+        font-weight: $weight--bold;
+        line-height: 1.3rem;
+        margin-bottom: 4px;
+        transition: color 0.3s;
+    }
+
+    &__icon {
+        color: transparent;
+        stroke: $color--white;
+        stroke-width: 2%;
+        width: 45px;
+        height: 50px;
+        flex-shrink: 0;
+        transition: stroke 0.3s;
     }
 
     &__link {
@@ -67,8 +139,8 @@
 
     &__social-icon {
         color: $color--white;
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 28px;
         transition: color 0.3s;
 
         &:hover {
