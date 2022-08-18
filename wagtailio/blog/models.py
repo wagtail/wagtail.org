@@ -64,7 +64,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
 
 
 class BlogPageRelatedPage(Orderable):
-    parent = ParentalKey("blog.BlogPage", related_name="page_related_pages")
+    parent = ParentalKey("blog.BlogPage", related_name="related_posts")
     page = models.ForeignKey(
         "blog.BlogPage",
         on_delete=models.CASCADE,
@@ -143,7 +143,7 @@ class BlogPage(
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
         InlinePanel(
-            "page_related_pages",
+            "related_posts",
             heading="Related pages",
             label="Related page",
             max_num=2,
@@ -159,15 +159,19 @@ class BlogPage(
 
     @cached_property
     def related_pages(self):
-        return self.page_related_pages.all()
+        return self.related_posts.all()
 
     @cached_property
     def meta_text(self):
-        return self.category.title
+        if self.category:
+            return self.category.title
+        return None
 
     @cached_property
     def meta_icon(self):
-        return self.category.icon
+        if self.category:
+            return self.category.icon
+        return None
 
     @property
     def publication_date(self):
