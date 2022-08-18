@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% block content %}
-    <h3>{{ page.subheading }}</h3>
+    {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
     {% for category in page.feature_categories %} ☐ {{ category }} {% endfor %}
     {% include_block page.body %}
     {% include_block page.cta %}
