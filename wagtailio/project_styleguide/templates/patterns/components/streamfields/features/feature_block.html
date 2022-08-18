@@ -3,5 +3,9 @@
 <div>
     <h4>{{ value.heading }}</h4>
     <div class="rich-text">{{ value.description|richtext }}</div>
-    <a href="{{ value.link }}">View docs</a>
+    {% if value.link %}
+        <a href="{{ value.link }}">
+            {% if value.link_title %}{{ value.link_title }}{% else %}View docs{% endif %}
+        </a>
+    {% endif %}
 </div>

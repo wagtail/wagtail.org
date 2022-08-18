@@ -47,6 +47,13 @@ class FeatureBlock(blocks.StructBlock):
         features=["bold", "italic", "link", "document"],
     )
     link = blocks.URLBlock(label="Feature link", required=False)
+    link_title = blocks.CharBlock(
+        label="Feature link title",
+        required=False,
+        max_length=50,
+        help_text="If left blank, 'View docs' will be used as the default Feature link title",
+        default="View docs",
+    )
 
     class Meta:
         icon = "gem"
