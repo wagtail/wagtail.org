@@ -21,10 +21,12 @@
         list-style: none;
         grid-column: 2 / span 2;
         gap: 20px;
+        justify-content: center;
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
             gap: 55px;
+            justify-content: flex-start;
         }
 
         @include media-query(large) {
