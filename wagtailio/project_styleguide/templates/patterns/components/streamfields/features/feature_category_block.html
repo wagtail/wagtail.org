@@ -1,6 +1,16 @@
+{% load wagtailcore_tags %}
+
 <div>
     <h3>{{ value.heading }}</h3>
-    {% for feature in value.features %}
-        {% include "patterns/components/streamfields/features/feature_block.html" with value=feature %}
+    {% comment %}
+    The line below could have been written (for better readability) as
+
+        {% for feature in value.features with value=feature %}
+
+    However, this would break django-pattern library due to a limitation:
+    https://github.com/torchbox/django-pattern-library/issues/138
+    {% endcomment %}
+    {% for value in value.features %}
+        {% include_block value %}
     {% endfor %}
 </div>
