@@ -24,7 +24,19 @@
         }
     }
 
-    &__items-wrap {
+    &__col-one {
+        @include media-query(medium) {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        @include media-query(large) {
+            gap: 140px;
+        }
+    }
+
+    &__col-two {
         display: flex;
         align-items: center;
         gap: 20px;
@@ -82,6 +94,14 @@
             svg {
                 transform: none;
             }
+        }
+    }
+
+    &__github-button {
+        display: none;
+
+        @include media-query(medium) {
+            display: block;
         }
     }
 }
