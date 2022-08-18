@@ -2,22 +2,24 @@ context:
   page:
     title: Do you need Headless Wagtail? A guide for decision makers
     introduction: Here is a handy guide for decision makers who are considering Headless Wagtail.
+    meta_icon: rocket
+    meta_text: Adventures in Wagtail
+    publication_date: !!timestamp '2022-08-12'
     related_pages:
-      all:
-        - heading: Preparations for Wagtail Space NL are in full swing
-          description: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
-          meta_icon: arrows
-          meta_text: Community
-          logo: fake
-          link_url: '#'
-          author: John Smith
-        - heading: How to try Wagtail CMS without coding
-          description: How to setup Wagtail and explore the content management system without any coding.
-          meta_icon: location-pin
-          meta_text: Resources
-          logo: fake
-          link_url: '#'
-          author: John Smith
+      - heading: Preparations for Wagtail Space NL are in full swing
+        description: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
+        meta_icon: arrows
+        meta_text: Community
+        logo: fake
+        link_url: '#'
+        author: John Smith
+      - heading: How to try Wagtail CMS without coding
+        description: How to setup Wagtail and explore the content management system without any coding.
+        meta_icon: location-pin
+        meta_text: Resources
+        logo: fake
+        link_url: '#'
+        author: John Smith
 
 tags:
   image:
