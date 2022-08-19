@@ -5,23 +5,29 @@ class FeatureIndex {
 
     constructor(node) {
         this.node = node;
-        this.allFilters = [...this.node.querySelectorAll('[data-feature-filter]')];
-        this.allFilterCheckbox = this.node.querySelector('[data-feature-filter-all]')
-        this.hiddenClass = 'is-hidden';
+        // 'all' checkbox input
+        this.allFilterCheckbox = this.node.querySelector('[data-feature-filter-all]');
+        // other checkbox inputs not including 'all'
+        this.filterCheckboxes = [...this.node.querySelectorAll('[data-feature-filter]')];
         this.allFeatureGroups = [...this.node.querySelectorAll('[data-feature-group]')];
+        this.hiddenClass = 'is-hidden';
 
         this.bindEvents();
+    }
 
     bindEvents() {
+        // 'all' filter checkbox
         this.allFilterCheckbox.addEventListener('change', (e) => {
             if (e.target.checked) {
                 this.resetUI();
             } else {
-                // do nothing
+                // Don't uncheck if it's the only one checked
+                this.allFilterCheckbox.checked = true;
             }
         })
 
-        this.allFilters.forEach((filter) => {
+        // Other filter checkboxes not including 'all'
+        this.filterCheckboxes.forEach((filter) => {
             filter.addEventListener('change', (e) => {
                 if (e.target.checked) {
                     // Uncheck 'all' checkbox
@@ -49,8 +55,8 @@ class FeatureIndex {
 
     // Loop over filters and hide or show group depending on if checkbox is 'checked'
     updateFilterGroups() {
-        const checkedFilters = this.allFilters.filter(filter => filter.checked === false);
-        const uncheckedFilters = this.allFilters.filter(filter => filter.checked === true);
+        const checkedFilters = this.filterCheckboxes.filter(filter => filter.checked === false);
+        const uncheckedFilters = this.filterCheckboxes.filter(filter => filter.checked === true);
 
         checkedFilters.forEach(filterGroup => {
             this.node.querySelector(`[data-feature-group="${filterGroup.id}"]`).classList.add(this.hiddenClass);
@@ -64,7 +70,7 @@ class FeatureIndex {
 
     // Untick all filters - show all groups
     resetUI() {
-        this.allFilters.forEach((filter) => {
+        this.filterCheckboxes.forEach((filter) => {
             const filterCopy = filter;
             filterCopy.checked = false;
         })
