@@ -3,17 +3,71 @@
 
     &__filters {
         display: flex;
-        gap: 10px;
+        gap: 30px 10px;
         grid-column: 2 / span 2;
         margin-bottom: 40px;
+        flex-direction: column;
 
         @include media-query(medium) {
+            flex-direction: row;
+            flex-wrap: wrap;
             grid-column: 2 / span 3;
         }
 
         @include media-query(large) {
             margin-bottom: 100px;
             grid-column: 2 / span 5;
+        }
+    }
+
+    &__filter-wrap {
+        position: relative;
+
+        input {
+            opacity: 0;
+            position: absolute;
+
+            &:focus + label::before {
+                // TODO - focus state
+            }
+
+            &:checked + label {
+                border-color: $color--indigo;
+                background-color: $color--indigo;
+                color: $color--white;
+            }
+
+            &:checked + label::before {
+                background-color: $color--indigo;
+                background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5.375c1.23 0 2.25 1.02 2.25 2.25v11.25c0 1.266-1.02 2.25-2.25 2.25H2.25A2.221 2.221 0 010 13.875V2.625C0 1.395.984.375 2.25.375H13.5zm-1.582 6.328a.955.955 0 000-1.371.955.955 0 00-1.371 0L6.75 9.129 5.168 7.582a.955.955 0 00-1.371 0 .955.955 0 000 1.371l2.25 2.25a.955.955 0 001.371 0l4.5-4.5z' fill='%23fff'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                color: $color--indigo;
+
+            }
+        }
+
+        label {
+            background-color: $color--white;
+            border: 2px solid $color--light-grey-100;
+            padding: 10px 10px 10px 40px;
+            border-radius: 6px;
+            position: relative;
+            font-weight: $weight--bold;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &::before {
+                content: '';
+                background-color: $color--white;
+                border-radius: 3px;
+                border: 2px solid $color--off-black;
+                width: 20px;
+                height: 20px;
+                inset: 9px;
+                position: absolute;
+            }
         }
     }
 

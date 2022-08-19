@@ -10,14 +10,14 @@
 
             {# Filters #}
             <fieldset class="features__filters">
-                <div>
+                <div class="features__filter-wrap">
                     <input type="checkbox" id="all" name="all" data-feature-filter-all checked>
-                    <label for="all">All</label>
+                    <label class="mini-meta" for="all">All</label>
                 </div>
                 {% for category in page.feature_categories %}
-                    <div>
+                    <div class="features__filter-wrap">
                         <input type="checkbox" id="{{ category|lower }}" name="{{ category|lower }}" data-feature-filter>
-                        <label for="{{ category|lower }}">{{ category }}</label>
+                        <label class="mini-meta" for="{{ category|lower }}">{{ category }}</label>
                     </div>
                 {% endfor %}
             </fieldset>
