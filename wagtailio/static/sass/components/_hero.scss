@@ -1,4 +1,6 @@
 .hero {
+    $root: &;
+
     @include sf-spacing();
     position: relative;
     grid-column: 2 / span 2;
@@ -94,6 +96,10 @@
 
         @include media-query(large) {
             margin-bottom: 50px;
+        }
+
+        #{$root}__subheading {
+            font-weight: $weight--regular;
         }
     }
 }
