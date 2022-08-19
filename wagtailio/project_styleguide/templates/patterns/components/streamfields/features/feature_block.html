@@ -1,10 +1,10 @@
 {% load static wagtailcore_tags %}
 
-<li class="features__list-item">
-    <h4>{{ value.heading }}</h4>
-    <div class="rich-text">{{ value.description|richtext }}</div>
+<li class="features__list-item feature">
+    <h4 class="feature__heading">{{ value.heading }}</h4>
+    <div class="feature__text rich-text">{{ value.description|richtext }}</div>
     {% if value.link %}
-        <a href="{{ value.link }}">
+        <a class="feature__link" href="{{ value.link }}">
             {{ value.link_title }}
         </a>
     {% endif %}
