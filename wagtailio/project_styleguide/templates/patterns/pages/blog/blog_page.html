@@ -5,7 +5,7 @@
     <article class="blog">
         {# Header #}
         <header class="blog__header grid">
-            {% include "patterns/components/meta/meta.html" with classes="blog__meta" %}
+            {% include "patterns/components/meta/meta.html" with value=page classes="blog__meta" %}
 
             <h1 class="blog__heading article-heading">{{ page.title }}</h1>
 
@@ -13,7 +13,7 @@
                 <h2 class="blog__intro intro-small">{{ page.introduction }}</h2>
             {% endif %}
 
-            {% include "patterns/components/author/author.html" with classes="blog__author author--blog" %}
+            {% include "patterns/components/author/author.html" with author=page.author classes="blog__author author--blog" %}
         </header>
 
         {# Body Content #}
@@ -21,5 +21,5 @@
     </article>
 
     {# Related articles #}
-    {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages.all %}
+    {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages %}
 {% endblock %}

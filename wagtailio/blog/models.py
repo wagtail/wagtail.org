@@ -1,10 +1,17 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
+from django.utils.functional import cached_property
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from modelcluster.fields import ParentalKey
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    InlinePanel,
+    PageChooserPanel,
+    StreamFieldPanel,
+)
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
+from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
@@ -12,7 +19,7 @@ from wagtail.snippets.models import register_snippet
 from wagtail_airtable.mixins import AirtableMixin
 from wagtail_content_import.models import ContentImportMixin
 
-from wagtailio.utils.blocks import StoryBlock
+from wagtailio.blog.blocks import BlogStoryBlock
 from wagtailio.utils.mappers import StreamFieldMapper
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
@@ -56,6 +63,17 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     )
 
 
+class BlogPageRelatedPage(Orderable):
+    parent = ParentalKey("blog.BlogPage", related_name="related_posts")
+    page = models.ForeignKey(
+        "blog.BlogPage",
+        on_delete=models.CASCADE,
+        related_name="+",
+    )
+
+    panels = [PageChooserPanel("page")]
+
+
 @register_snippet
 class Author(models.Model):
     name = models.CharField(max_length=255)
@@ -83,6 +101,7 @@ class Author(models.Model):
 class BlogPage(
     AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin
 ):
+    template = "patterns/pages/blog/blog_page.html"
     subpage_types = []
     canonical_url = models.URLField(blank=True)
     author = models.ForeignKey(
@@ -101,7 +120,14 @@ class BlogPage(
     )
     date = models.DateField()
     introduction = models.CharField(max_length=511)
-    body = StreamField(StoryBlock())
+    category = models.ForeignKey(
+        "taxonomy.Category",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    body = StreamField(BlogStoryBlock())
 
     @property
     def siblings(self):
@@ -113,8 +139,15 @@ class BlogPage(
         SnippetChooserPanel("author"),
         ImageChooserPanel("main_image"),
         FieldPanel("date"),
+        FieldPanel("category"),
         FieldPanel("introduction"),
         StreamFieldPanel("body"),
+        InlinePanel(
+            "related_posts",
+            heading="Related pages",
+            label="Related page",
+            max_num=2,
+        ),
     ]
 
     promote_panels = (
@@ -123,6 +156,26 @@ class BlogPage(
         + CrossPageMixin.panels
         + [FieldPanel("canonical_url")]
     )
+
+    @cached_property
+    def related_pages(self):
+        return self.related_posts.all()
+
+    @cached_property
+    def meta_text(self):
+        if self.category:
+            return self.category.title
+        return None
+
+    @cached_property
+    def meta_icon(self):
+        if self.category:
+            return self.category.icon
+        return None
+
+    @property
+    def publication_date(self):
+        return self.date
 
     @classmethod
     def map_import_fields(cls):
