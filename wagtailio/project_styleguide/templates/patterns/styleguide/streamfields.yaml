@@ -26,7 +26,6 @@ tags:
     logo.image max-100 class="logos__image":
       raw: |
         <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
-        <img src="https://via.placeholder.com/50x50" class="quotes__author-image" alt="Some alt">
   include_block:
     example_pattern:
       template_name: 'patterns/_pattern_library_only/comparison_table.html'

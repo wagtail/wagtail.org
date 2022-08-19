@@ -5,11 +5,20 @@
         <tbody>
             {% for row in value.comparison_table.rows %}
                 <tr>
-                    {% for block in row %}
-                        <td>
-                            {% include_block block %}
-                        </td>
-                    {% endfor %}
+                    {% if forloop.first %}
+                        {# The first row of blocks are the header #}
+                        {% for block in row %}
+                            <th>
+                                {% include_block block %}
+                            </th>
+                        {% endfor %}
+                    {% else %}
+                        {% for block in row %}
+                            <td>
+                                {% include_block block %}
+                            </td>
+                        {% endfor %}
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
@@ -24,3 +33,4 @@
         </tbody>
     </table>
 {% endif %}
+
