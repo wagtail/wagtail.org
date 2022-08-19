@@ -1,0 +1,18 @@
+context:
+  value:
+    title: This is a lovely blog post
+    introduction: And now, ladies and gentlemen, some lorem ipsum text
+    meta_icon: rocket
+    meta_text: Adventures in Wagtail
+    publication_date: !!timestamp '2022-08-19'
+    author:
+      name: Jane Doe
+      job_title: Chef
+      image: fake
+    url: 'https://www.example.co.uk'
+
+tags:
+  image:
+    value.author.image fill-40x40 class="logo-card__image":
+      raw: |
+        <img src="https://placehold.co/40x40" alt="Some alt" class="logo-card__image">

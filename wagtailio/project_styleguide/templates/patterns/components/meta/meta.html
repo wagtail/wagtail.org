@@ -10,4 +10,10 @@
             <p class="meta__date mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>
         {% endif %}
     </div>
+{% elif value.publication_date %}
+    <div class="meta{% if classes %} {{ classes }}{% endif %}">
+        {% include "patterns/components/icon/icon.html" with icon="calendar" classes="meta__icon" %}
+
+        <p class="meta__date mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>
+    </div>
 {% endif %}
