@@ -6,21 +6,32 @@ class FeatureIndex {
     constructor(node) {
         this.node = node;
         this.allFilters = [...this.node.querySelectorAll('[data-feature-filter]')];
-        // this.allFilterCheckbox = this.allFilters.find(filter => filter.id === 'all');
+        this.allFilterCheckbox = this.node.querySelector('[data-feature-filter-all]')
         this.hiddenClass = 'is-hidden';
-        // this.allFeatureGroups = [...this.node.querySelectorAll('[data-feature-group]')];
+        this.allFeatureGroups = [...this.node.querySelectorAll('[data-feature-group]')];
 
         this.bindEvents();
 
     bindEvents() {
+        this.allFilterCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                this.resetUI();
+            } else {
+                // do nothing
+            }
+        })
+
         this.allFilters.forEach((filter) => {
             filter.addEventListener('change', (e) => {
                 if (e.target.checked) {
-                    // this.allFilterCheckbox.checked = false;
+                    // Uncheck 'all' checkbox
+                    this.allFilterCheckbox.checked = false;
+
                     this.handleShowGroup(e.target);
                     this.updateFilterGroups();
                 } else {
                     this.handleHideGroup(e.target);
+                    this.updateFilterGroups();
                 }
             })
         })
@@ -39,10 +50,26 @@ class FeatureIndex {
     // Loop over filters and hide or show group depending on if checkbox is 'checked'
     updateFilterGroups() {
         const checkedFilters = this.allFilters.filter(filter => filter.checked === false);
+        const uncheckedFilters = this.allFilters.filter(filter => filter.checked === true);
 
         checkedFilters.forEach(filterGroup => {
             this.node.querySelector(`[data-feature-group="${filterGroup.id}"]`).classList.add(this.hiddenClass);
         })
+
+        if (uncheckedFilters.length === 0) {
+            this.allFilterCheckbox.checked = true;
+            this.resetUI();
+        }
+    }
+
+    // Untick all filters - show all groups
+    resetUI() {
+        this.allFilters.forEach((filter) => {
+            const filterCopy = filter;
+            filterCopy.checked = false;
+        })
+
+        this.allFeatureGroups.forEach(group => group.classList.remove(this.hiddenClass));
     }
 }
 
