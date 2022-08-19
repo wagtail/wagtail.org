@@ -1,11 +1,18 @@
 <header class="header">
-    <a class="header__link" href="/" aria-label="Wagtail.org homepage">
-        <svg class="header__logo" aria-hidden="true">
-            <use xlink:href="#wagtail" />
-        </svg>
-    </a>
+    <div class="header__col-one">
+        <a class="header__link" href="/" aria-label="Wagtail.org homepage">
+            <svg class="header__logo" aria-hidden="true">
+                <use xlink:href="#wagtail" />
+            </svg>
+        </a>
 
-    <div class="header__items-wrap">
+        <div class="header__github-button">
+            <a class="github-button" href="https://github.com/wagtail/wagtail" data-show-count="true" aria-label="Visit Wagtail on GitHub to star the repo">Star</a>
+        </div>
+    </div>
+
+
+    <div class="header__col-two">
         <button class="header__button header__button--search" aria-label="Open the search" data-site-search>
             <svg class="header__search-icon" aria-hidden="true">
                 <use xlink:href="#magnifying-glass"></use>
