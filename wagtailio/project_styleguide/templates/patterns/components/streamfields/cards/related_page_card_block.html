@@ -1,3 +1,14 @@
+{% comment %}
+This template is based on patterns/components/streamfields/cards/logo_card_block.html
+The reason for the separation is because of differing context variable names, for example
+    | logo_card_block.html            | related_page_card_block.html      |
+    | ------------------------------- | --------------------------------- |
+    | value.link_url                  |  value.url                        |
+    | value.heading                   |  value.title                      |
+    | value.description (rich text)   |  value.introduction (plain text)  |
+    | value.logo                      |  -                                |
+{% endcomment %}
+
 {% load wagtailcore_tags wagtailimages_tags %}
 <a href="{{ value.url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
     {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
