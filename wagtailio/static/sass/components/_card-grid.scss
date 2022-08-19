@@ -1,22 +1,31 @@
 .card-grid {
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+
+    grid-column: 2 / span 2;
+    @include sf-spacing();
 
     @include media-query(medium) {
-        margin-bottom: 50px;
+        grid-column: 2 / span 3;
     }
 
-    > div {
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+    }
+
+   &__item {
         padding: 0 0 50px 0;
 
         @include media-query(medium) {
             padding: 0 50px 50px 0;
-            width: 50%;
         }
-
         @include media-query(large) {
-            padding: 0 120px 120px 0;
+            &:nth-child(odd) {
+                grid-column: 2 / span 2;
+            }
+
+            &:nth-child(even) {
+                grid-column: 4 / span 2;
+            }
         }
     }
 }

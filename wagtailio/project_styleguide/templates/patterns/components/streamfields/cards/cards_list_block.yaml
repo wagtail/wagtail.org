@@ -8,6 +8,7 @@ context:
         publication_date: None
         cta:
           text: Check it out
+          description: test
           url: '#'
       - heading: A tree structure that makes content easy to find and organise.
         description: The Wagtail administration panel uses a tree structure that makes content easy to find and organise. Whether you have a handful of page types or dozens, the content sidebar offers editors a quick, intuitive way to navigate to the content they need.

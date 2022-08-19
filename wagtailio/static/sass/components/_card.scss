@@ -13,12 +13,13 @@
     
     &__meta {
         margin-bottom: 10px;
+
         @include media-query(large) {
             margin-bottom: 38px;
         }
         
         p {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: $weight--regular;
         }
     }
