@@ -4,6 +4,12 @@
     &__filters {
         display: flex;
         gap: 10px;
+        grid-column: 2 / span 2;
+        margin-bottom: 40px;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
 
         @include media-query(large) {
             margin-bottom: 100px;
@@ -12,9 +18,7 @@
     }
 
     &__group {
-        @include media-query(large) {
-            margin-bottom: 40px;
-        }
+        margin-bottom: 40px;
 
         &.is-hidden {
             display: none;
@@ -23,15 +27,16 @@
 
     &__list {
         list-style: none;
-
-        @include media-query(large) {
-            row-gap: 40px;
-            grid-column: 2 / span 5;
-        }
+        row-gap: 40px;
     }
 
     &__list-item {
         padding-right: 20%;
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
 
         &:nth-child(odd) {
             @include media-query(large) {
@@ -47,6 +52,12 @@
     }
 
     &__section-heading {
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
         @include media-query(large) {
             grid-column: 2 / span 5;
         }

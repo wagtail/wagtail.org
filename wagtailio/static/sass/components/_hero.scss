@@ -90,6 +90,8 @@
     }
 
     &--features {
+        margin-bottom: 20px;
+
         @include media-query(large) {
             margin-bottom: 50px;
         }
