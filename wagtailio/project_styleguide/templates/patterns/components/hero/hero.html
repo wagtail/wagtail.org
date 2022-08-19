@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <div class="grid">
-    <div class="hero">
+    <div class="hero {% if classes %}{{ classes }}{% endif %}">
         <div class="hero__inner">
             <h1 class="hero__heading">{% firstof value.heading value.title %}</h1>
 

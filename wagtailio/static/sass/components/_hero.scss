@@ -83,9 +83,15 @@
         }
     }
 
-  &--search {
-    .icon__svg-fg {
-      stroke-width: 1px;
+    &--search {
+        .icon__svg-fg {
+        stroke-width: 1px;
+        }
     }
-  }
+
+    &--features {
+        @include media-query(large) {
+            margin-bottom: 50px;
+        }
+    }
 }
