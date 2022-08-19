@@ -4,6 +4,7 @@ import GetStartedMenu from './components/get-started-menu';
 import SiteSearchDesktop from './components/site-search-desktop';
 import SiteSearchMobile from './components/site-search-mobile';
 import FooterMenuColumn from './components/footer-menu-column';
+import FeatureIndex from './components/feature-index';
 
 function initComponent(ComponentClass) {
     const items = document.querySelectorAll(ComponentClass.selector());
@@ -18,4 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initComponent(SiteSearchDesktop);
     initComponent(SiteSearchMobile);
     initComponent(FooterMenuColumn);
+    initComponent(FeatureIndex);
 });

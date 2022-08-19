@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags %}
 
-<div>
+<li class="features__list-item">
     <h4>{{ value.heading }}</h4>
     <div class="rich-text">{{ value.description|richtext }}</div>
     {% if value.link %}
@@ -8,4 +8,4 @@
             {{ value.link_title }}
         </a>
     {% endif %}
-</div>
+</li>

@@ -3,7 +3,33 @@
 
 {% block content %}
     {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
-    {% include_block page.features %}
+
+    <div class="features" {% if page.feature_categories %}data-feature-index{% endif %}>
+        {% include "patterns/components/hero/hero.html" with value=page classes="hero--features" %}
+        <div class="grid">
+
+            {# Filters #}
+            <fieldset class="features__filters">
+                <!--
+                <div>
+                    <input type="checkbox" id="all" name="all" data-feature-filter checked>
+                    <label for="all">All</label>
+                </div>
+                -->
+                {% for category in page.feature_categories %}
+                    <div>
+                        <input type="checkbox" id="{{ category|lower }}" name="{{ category|lower }}" data-feature-filter>
+                        <label for="{{ category|lower }}">{{ category }}</label>
+                    </div>
+                {% endfor %}
+            </fieldset>
+        </div>
+
+        {# Features #}
+        {% include_block page.features %}
+    </div>
+
     {% include_block page.cta %}
     {% include_block page.get_started.body %}
+
 {% endblock %}
