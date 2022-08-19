@@ -1,0 +1,41 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > a {
+        margin: auto;
+
+        @include media-query(medium) {
+            margin: 0 auto 0 0;
+        }
+    }
+    
+    &__meta {
+        margin-bottom: 10px;
+
+        @include media-query(large) {
+            margin-bottom: 38px;
+        }
+        
+        p {
+            font-size: 1rem;
+            font-weight: $weight--regular;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 14px;
+        transition: color .3s ease;
+    }
+
+    &__description {
+        color: $color--grey;
+        padding-bottom: 30px;
+
+        @include media-query(large) {
+            padding-bottom: 40px;
+            font-size: 0.8rem;
+        }
+    }
+}

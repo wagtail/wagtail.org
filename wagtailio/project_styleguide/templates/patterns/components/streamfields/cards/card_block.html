@@ -1,35 +1,12 @@
-{% comment "temporary styles for testing." %}
-Remove once the styling for these css classes is defined globally
-{% endcomment %}
-<style>
-    .eggshell {
-        fill: #B3E7E8;
-    }
-
-    .off-black {
-        fill: #262626;
-    }
-
-    .teal {
-        fill: #00b0b1;
-    }
-
-    .teal-light {
-        fill: #80d7d8;
-    }
-</style>
-<div>
-    <div>
-        <svg><use xlink:href="#{{ value.meta_icon }}"></use></svg>
-        <span>{{ value.meta_text }}</span>
-    </div>
-    <h4>{{ value.heading }}</h4>
+<div class="card {% if classes %}{{ classes }}{% endif %}">
+    {% include "patterns/components/meta/meta.html" with classes="card__meta" %}
+    <h4 class="card__heading heading-three">{{ value.heading }}</h4>
     {% if value.description %}
-        <div>
+        <p class="card__description mini-meta">
             {{ value.description }}
-        </div>
+        </p>
     {% endif %}
     {% if value.cta %}
-        {% include "patterns/components/streamfields/cta/cta_block.html" with value=value.cta %}
+        {% include "patterns/components/buttons/button.html" with value=value.cta arrow=True classes="" %}
     {% endif %}
 </div>
