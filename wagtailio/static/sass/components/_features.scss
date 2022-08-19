@@ -51,4 +51,11 @@
             grid-column: 2 / span 5;
         }
     }
+
+    .no-js & {
+        // hide filters if JS is disabled
+        &__filters {
+            display: none;
+        }
+    }
 }
