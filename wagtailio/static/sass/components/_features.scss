@@ -9,8 +9,7 @@
         flex-direction: column;
 
         @include media-query(medium) {
-            flex-direction: row;
-            flex-wrap: wrap;
+            flex-flow: row wrap;
             grid-column: 2 / span 3;
         }
 
