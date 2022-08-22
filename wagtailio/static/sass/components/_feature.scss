@@ -1,4 +1,9 @@
 .feature {
+    $root: &;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
     &__link,
     &__text {
         @include media-query(large) {
@@ -18,6 +23,42 @@
 
         &:hover {
             color: $color--indigo;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 10px;
+    }
+
+    &__toggle {
+        padding: 5px;
+    }
+
+    &__toggle-icon {
+        width: 20px;
+        height: 20px;
+        color: $color--teal;
+        transition: color 0.3s;
+
+        &--minus {
+            display: none;
+        }
+
+        &:hover {
+            color: $color--indigo;
+        }
+    }
+
+    &.is-collapsed {
+        #{$root}__inner-content {
+            display: none;
+        }
+    }
+
+    .no-js & {
+        // hide toggle if JS is disabled
+        &__toggle {
+            display: none;
         }
     }
 }
