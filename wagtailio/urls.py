@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
+from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -52,6 +53,19 @@ if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += [
+        # Add views for testing 404 and 500 templates
+        path(
+            "test404/",
+            TemplateView.as_view(template_name="patterns/404.html"),
+        ),
+        path(
+            "test500/",
+            TemplateView.as_view(template_name="patterns/500.html"),
+        ),
+    ]
+
 
 if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
     "pattern_library"
