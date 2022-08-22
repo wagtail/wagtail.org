@@ -1,0 +1,11 @@
+.pagination {
+    @include sf-spacing();
+
+    &__previous {
+        margin-right: 20px;
+    }
+
+    &__next {
+        margin-left: 20px;
+    }
+}

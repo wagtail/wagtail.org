@@ -1,0 +1,47 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static wagtailcore_tags wagtailadmin_tags wagtailimages_tags wagtailio_utils %}
+
+{% block body_class %}template-blog{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero__inner">
+                <h1 aria-hidden="true">Latest Chirps</h1>
+                <span class="u-sr-only">Latest blog posts</span>
+            </div>
+        </div>
+
+        <section class="blog-listing">
+            {% for post in posts %}
+                {% if forloop.first or forloop.counter|divisibleby:6 %}
+                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=post featured=True %}
+                {% else %}
+                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
+                {% endif %}
+            {% endfor %}
+        </section>
+
+        <div class="pagination">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
+                    <p class="button__text">Previous</p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+
+            <span class="pagination__page-count mini-meta">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
+                    <p class="button__text">Next</p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

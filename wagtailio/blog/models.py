@@ -25,6 +25,7 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
+    template = "patterns/pages/blog/blog_index_page.html"
     subpage_types = ["blog.BlogPage"]
 
     @property
