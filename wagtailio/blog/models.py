@@ -20,8 +20,20 @@ from wagtail_airtable.mixins import AirtableMixin
 from wagtail_content_import.models import ContentImportMixin
 
 from wagtailio.blog.blocks import BlogStoryBlock
+from wagtailio.taxonomy.models import Category
 from wagtailio.utils.mappers import StreamFieldMapper
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+
+
+class FeaturedPost(Orderable):
+    parent = ParentalKey("blog.BlogIndexPage", related_name="featured_posts")
+    page = models.ForeignKey(
+        "blog.BlogPage",
+        on_delete=models.CASCADE,
+        related_name="+",
+    )
+
+    panels = [PageChooserPanel("page")]
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
@@ -34,13 +46,19 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         return (
             BlogPage.objects.live()
             .descendant_of(self)
-            .select_related("author", "author__image")
+            .select_related("author", "author__image", "category")
             .order_by("-date", "pk")
         )
 
     def serve(self, request):
+
+        if request.GET.get("category"):
+            posts = self.posts.filter(category=request.GET.get("category"))
+        else:
+            posts = self.posts
+
         # Pagination
-        paginator = Paginator(self.posts, 10)  # Show 10 blog posts per page
+        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
 
         page = request.GET.get("page")
         try:
@@ -56,8 +74,22 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             {
                 "page": self,
                 "posts": posts,
+                "featured_posts": [post.page for post in self.featured_posts.all()],
+                "categories": Category.objects.all()
+                .values_list("pk", "title")
+                .distinct()
+                .order_by("title"),
             },
         )
+
+    content_panels = Page.content_panels + [
+        InlinePanel(
+            "featured_posts",
+            heading="Featured posts",
+            label="Blog page",
+            max_num=5,
+        ),
+    ]
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
