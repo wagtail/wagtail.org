@@ -7,6 +7,6 @@
         </p>
     {% endif %}
     {% if value.cta %}
-        {% include "patterns/components/buttons/button.html" with value=value.cta arrow=True classes="" %}
+        {% include "patterns/components/buttons/button.html" with title=value.cta.text arrow=True classes="card__cta" %}
     {% endif %}
 </div>
