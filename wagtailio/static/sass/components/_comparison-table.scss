@@ -7,6 +7,11 @@
 
     td:first-child {
         font-weight: $weight--bold;
+        width: 150px;
+
+        @include media-query(large) {
+            width: 250px
+        }
     }
 
     tbody {
