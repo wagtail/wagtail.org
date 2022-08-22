@@ -88,7 +88,6 @@
     }
 
     &__list-item {
-        padding-right: 20%;
         grid-column: 2 / span 2;
 
         @include media-query(medium) {
@@ -97,12 +96,14 @@
 
         &:nth-child(odd) {
             @include media-query(large) {
+                padding-right: 20%;
                 grid-column: 2 / span 2;
             }
         }
 
         &:nth-child(even) {
             @include media-query(large) {
+                padding-right: 20%;
                 grid-column: 4 / span 2;
             }
         }
