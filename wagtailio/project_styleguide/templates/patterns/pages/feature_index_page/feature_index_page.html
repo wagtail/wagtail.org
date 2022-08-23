@@ -1,6 +1,8 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
+{% block body_class %}template-feature-index{% endblock %}
+
 {% block content %}
     {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
 

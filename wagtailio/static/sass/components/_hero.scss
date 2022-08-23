@@ -102,4 +102,10 @@
             font-weight: $weight--regular;
         }
     }
+
+    .template-feature-index & {
+        &__button {
+            display: none;
+        }
+    }
 }
