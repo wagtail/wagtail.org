@@ -3,13 +3,7 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-
-    &__link,
-    &__text {
-        @include media-query(large) {
-            font-size: 0.8rem;
-        }
-    }
+    font-size: 0.8rem;
 
     &__text {
         margin-bottom: 10px;
