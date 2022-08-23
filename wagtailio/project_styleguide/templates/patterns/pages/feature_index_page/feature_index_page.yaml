@@ -3,6 +3,8 @@ context:
     title: Feature index page
     subheading: Feature index page sub-heading
     get_started: fake
+    feature_categories:
+      - Editing
 
 tags:
   include_block:
