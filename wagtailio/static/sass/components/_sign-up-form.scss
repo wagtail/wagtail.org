@@ -1,0 +1,85 @@
+.sign-up-form {
+    $root: &;
+    border: 1px solid $color--off-black;
+    border-radius: 15px;
+    padding: 30px;
+    
+    @include sf-spacing();
+
+    @include media-query(large) {
+        padding: 60px;
+    }
+
+    &__label {
+        display: none;
+    }
+
+    &__icon {
+        display: none;
+
+        @include media-query(medium) {
+            display: inherit;
+        }
+
+        > svg {
+            inset: -5% 3% auto auto;
+            width: 170px;
+            height: 253px;
+
+            @include media-query(large) {
+                inset: 10% 86px auto auto;
+            }
+        }
+    }
+
+    &__heading {
+        margin: 0;
+    }
+
+    &__sub-heading {
+        padding: 10px 0 0 0;
+    }
+
+    &__container {
+        border: 1px solid $color--off-black;
+        border-radius: 15px;
+    }
+
+    &__input {
+        padding: 11px 20px;
+        width: 100%;
+        height: 50px;
+        border-width: 0;
+        border-radius: 15px;
+
+        @include media-query(medium) {
+            width: 350px;
+        }
+
+        @include media-query(large) {
+            height: 50px;
+            width: 560px;
+        }
+
+        &::placeholder {
+            color: $color--off-black;
+        }
+    }
+
+    > form {
+        margin: 30px 0 0 0;
+        width: fit-content;
+    }
+
+    button {
+        width: 100%;
+        border-radius: 0 0 12px 12px;
+        border-style: solid none none none;
+
+        @include media-query(medium) {
+            width: auto;
+            border-radius: 0 12px 12px 0;
+            border-style: none none none solid;
+        }
+    }
+}

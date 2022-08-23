@@ -23,4 +23,9 @@
         transform: rotate(7deg);
         transform-origin: center;
     }
+
+    &--small {
+        width: 50%;
+        height: 50%;
+    }
 }

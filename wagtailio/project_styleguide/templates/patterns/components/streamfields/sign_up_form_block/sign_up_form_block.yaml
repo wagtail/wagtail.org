@@ -1,0 +1,6 @@
+context:
+  value:
+    heading: "What's new in Wagtail"
+    sub_heading: 'Sign up for events, features and adventures on Wagtail'
+    mailchimp_account_id: 'Fake'
+    mailchimp_newsletter_id: 'Fake'
