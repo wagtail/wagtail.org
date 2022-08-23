@@ -1,6 +1,6 @@
 import MicroModal from 'micromodal';
 
-class SiteSearch {
+class SiteSearchDesktop {
     static selector() {
         return '[data-site-search-desktop]';
     }
@@ -24,4 +24,4 @@ class SiteSearch {
     }
 }
 
-export default SiteSearch;
+export default SiteSearchDesktop;
