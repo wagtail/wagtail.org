@@ -90,3 +90,7 @@ urlpatterns = decorate_urlpatterns(
         "Cookie", "X-Requested-With", "X-Forwarded-Proto", "Accept-Encoding"
     ),
 )
+
+# Error handlers
+handler404 = "wagtailio.utils.views.page_not_found"
+handler500 = "wagtailio.utils.views.server_error"
