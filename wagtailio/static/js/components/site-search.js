@@ -2,7 +2,7 @@ import MicroModal from 'micromodal';
 
 class SiteSearch {
     static selector() {
-        return '[data-site-search]';
+        return '[data-site-search-desktop]';
     }
 
     constructor(node) {

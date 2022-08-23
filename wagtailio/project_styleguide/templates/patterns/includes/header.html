@@ -15,7 +15,15 @@
 
 
     <div class="header__col-two">
-        <button class="header__button header__button--search" aria-label="Open the search" data-site-search>
+        {# Desktop Search #}
+        <button class="header__button header__button--search u-desktop-only" aria-label="Open the search" data-site-search-desktop>
+            <svg class="header__search-icon" aria-hidden="true">
+                <use xlink:href="#magnifying-glass"></use>
+            </svg>
+        </button>
+
+        {# Mobile Search #}
+        <button class="header__button header__button--search u-mobile-only" aria-label="Open the search" data-site-search-mobile>
             <svg class="header__search-icon" aria-hidden="true">
                 <use xlink:href="#magnifying-glass"></use>
             </svg>

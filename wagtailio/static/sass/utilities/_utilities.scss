@@ -2,4 +2,18 @@
     &-sr-only {
         @include hidden();
     }
+
+    &-mobile-only {
+        @include media-query(medium) {
+            display: none;
+        }
+    }
+
+    &-desktop-only {
+        display: none;
+
+        @include media-query(medium) {
+            display: block;
+        }
+    }
 }
