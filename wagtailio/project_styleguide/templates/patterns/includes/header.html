@@ -23,9 +23,13 @@
         </button>
 
         {# Mobile Search #}
-        <button class="header__button header__button--search u-mobile-only" aria-label="Open the search" data-site-search-mobile>
-            <svg class="header__search-icon" aria-hidden="true">
+        <button class="header__button header__button--search u-mobile-only" aria-expanded="false" aria-controls="mobile-search-form" aria-label="Open the search" data-site-search-mobile>
+            <svg class="header__search-icon header__search-icon--open" aria-hidden="true">
                 <use xlink:href="#magnifying-glass"></use>
+            </svg>
+
+            <svg class="header__search-icon header__search-icon--close" aria-hidden="true">
+                <use xlink:href="#cross"></use>
             </svg>
         </button>
 
@@ -38,6 +42,9 @@
             </button>
         {% endif %}
     </div>
+
+    {# Mobile search #}
+    {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}
 </header>
 
 {% include "patterns/includes/menu_get_started.html" %}

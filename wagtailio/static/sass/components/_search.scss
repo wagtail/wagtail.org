@@ -1,4 +1,6 @@
 .search {
+    $root: &;
+
     &__wrap {
         display: flex;
     }
@@ -30,5 +32,29 @@
         padding: 15px 20px;
         color: $color--off-black;
         height: 100%;
+    }
+
+    &--mobile {
+        padding: 0 25px;
+        position: absolute;
+        inset: 0;
+        transform: translateY(100%);
+        z-index: 3;
+
+        &.is-hidden {
+            display: none;
+        }
+
+        #{$root}__button {
+            padding: 10px 15px;
+        }
+
+        .button__text {
+            display: none;
+        }
+
+        .arrow {
+            margin: 0;
+        }
     }
 }

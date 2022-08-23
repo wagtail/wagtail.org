@@ -1,12 +1,14 @@
 .header {
     max-width: $site-width;
-    margin: 0 auto;
+    margin: 0 auto 70px;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     @include media-query(medium) {
+        margin: 0 auto;
         padding: 15px 30px;
     }
 
@@ -102,6 +104,26 @@
 
         @include media-query(medium) {
             display: block;
+        }
+    }
+
+    &__search-icon {
+        &--open {
+            .is-expanded & {
+                display: none;
+            }
+        }
+
+        &--close {
+            display: none;
+            color: $color--white;
+            background-color: $color--black;
+            padding: 5px;
+            border-radius: 50%;
+
+            .is-expanded & {
+                display: block;
+            }
         }
     }
 }
