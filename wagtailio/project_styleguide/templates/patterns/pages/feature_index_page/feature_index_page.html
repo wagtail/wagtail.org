@@ -3,10 +3,7 @@
 
 {% block content %}
     {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
-    {% for block in page.features %} ☐ {{ block.value.heading }} {% endfor %}
     {% include_block page.features %}
     {% include_block page.cta %}
-    {% if page.get_started %}
-        {{ page.get_started.body }}
-    {% endif %}
+    {% include_block page.get_started.body %}
 {% endblock %}
