@@ -4,9 +4,9 @@
 
 {% block content %}
 
-    <div class="container">
     {% include "patterns/components/hero/hero.html" with value=page %}
 
+    <div class="grid">
         <section class="blog-listing">
             {% for post in posts %}
                 {% if forloop.first or forloop.counter|divisibleby:6 %}
@@ -16,7 +16,9 @@
                 {% endif %}
             {% endfor %}
         </section>
+    </div>
 
+    <div class="grid">
         <div class="pagination">
             {% if posts.has_previous %}
                 <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
