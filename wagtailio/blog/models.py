@@ -75,7 +75,9 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
                 "page": self,
                 "posts": posts,
                 "featured_posts": [post.page for post in self.featured_posts.all()],
-                "categories": Category.objects.all()
+                "categories": Category.objects.filter(
+                    pk__in=models.Subquery(self.posts.values("category"))
+                )
                 .values_list("pk", "title")
                 .distinct()
                 .order_by("title"),
