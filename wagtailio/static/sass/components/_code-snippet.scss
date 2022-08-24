@@ -1,28 +1,46 @@
 .code-snippet {
+    $root: &;
     background-color: $color--indigo;
     color: $color--white;
     display: flex;
     align-items: center;
-    padding: 15px 30px;
+    padding: 15px 20px;
     border-radius: 6px;
     position: relative;
     grid-column: 2;
     margin-bottom: 15px;
 
+    @include media-query(medium) {
+        padding: 15px 28px;
+    }
+
     pre {
-        margin: 0 70px 0 0;
+        margin: 0 20px 0 0;
         white-space: nowrap;
         font-weight: $weight--bold;
+
+        @include media-query(medium) {
+            margin: 0 70px 0 0;
+        }
     }
 
     &__icon {
         color: $color--eggshell;
         width: 20px;
         height: 20px;
+        transition: color 0.3s;
     }
 
     &__button {
         padding: 0;
+
+        &:hover,
+        &:active,
+        &:focus {
+            #{$root}__icon {
+                color: $color--white;
+            }
+        }
     }
 
     &__confirmation {
@@ -36,7 +54,7 @@
         padding: 5px 10px;
         border-radius: 6px;
         inset: -20% 80%;
-        transition: transform 0.3s;
+        transition: transform 0.2s;
         transform: translate3d(0, 40%, 0);
         pointer-events: none;
         z-index: -1;
@@ -45,6 +63,14 @@
         .has-copied & {
             transform: translate3d(0, -80%, 0);
             visibility: visible;
+        }
+    }
+
+    &--bottom-space {
+        margin-bottom: 50px;
+
+        @include media-query(medium) {
+            margin-bottom: 100px;
         }
     }
 }
