@@ -4,6 +4,13 @@ context:
     sub_heading: Wagtail is the leading open-source Python CMS
     intro: It's fast, elegant, and designed to give everyone on your team the tools they need to manage content at enterprise scale
     icon: paper-plane
+    cta_one:
+      title: Get Started
+      url: '#'
+    cta_two:
+      title: Features
+      url: '#'
+    embed: true
 
 tags:
   include_block:
