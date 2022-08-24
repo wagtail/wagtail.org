@@ -114,6 +114,7 @@
             @include media-query(large) {
                 padding: $gutter-lg $gutter-xl;
 
+                // stylelint-disable-next-line max-nesting-depth
                 &::after {
                     transform: rotate(-4deg) translate3d(18px, 18px, 0);
                 }
