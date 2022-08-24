@@ -1,36 +1,40 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if value and value.comparison_table %}
-    <table class="grid comparison-table">
-        <tbody>
-            {% for row in value.comparison_table.rows %}
-                <tr>
-                    {% if forloop.first %}
-                        {# The first row of blocks are the header #}
-                        {% for block in row %}
-                            <th>
-                                {% include_block block %}
-                            </th>
-                        {% endfor %}
-                    {% else %}
-                        {% for block in row %}
-                            <td>
-                                {% include_block block %}
-                            </td>
-                        {% endfor %}
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="grid grid--comparison-table">
+        <table class="comparison-table">
+            <tbody>
+                {% for row in value.comparison_table.rows %}
+                    <tr>
+                        {% if forloop.first %}
+                            {# The first row of blocks are the header #}
+                            {% for block in row %}
+                                <th>
+                                    {% include_block block %}
+                                </th>
+                            {% endfor %}
+                        {% else %}
+                            {% for block in row %}
+                                <td>
+                                    {% include_block block %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endif %}
 
 {% if pattern_library %}
     {# This renders the pattern-library values only #}
-    <table class="grid comparison-table">
-        <tbody>
-            {% include_block example_pattern %}
-        </tbody>
-    </table>
+    <div class="grid grid--comparison-table">
+        <table class="comparison-table">
+            <tbody>
+                {% include_block example_pattern %}
+            </tbody>
+        </table>
+    </div>
 {% endif %}
 

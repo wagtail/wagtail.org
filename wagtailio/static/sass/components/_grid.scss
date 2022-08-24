@@ -11,4 +11,13 @@
     @include media-query(large) {
         grid-template-columns: calc($gutter * 3) 1fr 1fr 1fr 1fr 1fr calc($gutter * 3);
     }
+
+    // allow scrolling on mobile tables
+    &--comparison-table {
+        overflow-x: scroll;
+
+        @include media-query(medium) {
+            overflow-x: auto;
+        }
+    }
 }
