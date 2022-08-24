@@ -68,6 +68,11 @@
 
     &__item {
         margin-bottom: 10px;
+
+        @include media-query(large) {
+            font-size: 0.7rem;
+            line-height: 1.05rem;
+        }
     }
 
     &__link {
@@ -93,6 +98,7 @@
         margin-left: 10px;
 
         @include media-query(large) {
+            font-size: 1rem;
             margin-left: 0;
         }
     }
