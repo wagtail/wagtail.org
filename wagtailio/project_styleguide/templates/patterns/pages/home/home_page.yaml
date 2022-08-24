@@ -15,7 +15,7 @@ context:
 tags:
   include_block:
     page.body:
-      raw: |
+      template_name: 'patterns/components/streamfields/content_story_block.html'
   embed:
     page.embed:
       raw: |
