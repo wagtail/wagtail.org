@@ -5,12 +5,7 @@
 {% block content %}
 
     <div class="container">
-        <div class="hero">
-            <div class="hero__inner">
-                <h1 aria-hidden="true">Latest Chirps</h1>
-                <span class="u-sr-only">Latest blog posts</span>
-            </div>
-        </div>
+    {% include "patterns/components/hero/hero.html" with value=page %}
 
         <section class="blog-listing">
             {% for post in posts %}
