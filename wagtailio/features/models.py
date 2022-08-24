@@ -13,7 +13,7 @@ from wagtail_airtable.mixins import AirtableMixin
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
 from wagtailio.core.blocks import StandaloneCTABlock
-from wagtailio.features.blocks import FeatureCategoryBlock
+from wagtailio.features.blocks import FeatureIndexBlock
 
 
 class Bullet(Orderable, models.Model):
@@ -115,7 +115,7 @@ class FeatureIndexPage(Page):
     template = "patterns/pages/feature_index_page/feature_index_page.html"
 
     subheading = models.TextField(verbose_name="Sub heading", blank=True)
-    features = StreamField([("features", FeatureCategoryBlock())], blank=True)
+    features = StreamField([("features", FeatureIndexBlock())], blank=True, max_num=1)
     cta = StreamField([("cta", StandaloneCTABlock())], blank=True, max_num=1)
     get_started = models.ForeignKey(
         "core.GetStartedSnippet",

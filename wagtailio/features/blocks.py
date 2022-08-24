@@ -87,3 +87,17 @@ class FeatureCategoryBlock(blocks.StructBlock):
         template = (
             "patterns/components/streamfields/features/feature_category_block.html"
         )
+
+
+class FeatureIndexStructValue(blocks.StructValue):
+    def categories(self):
+        blocks = self.get("blocks")
+        return [block.get("heading") for block in blocks]
+
+
+class FeatureIndexBlock(blocks.StructBlock):
+    blocks = blocks.ListBlock(FeatureCategoryBlock())
+
+    class Meta:
+        value_class = FeatureIndexStructValue
+        template = "patterns/components/streamfields/features/feature_index_block.html"
