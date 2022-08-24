@@ -14,9 +14,11 @@
 
     // allow scrolling on mobile tables
     &--comparison-table {
+        margin: 0 auto 50px;
         overflow-x: scroll;
 
         @include media-query(medium) {
+            margin: 0 auto;
             overflow-x: auto;
         }
     }
