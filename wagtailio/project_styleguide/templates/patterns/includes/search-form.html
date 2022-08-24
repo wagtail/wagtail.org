@@ -1,0 +1,13 @@
+{% comment %}
+    TODO - populate form action with search url
+{% endcomment %}
+<form action="" method="get" role="search" class="search {% if classes %}{{ classes }}{% endif %}" {% if data_attrs %}{{ data_attrs }}{% endif %} {% if form_id %}id="{{ form_id }}"{% endif %}>
+    <fieldset class="search__wrap">
+        <label class="u-sr-only" for="{{ input_id }}">Enter a search term</label>
+        <input class="search__input" id="{{ input_id }}" type="search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content" placeholder="Search...">
+        <button type="submit" class="button button--dark search__button" aria-label="Search the site content">
+            <p class="button__text">Search</p>
+            <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+        </button>
+    </fieldset>
+</form>

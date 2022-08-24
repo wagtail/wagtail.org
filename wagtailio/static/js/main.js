@@ -1,7 +1,8 @@
 import '../sass/main.scss';
 
 import GetStartedMenu from './components/get-started-menu';
-import SiteSearch from './components/site-search';
+import SiteSearchDesktop from './components/site-search-desktop';
+import SiteSearchMobile from './components/site-search-mobile';
 import FooterMenuColumn from './components/footer-menu-column';
 
 function initComponent(ComponentClass) {
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.remove('no-js');
 
     initComponent(GetStartedMenu);
-    initComponent(SiteSearch);
+    initComponent(SiteSearchDesktop);
+    initComponent(SiteSearchMobile);
     initComponent(FooterMenuColumn);
 });

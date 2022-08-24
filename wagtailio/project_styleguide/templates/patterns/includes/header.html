@@ -15,9 +15,21 @@
 
 
     <div class="header__col-two">
-        <button class="header__button header__button--search" aria-label="Open the search" data-site-search>
+        {# Desktop Search #}
+        <button class="header__button header__button--search u-desktop-only" aria-controls="site-search-modal" aria-label="Open the search" data-site-search-desktop>
             <svg class="header__search-icon" aria-hidden="true">
                 <use xlink:href="#magnifying-glass"></use>
+            </svg>
+        </button>
+
+        {# Mobile Search #}
+        <button class="header__button header__button--search u-mobile-only" aria-expanded="false" aria-controls="mobile-search-form" aria-label="Open the search" data-site-search-mobile>
+            <svg class="header__search-icon header__search-icon--open" aria-hidden="true">
+                <use xlink:href="#magnifying-glass"></use>
+            </svg>
+
+            <svg class="header__search-icon header__search-icon--close" aria-hidden="true">
+                <use xlink:href="#cross"></use>
             </svg>
         </button>
 
@@ -30,7 +42,12 @@
             </button>
         {% endif %}
     </div>
+
+    {# Mobile search #}
+    {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}
 </header>
 
 {% include "patterns/includes/menu_get_started.html" %}
-{% include "patterns/includes/search.html" %}
+
+{# Desktop search #}
+{% include "patterns/includes/search-modal.html" with input_id="search-input-desktop" %}
