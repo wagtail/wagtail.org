@@ -97,6 +97,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django_permissions_policy.PermissionsPolicyMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -381,6 +382,31 @@ if "CSP_DEFAULT_SRC" in env:
     if "CSP_OBJECT_SRC" in env:
         CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
 
+
+# Permissions policy settings
+# Uses django-permissions-policy to return the header.
+# https://github.com/adamchainz/django-permissions-policy
+# The list of Chrome-supported features are in:
+# https://github.com/w3c/webappsec-permissions-policy/blob/main/features.md
+PERMISSIONS_POLICY = {
+    "accelerometer": [],
+    "ambient-light-sensor": [],
+    "autoplay": [],
+    "camera": [],
+    "display-capture": [],
+    "document-domain": [],
+    "encrypted-media": [],
+    "fullscreen": [],
+    "geolocation": [],
+    "gyroscope": [],
+    "interest-cohort": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "picture-in-picture": [],
+    "usb": [],
+}
 
 # Referrer-policy header settings
 # https://django-referrer-policy.readthedocs.io/en/1.0/
