@@ -1,5 +1,3 @@
-from functools import cached_property
-
 from django.db import models
 
 from modelcluster.fields import ParentalKey
@@ -14,8 +12,8 @@ from wagtail.snippets.models import register_snippet
 from wagtail_airtable.mixins import AirtableMixin
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
-from wagtailio.core.blocks import CTABlock
-from wagtailio.features.blocks import FeatureIndexPageBlock
+from wagtailio.core.blocks import StandaloneCTABlock
+from wagtailio.features.blocks import FeatureCategoryBlock
 
 
 class Bullet(Orderable, models.Model):
@@ -117,8 +115,8 @@ class FeatureIndexPage(Page):
     template = "patterns/pages/feature_index_page/feature_index_page.html"
 
     subheading = models.TextField(verbose_name="Sub heading", blank=True)
-    body = StreamField(FeatureIndexPageBlock())
-    cta = StreamField([("cta", CTABlock())], blank=True, max_num=1)
+    features = StreamField([("features", FeatureCategoryBlock())], blank=True)
+    cta = StreamField([("cta", StandaloneCTABlock())], blank=True, max_num=1)
     get_started = models.ForeignKey(
         "core.GetStartedSnippet",
         null=True,
@@ -129,11 +127,7 @@ class FeatureIndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("subheading"),
-        StreamFieldPanel("body", classname="collapsible"),
+        StreamFieldPanel("features", classname="collapsible"),
         StreamFieldPanel("cta", heading="Call to action"),
         SnippetChooserPanel("get_started"),
     ]
-
-    @cached_property
-    def feature_categories(self):
-        return [block.value.get("heading") for block in self.body]

@@ -3,8 +3,10 @@
 
 {% block content %}
     {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
-    {% for category in page.feature_categories %} ☐ {{ category }} {% endfor %}
-    {% include_block page.body %}
+    {% for block in page.features %} ☐ {{ block.value.heading }} {% endfor %}
+    {% include_block page.features %}
     {% include_block page.cta %}
-    {% include "patterns/components/get-started/get-started.html" %}
+    {% if page.get_started %}
+        {{ page.get_started.body }}
+    {% endif %}
 {% endblock %}

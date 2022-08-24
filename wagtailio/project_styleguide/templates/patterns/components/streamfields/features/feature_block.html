@@ -5,7 +5,7 @@
     <div class="rich-text">{{ value.description|richtext }}</div>
     {% if value.link %}
         <a href="{{ value.link }}">
-            {% if value.link_title %}{{ value.link_title }}{% else %}View docs{% endif %}
+            {{ value.link_title }}
         </a>
     {% endif %}
 </div>

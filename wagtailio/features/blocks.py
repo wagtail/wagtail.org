@@ -1,4 +1,8 @@
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
+
 from wagtail.core import blocks
+from wagtail.core.blocks.struct_block import StructBlockValidationError
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailio.core.blocks import PageOrExternalLinkBlock
@@ -51,9 +55,21 @@ class FeatureBlock(blocks.StructBlock):
         label="Feature link title",
         required=False,
         max_length=50,
-        help_text="If left blank, 'View docs' will be used as the default Feature link title",
         default="View docs",
     )
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+        if value.get("link") and not value.get("link_title"):
+            error = ErrorList(
+                [ValidationError("You must specify a feature link title.")]
+            )
+            errors["link_title"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+        return struct_value
 
     class Meta:
         icon = "gem"
@@ -70,13 +86,4 @@ class FeatureCategoryBlock(blocks.StructBlock):
         label = "Feature Category"
         template = (
             "patterns/components/streamfields/features/feature_category_block.html"
-        )
-
-
-class FeatureIndexPageBlock(blocks.StreamBlock):
-    feature_category = FeatureCategoryBlock()
-
-    class Meta:
-        template = (
-            "patterns/components/streamfields/features/feature_index_page_block.html"
         )
