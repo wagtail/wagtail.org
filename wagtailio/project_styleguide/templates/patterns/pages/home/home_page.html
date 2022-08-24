@@ -1,6 +1,6 @@
 {% extends "patterns/base_page.html" %}
 
-{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+{% load static wagtailcore_tags wagtailembeds_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 {% block extra_css %}{% endblock %}
@@ -34,6 +34,15 @@
             </div>
         </div>
     {% endif %}
+
+    {% if page.embed %}
+        <div class="home-embed">
+            <div class="responsive-object" style="padding-bottom: 56.25%;">
+                {% embed page.embed %}
+            </div>
+        </div>
+    {% endif %}
+
     {% include_block page.body %}
 
 {% endblock %}
