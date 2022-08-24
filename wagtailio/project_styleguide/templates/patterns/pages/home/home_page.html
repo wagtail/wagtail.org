@@ -1,0 +1,14 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+
+{% block body_class %}template-homepage{% endblock %}
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
+
+    {% include_block page.body %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+context:
+  page:
+    heading: Create content that soars
+    sub_heading: Wagtail is the leading open-source Python CMS
+    intro: It's fast, elegant, and designed to give everyone on your team the tools they need to manage content at enterprise scale
+    icon: paper-plane
+
+tags:
+  include_block:
+    page.body:
+      raw: |

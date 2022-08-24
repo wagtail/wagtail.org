@@ -9,6 +9,7 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 class HomePage(Page, SocialMediaMixin, CrossPageMixin):
+    template = "patterns/pages/home/home_page.html"
     body = StreamField(HomePageBlock())
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
