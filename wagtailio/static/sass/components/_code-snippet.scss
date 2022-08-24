@@ -1,0 +1,50 @@
+.code-snippet {
+    background-color: $color--indigo;
+    color: $color--white;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-radius: 6px;
+    position: relative;
+    grid-column: 2;
+    margin-bottom: 15px;
+
+    pre {
+        margin: 0 70px 0 0;
+        white-space: nowrap;
+        font-weight: $weight--bold;
+    }
+
+    &__icon {
+        color: $color--eggshell;
+        width: 20px;
+        height: 20px;
+    }
+
+    &__button {
+        padding: 0;
+    }
+
+    &__confirmation {
+        background-color: $color--indigo;
+        position: absolute;
+        width: min-content;
+        height: min-content;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 5px 10px;
+        border-radius: 6px;
+        inset: -20% 80%;
+        transition: transform 0.3s;
+        transform: translate3d(0, 40%, 0);
+        pointer-events: none;
+        z-index: -1;
+        visibility: hidden;
+
+        .has-copied & {
+            transform: translate3d(0, -80%, 0);
+            visibility: visible;
+        }
+    }
+}

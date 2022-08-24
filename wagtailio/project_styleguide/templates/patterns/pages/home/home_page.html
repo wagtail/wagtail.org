@@ -10,15 +10,14 @@
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
 
     <div class="grid">
-        <div class="code-block">
-            <pre>
-                pip install wagtail
-            </pre>
-            <button class="code-block__button" aria-label="Copy the command pip install wagtail">
-                <svg class="code-block__icon" aria-hidden="true">
+        <div class="code-snippet" data-code-snippet>
+            <pre data-code-to-copy>pip install wagtail</pre>
+            <button class="code-snippet__button" aria-label="Copy the command pip install wagtail" data-copy-code-button>
+                <svg class="code-snippet__icon" aria-hidden="true">
                     <use xlink:href="#copy"></use>
                 </svg>
             </button>
+            <p class="code-snippet__confirmation">Copied!</p>
         </div>
     </div>
 
