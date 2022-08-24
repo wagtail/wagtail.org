@@ -9,6 +9,19 @@
 
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
 
+    <div class="grid">
+        <div class="code-block">
+            <pre>
+                pip install wagtail
+            </pre>
+            <button class="code-block__button" aria-label="Copy the command pip install wagtail">
+                <svg class="code-block__icon" aria-hidden="true">
+                    <use xlink:href="#copy"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     {% include_block page.body %}
 
 {% endblock %}
