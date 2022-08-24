@@ -1,8 +1,16 @@
 .comparison-table {
     padding: 0 0 20px 0;
+    grid-column: 2 / span 2;
+    width: 700px;
+
+    @include media-query(medium) {
+        width: auto;
+        grid-column: 2 / span 3;
+    }
 
     @include media-query(large) {
         padding: 0 0 100px 0;
+        grid-column: 2 / span 5;
     }
 
     td:first-child {
@@ -17,13 +25,11 @@
     tbody {
         grid-column: 2 / span 2;
         grid-gap: 20px;
-        overflow-x: scroll;
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
-            overflow-x: auto;
         }
-    
+
         @include media-query(large) {
             grid-column: 2 / span 5;
         }
