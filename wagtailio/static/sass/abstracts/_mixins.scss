@@ -92,6 +92,6 @@
 // To be used with offset-bg-left() - apply this on hover of parent
 @mixin offset-bg-hover-left() {
     &::after {
-        transform: rotate(-5deg) translate3d(-30px, 45px, 0);
+        transform: rotate(-3deg) translate3d(-27px, 30px, 0);
     }
 }

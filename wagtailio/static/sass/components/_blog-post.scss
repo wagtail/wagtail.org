@@ -71,9 +71,11 @@
 
     &--featured {
         display: grid;
+        margin-bottom: 30px;
 
         @include media-query(medium) {
             grid-column: 1 / span 2;
+            margin-bottom: 0;
 
             #{$root}__listing-text {
                 font-size: 1rem;
@@ -91,10 +93,6 @@
                 #{$root}__image {
                     transform: translate(-50%, -50%) scale(1.05);
                 }
-
-                #{$root}__content {
-                    @include offset-bg-hover-right();
-                }
             }
         }
 
@@ -108,13 +106,18 @@
 
                 // stylelint-disable-next-line max-nesting-depth
                 &::after {
-                    transform: rotate(-4deg) translate3d(18px, 18px, 0);
+                    transform: rotate(-3deg) translate3d(-5px, 10px, 0);
                     width: 50%;
                 }
             }
 
             @include media-query(large) {
                 padding: $gutter-lg $gutter-xl;
+
+                // stylelint-disable-next-line max-nesting-depth
+                &::after {
+                    transform: rotate(-4deg) translate3d(18px, 18px, 0);
+                }
             }
         }
     }

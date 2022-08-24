@@ -1,14 +1,18 @@
 .blog-listing {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $gutter;
+    @include sf-spacing();
+    grid-column: 2 / span 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $gutter;
 
-  @include media-query(medium) {
-    gap: $gutter-lg;
-    grid-template-columns: repeat(2, 1fr);
-  }
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+        gap: $gutter-lg;
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-  @include media-query(large) {
-    gap: $gutter-xl;
-  }
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+        gap: $gutter-xl;
+    }
 }
