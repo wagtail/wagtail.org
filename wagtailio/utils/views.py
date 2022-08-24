@@ -17,9 +17,13 @@ def robots(request):
     return HttpResponse(content, content_type="text/plain")
 
 
-def page_not_found(request, exception):
+def error_404(request, exception):
     return render(request, "patterns/pages/errors/404.html", {})
 
 
-def server_error(request, exception=None):
+def error_500(request, exception=None):
     return render(request, "patterns/pages/errors/500.html", {})
+
+
+def test_500_error(request, exception=None):
+    raise NotImplementedError

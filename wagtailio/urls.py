@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
-from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -23,7 +22,7 @@ from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
 from wagtailio.utils.cache import get_default_cache_control_decorator
-from wagtailio.utils.views import favicon, robots
+from wagtailio.utils.views import favicon, robots, test_500_error
 
 # Private URLs are not meant to be cached.
 private_urlpatterns = [
@@ -54,24 +53,12 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    urlpatterns += [
-        # Add views for testing 404 and 500 templates
-        path(
-            "test404/",
-            TemplateView.as_view(template_name="patterns/pages/errors/404.html"),
-        ),
-        path(
-            "test500/",
-            TemplateView.as_view(template_name="patterns/pages/errors/500.html"),
-        ),
-    ]
-
-
 if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
     "pattern_library"
 ):
     urlpatterns += [
         path("pattern-library/", include("pattern_library.urls")),
+        path("test500", test_500_error),
     ]
 
 # Set public URLs to use public cache.
@@ -92,5 +79,5 @@ urlpatterns = decorate_urlpatterns(
 )
 
 # Error handlers
-handler404 = "wagtailio.utils.views.page_not_found"
-handler500 = "wagtailio.utils.views.server_error"
+handler404 = "wagtailio.utils.views.error_404"
+handler500 = "wagtailio.utils.views.error_500"
