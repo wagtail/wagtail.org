@@ -1,0 +1,11 @@
+{% load static wagtailcore_tags %}
+
+<div>
+    <h4>{{ value.heading }}</h4>
+    <div class="rich-text">{{ value.description|richtext }}</div>
+    {% if value.link %}
+        <a href="{{ value.link }}">
+            {{ value.link_title }}
+        </a>
+    {% endif %}
+</div>

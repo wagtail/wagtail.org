@@ -1,0 +1,8 @@
+{% load wagtailcore_tags %}
+
+<div>
+    <h3>{{ value.heading }}</h3>
+    {% for value in value.features %}
+        {% include_block value %}
+    {% endfor %}
+</div>

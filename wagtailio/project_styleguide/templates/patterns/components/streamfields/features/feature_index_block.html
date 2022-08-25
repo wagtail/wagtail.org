@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+<div>
+    <div>
+        <ul>
+            {% for category in value.categories %}{% if category %}<li>{{ category }}</li>{% endif %}{% endfor %}
+        </ul>
+    </div>
+    {% for block in value.blocks %}
+        {% include_block block %}
+    {% endfor %}
+</div>

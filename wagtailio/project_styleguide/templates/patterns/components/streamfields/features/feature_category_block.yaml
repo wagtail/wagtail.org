@@ -1,0 +1,15 @@
+context:
+  value:
+    heading: Editing
+    features:
+      - dummy
+      - dummy
+      - dummy
+      - dummy
+      - dummy
+      - dummy
+
+tags:
+  include_block:
+    value:
+      template_name: 'patterns/components/streamfields/features/feature_block.html'
