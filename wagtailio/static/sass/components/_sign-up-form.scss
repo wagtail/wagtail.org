@@ -1,13 +1,15 @@
 .sign-up-form {
     $root: &;
-    border: 1px solid $color--off-black;
-    border-radius: 15px;
-    padding: 30px;
-    
     @include sf-spacing();
 
-    @include media-query(large) {
-        padding: 60px;
+    &__heading {
+        // normalise the h2 element
+        margin: 0;
+    }
+
+    &__sub-heading {
+        padding: 10px 0 0 0;
+
     }
 
     &__label {
@@ -31,34 +33,34 @@
             }
         }
     }
-
-    &__heading {
-        margin: 0;
-    }
-
-    &__sub-heading {
-        padding: 10px 0 0 0;
-    }
-
+    
     &__container {
-        border: 1px solid $color--off-black;
-        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+
+        > fieldset {
+            display: flex;
+            flex-basis: start;
+            @include media-query(medium) {
+                width: 50%;
+            }
+        }
     }
 
     &__input {
+        flex: 1;
         padding: 11px 20px;
-        width: 100%;
         height: 50px;
-        border-width: 0;
-        border-radius: 15px;
+        border: 1px solid $color--off-black;
+        flex-grow: 5;
+        border-radius: 12px;
 
         @include media-query(medium) {
-            width: 350px;
-        }
-
-        @include media-query(large) {
-            height: 50px;
-            width: 560px;
+            border-radius: 12px 0 0 12px;
         }
 
         &::placeholder {
@@ -68,18 +70,63 @@
 
     > form {
         margin: 30px 0 0 0;
-        width: fit-content;
     }
 
-    button {
-        width: 100%;
-        border-radius: 0 0 12px 12px;
-        border-style: solid none none none;
-
+    &__button {
+        border-radius: 12px;
+        border-style: solid;
+        height: 50px;
+        margin: 15px 0 0 0;
+        background-color: $color--indigo;
+        color: $color--white;
+    
         @include media-query(medium) {
-            width: auto;
             border-radius: 0 12px 12px 0;
-            border-style: none none none solid;
+            border-style: solid solid solid none;
+            border-left-width: 0;
+            margin: 0;
+        }
+    }
+
+    &--block {
+        border: 1px solid $color--off-black;
+        border-radius: 15px;
+        padding: 30px;
+
+        @include media-query(large) {
+            padding: 60px;
+        }
+    }
+
+    &--footer {
+        background-color: $color--indigo;
+        color: $color--white;
+        
+        #{$root}__input {
+            background-color: $color--indigo;
+            border: 1px solid $color--white;
+            border-radius: 6px;
+
+            @include media-query(medium) {
+                border-radius: 6px 0 0 6px;
+            }
+    
+            &::placeholder {
+                color: $color--white;
+            }
+
+        }
+
+        #{$root}__button {
+            background-color: $color--white;
+            color: $color--indigo;
+            border-radius: 6px;
+            border-style: solid none none none;
+            
+            @include media-query(medium) {
+                border-radius: 0 6px 6px 0;
+                border-style: none none none solid;
+            }
         }
     }
 }

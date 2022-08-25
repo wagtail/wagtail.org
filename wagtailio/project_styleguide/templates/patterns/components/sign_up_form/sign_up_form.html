@@ -1,18 +1,1 @@
-<div class="sign-up-form">
-    <h2 class="sign-up-form__heading">{{ heading }}</h2>
-    <p class="sign-up-form__sub-heading intro-small">{{ sub_heading }}</p>
-    <form action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
-
-        <fieldset class="sign-up-form__container">
-            <label for="email" class="sign-up-form__label"></label>
-            <input class="sign-up-form__input" id="email" name="EMAIL" type="email" placeholder="Enter your email address" aria-label="Enter your email address" required/>
-
-            <button class="button button--dark" type="submit">
-                <p class="button__text" aria-label="Click to sign up">Sign up</p>
-                <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-            </button>
-
-        </fieldset>
-        {% include "patterns/components/icon/icon.html" with classes="sign-up-form__icon" icon="" overlay_icon="wagtail-envelope"  %}
-    </form>
-</div>
+{% include "patterns/components/sign_up_form/base_form.html" with classes="sign-up-form--footer" %}
