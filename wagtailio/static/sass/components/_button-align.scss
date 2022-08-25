@@ -11,6 +11,16 @@
         grid-column: 2 /  span 3;
     }
 
+    &__item {
+        width: 100%;
+        justify-content: space-between;
+
+        @include media-query(medium) {
+            width: auto;
+            justify-content: flex-start;
+        }
+    }
+
     &--home {
         margin-bottom: 50px;
 

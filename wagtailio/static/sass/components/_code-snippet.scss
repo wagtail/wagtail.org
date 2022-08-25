@@ -7,15 +7,20 @@
     padding: 15px 20px;
     border-radius: 6px;
     position: relative;
-    grid-column: 2;
+    grid-column: 2 / span 2;
     margin-bottom: 15px;
+    font-size: 0.9375rem;
+    justify-content: space-between;
 
     @include media-query(medium) {
+        justify-content: flex-start;
+        grid-column: 2;
+        font-size: 1rem;
         padding: 15px 28px;
     }
 
     pre {
-        margin: 0 20px 0 0;
+        margin: 0 15px 0 0;
         white-space: nowrap;
         font-weight: $weight--bold;
 
