@@ -41,21 +41,27 @@
                     {% if forloop.counter|divisibleby:2 %}
                         {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
                     {% else %}
-                        {% if forloop.first %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.0 featured=True %}
-                        {% elif forloop.counter == 3 and featured_posts|length >= 4 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
-                        {% elif forloop.counter == 5 and featured_posts|length >= 4 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
-                        {% elif forloop.counter == 5 and featured_posts|length == 2 or forloop.counter == 5 and featured_posts|length == 3 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
-                        {% elif forloop.counter == 7 and featured_posts|length >= 4 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.3 featured=True %}
-                        {% elif forloop.counter == 9 and featured_posts|length == 5 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.4 featured=True %}
-                        {% elif forloop.counter == 9 and featured_posts|length == 3 %}
-                            {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
-                        {% endif %}
+                        {% with num_featured_posts=featured_posts|length %}
+                            {% if forloop.first %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.0 featured=True %}
+                            {% elif forloop.counter == 3 and num_featured_posts >= 4 %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
+                            {% elif forloop.counter == 5 %}
+                                {% if num_featured_posts >= 4 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
+                                {% elif num_featured_posts == 2 or num_featured_posts == 3 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
+                                {% endif %}
+                            {% elif forloop.counter == 7 and num_featured_posts >= 4 %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.3 featured=True %}
+                            {% elif forloop.counter == 9 %}
+                                {% if num_featured_posts == 5 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.4 featured=True %}
+                                {% elif num_featured_posts == 3 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
+                                {% endif %}
+                            {% endif %}
+                        {% endwith %}
                         {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
                     {% endif %}
                 {% else %}
