@@ -191,7 +191,7 @@ class StoryBlock(StreamBlock):
     blockquote = CharBlock(icon="openquote", form_classname="title", template="patterns/components/streamfields/quotes/standalone_quote_block.html")
     image = ImageChooserBlock(icon="image", template="patterns/components/streamfields/image/image.html")
     document = DocumentChooserBlock(icon="doc-full-inverse", template="patterns/components/streamfields/document/document.html")
-    embed = EmbedBlock(icon="code")
+    embed = EmbedBlock(icon="code", template="patterns/components/streamfields/embed/embed.html")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
     backers = BackersBlock()
