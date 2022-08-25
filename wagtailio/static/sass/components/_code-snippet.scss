@@ -23,6 +23,7 @@
         margin: 0 15px 0 0;
         white-space: nowrap;
         font-weight: $weight--bold;
+        font-family: $font--code;
 
         @include media-query(medium) {
             margin: 0 70px 0 0;
