@@ -178,7 +178,6 @@ class BackersBlock(StructBlock):
 
 class StoryBlock(StreamBlock):
     blockquote = CharBlock(icon="openquote", form_classname="title")
-    image = ImageChooserBlock(icon="image")
     imagecaption = ImageAndCaptionBlock(label="Image caption")
     textimage = TextAndImageBlock(icon="image")
     colourtext = BackgroundColourTextBlock(icon="pilcrow")
@@ -191,6 +190,7 @@ class StoryBlock(StreamBlock):
     intro = RichTextBlock(icon="pilcrow", template="patterns/components/streamfields/rich_text_block/rich_text_block.html")
     paragraph = RichTextBlock(icon="pilcrow", template="patterns/components/streamfields/rich_text_block/rich_text_block.html")
     blockquote = CharBlock(icon="openquote", form_classname="title", template="patterns/components/streamfields/quotes/standalone_quote_block.html")
+    image = ImageChooserBlock(icon="image", template="patterns/components/streamfields/image/image.html")
     embed = EmbedBlock(icon="code")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
