@@ -40,11 +40,15 @@
     }
 
     &--blog {
+        #{$root}__name {
+            margin-bottom: 5px;
+        }
+
         #{$root}__image {
             border-radius: 50%;
             display: flex;
             align-items: center;
-            margin-right: 10px;
+            margin-right: 20px;
 
             img {
                 border-radius: 50%;
