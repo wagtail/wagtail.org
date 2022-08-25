@@ -177,12 +177,6 @@ class BackersBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    imagecaption = ImageAndCaptionBlock(label="Image caption")
-    textimage = TextAndImageBlock(icon="image")
-    colourtext = BackgroundColourTextBlock(icon="pilcrow")
-    calltoaction = CallToActionBlock(icon="pilcrow")
-    tripleimage = TripleImageBlock(icon="image")
-    stats = ListBlock(StatBlock(icon="code"))
     h2 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-2.html")
     h3 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-3.html")
     h4 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-4.html")
@@ -191,10 +185,16 @@ class StoryBlock(StreamBlock):
     blockquote = CharBlock(icon="openquote", form_classname="title", template="patterns/components/streamfields/quotes/standalone_quote_block.html")
     image = ImageChooserBlock(icon="image", template="patterns/components/streamfields/image/image.html")
     document = DocumentChooserBlock(icon="doc-full-inverse", template="patterns/components/streamfields/document/document.html")
+    imagecaption = ImageAndCaptionBlock(label="Image caption") # to be removed
+    textimage = TextAndImageBlock(icon="image") # uses text_and_media_block.html
+    colourtext = BackgroundColourTextBlock(icon="pilcrow") # to be removed
+    calltoaction = CallToActionBlock(icon="pilcrow") # to be removed
+    tripleimage = TripleImageBlock(icon="image") # to be removed
+    stats = ListBlock(StatBlock(icon="code")) # to be removed
     embed = EmbedBlock(icon="code", template="patterns/components/streamfields/embed/embed.html")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
-    backers = BackersBlock()
+    backers = BackersBlock() # now a plain list
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
