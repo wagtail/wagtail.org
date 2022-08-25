@@ -35,6 +35,7 @@
 
         // remove rounded edges in ios
         &[type="search"] {
+            // stylelint-disable-next-line property-no-vendor-prefix
             -webkit-appearance: none;
         }
     }
