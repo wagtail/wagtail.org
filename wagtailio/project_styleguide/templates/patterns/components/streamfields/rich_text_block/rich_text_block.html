@@ -2,6 +2,6 @@
 
 <div class="grid">
     <div class="rich-text rich-text--sf">
-        {{ value.rich_text|richtext }}
+        {% firstof value.rich_text|richtext value|richtext %}
     </div>
 </div>
