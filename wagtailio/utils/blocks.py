@@ -177,9 +177,6 @@ class BackersBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", form_classname="title")
-    h3 = CharBlock(icon="title", form_classname="title")
-    h4 = CharBlock(icon="title", form_classname="title")
     intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
     blockquote = CharBlock(icon="openquote", form_classname="title")
@@ -191,6 +188,9 @@ class StoryBlock(StreamBlock):
     calltoaction = CallToActionBlock(icon="pilcrow")
     tripleimage = TripleImageBlock(icon="image")
     stats = ListBlock(StatBlock(icon="code"))
+    h2 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-2.html")
+    h3 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-3.html")
+    h4 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-4.html")
     embed = EmbedBlock(icon="code")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
