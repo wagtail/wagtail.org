@@ -6,14 +6,14 @@
             {% if value.image %}
                 {% image value.image width-750 alt=value.name %}
             {% else %}
-                <div class="placeholder">{{ value.name }}</div>
+                {{ value.name }}
             {% endif %}
         </a>
     {% else %}
         {% if value.image %}
             {% image value.image width-750 alt=value.name %}
         {% else %}
-            <div class="placeholder">{{ value.name }}</div>
+            {{ value.name }}
         {% endif %}
     {% endif %}
 </div>
