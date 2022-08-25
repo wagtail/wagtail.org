@@ -13,9 +13,9 @@
         }
 
         @include media-query(large) {
-            grid-column: 2 / span 3;
             grid-row: 1;
-            padding: 0 95px 0 0;
+            grid-column: 4 / span 3;
+            padding: 0 0 0 95px;
         }
     }
 
@@ -29,22 +29,22 @@
         grid-column: 2 /span 2;
 
         @include media-query(large) {
-            grid-column: 5 / span 2;
+            grid-column: 2 / span 2;
         }
     }
 
     &--right {
         #{$root}__content {
             @include media-query(large) {
-                grid-column: 4 / span 3;
-                padding: 0 0 0 95px;
+                padding: 0 95px 0 0;
+                grid-column: 2 / span 3;
             }
         }
 
         #{$root}__media,
         #{$root}__embed-wrap {
             @include media-query(large) {
-                grid-column: 2 / span 2;
+                grid-column: 5 / span 2;
             }
         }
     }
