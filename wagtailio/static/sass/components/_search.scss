@@ -25,13 +25,18 @@
     }
 
     &__input {
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
+        border-radius: 6px 0 0 6px;
         width: 100%;
         border: 1px solid $color--black;
         padding: 15px 20px;
         color: $color--off-black;
         height: 100%;
+        background-color: $color--white;
+
+        // remove rounded edges in ios
+        &[type="search"] {
+            -webkit-appearance: none;
+        }
     }
 
     &--mobile {

@@ -109,6 +109,8 @@
 
     &__search-icon {
         &--open {
+            color: $color--off-black;
+
             .is-expanded & {
                 display: none;
             }
