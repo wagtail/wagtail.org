@@ -1,0 +1,19 @@
+.grid-align {
+    @include sf-spacing();
+
+    &--codeblock {
+        grid-column: 2;
+    }
+
+    &--markdown {
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 5;
+        }
+    }
+}

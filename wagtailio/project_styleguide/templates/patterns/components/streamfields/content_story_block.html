@@ -3,6 +3,12 @@
 {% for block in value %}
     {% if block.block_type == 'get_started_block' %}
         {{ block.value.body }}
+    {% elif block.block_type == 'codeblock' or block.block_type == 'markdown' %}
+        <div class="grid">
+            <div class="grid-align grid-align--{{ block.block_type }}">
+                {% include_block block %}
+            </div>
+        </div>
     {% else %}
         {% include_block block %}
     {% endif %}
