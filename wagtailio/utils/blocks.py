@@ -61,6 +61,9 @@ class TextAndImageBlock(StructBlock):
     background = BackgroundColourChoiceBlock()
     alignment = SimpleImageFormatChoiceBlock()
 
+    class Meta:
+        template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
+
 
 class BackgroundColourTextBlock(StructBlock):
     text = RichTextBlock()
