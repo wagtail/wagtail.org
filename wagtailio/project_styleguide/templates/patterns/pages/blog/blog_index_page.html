@@ -12,34 +12,48 @@
                 {# only show featured posts on the first pagination page, no filters #}
                 {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
                     {% comment %}
-                        An even number of posts, n, is required "in between" featured posts.
-                        This is dependent on the number of featured posts.
-                        We therefore display a featured post when `forloop.counter` is odd.
-                        With a pagination of 10:
-                            - CASE 1: if there are 5 featured posts; n will be 2
-                            - CASE 2: if there are 4 featured posts; n will initially be 2, but after the last featured post
-                            n will be 4
-                            - CASE 3: if there are 3 featured posts; n will initially be 4, but after the last featured post
-                            n will be 2
-                            - CASE 4: if there are 2 featured posts; n will initially be 4, but after the 2nd (last) featured post
-                            n will be 6
+                        With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
+                        follows the pattern shown in the table below, which can be summarized as follows:
+
+                        - A FP is only displayed when the loop counter is odd.
+                        - because of the 2-column layout of posts, there has to be an even number of posts
+                          after a FP is displayed, this even number of posts will vary, depending on the number of FPs
+
+                        | loop counter | 5 FPs | 4 FPs | 3 FPs | 2 FPs | 1 FP  |
+                        |--------------|-------|-------|-------|-------|-------|
+                        | 1            | FP1   | FP1   | FP1   | FP1   | FP1   |
+                        |              |  p1   |  p1   |  p1   |  p1   |  p1   |
+                        | 2            |  p2   |  p2   |  p2   |  p2   |  p2   |
+                        | 3            | FP2   | FP2   |       |       |       |
+                        |              |  p3   |  p3   |  p3   |  p3   |  p3   |
+                        | 4            |  p4   |  p4   |  p4   |  p4   |  p4   |
+                        | 5            | FP3   | FP3   | FP2   | FP2   |       |
+                        |              |  p5   |  p5   |  p5   |  p5   |  p5   |
+                        | 6            |  p6   |  p6   |  p6   |  p6   |  p6   |
+                        | 7            | FP4   | FP4   |       |       |       |
+                        |              |  p7   |  p7   |  p7   |  p7   |  p7   |
+                        | 8            |  p8   |  p8   |  p8   |  p8   |  p8   |
+                        | 9            | FP5   |       | FP3   |       |       |
+                        |              |  p9   |  p9   |  p9   |  p9   |  p9   |
+                        | 10           |  p10  |  p10  |  p10  |  p10  |  p10  |
+
                     {% endcomment %}
                     {% if forloop.counter|divisibleby:2 %}
                         {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
                     {% else %}
                         {% if forloop.first %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.0 featured=True %}
-                        {% elif forloop.counter == 3 and featured_posts|length >= 4 %}  {# CASE 1, CASE 2 #}
+                        {% elif forloop.counter == 3 and featured_posts|length >= 4 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
-                        {% elif forloop.counter == 5 and featured_posts|length >= 4 %}  {# CASE 1, CASE 2 #}
+                        {% elif forloop.counter == 5 and featured_posts|length >= 4 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
-                        {% elif forloop.counter == 5 and featured_posts|length == 2 or forloop.counter == 5 and featured_posts|length == 3 %}  {# CASE 4, CASE 3 #}
+                        {% elif forloop.counter == 5 and featured_posts|length == 2 or forloop.counter == 5 and featured_posts|length == 3 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
-                        {% elif forloop.counter == 7 and featured_posts|length >= 4 %}  {# CASE 1, CASE 2 #}
+                        {% elif forloop.counter == 7 and featured_posts|length >= 4 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.3 featured=True %}
-                        {% elif forloop.counter == 9 and featured_posts|length == 5 %}  {# CASE 1 #}
+                        {% elif forloop.counter == 9 and featured_posts|length == 5 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.4 featured=True %}
-                        {% elif forloop.counter == 9 and featured_posts|length == 3 %}  {# CASE 3 #}
+                        {% elif forloop.counter == 9 and featured_posts|length == 3 %}
                             {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
                         {% endif %}
                         {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
