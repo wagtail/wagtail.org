@@ -1,4 +1,6 @@
 .hero {
+    $root: &;
+
     @include sf-spacing();
     position: relative;
     grid-column: 2 / span 2;
@@ -83,9 +85,27 @@
         }
     }
 
-  &--search {
-    .icon__svg-fg {
-      stroke-width: 1px;
+    &--search {
+        .icon__svg-fg {
+        stroke-width: 1px;
+        }
     }
-  }
+
+    &--features {
+        margin-bottom: 20px;
+
+        @include media-query(large) {
+            margin-bottom: 50px;
+        }
+
+        #{$root}__subheading {
+            font-weight: $weight--regular;
+        }
+    }
+
+    .template-feature-index & {
+        &__button {
+            display: none;
+        }
+    }
 }

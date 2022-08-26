@@ -1,12 +1,12 @@
 {% load wagtailcore_tags %}
 
 <div class="grid">
-    <div class="hero">
+    <div class="hero {% if classes %}{{ classes }}{% endif %}">
         <div class="hero__inner">
             <h1 class="hero__heading">{% firstof value.heading value.title %}</h1>
 
-            {% if value.sub_heading %}
-                <h2 class="hero__subheading intro-big">{{ value.sub_heading }}</h2>
+            {% if value.sub_heading or value.subheading %}
+                <h2 class="hero__subheading intro-big">{% firstof value.sub_heading value.subheading %}</h2>
             {% endif %}
 
             {% if value.intro %}
