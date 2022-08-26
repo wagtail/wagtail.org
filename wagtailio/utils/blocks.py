@@ -222,7 +222,7 @@ class StoryBlock(StreamBlock):
     embed = EmbedBlock(icon="code", template="patterns/components/streamfields/embed/embed.html")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
-    backers = BackersBlock()  # now a plain list
+    backers = BackersBlock()
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
