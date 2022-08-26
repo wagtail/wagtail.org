@@ -7,24 +7,7 @@
 
     <div class="features" {% if page.feature_categories %}data-feature-index{% endif %}>
         {% include "patterns/components/hero/hero.html" with value=page classes="hero--features" %}
-        <div class="grid">
 
-            {# Filters #}
-            <fieldset class="features__filters">
-                <div class="features__filter-wrap">
-                    <input type="checkbox" id="all" name="all" data-feature-filter-all checked>
-                    <label class="mini-meta" for="all">All</label>
-                </div>
-                {% for category in page.feature_categories %}
-                    <div class="features__filter-wrap">
-                        <input type="checkbox" id="{{ category|lower }}" name="{{ category|lower }}" data-feature-filter>
-                        <label class="mini-meta" for="{{ category|lower }}">{{ category }}</label>
-                    </div>
-                {% endfor %}
-            </fieldset>
-        </div>
-
-        {# Features #}
         {% include_block page.features %}
     </div>
 
