@@ -15,7 +15,7 @@
 
             {# We're actually only dealing with 1 block, since `max_num=1` #}
             {% for block in value.cta %}
-                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text %}
+                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="hero__button" %}
             {% endfor %}
         </div>
 
