@@ -7,7 +7,7 @@ register = template.Library()
 def footer_navigation(context):
     request = context["request"]
     return {
-        "footer_navigation": context["settings"]["core"][
+        "footer_navigation": context["settings"]["navigation"][
             "NavigationSettings"
         ].footer_navigation,
         "request": request,
