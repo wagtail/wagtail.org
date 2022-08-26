@@ -219,7 +219,10 @@ class StoryBlock(StreamBlock):
     calltoaction = CallToActionBlock(icon="pilcrow") # to be removed
     tripleimage = TripleImageBlock(icon="image") # to be removed
     stats = ListBlock(StatBlock(icon="code")) # to be removed
-    embed = EmbedBlock(icon="code", template="patterns/components/streamfields/embed/embed.html")
+    embed = EmbedBlock(
+        icon="code",
+        template="patterns/components/streamfields/embed/embed.html"
+    )
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
     backers = BackersBlock()
