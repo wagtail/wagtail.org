@@ -4,7 +4,6 @@
 {% block body_class %}template-feature-index{% endblock %}
 
 {% block content %}
-    {% if page.subheading %}<h3>{{ page.subheading }}</h3>{% endif %}
 
     <div class="features" {% if page.feature_categories %}data-feature-index{% endif %}>
         {% include "patterns/components/hero/hero.html" with value=page classes="hero--features" %}
