@@ -55,7 +55,7 @@
         width: min-content;
         height: min-content;
         margin: 0;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 700;
         padding: 5px 10px;
         border-radius: 6px;
@@ -65,6 +65,10 @@
         pointer-events: none;
         z-index: -1;
         visibility: hidden;
+
+        @include media-query(large) {
+            font-size: 0.7rem;
+        }
 
         .has-copied & {
             transform: translate3d(0, -80%, 0);
