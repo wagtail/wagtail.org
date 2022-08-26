@@ -1,0 +1,22 @@
+context:
+  page:
+    heading: Create content that soars
+    sub_heading: Wagtail is the leading open-source Python CMS
+    intro: It's fast, elegant, and designed to give everyone on your team the tools they need to manage content at enterprise scale
+    icon: paper-plane
+    cta_one:
+      title: Get Started
+      url: '#'
+    cta_two:
+      title: Features
+      url: '#'
+    embed: true
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/components/streamfields/content_story_block.html'
+  embed:
+    page.embed:
+      raw: |
+        <iframe src="https://placehold.co/1024x576.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Placeholder"></iframe>

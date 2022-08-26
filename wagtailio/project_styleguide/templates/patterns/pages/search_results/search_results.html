@@ -12,7 +12,7 @@
                         <label for="search" class="u-sr-only">Search</label>
                         <input id="search" type="search" placeholder="Enter your search term" class="form__input"
                             {% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content"/>
-                        {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="hero__button button--dark" %}
+                        {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="button--dark" %}
                     </fieldset>
                 </form>
             </div>

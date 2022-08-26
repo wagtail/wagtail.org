@@ -1,0 +1,47 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static wagtailcore_tags wagtailembeds_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
+
+    <div class="grid">
+        <div class="code-snippet{% if not page.cta_one or not page.cta_two %} code-snippet--bottom-space{% endif %}" data-code-snippet>
+            <pre data-code-to-copy>pip install wagtail</pre>
+            <button class="code-snippet__button" aria-label="Copy the command pip install wagtail" data-copy-code-button>
+                <svg class="code-snippet__icon" aria-hidden="true">
+                    <use xlink:href="#copy"></use>
+                </svg>
+            </button>
+            <p class="code-snippet__confirmation">Copied!</p>
+        </div>
+    </div>
+
+    {% if page.cta_one or page.cta_two %}
+        <div class="grid">
+            <div class="button-align button-align--home">
+                {% if page.cta_one %}
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.cta_one.url title=page.cta_one.title classes="button-align__item" %}
+                {% endif %}
+
+                {% if page.cta_two %}
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.cta_two.url title=page.cta_two.title classes="button-align__item" %}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.embed %}
+        <div class="home-embed">
+            <div class="responsive-object" style="padding-bottom: 56.25%;">
+                {% embed page.embed %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% include_block page.body %}
+
+{% endblock %}

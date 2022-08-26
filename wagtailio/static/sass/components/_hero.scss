@@ -87,7 +87,7 @@
 
     &--search {
         .icon__svg-fg {
-        stroke-width: 1px;
+            stroke-width: 1px;
         }
     }
 
@@ -100,6 +100,34 @@
 
         #{$root}__subheading {
             font-weight: $weight--regular;
+        }
+    }
+
+    &--home {
+        margin-bottom: 0;
+
+        #{$root}__inner {
+            max-width: 100%;
+        }
+
+        #{$root}__subheading {
+            font-weight: $weight--regular;
+        }
+
+        #{$root}__intro {
+            margin-bottom: 50px;
+
+            @include media-query(medium) {
+                max-width: 60%;
+            }
+        }
+
+        #{$root}__icon {
+            display: none;
+
+            @include media-query(medium) {
+                display: block;
+            }
         }
     }
 
