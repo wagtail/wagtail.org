@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     "wagtailio.standardpage",
     "wagtailio.taxonomy",
     "wagtailio.search",
+    "wagtailio.navigation",
     "wagtailio.newsletter",
     "wagtailio.developers",
     "wagtailio.blog",
