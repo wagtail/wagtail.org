@@ -4,7 +4,7 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamField
 from wagtail.core.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.core.blocks import GetStartedBlock
+from wagtailio.core.blocks import GetStartedBlock, NavStreamField
 
 
 @register_snippet
@@ -71,3 +71,22 @@ class SignupFormSnippet(models.Model):
 
     class Meta:
         verbose_name = "Signup form"
+
+
+@register_snippet
+class FooterMenuSnippet(models.Model):
+    name = models.CharField(max_length=255)
+    sections = StreamField(
+        NavStreamField(),
+    )
+
+    panels = [
+        FieldPanel("name"),
+        StreamFieldPanel("sections"),
+    ]
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Footer menu"
