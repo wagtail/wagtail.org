@@ -177,14 +177,42 @@ class BackersBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-2.html")
-    h3 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-3.html")
-    h4 = CharBlock(icon="title", form_classname="title", template="patterns/components/streamfields/headings/heading-4.html")
-    intro = RichTextBlock(icon="pilcrow", template="patterns/components/streamfields/rich_text_block/rich_text_block.html")
-    paragraph = RichTextBlock(icon="pilcrow", template="patterns/components/streamfields/rich_text_block/rich_text_block.html")
-    blockquote = CharBlock(icon="openquote", form_classname="title", template="patterns/components/streamfields/quotes/standalone_quote_block.html")
-    image = ImageChooserBlock(icon="image", template="patterns/components/streamfields/image/image.html")
-    document = DocumentChooserBlock(icon="doc-full-inverse", template="patterns/components/streamfields/document/document.html")
+    h2 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-2.html"
+    )
+    h3 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-3.html"
+    )
+    h4 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-4.html"
+    )
+    intro = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/components/streamfields/rich_text_block/rich_text_block.html"
+    )
+    paragraph = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/components/streamfields/rich_text_block/rich_text_block.html"
+    )
+    blockquote = CharBlock(
+        icon="openquote",
+        form_classname="title",
+        template="patterns/components/streamfields/quotes/standalone_quote_block.html"
+    )
+    image = ImageChooserBlock(
+        icon="image",
+        template="patterns/components/streamfields/image/image.html"
+    )
+    document = DocumentChooserBlock(
+        icon="doc-full-inverse",
+        template="patterns/components/streamfields/document/document.html"
+    )
     imagecaption = ImageAndCaptionBlock(label="Image caption") # to be removed
     textimage = TextAndImageBlock(icon="image") # uses text_and_media_block.html
     colourtext = BackgroundColourTextBlock(icon="pilcrow") # to be removed
@@ -194,7 +222,7 @@ class StoryBlock(StreamBlock):
     embed = EmbedBlock(icon="code", template="patterns/components/streamfields/embed/embed.html")
     markdown = MarkDownBlock()
     codeblock = CodeBlock()
-    backers = BackersBlock() # now a plain list
+    backers = BackersBlock()  # now a plain list
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
