@@ -34,7 +34,7 @@
         color: $color--teal;
         transition: color 0.3s;
 
-        &--minus {
+        &--plus {
             display: none;
         }
 
@@ -46,6 +46,16 @@
     &.is-collapsed {
         #{$root}__inner-content {
             display: none;
+        }
+
+        #{$root}__toggle-icon {
+            &--minus {
+                display: none;
+            }
+
+            &--plus {
+                display: block;
+            }
         }
     }
 
