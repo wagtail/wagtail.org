@@ -1,3 +1,5 @@
+{% load navigation_tags %}
+
 <header class="header">
     {% include "patterns/components/skip-link/skip-link.html" %}
 
@@ -13,6 +15,9 @@
         </div>
     </div>
 
+    <div class="">
+        {% main_navigation %}
+    </div>
 
     <div class="header__col-two">
         {# Desktop Search #}
@@ -33,7 +38,7 @@
             </svg>
         </button>
 
-        {% if get_started_menu_items %}
+        {% if settings.navigation.NavigationSettings.get_started_menu %}
             <button class="header__button header__button--get-started button" data-get-started>
                 Get started
                 <svg class="header__get-started-icon" aria-hidden="true">
@@ -47,7 +52,7 @@
     {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}
 </header>
 
-{% include "patterns/includes/menu_get_started.html" %}
+{% get_started_menu %}
 
 {# Desktop search #}
 {% include "patterns/includes/search-modal.html" with input_id="search-input-desktop" %}
