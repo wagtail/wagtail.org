@@ -5,6 +5,5 @@ from wagtailio.navigation.models import NavigationSettings
 
 @register_context_modifier
 def add_navigation(context, request):
-    if NavigationSettings.objects.count():
-        nav = NavigationSettings.objects.first()
+    if nav := NavigationSettings.objects.first():
         context["settings"] = {"navigation": {"NavigationSettings": nav}}
