@@ -28,6 +28,10 @@ if not getattr(
 ) and settings.INSTALLED_APPS.index("wagtailaltgenerator"):
     settings.INSTALLED_APPS.remove("wagtailaltgenerator")
 
+# Mailchimp
+MAILCHIMP_ACCOUNT_ID = "Fake"
+MAILCHIMP_NEWSLETTER_ID = "Fake"
+
 
 try:
     from .local import *  # noqa

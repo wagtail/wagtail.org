@@ -583,3 +583,8 @@ PATTERN_LIBRARY = {
     # BASE_TEMPLATE_NAMES is a "page" and will be rendered as-is without being wrapped.
     "BASE_TEMPLATE_NAMES": ["patterns/base_page.html"],
 }
+
+# Mailchimp
+if ("MAILCHIMP_NEWSLETTER_ID", "MAILCHIMP_ACCOUNT_ID") in env:
+    MAILCHIMP_ACCOUNT_ID = env.get("MAILCHIMP_ACCOUNT_ID")
+    MAILCHIMP_NEWSLETTER_ID = env.get("MAILCHIMP_NEWSLETTER_ID")

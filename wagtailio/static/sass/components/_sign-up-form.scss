@@ -1,6 +1,15 @@
 .sign-up-form {
     $root: &;
     @include sf-spacing();
+    grid-column: 2 / span 2;
+  
+    @include media-query(medium) {
+      grid-column: 2 / span 3;
+    }
+    
+    @include media-query(large) {
+      grid-column: 2 / span 5;
+    }
 
     &__heading {
         // normalise the h2 element
@@ -9,28 +18,23 @@
 
     &__sub-heading {
         padding: 10px 0 0 0;
-
-    }
-
-    &__label {
-        display: none;
     }
 
     &__icon {
+        width: auto;
+        height: 50px;
+        margin-left: auto;
         display: none;
 
-        @include media-query(medium) {
-            display: inherit;
+        @include media-query(large) {
+            display: block;
         }
 
         > svg {
-            inset: -5% 3% auto auto;
+            position: relative;
+            inset: -100px 0 auto auto;
             width: 170px;
-            height: 253px;
-
-            @include media-query(large) {
-                inset: 10% 86px auto auto;
-            }
+            height: 170px;
         }
     }
     
@@ -44,7 +48,9 @@
 
         > fieldset {
             display: flex;
-            flex-basis: start;
+            flex-basis: flex-start;
+            margin: 0;
+
             @include media-query(medium) {
                 width: 50%;
             }
@@ -53,12 +59,11 @@
 
     &__input {
         flex: 1;
-        padding: 11px 20px;
         height: 50px;
         border: 1px solid $color--off-black;
-        flex-grow: 5;
         border-radius: 12px;
-
+        padding: 11px 20px;
+        
         @include media-query(medium) {
             border-radius: 12px 0 0 12px;
         }
@@ -114,7 +119,6 @@
             &::placeholder {
                 color: $color--white;
             }
-
         }
 
         #{$root}__button {
