@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+<div class="grid">
+    <div class="grid-align grid-align--{{ value.blocktype }}">
+        {% include_block value %}
+    </div>
+</div>
