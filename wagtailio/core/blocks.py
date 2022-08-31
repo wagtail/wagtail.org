@@ -600,7 +600,7 @@ class ContentStoryBlock(blocks.StreamBlock):
     sign_up_form = SnippetChooserBlock(
         "core.SignupFormSnippet",
         icon="envelope-open-text",
-        template="patterns/components/sign-up-form/sign-up-form.html",
+        template="patterns/components/streamfields/sign_up_form_block/sign_up_form_block.html",
     )
     comparison_table = ComparisonTableBlock()
 
