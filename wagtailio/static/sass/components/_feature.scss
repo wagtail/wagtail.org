@@ -23,46 +23,4 @@
     &__heading {
         margin-bottom: 10px;
     }
-
-    &__toggle {
-        padding: 5px;
-    }
-
-    &__toggle-icon {
-        width: 20px;
-        height: 20px;
-        color: $color--teal;
-        transition: color 0.3s;
-
-        &--plus {
-            display: none;
-        }
-
-        &:hover {
-            color: $color--indigo;
-        }
-    }
-
-    &.is-collapsed {
-        #{$root}__inner-content {
-            display: none;
-        }
-
-        #{$root}__toggle-icon {
-            &--minus {
-                display: none;
-            }
-
-            &--plus {
-                display: block;
-            }
-        }
-    }
-
-    .no-js & {
-        // hide toggle if JS is disabled
-        &__toggle {
-            display: none;
-        }
-    }
 }
