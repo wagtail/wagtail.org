@@ -1,16 +1,22 @@
-from wagtail.admin.edit_handlers import StreamFieldPanel
+from django.core.exceptions import ValidationError
+from django.db import models
+
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
-from wagtailio.blog.models import BlogPage
-from wagtailio.core.blocks import ContentStoryBlock, HomePageBlock
+from wagtailio.core.blocks import (
+    ContentStoryBlock,
+    CTABlock,
+    HomePageStoryBlock,
+    LoopingVideoBlock,
+)
 from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
-class HomePage(Page, SocialMediaMixin, CrossPageMixin):
+class HomePage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/home/home_page.html"
-    body = StreamField(HomePageBlock())
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
         "blog.BlogIndexPage",
@@ -22,17 +28,57 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
         "packages.PackagesPage",
         "services.ServicesPage",
     ]
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+
+    code_snippet = models.CharField(
+        max_length=100,
+        default="pip install wagtail",
+    )
+    call_to_action = StreamField(
+        [("cta", CTABlock())],
+        blank=True,
+        max_num=2,
+        help_text="Use this instead of the Hero CTA. Allows for a maximum of 2 CTA blocks",
+    )
+
+    video = StreamField(
+        [
+            (
+                "looping_video_block",
+                LoopingVideoBlock(),
+            ),
+        ],
+        blank=True,
+        max_num=1,
+    )
+
+    body = StreamField(HomePageStoryBlock())
+
+    content_panels = (
+        Page.content_panels
+        + HeroMixin.panels
+        + [
+            FieldPanel("code_snippet"),
+            StreamFieldPanel("call_to_action"),
+            StreamFieldPanel("video"),
+            StreamFieldPanel("body"),
+        ]
+    )
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
 
-    def get_context(self, request, *args, **kwargs):
-        context = super(HomePage, self).get_context(request, *args, **kwargs)
-        context.update({"blog_posts": BlogPage.objects.live().order_by("-date")})
+    def clean(self):
+        super().clean()
+        if self.cta:
+            raise ValidationError(
+                "The Hero CTA field must be left blank. Use the Call to Action field instead."
+            )
 
-        return context
+    def save(self, *args, **kwargs):
+        if self.cta:
+            self.full_clean()
+        super().save(*args, *kwargs)
 
 
 class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
