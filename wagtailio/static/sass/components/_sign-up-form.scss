@@ -1,0 +1,136 @@
+.sign-up-form {
+    $root: &;
+    @include sf-spacing();
+    grid-column: 2 / span 2;
+  
+    @include media-query(medium) {
+      grid-column: 2 / span 3;
+    }
+    
+    @include media-query(large) {
+      grid-column: 2 / span 5;
+    }
+
+    &__heading {
+        // normalise the h2 element
+        margin: 0;
+    }
+
+    &__sub-heading {
+        padding: 10px 0 0 0;
+    }
+
+    &__icon {
+        width: auto;
+        height: 50px;
+        margin-left: auto;
+        display: none;
+
+        @include media-query(large) {
+            display: block;
+        }
+
+        > svg {
+            position: relative;
+            inset: -100px 0 auto auto;
+            width: 170px;
+            height: 170px;
+        }
+    }
+    
+    &__container {
+        display: flex;
+        flex-direction: column;
+        
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+
+        > fieldset {
+            display: flex;
+            flex-basis: flex-start;
+            margin: 0;
+
+            @include media-query(medium) {
+                width: 50%;
+            }
+        }
+    }
+
+    &__input {
+        flex: 1;
+        height: 50px;
+        border: 1px solid $color--off-black;
+        border-radius: 12px;
+        padding: 11px 20px;
+        
+        @include media-query(medium) {
+            border-radius: 12px 0 0 12px;
+        }
+
+        &::placeholder {
+            color: $color--off-black;
+        }
+    }
+
+    > form {
+        margin: 30px 0 0 0;
+    }
+
+    &__button {
+        border-radius: 12px;
+        border-style: solid;
+        height: 50px;
+        margin: 15px 0 0 0;
+        background-color: $color--indigo;
+        color: $color--white;
+    
+        @include media-query(medium) {
+            border-radius: 0 12px 12px 0;
+            border-style: solid solid solid none;
+            border-left-width: 0;
+            margin: 0;
+        }
+    }
+
+    &--block {
+        border: 1px solid $color--off-black;
+        border-radius: 15px;
+        padding: 30px;
+
+        @include media-query(large) {
+            padding: 60px;
+        }
+    }
+
+    &--footer {
+        background-color: $color--indigo;
+        color: $color--white;
+        
+        #{$root}__input {
+            background-color: $color--indigo;
+            border: 1px solid $color--white;
+            border-radius: 6px;
+
+            @include media-query(medium) {
+                border-radius: 6px 0 0 6px;
+            }
+    
+            &::placeholder {
+                color: $color--white;
+            }
+        }
+
+        #{$root}__button {
+            background-color: $color--white;
+            color: $color--indigo;
+            border-radius: 6px;
+            border-style: solid none none none;
+            
+            @include media-query(medium) {
+                border-radius: 0 6px 6px 0;
+                border-style: none none none solid;
+            }
+        }
+    }
+}

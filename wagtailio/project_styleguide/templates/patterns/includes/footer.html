@@ -29,10 +29,8 @@
             </ul>
 
             <div class="footer__sign-up">
-                {# Form sign up #}
-                <p class="teaser-heading">This Week in Wagtail</p>
-
-                {% comment %}TODO - add sign up form here once created{% endcomment %}
+                {# sign up form #}
+                {% include "patterns/components/sign_up_form/sign_up_form.html" with heading="What's new in Wagtail" sub_heading="Sign up for events, features and adventures on Wagtail" %}
 
                 {# Socials #}
                 <div class="footer__socials">

@@ -1,0 +1,3 @@
+{% if MAILCHIMP_ACCOUNT_ID and MAILCHIMP_NEWSLETTER_ID %}
+    {% include "patterns/components/sign_up_form/base_form.html" with classes="sign-up-form--footer" mailchimp_account_id=MAILCHIMP_ACCOUNT_ID mailchimp_newsletter_id=MAILCHIMP_NEWSLETTER_ID %}
+{% endif %}

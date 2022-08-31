@@ -598,7 +598,9 @@ class ContentStoryBlock(blocks.StreamBlock):
     multiple_quotes = MultipleQuoteBlock(group="Quotes")
     get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
     sign_up_form = SnippetChooserBlock(
-        "core.SignupFormSnippet", icon="envelope-open-text"
+        "core.SignupFormSnippet",
+        icon="envelope-open-text",
+        template="patterns/components/sign-up-form/sign-up-form.html",
     )
     comparison_table = ComparisonTableBlock()
 
