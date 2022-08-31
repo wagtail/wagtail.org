@@ -71,6 +71,10 @@
         &::placeholder {
             color: $color--off-black;
         }
+
+        &:focus-visible {
+            outline: none;
+        }
     }
 
     > form {
@@ -110,6 +114,7 @@
         #{$root}__input {
             background-color: $color--indigo;
             border: 1px solid $color--white;
+            color :$color--white;
             border-radius: 6px;
 
             @include media-query(medium) {
