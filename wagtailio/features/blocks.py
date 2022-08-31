@@ -78,7 +78,7 @@ class FeatureBlock(blocks.StructBlock):
 
 
 class FeatureCategoryBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(required=False, max_length=255)
+    heading = blocks.CharBlock(max_length=255)
     features = blocks.ListBlock(FeatureBlock(), min_num=2)
 
     class Meta:
