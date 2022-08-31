@@ -1,5 +1,7 @@
 from django.core.exceptions import ValidationError
-from django.forms.utils import ErrorList
+from django.forms.utils import ErrorList, flatatt
+from django.utils.html import format_html, format_html_join
+from django.utils.translation import gettext_lazy as _
 
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.core import blocks
@@ -583,6 +585,23 @@ class GetStartedBlock(blocks.StructBlock):
         template = "patterns/components/get-started/get-started.html"
 
 
+class LoopingVideoBlock(VideoChooserBlock):
+    def render_basic(self, value, context=None):
+        if not value:
+            return ""
+
+        if value.type != self.media_type:
+            return ""
+
+        return format_html(
+            "<video controls loop muted>\n{sources}\n<p>{fallback}</p>\n</video>",
+            sources=format_html_join(
+                "\n", "<source{0}>", [[flatatt(s)] for s in value.sources]
+            ),
+            fallback=_("Your browser does not support the video element."),
+        )
+
+
 class ContentStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
     text_and_media = TextAndMediaBlock()
@@ -610,3 +629,21 @@ class ContentStoryBlock(blocks.StreamBlock):
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
+
+
+class HomePageStoryBlock(blocks.StreamBlock):
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
+    headline = HeadlineBlock()
+    highlight = HighlightBlock()
+    icon_bullets = IconBulletsBlock(icon="list-alt")
+    logos = blocks.ListBlock(
+        ImageChooserBlock(),
+        icon="images",
+        template="patterns/components/streamfields/logo_block/logo_block.html",
+    )
+    multiple_quotes = MultipleQuoteBlock()
+    standalone_cta = StandaloneCTABlock()
+    teaser = TeaserBlock()
+
+    class Meta:
+        template = "patterns/components/streamfields/home_page_story_block.html"
