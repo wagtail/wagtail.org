@@ -1,11 +1,6 @@
 {% load static wagtailcore_tags %}
 
 <li class="features__list-item feature" data-feature>
-    <button class="feature__toggle" aria-label="Collapse the {{ value.heading|lower }} feature content" aria-expanded="true" aria-controls="{{ value.heading|lower }}-feature" data-feature-toggle>
-        <svg class="feature__toggle-icon feature__toggle-icon--plus" aria-hidden="true"><use xlink:href="#plus"></use></svg>
-        <svg class="feature__toggle-icon feature__toggle-icon--minus" aria-hidden="true"><use xlink:href="#minus"></use></svg>
-    </button>
-
     <div class="feature__content">
         <h4 class="feature__heading">{{ value.heading }}</h4>
         <div class="feature__inner-content" aria-controls="{{ value.heading|lower }}-feature" data-feature-content>
