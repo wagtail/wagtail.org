@@ -19,22 +19,23 @@ def footer_navigation(context):
 
 @register.inclusion_tag("patterns/includes/menu_main.html", takes_context=True)
 def main_navigation(context):
+    menus = []
+
     try:
         main_navigation = context["settings"]["navigation"][
             "NavigationSettings"
         ].main_navigation
+
+        for item in main_navigation.menu_items.all():
+            menus.append(
+                {
+                    "name": item.menu_item.name,
+                    "nav_items": item.menu_item.nav_items,
+                    "call_to_action": item.menu_item.call_to_action,
+                }
+            )
     except (KeyError, AttributeError):
         return {}
-
-    menus = []
-    for item in main_navigation.menu_items.all():
-        menus.append(
-            {
-                "name": item.menu_item.name,
-                "nav_items": item.menu_item.nav_items,
-                "call_to_action": item.menu_item.call_to_action,
-            }
-        )
 
     return {"menus": menus}
 
