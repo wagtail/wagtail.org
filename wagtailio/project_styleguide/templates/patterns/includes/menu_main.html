@@ -2,11 +2,11 @@
 
 <nav class="">
     <ul class="">
-        {% for menu_item in menus %}
+        {% for menu_section in menus %}
             <li class="">
-                <span>{{ menu_item.name }}</span>
+                <span>{{ menu_section.name }}</span>
                 <ul class="">
-                    {% for item in menu_item.nav_items %}
+                    {% for item in menu_section.nav_items %}
                         {% with item.value as nav_item %}
                             <li class="">
                                 <a href="{{ nav_item.url }}" title="{{ nav_item.text }}">
@@ -19,7 +19,7 @@
                     {% endfor %}
                 </ul>
                 <div class="">
-                    {% for item in menu_item.call_to_action %}  {# there's actually only 1 cta, as max_num=1 #}
+                    {% for item in menu_section.call_to_action %}  {# there's actually only 1 cta, as max_num=1 #}
                         {% with item.value as cta %}
                             <a href="{{ cta.url }}" title="{{ cta.text }}">
                                 {% include "patterns/components/icon/icon.html" with icon=cta.icon classes="icon-link__svg" %}

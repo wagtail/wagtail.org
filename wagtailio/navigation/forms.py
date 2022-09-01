@@ -3,32 +3,34 @@ from django.forms import ValidationError
 from wagtail.admin.forms import WagtailAdminModelForm
 
 
-class MainMenuSnippetForm(WagtailAdminModelForm):
+class MainMenuForm(WagtailAdminModelForm):
     def clean(self):
         cleaned_data = super().clean()
 
         seen = []
 
-        for form in self.formsets["menu_items"].forms:
+        for form in self.formsets["menu_sections"].forms:
 
             if form.is_valid():
                 cleaned_form_data = form.clean()
-                menu_item = cleaned_form_data.get("menu_item")
-                menu_item_pk = menu_item.pk
+                menu_section = cleaned_form_data.get("menu_section")
+                menu_section_pk = menu_section.pk
                 duplicates = [
-                    menu_item for menu_item in seen if menu_item == menu_item_pk
+                    menu_section
+                    for menu_section in seen
+                    if menu_section == menu_section_pk
                 ]
                 if duplicates:
                     for _ in duplicates:
                         form.add_error(
-                            "menu_item",
+                            "menu_section",
                             ValidationError(
-                                ("Duplicate menu items are not allowed"),
+                                ("Duplicate menu sections are not allowed"),
                                 code="invalid",
                             ),
                         )
 
                 else:
-                    seen.append(menu_item_pk)
+                    seen.append(menu_section_pk)
 
         return cleaned_data
