@@ -26,12 +26,12 @@ def main_navigation(context):
             "NavigationSettings"
         ].main_navigation
 
-        for item in main_navigation.menu_items.all():
+        for item in main_navigation.menu_sections.all():
             menus.append(
                 {
-                    "name": item.menu_item.name,
-                    "nav_items": item.menu_item.nav_items,
-                    "call_to_action": item.menu_item.call_to_action,
+                    "name": item.menu_section.name,
+                    "nav_items": item.menu_section.nav_items,
+                    "call_to_action": item.menu_section.call_to_action,
                 }
             )
     except (KeyError, AttributeError):

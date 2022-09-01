@@ -15,11 +15,11 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.navigation.blocks import NavItemBlock, NavItemCTA, NavStreamField
-from wagtailio.navigation.forms import MainMenuSnippetForm
+from wagtailio.navigation.forms import MainMenuForm
 
 
 @register_snippet
-class FooterMenuSnippet(models.Model):
+class FooterMenu(models.Model):
     name = models.CharField(max_length=255)
     sections = StreamField(
         NavStreamField(),
@@ -38,7 +38,7 @@ class FooterMenuSnippet(models.Model):
 
 
 @register_snippet
-class MainMenuItemSnippet(models.Model):
+class MainMenuSection(models.Model):
     name = models.CharField(max_length=255)
     nav_items = StreamField(
         [("nav_item", NavItemBlock())],
@@ -59,32 +59,32 @@ class MainMenuItemSnippet(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Main menu item"
+        verbose_name = "Main menu section"
 
 
 class MainMenuItem(Orderable):
-    parent = ParentalKey("navigation.MainMenuSnippet", related_name="menu_items")
-    menu_item = models.ForeignKey(
-        "navigation.MainMenuItemSnippet",
+    parent = ParentalKey("navigation.MainMenu", related_name="menu_sections")
+    menu_section = models.ForeignKey(
+        "navigation.MainMenuSection",
         on_delete=models.CASCADE,
     )
 
     panels = [
-        SnippetChooserPanel("menu_item"),
+        SnippetChooserPanel("menu_section"),
     ]
 
 
 @register_snippet
-class MainMenuSnippet(ClusterableModel):
-    base_form_class = MainMenuSnippetForm
+class MainMenu(ClusterableModel):
+    base_form_class = MainMenuForm
 
     name = models.CharField(max_length=255)
 
     panels = [
         FieldPanel("name"),
         MultiFieldPanel(
-            [InlinePanel("menu_items", label="Menu item", min_num=1, max_num=10)],
-            heading="Menu items",
+            [InlinePanel("menu_sections", label="Menu section", min_num=1, max_num=10)],
+            heading="Menu sections",
         ),
     ]
 
@@ -105,14 +105,14 @@ class NavigationSettings(BaseSetting, ClusterableModel):
         related_name="+",
     )
     main_navigation = models.ForeignKey(
-        "navigation.MainMenuSnippet",
+        "navigation.MainMenu",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
     )
     footer_navigation = models.ForeignKey(
-        "navigation.FooterMenuSnippet",
+        "navigation.FooterMenu",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
