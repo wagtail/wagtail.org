@@ -15,7 +15,7 @@ from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
-class HomePage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
+class HomePage(HeroMixin, SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/home/home_page.html"
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
