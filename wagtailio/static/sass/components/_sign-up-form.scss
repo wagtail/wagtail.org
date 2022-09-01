@@ -1,5 +1,6 @@
 .sign-up-form {
     $root: &;
+
     @include sf-spacing();
     grid-column: 2 / span 2;
   
@@ -110,6 +111,7 @@
         #{$root}__input {
             background-color: $color--indigo;
             border: 1px solid $color--white;
+            color :$color--white;
             border-radius: 6px;
 
             @include media-query(medium) {
