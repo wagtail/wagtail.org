@@ -127,7 +127,6 @@ class CodeBlock(StructBlock):
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
-        context["block_type"] = "codeblock"
         context["code"] = self.render_markup(context["value"])
         return context
 
@@ -146,7 +145,6 @@ class MarkDownBlock(TextBlock):
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
-        context["block_type"] = "markdown"
         context["code"] = self.render_markup(context["value"])
         return context
 
