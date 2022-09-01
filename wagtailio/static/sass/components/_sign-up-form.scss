@@ -1,5 +1,6 @@
 .sign-up-form {
     $root: &;
+
     @include sf-spacing();
     grid-column: 2 / span 2;
   
@@ -70,10 +71,6 @@
 
         &::placeholder {
             color: $color--off-black;
-        }
-
-        &:focus-visible {
-            outline: none;
         }
     }
 
