@@ -1,7 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.forms.utils import ErrorList, flatatt
-from django.utils.html import format_html, format_html_join
-from django.utils.translation import gettext_lazy as _
+from django.forms.utils import ErrorList
 
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.core import blocks
@@ -585,21 +583,13 @@ class GetStartedBlock(blocks.StructBlock):
         template = "patterns/components/get-started/get-started.html"
 
 
-class LoopingVideoBlock(VideoChooserBlock):
-    def render_basic(self, value, context=None):
-        if not value:
-            return ""
+class LoopingVideoBlock(blocks.StructBlock):
+    loop = blocks.BooleanBlock(required=False, default=True)
+    autoplay = blocks.BooleanBlock(required=False, default=False)
+    video = VideoChooserBlock()
 
-        if value.type != self.media_type:
-            return ""
-
-        return format_html(
-            "<video controls loop muted>\n{sources}\n<p>{fallback}</p>\n</video>",
-            sources=format_html_join(
-                "\n", "<source{0}>", [[flatatt(s)] for s in value.sources]
-            ),
-            fallback=_("Your browser does not support the video element."),
-        )
+    class Meta:
+        icon = "media"
 
 
 class ContentStoryBlock(blocks.StreamBlock):

@@ -36,7 +36,11 @@
         <div class="home-embed">
             <div class="responsive-object" style="padding-bottom: 56.25%;">
                 {% for block in page.video %}  {# there's actually only one block, since max_num=1 #}
-                    {% include_block block %}
+                    {% with block.value as item %}
+                        <video {% if item.autoplay %}autoplay{% else %}controls{% endif %} {% if item.loop %}loop{% endif %} muted>
+                            <source type="{{ item.video.type }}/{{ item.video.file_extension }}" src="{{ item.video.url }}">
+                        </video>
+                    {% endwith %}
                 {% endfor %}
             </div>
         </div>
