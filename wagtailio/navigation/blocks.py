@@ -11,6 +11,10 @@ class NavLinkBlock(CTALinkMixin):
     cta_page = blocks.PageChooserBlock(label="Page", required=False)
     cta_url = blocks.URLBlock(label="URL", required=False)
 
+    @property
+    def required(self):
+        return True
+
     class Meta:
         icon = "link"
         label = "Link"
@@ -35,6 +39,10 @@ class NavItemBlock(CTALinkMixin):
     cta_page = blocks.PageChooserBlock(label="Page", required=False)
     cta_url = blocks.URLBlock(label="External Link", required=False)
 
+    @property
+    def required(self):
+        return True
+
     class Meta:
         icon = "link"
         label = "Nav item"
@@ -47,6 +55,10 @@ class NavItemCTA(CTALinkMixin):
     icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     cta_page = blocks.PageChooserBlock(label="Page", required=False)
     cta_url = blocks.URLBlock(label="External Link", required=False)
+
+    @property
+    def required(self):
+        return True
 
     class Meta:
         icon = "bullhorn"
