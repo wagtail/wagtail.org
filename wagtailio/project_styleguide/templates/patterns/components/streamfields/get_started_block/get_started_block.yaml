@@ -1,0 +1,35 @@
+context:
+  value:
+    body:
+      heading: Give Wagtail a go
+      items:
+        - url: '#'
+          icon: moon
+          heading: Try the demo
+          subheading: The Wagtail Bakery
+          description: Login to our demo site to see what it's like editing and updating as an editor
+        - url: '#'
+          icon: bread
+          heading: Install the demo
+          subheading: Setup the Wagtail Bakery
+          description: Experience setting up an example Wagtail site, including example content
+        - url: '#'
+          icon: code-file
+          heading: Play with the code
+          subheading: Wagtail on Gitpod
+          description: Wagtail development setup in literally just one click!
+        - url: '#'
+          icon: one-two-steps
+          heading: Build your first site
+          subheading: 10min install guide
+          description: This tutorial covers setting up a brand new Wagtail project
+        - url: '#'
+          icon: slack
+          heading: Join the community
+          subheading: Wagtail on Slack
+          description: Engage with the community to see what's happening and get your questions answered
+        - url: '#'
+          icon: github
+          heading: Go to Github
+          subheading: Wagtail on Github
+          description: Explore the latest and greatest of Wagtail, or even make your first open source contribution!

@@ -14,6 +14,8 @@
 
 // Components
 @import 'components/author';
+@import 'components/backer';
+@import 'components/backers';
 @import 'components/blog';
 @import 'components/blog-post';
 @import 'components/button-align';
@@ -23,13 +25,17 @@
 @import 'components/code-snippet';
 @import 'components/comparison-table';
 @import 'components/cta';
+@import 'components/document';
 @import 'components/error-404';
+@import 'components/embed';
 @import 'components/feature.scss';
 @import 'components/features.scss';
 @import 'components/form.scss';
 @import 'components/footer-menu';
 @import 'components/get-started';
 @import 'components/grid';
+@import 'components/grid-align';
+@import 'components/heading';
 @import 'components/headline';
 @import 'components/hero';
 @import 'components/highlight';
@@ -38,6 +44,7 @@
 @import 'components/icon-bullet';
 @import 'components/icon-bullets';
 @import 'components/icon-link';
+@import 'components/image';
 @import 'components/logos';
 @import 'components/logo-card';
 @import 'components/logo-card-grid';

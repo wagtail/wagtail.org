@@ -61,6 +61,9 @@ class TextAndImageBlock(StructBlock):
     background = BackgroundColourChoiceBlock()
     alignment = SimpleImageFormatChoiceBlock()
 
+    class Meta:
+        template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
+
 
 class BackgroundColourTextBlock(StructBlock):
     text = RichTextBlock()
@@ -108,7 +111,7 @@ class CodeBlock(StructBlock):
         icon = "code"
         template = None
 
-    def render_basic(self, value, context=None):
+    def render_markup(self, value, context=None):
         src = value["code"].strip("\n")
         lang = value["language"]
 
@@ -122,6 +125,11 @@ class CodeBlock(StructBlock):
         )
         return mark_safe(highlight(src, lexer, formatter))
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        context["code"] = self.render_markup(context["value"])
+        return context
+
 
 class MarkDownBlock(TextBlock):
     """MarkDown Block"""
@@ -129,11 +137,16 @@ class MarkDownBlock(TextBlock):
     class Meta:
         icon = "code"
 
-    def render_basic(self, value, context=None):
+    def render_markup(self, value, context=None):
         md = markdown(
             value, extensions=["markdown.extensions.fenced_code", "codehilite"]
         )
         return mark_safe(md)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        context["code"] = self.render_markup(context["value"])
+        return context
 
 
 class NamedBackerBlock(StructBlock):
@@ -174,23 +187,56 @@ class BackersBlock(StructBlock):
 
 
 class StoryBlock(StreamBlock):
-    h2 = CharBlock(icon="title", form_classname="title")
-    h3 = CharBlock(icon="title", form_classname="title")
-    h4 = CharBlock(icon="title", form_classname="title")
-    intro = RichTextBlock(icon="pilcrow")
-    paragraph = RichTextBlock(icon="pilcrow")
-    blockquote = CharBlock(icon="openquote", form_classname="title")
-    image = ImageChooserBlock(icon="image")
-    document = DocumentChooserBlock(icon="doc-full-inverse")
-    imagecaption = ImageAndCaptionBlock(label="Image caption")
-    textimage = TextAndImageBlock(icon="image")
-    colourtext = BackgroundColourTextBlock(icon="pilcrow")
-    calltoaction = CallToActionBlock(icon="pilcrow")
-    tripleimage = TripleImageBlock(icon="image")
-    stats = ListBlock(StatBlock(icon="code"))
-    embed = EmbedBlock(icon="code")
-    markdown = MarkDownBlock()
-    codeblock = CodeBlock()
+    h2 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-2.html",
+    )
+    h3 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-3.html",
+    )
+    h4 = CharBlock(
+        icon="title",
+        form_classname="title",
+        template="patterns/components/streamfields/headings/heading-4.html",
+    )
+    intro = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
+    )
+    paragraph = RichTextBlock(
+        icon="pilcrow",
+        template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
+    )
+    blockquote = CharBlock(
+        icon="openquote",
+        form_classname="title",
+        template="patterns/components/streamfields/quotes/standalone_quote_block.html",
+    )
+    image = ImageChooserBlock(
+        icon="image", template="patterns/components/streamfields/image/image.html"
+    )
+    document = DocumentChooserBlock(
+        icon="doc-full-inverse",
+        template="patterns/components/streamfields/document/document.html",
+    )
+    imagecaption = ImageAndCaptionBlock(label="Image caption")  # to be removed
+    textimage = TextAndImageBlock(icon="image")  # uses text_and_media_block.html
+    colourtext = BackgroundColourTextBlock(icon="pilcrow")  # to be removed
+    calltoaction = CallToActionBlock(icon="pilcrow")  # to be removed
+    tripleimage = TripleImageBlock(icon="image")  # to be removed
+    stats = ListBlock(StatBlock(icon="code"))  # to be removed
+    embed = EmbedBlock(
+        icon="code", template="patterns/components/streamfields/embed/embed.html"
+    )
+    markdown = MarkDownBlock(
+        template="patterns/components/streamfields/code_block/code_block.html"
+    )
+    codeblock = CodeBlock(
+        template="patterns/components/streamfields/code_block/code_block.html"
+    )
     backers = BackersBlock()
 
     class Meta:

@@ -1,5 +1,5 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
     <article class="blog">
@@ -15,6 +15,12 @@
 
             {% include "patterns/components/author/author.html" with author=page.author classes="blog__author author--blog" %}
         </header>
+
+        {% if page.main_image %}
+            <div class="grid">
+                {% image page.main_image width-900 class="blog__main-image" %}
+            </div>
+        {% endif %}
 
         {# Body Content #}
         {% include_block page.body %}

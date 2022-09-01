@@ -37,11 +37,20 @@
         padding-bottom: 50px;
 
         @include media-query(medium) {
-            padding-bottom: 100px;
+            padding-bottom: 80px;
+        }
+    }
+
+    &__main-image {
+        @include sf-spacing();
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
         }
 
         @include media-query(large) {
-            padding-bottom: 200px;
+            grid-column: 3 / span 3;
         }
     }
 }

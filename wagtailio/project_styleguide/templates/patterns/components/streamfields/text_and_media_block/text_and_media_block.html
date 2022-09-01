@@ -1,6 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
-<div class="text-media {% if value.image_on_right %}text-media--right{% endif %} grid">
+<div class="text-media {% if value.image_on_right or value.alignment == "right" %}text-media--right{% endif %} grid">
+
     {% if value.image %}
         {% image value.image fill-400x400 class="text-media__media" %}
     {% else %}
@@ -8,9 +9,20 @@
             {% embed value.embed %}
         </div>
     {% endif %}
+
     <div class="text-media__content">
-        <h2>{{ value.heading }}</h2>
-        <p>{{ value.description }}</p>
+        {% if value.heading %}
+            <h2>{{ value.heading }}</h2>
+        {% endif %}
+
+        {% if value.description  %}
+            <p>{{ value.description }}</p>
+        {% elif value.text %}
+            <div class="rich-text">
+                {{ value.text|richtext }}
+            </div>
+        {% endif %}
+
         {% if value.cta.text %}
             {% include "patterns/components/streamfields/cta/cta_block.html" with value=value.cta classes="text-media__button" %}
         {% endif %}

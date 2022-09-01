@@ -1,0 +1,18 @@
+.document {
+    @include sf-spacing();
+    grid-column: 2 / span 2;
+    color: $color--teal;
+    transition: color 0.3s;
+
+    &:hover {
+        color: $color--indigo;
+    }
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+    }
+}
