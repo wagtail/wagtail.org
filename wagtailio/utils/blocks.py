@@ -111,7 +111,7 @@ class CodeBlock(StructBlock):
         icon = "code"
         template = None
 
-    def render_basic(self, value, context=None):
+    def render_markup(self, value, context=None):
         src = value["code"].strip("\n")
         lang = value["language"]
 
@@ -125,6 +125,12 @@ class CodeBlock(StructBlock):
         )
         return mark_safe(highlight(src, lexer, formatter))
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        context["block_type"] = "codeblock"
+        context["code"] = self.render_markup(context["value"])
+        return context
+
 
 class MarkDownBlock(TextBlock):
     """MarkDown Block"""
@@ -132,11 +138,17 @@ class MarkDownBlock(TextBlock):
     class Meta:
         icon = "code"
 
-    def render_basic(self, value, context=None):
+    def render_markup(self, value, context=None):
         md = markdown(
             value, extensions=["markdown.extensions.fenced_code", "codehilite"]
         )
         return mark_safe(md)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        context["block_type"] = "markdown"
+        context["code"] = self.render_markup(context["value"])
+        return context
 
 
 class NamedBackerBlock(StructBlock):
