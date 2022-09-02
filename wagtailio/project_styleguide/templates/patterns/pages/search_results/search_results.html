@@ -1,5 +1,5 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailsearchpromotions_tags %}
 
 {% block content %}
     <div class="grid">
@@ -10,7 +10,7 @@
                 <form action="{% url 'search' %}" class="form" method="get" role="search">
                     <fieldset class="form__field form__field--with-button">
                         <label for="search" class="u-sr-only">Search</label>
-                        <input id="search" type="search" placeholder="Enter your search term" class="form__input"
+                        <input name="query" id="search" type="search" placeholder="Enter your search term" class="form__input"
                             {% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content"/>
                         <button type="submit" class="button button--dark search__button" aria-label="Search the site content">
                             <p class="button__text">Search</p>
@@ -26,6 +26,18 @@
 
     <div class="grid">
         <div class="search-page__results">
+            {% get_search_promotions search_query as search_picks %}
+            {% if search_picks %}
+                {% for pick in search_picks %}
+                    {% with page=pick.page.specific %}
+                        <div class="search-result">
+                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
+                            <p>{% firstof page.listing_intro page.introduction %}</p>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            {% endif %}
+
             {% if search_results %}
                 <p class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
                     {{ search_query }}{% endif %}</p>
@@ -38,7 +50,8 @@
                         </div>
                     {% endwith %}
                 {% endfor %}
-            {% else %}
+
+            {% elif search_query and not search_picks %}
                 <p>No results found. Please try again.</p>
             {% endif %}
         </div>
