@@ -45,13 +45,17 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
 
     @cached_property
     def categories(self):
-        return Category.objects.filter(
-            pk__in=models.Subquery(self.posts.values("category"))
-        ).annotate(title_lower=Lower("title"))
+        return (
+            Category.objects.filter(
+                pk__in=models.Subquery(self.posts.values("category"))
+            )
+            .annotate(title_lower=Lower("title"))
+            .annotate(checked=Value(0))
+        )
 
     def serve(self, request):
         posts = self.posts
-        categories = self.categories.annotate(checked=Value(0))
+        categories = self.categories
         category_selected = False
 
         if request.GET and not request.GET.get("all"):

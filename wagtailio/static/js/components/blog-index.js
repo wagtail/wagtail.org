@@ -17,6 +17,11 @@ class BlogIndex {
         this.node.classList.add(this.hiddenClass);
         this.showFilterButton.classList.remove(this.hiddenClass);
 
+        // Handle when a non-all filter has been selected
+        if (!this.allFilterCheckbox.checked) {
+            this.showFilterButtonText.innerText = "Hide filters"
+            this.node.classList.remove(this.hiddenClass);
+        }  
         this.bindEvents();
     }
 
