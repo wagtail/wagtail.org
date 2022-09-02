@@ -4,7 +4,28 @@
 
 {% block content %}
 
-    {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
+    <div class="grid">
+        <div class="hero">
+            <div class="hero__inner hero--inline">
+                <h1 class="hero__heading">{{ page.title }}</h1>
+                <form class="blog-listing__form" action="{{ page.url }}" method="get" role="filter">
+                    <fieldset class="features__filters">
+                        <div class="features__filter-wrap">
+                            <input type="checkbox" id="all" name="all" data-category-filter-all checked>
+                            <label class="mini-meta" for="all">All</label>
+                        </div>
+                        {% for pk, name in categories %}
+                            <div class="features__filter-wrap">
+                                <input type="checkbox" id="{{ pk|lower }}" name="{{ name|lower }}" data-feature-category>
+                                <label class="mini-meta" for="{{ pk|lower }}">{{ name }}</label>
+                            </div>
+                        {% endfor %}
+                    </fieldset>
+                    <button class="features__filters blog-listing__button mini-meta" type="submit">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="grid">
         <section class="blog-listing">
