@@ -1,21 +1,18 @@
-from django.core.exceptions import ValidationError
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 
-from wagtailio.core.blocks import (
-    ContentStoryBlock,
-    CTABlock,
-    HomePageStoryBlock,
-    LoopingVideoBlock,
-)
+from wagtailmedia.edit_handlers import MediaChooserPanel
+
+from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBlock
+from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
-class HomePage(HeroMixin, SocialMediaMixin, CrossPageMixin, Page):
+class HomePage(SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/home/home_page.html"
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
@@ -29,37 +26,60 @@ class HomePage(HeroMixin, SocialMediaMixin, CrossPageMixin, Page):
         "services.ServicesPage",
     ]
 
-    code_snippet = models.CharField(
-        max_length=100,
+    # ----------------- Hero -----------------
+    heading = models.TextField(verbose_name="Heading", blank=True)
+    sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
+    intro = RichTextField(
+        verbose_name="Intro",
+        blank=True,
+        features=["bold", "italic", "link"],
+    )
+    icon = models.CharField(choices=SVGIcon.choices, max_length=255, blank=True)
+
+    code_snippet = models.TextField(
+        blank=True,
         default="pip install wagtail",
     )
     call_to_action = StreamField(
         [("cta", CTABlock())],
         blank=True,
         max_num=2,
-        help_text="Use this instead of the Hero CTA. Allows for a maximum of 2 CTA blocks",
+        help_text="Allows for a maximum of 2 CTA blocks",
     )
-
-    video = StreamField(
-        [
-            (
-                "looping_video_block",
-                LoopingVideoBlock(),
-            ),
-        ],
+    video = models.ForeignKey(
+        "wagtailmedia.Media",
+        null=True,
         blank=True,
-        max_num=1,
+        on_delete=models.SET_NULL,
+        related_name="+",
     )
+    loop_video = models.BooleanField(default=False)
+    autoplay_video = models.BooleanField(default=False)
 
     body = StreamField(HomePageStoryBlock())
 
+    hero_panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("heading"),
+                FieldPanel("sub_heading"),
+                FieldPanel("intro"),
+                FieldPanel("icon"),
+                FieldPanel("code_snippet"),
+                StreamFieldPanel("call_to_action"),
+                MediaChooserPanel("video", media_type="video"),
+                FieldPanel("loop_video"),
+                FieldPanel("autoplay_video"),
+            ],
+            "Hero",
+            classname="collapsible",
+        )
+    ]
+
     content_panels = (
         Page.content_panels
-        + HeroMixin.panels
+        + hero_panels
         + [
-            FieldPanel("code_snippet"),
-            StreamFieldPanel("call_to_action"),
-            StreamFieldPanel("video"),
             StreamFieldPanel("body"),
         ]
     )
@@ -71,18 +91,6 @@ class HomePage(HeroMixin, SocialMediaMixin, CrossPageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context.update({"blog_posts": BlogPage.objects.live().order_by("-date")})
-
-    def clean(self):
-        super().clean()
-        if self.cta:
-            raise ValidationError(
-                "The Hero CTA field must be left blank. Use the Call to Action field instead."
-            )
-
-    def save(self, *args, **kwargs):
-        if self.cta:
-            self.full_clean()
-        super().save(*args, *kwargs)
 
 
 class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):

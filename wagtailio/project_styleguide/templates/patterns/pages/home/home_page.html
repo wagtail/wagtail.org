@@ -35,13 +35,9 @@
     {% if page.video %}
         <div class="home-embed">
             <div class="responsive-object" style="padding-bottom: 56.25%;">
-                {% for block in page.video %}  {# there's actually only one block, since max_num=1 #}
-                    {% with block.value as item %}
-                        <video {% if item.autoplay %}autoplay{% else %}controls{% endif %} {% if item.loop %}loop{% endif %} muted>
-                            <source type="{{ item.video.type }}/{{ item.video.file_extension }}" src="{{ item.video.url }}">
-                        </video>
-                    {% endwith %}
-                {% endfor %}
+                <video {% if page.autoplay_video %}autoplay{% else %}controls{% endif %} {% if page.loop_video %}loop{% endif %} muted>
+                    <source type="{{ page.video.type }}/{{ page.video.file_extension }}" src="{{ page.video.url }}">
+                </video>
             </div>
         </div>
     {% endif %}
