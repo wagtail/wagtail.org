@@ -31,5 +31,9 @@ class HeroMixin(models.Model):
         )
     ]
 
+    @property
+    def has_hero(self):
+        return any([self.heading, self.sub_heading, self.intro, self.icon, self.cta])
+
     class Meta:
         abstract = True

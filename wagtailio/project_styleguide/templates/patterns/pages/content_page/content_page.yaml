@@ -1,5 +1,6 @@
 context:
   page:
+    has_hero: True
     title: Content page
     heading: Wagtail Hero heading
     sub_heading: This is a sub-heading
