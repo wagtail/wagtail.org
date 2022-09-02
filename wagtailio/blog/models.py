@@ -1,5 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models.functions import Lower
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
@@ -30,21 +31,35 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_index_page.html"
     subpage_types = ["blog.BlogPage"]
 
-    @property
+    @cached_property
     def posts(self):
         # Get list of blog pages that are descendants of this page, ordered by date
         return (
             BlogPage.objects.live()
             .descendant_of(self)
             .select_related("author", "author__image", "category")
+            .annotate(category_title_lower=Lower("category__title"))
             .order_by("-date", "pk")
         )
 
+    @cached_property
+    def categories(self):
+        return Category.objects.filter(
+            pk__in=models.Subquery(self.posts.values("category"))
+        )
+
     def serve(self, request):
-        if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+        posts = self.posts
+
+        if request.GET and not request.GET.get("all"):
+            categories = list(request.GET)
+
+            if all(
+                category in self.categories.values_list(Lower("title"), flat=True)
+                for category in categories
+            ):
+                # Prevent non-category values being filtered
+                posts = self.posts.filter(category_title_lower__in=categories)
 
         # Pagination
         paginator = Paginator(posts, 10)  # Show 10 blog posts per page
@@ -64,10 +79,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
                 "page": self,
                 "posts": posts,
                 "featured_posts": [post.page for post in self.featured_posts.all()],
-                "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
-                )
-                .values_list("pk", "title")
+                "categories": self.categories.values_list("pk", "title")
                 .distinct()
                 .order_by("title"),
             },

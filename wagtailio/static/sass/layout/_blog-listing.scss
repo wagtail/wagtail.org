@@ -15,4 +15,17 @@
         grid-column: 2 / span 5;
         gap: $gutter-xl;
     }
+
+    &__form {
+        display: flex;
+    }
+
+    &__button {
+        background-color: $color--indigo;
+        color: $color--white;
+        border: 2px solid #f3f5f8;
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
 }
