@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+<div class="home-embed">
+    <div class="responsive-object" style="padding-bottom: 56.25%;">
+        <video {% if value.autoplay %}autoplay{% else %}controls{% endif %} {% if value.loop %}loop{% endif %} muted>
+            <source type="{{ value.video.type }}/{{ value.video.file_extension }}" src="{{ value.video.url }}">
+        </video>
+    </div>
+</div>
