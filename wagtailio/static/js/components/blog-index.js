@@ -9,11 +9,29 @@ class BlogIndex {
         this.allFilterCheckbox = this.node.querySelector('[data-blog-filter-all]');
         // other checkbox inputs not including 'all'
         this.filterCheckboxes = [...this.node.querySelectorAll('[data-blog-filter]')];
+        this.showFilterButton = document.querySelector('[data-blog-index-show-filters]');
+        this.showFilterButtonText = this.showFilterButton.querySelector("p");
         this.hiddenClass = 'is-hidden';
+
+        // Progressive enhancement, display "show filters" button and hide filters
+        this.node.classList.add(this.hiddenClass);
+        this.showFilterButton.classList.remove(this.hiddenClass);
+
         this.bindEvents();
     }
 
     bindEvents() {
+        // Toggle visibility of filters
+        this.showFilterButton.addEventListener('click', () => {
+            if (this.node.classList.contains(this.hiddenClass)){
+                this.node.classList.remove(this.hiddenClass);
+                this.showFilterButtonText.innerText = "Hide filters"
+            }
+            else {
+                this.node.classList.add(this.hiddenClass);
+                this.showFilterButtonText.innerText = "Show filters"
+            }
+        })
         // 'all' filter checkbox
         this.allFilterCheckbox.addEventListener('change', (e) => {
             if (e.target.checked) {

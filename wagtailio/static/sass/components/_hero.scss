@@ -145,6 +145,12 @@
         }
     }
 
+    &--inline {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
     &--home {
         margin-bottom: 0;
 

@@ -5,23 +5,29 @@
 {% block content %}
 
     <div class="grid">
-        <div class="hero hero--slim">
-            <div class="hero__inner hero--inline">
-                <h1 class="hero__heading">Latest chirps</h1>
+        <div class="hero">
+            <div class="hero__inner">
+                <div class="hero--inline">
+                    <h1 class="hero__heading">Latest chirps</h1>
+                    <button class="blog-listing__filter is-hidden"  data-blog-index-show-filters>
+                        <p class="mini-meta" aria-label="Click to show blog filters">Show Filters</p>
+                        <svg aria-hidden="true"><use xlink:href="#chevron"></use></svg>
+                    </button>
+                </div>
                 <form class="blog-listing__form" action="{{ page.url }}" method="get" role="filter" data-blog-index>
                     <fieldset class="features__filters">
                         <div class="features__filter-wrap">
-                            <input type="checkbox" id="all" name="all" data-blog-filter-all checked>
+                            <input type="checkbox" id="all" name="all" data-blog-filter-all {% if not category_selected %}checked{% endif %}>
                             <label class="mini-meta" for="all">All</label>
                         </div>
-                        {% for pk, name in categories %}
+                        {% for pk, name, checked in categories %}
                             <div class="features__filter-wrap">
-                                <input type="checkbox" id="{{ pk|lower }}" name="{{ name|lower }}" data-blog-filter>
+                                <input type="checkbox" id="{{ pk|lower }}" name="{{ name|lower }}" {% if checked %}checked{% endif %} data-blog-filter>
                                 <label class="mini-meta" for="{{ pk|lower }}">{{ name }}</label>
                             </div>
                         {% endfor %}
                         <div class="features__filter-wrap">
-                            <button class="features__filters blog-listing__button mini-meta" type="submit">
+                            <button class="features__filters blog-listing__button" type="submit">
                                 <p class="mini-meta" aria-label="Click to filter the blog results">Filter</p>
                                 <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
                             </button>
