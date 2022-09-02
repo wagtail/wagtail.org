@@ -12,7 +12,10 @@
                         <label for="search" class="u-sr-only">Search</label>
                         <input id="search" type="search" placeholder="Enter your search term" class="form__input"
                             {% if search_query %} value="{{ search_query }}"{% endif %} aria-label="Search the site content"/>
-                        {% include "patterns/components/buttons/button.html" with arrow=True url=url title='Search' classes="button--dark" %}
+                        <button type="submit" class="button button--dark search__button" aria-label="Search the site content">
+                            <p class="button__text">Search</p>
+                            <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                        </button>
                     </fieldset>
                 </form>
             </div>
@@ -24,10 +27,8 @@
     <div class="grid">
         <div class="search-page__results">
             {% if search_results %}
-                {% with count=search_results.count %}
-                    <p class="intro-small">{{ count }} Result{{ count|pluralize }} for{% if search_query %}
-                        {{ search_query }}{% endif %}</p>
-                {% endwith %}
+                <p class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
+                    {{ search_query }}{% endif %}</p>
 
                 {% for result in search_results %}
                     {% with page=result.specific %}
@@ -43,4 +44,27 @@
         </div>
     </div>
 
+    {% if search_results.paginator.num_pages > 1 %}
+        <div class="grid">
+            <div class="pagination">
+                {% if search_results.has_previous %}
+                    <a href="?page={{ search_results.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__previous button button--reverse">
+                        <p class="button__text">Previous</p>
+                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                {% endif %}
+
+                <span class="pagination__page-count mini-meta">
+                    Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
+                </span>
+
+                {% if search_results.has_next %}
+                    <a href="?page={{ search_results.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__next button">
+                        <p class="button__text">Next</p>
+                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
