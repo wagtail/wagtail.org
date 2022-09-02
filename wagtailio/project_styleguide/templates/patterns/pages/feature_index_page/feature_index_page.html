@@ -1,5 +1,5 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static manifest %}
 
 {% block body_class %}template-feature-index{% endblock %}
 
@@ -14,4 +14,8 @@
     {% include_block page.cta %}
     {% include_block page.get_started.body %}
 
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% manifest 'js/features.js' %}"></script>
 {% endblock %}

@@ -1,27 +1,32 @@
 {% extends "patterns/base_page.html" %}
-
+{% load manifest %}
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
 
     <div class="grid">
-        <div class="hero">
+        <div class="hero hero--slim">
             <div class="hero__inner hero--inline">
-                <h1 class="hero__heading">{{ page.title }}</h1>
-                <form class="blog-listing__form" action="{{ page.url }}" method="get" role="filter">
+                <h1 class="hero__heading">Latest chirps</h1>
+                <form class="blog-listing__form" action="{{ page.url }}" method="get" role="filter" data-blog-index>
                     <fieldset class="features__filters">
                         <div class="features__filter-wrap">
-                            <input type="checkbox" id="all" name="all" data-category-filter-all checked>
+                            <input type="checkbox" id="all" name="all" data-blog-filter-all checked>
                             <label class="mini-meta" for="all">All</label>
                         </div>
                         {% for pk, name in categories %}
                             <div class="features__filter-wrap">
-                                <input type="checkbox" id="{{ pk|lower }}" name="{{ name|lower }}" data-feature-category>
+                                <input type="checkbox" id="{{ pk|lower }}" name="{{ name|lower }}" data-blog-filter>
                                 <label class="mini-meta" for="{{ pk|lower }}">{{ name }}</label>
                             </div>
                         {% endfor %}
+                        <div class="features__filter-wrap">
+                            <button class="features__filters blog-listing__button mini-meta" type="submit">
+                                <p class="mini-meta" aria-label="Click to filter the blog results">Filter</p>
+                                <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                            </button>
+                        </div>
                     </fieldset>
-                    <button class="features__filters blog-listing__button mini-meta" type="submit">Filter</button>
                 </form>
             </div>
         </div>
@@ -119,4 +124,8 @@
             {% endif %}
         </div>
     </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% manifest 'js/blog.js' %}"></script>
 {% endblock %}

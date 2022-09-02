@@ -15,6 +15,8 @@ const options = {
     entry: {
         blocking: `./${projectRoot}/static/js/blocking.js`,
         main: `./${projectRoot}/static/js/main.js`,
+        blog: `./${projectRoot}/static/js/blog.js`,
+        features: `./${projectRoot}/static/js/features.js`,
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
