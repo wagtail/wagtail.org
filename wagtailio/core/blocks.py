@@ -240,6 +240,10 @@ class CTABlock(CTALinkMixin):
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
+    @property
+    def required(self):
+        return True
+
     class Meta:
         icon = "bullhorn"
         template = "patterns/components/streamfields/cta/cta_block.html"
@@ -590,6 +594,17 @@ class LoopingVideoBlock(blocks.StructBlock):
 
     class Meta:
         icon = "media"
+        template = "patterns/components/streamfields/looping_video_block/looping_video_block.html"
+
+
+class LogoBlock(blocks.StructBlock):
+    logos = blocks.ListBlock(
+        ImageChooserBlock(),
+    )
+
+    class Meta:
+        icon = "images"
+        template = "patterns/components/streamfields/logo_block/logo_block.html"
 
 
 class ContentStoryBlock(blocks.StreamBlock):
@@ -626,14 +641,11 @@ class HomePageStoryBlock(blocks.StreamBlock):
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     icon_bullets = IconBulletsBlock(icon="list-alt")
-    logos = blocks.ListBlock(
-        ImageChooserBlock(),
-        icon="images",
-        template="patterns/components/streamfields/logo_block/logo_block.html",
-    )
+    logos = LogoBlock()
     multiple_quotes = MultipleQuoteBlock()
     standalone_cta = StandaloneCTABlock()
     teaser = TeaserBlock()
+    video = LoopingVideoBlock()
 
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"
