@@ -36,6 +36,19 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
     )
     icon = models.CharField(choices=SVGIcon.choices, max_length=255, blank=True)
 
+    # ----------------- Promo -----------------
+    video = models.ForeignKey(
+        "wagtailmedia.Media",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    autoplay_video = models.BooleanField(
+        default=False,
+        help_text="Automatically start the video when the video and page loads."
+        "The video will start over again, every time it is finished",
+    )
     code_snippet = models.TextField(
         blank=True,
         default="pip install wagtail",
@@ -46,15 +59,6 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         max_num=2,
         help_text="Allows for a maximum of 2 CTA blocks",
     )
-    video = models.ForeignKey(
-        "wagtailmedia.Media",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    loop_video = models.BooleanField(default=False)
-    autoplay_video = models.BooleanField(default=False)
 
     body = StreamField(HomePageStoryBlock())
 
@@ -65,13 +69,20 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
                 FieldPanel("sub_heading"),
                 FieldPanel("intro"),
                 FieldPanel("icon"),
-                FieldPanel("code_snippet"),
-                StreamFieldPanel("call_to_action"),
-                MediaChooserPanel("video", media_type="video"),
-                FieldPanel("loop_video"),
-                FieldPanel("autoplay_video"),
             ],
             "Hero",
+            classname="collapsible",
+        )
+    ]
+    promo_panels = [
+        MultiFieldPanel(
+            [
+                MediaChooserPanel("video", media_type="video"),
+                FieldPanel("autoplay_video"),
+                FieldPanel("code_snippet"),
+                StreamFieldPanel("call_to_action"),
+            ],
+            "Promo",
             classname="collapsible",
         )
     ]
@@ -79,6 +90,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
     content_panels = (
         Page.content_panels
         + hero_panels
+        + promo_panels
         + [
             StreamFieldPanel("body"),
         ]
