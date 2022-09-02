@@ -593,7 +593,7 @@ class GetStartedBlock(blocks.StructBlock):
 
 
 class LoopingVideoBlock(blocks.StructBlock):
-    loop = blocks.BooleanBlock(required=False, default=True)
+    # setting autoplay to True adds 'autoplay', 'loop' & 'muted' attrs to video element
     autoplay = blocks.BooleanBlock(required=False, default=False)
     video = VideoChooserBlock()
 

@@ -8,17 +8,19 @@
 
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
 
-    <div class="grid">
-        <div class="code-snippet{% if page.call_to_action|length < 2 %} code-snippet--bottom-space{% endif %}" data-code-snippet>
-            <pre data-code-to-copy>{{ page.code_snippet }}</pre>
-            <button class="code-snippet__button" aria-label="Copy the command {{ page.code_snippet }}" data-copy-code-button>
-                <svg class="code-snippet__icon" aria-hidden="true">
-                    <use xlink:href="#copy"></use>
-                </svg>
-            </button>
-            <p class="code-snippet__confirmation">Copied!</p>
+    {% if page.code_snippet %}
+        <div class="grid">
+            <div class="code-snippet{% if page.call_to_action|length < 2 %} code-snippet--bottom-space{% endif %}" data-code-snippet>
+                <pre data-code-to-copy>{{ page.code_snippet }}</pre>
+                <button class="code-snippet__button" aria-label="Copy the command {{ page.code_snippet }}" data-copy-code-button>
+                    <svg class="code-snippet__icon" aria-hidden="true">
+                        <use xlink:href="#copy"></use>
+                    </svg>
+                </button>
+                <p class="code-snippet__confirmation">Copied!</p>
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     {% if page.call_to_action %}
         <div class="grid">
@@ -35,7 +37,7 @@
     {% if page.video %}
         <div class="home-embed">
             <div class="responsive-object" style="padding-bottom: 56.25%;">
-                <video {% if page.autoplay_video %}autoplay{% else %}controls{% endif %} {% if page.loop_video %}loop{% endif %} muted>
+                <video {% if page.autoplay_video %}autoplay loop muted{% else %}controls{% endif %}>
                     <source type="{{ page.video.type }}/{{ page.video.file_extension }}" src="{{ page.video.url }}">
                 </video>
             </div>
