@@ -22,6 +22,10 @@
     max-width: $max-width;
     margin: 0 auto;
   }
+
+  &.fixed {
+    position: fixed;
+  }
 }
 
 .site-header {
