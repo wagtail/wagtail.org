@@ -22,8 +22,10 @@
     max-width: $max-width;
     margin: 0 auto;
   }
+}
 
-  &.fixed {
+.mobile_nav-open {
+  & .header {
     position: fixed;
   }
 }

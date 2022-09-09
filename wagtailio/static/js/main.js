@@ -77,7 +77,6 @@ $(function() {
   $(".menu-toggle").on("click", function(e) {
     e.preventDefault();
     $("body").toggleClass("mobile_nav-open");
-    $("header").toggleClass("fixed");
   });
 
   // Blog index for mobile button
