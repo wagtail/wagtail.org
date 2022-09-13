@@ -19,6 +19,8 @@ scout-apm==2.23.5
 mammoth==1.4.18  # used for curstom wagtail content import parser
 
 django-basic-auth-ip-whitelist==0.3.4
+django-csp==3.7
+django-permissions-policy==4.13.0
 django-referrer-policy==1.0
 
 # wagtail packages
