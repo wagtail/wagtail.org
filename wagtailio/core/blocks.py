@@ -23,7 +23,7 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
     link_url = blocks.CharBlock(required=False)
 
     def clean(self, value):
-        struct_value = super(PageOrExternalLinkBlock, self).clean(value)
+        struct_value = super().clean(value)
 
         if not value.get("link_page") and not value.get("link_url"):
             raise ValidationError(
@@ -56,9 +56,7 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
     def get_context(self, value, parent_context=None):
         link_url = value.get("link_url")
 
-        context = super(PageOrExternalLinkBlock, self).get_context(
-            value, parent_context=parent_context
-        )
+        context = super().get_context(value, parent_context=parent_context)
         context.update(
             {
                 "is_anchor": isinstance(link_url, six.text_type)
@@ -190,9 +188,13 @@ class HomePageBlock(blocks.StreamBlock):
 
 class CTALinkStructValue(blocks.StructValue):
     def url(self):
-        cta_url = self.get("cta_url")
-        cta_page = self.get("cta_page")
-        return cta_url or cta_page.url
+        if cta_url := self.get("cta_url"):
+            return cta_url
+
+        if cta_page := self.get("cta_page"):
+            return cta_page.url
+
+        return ""
 
 
 class CTALinkMixin(blocks.StructBlock):
@@ -200,15 +202,18 @@ class CTALinkMixin(blocks.StructBlock):
         value_class = CTALinkStructValue
 
     def clean(self, value):
-        errors = {}
         struct_value = super().clean(value)
-        if self.required and not value.get("cta_page") and not value.get("cta_url"):
+
+        errors = {}
+        url = value.get("cta_url")
+        page = value.get("cta_page")
+        if self.required and not page and not url:
             error = ErrorList(
                 [ValidationError("You must specify CTA page or CTA URL.")]
             )
             errors["cta_url"] = errors["cta_page"] = error
 
-        if value.get("cta_page") and value.get("cta_url"):
+        if page and url:
             error = ErrorList(
                 [
                     ValidationError(
@@ -218,7 +223,7 @@ class CTALinkMixin(blocks.StructBlock):
             )
             errors["cta_url"] = errors["cta_page"] = error
 
-        if not value.get("text") and (value.get("cta_page") or value.get("cta_url")):
+        if not value.get("text") and (page or url):
             error = ErrorList([ValidationError("You must specify CTA text.")])
             errors["text"] = error
 

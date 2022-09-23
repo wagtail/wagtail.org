@@ -29,7 +29,7 @@ class HomePage(Page, SocialMediaMixin, CrossPageMixin):
     )
 
     def get_context(self, request, *args, **kwargs):
-        context = super(HomePage, self).get_context(request, *args, **kwargs)
+        context = super().get_context(request, *args, **kwargs)
         context.update({"blog_posts": BlogPage.objects.live().order_by("-date")})
 
         return context
