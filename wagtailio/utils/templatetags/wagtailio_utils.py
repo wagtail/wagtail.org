@@ -1,8 +1,6 @@
 from django import template
 
 from wagtail.core.templatetags.wagtailcore_tags import pageurl
-from wagtail.images.models import SourceImageIOError
-from wagtail.images.templatetags.wagtailimages_tags import ImageNode
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.utils.models import LinkGroupSnippet, MenuSnippet
