@@ -6,7 +6,7 @@
         {% image value.image fill-400x400 class="text-media__media" %}
     {% else %}
         <div class="text-media__embed-wrap responsive-object" style="padding-bottom: 56.25%">
-            {% embed value.embed %}
+            {% embed value.embed.url %}
         </div>
     {% endif %}
 
