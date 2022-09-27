@@ -25,10 +25,10 @@ django-referrer-policy==1.0
 
 # wagtail packages
 wagtailaltgenerator==4.1.2
-wagtail-airtable==0.2.1
+wagtail-airtable==0.3.0
 wagtail-content-import==0.6.0
 wagtail-image-import==0.1.1
-wagtail-transfer==0.8.2
+wagtail-transfer==0.8.5
 wagtail-ab-testing==0.7
 Wand==0.6.7
-wagtailmedia==0.8.0
+wagtailmedia==0.11.0
