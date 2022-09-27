@@ -76,7 +76,6 @@ INSTALLED_APPS = (
     "wagtail.search",
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
-    "wagtail.contrib.postgres_search",
     "wagtail.api.v2",
     "wagtail.contrib.settings",
     "wagtailio.utils",
@@ -477,7 +476,7 @@ WAGTAILEMBEDS_RESPONSIVE_HTML = True
 # Search
 
 WAGTAILSEARCH_BACKENDS = {
-    "default": {"BACKEND": "wagtail.contrib.postgres_search.backend"}
+    "default": {"BACKEND": "wagtail.search.backends.database"}
 }
 
 
