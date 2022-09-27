@@ -26,9 +26,12 @@ django-referrer-policy==1.0
 # wagtail packages
 wagtailaltgenerator==4.1.2
 wagtail-airtable==0.3.0
-wagtail-content-import==0.6.0
+wagtail-content-import==0.8.0
 wagtail-image-import==0.1.1
 wagtail-transfer==0.8.5
-wagtail-ab-testing==0.7
+# update this once a release is made 
+# for https://github.com/torchbox/wagtail-ab-testing/pull/48
+# wagtail-ab-testing==0.7
+git+https://github.com/nickmoreton/wagtail-ab-testing@wagtail-3.0#egg=wagtail-ab-testing
 Wand==0.6.7
 wagtailmedia==0.11.0
