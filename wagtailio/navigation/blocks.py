@@ -63,3 +63,13 @@ class NavItemCTA(CTALinkMixin):
     class Meta:
         icon = "bullhorn"
         label = "CTA"
+
+
+class MainMenuSectionBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255)
+    nav_items = blocks.ListBlock(NavItemBlock())
+    call_to_action = NavItemCTA(required=False)
+
+    class Meta:
+        icon = "bars"
+        label = "Main menu section"
