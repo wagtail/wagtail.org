@@ -6,29 +6,25 @@
             <li class="">
                 <span>{{ menu_section.name }}</span>
                 <ul class="">
-                    {% for item in menu_section.nav_items %}
-                        {% with item.value as nav_item %}
-                            <li class="">
-                                <a href="{{ nav_item.url }}" title="{{ nav_item.text }}">
-                                    {% include "patterns/components/icon/icon.html" with icon=nav_item.icon classes="icon-link__svg" %}
-                                    {{ nav_item.text }} <br/>
-                                    {{ nav_item.short_description }}
-                                </a>
-                            </li>
-                        {% endwith %}
+                    {% for nav_item in menu_section.nav_items %}
+                        <li class="">
+                            <a href="{{ nav_item.url }}" title="{{ nav_item.text }}">
+                                {% include "patterns/components/icon/icon.html" with icon=nav_item.icon classes="icon-link__svg" %}
+                                {{ nav_item.text }} <br/>
+                                {{ nav_item.short_description }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
                 <div class="">
-                    {% for item in menu_section.call_to_action %}  {# there's actually only 1 cta, as max_num=1 #}
-                        {% with item.value as cta %}
-                            <a href="{{ cta.url }}" title="{{ cta.text }}">
-                                {% include "patterns/components/icon/icon.html" with icon=cta.icon classes="icon-link__svg" %}
-                                <h3>{{ cta.text }}</h3>
-                                <p>{{ cta.sub_heading }}</p>
-                                {{ cta.description }}
-                            </a>
-                        {% endwith %}
-                    {% endfor %}
+                    {% with menu_section.call_to_action as cta %}
+                        <a href="{{ cta.url }}" title="{{ cta.text }}">
+                            {% include "patterns/components/icon/icon.html" with icon=cta.icon classes="icon-link__svg" %}
+                            <h3>{{ cta.text }}</h3>
+                            <p>{{ cta.sub_heading }}</p>
+                            {{ cta.description }}
+                        </a>
+                    {% endwith %}
                 </div>
             </li>
         {% endfor %}

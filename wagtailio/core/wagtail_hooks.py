@@ -57,6 +57,7 @@ def whitelister_element_rules():
 def register_icons(icons):
     return icons + [
         "wagtailfontawesomesvg/solid/address-card.svg",
+        "wagtailfontawesomesvg/solid/bars.svg",
         "wagtailfontawesomesvg/solid/bullhorn.svg",
         "wagtailfontawesomesvg/solid/envelope-open-text.svg",
         "wagtailfontawesomesvg/solid/gem.svg",
