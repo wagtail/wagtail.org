@@ -149,8 +149,8 @@ MEDIA_URL = env.get("MEDIA_URL", "/media/")
 # Basic auth settings
 if os.environ.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
     MIDDLEWARE.insert(0, "baipw.middleware.BasicAuthIPWhitelistMiddleware")
-    BASIC_AUTH_LOGIN = "wagtailio"
-    BASIC_AUTH_PASSWORD = "showmewagtailio"
+    BASIC_AUTH_LOGIN = env.get("BASIC_AUTH_LOGIN")
+    BASIC_AUTH_PASSWORD = env.get("BASIC_AUTH_PASSWORD")
 
     # Wagtail requires Authorization header to be present for the previews
     BASIC_AUTH_DISABLE_CONSUMING_AUTHORIZATION_HEADER = True
