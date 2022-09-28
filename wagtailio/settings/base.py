@@ -151,6 +151,10 @@ if os.environ.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
     MIDDLEWARE.insert(0, "baipw.middleware.BasicAuthIPWhitelistMiddleware")
     BASIC_AUTH_LOGIN = "wagtailio"
     BASIC_AUTH_PASSWORD = "showmewagtailio"
+
+    # Wagtail requires Authorization header to be present for the previews
+    BASIC_AUTH_DISABLE_CONSUMING_AUTHORIZATION_HEADER = True
+
     BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
         "78.32.251.192/28",
         "89.197.53.244/30",
