@@ -29,6 +29,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.HOME }}/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
       - uses: pre-commit/action@v3.0.0
   test_js:
     runs-on: ubuntu-latest
@@ -69,18 +73,18 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: pipx install poetry==1.2.1 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: 3.8
-          cache: 'pip'
-      - name: Install python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          cache: 'poetry'
+      - name: Install Python dependencies
+        run: poetry install
       - name: System checks
-        run: python manage.py check
-      - name: Missing migrations
-        run: python manage.py makemigrations --check --noinput
+        run: poetry run ./manage.py check
+      - name: Check for missing migrations
+        run: poetry run ./manage.py makemigrations --check --noinput
       - name: Test
-        run: python manage.py test
+        run: poetry run ./manage.py test
