@@ -1,6 +1,6 @@
 default_language_version:
   node: 18.7.0
-  python: python3
+  python: python3.8
 repos:
   - repo: https://github.com/psf/black
     rev: 22.6.0
@@ -20,8 +20,9 @@ repos:
     hooks:
       - id: flake8
         additional_dependencies:
-          - flake8-comprehensions
-          - flake8-assertive
+          - flake8-assertive==2.1.0
+          - flake8-blind-except==0.2.1
+          - flake8-comprehensions==3.10.0
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v2.7.1
     hooks:

@@ -12,7 +12,6 @@ services:
       SECRET_KEY: fake
       DJANGO_SETTINGS_MODULE: wagtailio.settings.dev
       DATABASE_URL: postgres://wagtailorg:wagtailorg@db:5432/wagtailorg
-
       # The env vars get picked up by postgresql client tools (psql, pg_dump, etc)
       PGHOST: db
       PGUSER: wagtailorg

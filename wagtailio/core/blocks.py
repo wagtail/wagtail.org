@@ -8,7 +8,6 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
-import six
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.core.choices import SVGIcon
@@ -58,10 +57,7 @@ class PageOrExternalLinkBlock(blocks.StructBlock):
 
         context = super().get_context(value, parent_context=parent_context)
         context.update(
-            {
-                "is_anchor": isinstance(link_url, six.text_type)
-                and link_url.startswith("#")
-            }
+            {"is_anchor": isinstance(link_url, str) and link_url.startswith("#")}
         )
 
         return context
