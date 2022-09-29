@@ -29,7 +29,7 @@
             {% get_search_promotions search_query as search_picks %}
             {% if search_picks %}
                 {% for pick in search_picks %}
-                    {% with page=pick.page.specific %}
+                    {% with page=pick.page %}
                         <div class="search-result">
                             <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
                             <p>{% firstof page.listing_intro page.introduction %}</p>
@@ -42,13 +42,11 @@
                 <p class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
                     {{ search_query }}{% endif %}</p>
 
-                {% for result in search_results %}
-                    {% with page=result.specific %}
-                        <div class="search-result">
-                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                            <p>{% firstof page.listing_intro page.introduction %}</p>
-                        </div>
-                    {% endwith %}
+                {% for page in search_results %}
+                    <div class="search-result">
+                        <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
+                        <p>{% firstof page.listing_intro page.introduction %}</p>
+                    </div>
                 {% endfor %}
 
             {% elif search_query and not search_picks %}

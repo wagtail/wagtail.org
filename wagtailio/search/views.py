@@ -25,6 +25,7 @@ def search(request):
         search_results = (
             Page.objects.live()
             .exclude(pk__in=promoted_page_pks)
+            .specific()
             .search(search_query, operator="and")
         )
 
