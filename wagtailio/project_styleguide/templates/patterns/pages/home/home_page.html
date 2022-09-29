@@ -11,7 +11,7 @@
     {% if page.code_snippet %}
         <div class="grid">
             <div class="code-snippet{% if page.call_to_action|length < 2 %} code-snippet--bottom-space{% endif %}" data-code-snippet>
-                <pre data-code-to-copy>{{ page.code_snippet }}</pre>
+                <pre data-code-to-copy>{{ page.code_snippet|linebreaks }}</pre>
                 <button class="code-snippet__button" aria-label="Copy the command {{ page.code_snippet }}" data-copy-code-button>
                     <svg class="code-snippet__icon" aria-hidden="true">
                         <use xlink:href="#copy"></use>
