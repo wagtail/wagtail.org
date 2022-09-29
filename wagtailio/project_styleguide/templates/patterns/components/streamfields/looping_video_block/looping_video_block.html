@@ -3,7 +3,9 @@
 <div class="home-embed">
     <div class="responsive-object" style="padding-bottom: 56.25%;">
         <video {% if value.autoplay %}autoplay loop muted{% else %}controls{% endif %}>
-            <source type="{{ value.video.type }}/{{ value.video.file_extension }}" src="{{ value.video.url }}">
+            {% for source in value.video.sources %}
+                <source type="{{ source.type }}" src="{{ source.src }}">
+            {% endfor %}
         </video>
     </div>
 </div>
