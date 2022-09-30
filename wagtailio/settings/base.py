@@ -157,6 +157,10 @@ if os.environ.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
     # Wagtail requires Authorization header to be present for the previews
     BASIC_AUTH_DISABLE_CONSUMING_AUTHORIZATION_HEADER = True
 
+    # Paths that shouldn't be protected by basic auth
+    if "BASIC_AUTH_WHITELISTED_PATHS" in env:
+        BASIC_AUTH_WHITELISTED_PATHS = env["BASIC_AUTH_WHITELISTED_PATHS"].split(",")
+
     BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
         "78.32.251.192/28",
         "89.197.53.244/30",
