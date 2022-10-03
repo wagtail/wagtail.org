@@ -100,10 +100,6 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
 
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        context.update({"blog_posts": BlogPage.objects.live().order_by("-date")})
-
 
 class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/content_page/content_page.html"
