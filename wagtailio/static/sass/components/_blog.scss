@@ -38,7 +38,13 @@
 
         @include media-query(medium) {
             padding-bottom: 80px;
+            padding-top: 80px;
         }
+
+        @include media-query(large) {
+          padding-bottom: (20vh);
+        }
+
     }
 
     &__main-image {
