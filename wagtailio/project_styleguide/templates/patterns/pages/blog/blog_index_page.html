@@ -7,6 +7,21 @@
     {% include "patterns/components/hero/hero.html" with value=page %}
 
     <div class="grid">
+        <form class="filters" method="GET">
+            <label for="category" class="filters__label u-sr-only">Blog post filter</label>
+            <select id="category" name="category" class="filters__options">
+                <option value="">All</option>
+                {% for category in categories %}
+                    <option value="{{ category.0 }}" {% if request.get.category == "category.0" %}selected="selected"{% endif %}>
+                        {{ category.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Filter" class="filters__submit">
+        </form>
+    </div>
+
+    <div class="grid">
         <section class="blog-listing">
             {% for post in posts %}
                 {# only show featured posts on the first pagination page, no filters #}
