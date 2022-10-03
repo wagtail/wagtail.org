@@ -6,6 +6,7 @@ import SiteSearchMobile from './components/site-search-mobile';
 import FooterMenuColumn from './components/footer-menu-column';
 import FeatureIndex from './components/feature-index';
 import CopyCodeSnippet from './components/copy-code-snippet';
+import FilterToggle from './components/filter-toggle';
 
 function initComponent(ComponentClass) {
     const items = document.querySelectorAll(ComponentClass.selector());
@@ -22,4 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initComponent(FooterMenuColumn);
     initComponent(FeatureIndex);
     initComponent(CopyCodeSnippet);
+    initComponent(FilterToggle);
 });

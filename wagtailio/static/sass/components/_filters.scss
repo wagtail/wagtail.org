@@ -1,4 +1,5 @@
 .filters {
+  $root: &;
   grid-column: 2 / span 2;
 
     @include media-query(medium) {
@@ -7,5 +8,19 @@
 
     @include media-query(large) {
         grid-column: 2 / span 5;
+    }
+
+    &__options {
+      display: none;
+    }
+
+    &.is-open {
+
+      #{$root}__options {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
     }
 }

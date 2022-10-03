@@ -7,8 +7,9 @@
     {% include "patterns/components/hero/hero.html" with value=page %}
 
     <div class="grid">
-        <form class="filters" method="GET">
-            <label for="category" class="filters__label u-sr-only">Blog post filter</label>
+        <form class="filters" method="GET" data-filter-toggle>
+            <button class="filters__toggle" data-filter-button>Filter</button>
+            <!-- <label for="category" class="filters__label u-sr-only">Blog post filter</label>
             <select id="category" name="category" class="filters__options">
                 <option value="">All</option>
                 {% for category in categories %}
@@ -16,10 +17,26 @@
                         {{ category.1 }}
                     </option>
                 {% endfor %}
-            </select>
-            <input type="submit" value="Filter" class="filters__submit">
+            </select> -->
+            <fieldset class="filters__options features__filters" data-filter-options>
+                <div class="features__filter-wrap">
+                    <input type="radio" id="all" name="category" value="" {% if request.get.category == "" %}checked{% endif %}>
+                    <label class="mini-meta" for="all">All</label>
+                </div>
+                {% for category in categories %}
+                    {{ request.get.category }}
+                    <div class="features__filter-wrap">
+                        <input type="checkbox" id="{{ category.0 }}" name="category" value="{{ category.0 }}" {% if request.get.category == "category.0" %}checked{% endif %}>
+                        <label class="mini-meta" for="{{ category.0 }}">{{ category.1 }}</label>
+                    </div>
+                {% endfor %}
+                <input type="submit" value="Filter" class="filters__submit">
+            </fieldset>
+
         </form>
     </div>
+
+
 
     <div class="grid">
         <section class="blog-listing">
