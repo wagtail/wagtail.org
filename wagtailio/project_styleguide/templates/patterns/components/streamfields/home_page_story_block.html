@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for block in value %}
+    {% if block.block_type == 'get_started_block' %}
+        {{ block.value.body }}
+    {% else %}
+        {% include_block block %}
+    {% endif %}
+{% endfor %}

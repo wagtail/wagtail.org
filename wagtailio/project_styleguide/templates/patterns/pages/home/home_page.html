@@ -8,36 +8,40 @@
 
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
 
-    <div class="grid">
-        <div class="code-snippet{% if not page.cta_one or not page.cta_two %} code-snippet--bottom-space{% endif %}" data-code-snippet>
-            <pre data-code-to-copy>pip install wagtail</pre>
-            <button class="code-snippet__button" aria-label="Copy the command pip install wagtail" data-copy-code-button>
-                <svg class="code-snippet__icon" aria-hidden="true">
-                    <use xlink:href="#copy"></use>
-                </svg>
-            </button>
-            <p class="code-snippet__confirmation">Copied!</p>
-        </div>
-    </div>
-
-    {% if page.cta_one or page.cta_two %}
+    {% if page.code_snippet %}
         <div class="grid">
-            <div class="button-align button-align--home">
-                {% if page.cta_one %}
-                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.cta_one.url title=page.cta_one.title classes="button-align__item" %}
-                {% endif %}
-
-                {% if page.cta_two %}
-                    {% include "patterns/components/buttons/button.html" with arrow=True url=page.cta_two.url title=page.cta_two.title classes="button-align__item" %}
-                {% endif %}
+            <div class="code-snippet{% if page.call_to_action|length < 2 %} code-snippet--bottom-space{% endif %}" data-code-snippet>
+                <pre data-code-to-copy>{{ page.code_snippet|linebreaks }}</pre>
+                <button class="code-snippet__button" aria-label="Copy the command {{ page.code_snippet }}" data-copy-code-button>
+                    <svg class="code-snippet__icon" aria-hidden="true">
+                        <use xlink:href="#copy"></use>
+                    </svg>
+                </button>
+                <p class="code-snippet__confirmation">Copied!</p>
             </div>
         </div>
     {% endif %}
 
-    {% if page.embed %}
+    {% if page.call_to_action %}
+        <div class="grid">
+            <div class="button-align button-align--home">
+                {% for block in page.call_to_action %}
+                    {% with block.value as cta %}
+                        {% include "patterns/components/buttons/button.html" with arrow=True url=cta.url title=cta.text classes="button-align__item" %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.video %}
         <div class="home-embed">
             <div class="responsive-object" style="padding-bottom: 56.25%;">
-                {% embed page.embed %}
+                <video {% if page.autoplay_video %}autoplay loop muted{% else %}controls{% endif %}>
+                    {% for source in page.video.sources %}
+                        <source type="{{ source.type }}" src="{{ source.src }}">
+                    {% endfor %}
+                </video>
             </div>
         </div>
     {% endif %}
