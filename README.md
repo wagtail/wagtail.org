@@ -32,6 +32,12 @@ make runserver
 
 This will launch `django-admin runserver` in the web container, which serves Wagtail on http://localhost:8000/
 
+To run migrations within docker you'll need to run:
+
+```
+make migrate
+```
+
 ### Creating a superuser
 
 To create a new superuser locally, run:
