@@ -35,6 +35,10 @@
         }
     }
 
+    &__subheading {
+      font-weight: $weight--regular;
+    }
+
     &__icon {
         position: absolute;
         top: 0;
