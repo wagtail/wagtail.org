@@ -74,7 +74,6 @@ INSTALLED_APPS = [
     "wagtail.search",
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
-    "wagtail.contrib.postgres_search",
     "wagtail.api.v2",
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
@@ -478,7 +477,7 @@ WAGTAIL_SITE_NAME = "wagtailio"
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
 if "PRIMARY_HOST" in env:
-    BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
+    WAGTAILADMIN_BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
 
 # https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
@@ -487,7 +486,9 @@ WAGTAILEMBEDS_RESPONSIVE_HTML = True
 # Search
 
 WAGTAILSEARCH_BACKENDS = {
-    "default": {"BACKEND": "wagtail.contrib.postgres_search.backend"}
+    "default": {
+        "BACKEND": "wagtail.search.backends.database",
+    }
 }
 
 
