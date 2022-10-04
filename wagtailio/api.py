@@ -1,6 +1,6 @@
 from wagtail.api.v2.router import WagtailAPIRouter
 from wagtail.api.v2.views import PagesAPIViewSet
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 from wagtailio.areweheadlessyet.models import AreWeHeadlessYetHomePage
 

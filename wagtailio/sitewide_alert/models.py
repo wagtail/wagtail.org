@@ -4,11 +4,11 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.contrib.frontend_cache.utils import PurgeBatch
 from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 
 
 @register_setting

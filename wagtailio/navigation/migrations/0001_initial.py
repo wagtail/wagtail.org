@@ -3,8 +3,8 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -32,39 +32,37 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=255)),
                 (
                     "sections",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "heading",
-                                            wagtail.core.blocks.CharBlock(
-                                                max_length=255
-                                            ),
+                                            wagtail.blocks.CharBlock(max_length=255),
                                         ),
                                         (
                                             "links",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "text",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 max_length=100
                                                             ),
                                                         ),
                                                         (
                                                             "cta_page",
-                                                            wagtail.core.blocks.PageChooserBlock(
+                                                            wagtail.blocks.PageChooserBlock(
                                                                 label="Page",
                                                                 required=False,
                                                             ),
                                                         ),
                                                         (
                                                             "cta_url",
-                                                            wagtail.core.blocks.URLBlock(
+                                                            wagtail.blocks.URLBlock(
                                                                 label="URL",
                                                                 required=False,
                                                             ),
@@ -99,40 +97,38 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=255)),
                 (
                     "menu_sections",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "menu_section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "name",
-                                            wagtail.core.blocks.CharBlock(
-                                                max_length=255
-                                            ),
+                                            wagtail.blocks.CharBlock(max_length=255),
                                         ),
                                         (
                                             "nav_items",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "text",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 label="Nav item name",
                                                                 max_length=55,
                                                             ),
                                                         ),
                                                         (
                                                             "short_description",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 max_length=55,
                                                                 required=False,
                                                             ),
                                                         ),
                                                         (
                                                             "icon",
-                                                            wagtail.core.blocks.ChoiceBlock(
+                                                            wagtail.blocks.ChoiceBlock(
                                                                 choices=[
                                                                     (
                                                                         "arrow-alt",
@@ -296,14 +292,14 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "cta_page",
-                                                            wagtail.core.blocks.PageChooserBlock(
+                                                            wagtail.blocks.PageChooserBlock(
                                                                 label="Page",
                                                                 required=False,
                                                             ),
                                                         ),
                                                         (
                                                             "cta_url",
-                                                            wagtail.core.blocks.URLBlock(
+                                                            wagtail.blocks.URLBlock(
                                                                 label="External Link",
                                                                 required=False,
                                                             ),
@@ -314,32 +310,32 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "call_to_action",
-                                            wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.StructBlock(
                                                 [
                                                     (
                                                         "text",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             label="Heading",
                                                             max_length=255,
                                                         ),
                                                     ),
                                                     (
                                                         "sub_heading",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             max_length=255,
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "description",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             max_length=255,
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "icon",
-                                                        wagtail.core.blocks.ChoiceBlock(
+                                                        wagtail.blocks.ChoiceBlock(
                                                             choices=[
                                                                 (
                                                                     "arrow-alt",
@@ -473,13 +469,13 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "cta_page",
-                                                        wagtail.core.blocks.PageChooserBlock(
+                                                        wagtail.blocks.PageChooserBlock(
                                                             label="Page", required=False
                                                         ),
                                                     ),
                                                     (
                                                         "cta_url",
-                                                        wagtail.core.blocks.URLBlock(
+                                                        wagtail.blocks.URLBlock(
                                                             label="External Link",
                                                             required=False,
                                                         ),

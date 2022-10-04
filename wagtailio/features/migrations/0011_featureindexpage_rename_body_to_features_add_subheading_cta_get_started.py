@@ -3,8 +3,8 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -22,19 +22,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="featureindexpage",
             name="cta",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "cta",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "cta",
-                                    wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.StructBlock(
                                         [
                                             (
                                                 "text",
-                                                wagtail.core.blocks.CharBlock(
+                                                wagtail.blocks.CharBlock(
                                                     label="CTA text",
                                                     max_length=255,
                                                     required=False,
@@ -42,13 +42,13 @@ class Migration(migrations.Migration):
                                             ),
                                             (
                                                 "cta_page",
-                                                wagtail.core.blocks.PageChooserBlock(
+                                                wagtail.blocks.PageChooserBlock(
                                                     label="CTA page", required=False
                                                 ),
                                             ),
                                             (
                                                 "cta_url",
-                                                wagtail.core.blocks.URLBlock(
+                                                wagtail.blocks.URLBlock(
                                                     label="CTA URL", required=False
                                                 ),
                                             ),
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "description",
-                                    wagtail.core.blocks.TextBlock(
+                                    wagtail.blocks.TextBlock(
                                         label="Short description",
                                         max_length=100,
                                         required=False,
@@ -73,31 +73,31 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="featureindexpage",
             name="features",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "features",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "blocks",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "heading",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         max_length=255, required=False
                                                     ),
                                                 ),
                                                 (
                                                     "features",
-                                                    wagtail.core.blocks.ListBlock(
-                                                        wagtail.core.blocks.StructBlock(
+                                                    wagtail.blocks.ListBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "heading",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         label="Feature heading",
                                                                         max_length=255,
                                                                         required=False,
@@ -105,7 +105,7 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "description",
-                                                                    wagtail.core.blocks.RichTextBlock(
+                                                                    wagtail.blocks.RichTextBlock(
                                                                         features=[
                                                                             "bold",
                                                                             "italic",
@@ -118,14 +118,14 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "link",
-                                                                    wagtail.core.blocks.URLBlock(
+                                                                    wagtail.blocks.URLBlock(
                                                                         label="Feature link",
                                                                         required=False,
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "link_title",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         default="View docs",
                                                                         label="Feature link title",
                                                                         max_length=50,

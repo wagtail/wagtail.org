@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
 import wagtail.documents.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 import wagtailio.utils.blocks
@@ -112,37 +112,37 @@ class Migration(migrations.Migration):
                 ("date", models.DateField()),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         (
                             (
                                 "h2",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h3",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h4",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "intro",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "aligned_image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "image",
@@ -150,7 +150,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "caption",
-                                            wagtail.core.blocks.RichTextBlock(),
+                                            wagtail.blocks.RichTextBlock(),
                                         ),
                                         (
                                             "alignment",
@@ -163,38 +163,34 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "pullquote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     )
                                 ),
                             ),
                             (
                                 "imagequote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -210,9 +206,9 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "aligned_html",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
-                                        ("html", wagtail.core.blocks.RawHTMLBlock()),
+                                        ("html", wagtail.blocks.RawHTMLBlock()),
                                         (
                                             "alignment",
                                             wagtailio.utils.blocks.HTMLAlignmentChoiceBlock(),
@@ -361,37 +357,37 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         (
                             (
                                 "h2",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h3",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "h4",
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname="title", icon="title"
                                 ),
                             ),
                             (
                                 "intro",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.RichTextBlock(icon="pilcrow"),
+                                wagtail.blocks.RichTextBlock(icon="pilcrow"),
                             ),
                             (
                                 "aligned_image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "image",
@@ -399,7 +395,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "caption",
-                                            wagtail.core.blocks.RichTextBlock(),
+                                            wagtail.blocks.RichTextBlock(),
                                         ),
                                         (
                                             "alignment",
@@ -412,38 +408,34 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "pullquote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     )
                                 ),
                             ),
                             (
                                 "imagequote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "quote",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 classname="quote title"
                                             ),
                                         ),
                                         (
                                             "attribution",
-                                            wagtail.core.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -459,9 +451,9 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "aligned_html",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
-                                        ("html", wagtail.core.blocks.RawHTMLBlock()),
+                                        ("html", wagtail.blocks.RawHTMLBlock()),
                                         (
                                             "alignment",
                                             wagtailio.utils.blocks.HTMLAlignmentChoiceBlock(),

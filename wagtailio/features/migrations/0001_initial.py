@@ -6,7 +6,7 @@ import django.db.models.deletion
 from django.db import migrations, models
 
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                             models.IntegerField(blank=True, editable=False, null=True),
                         ),
                         ("title", models.CharField(max_length=255)),
-                        ("text", wagtail.core.fields.RichTextField()),
+                        ("text", wagtail.fields.RichTextField()),
                     ],
                     options={
                         "db_table": "core_bullet",

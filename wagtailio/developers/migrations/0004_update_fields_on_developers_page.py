@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -26,24 +26,24 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="developerspage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 (
                     (
                         "code",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             (
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "subtitle",
-                                    wagtail.core.blocks.CharBlock(required=False),
+                                    wagtail.blocks.CharBlock(required=False),
                                 ),
                                 (
                                     "code",
-                                    wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.StructBlock(
                                         (
                                             (
                                                 "language",
-                                                wagtail.core.blocks.ChoiceBlock(
+                                                wagtail.blocks.ChoiceBlock(
                                                     choices=[
                                                         ("bash", "Bash/Shell"),
                                                         ("css", "CSS"),
@@ -58,33 +58,33 @@ class Migration(migrations.Migration):
                                                     ]
                                                 ),
                                             ),
-                                            ("code", wagtail.core.blocks.TextBlock()),
+                                            ("code", wagtail.blocks.TextBlock()),
                                         )
                                     ),
                                 ),
                                 (
                                     "link",
-                                    wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.StructBlock(
                                         (
                                             (
                                                 "link_text",
-                                                wagtail.core.blocks.CharBlock(),
+                                                wagtail.blocks.CharBlock(),
                                             ),
                                             (
                                                 "link_text_bold",
-                                                wagtail.core.blocks.CharBlock(
+                                                wagtail.blocks.CharBlock(
                                                     required=False
                                                 ),
                                             ),
                                             (
                                                 "link_page",
-                                                wagtail.core.blocks.PageChooserBlock(
+                                                wagtail.blocks.PageChooserBlock(
                                                     required=False
                                                 ),
                                             ),
                                             (
                                                 "link_url",
-                                                wagtail.core.blocks.CharBlock(
+                                                wagtail.blocks.CharBlock(
                                                     required=False
                                                 ),
                                             ),
