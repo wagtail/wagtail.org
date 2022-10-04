@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="">
+    <div class="header__nav">
         {% main_navigation %}
     </div>
 
@@ -37,6 +37,15 @@
                 <use xlink:href="#cross"></use>
             </svg>
         </button>
+
+        <div class="header__menu-toggle">
+            <button class="burger" data-mobile-menu-toggle aria-haspopup="true" aria-expanded="false" aria-label="Mobile menu toggle">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+        </div>
 
         {% if settings.navigation.NavigationSettings.get_started_menu %}
             <button class="header__button header__button--get-started button" data-get-started>
