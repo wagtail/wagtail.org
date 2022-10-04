@@ -28,12 +28,14 @@
     }
 
     &--dark {
-        background-color: $color--indigo;
+        border-color: $color--white;
+        background-color: transparent;
         color: $color--white;
 
         &:hover {
             background-color: $color--white;
-            color: $color--off-black;
+            border-color: $color--white;
+            color: $color--indigo;
         }
     }
 
