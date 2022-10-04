@@ -27,6 +27,7 @@
     &__embed-wrap {
         margin-bottom: 20px;
         grid-column: 2 /span 2;
+        width: 100%;
 
         @include media-query(large) {
             grid-column: 2 / span 2;
