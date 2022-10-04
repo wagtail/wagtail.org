@@ -86,16 +86,6 @@
             grid-template-columns: 1fr 2fr;
         }
 
-        @media screen and (prefers-reduced-motion: no-preference) {
-            &:hover,
-            &:active,
-            &:focus {
-                #{$root}__image {
-                    transform: translate(-50%, -50%) scale(1.05);
-                }
-            }
-        }
-
         #{$root}__content {
             @include offset-bg-right();
             border-radius: 0 15px 15px 0;
