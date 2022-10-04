@@ -61,11 +61,11 @@
         flex: 1;
         height: 50px;
         border: 1px solid $color--off-black;
-        border-radius: 12px;
+        border-radius: $rounded-md;
         padding: 11px 20px;
 
         @include media-query(medium) {
-            border-radius: 12px 0 0 12px;
+            border-radius: $rounded-md 0 0 $rounded-md;
         }
 
         &::placeholder {
@@ -78,7 +78,7 @@
     }
 
     &__button {
-        border-radius: 12px;
+        border-radius: $rounded-md;
         border-style: solid;
         height: 50px;
         margin: 15px 0 0 0;
@@ -86,7 +86,7 @@
         color: $color--white;
 
         @include media-query(medium) {
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 $rounded-md $rounded-md 0;
             border-style: solid solid solid none;
             border-left-width: 0;
             margin: 0;
@@ -110,7 +110,7 @@
         #{$root}__input {
             background-color: $color--indigo;
             border: 1px solid $color--white;
-            color :$color--white;
+            color: $color--white;
             border-radius: 6px;
 
             @include media-query(medium) {
