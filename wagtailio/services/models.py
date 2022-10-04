@@ -1,7 +1,7 @@
 from django.db import models
 
 from wagtail import blocks, fields
-from wagtail.admin import edit_handlers
+from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page
 
 from wagtailio.services.blocks import SectionBlock
@@ -20,6 +20,6 @@ class ServicesPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        edit_handlers.FieldPanel("intro"),
-        edit_handlers.StreamFieldPanel("body"),
+        FieldPanel("intro"),
+        FieldPanel("body"),
     ]

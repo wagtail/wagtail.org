@@ -1,13 +1,7 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
-)
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 
@@ -44,7 +38,7 @@ class DevelopersPageOptions(Orderable, models.Model):
         FieldPanel("title"),
         FieldPanel("summary"),
         MultiFieldPanel(
-            [PageChooserPanel("internal_link"), FieldPanel("external_link")], "Link"
+            [FieldPanel("internal_link"), FieldPanel("external_link")], "Link"
         ),
     ]
 
@@ -61,6 +55,6 @@ class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
         InlinePanel("options", label="Options"),
     ]
