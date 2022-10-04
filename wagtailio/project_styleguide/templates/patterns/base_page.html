@@ -1,5 +1,5 @@
 {% extends "patterns/base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags wagtail_ab_testing_tags wagtailio_utils %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
 
 <!doctype html>
 <html lang="en-US">
@@ -112,7 +112,6 @@
                 }(document, 'script', 'facebook-jssdk'));
             </script>
         {% endif %}
-        {% wagtail_ab_testing_script %}
 
         {% if not DEBUG %}
             <!-- twitter campaign tracking code -->
