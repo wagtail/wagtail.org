@@ -255,12 +255,18 @@ class CTABlock(CTALinkMixin):
         label = "CTA"
 
 
+class OptionalCTABlock(CTABlock):
+    @property
+    def required(self):
+        return False
+
+
 class CardBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
-    cta = CTABlock(required=False)
+    cta = OptionalCTABlock()
 
     class Meta:
         icon = "address-card"
@@ -269,7 +275,7 @@ class CardBlock(blocks.StructBlock):
 
 
 class LogoCardBlock(CTALinkMixin):
-    heading = blocks.CharBlock(max_length=255)
+    text = blocks.CharBlock(label="Heading", max_length=255)
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
@@ -322,7 +328,7 @@ class HeadlineBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
     sub_heading = blocks.TextBlock(required=False)
     intro = blocks.TextBlock(required=False)
-    cta = CTABlock(required=False)
+    cta = OptionalCTABlock()
     icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
     dark_background = blocks.BooleanBlock(required=False, default=False)
 
@@ -339,7 +345,7 @@ class HighlightBlock(blocks.StructBlock):
     image_on_right = blocks.BooleanBlock(required=False, default=False)
     meta_text = blocks.CharBlock(required=False, max_length=50)
     meta_icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
-    cta = CTABlock(required=False)
+    cta = OptionalCTABlock()
 
     def clean(self, value):
         errors = {}
@@ -384,7 +390,7 @@ class IconBulletBlock(blocks.StructBlock):
         required=False,
         features=["bold", "italic", "link"],
     )
-    cta = CTABlock(required=False)
+    cta = OptionalCTABlock()
 
     class Meta:
         icon = "tick-inverse"
@@ -515,7 +521,7 @@ class TextAndMediaBlock(blocks.StructBlock):
     image_on_right = blocks.BooleanBlock(required=False, default=False)
     heading = blocks.TextBlock(required=True)
     description = blocks.TextBlock(required=True)
-    cta = CTABlock(required=False)
+    cta = OptionalCTABlock()
 
     def clean(self, value):
         errors = {}
