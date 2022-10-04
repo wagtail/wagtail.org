@@ -3,21 +3,20 @@ This template is very similar to patterns/components/streamfields/cards/related_
 The reason for the separation is because of differing context variable names, for example
     | logo_card_block.html            | related_page_card_block.html      |
     | ------------------------------- | --------------------------------- |
-    | value.link_url                  |  value.url                        |
-    | value.heading                   |  value.title                      |
+    | value.text                      |  value.title                      |
     | value.description (rich text)   |  value.introduction (plain text)  |
     | value.logo                      |  -                                |
 {% endcomment %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
-{% if value.link_url %}
-    <a href="{{ value.link_url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
+{% if value.url %}
+    <a href="{{ value.url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
 {% else %}
     <div class="logo-card">
 {% endif %}
 {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
 
-<h4 class="logo-card__heading teaser-heading">{{ value.heading }}</h4>
+<h4 class="logo-card__heading teaser-heading">{{ value.text }}</h4>
 
 {% if value.description %}
     <div class="logo-card__description">{{ value.description|richtext }}</div>
@@ -32,7 +31,7 @@ The reason for the separation is because of differing context variable names, fo
     {% image value.logo fill-140x90 class="logo-card__image" %}
 {% endif %}
 
-{% if value.link_url %}
+{% if value.url %}
     </a>
 {% else %}
     </div>
