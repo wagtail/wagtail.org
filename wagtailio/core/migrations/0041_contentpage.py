@@ -3,10 +3,10 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
+import wagtail.blocks
 import wagtail.contrib.typed_table_block.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
 import wagtail.embeds.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "intro",
-                    wagtail.core.fields.RichTextField(blank=True, verbose_name="Intro"),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="Intro"),
                 ),
                 (
                     "icon",
@@ -118,27 +118,27 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "cta",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "cta",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "cta_text",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 label="CTA text", max_length=255
                                             ),
                                         ),
                                         (
                                             "cta_page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 label="CTA page", required=False
                                             ),
                                         ),
                                         (
                                             "cta_url",
-                                            wagtail.core.blocks.URLBlock(
+                                            wagtail.blocks.URLBlock(
                                                 label="CTA URL", required=False
                                             ),
                                         ),
@@ -151,15 +151,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "rich_text",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "rich_text",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     "bold",
                                                     "italic",
@@ -178,7 +178,7 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "text_and_media",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "image",
@@ -194,43 +194,39 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "image_on_right",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 default=False, required=False
                                             ),
                                         ),
                                         (
                                             "heading",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.TextBlock(required=True),
                                         ),
                                         (
                                             "description",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.TextBlock(required=True),
                                         ),
                                         (
                                             "cta",
-                                            wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.StructBlock(
                                                 [
                                                     (
                                                         "cta_text",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             label="CTA text",
                                                             max_length=255,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_page",
-                                                        wagtail.core.blocks.PageChooserBlock(
+                                                        wagtail.blocks.PageChooserBlock(
                                                             label="CTA page",
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_url",
-                                                        wagtail.core.blocks.URLBlock(
+                                                        wagtail.blocks.URLBlock(
                                                             label="CTA URL",
                                                             required=False,
                                                         ),
@@ -244,47 +240,41 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "headline",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "heading",
-                                            wagtail.core.blocks.CharBlock(
-                                                max_length=255
-                                            ),
+                                            wagtail.blocks.CharBlock(max_length=255),
                                         ),
                                         (
                                             "sub_heading",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "intro",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "cta",
-                                            wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.StructBlock(
                                                 [
                                                     (
                                                         "cta_text",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             label="CTA text",
                                                             max_length=255,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_page",
-                                                        wagtail.core.blocks.PageChooserBlock(
+                                                        wagtail.blocks.PageChooserBlock(
                                                             label="CTA page",
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_url",
-                                                        wagtail.core.blocks.URLBlock(
+                                                        wagtail.blocks.URLBlock(
                                                             label="CTA URL",
                                                             required=False,
                                                         ),
@@ -295,7 +285,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "icon",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("arrow", "Arrow"),
                                                     ("arrow-alt", "Arrow alt"),
@@ -368,7 +358,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "dark_background",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 default=False, required=False
                                             ),
                                         ),
@@ -377,19 +367,15 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "highlight",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "heading",
-                                            wagtail.core.blocks.CharBlock(
-                                                max_length=100
-                                            ),
+                                            wagtail.blocks.CharBlock(max_length=100),
                                         ),
                                         (
                                             "description",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -397,19 +383,19 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "image_on_right",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 default=False, required=False
                                             ),
                                         ),
                                         (
                                             "meta_text",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 max_length=50, required=False
                                             ),
                                         ),
                                         (
                                             "meta_icon",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("arrow", "Arrow"),
                                                     ("arrow-alt", "Arrow alt"),
@@ -482,25 +468,25 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cta",
-                                            wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.StructBlock(
                                                 [
                                                     (
                                                         "cta_text",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             label="CTA text",
                                                             max_length=255,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_page",
-                                                        wagtail.core.blocks.PageChooserBlock(
+                                                        wagtail.blocks.PageChooserBlock(
                                                             label="CTA page",
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_url",
-                                                        wagtail.core.blocks.URLBlock(
+                                                        wagtail.blocks.URLBlock(
                                                             label="CTA URL",
                                                             required=False,
                                                         ),
@@ -514,20 +500,18 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "teaser",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 page_type=["blog.BlogPage"],
                                                 required=False,
                                             ),
                                         ),
                                         (
                                             "url_chooser",
-                                            wagtail.core.blocks.URLBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.URLBlock(required=False),
                                         ),
                                         (
                                             "image_for_external_link",
@@ -537,13 +521,11 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "heading_for_external_link",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "subheading_for_ext_link",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 label="Subheading for external link",
                                                 required=False,
                                             ),
@@ -553,16 +535,16 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "icon_bullets",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "icon_bullets",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "icon",
-                                                            wagtail.core.blocks.ChoiceBlock(
+                                                            wagtail.blocks.ChoiceBlock(
                                                                 choices=[
                                                                     ("arrow", "Arrow"),
                                                                     (
@@ -727,13 +709,13 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "heading",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 max_length=255
                                                             ),
                                                         ),
                                                         (
                                                             "description",
-                                                            wagtail.core.blocks.RichTextBlock(
+                                                            wagtail.blocks.RichTextBlock(
                                                                 features=[
                                                                     "bold",
                                                                     "italic",
@@ -744,25 +726,25 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "cta",
-                                                            wagtail.core.blocks.StructBlock(
+                                                            wagtail.blocks.StructBlock(
                                                                 [
                                                                     (
                                                                         "cta_text",
-                                                                        wagtail.core.blocks.CharBlock(
+                                                                        wagtail.blocks.CharBlock(
                                                                             label="CTA text",
                                                                             max_length=255,
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "cta_page",
-                                                                        wagtail.core.blocks.PageChooserBlock(
+                                                                        wagtail.blocks.PageChooserBlock(
                                                                             label="CTA page",
                                                                             required=False,
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "cta_url",
-                                                                        wagtail.core.blocks.URLBlock(
+                                                                        wagtail.blocks.URLBlock(
                                                                             label="CTA URL",
                                                                             required=False,
                                                                         ),
@@ -780,22 +762,22 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "cards",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "cards",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "heading",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 max_length=255
                                                             ),
                                                         ),
                                                         (
                                                             "description",
-                                                            wagtail.core.blocks.RichTextBlock(
+                                                            wagtail.blocks.RichTextBlock(
                                                                 features=[
                                                                     "bold",
                                                                     "italic",
@@ -805,7 +787,7 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "meta_icon",
-                                                            wagtail.core.blocks.ChoiceBlock(
+                                                            wagtail.blocks.ChoiceBlock(
                                                                 choices=[
                                                                     ("arrow", "Arrow"),
                                                                     (
@@ -970,31 +952,31 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "meta_text",
-                                                            wagtail.core.blocks.TextBlock(
+                                                            wagtail.blocks.TextBlock(
                                                                 max_length=50
                                                             ),
                                                         ),
                                                         (
                                                             "cta",
-                                                            wagtail.core.blocks.StructBlock(
+                                                            wagtail.blocks.StructBlock(
                                                                 [
                                                                     (
                                                                         "cta_text",
-                                                                        wagtail.core.blocks.CharBlock(
+                                                                        wagtail.blocks.CharBlock(
                                                                             label="CTA text",
                                                                             max_length=255,
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "cta_page",
-                                                                        wagtail.core.blocks.PageChooserBlock(
+                                                                        wagtail.blocks.PageChooserBlock(
                                                                             label="CTA page",
                                                                             required=False,
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "cta_url",
-                                                                        wagtail.core.blocks.URLBlock(
+                                                                        wagtail.blocks.URLBlock(
                                                                             label="CTA URL",
                                                                             required=False,
                                                                         ),
@@ -1013,22 +995,22 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "logo_cards",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "cards",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "heading",
-                                                            wagtail.core.blocks.CharBlock(
+                                                            wagtail.blocks.CharBlock(
                                                                 max_length=255
                                                             ),
                                                         ),
                                                         (
                                                             "description",
-                                                            wagtail.core.blocks.RichTextBlock(
+                                                            wagtail.blocks.RichTextBlock(
                                                                 features=[
                                                                     "bold",
                                                                     "italic",
@@ -1038,7 +1020,7 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "meta_icon",
-                                                            wagtail.core.blocks.ChoiceBlock(
+                                                            wagtail.blocks.ChoiceBlock(
                                                                 choices=[
                                                                     ("arrow", "Arrow"),
                                                                     (
@@ -1203,7 +1185,7 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "meta_text",
-                                                            wagtail.core.blocks.TextBlock(
+                                                            wagtail.blocks.TextBlock(
                                                                 max_length=50
                                                             ),
                                                         ),
@@ -1215,14 +1197,14 @@ class Migration(migrations.Migration):
                                                         ),
                                                         (
                                                             "cta_page",
-                                                            wagtail.core.blocks.PageChooserBlock(
+                                                            wagtail.blocks.PageChooserBlock(
                                                                 label="CTA page",
                                                                 required=False,
                                                             ),
                                                         ),
                                                         (
                                                             "cta_url",
-                                                            wagtail.core.blocks.URLBlock(
+                                                            wagtail.blocks.URLBlock(
                                                                 label="CTA URL",
                                                                 required=False,
                                                             ),
@@ -1237,23 +1219,23 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "cta",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "cta_text",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 label="CTA text", max_length=255
                                             ),
                                         ),
                                         (
                                             "cta_page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 label="CTA page", required=False
                                             ),
                                         ),
                                         (
                                             "cta_url",
-                                            wagtail.core.blocks.URLBlock(
+                                            wagtail.blocks.URLBlock(
                                                 label="CTA URL", required=False
                                             ),
                                         ),
@@ -1263,29 +1245,29 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "standalone_cta",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "cta",
-                                            wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.StructBlock(
                                                 [
                                                     (
                                                         "cta_text",
-                                                        wagtail.core.blocks.CharBlock(
+                                                        wagtail.blocks.CharBlock(
                                                             label="CTA text",
                                                             max_length=255,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_page",
-                                                        wagtail.core.blocks.PageChooserBlock(
+                                                        wagtail.blocks.PageChooserBlock(
                                                             label="CTA page",
                                                             required=False,
                                                         ),
                                                     ),
                                                     (
                                                         "cta_url",
-                                                        wagtail.core.blocks.URLBlock(
+                                                        wagtail.blocks.URLBlock(
                                                             label="CTA URL",
                                                             required=False,
                                                         ),
@@ -1295,7 +1277,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "description",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 label="Short description",
                                                 max_length=100,
                                                 required=False,
@@ -1307,17 +1289,15 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "standalone_quote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "quote",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.TextBlock(required=True),
                                         ),
                                         (
                                             "author",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=["link"], required=True
                                             ),
                                         ),
@@ -1333,28 +1313,26 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "multiple_quotes",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "heading",
-                                            wagtail.core.blocks.TextBlock(
-                                                required=True
-                                            ),
+                                            wagtail.blocks.TextBlock(required=True),
                                         ),
                                         (
                                             "quotes",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.StructBlock(
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.StructBlock(
                                                     [
                                                         (
                                                             "quote",
-                                                            wagtail.core.blocks.TextBlock(
+                                                            wagtail.blocks.TextBlock(
                                                                 required=True
                                                             ),
                                                         ),
                                                         (
                                                             "author",
-                                                            wagtail.core.blocks.RichTextBlock(
+                                                            wagtail.blocks.RichTextBlock(
                                                                 features=["link"],
                                                                 required=True,
                                                             ),
@@ -1376,7 +1354,7 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "comparison_table",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "comparison_table",
@@ -1384,11 +1362,11 @@ class Migration(migrations.Migration):
                                                 [
                                                     (
                                                         "content",
-                                                        wagtail.core.blocks.StreamBlock(
+                                                        wagtail.blocks.StreamBlock(
                                                             [
                                                                 (
                                                                     "rich_text",
-                                                                    wagtail.core.blocks.RichTextBlock(
+                                                                    wagtail.blocks.RichTextBlock(
                                                                         features=[
                                                                             "bold",
                                                                             "italic",

@@ -1,4 +1,4 @@
-from wagtail.core import blocks
+from wagtail import blocks
 
 from wagtailio.core.blocks import CTALinkMixin
 from wagtailio.core.choices import SVGIcon

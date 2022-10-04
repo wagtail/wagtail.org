@@ -1,8 +1,8 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 
 from wagtailmedia.edit_handlers import MediaChooserPanel
 

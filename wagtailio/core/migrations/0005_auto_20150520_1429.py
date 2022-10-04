@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                     models.IntegerField(blank=True, null=True, editable=False),
                 ),
                 ("title", models.CharField(max_length=255)),
-                ("text", wagtail.core.fields.RichTextField()),
+                ("text", wagtail.fields.RichTextField()),
                 (
                     "snippet",
                     modelcluster.fields.ParentalKey(

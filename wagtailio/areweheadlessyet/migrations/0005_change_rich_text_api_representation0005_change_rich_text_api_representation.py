@@ -2,8 +2,8 @@
 
 from django.db import migrations
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 import wagtailio.areweheadlessyet.blocks
 
@@ -18,16 +18,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="areweheadlessyethomepage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "section",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "content",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 "text",
@@ -35,21 +35,21 @@ class Migration(migrations.Migration):
                                             ),
                                             (
                                                 "link_group",
-                                                wagtail.core.blocks.StreamBlock(
+                                                wagtail.blocks.StreamBlock(
                                                     [
                                                         (
                                                             "link",
-                                                            wagtail.core.blocks.StructBlock(
+                                                            wagtail.blocks.StructBlock(
                                                                 [
                                                                     (
                                                                         "link",
-                                                                        wagtail.core.blocks.URLBlock(
+                                                                        wagtail.blocks.URLBlock(
                                                                             required=True
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "link_text",
-                                                                        wagtail.core.blocks.CharBlock(
+                                                                        wagtail.blocks.CharBlock(
                                                                             required=True
                                                                         ),
                                                                     ),
@@ -67,12 +67,12 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "news",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "blog_posts",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 "blog_post",
@@ -88,22 +88,22 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "topics",
-                        wagtail.core.blocks.StructBlock(
-                            [("title", wagtail.core.blocks.CharBlock())]
+                        wagtail.blocks.StructBlock(
+                            [("title", wagtail.blocks.CharBlock())]
                         ),
                     ),
                     (
                         "issues",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "summary",
-                                    wagtail.core.blocks.CharBlock(required=False),
+                                    wagtail.blocks.CharBlock(required=False),
                                 ),
                                 (
                                     "issues",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 "issue",
@@ -123,7 +123,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="areweheadlessyettopicpage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "text",
@@ -131,12 +131,12 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "section",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "content",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 "text",
@@ -144,21 +144,21 @@ class Migration(migrations.Migration):
                                             ),
                                             (
                                                 "link_group",
-                                                wagtail.core.blocks.StreamBlock(
+                                                wagtail.blocks.StreamBlock(
                                                     [
                                                         (
                                                             "link",
-                                                            wagtail.core.blocks.StructBlock(
+                                                            wagtail.blocks.StructBlock(
                                                                 [
                                                                     (
                                                                         "link",
-                                                                        wagtail.core.blocks.URLBlock(
+                                                                        wagtail.blocks.URLBlock(
                                                                             required=True
                                                                         ),
                                                                     ),
                                                                     (
                                                                         "link_text",
-                                                                        wagtail.core.blocks.CharBlock(
+                                                                        wagtail.blocks.CharBlock(
                                                                             required=True
                                                                         ),
                                                                     ),
@@ -176,12 +176,12 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "news",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "blog_posts",
-                                    wagtail.core.blocks.StreamBlock(
+                                    wagtail.blocks.StreamBlock(
                                         [
                                             (
                                                 "blog_post",

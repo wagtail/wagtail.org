@@ -3,8 +3,8 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 import wagtailio.services.blocks
@@ -36,22 +36,22 @@ class Migration(migrations.Migration):
                 ("intro", models.TextField(blank=True, null=True)),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "section",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 form_classname="full title",
                                                 required=True,
                                             ),
                                         ),
                                         (
                                             "icon",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("astronaut", "Astronaut"),
                                                     ("cloud", "Cloud"),
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "section_image_caption",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 help_text="Rendered below the image/media",
                                                 label="Section image/media caption",
                                                 required=False,
@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "content",
-                                            wagtail.core.blocks.StreamBlock(
+                                            wagtail.blocks.StreamBlock(
                                                 [
                                                     (
                                                         "subheading",
@@ -96,7 +96,7 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "paragraph",
-                                                        wagtail.core.blocks.RichTextBlock(
+                                                        wagtail.blocks.RichTextBlock(
                                                             features=[
                                                                 "bold",
                                                                 "italic",
@@ -112,11 +112,11 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "link_button",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "lead_text",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         help_text="Text leading up the action text of the button.",
                                                                         max_length=50,
                                                                         required=False,
@@ -124,7 +124,7 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "action_text",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         help_text="Emphasised text for the button action.",
                                                                         max_length=50,
                                                                         required=True,
@@ -132,7 +132,7 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "link",
-                                                                    wagtail.core.blocks.URLBlock(
+                                                                    wagtail.blocks.URLBlock(
                                                                         required=True
                                                                     ),
                                                                 ),
@@ -141,23 +141,23 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "quote",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "text",
-                                                                    wagtail.core.blocks.TextBlock(
+                                                                    wagtail.blocks.TextBlock(
                                                                         required=True
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "source",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         required=True
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "reference",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         help_text="Additional information about the source. E.g. a persons job title and company.",
                                                                         required=False,
                                                                     ),

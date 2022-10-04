@@ -2,10 +2,10 @@
 
 from django.db import migrations
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
 import wagtail.documents.blocks
 import wagtail.embeds.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 import wagtailio.utils.blocks
@@ -21,11 +21,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="blogpage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "h2",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             form_classname="title",
                             icon="title",
                             template="patterns/components/streamfields/headings/heading-2.html",
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "h3",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             form_classname="title",
                             icon="title",
                             template="patterns/components/streamfields/headings/heading-3.html",
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "h4",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             form_classname="title",
                             icon="title",
                             template="patterns/components/streamfields/headings/heading-4.html",
@@ -49,21 +49,21 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "intro",
-                        wagtail.core.blocks.RichTextBlock(
+                        wagtail.blocks.RichTextBlock(
                             icon="pilcrow",
                             template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
                         ),
                     ),
                     (
                         "paragraph",
-                        wagtail.core.blocks.RichTextBlock(
+                        wagtail.blocks.RichTextBlock(
                             icon="pilcrow",
                             template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
                         ),
                     ),
                     (
                         "blockquote",
-                        wagtail.core.blocks.CharBlock(
+                        wagtail.blocks.CharBlock(
                             form_classname="title",
                             icon="openquote",
                             template="patterns/components/streamfields/quotes/standalone_quote_block.html",
@@ -85,19 +85,19 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "imagecaption",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 ("image", wagtail.images.blocks.ImageChooserBlock()),
-                                ("caption", wagtail.core.blocks.RichTextBlock()),
+                                ("caption", wagtail.blocks.RichTextBlock()),
                             ],
                             label="Image caption",
                         ),
                     ),
                     (
                         "textimage",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("text", wagtail.core.blocks.RichTextBlock()),
+                                ("text", wagtail.blocks.RichTextBlock()),
                                 ("image", wagtail.images.blocks.ImageChooserBlock()),
                                 (
                                     "background",
@@ -113,9 +113,9 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "colourtext",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("text", wagtail.core.blocks.RichTextBlock()),
+                                ("text", wagtail.blocks.RichTextBlock()),
                                 (
                                     "background",
                                     wagtailio.utils.blocks.BackgroundColourChoiceBlock(),
@@ -126,9 +126,9 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "calltoaction",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
-                                ("text", wagtail.core.blocks.RichTextBlock()),
+                                ("text", wagtail.blocks.RichTextBlock()),
                                 (
                                     "background",
                                     wagtailio.utils.blocks.BackgroundColourChoiceBlock(),
@@ -139,7 +139,7 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "tripleimage",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "first_image",
@@ -159,15 +159,15 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "stats",
-                        wagtail.core.blocks.ListBlock(
-                            wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.ListBlock(
+                            wagtail.blocks.StructBlock(
                                 [
                                     (
                                         "image",
                                         wagtail.images.blocks.ImageChooserBlock(),
                                     ),
-                                    ("stat", wagtail.core.blocks.CharBlock()),
-                                    ("text", wagtail.core.blocks.CharBlock()),
+                                    ("stat", wagtail.blocks.CharBlock()),
+                                    ("text", wagtail.blocks.CharBlock()),
                                 ],
                                 icon="code",
                             )
@@ -188,11 +188,11 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "codeblock",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "language",
-                                    wagtail.core.blocks.ChoiceBlock(
+                                    wagtail.blocks.ChoiceBlock(
                                         choices=[
                                             ("bash", "Bash/Shell"),
                                             ("css", "CSS"),
@@ -204,23 +204,23 @@ class Migration(migrations.Migration):
                                         ]
                                     ),
                                 ),
-                                ("code", wagtail.core.blocks.TextBlock()),
+                                ("code", wagtail.blocks.TextBlock()),
                             ],
                             template="patterns/components/streamfields/code_block/code_block.html",
                         ),
                     ),
                     (
                         "backers",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "gold_backers",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "name",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "image",
@@ -230,7 +230,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "url",
-                                                    wagtail.core.blocks.URLBlock(
+                                                    wagtail.blocks.URLBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -240,12 +240,12 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "silver_backers",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "name",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "image",
@@ -255,7 +255,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "url",
-                                                    wagtail.core.blocks.URLBlock(
+                                                    wagtail.blocks.URLBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -265,12 +265,12 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "bronze_backers",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "name",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "image",
@@ -280,7 +280,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "url",
-                                                    wagtail.core.blocks.URLBlock(
+                                                    wagtail.blocks.URLBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -290,16 +290,16 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "linked_backers",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "name",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "url",
-                                                    wagtail.core.blocks.URLBlock(
+                                                    wagtail.blocks.URLBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -309,9 +309,9 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "named_backers",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
-                                            [("name", wagtail.core.blocks.CharBlock())]
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
+                                            [("name", wagtail.blocks.CharBlock())]
                                         )
                                     ),
                                 ),
@@ -320,15 +320,15 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "standalone_cta",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "cta",
-                                    wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.StructBlock(
                                         [
                                             (
                                                 "text",
-                                                wagtail.core.blocks.CharBlock(
+                                                wagtail.blocks.CharBlock(
                                                     label="CTA text",
                                                     max_length=255,
                                                     required=False,
@@ -336,13 +336,13 @@ class Migration(migrations.Migration):
                                             ),
                                             (
                                                 "cta_page",
-                                                wagtail.core.blocks.PageChooserBlock(
+                                                wagtail.blocks.PageChooserBlock(
                                                     label="CTA page", required=False
                                                 ),
                                             ),
                                             (
                                                 "cta_url",
-                                                wagtail.core.blocks.URLBlock(
+                                                wagtail.blocks.URLBlock(
                                                     label="CTA URL", required=False
                                                 ),
                                             ),
@@ -351,7 +351,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "description",
-                                    wagtail.core.blocks.TextBlock(
+                                    wagtail.blocks.TextBlock(
                                         label="Short description",
                                         max_length=100,
                                         required=False,

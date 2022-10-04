@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.models
+import wagtail.models
 
 
 class Migration(migrations.Migration):
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             model_name="wagtailioimage",
             name="collection",
             field=models.ForeignKey(
-                default=wagtail.core.models.get_root_collection_id,
+                default=wagtail.models.get_root_collection_id,
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="+",
                 to="wagtailcore.Collection",

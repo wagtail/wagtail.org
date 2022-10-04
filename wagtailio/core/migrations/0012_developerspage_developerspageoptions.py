@@ -5,7 +5,7 @@ import django.db.models.deletion
 from django.db import migrations, models
 
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
                 ),
                 ("introduction", models.CharField(max_length=255)),
                 ("body_heading", models.CharField(max_length=255)),
-                ("body", wagtail.core.fields.RichTextField()),
+                ("body", wagtail.fields.RichTextField()),
                 (
                     "listing_image",
                     models.ForeignKey(

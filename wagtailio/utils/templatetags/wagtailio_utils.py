@@ -1,6 +1,6 @@
 from django import template
 
-from wagtail.core.templatetags.wagtailcore_tags import pageurl
+from wagtail.templatetags.wagtailcore_tags import pageurl
 
 from wagtailio.blog.models import BlogPage
 from wagtailio.utils.models import LinkGroupSnippet, MenuSnippet

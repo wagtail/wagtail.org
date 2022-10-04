@@ -4,15 +4,15 @@ from django.shortcuts import render
 from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
     PageChooserPanel,
     StreamFieldPanel,
 )
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Orderable, Page
+from wagtail.fields import StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.models import Orderable, Page
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 

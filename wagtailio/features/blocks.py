@@ -1,8 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 
-from wagtail.core import blocks
-from wagtail.core.blocks.struct_block import StructBlockValidationError
+from wagtail import blocks
+from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailio.core.blocks import PageOrExternalLinkBlock

@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.snippets.blocks
 
 
@@ -19,17 +19,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="featureindexpage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 (
                     (
                         "primary_features",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             (
-                                ("title", wagtail.core.blocks.CharBlock()),
-                                ("introduction", wagtail.core.blocks.RichTextBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
+                                ("introduction", wagtail.blocks.RichTextBlock()),
                                 (
                                     "features",
-                                    wagtail.core.blocks.ListBlock(
+                                    wagtail.blocks.ListBlock(
                                         wagtail.snippets.blocks.SnippetChooserBlock(
                                             "features.FeatureDescription"
                                         )
@@ -37,28 +37,28 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "links",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "link_text",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "link_text_bold",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=False
                                                     ),
                                                 ),
                                                 (
                                                     "link_page",
-                                                    wagtail.core.blocks.PageChooserBlock(
+                                                    wagtail.blocks.PageChooserBlock(
                                                         required=False
                                                     ),
                                                 ),
                                                 (
                                                     "link_url",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         required=False
                                                     ),
                                                 ),
@@ -71,30 +71,30 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "additional_features",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             (
-                                ("title", wagtail.core.blocks.CharBlock()),
+                                ("title", wagtail.blocks.CharBlock()),
                                 (
                                     "features_groups",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "name",
-                                                    wagtail.core.blocks.CharBlock(),
+                                                    wagtail.blocks.CharBlock(),
                                                 ),
                                                 (
                                                     "features",
-                                                    wagtail.core.blocks.ListBlock(
-                                                        wagtail.core.blocks.StructBlock(
+                                                    wagtail.blocks.ListBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             (
                                                                 (
                                                                     "title",
-                                                                    wagtail.core.blocks.CharBlock(),
+                                                                    wagtail.blocks.CharBlock(),
                                                                 ),
                                                                 (
                                                                     "text",
-                                                                    wagtail.core.blocks.RichTextBlock(),
+                                                                    wagtail.blocks.RichTextBlock(),
                                                                 ),
                                                             )
                                                         )

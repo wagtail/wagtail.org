@@ -5,9 +5,9 @@ from django.db.models import Prefetch
 from django.db.models.functions import Lower
 from django.urls import reverse
 
-from wagtail.admin.edit_handlers import FieldPanel, HelpPanel, MultiFieldPanel
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page
+from wagtail.admin.panels import FieldPanel, HelpPanel, MultiFieldPanel
+from wagtail.fields import RichTextField
+from wagtail.models import Page
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 

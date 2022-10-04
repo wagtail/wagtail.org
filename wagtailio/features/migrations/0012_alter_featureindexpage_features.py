@@ -2,8 +2,8 @@
 
 from django.db import migrations
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,31 +19,31 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="featureindexpage",
             name="features",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "features",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "blocks",
-                                    wagtail.core.blocks.ListBlock(
-                                        wagtail.core.blocks.StructBlock(
+                                    wagtail.blocks.ListBlock(
+                                        wagtail.blocks.StructBlock(
                                             [
                                                 (
                                                     "heading",
-                                                    wagtail.core.blocks.CharBlock(
+                                                    wagtail.blocks.CharBlock(
                                                         max_length=255
                                                     ),
                                                 ),
                                                 (
                                                     "features",
-                                                    wagtail.core.blocks.ListBlock(
-                                                        wagtail.core.blocks.StructBlock(
+                                                    wagtail.blocks.ListBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "heading",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         label="Feature heading",
                                                                         max_length=255,
                                                                         required=False,
@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "description",
-                                                                    wagtail.core.blocks.RichTextBlock(
+                                                                    wagtail.blocks.RichTextBlock(
                                                                         features=[
                                                                             "bold",
                                                                             "italic",
@@ -64,14 +64,14 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "link",
-                                                                    wagtail.core.blocks.URLBlock(
+                                                                    wagtail.blocks.URLBlock(
                                                                         label="Feature link",
                                                                         required=False,
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "link_title",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         default="View docs",
                                                                         label="Feature link title",
                                                                         max_length=50,

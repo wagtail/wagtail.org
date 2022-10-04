@@ -3,7 +3,7 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -35,9 +35,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "sitewide_alert_text",
-                    wagtail.core.fields.RichTextField(
-                        blank=True, verbose_name="Alert text"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="Alert text"),
                 ),
                 (
                     "site",

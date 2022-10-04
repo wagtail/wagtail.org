@@ -5,10 +5,10 @@ from __future__ import unicode_literals
 import django.db.models.deletion
 from django.db import migrations, models
 
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
 import wagtail.documents.blocks
 import wagtail.embeds.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 import wagtailio.utils.blocks
@@ -59,41 +59,37 @@ class Migration(migrations.Migration):
                         ("introduction", models.CharField(max_length=511)),
                         (
                             "body",
-                            wagtail.core.fields.StreamField(
+                            wagtail.fields.StreamField(
                                 (
                                     (
                                         "h2",
-                                        wagtail.core.blocks.CharBlock(
+                                        wagtail.blocks.CharBlock(
                                             classname="title", icon="title"
                                         ),
                                     ),
                                     (
                                         "h3",
-                                        wagtail.core.blocks.CharBlock(
+                                        wagtail.blocks.CharBlock(
                                             classname="title", icon="title"
                                         ),
                                     ),
                                     (
                                         "h4",
-                                        wagtail.core.blocks.CharBlock(
+                                        wagtail.blocks.CharBlock(
                                             classname="title", icon="title"
                                         ),
                                     ),
                                     (
                                         "intro",
-                                        wagtail.core.blocks.RichTextBlock(
-                                            icon="pilcrow"
-                                        ),
+                                        wagtail.blocks.RichTextBlock(icon="pilcrow"),
                                     ),
                                     (
                                         "paragraph",
-                                        wagtail.core.blocks.RichTextBlock(
-                                            icon="pilcrow"
-                                        ),
+                                        wagtail.blocks.RichTextBlock(icon="pilcrow"),
                                     ),
                                     (
                                         "blockquote",
-                                        wagtail.core.blocks.CharBlock(
+                                        wagtail.blocks.CharBlock(
                                             classname="title", icon="openquote"
                                         ),
                                     ),
@@ -111,7 +107,7 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "imagecaption",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "image",
@@ -119,7 +115,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "caption",
-                                                    wagtail.core.blocks.RichTextBlock(),
+                                                    wagtail.blocks.RichTextBlock(),
                                                 ),
                                             ),
                                             label="Image caption",
@@ -127,11 +123,11 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "textimage",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "text",
-                                                    wagtail.core.blocks.RichTextBlock(),
+                                                    wagtail.blocks.RichTextBlock(),
                                                 ),
                                                 (
                                                     "image",
@@ -151,11 +147,11 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "colourtext",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "text",
-                                                    wagtail.core.blocks.RichTextBlock(),
+                                                    wagtail.blocks.RichTextBlock(),
                                                 ),
                                                 (
                                                     "background",
@@ -167,11 +163,11 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "calltoaction",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "text",
-                                                    wagtail.core.blocks.RichTextBlock(),
+                                                    wagtail.blocks.RichTextBlock(),
                                                 ),
                                                 (
                                                     "background",
@@ -183,7 +179,7 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "tripleimage",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "first_image",
@@ -203,8 +199,8 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "stats",
-                                        wagtail.core.blocks.ListBlock(
-                                            wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.ListBlock(
+                                            wagtail.blocks.StructBlock(
                                                 (
                                                     (
                                                         "image",
@@ -212,11 +208,11 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "stat",
-                                                        wagtail.core.blocks.CharBlock(),
+                                                        wagtail.blocks.CharBlock(),
                                                     ),
                                                     (
                                                         "text",
-                                                        wagtail.core.blocks.CharBlock(),
+                                                        wagtail.blocks.CharBlock(),
                                                     ),
                                                 ),
                                                 icon="code",
@@ -233,11 +229,11 @@ class Migration(migrations.Migration):
                                     ),
                                     (
                                         "codeblock",
-                                        wagtail.core.blocks.StructBlock(
+                                        wagtail.blocks.StructBlock(
                                             (
                                                 (
                                                     "language",
-                                                    wagtail.core.blocks.ChoiceBlock(
+                                                    wagtail.blocks.ChoiceBlock(
                                                         choices=[
                                                             ("bash", "Bash/Shell"),
                                                             ("css", "CSS"),
@@ -257,7 +253,7 @@ class Migration(migrations.Migration):
                                                 ),
                                                 (
                                                     "code",
-                                                    wagtail.core.blocks.TextBlock(),
+                                                    wagtail.blocks.TextBlock(),
                                                 ),
                                             )
                                         ),
