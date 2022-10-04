@@ -56,7 +56,8 @@ class DevelopersPage(Page, SocialMediaMixin, CrossPageMixin):
                 "code",
                 CodePromoBlock(template="developers/blocks/code_with_link_block.html"),
             ),
-        )
+        ),
+        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [

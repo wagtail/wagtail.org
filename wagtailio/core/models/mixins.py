@@ -16,7 +16,7 @@ class HeroMixin(models.Model):
         features=["bold", "italic", "link"],
     )
     icon = models.CharField(choices=SVGIcon.choices, max_length=255, blank=True)
-    cta = StreamField([("cta", CTABlock())], blank=True, max_num=1)
+    cta = StreamField([("cta", CTABlock())], blank=True, max_num=1, use_json_field=True)
 
     panels = [
         MultiFieldPanel(

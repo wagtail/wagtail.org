@@ -16,6 +16,7 @@ class ServicesPage(Page):
             max_num=4,
         ),
         blank=False,
+        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [

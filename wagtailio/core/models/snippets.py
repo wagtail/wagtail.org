@@ -18,6 +18,7 @@ class GetStartedSnippet(models.Model):
             ),
         ],
         max_num=1,
+        use_json_field=True,
     )
 
     panels = [
