@@ -1191,17 +1191,17 @@ rekognition = ["boto3 (>=1.4,<1.5)"]
 
 [[package]]
 name = "wagtailmedia"
-version = "0.8.0"
+version = "0.11.0"
 description = "A module for Wagtail that provides functionality similar to wagtail.documents module, but for audio and video files."
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-wagtail = ">=2.11"
+wagtail = ">=2.15"
 
 [package.extras]
-testing = ["coverage (>=3.7.0)", "mock (>=1.0.0)", "tox (==3.23.1)"]
+testing = ["coverage (>=3.7.0)", "mock (>=1.0.0)", "tox (>=3.24,<4.0)"]
 
 [[package]]
 name = "webencodings"
@@ -1285,7 +1285,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "1726d648df44ee25960b342f4d95c36c62bd32ab56006a814a55683b47afaf2b"
+content-hash = "017284327ec06788df3c053c95ba63adef00ca01a8dc3850d5dc8cfe3c5f29c7"
 
 [metadata.files]
 airtable-python-wrapper = [
@@ -2051,8 +2051,8 @@ wagtailaltgenerator = [
     {file = "wagtailaltgenerator-4.1.2.tar.gz", hash = "sha256:baac6b9a4d1a964c8cadff2f9652132fec4250c3152d24909c5c46c7c19c67c3"},
 ]
 wagtailmedia = [
-    {file = "wagtailmedia-0.8.0-py2.py3-none-any.whl", hash = "sha256:79313a9565f8b737304412bbf297c3975274e104a2ea005f8a8e1499c3ef743f"},
-    {file = "wagtailmedia-0.8.0.tar.gz", hash = "sha256:550b41f60c546276fb79eac69630364efb82d40389ddb7f64242ff9eaef621ef"},
+    {file = "wagtailmedia-0.11.0-py2.py3-none-any.whl", hash = "sha256:c8bf4b65647416f03b2b9c0a2f68fda28d999f02a15cc01cc9bdac39e6bfce2c"},
+    {file = "wagtailmedia-0.11.0.tar.gz", hash = "sha256:1063e7d6262e601178c0dd47820a4ff928bef2b55baca23ae8d44bd74a5ea5ba"},
 ]
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
