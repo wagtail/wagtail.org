@@ -87,7 +87,7 @@ class SectionMediaBlock(media_blocks.AbstractMediaChooserBlock):
 
 
 class SectionBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, form_classname="full title")
+    title = blocks.CharBlock(required=True, form_classname="title")
 
     # Ensure that new choices are available in the icon sprite `./templates/services/includes/svg_sprite.html`
     ICON_CHOICES = [

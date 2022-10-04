@@ -2,7 +2,7 @@ from django.db import models
 
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
@@ -47,7 +47,7 @@ class MainMenu(ClusterableModel):
 
 
 @register_setting(icon="list-ul")
-class NavigationSettings(BaseSetting, ClusterableModel):
+class NavigationSettings(BaseSiteSetting, ClusterableModel):
     get_started_menu = models.ForeignKey(
         "core.GetStartedSnippet",
         null=True,

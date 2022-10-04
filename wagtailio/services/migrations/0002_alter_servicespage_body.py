@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                                 (
                                     "title",
                                     wagtail.blocks.CharBlock(
-                                        form_classname="full title", required=True
+                                        form_classname="title", required=True
                                     ),
                                 ),
                                 (
