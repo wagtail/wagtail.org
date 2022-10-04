@@ -58,9 +58,10 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         blank=True,
         max_num=2,
         help_text="Allows for a maximum of 2 CTA blocks",
+        use_json_field=True,
     )
 
-    body = StreamField(HomePageStoryBlock())
+    body = StreamField(HomePageStoryBlock(), use_json_field=True)
 
     hero_panels = [
         MultiFieldPanel(
@@ -107,7 +108,7 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     parent_page_types = ["core.HomePage"]
     # subpage_types = []  # TODO
 
-    body = StreamField(ContentStoryBlock())
+    body = StreamField(ContentStoryBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + HeroMixin.panels + [StreamFieldPanel("body")]
 

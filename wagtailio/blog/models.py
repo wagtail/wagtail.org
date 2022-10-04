@@ -162,7 +162,7 @@ class BlogPage(
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    body = StreamField(BlogStoryBlock())
+    body = StreamField(BlogStoryBlock(), use_json_field=True)
 
     @property
     def siblings(self):

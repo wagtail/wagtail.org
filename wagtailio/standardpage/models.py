@@ -13,7 +13,7 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
-    body = StreamField(StoryBlock())
+    body = StreamField(StoryBlock(), use_json_field=True)
 
     mapper_class = StreamFieldMapper
 
