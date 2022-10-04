@@ -6,13 +6,13 @@ from django.urls import reverse
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.contrib.frontend_cache.utils import PurgeBatch
-from wagtail.contrib.settings.models import BaseSetting
+from wagtail.contrib.settings.models import BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
 from wagtail.fields import RichTextField
 
 
 @register_setting
-class SiteWideAlertSettings(BaseSetting):
+class SiteWideAlertSettings(BaseSiteSetting):
     class Meta:
         verbose_name = "Sitewide alert"
 

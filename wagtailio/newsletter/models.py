@@ -14,8 +14,8 @@ class NewsletterPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro", classname="full"),
-        FieldPanel("body", classname="full"),
+        FieldPanel("intro"),
+        FieldPanel("body"),
     ]
 
     def get_context(self, request, *args, **kwargs):
