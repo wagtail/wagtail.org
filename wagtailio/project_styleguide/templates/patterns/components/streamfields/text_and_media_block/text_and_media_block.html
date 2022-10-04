@@ -24,7 +24,7 @@
         {% endif %}
 
         {% if value.cta.text %}
-            {% include "patterns/components/streamfields/cta/cta_block.html" with value=value.cta classes="text-media__button" %}
+            {% include "patterns/components/buttons/button.html" with url=value.cta.url title=value.cta.text arrow=True classes="text-media__button button--sf" %}
         {% endif %}
     </div>
 </div>
