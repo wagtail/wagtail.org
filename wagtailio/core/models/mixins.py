@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 
 from wagtailio.core.blocks import CTABlock
@@ -25,7 +25,7 @@ class HeroMixin(models.Model):
                 FieldPanel("sub_heading"),
                 FieldPanel("intro"),
                 FieldPanel("icon"),
-                StreamFieldPanel("cta"),
+                FieldPanel("cta"),
             ],
             "Hero",
         )

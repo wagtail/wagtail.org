@@ -2,13 +2,7 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-)
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.models import Orderable
 from wagtail.snippets.models import register_snippet
 
@@ -65,7 +59,7 @@ class MenuSnippetLink(Orderable, models.Model):
         blank=True, help_text="Optional. Override title text for chosen link page"
     )
 
-    panels = [PageChooserPanel("link_page"), FieldPanel("link_text")]
+    panels = [FieldPanel("link_page"), FieldPanel("link_text")]
 
 
 class MenuSnippet(ClusterableModel):
@@ -105,7 +99,7 @@ class SocialMediaMixin(models.Model):
 
     panels = [
         MultiFieldPanel(
-            [FieldPanel("social_text"), ImageChooserPanel("social_image")],
+            [FieldPanel("social_text"), FieldPanel("social_image")],
             "Social/Meta descriptions",
         )
     ]
@@ -130,7 +124,7 @@ class CrossPageMixin(models.Model):
 
     panels = [
         MultiFieldPanel(
-            [FieldPanel("listing_intro"), ImageChooserPanel("listing_image")],
+            [FieldPanel("listing_intro"), FieldPanel("listing_image")],
             "Cross-page behaviour",
         )
     ]

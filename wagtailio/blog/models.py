@@ -4,16 +4,9 @@ from django.shortcuts import render
 from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (
-    FieldPanel,
-    InlinePanel,
-    PageChooserPanel,
-    StreamFieldPanel,
-)
+from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import StreamField
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.models import Orderable, Page
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from wagtail_airtable.mixins import AirtableMixin
@@ -33,7 +26,7 @@ class FeaturedPost(Orderable):
         related_name="+",
     )
 
-    panels = [PageChooserPanel("page")]
+    panels = [FieldPanel("page")]
 
 
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
@@ -106,7 +99,7 @@ class BlogPageRelatedPage(Orderable):
         related_name="+",
     )
 
-    panels = [PageChooserPanel("page")]
+    panels = [FieldPanel("page")]
 
 
 @register_snippet
@@ -128,7 +121,7 @@ class Author(models.Model):
     panels = [
         FieldPanel("name"),
         FieldPanel("job_title"),
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         FieldPanel("url"),
     ]
 
@@ -171,12 +164,12 @@ class BlogPage(
     mapper_class = StreamFieldMapper  # used for content import
 
     content_panels = Page.content_panels + [
-        SnippetChooserPanel("author"),
-        ImageChooserPanel("main_image"),
+        FieldPanel("author"),
+        FieldPanel("main_image"),
         FieldPanel("date"),
         FieldPanel("category"),
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
         InlinePanel(
             "related_posts",
             heading="Related pages",

@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
@@ -81,7 +81,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
                 MediaChooserPanel("video", media_type="video"),
                 FieldPanel("autoplay_video"),
                 FieldPanel("code_snippet"),
-                StreamFieldPanel("call_to_action"),
+                FieldPanel("call_to_action"),
             ],
             "Promo",
             classname="collapsible",
@@ -93,7 +93,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         + hero_panels
         + promo_panels
         + [
-            StreamFieldPanel("body"),
+            FieldPanel("body"),
         ]
     )
 
@@ -110,7 +110,7 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
 
     body = StreamField(ContentStoryBlock(), use_json_field=True)
 
-    content_panels = Page.content_panels + HeroMixin.panels + [StreamFieldPanel("body")]
+    content_panels = Page.content_panels + HeroMixin.panels + [FieldPanel("body")]
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels

@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
@@ -23,7 +23,7 @@ class GetStartedSnippet(models.Model):
 
     panels = [
         FieldPanel("name"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     def __str__(self):

@@ -1,10 +1,9 @@
 from django.db import models
 
 from modelcluster.models import ClusterableModel
-from wagtail.admin.panels import FieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.fields import StreamField
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField
@@ -17,7 +16,7 @@ class FooterMenu(models.Model):
 
     panels = [
         FieldPanel("name"),
-        StreamFieldPanel("sections"),
+        FieldPanel("sections"),
     ]
 
     def __str__(self):
@@ -37,7 +36,7 @@ class MainMenu(ClusterableModel):
 
     panels = [
         FieldPanel("name"),
-        StreamFieldPanel("menu_sections", classname="collapsible"),
+        FieldPanel("menu_sections", classname="collapsible"),
     ]
 
     def __str__(self):
@@ -72,7 +71,7 @@ class NavigationSettings(BaseSetting, ClusterableModel):
     )
 
     panels = [
-        SnippetChooserPanel("get_started_menu"),
-        SnippetChooserPanel("main_navigation"),
-        SnippetChooserPanel("footer_navigation"),
+        FieldPanel("get_started_menu"),
+        FieldPanel("main_navigation"),
+        FieldPanel("footer_navigation"),
     ]

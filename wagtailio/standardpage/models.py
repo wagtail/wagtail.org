@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.panels import FieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
@@ -19,7 +19,7 @@ class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     promote_panels = (
