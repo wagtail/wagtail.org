@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     "modelcluster",
     "rest_framework",
     "manifest_loader",
-    "wagtail_ab_testing",
     "wagtail_transfer",
     "wagtail_airtable",
     "wagtail.core",
@@ -636,10 +635,6 @@ WAGTAILTRANSFER_UPDATE_RELATED_MODELS = [
     "features.featureaspect",
     "features.featuredescription",
 ]
-
-WAGTAIL_AB_TESTING = {
-    "MODE": "external",
-}
 
 
 MANIFEST_LOADER = {
