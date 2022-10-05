@@ -17,7 +17,11 @@
             <a class="github-button" href="https://github.com/wagtail/wagtail" data-show-count="true" aria-label="Visit Wagtail on GitHub to star the repo">Star</a>
         </div>
 
-        <div class="header__nav header__nav--desktop">
+        <div class="header__nav header__nav--desktop" data-desktop-menu>
+            {% main_navigation %}
+        </div>
+
+        <div class="header__nav header__nav--mobile" data-mobile-menu>
             {% main_navigation %}
         </div>
 
