@@ -21,7 +21,7 @@ charset = utf-8
 indent_size = 4
 
 [*.{js,ts,tsx,json,yml,yaml,css,scss}]
-indent_size = 2
+indent_size = 4
 
 [*.md]
 trim_trailing_whitespace = false
