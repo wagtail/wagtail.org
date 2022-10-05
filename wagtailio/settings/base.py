@@ -18,11 +18,6 @@ import dj_database_url
 
 env = os.environ.copy()
 
-# On Torchbox servers, many environment variables are prefixed with "CFG_"
-for key, value in os.environ.items():
-    if key.startswith("CFG_"):
-        env[key[4:]] = value
-
 
 # Absolute filesystem path to the Django project directory
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
@@ -142,7 +137,7 @@ MEDIA_URL = env.get("MEDIA_URL", "/media/")
 
 
 # Basic auth settings
-if os.environ.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
+if env.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
     MIDDLEWARE.insert(0, "baipw.middleware.BasicAuthIPWhitelistMiddleware")
     BASIC_AUTH_LOGIN = env.get("BASIC_AUTH_LOGIN", "wagtailorg")
     BASIC_AUTH_PASSWORD = env.get("BASIC_AUTH_PASSWORD", "showmewagtailorg")
