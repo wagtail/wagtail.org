@@ -37,3 +37,19 @@ $rounded-sm: 3px;
 $rounded-md: 6px;
 $rounded-lg: 10px;
 $rounded-xl: 15px;
+
+// Animation
+$transition: 0.25s ease-out;
+
+// Zindices
+$z-index: (
+    under: -1,
+    base: 10,
+    overlap: 20,
+    header: 30,
+    footer: 40,
+    nav: 50,
+    cookie-message: 100,
+    modal: 110,
+    modal-controls: 120,
+);

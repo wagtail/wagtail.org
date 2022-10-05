@@ -95,3 +95,10 @@
         transform: rotate(-3deg) translate3d(-27px, 30px, 0);
     }
 }
+
+
+// z-index
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
