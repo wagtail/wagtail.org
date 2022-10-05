@@ -42,12 +42,12 @@ wagtailmedia = "~0.11.0"
 whitenoise = "~6.2.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "22.6.0"
+black = "22.8.0"
 djhtml = "1.5.1"
 fabric3 = "1.14.post1"  # TODO switch to fabric/invoke
-flake8 = "4.0.1"
+flake8 = "5.0.4"
 flake8-assertive = "2.1.0"
 flake8-blind-except = "0.2.1"
 flake8-comprehensions = "3.10.0"
-isort = "~5.10.1"
+isort = "5.10.1"
 pre-commit = "2.20.0"
