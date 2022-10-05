@@ -6,7 +6,7 @@ PRODUCTION_APP_INSTANCE = "wagtail-org-production"
 STAGING_APP_INSTANCE = "wagtailio-staging"
 
 LOCAL_MEDIA_FOLDER = "./media"
-LOCAL_DATABASE_NAME = "wagtailio"
+LOCAL_DATABASE_NAME = "wagtailorg"
 
 
 ############
