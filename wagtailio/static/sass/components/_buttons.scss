@@ -41,11 +41,11 @@
     }
 
     &--secondary {
-      background-color: $color--indigo;
-      color: $color--white;
+        background-color: $color--indigo;
+        color: $color--white;
 
-      &:hover,
-      &:focus {
+        &:hover,
+        &:focus {
             background-color: $color--white;
             border-color: $color--indigo;
             color: $color--indigo;

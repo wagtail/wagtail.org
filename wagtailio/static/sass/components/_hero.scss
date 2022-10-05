@@ -35,18 +35,18 @@
         }
 
         @include media-query(large) {
-          margin-right: 80px;
+            margin-right: 80px;
         }
     }
 
     &__heading {
-      @include media-query(large) {
-        width: 110%; // to get a bit of overlap on the icon
-      }
+        @include media-query(large) {
+            width: 110%; // to get a bit of overlap on the icon
+        }
     }
 
     &__subheading {
-      font-weight: $weight--regular;
+        font-weight: $weight--regular;
     }
 
     &__icon {
