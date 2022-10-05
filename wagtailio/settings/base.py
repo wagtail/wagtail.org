@@ -2,10 +2,10 @@
 Django settings for wagtailio project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/3.2/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import sys
@@ -56,13 +56,7 @@ INSTALLED_APPS = [
     "modelcluster",
     "rest_framework",
     "manifest_loader",
-    "wagtail_transfer",
-    "wagtail_airtable",
     "wagtail",
-    "wagtail_image_import",
-    "wagtail_content_import",
-    "wagtail_content_import.pickers.google",
-    "wagtail_content_import.pickers.local",
     "wagtail.contrib.modeladmin",
     "wagtail.admin",
     "wagtail.documents",
@@ -118,7 +112,7 @@ WSGI_APPLICATION = "wagtailio.wsgi.application"
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = "en-gb"
 TIME_ZONE = "UTC"
@@ -128,7 +122,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = env.get("STATIC_ROOT", join(BASE_DIR, "static"))
 STATIC_URL = env.get("STATIC_URL", "/static/")
@@ -544,98 +538,6 @@ if "FRONTEND_CACHE_CLOUDFLARE_TOKEN" in env:
             "ZONEID": env["FRONTEND_CACHE_CLOUDFLARE_ZONEID"],
         }
     }
-
-WAGTAILCONTENTIMPORT_DOCX_PARSER = "wagtailio.utils.parsers.DocxHTMLParser"
-WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY"
-)
-WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
-)
-
-WAGTAILIMAGEIMPORT_GOOGLE_PICKER_API_KEY = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY"
-)
-WAGTAILIMAGEIMPORT_GOOGLE_OAUTH_CLIENT_SECRET = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
-)
-
-WAGTAILIMAGEIMPORT_FIELD_MAPPING = {
-    "id": "driveidmapping__drive_id",
-    "name": "title",
-    "imageMediaMetadata__time": "exif_datetime",
-    "md5Checksum": "md5_hash",
-}
-
-
-AIRTABLE_API_KEY = env.get("AIRTABLE_API_KEY")
-BLOG_AIRTABLE_BASE_KEY = env.get("BLOG_AIRTABLE_BASE_KEY")
-BLOG_AIRTABLE_URL = env.get("BLOG_AIRTABLE_URL")
-FEATURES_AIRTABLE_BASE_KEY = env.get("FEATURES_AIRTABLE_BASE_KEY")
-FEATURES_AIRTABLE_URL = env.get("FEATURES_AIRTABLE_URL")
-WAGTAIL_AIRTABLE_ENABLED = all(
-    (
-        AIRTABLE_API_KEY,
-        BLOG_AIRTABLE_BASE_KEY,
-        BLOG_AIRTABLE_URL,
-        FEATURES_AIRTABLE_BASE_KEY,
-        FEATURES_AIRTABLE_URL,
-    )
-)
-AIRTABLE_IMPORT_SETTINGS = {
-    "blog.BlogPage": {
-        "AIRTABLE_BASE_KEY": BLOG_AIRTABLE_BASE_KEY,
-        "AIRTABLE_TABLE_NAME": "Posts",
-        "AIRTABLE_UNIQUE_IDENTIFIER": {
-            "ID": "id",
-        },
-        "AIRTABLE_SERIALIZER": "wagtailio.blog.serializers.BlogPageSerializer",
-        "AIRTABLE_BASE_URL": BLOG_AIRTABLE_URL,
-    },
-    "features.FeatureDescription": {
-        "AIRTABLE_BASE_KEY": FEATURES_AIRTABLE_BASE_KEY,
-        "AIRTABLE_TABLE_NAME": "Feature Descriptions",
-        "AIRTABLE_UNIQUE_IDENTIFIER": {
-            "ID": "id",
-        },
-        "AIRTABLE_SERIALIZER": "wagtailio.features.serializers.FeatureDescriptionSerializer",
-        "AIRTABLE_BASE_URL": FEATURES_AIRTABLE_URL,
-    },
-}
-
-WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME"
-)
-WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL"
-)
-WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY"
-)
-
-WAGTAILTRANSFER_SOURCES = (
-    {
-        WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME: {
-            "BASE_URL": WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
-            "SECRET_KEY": WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
-        },
-    }
-    if all(
-        (
-            WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME,
-            WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
-            WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
-        )
-    )
-    else {}
-)
-
-WAGTAILTRANSFER_SECRET_KEY = env.get("WAGTAILTRANSFER_SECRET_KEY")
-
-WAGTAILTRANSFER_UPDATE_RELATED_MODELS = [
-    "features.featureaspect",
-    "features.featuredescription",
-]
 
 
 MANIFEST_LOADER = {

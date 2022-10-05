@@ -9,12 +9,8 @@ from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.snippets.models import register_snippet
 
-from wagtail_airtable.mixins import AirtableMixin
-from wagtail_content_import.models import ContentImportMixin
-
 from wagtailio.blog.blocks import BlogStoryBlock
 from wagtailio.taxonomy.models import Category
-from wagtailio.utils.mappers import StreamFieldMapper
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
@@ -126,9 +122,7 @@ class Author(models.Model):
     ]
 
 
-class BlogPage(
-    AirtableMixin, Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin
-):
+class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_page.html"
     subpage_types = []
     canonical_url = models.URLField(blank=True)
@@ -160,8 +154,6 @@ class BlogPage(
     @property
     def siblings(self):
         return self.__class__.objects.live().sibling_of(self).order_by("-date")
-
-    mapper_class = StreamFieldMapper  # used for content import
 
     content_panels = Page.content_panels + [
         FieldPanel("author"),
@@ -204,25 +196,3 @@ class BlogPage(
     @property
     def publication_date(self):
         return self.date
-
-    @classmethod
-    def map_import_fields(cls):
-        """
-        Maps Airtable columns to Django Model Fields.
-        """
-        mappings = {
-            "Title": "title",
-            # "slug" not included so Airtable cannot overwrite the Page slug as
-            # that could cause a lot of trouble with URLs and SEO. But it's possible
-            # to do this assuming there aren't two pages with the same slug.
-        }
-        return mappings
-
-    def get_export_fields(self):
-        return {
-            "ID": self.id,
-            "Title": self.title,
-            "Live": self.live,
-            "Slug": self.slug,
-            "Author": getattr(self.author, "name", ""),
-        }
