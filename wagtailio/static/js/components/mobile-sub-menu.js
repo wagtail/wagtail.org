@@ -1,22 +1,3 @@
-// Expected markup - see primarynav.html
-/* <ul class="primary-nav" data-primary-nav="">
-    <li class="primary-nav__item primary-nav__item--is-parent" data-has-subnav="">
-        <a class="primary-nav__link" data-open-subnav="" href="/" aria-haspopup="true" aria-expanded="false">
-            Home
-            <span class="primary-nav__icon">›</span>
-        </a>
-        <ul class="sub-nav" data-subnav="">
-            <li class="sub-nav__item sub-nav__item--back"><a data-subnav-back="" href="#">‹ Back</a></li>
-            <li class="sub-nav__item">
-                <a class="sub-nav__link" href="/">About us overview</a>
-            </li>
-            <li class="sub-nav__item sub-nav__item--secondary">
-                <a class="sub-nav__link" href="/page-1/">page 1</a>
-            </li>
-        </ul>
-    </li>
-</ul> */
-
 class MobileSubMenu {
     static selector() {
         return '[data-mobile-menu] [data-open-subnav]';
