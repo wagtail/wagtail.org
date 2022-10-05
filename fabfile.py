@@ -3,7 +3,9 @@ from fabric.api import local, prompt, task
 from fabric.context_managers import warn_only
 
 PRODUCTION_APP_INSTANCE = "wagtail-org-production"
-STAGING_APP_INSTANCE = "wagtailio-staging"
+
+# FIXME - there's no staging instance at present
+# STAGING_APP_INSTANCE = "wagtailio-staging"
 
 LOCAL_MEDIA_FOLDER = "./media"
 LOCAL_DATABASE_NAME = "wagtailorg"
@@ -51,36 +53,36 @@ def production_shell():
 #########
 
 
-@task
-def pull_staging_media():
-    pull_media_from_s3_heroku(STAGING_APP_INSTANCE)
+# @task
+# def pull_staging_media():
+#     pull_media_from_s3_heroku(STAGING_APP_INSTANCE)
 
 
-@task
-def push_staging_media():
-    push_media_to_s3_heroku(STAGING_APP_INSTANCE)
+# @task
+# def push_staging_media():
+#     push_media_to_s3_heroku(STAGING_APP_INSTANCE)
 
 
-@task
-def pull_staging_data():
-    pull_database_from_heroku(STAGING_APP_INSTANCE)
+# @task
+# def pull_staging_data():
+#     pull_database_from_heroku(STAGING_APP_INSTANCE)
 
 
-@task
-def push_staging_data():
-    push_database_to_heroku(STAGING_APP_INSTANCE)
+# @task
+# def push_staging_data():
+#     push_database_to_heroku(STAGING_APP_INSTANCE)
 
 
-@task
-def deploy_staging():
-    deploy_to_heroku(
-        STAGING_APP_INSTANCE, local_branch="staging", remote_branch="master"
-    )
+# @task
+# def deploy_staging():
+#     deploy_to_heroku(
+#         STAGING_APP_INSTANCE, local_branch="staging", remote_branch="master"
+#     )
 
 
-@task
-def staging_shell():
-    open_heroku_shell(STAGING_APP_INSTANCE)
+# @task
+# def staging_shell():
+#     open_heroku_shell(STAGING_APP_INSTANCE)
 
 
 #######
