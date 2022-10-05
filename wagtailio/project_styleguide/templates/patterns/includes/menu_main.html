@@ -30,16 +30,7 @@
                     </li>
                     <li class="sub-nav__item sub-nav__item--cta">
                         {% with menu_section.call_to_action as cta %}
-                            <a class="sub-nav__cta-link" href="{{ cta.url }}" title="{{ cta.text }}">
-                                {% include "patterns/components/icon/icon.html" with icon=cta.icon classes="icon-link__svg" %}
-                                <h3 class="sub-nav__cta-heading">{{ cta.text }}</h3>
-                                {% if cta.sub_heading %}
-                                    <h4 class="sub-nav__cta-subheading">{{ cta.sub_heading }}</h4>
-                                {% endif %}
-                                {% if cta.description %}
-                                    <p class="sub-nav__cta-description"></p>{{ cta.description }}</p>
-                                {% endif %}
-                            </a>
+                            {% include "patterns/components/nav-cta/nav-cta.html" %}
                         {% endwith %}
                     </li>
                 </ul>

@@ -1,5 +1,6 @@
 .sub-nav {
     @include z-index(nav);
+    $root: &;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -16,6 +17,7 @@
     border: 1px solid transparent;
     opacity: 0;
     visibility: hidden;
+    overflow: hidden;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
     box-shadow: 0 0 30px rgba($color--black, 0.05) ;
@@ -77,7 +79,6 @@
             flex-basis: 30%;
             min-width: 30%;
             max-width: 30%;
-            padding: 60px;
             margin-bottom: 0;
             align-self: stretch;
         }
@@ -125,6 +126,7 @@
         font-weight: $weight--regular;
         margin-bottom: 20px;
         line-height: 1;
+        color: $color--black;
     }
 
     &__item-link {
@@ -132,6 +134,13 @@
         flex-direction: row;
         align-items: center;
         text-decoration: none;
+        color: $color--black;
+        transition: color $transition;
+
+        &:hover,
+        &:focus {
+            color: $color--primary;
+        }
     }
 
     &__item-icon {
@@ -141,7 +150,6 @@
     &__item-heading {
         font-size: 18px;
         font-weight: $weight--bold;
-        color: $color--black;
         margin-bottom: 0;
         line-height: 1.5;
     }
@@ -152,8 +160,4 @@
         font-weight: $weight--regular;
     }
 
-    &__cta-link {
-        color: $color--white;
-        text-decoration: none;
-    }
 }

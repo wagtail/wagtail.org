@@ -21,6 +21,7 @@
         font-weight: $weight--bold;
         text-align: center;
         border-bottom: 1px solid $color--black;
+        transition: color $transition;
 
         &:last-child {
             border-bottom: 0;
@@ -31,6 +32,11 @@
             padding: 0;
             margin: 0 40px 0 0;
             border-bottom: 0;
+        }
+
+        &:hover,
+        &.active {
+            color: $color--primary;
         }
     }
 
