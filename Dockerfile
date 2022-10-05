@@ -38,8 +38,8 @@ RUN python -m venv /venv \
 
 # Create a non-root application user.
 ARG UID=1000 GID=1000
-RUN groupadd --gid $GID wagtailio \
-    && useradd --create-home --uid $UID --gid $GID wagtailio
+RUN groupadd --gid $GID --force wagtailio \
+    && useradd --create-home --uid $UID -g wagtailio wagtailio
 RUN chown --recursive $UID:$GID /app /venv
 
 
