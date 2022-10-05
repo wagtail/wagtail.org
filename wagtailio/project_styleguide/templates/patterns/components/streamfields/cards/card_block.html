@@ -2,9 +2,9 @@
     {% include "patterns/components/meta/meta.html" with classes="card__meta" %}
     <h4 class="card__heading heading-three">{{ value.heading }}</h4>
     {% if value.description %}
-        <p class="card__description mini-meta">
+        <div class="card__description mini-meta">
             {{ value.description }}
-        </p>
+        </div>
     {% endif %}
     {% if value.cta %}
         {% include "patterns/components/buttons/button.html" with url=value.cta.url title=value.cta.text arrow=True classes="card__cta" %}

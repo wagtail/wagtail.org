@@ -1,17 +1,16 @@
 .card {
+    $root: &;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-
-    
     &__meta {
         margin-bottom: 10px;
 
         @include media-query(large) {
             margin-bottom: 38px;
         }
-        
+
         p {
             font-size: 1rem;
             font-weight: $weight--regular;
@@ -30,6 +29,7 @@
         @include media-query(large) {
             padding-bottom: 40px;
             font-size: 0.8rem;
+            line-height: 1.5;
         }
     }
 
@@ -38,6 +38,12 @@
 
         @include media-query(medium) {
             margin: 40px auto 0 0;
+        }
+    }
+
+    .card-grid & {
+        #{$root}__description {
+            color: $color--off-black;
         }
     }
 }

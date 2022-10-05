@@ -33,6 +33,20 @@
         @include media-query(medium) {
             margin-bottom: 40px;
         }
+
+        @include media-query(large) {
+            margin-right: 80px;
+        }
+    }
+
+    &__heading {
+        @include media-query(large) {
+            width: 110%; // to get a bit of overlap on the icon
+        }
+    }
+
+    &__subheading {
+        font-weight: $weight--regular;
     }
 
     &__icon {

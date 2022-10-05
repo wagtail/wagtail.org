@@ -30,6 +30,10 @@
             margin-bottom: 40px;
         }
 
+        @include media-query(large) {
+          margin-bottom: 60px;
+      }
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -57,7 +61,7 @@
         }
 
         @include media-query(large) {
-            margin-top: 45px;
+            margin-top: 0;
             font-size: 0.8rem;
             grid-column: 2 / span 3;
         }

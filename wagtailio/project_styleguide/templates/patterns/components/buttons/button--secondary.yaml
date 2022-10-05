@@ -2,3 +2,4 @@ context:
   title: Call to action
   url: '#'
   arrow: False
+  classes: button--secondary

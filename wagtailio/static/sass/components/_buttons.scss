@@ -6,7 +6,7 @@
     border: 1px solid $color--indigo;
     padding: 15px 30px;
     color: $color--off-black;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     background-color: $color--white;
 
     @include media-query(large) {
@@ -28,12 +28,27 @@
     }
 
     &--dark {
+        border-color: $color--white;
+        background-color: transparent;
+        color: $color--white;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: $color--white;
+            color: $color--indigo;
+        }
+    }
+
+    &--secondary {
         background-color: $color--indigo;
         color: $color--white;
 
-        &:hover {
+        &:hover,
+        &:focus {
             background-color: $color--white;
-            color: $color--off-black;
+            border-color: $color--indigo;
+            color: $color--indigo;
         }
     }
 
@@ -68,8 +83,4 @@
         line-height: 1.25rem;
     }
 
-    .grid--sf & {
-        @include sf-spacing();
-        grid-column: 2;
-    }
 }
