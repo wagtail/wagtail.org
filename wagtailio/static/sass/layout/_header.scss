@@ -16,35 +16,56 @@
         padding: 35px 50px;
     }
 
+    &__actions {
+        display: flex;
+        align-items: center;
+    }
+
     &__logo {
         width: 100px;
         height: 40px;
 
         @include media-query(medium) {
-            width: 155px;
+            width: 153px;
             height: 65px;
         }
     }
 
-    &__col-one {
-        @include media-query(medium) {
-            display: flex;
-            align-items: center;
-            gap: 40px;
+    &__identity {
+        margin-right: 30px; // ensure logo doesn't bump into github button
+    }
+
+    &__nav {
+        align-items: center;
+
+        &--desktop {
+            display: none;
+
+            @media only screen and (min-width: $header-desktop) {
+                display: flex;
+            }
         }
 
-        @include media-query(large) {
-            gap: 140px;
+        &--mobile {
+            display: flex;
+
+            @media only screen and (min-width: $header-desktop) {
+                display: none;
+            }
         }
     }
 
-    &__col-two {
+    &__search {
         display: flex;
         align-items: center;
-        gap: 20px;
+        margin-right: 20px;
 
-        @include media-query(medium) {
-            gap: 40px;
+        @include media-query(large) {
+            margin-right: 30px;
+        }
+
+        @media only screen and (min-width: $header-github) {
+            margin-right: 40px;
         }
     }
 
@@ -54,16 +75,12 @@
 
         &--get-started {
             display: none;
+            padding: 15px 20px;
+            font-weight: $weight--bold;
+            font-size: 0.8rem;
 
-            @include media-query(medium) {
-                padding: 15px 20px;
+            @media only screen and (min-width: $header-desktop) {
                 display: inline-flex;
-                font-weight: $weight--bold;
-                font-size: 1rem;
-            }
-
-            @include media-query(large) {
-                font-size: 0.8rem;
             }
 
             svg {
@@ -99,10 +116,11 @@
         }
     }
 
-    &__github-button {
+    &__github {
         display: none;
+        margin-right: 64px;
 
-        @include media-query(medium) {
+        @media only screen and (min-width: $header-github) {
             display: block;
         }
     }
@@ -126,6 +144,12 @@
             .is-expanded & {
                 display: block;
             }
+        }
+    }
+
+    &__menu-toggle {
+        @media only screen and (min-width: $header-desktop) {
+            display: none;
         }
     }
 }

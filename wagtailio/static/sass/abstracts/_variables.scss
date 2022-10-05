@@ -9,10 +9,14 @@ $color--teal-300: #d9f3f3;
 $color--eggshell: #B3E7E8;
 $color--grey: #5C5C5C;
 $color--light-grey: #EDEAF3;
+$color--cool-grey: #c8c8c8;
 $color--light-grey-100: #f3f5f8;
 $color--white:#FFF;
 $color--pink: #F9CBCE;
 $color--off-black-30: #2626264d;
+
+// Mapping colours
+$color--primary: $color--teal;
 
 // Fonts
 $font--primary: 'Kumbh Sans', sans-serif;
@@ -24,6 +28,10 @@ $weight--regular: 400;
 
 // Breakpoints
 $breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+
+// One off breakpoints
+$header-desktop: 1200px; // point at which we move to burger menu
+$header-github: 1350px; // point at which we show github badge
 
 // Site grid
 $site-width: 1440px;
