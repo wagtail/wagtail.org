@@ -4,10 +4,8 @@ from django.dispatch.dispatcher import receiver
 
 from wagtail.images.models import AbstractImage, AbstractRendition
 
-from wagtail_image_import.models import DuplicateFindingMixin
 
-
-class WagtailIOImage(DuplicateFindingMixin, AbstractImage):
+class WagtailIOImage(AbstractImage):
     alternative_text = models.CharField(
         max_length=255,
         blank=True,
