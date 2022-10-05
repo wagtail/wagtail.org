@@ -33,7 +33,7 @@ psycopg2 = "~2.9.3"
 pygments = "~2.13.0"
 requests = "~2.28.1"
 scout-apm = "~2.26.1"
-sentry-sdk = "~1.5.12"
+sentry-sdk = "1.9.0"
 wagtail = "~4.0.2"
 wagtail-font-awesome-svg = "~0.0.2"
 wagtailaltgenerator = "~4.1.2"  # Compatible with Wagtail <= 5.0 as far as I can tell, but not explicitly supported/tested by the package.
