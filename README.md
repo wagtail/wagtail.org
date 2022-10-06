@@ -82,32 +82,32 @@ vagrant ssh
 
 Common Vagrant commands:
 
--   `vagrant up` starts the VM
--   `vagrant halt` stops the VM
--   `vagrant ssh` opens a shell in the VM
--   `vagrant destroy` deletes the VM
+- `vagrant up` starts the VM
+- `vagrant halt` stops the VM
+- `vagrant ssh` opens a shell in the VM
+- `vagrant destroy` deletes the VM
 
 Shortcut commands:
 
 Within the VM shell, you can run `./manage.py` to run any Django management command. But we have added a couple of shortcuts to save on typing:
 
--   `dj <command> [args]` - Runs a management command (eg, `dj shell`)
--   `djrun` - Starts the webserver on port 8000
+- `dj <command> [args]` - Runs a management command (eg, `dj shell`)
+- `djrun` - Starts the webserver on port 8000
 
 ## Frontend tooling
 
 To install and build the frontend:
 
--   `nvm use` to use the suggested node version (requires [nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm) or similar. You'll also need to run `nvm install` to install and activate the version of node required for the project)
--   `npm i` to install dependcies
--   `npm run build` to compile CSS & JS
+- `nvm use` to use the suggested node version (requires [nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm) or similar. You'll also need to run `nvm install` to install and activate the version of node required for the project)
+- `npm i` to install dependcies
+- `npm run build` to compile CSS & JS
 
 Other common commands:
 
--   `npm run start` start the Webpack build in watch mode, without live-reload
--   `npm run start:reload` start the Webpack server build on port 3000 with live-reload
--   `npm run lint` lint JS & CSS files
--   `npm run format` format files
+- `npm run start` start the Webpack build in watch mode, without live-reload
+- `npm run start:reload` start the Webpack server build on port 3000 with live-reload
+- `npm run lint` lint JS & CSS files
+- `npm run format` format files
 
 For more info see [Frontend general info](docs/frontend/general-info.md)
 
