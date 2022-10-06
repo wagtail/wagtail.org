@@ -17,6 +17,11 @@
         align-items: center;
         position: relative;
         top: -7px;
+
+        @media only screen and (min-width: $header-desktop) {
+            position: static;
+            top: auto;
+        }
     }
 
     &__logo {
