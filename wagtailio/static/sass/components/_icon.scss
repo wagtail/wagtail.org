@@ -7,6 +7,11 @@
     &__svg {
         position: absolute;
         overflow: visible;
+
+        .sub-nav & {
+            top: 0;
+            left: 0;
+        }
     }
 
     &__svg-bg {

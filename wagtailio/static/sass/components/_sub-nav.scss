@@ -5,24 +5,24 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: calc(100% - #{$header-mobile-height});
     position: absolute;
     list-style: none;
     top: 0;
     left: 0;
-    padding-top: 20px;
+    padding: 0 20px;
     background: $color--white;
     border-radius: $rounded-xl;
     // Extra border for high-contrast mode users.
     border: 1px solid transparent;
     opacity: 0;
     visibility: hidden;
-    overflow: hidden;
+    overflow-y: scroll;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
     box-shadow: 0 0 30px rgba($color--black, 0.05) ;
 
-    @include media-query(medium) {
+    @media only screen and (min-width: $header-desktop) {
         display: none;
         align-items: flex-start;
         width: 100%;
@@ -31,6 +31,7 @@
         background-color: $color--white;
         padding: 0;
         opacity: 1;
+        overflow: hidden;
         visibility: visible;
     }
 
@@ -49,13 +50,13 @@
     }
 
     &__item {
-        width: 50%;
+        width: 100%;
         padding-bottom: 10px;
         margin-bottom: 10px;
         text-align: center;
         border-bottom: 1px solid rgba($color--black, -0.8);
 
-        @include media-query(medium) {
+        @media only screen and (min-width: $header-desktop) {
             width: auto;
             flex-basis: 50%;
             min-width: 50%;
@@ -66,21 +67,30 @@
 
         // back button for mobile
         &--back {
-            text-transform: uppercase;
+            display: block;
+            width: 100%;
 
-            @include media-query(medium) {
+            @media only screen and (min-width: $header-desktop) {
                 display: none;
             }
         }
 
         &--cta {
+            position: relative;
+            left: -20px;
             background-color: $color--secondary;
             color: $color--white;
-            flex-basis: 30%;
-            min-width: 30%;
-            max-width: 30%;
             margin-bottom: 0;
             align-self: stretch;
+            width: calc(100% + 40px);
+
+            @media only screen and (min-width: $header-desktop) {
+                flex-basis: 30%;
+                min-width: 30%;
+                max-width: 30%;
+                width: 30%;
+                left: 0;
+            }
         }
 
 
@@ -95,7 +105,7 @@
             cursor: pointer;
         }
 
-        @include media-query(medium) {
+        @media only screen and (min-width: $header-desktop) {
             padding: 5px 0;
             margin: 0 10px;
             color: $color--white;
@@ -108,16 +118,26 @@
     }
 
     &__links {
-        padding: 60px;
-        flex-basis: 70%;
-        min-width: 70%;
-        max-width: 70%;
+        width: 100%;
+
+        @media only screen and (min-width: $header-desktop) {
+            padding: 60px;
+            flex-basis: 70%;
+            min-width: 70%;
+            max-width: 70%;
+        }
     }
 
     &__links-container {
         list-style: none;
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: $header-desktop) {
+            flex-flow: row wrap;
+            margin-bottom: 0;
+        }
     }
 
     &__heading {
@@ -140,6 +160,21 @@
         &:hover,
         &:focus {
             color: $color--primary;
+
+            // Icon overrides
+            .icon__svg-bg {
+                transform: rotate(5deg) scale(0.95);
+                color: $color--teal-200;
+            }
+        }
+
+        &--back {
+            border-top: 1px solid $color--cool-grey;
+            border-bottom: 1px solid $color--cool-grey;
+            font-size: 14px;
+            line-height: 1;
+            padding: 10px 0;
+            font-weight: $weight--regular;
         }
     }
 
@@ -155,9 +190,14 @@
     }
 
     &__item-description {
+        display: none;
         font-size: 14px;
         color: $color--grey;
         font-weight: $weight--regular;
+
+        @media only screen and (min-width: $header-desktop) {
+            display: block;
+        }
     }
 
 }

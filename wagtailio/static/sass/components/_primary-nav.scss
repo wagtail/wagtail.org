@@ -20,12 +20,19 @@
     &__item {
         cursor: pointer;
         width: 100%;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
+        padding: 15px 0;
         font-weight: $weight--bold;
         text-align: center;
-        border-bottom: 1px solid $color--black;
+        border-bottom: 1px solid $color--light-grey;
         transition: color $transition;
+
+        &:first-child {
+            border-top: 1px solid $color--light-grey;
+
+            @media only screen and (min-width: $header-desktop) {
+                border-top: 0;
+            }
+        }
 
         &:last-child {
             border-bottom: 0;
@@ -47,6 +54,7 @@
     &__item-container {
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     &__link {
@@ -77,13 +85,17 @@
     }
 
     &__icon {
-        height: 15px;
-        width: 15px;
+        height: 12px;
+        width: 12px;
         color: $color--primary;
         transition: color $transition;
+        transform: rotate(-90deg);
 
         @media only screen and (min-width: $header-desktop) {
             display: inline-block;
+            transform: none;
+            height: 15px;
+            width: 15px;
         }
 
         .active & {

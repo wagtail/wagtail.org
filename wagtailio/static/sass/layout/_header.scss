@@ -51,7 +51,6 @@
             display: flex;
             flex-direction: column;
             position: fixed;
-            padding-top: 20px;
             top: $header-mobile-height;
             left: 0;
             width: 100%;
@@ -71,32 +70,21 @@
         }
     }
 
-    &__search {
-        display: flex;
-        align-items: center;
-        margin-right: 20px;
-
-        @include media-query(large) {
-            margin-right: 30px;
-        }
-
-        @media only screen and (min-width: $header-github) {
-            margin-right: 40px;
-        }
-    }
-
     &__button {
         margin: 0;
         width: auto;
 
         &--get-started {
             display: none;
-            padding: 15px 20px;
+            padding: 10px 13px;
             font-weight: $weight--bold;
             font-size: 0.8rem;
+            margin-right: 15px;
 
             @media only screen and (min-width: $header-desktop) {
                 display: inline-flex;
+                padding: 15px 20px;
+                margin-right: 0;
             }
 
             svg {
@@ -126,6 +114,7 @@
             svg {
                 width: inherit;
                 height: inherit;
+                fill: currentColor;
             }
         }
 
@@ -145,9 +134,28 @@
         }
     }
 
+    &__search {
+        position: relative;
+        top: 1px;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
+        @include media-query(large) {
+            margin-right: 30px;
+        }
+
+        @media only screen and (min-width: $header-github) {
+            margin-right: 40px;
+        }
+
+    }
+
     &__search-icon {
+        transition: color $transition;
+
         &--open {
-            color: $color--off-black;
+            color: $color--black;
 
             .is-expanded & {
                 display: none;
@@ -165,11 +173,18 @@
                 display: block;
             }
         }
+
+        &:hover,
+        &:focus {
+            color: $color--primary;
+        }
     }
 
     &__menu-toggle {
+
         @media only screen and (min-width: $header-desktop) {
             display: none;
         }
     }
+
 }

@@ -22,10 +22,10 @@
         width: 21px;
         height: 3px;
         border-radius: 4px;
-        background: $color--black;
+        background-color: $color--black;
         opacity: 1;
         transform: translateX(-50%) rotate(0deg);
-        transition: top, width, opacity, transform, left, 0.25s ease-out;
+        transition: top, width, opacity, transform, background-color left, 0.25s ease-out;
 
         .is-open & {
             width: 27px;

@@ -41,14 +41,17 @@
     }
 
     &--mobile {
-        padding: 0 25px;
+        @include z-index(modal);
+        padding: 0 20px;
         position: absolute;
         inset: 0;
-        transform: translateY(100%);
-        z-index: 3;
+        opacity: 1;
+        transform: translate3d(0, 100%, 0);
+        transition: opacity $transition;
 
         &.is-hidden {
-            display: none;
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
         }
 
         #{$root}__button {
