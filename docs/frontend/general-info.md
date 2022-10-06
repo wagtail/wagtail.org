@@ -2,19 +2,19 @@
 
 ## What's included
 
-- [Sass](http://sass-lang.com/) CSS with [auto-prefixing](https://github.com/postcss/autoprefixer).
-- [TypeScript](https://www.typescriptlang.org/) for ES2015+ JavaScript, and TypeScript support.
-- [webpack-dev-server](https://v4.webpack.js.org/configuration/dev-server/) for autoreloading.
-- [Webpack](https://webpack.js.org/) for module bundling.
-  - With `ts-loader` to process JavaScript and TypeScript.
-  - With `css-loader`, `postcss-loader`, and `sass-loader` to process stylesheets.
-- CSS linting with `stylelint`
-- JS linting with `eslint`
+-   [Sass](http://sass-lang.com/) CSS with [auto-prefixing](https://github.com/postcss/autoprefixer).
+-   [TypeScript](https://www.typescriptlang.org/) for ES2015+ JavaScript, and TypeScript support.
+-   [webpack-dev-server](https://v4.webpack.js.org/configuration/dev-server/) for autoreloading.
+-   [Webpack](https://webpack.js.org/) for module bundling.
+    -   With `ts-loader` to process JavaScript and TypeScript.
+    -   With `css-loader`, `postcss-loader`, and `sass-loader` to process stylesheets.
+-   CSS linting with `stylelint`
+-   JS linting with `eslint`
 
 ## Developing with it
 
-- To start the development environment, follow instruction in README.md in the project root
-- Source files for developing your project are in `static` and the distribution folder for the compiled assets is `static_compiled`. Don't make direct changes to the `static_compiled` directory as they will be overwritten.
+-   To start the development environment, follow instruction in README.md in the project root
+-   Source files for developing your project are in `static` and the distribution folder for the compiled assets is `static_compiled`. Don't make direct changes to the `static_compiled` directory as they will be overwritten.
 
 # Django Pattern Library
 
@@ -28,8 +28,8 @@ The site uses icons throughout the build, a comprehensive list can be found [in 
 
 The site uses a grid system across 3 breakpoints:
 
-- Large: 2 gutter columns, 5 main columns
-- Medium: 2 gutter columns, 3 main columns
-- Small: 2 gutter columns, 2 main columns
+-   Large: 2 gutter columns, 5 main columns
+-   Medium: 2 gutter columns, 3 main columns
+-   Small: 2 gutter columns, 2 main columns
 
 To use the system wrap a component in `<div class="grid">` and then align your component accordingly.
