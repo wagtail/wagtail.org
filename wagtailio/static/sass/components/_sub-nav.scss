@@ -18,9 +18,15 @@
     opacity: 0;
     visibility: hidden;
     overflow-y: scroll;
+    overflow-x: hidden;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
     box-shadow: 0 0 30px rgba($color--black, 0.05) ;
+
+    @include media-query(medium) {
+        padding: 0 50px;
+        height: calc(100% - #{$header-tablet-height});
+    }
 
     @media only screen and (min-width: $header-desktop) {
         display: none;
@@ -83,6 +89,11 @@
             margin-bottom: 0;
             align-self: stretch;
             width: calc(100% + 40px);
+
+            @include media-query(medium) {
+                left: -50px;
+                width: calc(100% + 100px);
+            }
 
             @media only screen and (min-width: $header-desktop) {
                 flex-basis: 30%;

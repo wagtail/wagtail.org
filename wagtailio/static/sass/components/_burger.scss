@@ -25,7 +25,7 @@
         background-color: $color--black;
         opacity: 1;
         transform: translateX(-50%) rotate(0deg);
-        transition: top, width, opacity, transform, background-color left, 0.25s ease-out;
+        transition: top $transition, width $transition, opacity $transition, transform $transition, background-color $transition, left $transition;
 
         .is-open & {
             width: 27px;

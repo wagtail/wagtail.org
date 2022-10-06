@@ -8,17 +8,19 @@
     position: relative;
 
     @include media-query(medium) {
-        margin: 0 auto;
-        padding: 15px 30px;
-    }
-
-    @include media-query(large) {
         padding: 35px 50px;
+        margin: 0 auto;
     }
 
     &__actions {
         display: flex;
         align-items: center;
+        position: relative;
+        top: -7px;
+
+        @include media-query(medium) {
+            top: -7px;
+        }
     }
 
     &__logo {
@@ -29,6 +31,10 @@
             width: 153px;
             height: 65px;
         }
+    }
+
+    &__link {
+        display: block;
     }
 
     &__identity {
@@ -58,6 +64,10 @@
             background-color: $color--white;
             transform: translate3d(100%,0,0);
             transition: transform $transition;
+
+            @include media-query(medium) {
+                top: $header-tablet-height;
+            }
 
             @media only screen and (min-width: $header-desktop) {
                 display: none;
@@ -141,12 +151,18 @@
         align-items: center;
         margin-right: 10px;
 
+        @include media-query(medium) {
+            margin-right: 20px;
+        }
+
         @include media-query(large) {
             margin-right: 30px;
+            top: 3px;
         }
 
         @media only screen and (min-width: $header-github) {
             margin-right: 40px;
+
         }
 
     }
