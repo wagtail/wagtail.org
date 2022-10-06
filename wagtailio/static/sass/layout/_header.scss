@@ -48,10 +48,12 @@
 
         &--mobile {
             @include z-index(nav);
-            position: fixed;
-            top: 0;
-            left: 0;
             display: flex;
+            flex-direction: column;
+            position: fixed;
+            padding-top: 20px;
+            top: $header-mobile-height;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: $color--white;
@@ -65,10 +67,6 @@
             &.is-visible {
                 transform: translateZ(0);
                 overflow-y: scroll;
-            }
-
-            nav {
-                width: 100%;
             }
         }
     }
@@ -113,6 +111,10 @@
                 svg {
                     color: $color--teal-100;
                 }
+            }
+
+            .header__nav--mobile & {
+                display: block; // show get started on mobile
             }
         }
 

@@ -34,6 +34,9 @@ $breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
 $header-desktop: 1200px; // point at which we move to burger menu
 $header-github: 1350px; // point at which we show github badge
 
+// Header vars
+$header-mobile-height: 76px;
+
 // Site grid
 $site-width: 1440px;
 $gutter-sm: 20px;
