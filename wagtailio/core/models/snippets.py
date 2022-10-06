@@ -45,7 +45,7 @@ class SignupFormSnippet(models.Model):
         verbose_name="Mailchimp Account ID", max_length=255, blank=True
     )
     mailchimp_newsletter_id = models.CharField(
-        verbose_name="Mailchimp Newsletter ID", max_length=255, blank=True
+        verbose_name="Mailchimp Audience ID", max_length=255, blank=True
     )
 
     panels = [
