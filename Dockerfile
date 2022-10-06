@@ -14,6 +14,8 @@ RUN npm run build:prod
 FROM python:3.8-bullseye AS backend
 
 ARG POETRY_VERSION=1.2.1
+ARG UID=1000
+ARG GID=1000
 
 ENV DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
     GUNICORN_CMD_ARGS="--max-requests 1200 --max-requests-jitter 50 --access-logfile -" \
@@ -37,7 +39,6 @@ RUN python -m venv /venv \
     && /usr/local/bin/python -m pip install poetry==$POETRY_VERSION
 
 # Create a non-root application user.
-ARG UID=1000 GID=1000
 RUN groupadd --gid $GID --force wagtailio \
     && useradd --create-home --uid $UID -g wagtailio wagtailio
 RUN chown --recursive $UID:$GID /app /venv
