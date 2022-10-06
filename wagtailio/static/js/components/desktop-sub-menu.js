@@ -20,9 +20,6 @@ class DesktopSubMenu {
   bindEventListeners() {
       this.node.addEventListener('click', (e) => {
           e.preventDefault();
-          /* eslint-disable no-console */
-        console.log('test')
-
           // Close other menu items that may be open
           this.allToggleNodes.forEach((item) => {
               if (item !== this.toggleNode) {
@@ -34,8 +31,8 @@ class DesktopSubMenu {
               }
           });
 
-          if (this.toggleNode.classList.contains('active')) {
-              this.toggleNode.classList.remove('active');
+          if (this.toggleNode.classList.contains(this.activeClass)) {
+              this.toggleNode.classList.remove(this.activeClass);
               this.node.setAttribute('aria-expanded', 'false');
           } else {
               // Fire a custom event which is useful if we need any other items such as
@@ -46,7 +43,7 @@ class DesktopSubMenu {
               // });
               const menuOpenEvent = new Event('onMenuOpen');
               document.dispatchEvent(menuOpenEvent);
-              this.toggleNode.classList.add('active');
+              this.toggleNode.classList.add(this.activeClass);
               this.node.setAttribute('aria-expanded', 'true');
           }
       });

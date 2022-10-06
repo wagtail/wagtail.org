@@ -1,5 +1,5 @@
-<a class="nav-cta" href="{{ cta.url }}" title="{{ cta.text }}">
-    <svg class="nav-cta__icon">
+<a class="nav-cta" href="{{ cta.url }}">
+    <svg class="nav-cta__icon" aria-hidden="true">
         <use xlink:href="#{{ cta.icon }}" />
     </svg>
     <div class="nav-cta__content">
@@ -11,7 +11,7 @@
             <p class="nav-cta__description">{{ cta.description }}</p>
         {% endif %}
     </div>
-    <svg class="nav-cta__arrow">
+    <svg class="nav-cta__arrow" aria-hidden="true">
         <use xlink:href="#arrow-alt" />
     </svg>
 </a>
