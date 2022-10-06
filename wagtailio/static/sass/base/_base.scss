@@ -13,6 +13,14 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    overflow-x: hidden;
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+}
+
 img {
     height: auto;
     max-width: 100%;

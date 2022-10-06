@@ -47,10 +47,28 @@
         }
 
         &--mobile {
+            @include z-index(nav);
+            position: fixed;
+            top: 0;
+            left: 0;
             display: flex;
+            width: 100%;
+            height: 100%;
+            background-color: $color--white;
+            transform: translate3d(100%,0,0);
+            transition: transform $transition;
 
             @media only screen and (min-width: $header-desktop) {
                 display: none;
+            }
+
+            &.is-visible {
+                transform: translateZ(0);
+                overflow-y: scroll;
+            }
+
+            nav {
+                width: 100%;
             }
         }
     }
