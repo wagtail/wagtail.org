@@ -1,0 +1,120 @@
+.primary-nav {
+    $root: &;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        @media only screen and (min-width: $header-desktop) {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+
+    &__item {
+        cursor: pointer;
+        width: 100%;
+        padding: 15px 0;
+        font-weight: $weight--bold;
+        text-align: center;
+        border-bottom: 1px solid $color--light-grey;
+        transition: color $transition;
+
+        &:first-child {
+            border-top: 1px solid $color--light-grey;
+
+            @media only screen and (min-width: $header-desktop) {
+                border-top: 0;
+            }
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        @media only screen and (min-width: $header-desktop) {
+            width: auto;
+            padding: 0;
+            margin: 0 40px 0 0;
+            border-bottom: 0;
+        }
+
+        &:hover,
+        &.active {
+            color: $color--primary;
+        }
+    }
+
+    &__item-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__link {
+        color: rgba($color--off-black, -0.8);
+        border-bottom: 1px solid transparent;
+        transition: color, border 0.3s ease;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @media only screen and (min-width: $header-desktop) {
+            padding: 5px 0;
+            margin: 0 10px;
+            color: $color--black;
+
+            &:hover {
+                color: $color--black;
+                border-bottom: 1px solid $color--black;
+            }
+        }
+    }
+
+    &__label {
+        padding-right: 10px;
+        font-size: 16px;
+        font-weight: $weight--bold;
+    }
+
+    &__icon {
+        height: 12px;
+        width: 12px;
+        color: $color--primary;
+        transition: color $transition;
+        transform: rotate(-90deg);
+
+        @media only screen and (min-width: $header-desktop) {
+            display: inline-block;
+            transform: none;
+            height: 15px;
+            width: 15px;
+        }
+
+        .active & {
+            @media only screen and (min-width: $header-desktop) {
+                color: $color--cool-grey;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .header__nav--mobile & {
+        width: 100%;
+
+        #{$root}__container {
+            padding: 0 20px;
+
+            @include media-query(medium) {
+                padding: 0 50px;
+            }
+        }
+    }
+}

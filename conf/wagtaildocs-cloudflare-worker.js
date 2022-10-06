@@ -24,45 +24,48 @@ const originRoot = 'http://' + originDomain + '/';
 const proxyRoot = 'https://' + proxyDomain + '/';
 
 addEventListener('fetch', (event) => {
-  event.respondWith(handleRequest(event.request));
+    event.respondWith(handleRequest(event.request));
 });
 
 class CanonicalLinkHandler {
-  element(element) {
-    const oldUrl = element.getAttribute('href');
-    // Rewrite any URL paths within /latest/ or /vN.N/ to the corresponding path in /stable/
-    const newUrl = oldUrl.replace(
-      /^(https?\:\/\/docs\.wagtail\.org\/\w+)\/(v[\d\.]+|latest)\//,
-      '$1/stable/',
-    );
-    element.setAttribute('href', newUrl);
-  }
+    element(element) {
+        const oldUrl = element.getAttribute('href');
+        // Rewrite any URL paths within /latest/ or /vN.N/ to the corresponding path in /stable/
+        const newUrl = oldUrl.replace(
+            /^(https?\:\/\/docs\.wagtail\.org\/\w+)\/(v[\d\.]+|latest)\//,
+            '$1/stable/',
+        );
+        element.setAttribute('href', newUrl);
+    }
 }
 
 /* Respond to the request */
 async function handleRequest(request) {
-  // Fetch from the origin host
-  const originUrl = request.url.replace(proxyRoot, originRoot);
-  const resp = await fetch(originUrl, { redirect: 'manual' });
+    // Fetch from the origin host
+    const originUrl = request.url.replace(proxyRoot, originRoot);
+    const resp = await fetch(originUrl, { redirect: 'manual' });
 
-  const location = resp.headers.get('Location');
-  const contentType = resp.headers.get('Content-Type');
+    const location = resp.headers.get('Location');
+    const contentType = resp.headers.get('Content-Type');
 
-  if (location) {
-    // Rewrite redirect headers to use the proxy domain instead of the origin
-    const newResp = new Response(resp.body, {
-      status: resp.status,
-      statusText: resp.statusText,
-      headers: resp.headers,
-    });
-    newResp.headers.set('Location', location.replace(originRoot, proxyRoot));
-    return newResp;
-  } else if (contentType && contentType.split(';')[0].endsWith('html')) {
-    // Rewrite responses with an html content type
-    return new HTMLRewriter()
-      .on('link[rel="canonical"]', new CanonicalLinkHandler())
-      .transform(resp);
-  } else {
-    return resp;
-  }
+    if (location) {
+        // Rewrite redirect headers to use the proxy domain instead of the origin
+        const newResp = new Response(resp.body, {
+            status: resp.status,
+            statusText: resp.statusText,
+            headers: resp.headers,
+        });
+        newResp.headers.set(
+            'Location',
+            location.replace(originRoot, proxyRoot),
+        );
+        return newResp;
+    } else if (contentType && contentType.split(';')[0].endsWith('html')) {
+        // Rewrite responses with an html content type
+        return new HTMLRewriter()
+            .on('link[rel="canonical"]', new CanonicalLinkHandler())
+            .transform(resp);
+    } else {
+        return resp;
+    }
 }

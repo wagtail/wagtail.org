@@ -8,12 +8,20 @@
     position: relative;
 
     @include media-query(medium) {
+        padding: 35px 50px;
         margin: 0 auto;
-        padding: 15px 30px;
     }
 
-    @include media-query(large) {
-        padding: 35px 50px;
+    &__actions {
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: -7px;
+
+        @media only screen and (min-width: $header-desktop) {
+            position: static;
+            top: auto;
+        }
     }
 
     &__logo {
@@ -21,30 +29,54 @@
         height: 40px;
 
         @include media-query(medium) {
-            width: 155px;
+            width: 153px;
             height: 65px;
         }
     }
 
-    &__col-one {
-        @include media-query(medium) {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        @include media-query(large) {
-            gap: 140px;
-        }
+    &__link {
+        display: block;
     }
 
-    &__col-two {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+    &__identity {
+        margin-right: 30px; // ensure logo doesn't bump into github button
+    }
 
-        @include media-query(medium) {
-            gap: 40px;
+    &__nav {
+        align-items: center;
+
+        &--desktop {
+            display: none;
+
+            @media only screen and (min-width: $header-desktop) {
+                display: flex;
+            }
+        }
+
+        &--mobile {
+            @include z-index(nav);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            inset: $header-mobile-height auto auto 0;
+            width: 100%;
+            height: 100%;
+            background-color: $color--white;
+            transform: translate3d(100%,0,0);
+            transition: transform $transition;
+
+            @include media-query(medium) {
+                inset: $header-tablet-height auto auto 0;
+            }
+
+            @media only screen and (min-width: $header-desktop) {
+                display: none;
+            }
+
+            &.is-visible {
+                transform: translateZ(0);
+                overflow-y: scroll;
+            }
         }
     }
 
@@ -54,16 +86,15 @@
 
         &--get-started {
             display: none;
+            padding: 10px 13px;
+            font-weight: $weight--bold;
+            font-size: 0.8rem;
+            margin-right: 15px;
 
-            @include media-query(medium) {
-                padding: 15px 20px;
+            @media only screen and (min-width: $header-desktop) {
                 display: inline-flex;
-                font-weight: $weight--bold;
-                font-size: 1rem;
-            }
-
-            @include media-query(large) {
-                font-size: 0.8rem;
+                padding: 15px 20px;
+                margin-right: 0;
             }
 
             svg {
@@ -79,6 +110,10 @@
                     color: $color--teal-100;
                 }
             }
+
+            .header__nav--mobile & {
+                display: block; // show get started on mobile
+            }
         }
 
         &--search {
@@ -89,6 +124,7 @@
             svg {
                 width: inherit;
                 height: inherit;
+                fill: currentColor;
             }
         }
 
@@ -99,17 +135,43 @@
         }
     }
 
-    &__github-button {
+    &__github {
         display: none;
+        margin-right: 64px;
 
-        @include media-query(medium) {
+        @media only screen and (min-width: $header-github) {
             display: block;
         }
     }
 
+    &__search {
+        position: relative;
+        top: 1px;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
+        @include media-query(medium) {
+            margin-right: 20px;
+        }
+
+        @include media-query(large) {
+            margin-right: 30px;
+            top: 3px;
+        }
+
+        @media only screen and (min-width: $header-github) {
+            margin-right: 40px;
+
+        }
+
+    }
+
     &__search-icon {
+        transition: color $transition;
+
         &--open {
-            color: $color--off-black;
+            color: $color--black;
 
             .is-expanded & {
                 display: none;
@@ -127,5 +189,18 @@
                 display: block;
             }
         }
+
+        &:hover,
+        &:focus {
+            color: $color--primary;
+        }
     }
+
+    &__menu-toggle {
+
+        @media only screen and (min-width: $header-desktop) {
+            display: none;
+        }
+    }
+
 }

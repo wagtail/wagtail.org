@@ -1,0 +1,75 @@
+.burger {
+    $root: &;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    border: 0;
+    transform: rotate(0deg);
+    transition: transform 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+        #{$root}__line {
+            background-color: $color--primary;
+        }
+    }
+
+    &__line {
+        position: absolute;
+        inset: auto auto auto 50%;
+        display: block;
+        width: 21px;
+        height: 3px;
+        border-radius: 4px;
+        background-color: $color--black;
+        opacity: 1;
+        transform: translateX(-50%) rotate(0deg);
+        transition: top $transition, width $transition, opacity $transition, transform $transition, background-color $transition, left $transition;
+
+        .is-open & {
+            width: 27px;
+            height: 4px;
+        }
+
+        &:nth-child(1) {
+            top: 5px;
+
+            .is-open & {
+                inset: 10px auto auto 50%;
+                width: 0%;
+            }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+            top: 13px;
+
+            .is-open & {
+                opacity: 1;
+                inset: 13px auto auto 6px;
+            }
+        }
+
+        &:nth-child(2) {
+            .is-open & {
+                transform: rotate(45deg);
+            }
+        }
+
+        &:nth-child(3) {
+            .is-open & {
+                transform: rotate(-45deg);
+            }
+        }
+
+        &:nth-child(4) {
+            top: 21px;
+
+            .is-open & {
+                width: 0%;
+                inset: 10px auto auto 50%;
+            }
+        }
+    }
+}

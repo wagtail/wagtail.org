@@ -1,0 +1,95 @@
+.nav-cta {
+    $root: &;
+    display: block;
+    position: relative;
+    color: $color--white;
+    text-decoration: none;
+    padding: 20px 20px 50px 20px;
+
+    @include media-query(medium) {
+        padding: 20px 50px 50px 50px;
+    }
+
+    @media only screen and (min-width: $header-desktop) {
+        padding: 60px 60px 100px 60px;
+    }
+
+    &:hover,
+    &:focus {
+        #{$root}__cta-heading {
+            color: $color--teal-100;
+        }
+
+    }
+
+    &__icon {
+        @include z-index(base);
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        width: 190px;
+        height: auto;
+        color: rgba($color--teal-200, 0.75);
+
+        @media only screen and (min-width: $header-desktop) {
+            top: 60px;
+            right: 60px;
+        }
+    }
+
+    &__content {
+        @include z-index(overlap);
+        position: relative;
+        padding-top: 40px;
+        text-align: start;
+
+        @media only screen and (min-width: $header-desktop) {
+            padding-top: 100px;
+        }
+    }
+
+    &__heading {
+        font-size: 45px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        padding-right: 60px;
+        transition: color $transition;
+
+        @media only screen and (min-width: $header-desktop) {
+            padding-right: 0;
+            font-size: 55px;
+        }
+    }
+
+    &__subheading,
+    &__description {
+        font-size: 20px;
+    }
+
+    &__subheading {
+        margin-bottom: 5px;
+    }
+
+    &__description {
+        font-weight: $weight--regular;
+        margin: 0;
+    }
+
+    &__arrow {
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        stroke: $color--white;
+        stroke-width: 0.25;
+        color: transparent;
+        width: 60px;
+        height: 60px;
+        transform: rotate(14deg); // remove this when icons are refactored to be straight
+
+        @media only screen and (min-width: $header-desktop) {
+            bottom: 50px;
+            right: 60px;
+        }
+    }
+}
+
