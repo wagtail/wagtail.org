@@ -20,7 +20,7 @@
     overflow-x: hidden;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
-    box-shadow: 0 0 30px rgba($color--black, 0.05) ;
+    box-shadow: 0 0 30px rgba($color--black, 0.05);
 
     @include media-query(medium) {
         padding: 0 50px;
