@@ -9,8 +9,7 @@
         overflow: visible;
 
         .sub-nav & {
-            top: 0;
-            left: 0;
+            inset: 0 auto auto 0;
         }
     }
 

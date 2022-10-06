@@ -17,7 +17,7 @@
 
     &__line {
         position: absolute;
-        left: 50%;
+        inset: auto auto auto 50%;
         display: block;
         width: 21px;
         height: 3px;
@@ -36,8 +36,7 @@
             top: 5px;
 
             .is-open & {
-                top: 10px;
-                left: 50%;
+                inset: 10px auto auto 50%;
                 width: 0%;
             }
         }
@@ -48,7 +47,7 @@
 
             .is-open & {
                 opacity: 1;
-                left: 6px;
+                inset: 13px auto auto 6px;
             }
         }
 
@@ -68,9 +67,8 @@
             top: 21px;
 
             .is-open & {
-                top: 10px;
-                left: 50%;
                 width: 0%;
+                inset: 10px auto auto 50%;
             }
         }
     }

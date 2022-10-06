@@ -8,8 +8,7 @@
     height: calc(100% - #{$header-mobile-height});
     position: absolute;
     list-style: none;
-    top: 0;
-    left: 0;
+    inset: 0 auto auto 0;
     padding: 0 20px;
     background: $color--white;
     border-radius: $rounded-xl;
@@ -83,7 +82,7 @@
 
         &--cta {
             position: relative;
-            left: -20px;
+            inset: auto auto auto -20px;
             background-color: $color--secondary;
             color: $color--white;
             margin-bottom: 0;
@@ -91,7 +90,7 @@
             width: calc(100% + 40px);
 
             @include media-query(medium) {
-                left: -50px;
+                inset: auto auto auto -50px;
                 width: calc(100% + 100px);
             }
 
@@ -100,7 +99,7 @@
                 min-width: 30%;
                 max-width: 30%;
                 width: 30%;
-                left: 0;
+                inset: auto auto auto 0;
             }
         }
 
