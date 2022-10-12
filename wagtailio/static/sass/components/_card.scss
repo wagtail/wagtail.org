@@ -42,9 +42,14 @@
     }
 
     .card-grid & {
+        justify-content: flex-start;
+
         #{$root}__description {
             color: $color--off-black;
-            padding-bottom: 0;
+        }
+
+        #{$root}__cta {
+            margin-top: auto; // align cta to bottom of the grid
         }
     }
 }
