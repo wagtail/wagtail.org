@@ -3,25 +3,25 @@
 {% if value and value.comparison_table %}
     <div class="grid grid--comparison-table">
         <table class="comparison-table">
-            <tbody>
-                {% for row in value.comparison_table.rows %}
+            {% for row in value.comparison_table.rows %}
+                {% if forloop.first %}
+                    <thead>
+                        <tr>
+                            {% for col in value.comparison_table.columns %}
+                                <th>{{ col.heading }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% endif %}
                     <tr>
-                        {% if forloop.first %}
-                            {# The first row of blocks are the header #}
-                            {% for block in row %}
-                                <th>
-                                    {% include_block block %}
-                                </th>
-                            {% endfor %}
-                        {% else %}
-                            {% for block in row %}
-                                <td>
-                                    {% include_block block %}
-                                </td>
-                            {% endfor %}
-                        {% endif %}
+                        {% for block in row %}
+                            <td>
+                                {% include_block block %}
+                            </td>
+                        {% endfor %}
                     </tr>
-                {% endfor %}
+            {% endfor %}
             </tbody>
         </table>
     </div>
