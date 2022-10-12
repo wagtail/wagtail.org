@@ -71,6 +71,7 @@
     }
 
     &__icon {
+        @include z-index(under);
         position: absolute;
         width: 230px;
         height: 300px;

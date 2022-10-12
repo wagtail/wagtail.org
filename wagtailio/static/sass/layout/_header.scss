@@ -15,13 +15,6 @@
     &__actions {
         display: flex;
         align-items: center;
-        position: relative;
-        top: -7px;
-
-        @media only screen and (min-width: $header-desktop) {
-            position: static;
-            top: auto;
-        }
     }
 
     &__logo {
@@ -146,7 +139,7 @@
 
     &__search {
         position: relative;
-        top: 1px;
+        top: -6px;
         display: flex;
         align-items: center;
         margin-right: 10px;
@@ -156,13 +149,16 @@
         }
 
         @include media-query(large) {
-            margin-right: 30px;
-            top: 3px;
+            top: -3px;
         }
 
         @media only screen and (min-width: $header-github) {
             margin-right: 40px;
+        }
 
+        @media only screen and (min-width: $header-desktop) {
+            top: 1px;
+            margin-right: 30px;
         }
 
     }
@@ -197,6 +193,8 @@
     }
 
     &__menu-toggle {
+        position: relative;
+        top: -7px;
 
         @media only screen and (min-width: $header-desktop) {
             display: none;

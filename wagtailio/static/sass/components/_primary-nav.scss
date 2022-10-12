@@ -48,6 +48,11 @@
         &:hover,
         &.active {
             color: $color--primary;
+
+
+            #{$root}__icon {
+                color: $color--primary;
+            }
         }
     }
 
@@ -62,19 +67,20 @@
         border-bottom: 1px solid transparent;
         transition: color, border 0.3s ease;
 
-        &:hover {
+        &:hover,
+        &:focus {
             cursor: pointer;
+
+            @media only screen and (min-width: $header-desktop) {
+                color: $color--black;
+                border-bottom: 1px solid $color--black;
+            }
         }
 
         @media only screen and (min-width: $header-desktop) {
             padding: 5px 0;
             margin: 0 10px;
             color: $color--black;
-
-            &:hover {
-                color: $color--black;
-                border-bottom: 1px solid $color--black;
-            }
         }
     }
 
@@ -82,25 +88,28 @@
         padding-right: 10px;
         font-size: 16px;
         font-weight: $weight--bold;
+
+        @media only screen and (min-width: $header-desktop) {
+            padding-right: 7px;
+        }
     }
 
     &__icon {
         height: 12px;
         width: 12px;
-        color: $color--primary;
+        color: $color--cool-grey;
         transition: color $transition;
         transform: rotate(-90deg);
 
         @media only screen and (min-width: $header-desktop) {
             display: inline-block;
             transform: none;
-            height: 15px;
-            width: 15px;
         }
 
         .active & {
+            color: $color--primary;
+
             @media only screen and (min-width: $header-desktop) {
-                color: $color--cool-grey;
                 transform: rotate(180deg);
             }
         }

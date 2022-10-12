@@ -28,12 +28,12 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="app {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
         {% block header %}{% endblock %}
 
-        <main id="main-content">
+        <main id="main-content" class="app__content">
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
