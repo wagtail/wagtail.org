@@ -8,6 +8,7 @@ from django.urls import reverse
 from wagtail.admin.panels import FieldPanel, HelpPanel, MultiFieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
+from wagtail.search import index
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
@@ -56,6 +57,12 @@ class PackagesPage(Page, SocialMediaMixin, CrossPageMixin):
         FieldPanel("subtitle"),
         FieldPanel("about_title"),
         FieldPanel("about_text"),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField("subtitle"),
+        index.SearchField("about_title"),
+        index.SearchField("about_text"),
     ]
 
 

@@ -5,6 +5,7 @@ from django.shortcuts import render
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
+from wagtail.search import index
 
 
 class NewsletterPage(Page):
@@ -18,6 +19,11 @@ class NewsletterPage(Page):
         FieldPanel("body"),
     ]
 
+    search_fields = Page.search_fields + [
+        index.SearchField("intro"),
+        index.SearchField("body"),
+    ]
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         if request.GET.get("email", "false") == "true":
@@ -29,6 +35,11 @@ class NewsletterPage(Page):
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+
+    search_fields = Page.search_fields + [
+        index.SearchField("intro"),
+        index.SearchField("body"),
+    ]
 
     @property
     def newsletters(self):

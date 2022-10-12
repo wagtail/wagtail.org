@@ -5,6 +5,7 @@ from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
+from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from wagtailmedia.edit_handlers import MediaChooserPanel
@@ -108,4 +109,9 @@ class FeatureIndexPage(Page):
         FieldPanel("features", classname="collapsible"),
         FieldPanel("cta", heading="Call to action"),
         FieldPanel("get_started"),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField("subheading"),
+        index.SearchField("features"),
     ]
