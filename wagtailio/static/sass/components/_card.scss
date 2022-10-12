@@ -46,10 +46,7 @@
 
         #{$root}__description {
             color: $color--off-black;
-        }
-
-        #{$root}__cta {
-            margin-top: auto; // align cta to bottom of the grid
+            padding-bottom: 0;
         }
     }
 }
