@@ -39,7 +39,7 @@
         }
 
         @include media-query(large) {
-            padding: 60px 80px;
+            padding: 60px 80px 60px 100px;
             grid-column: 4 / span 3;
         }
     }
