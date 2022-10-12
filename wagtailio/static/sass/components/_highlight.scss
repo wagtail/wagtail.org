@@ -15,7 +15,7 @@
         @include media-query(large) {
             grid-column: 2 / span 3;
             grid-row: auto;
-            padding-right: 50px;
+            padding-right: 100px;
             margin-bottom: 0;
             width: 100%;
         }
@@ -74,7 +74,8 @@
             @include media-query(large) {
                 grid-column: 4 / span 3;
                 margin-left: auto;
-                padding-left: 50px;
+                padding-left: 100px;
+                padding-right: 0;
             }
         }
 
