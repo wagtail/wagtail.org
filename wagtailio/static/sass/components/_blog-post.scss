@@ -31,6 +31,8 @@
     }
 
     &__content {
+        position: relative;
+        left: -$gutter-sm; // offset padding for vertical alignment
         display: flex;
         flex-direction: column;
         gap: 10px;

@@ -41,7 +41,7 @@
 
     &__heading {
         @include media-query(large) {
-            width: 110%; // to get a bit of overlap on the icon
+            width: 120%; // to get a bit of overlap on the icon
         }
     }
 

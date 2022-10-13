@@ -1,5 +1,7 @@
 .logos {
     @include sf-spacing();
+    @include z-index(overlap); // so they sit above the large icons
+    position: relative;
 
     &__heading {
         margin-bottom: 20px;

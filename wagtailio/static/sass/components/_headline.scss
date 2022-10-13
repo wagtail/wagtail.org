@@ -17,6 +17,7 @@
     }
 
     &__heading {
+        @include z-index(overlap);
         position: relative;
         grid-column: 2 / span 2;
 
@@ -26,6 +27,8 @@
 
         @include media-query(large) {
             grid-column: 2 / span 3;
+            width: 120%; // to get a bit of overlap on the icon
+            padding-top: $gutter-lg;
         }
     }
 
@@ -36,10 +39,6 @@
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
-        }
-
-        @include media-query(large) {
-            grid-column: 2 / span 4;
         }
     }
 
@@ -71,7 +70,7 @@
     }
 
     &__icon {
-        @include z-index(under);
+        @include z-index(base);
         position: absolute;
         width: 230px;
         height: 300px;
@@ -99,9 +98,8 @@
             padding: 130px 0 100px;
         }
 
-
         @include media-query(large) {
-            padding: 230px 0 200px;
+            padding: 130px 0 130px;
         }
 
         #{$root}__intro,
