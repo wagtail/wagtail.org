@@ -4,23 +4,26 @@
 
 {% block content %}
 
-    <header class="page-heading">
-        <h1 class="page-heading__heading">{{ page.title }}</h1>
-        <div class="page-heading__introduction">
-            {{ page.subtitle }}
+    {# BE: hero component should be used here #}
+    <div class="grid">
+        <div class="hero {% if classes %}{{ classes }}{% endif %}">
+            <div class="hero__inner">
+                <h1 class="hero__heading">{{ page.title }}</h1>
+
+                {% if page.subtitle %}
+                    <h2 class="hero__subheading intro-big">{{ page.subtitle }}</h2>
+                {% endif %}
+
+                {% include "patterns/components/buttons/button.html" with arrow=False url="#about" title=page.about_title classes="hero__button" %}
+            </div>
+
+            {% include "patterns/components/icon/icon.html" with icon=heart classes="hero__icon" %}
         </div>
-        <div>
-            <p>
-                <a href="#{{ page.about_title|slugify }}" class="button button--packages">
-                    {{ page.about_title }}
-                </a>
-            </p>
-        </div>
-    </header>
+    </div>
 
     <div class="features feature--packages" id="additional">
 
-        <div class="features__container page-content">
+        <div class="grid features__container page-content">
             <div class="container packages__jumplinks">
                 {% for grid in grids %}
                     <a href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
@@ -28,7 +31,7 @@
             </div>
         </div>
 
-        <div class="features__container">
+        <div class="grid features__container">
             <h2 class="features__heading">{{ value.title }}</h2>
             {% for grid in grids %}
                 <div class="features__section" id="{{ grid.slug }}">
@@ -78,12 +81,18 @@
             {% endfor %}
         </div>
 
-        <header class="page-heading" id="{{ page.about_title|slugify }}">
-            <h2 class="page-heading__heading">{{ page.about_title }}</h2>
-            <div class="page-heading__introduction">
-                {{ page.about_text|richtext }}
+        {# BE: Should also use the hero include #}
+        <div class="grid" id="about">
+            <div class="hero">
+                <div class="hero__inner">
+                    <h2 class="hero__heading">{{ page.about_title }}</h2>
+
+                    {% if page.about_text %}
+                        <div class="hero__intro">{{ page.about_text|richtext }}</div>
+                    {% endif %}
+                </div>
             </div>
-        </header>
+        </div>
 
     </div>
 
