@@ -1,5 +1,7 @@
 <div class="get-started grid">
-    <h2 class="get-started__heading heading-one">{{ value.heading }}</h2>
+    {% if value.heading %}
+        <h2 class="get-started__heading heading-one">{{ value.heading }}</h2>
+    {% endif %}
 
     {% if value.items %}
         <ul class="get-started__list">
