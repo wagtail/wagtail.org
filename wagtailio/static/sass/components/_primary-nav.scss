@@ -15,6 +15,7 @@
             flex-direction: row;
             justify-content: flex-end;
         }
+
     }
 
     &__item {
@@ -45,6 +46,15 @@
             border-bottom: 0;
         }
 
+    }
+
+    &__item-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        color: $color--off-black;
+
         &:hover,
         &.active {
             color: $color--primary;
@@ -54,12 +64,6 @@
                 color: $color--primary;
             }
         }
-    }
-
-    &__item-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     &__link {
