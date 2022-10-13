@@ -1,44 +1,46 @@
-.PHONY: setup
-setup: rebuild
+# ----------------------------------------------------------------------------
+# Self-Documented Makefile
+# ref: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+# ----------------------------------------------------------------------------
+.PHONY: help
+.DEFAULT_GOAL := help
+
+help:  ## ⁉️  - Display help comments for each make command
+	@grep -E '^[0-9a-zA-Z_-]+:.*? .*$$'  \
+		$(MAKEFILE_LIST)  \
+		| awk 'BEGIN { FS=":.*?## " }; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'  \
+		| sort
+
+setup: build  ## 🔨 - Set instance up
 	docker-compose run web django-admin migrate
 	docker-compose run web django-admin createcachetable
 
-.PHONY: rebuild
-rebuild:
+build:  ## 🔨 - Build Docker container
 	bash -c "docker-compose build --build-arg UID=$$(id -u) --build-arg GID=$$(id -g)"
 
-.PHONY: start
-start:
+start:	## 🎬 - Start containers
 	docker-compose up
 
-.PHONY: runserver
-runserver:
+runserver:	## 🏃 - Run Django server
 	docker-compose exec web django-admin runserver 0.0.0.0:8000
 
-.PHONY: superuser
-superuser:
+superuser:	## 🔒 - Create superuser
 	docker-compose run web django-admin createsuperuser
 
-.PHONY: migrations
-migrations:
+migrations:	## 🧳 - Make migrations
 	docker-compose run web django-admin makemigrations
 
-.PHONY: migrate
-migrate:
+migrate:  ## 🧳 - Migrate
 	docker-compose run web django-admin migrate
 
-.PHONY: pull-production-data
-pull-production-data:
+pull-production-data:	## ⬇️ - Pull production data
 	docker-compose run web fab pull_production_data
 
-.PHONY: pull-production-media
-pull-production-media:
+pull-production-media:	## 📸 - Pull production media
 	docker-compose run web fab pull_production_media
 
-.PHONY: pull-staging-data
-pull-staging-data:
+pull-staging-data:	## ⬇️ - Pull production data
 	docker-compose run web fab pull_staging_data
 
-.PHONY: rebuild
-pull-staging-media:
+pull-staging-media:	## 📸 - Pull production media
 	docker-compose run web fab pull_staging_media
