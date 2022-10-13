@@ -64,3 +64,18 @@
         }
     }
 }
+
+.logo-cards__heading {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        margin-bottom: 40px;
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 4;
+    }
+}

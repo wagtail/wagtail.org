@@ -294,6 +294,7 @@ class CardsBlock(blocks.StructBlock):
 
 
 class LogoCardsBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255, required=False)
     cards = blocks.ListBlock(LogoCardBlock())
 
     class Meta:
