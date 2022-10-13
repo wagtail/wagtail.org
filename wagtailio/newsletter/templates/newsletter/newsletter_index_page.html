@@ -6,73 +6,76 @@
 {% block title %}This week in Wagtail{% endblock %}
 
 {% block content %}
-    <div class="page-content">
-        <header class="page-heading ">
-            <h1 class="page-heading__heading">This week in Wagtail</h1>
 
-            <div class="page-heading__introduction">
-                A (most) weekly email with updates from the Wagtail core team.
+    {# TODO: hero component should be used here #}
+    <div class="grid">
+        <div class="hero">
+            <div class="hero__inner">
+                <h1 class="hero__heading">This week in Wagtail</h1>
+                <h2 class="hero__subheading intro-big">A (mostly) weekly email with updates from the Wagtail core team.</h2>
             </div>
-        </header>
+            <div class="hero__icon hero__icon--paper-plane">
+                <svg aria-hidden="true">
+                    <use xlink:href="#paper-plane"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
 
-        <div class="container">
-            <!-- Begin Mailchimp Signup Form -->
-            <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
-            <style type="text/css">
-                #mc_embed_signup {clear:left; font:14px Helvetica,Arial,sans-serif; }
-                /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-                We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-            </style>
-            <div id="mc_embed_signup">
-                <form action="https://torchbox.us1.list-manage.com/subscribe/post?u=fa038e191e9c77563d1c3bfa4&amp;id=e609703ef2&amp;f_id=000270e2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
-                    <div id="mc_embed_signup_scroll">
-                        <h2>Subscribe to This Week in Wagtail</h2>
-                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                        <div class="mc-field-group">
-                            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
-                            <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
-                        </div>
-                        <div id="mce-responses" class="clear">
-                            <div class="response" id="mce-error-response" style="display:none"></div>
-                            <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>
+    <div class="grid">
+        <!-- Begin Mailchimp Signup Form -->
+        <div class="newsletter-cta">
+            <form action="https://torchbox.us1.list-manage.com/subscribe/post?u=fa038e191e9c77563d1c3bfa4&amp;id=e609703ef2&amp;f_id=000270e2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+                <div id="mc_embed_signup_scroll">
+                    <h2 class="heading-two">Subscribe to This Week in Wagtail</h2>
+                    <div class="mc-field-group newsletter-cta__form">
+                        <label for="mce-EMAIL" class="u-sr-only">Email Address <span class="asterisk">*</span></label>
+                        <input type="email" value="" placeholder="Your email address" name="EMAIL" class="newsletter-cta__input required email sign-up-form__input" id="mce-EMAIL" required>
                         <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                         <div style="position: absolute; left: -5000px;" aria-hidden="true">
                             <input type="text" name="b_fa038e191e9c77563d1c3bfa4_e609703ef2" tabindex="-1" value="">
                         </div>
-                        <div class="clear">
-                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-                        </div>
+                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="newsletter-cta__button button sign-up-form__button">
                     </div>
-                </form>
-            </div>
-
-            <!--End mc_embed_signup-->
-
-            {% if newsletters %}
-                <h3>Previous issues</h3>
-                <ul class="listing clearfix">
-                    {% for newsletter in newsletters %}
-                        <li>
-                            <a href="{% pageurl newsletter %}">
-                                <h2>{{ newsletter.title }} </h2>
-                                {% if newsletter.date %}
-                                    <div class="meta date">{{ newsletter.date|date:"j F Y" }}</div>
-                                {% endif %}
-
-                                <div class="intro">{{ newsletter.intro|richtext }}</div>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                {% if newsletters.has_next %}
-                    <a class="button pagination" href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Older</a>
-                {% endif %}
-            {% else %}
-                <p>There are currently no newsletters</p>
-            {% endif %}
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+
+    {% if newsletters %}
+        <div class="grid">
+            <section class="blog-listing">
+                {% for newsletter in newsletters %}
+                    <a class="blog-post blog-post--small" href="{% pageurl newsletter %}">
+                        <div class="blog-post__content">
+                            {% if newsletter.date %}
+                                <div class="blog-post__meta mini-meta">{{ newsletter.date|date:"j F Y" }}</div>
+                            {% endif %}
+                            <h2 class="heading-three blog-post__title">{{ newsletter.title }} </h2>
+                            <div class="blog-post__listing-text">{{ newsletter.intro|richtext }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </section>
+        </div>
+
+        {% if newsletters.has_next %}
+            <div class="grid">
+                <div class="button-align button-align--home">
+                    <a href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="button">
+                        <p class="button__text">Older</p>
+                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+    {% else %}
+        <p>There are currently no newsletters</p>
+    {% endif %}
+
 {% endblock %}
