@@ -27,11 +27,11 @@
             <div class="jump-links">
                 <h2 class="jump-links__heading heading-three">Browse by category:</h2>
                 <ul class="jump-links__container">
-                {% for grid in grids %}
-                    <li class="jump-links__item">
-                        <a class="jump-links__link" href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
-                    </li>
-                {% endfor %}
+                    {% for grid in grids %}
+                        <li class="jump-links__item">
+                            <a class="jump-links__link" href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
