@@ -1,0 +1,57 @@
+.overview-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 20px;
+    background-color: $color--light-grey-100;
+
+    &__link {
+        color: $color--off-black;
+        transition: color $transition;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: $color--teal;
+        }
+
+        &--edit {
+            margin-left: 5px;
+            font-size: 12px;
+
+            &:hover,
+            &:focus {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &__heading {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    &__description {
+        margin-bottom: 10px;
+        color: $color--grey;
+    }
+
+    &__package-links {
+        margin-top: auto;
+    }
+
+    &__package-link {
+        font-size: 13px;
+        text-decoration: none;
+        color: $color--off-black;
+        transition: color $transition;
+
+        &:hover,
+        &:focus {
+            color: $color--teal;
+        }
+    }
+}

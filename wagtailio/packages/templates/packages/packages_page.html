@@ -17,68 +17,73 @@
                 {% include "patterns/components/buttons/button.html" with arrow=False url="#about" title=page.about_title classes="hero__button" %}
             </div>
 
-            {% include "patterns/components/icon/icon.html" with icon=heart classes="hero__icon" %}
+            {% include "patterns/components/icon/icon.html" with icon="heart" classes="hero__icon" %}
         </div>
     </div>
 
-    <div class="features feature--packages" id="additional">
+    <div class="packages" id="additional">
 
-        <div class="grid features__container page-content">
-            <div class="container packages__jumplinks">
+        <div class="grid">
+            <div class="jump-links">
+                <h2 class="jump-links__heading heading-three">Browse by category:</h2>
+                <ul class="jump-links__container">
                 {% for grid in grids %}
-                    <a href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+                    <li class="jump-links__item">
+                        <a class="jump-links__link" href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+                    </li>
                 {% endfor %}
+                </ul>
             </div>
         </div>
 
-        <div class="grid features__container">
-            <h2 class="features__heading">{{ value.title }}</h2>
-            {% for grid in grids %}
-                <div class="features__section" id="{{ grid.slug }}">
+        <div class="grid">
+            <div class="overview">
+                <h2 class="overview__heading">Packages</h2>
+                {% for grid in grids %}
+                    <div class="overview__section" id="{{ grid.slug }}">
 
-                    <div class="packages__sub-heading">
-                        <h3 class="features__sub-heading">
-                            <a href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
-                            {% if perms.packages.change_grid %}
-                                <a href="{{ grid.get_admin_url }}">✏️</a>
-                            {% endif %}
-                        </h3>
-                        <p>
-                            {{ grid.description }}<br>
-                            <a class="packages__xs" href="{{ grid.get_absolute_url }}">Full grid on Djangopackages.org</a>
-                        </p>
-                    </div>
+                        <div class="overview__section-title">
+                            <h3 class="heading-three overview__sub-heading">
+                                <a class="overview__sub-heading-link" href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
+                                {% if perms.packages.change_grid %}
+                                    <a class="overview__sub-heading-link overview__sub-heading-link--edit" href="{{ grid.get_admin_url }}">✏️</a>
+                                {% endif %}
+                            </h3>
+                            <p class="overview__description">{{ grid.description }} - <a class="overview__description-link" href="{{ grid.get_absolute_url }}">View on Djangopackages.org</a></p>
 
-                    <div class="features__content">
+                        </div>
 
-                        {% for package in grid.packages.all %}
+                        <div class="overview__content grid">
 
-                            <article class="feature-item">
-                                <h4 class="feature-item__heading">
-                                    <a href="{{ package.get_absolute_url }}">
-                                        {{ package.title }}
+                            {% for package in grid.packages.all %}
+
+                                <article class="overview-item">
+                                    <h4 class="overview-item__heading">
+                                        <a class="overview-item__link" href="{{ package.get_absolute_url }}">
+                                            {{ package.title }}
+                                        </a>
                                         {% if perms.packages.change_package %}
-                                            <a href="{{ package.get_admin_url }}">✏️</a>
+                                            <a class="overview-item__link overview-item__link--edit" href="{{ package.get_admin_url }}">✏️</a>
                                         {% endif %}
-                                    </a>
-                                </h4>
-                                <div class="feature-item__description">
+                                    </h4>
                                     {% if package.repo_description %}
-                                        {{ package.repo_description }}<br>
+                                        <p class="overview-item__description">{{ package.repo_description }}</p>
                                     {% endif %}
-                                    {% for url, label in package.links %}
-                                        <a href="{{ url }}">{{ label }}</a>
-                                        {% if not forloop.last %}–{% endif %}
-                                    {% endfor %}
-                                </div>
-                            </article>
+                                    <div class="overview-item__package-links">
+                                        {% for url, label in package.links %}
+                                            <a class="overview-item__package-link" href="{{ url }}">{{ label }}</a>
+                                            {% if not forloop.last %}–{% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </article>
 
-                        {% endfor %}
+                            {% endfor %}
+
+                        </div>
 
                     </div>
-
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
 
         {# BE: Should also use the hero include #}
