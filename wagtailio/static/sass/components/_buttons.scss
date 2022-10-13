@@ -23,7 +23,7 @@
         color: $color--white;
 
         > svg {
-            transform: translateX(6px) scale(1.15);
+            transform: translateX(6px) scale(1.05);
         }
     }
 
@@ -49,6 +49,15 @@
             background-color: $color--white;
             border-color: $color--indigo;
             color: $color--indigo;
+        }
+    }
+
+    &--form {
+        &:hover,
+        &:focus {
+            background-color: $color--indigo;
+            border-color: $color--indigo;
+            color: $color--white;
         }
     }
 
