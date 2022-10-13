@@ -587,7 +587,7 @@ class GetStartedItem(blocks.StructBlock):
 
 
 class GetStartedBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255)
+    heading = blocks.CharBlock(max_length=255, required=False)
     items = blocks.ListBlock(GetStartedItem(), min_num=2)
 
     class Meta:
