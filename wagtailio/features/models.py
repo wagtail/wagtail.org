@@ -78,14 +78,6 @@ class FeatureDescription(ClusterableModel):
         return self.title
 
 
-class FeatureIndexPageMenuOption(models.Model):
-    page = ParentalKey(
-        "features.FeatureIndexPage", related_name="secondary_menu_options"
-    )
-    link = models.ForeignKey("wagtailcore.Page", models.CASCADE, related_name="+")
-    label = models.CharField(max_length=255)
-
-
 class FeatureIndexPage(Page):
     template = "patterns/pages/feature_index_page/feature_index_page.html"
 
