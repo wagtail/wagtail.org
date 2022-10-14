@@ -1,3 +1,5 @@
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 
 from modelcluster.models import ClusterableModel
@@ -19,6 +21,12 @@ class FooterMenu(models.Model):
         FieldPanel("sections"),
     ]
 
+    def save(self, **kwargs):
+        super().save(**kwargs)
+
+        if NavigationSettings.objects.filter(main_navigation=self).exists():
+            cache.delete(make_template_fragment_key("footernav"))
+
     def __str__(self):
         return self.name
 
@@ -28,7 +36,6 @@ class FooterMenu(models.Model):
 
 @register_snippet
 class MainMenu(ClusterableModel):
-
     name = models.CharField(max_length=255)
     menu_sections = StreamField(
         [("menu_section", MainMenuSectionBlock())], use_json_field=True
@@ -38,6 +45,13 @@ class MainMenu(ClusterableModel):
         FieldPanel("name"),
         FieldPanel("menu_sections", classname="collapsible"),
     ]
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+
+        if NavigationSettings.objects.filter(main_navigation=self).exists():
+            print("delete")
+            cache.delete(make_template_fragment_key("primarynav"))
 
     def __str__(self):
         return self.name
@@ -75,3 +89,12 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         FieldPanel("main_navigation"),
         FieldPanel("footer_navigation"),
     ]
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+
+        keys = [
+            make_template_fragment_key(key, vary_on=[self.site.pk])
+            for key in ["primarynav", "footernav"]
+        ]
+        cache.delete_many(keys)
