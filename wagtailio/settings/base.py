@@ -75,7 +75,6 @@ INSTALLED_APPS = [
     "wagtailio.search",
     "wagtailio.navigation",
     "wagtailio.newsletter",
-    "wagtailio.developers",
     "wagtailio.blog",
     "wagtailio.features",
     "wagtailio.packages",
