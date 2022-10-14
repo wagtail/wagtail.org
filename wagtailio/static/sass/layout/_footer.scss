@@ -174,4 +174,35 @@
         }
 
     }
+
+    &__survey-link {
+        background-color: $color--teal;
+        position: fixed;
+        bottom: -2px;
+        right: 2rem;
+        padding: 12px 16px 10px;
+        color: $color--white;
+        display: flex;
+        z-index: 10;
+        border-radius: 10px 10px 0 0;
+        transition: bottom 0.1s linear;
+        font-size: 0.75rem;
+        font-family: $font--primary;
+        width: 230px;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: inherit;
+
+        img {
+            max-height: 20px;
+            width: auto;
+            position: relative;
+            top: -2px;
+        }
+
+        &:hover {
+            color: $color--white;
+            bottom: 0;
+        }
+    }
 }
