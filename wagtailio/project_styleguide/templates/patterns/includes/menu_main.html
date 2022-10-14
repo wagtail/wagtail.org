@@ -1,42 +1,44 @@
-{% load wagtailcore_tags %}
-
-<nav class="primary-nav" aria-label="Primary">
-    <ul class="primary-nav__container" data-primary-nav>
-        {% for menu_section in menus %}
-            <li class="primary-nav__item primary-nav__item--is-parent" data-has-subnav>
-                <a class="primary-nav__item-container" data-open-subnav aria-haspopup="true" aria-expanded="false" href="#">
-                    <span class="primary-nav__label">{{ menu_section.name }}</span>
-                    <svg class="primary-nav__icon" aria-hidden="true">
-                        <use xlink:href="#chevron" />
-                    </svg>
-                </a>
-                <ul class="sub-nav" data-subnav>
-                    <li class="sub-nav__item sub-nav__item--back">
-                        <a class="sub-nav__item-link sub-nav__item-link--back" data-subnav-back href="#">&lsaquo; Back</a>
-                    </li>
-                    <li class="sub-nav__links">
-                        <h2 class="sub-nav__heading">{{ menu_section.name }}</h2>
-                        <ul class="sub-nav__links-container">
-                            {% for nav_item in menu_section.nav_items %}
-                                <li class="sub-nav__item">
-                                    <a class="sub-nav__item-link" href="{{ nav_item.url }}" title="{{ nav_item.text }}">
-                                        {% include "patterns/components/icon/icon.html" with icon=nav_item.icon classes="icon-link__svg sub-nav__item-icon icon--relative" %}
-                                        <div class="sub-nav__item-content">
-                                            <h3 class="sub-nav__item-heading">{{ nav_item.text }}</h3>
-                                            <p class="sub-nav__item-description">{{ nav_item.short_description }}</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li class="sub-nav__item sub-nav__item--cta">
-                        {% with menu_section.call_to_action as cta %}
-                            {% include "patterns/components/nav-cta/nav-cta.html" %}
-                        {% endwith %}
-                    </li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-</nav>
+{% load wagtailcore_tags cache %}
+{% wagtail_site as current_site %}
+{% cache 900 primarynav current_site.pk is_pattern_library %}
+    <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__container" data-primary-nav>
+            {% for menu_section in menus %}
+                <li class="primary-nav__item primary-nav__item--is-parent" data-has-subnav>
+                    <a class="primary-nav__item-container" data-open-subnav aria-haspopup="true" aria-expanded="false" href="#">
+                        <span class="primary-nav__label">{{ menu_section.name }}</span>
+                        <svg class="primary-nav__icon" aria-hidden="true">
+                            <use xlink:href="#chevron" />
+                        </svg>
+                    </a>
+                    <ul class="sub-nav" data-subnav>
+                        <li class="sub-nav__item sub-nav__item--back">
+                            <a class="sub-nav__item-link sub-nav__item-link--back" data-subnav-back href="#">&lsaquo; Back</a>
+                        </li>
+                        <li class="sub-nav__links">
+                            <h2 class="sub-nav__heading">{{ menu_section.name }}</h2>
+                            <ul class="sub-nav__links-container">
+                                {% for nav_item in menu_section.nav_items %}
+                                    <li class="sub-nav__item">
+                                        <a class="sub-nav__item-link" href="{{ nav_item.url }}" title="{{ nav_item.text }}">
+                                            {% include "patterns/components/icon/icon.html" with icon=nav_item.icon classes="icon-link__svg sub-nav__item-icon icon--relative" %}
+                                            <div class="sub-nav__item-content">
+                                                <h3 class="sub-nav__item-heading">{{ nav_item.text }}</h3>
+                                                <p class="sub-nav__item-description">{{ nav_item.short_description }}</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="sub-nav__item sub-nav__item--cta">
+                            {% with menu_section.call_to_action as cta %}
+                                {% include "patterns/components/nav-cta/nav-cta.html" %}
+                            {% endwith %}
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endcache %}
