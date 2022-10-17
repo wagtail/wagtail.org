@@ -50,7 +50,6 @@ class MainMenu(ClusterableModel):
         super().save(**kwargs)
 
         if NavigationSettings.objects.filter(main_navigation=self).exists():
-            print("delete")
             cache.delete(make_template_fragment_key("primarynav"))
 
     def __str__(self):
