@@ -7,6 +7,7 @@
     &__svg {
         position: absolute;
         overflow: visible;
+        fill: $color--primary;
 
         .sub-nav & {
             inset: 0 auto auto 0;
@@ -14,17 +15,24 @@
     }
 
     &__svg-bg {
-        color: $color--eggshell;
-        transform: scale(1.15);
+        fill: rgba($color--teal-200, 0.3);
         transform-origin: center;
-        transition: transform 0.3s ease, color 0.3s ease;
+        transform: scale(1.5) rotate(4deg);
+        transition: transform 0.15s ease-out;
     }
 
     &__svg-fg {
-        color: transparent;
-        stroke: $color--off-black;
-        stroke-width: 0.5%;
-        transform: rotate(7deg);
-        transform-origin: center;
+        fill: transparent;
+        stroke: $color--black;
+        stroke-width: 1px;
+
+        .sub-nav__item &,
+        .card-grid & {
+            stroke-width: 3px;
+        }
+
+        .highlight__meta & {
+            stroke-width: 2px;
+        }
     }
 }

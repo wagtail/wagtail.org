@@ -31,7 +31,7 @@
     }
 
     &__icon {
-        color: $color--eggshell;
+        fill: $color--eggshell;
         width: 20px;
         height: 20px;
         transition: color 0.3s;
@@ -44,7 +44,7 @@
         &:active,
         &:focus {
             #{$root}__icon {
-                color: $color--white;
+                fill: $color--white;
             }
         }
     }

@@ -101,8 +101,8 @@
     &__icon {
         height: 12px;
         width: 12px;
-        color: $color--cool-grey;
-        transition: color $transition;
+        fill: $color--cool-grey;
+        transition: fill $transition;
         transform: rotate(-90deg);
 
         @media only screen and (min-width: $header-desktop) {
@@ -111,7 +111,7 @@
         }
 
         .active & {
-            color: $color--primary;
+            fill: $color--primary;
 
             @media only screen and (min-width: $header-desktop) {
                 transform: rotate(180deg);
