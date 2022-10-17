@@ -295,6 +295,8 @@ if REDIS_URL:
             "OPTIONS": redis_options,
         },
     }
+
+    DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
 else:
     CACHES = {
         "default": {
