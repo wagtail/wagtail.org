@@ -18,11 +18,21 @@
         fill: rgba($color--teal-200, 0.3);
         transform-origin: center;
         transform: scale(1.5) rotate(4deg);
+        transition: transform 0.15s ease-out;
     }
 
     &__svg-fg {
         fill: transparent;
         stroke: $color--black;
         stroke-width: 1px;
+
+        .sub-nav__item &,
+        .card-grid & {
+            stroke-width: 3px;
+        }
+
+        .highlight__meta & {
+            stroke-width: 2px;
+        }
     }
 }

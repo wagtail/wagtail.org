@@ -83,12 +83,6 @@
             }
         }
 
-        &--sponsor {
-            #{$root}__icon {
-                transform: rotate(4deg);
-            }
-        }
-
         &--contribute {
             position: relative;
 
@@ -110,10 +104,6 @@
                 inset: -10px;
 
             }
-
-            #{$root}__icon {
-                transform: rotate(8deg);
-            }
         }
     }
 
@@ -130,9 +120,9 @@
     }
 
     &__icon {
-        color: transparent;
+        fill: transparent;
         stroke: $color--white;
-        stroke-width: 2%;
+        stroke-width: 3px;
         width: 45px;
         height: 50px;
         flex-shrink: 0;
@@ -173,7 +163,7 @@
     }
 
     &__social-icon {
-        color: $color--white;
+        fill: $color--white;
         width: 34px;
         height: 34px;
         transition: color 0.3s;
@@ -183,8 +173,5 @@
             transition: color 0.3s;
         }
 
-        &--github {
-            transform: rotate(8deg);
-        }
     }
 }
