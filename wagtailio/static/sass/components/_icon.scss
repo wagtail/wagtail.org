@@ -26,6 +26,11 @@
         stroke: $color--black;
         stroke-width: 1px;
 
+        .hero &,
+        .headline & {
+            stroke-width: 0.5px;
+        }
+
         .sub-nav__item &,
         .card-grid & {
             stroke-width: 3px;
@@ -33,6 +38,10 @@
 
         .highlight__meta & {
             stroke-width: 2px;
+        }
+
+        .headline--dark-theme & {
+            stroke-width: 1.5px;
         }
     }
 }
