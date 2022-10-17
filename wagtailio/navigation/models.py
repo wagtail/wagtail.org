@@ -25,7 +25,11 @@ class FooterMenu(models.Model):
         super().save(**kwargs)
 
         if NavigationSettings.objects.filter(main_navigation=self).exists():
-            cache.delete(make_template_fragment_key("footernav"))
+            cache.delete(
+                make_template_fragment_key(
+                    "footernav", vary_on=[self.site.pk, False, False]
+                )
+            )
 
     def __str__(self):
         return self.name
@@ -50,7 +54,11 @@ class MainMenu(ClusterableModel):
         super().save(**kwargs)
 
         if NavigationSettings.objects.filter(main_navigation=self).exists():
-            cache.delete(make_template_fragment_key("primarynav"))
+            cache.delete(
+                make_template_fragment_key(
+                    "primarynav", vary_on=[self.site.pk, False, False]
+                )
+            )
 
     def __str__(self):
         return self.name
@@ -93,7 +101,9 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         super().save(**kwargs)
 
         keys = [
-            make_template_fragment_key(key, vary_on=[self.site.pk])
+            # The fragment cache varies on:
+            # the current site pk, whether used in preview, or in the pattern library
+            make_template_fragment_key(key, vary_on=[self.site.pk, False, False])
             for key in ["primarynav", "footernav"]
         ]
         cache.delete_many(keys)
