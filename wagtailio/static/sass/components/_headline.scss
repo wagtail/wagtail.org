@@ -110,13 +110,14 @@
 
         // Icon overrides
         .icon__svg-bg {
-            stroke: $color--teal-100;
-            color: transparent;
+            stroke: rgba($color--teal-100, 0.2);
+            fill: transparent;
             opacity: 0.6;
         }
 
         .icon__svg-fg {
-            color: $color--teal-100;
+            fill: $color--teal-100;
+            stroke: none;
             opacity: 0.5;
             transform: rotate(7deg) translate(40px, -30px) scale(0.9);
         }
