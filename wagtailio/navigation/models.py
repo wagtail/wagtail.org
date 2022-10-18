@@ -24,7 +24,7 @@ class FooterMenu(models.Model):
     def save(self, **kwargs):
         super().save(**kwargs)
 
-        if NavigationSettings.objects.filter(main_navigation=self).exists():
+        if NavigationSettings.objects.filter(footer_navigation=self).exists():
             cache.delete(
                 make_template_fragment_key(
                     "footernav", vary_on=[self.site.pk, False, False]
