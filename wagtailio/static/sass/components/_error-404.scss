@@ -1,6 +1,10 @@
 .error-404 {
     position: relative;
 
+    @include media-query(large) {
+        min-height: 700px;
+    }
+
     &__intro,
     &__heading {
         grid-column: 2 / span 2;
