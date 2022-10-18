@@ -24,12 +24,8 @@ class FooterMenu(models.Model):
     def save(self, **kwargs):
         super().save(**kwargs)
 
-        if NavigationSettings.objects.filter(footer_navigation=self).exists():
-            cache.delete(
-                make_template_fragment_key(
-                    "footernav", vary_on=[self.site.pk, False, False]
-                )
-            )
+        for nav in NavigationSettings.objects.filter(footer_navigation=self):
+            nav.save(fragment_to_clear="footernav")
 
     def __str__(self):
         return self.name
@@ -53,12 +49,8 @@ class MainMenu(ClusterableModel):
     def save(self, **kwargs):
         super().save(**kwargs)
 
-        if NavigationSettings.objects.filter(main_navigation=self).exists():
-            cache.delete(
-                make_template_fragment_key(
-                    "primarynav", vary_on=[self.site.pk, False, False]
-                )
-            )
+        for nav in NavigationSettings.objects.filter(main_navigation=self):
+            nav.save(fragment_to_clear="primarynav")
 
     def __str__(self):
         return self.name
@@ -98,12 +90,17 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
     ]
 
     def save(self, **kwargs):
+        fragment_to_clear = kwargs.pop("fragment_to_clear", None)
         super().save(**kwargs)
 
+        if fragment_to_clear is not None:
+            fragment_key_seeds = [fragment_to_clear]
+        else:
+            fragment_key_seeds = ["primarynav", "footernav"]
         keys = [
             # The fragment cache varies on:
             # the current site pk, whether used in preview, or in the pattern library
             make_template_fragment_key(key, vary_on=[self.site.pk, False, False])
-            for key in ["primarynav", "footernav"]
+            for key in fragment_key_seeds
         ]
         cache.delete_many(keys)
