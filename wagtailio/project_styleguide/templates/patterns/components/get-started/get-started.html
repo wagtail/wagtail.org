@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 <div class="get-started grid">
     {% if value.heading %}
         <h2 class="get-started__heading heading-one">{{ value.heading }}</h2>
@@ -7,7 +8,7 @@
         <ul class="get-started__list">
             {% for item in value.items %}
                 <li class="get-started__list-item">
-                    {% include "patterns/components/icon-link/icon-link.html" with value=item %}
+                    {% include_block item %}
                 </li>
             {% endfor %}
         </ul>

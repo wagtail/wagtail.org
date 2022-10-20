@@ -409,13 +409,8 @@ class GetStartedItem(blocks.StructBlock):
 
         return struct_value
 
-    def get_context(self, value, parent_context=None):
-        context = super().get_context(value, parent_context=parent_context)
-        if value["page"]:
-            context["value"]["url"] = value["page"].get_url
-        else:
-            context["value"]["url"] = value["external_link"]
-        return context
+    class Meta:
+        template = "patterns/components/icon-link/icon-link.html"
 
 
 class GetStartedBlock(blocks.StructBlock):

@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 {% if get_started_menu %}
     <div class="modal modal--get-started micromodal-slide" id="get-started-menu" aria-hidden="true">
         <div class="modal__overlay" tabindex="-1" data-micromodal-close>
@@ -19,7 +20,7 @@
                             <ul class="modal__grid modal__grid--get-started">
                                 {% for menu_item in get_started.items %}
                                     <li class="modal__grid-item">
-                                        {% include "patterns/components/icon-link/icon-link.html" with value=menu_item %}
+                                        {% include_block menu_item %}
                                     </li>
                                 {% endfor %}
                             </ul>
