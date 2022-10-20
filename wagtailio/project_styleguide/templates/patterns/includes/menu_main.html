@@ -20,7 +20,7 @@
                             <ul class="sub-nav__links-container">
                                 {% for nav_item in menu_section.nav_items %}
                                     <li class="sub-nav__item">
-                                        <a class="sub-nav__item-link" href="{{ nav_item.url }}" title="{{ nav_item.text }}">
+                                        <a class="sub-nav__item-link" href="{% if nav_item.cta_url %}{{ nav_item.cta_url }}{% elif nav_item.cta_page %}{% pageurl nav_item.cta_page %}{% endif %}" title="{{ nav_item.text }}">
                                             {% include "patterns/components/icon/icon.html" with icon=nav_item.icon classes="icon-link__svg sub-nav__item-icon icon--relative" %}
                                             <div class="sub-nav__item-content">
                                                 <h3 class="sub-nav__item-heading">{{ nav_item.text }}</h3>

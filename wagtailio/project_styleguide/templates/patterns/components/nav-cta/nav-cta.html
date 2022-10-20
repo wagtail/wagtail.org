@@ -1,4 +1,5 @@
-<a class="nav-cta" href="{{ cta.url }}">
+{% load wagtailcore_tags %}
+<a class="nav-cta" href="{% if cta.cta_url %}{{ cta.cta_url }}{% elif cta.cta_page %}{% pageurl cta.cta_page %}{% endif %}">
     <svg class="nav-cta__icon" aria-hidden="true">
         <use xlink:href="#{{ cta.icon }}" />
     </svg>
