@@ -23,7 +23,7 @@
                             <ul class="footer-menu__list" id="{{ menu_section.heading|lower }}-menu" data-footer-menu-list>
                                 {% for menu_item in menu_section.links %}
                                     <li class="footer-menu__item">
-                                        <a class="footer-menu__link" href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+                                        <a class="footer-menu__link" href="{% if menu_item.cta_url %}{{ menu_item.cta_url }}{% elif menu_item.cta_page %}{% pageurl menu_item.cta_page %}{% endif %}">{{ menu_item.text }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
