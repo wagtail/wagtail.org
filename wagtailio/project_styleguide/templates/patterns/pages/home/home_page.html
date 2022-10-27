@@ -4,11 +4,8 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block title %}
-    Wagtail.org - {% firstof page.seo_title page.title %}
-{% endblock %}
-{% block title_suffix %}
-{% endblock %}
+{% block title %}Wagtail.org - {% firstof page.seo_title page.title %}{% endblock %}
+{% block title_suffix %}{% endblock %}
 
 {% block content %}
 
