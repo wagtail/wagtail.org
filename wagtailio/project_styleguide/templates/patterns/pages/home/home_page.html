@@ -4,6 +4,9 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
+{% block title %}Wagtail.org - {% firstof page.seo_title page.title %}{% endblock %}
+{% block title_suffix %}{% endblock %}
+
 {% block content %}
 
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--home" %}
