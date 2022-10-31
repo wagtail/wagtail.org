@@ -74,6 +74,7 @@
         box-sizing: border-box;
         width: calc(100% - 40px);
         position: relative;
+        border: 2px solid transparent;
     }
 
     &__grid {
