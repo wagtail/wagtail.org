@@ -16,6 +16,7 @@
     > svg {
         transition: transform 0.3s;
         margin: 0 0 0 15px;
+        fill: $color--teal;
     }
 
     &:hover {
@@ -24,6 +25,7 @@
 
         > svg {
             transform: translateX(6px) scale(1.05);
+            fill: $color--teal-100;
         }
     }
 
@@ -32,11 +34,19 @@
         background-color: transparent;
         color: $color--white;
 
+        > svg {
+            fill: $color--teal-100;
+        }
+
         &:hover,
         &:focus {
             background-color: $color--white;
             border-color: $color--white;
             color: $color--indigo;
+
+            > svg {
+                fill: $color--teal;
+            }
         }
     }
 
