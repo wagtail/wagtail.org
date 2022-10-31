@@ -12,7 +12,9 @@ The reason for the separation is because of differing context variable names, fo
 <a href="{{ value.url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
     {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
 
-    <h4 class="logo-card__heading teaser-heading">{{ value.title }}</h4>
+    {% if value.title %}
+        <h4 class="logo-card__heading teaser-heading">{{ value.title }}</h4>
+    {% endif %}
 
     <div class="logo-card__description">{{ value.introduction }}</div>
 
