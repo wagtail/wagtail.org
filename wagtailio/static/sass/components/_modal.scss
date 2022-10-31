@@ -96,6 +96,12 @@
     &__close-button {
         display: block;
         margin-left: auto;
+
+        svg {
+            @media (forced-colors: active) {
+                fill: ButtonText;
+            }
+        }
     }
 
     &__close-icon {
