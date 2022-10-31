@@ -6,7 +6,7 @@
         <legend class="u-sr-only">{% trans 'Filter features by category' %}</legend>
         <div class="features__filter-wrap">
             <input type="checkbox" id="all" name="all" data-feature-filter-all checked>
-            <label class="mini-meta" for="all">All</label>
+            <label class="mini-meta" for="all">{% trans 'All' %}</label>
         </div>
         {% for category in value.categories %}
             <div class="features__filter-wrap">
