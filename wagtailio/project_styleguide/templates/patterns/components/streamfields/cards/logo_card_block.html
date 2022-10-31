@@ -16,7 +16,9 @@ The reason for the separation is because of differing context variable names, fo
 {% endif %}
 {% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
 
-<h4 class="logo-card__heading teaser-heading">{{ value.text }}</h4>
+{% if value.text %}
+    <h4 class="logo-card__heading teaser-heading">{{ value.text }}</h4>
+{% endif %}
 
 {% if value.description %}
     <div class="logo-card__description">{{ value.description|richtext }}</div>

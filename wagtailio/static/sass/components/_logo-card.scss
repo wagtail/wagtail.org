@@ -19,12 +19,13 @@
     }
 
     &__heading {
-        margin-bottom: 10px;
         transition: color .3s ease;
+        margin-bottom: 0;
     }
 
     &__description {
         color: $color--grey;
+        margin-top: 10px;
         padding-bottom: 20px;
 
         @include media-query(large) {
