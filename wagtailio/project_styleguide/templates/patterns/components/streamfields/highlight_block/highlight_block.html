@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="highlight{% if image_on_right %} highlight--reverse{% endif %} grid">
-    {% image value.image fill-650x500 class="highlight__image" %}
+    {% image value.image width-1300 class="highlight__image" %}
 
     <div class="highlight__content">
         {% if value.meta_icon and value.meta_text %}
