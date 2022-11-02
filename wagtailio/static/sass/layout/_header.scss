@@ -25,6 +25,11 @@
             width: 153px;
             height: 65px;
         }
+
+        @media (forced-colors: active) {
+            fill: $color--white; // force white if in high contrast mode
+        }
+
     }
 
     &__link {
