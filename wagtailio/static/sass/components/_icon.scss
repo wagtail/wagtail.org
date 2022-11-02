@@ -18,7 +18,7 @@
         fill: rgba($color--teal-200, 0.3);
         transform-origin: center;
         transform: scale(1.5) rotate(4deg);
-        transition: transform 0.15s ease-out;
+        transition: transform 0.15s ease-out, fill 0.15s ease-out;
     }
 
     &__svg-fg {
