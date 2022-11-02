@@ -91,9 +91,9 @@
             }
 
             @include media-query(large) {
-                top: 0;
+                top: 100px;
                 width: 760px;
-                height: 460px;
+                height: 400px;
             }
         }
 
