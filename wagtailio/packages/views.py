@@ -34,7 +34,7 @@ def process(url="https://djangopackages.org/api/v4/grids/?q=wagtail"):
                         "repo_watchers",
                         "participants",
                     ]
-                    if not package_data[key] is None
+                    if package_data[key] is not None
                 }
                 package, _ = Package.objects.update_or_create(
                     uid=package_data.get("id"), defaults=defaults
