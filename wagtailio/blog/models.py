@@ -100,7 +100,7 @@ class BlogPageRelatedPage(Orderable):
 
 
 @register_snippet
-class Author(models.Model):
+class Author(index.Indexed, models.Model):
     name = models.CharField(max_length=255)
     job_title = models.CharField(max_length=255, blank=True)
     image = models.ForeignKey(
@@ -120,6 +120,10 @@ class Author(models.Model):
         FieldPanel("job_title"),
         FieldPanel("image"),
         FieldPanel("url"),
+    ]
+
+    search_fields = [
+        index.SearchField("name", partial_match=True),
     ]
 
 
