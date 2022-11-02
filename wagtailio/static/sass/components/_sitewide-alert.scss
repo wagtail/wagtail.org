@@ -1,5 +1,5 @@
 .sitewide-alert {
-    padding: 2rem 1rem;
+    padding: $gutter-sm $gutter;
     opacity: 0;
     transition: opacity 0.5s ease;
 
@@ -9,6 +9,13 @@
 
     h2, h3 {
         color: inherit;
+    }
+
+    p {
+        max-width: $site-widt;
+        margin: 0 auto;
+        font-size: 16px;
+        text-align: center;
     }
 
     a {
