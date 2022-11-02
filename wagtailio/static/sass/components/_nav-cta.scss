@@ -16,8 +16,13 @@
 
     &:hover,
     &:focus {
-        #{$root}__cta-heading {
+        #{$root}__heading {
             color: $color--teal-100;
+        }
+
+        #{$root}__arrow {
+            transform: translate3d(20%, 0, 0) scale(1.1);
+            fill: $color--white;
         }
 
     }
@@ -32,8 +37,9 @@
         fill: rgba($color--teal-200, 0.75);
 
         @media only screen and (min-width: $header-desktop) {
-            top: 60px;
-            right: 60px;
+            top: 30px;
+            right: 10px;
+            width: 250px;
         }
     }
 
@@ -84,6 +90,7 @@
         fill: transparent;
         width: 60px;
         height: 60px;
+        transition: transform $transition, fill $transition;
 
         @media only screen and (min-width: $header-desktop) {
             bottom: 50px;
