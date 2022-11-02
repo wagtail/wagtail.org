@@ -36,6 +36,12 @@
         }
     }
 
+    &__list-item {
+        min-width: 100px;
+        max-width: 100px;
+        flex-basis: 100px;
+    }
+
     &__image {
         flex-shrink: 0;
     }
