@@ -96,6 +96,7 @@
         // Icon overrides
         .icon__svg-bg {
             color: $color--eggshell;
+            transform: scale(1.5) rotate(-4deg) translateX(-20px);
         }
     }
 
