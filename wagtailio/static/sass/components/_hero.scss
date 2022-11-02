@@ -1,6 +1,5 @@
 .hero {
     $root: &;
-
     @include sf-spacing();
     position: relative;
     grid-column: 2 / span 2;
@@ -11,6 +10,10 @@
 
     @include media-query(large) {
         grid-column: 2 / span 5;
+    }
+
+    &--small-margin {
+        margin-bottom: 75px;
     }
 
     &__inner {
