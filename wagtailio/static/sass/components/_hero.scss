@@ -81,14 +81,9 @@
 
         &--paper-plane {
             right: 0;
-            width: 290px;
-            height: 230px;
-
-            @include media-query(medium) {
-                top: -20px;
-                width: 450px;
-                height: 340px;
-            }
+            top: 50px;
+            width: 400px;
+            height: 200px;
 
             @include media-query(large) {
                 top: 100px;
