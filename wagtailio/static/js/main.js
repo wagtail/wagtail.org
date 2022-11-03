@@ -12,6 +12,7 @@ import DesktopSubMenu from './components/desktop-sub-menu';
 import DesktopCloseMenus from './components/desktop-close-menus';
 import CookieMessage from "./components/cookie-message";
 import SiteWideAlert from "./components/site-wide-alert";
+import LoopingVideo from './components/looping-video';
 
 
 function initComponent(ComponentClass) {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initComponent(MobileMenu);
     initComponent(MobileSubMenu);
     initComponent(DesktopSubMenu);
+    initComponent(LoopingVideo);
     /* eslint-disable no-new */
     new DesktopCloseMenus();
 });
