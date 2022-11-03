@@ -21,10 +21,6 @@
             {% main_navigation %}
         </div>
 
-        <div class="header__nav header__nav--mobile" data-mobile-menu>
-            {% main_navigation %}
-        </div>
-
         <div class="header__search">
             {# Desktop Search #}
             <button class="header__button header__button--search u-desktop-only" aria-controls="site-search-modal" aria-label="Open the search" data-site-search-desktop>
@@ -51,6 +47,10 @@
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
             </button>
+        </div>
+
+        <div class="header__nav header__nav--mobile" data-mobile-menu>
+            {% main_navigation %}
         </div>
 
         {% if settings.navigation.NavigationSettings.get_started_menu %}
