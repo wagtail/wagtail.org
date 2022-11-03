@@ -60,18 +60,12 @@
         margin: 0 10px 0 0;
     }
 
-    &__icon {
-        fill: $color--teal-200;
+    &__icon-container {
+        @include z-index(under);
         position: absolute;
         inset: 5% 0 auto auto;
         width: 133px;
         height: 124px;
-        z-index: -1;
-
-        > svg {
-            width: inherit;
-            height: inherit;
-        }
 
         @include media-query(medium) {
             inset: 0 5% auto auto;
@@ -85,7 +79,28 @@
         }
     }
 
+    &__icon {
+        display: none;
+        position: relative;
+        fill: $color--teal-200;
+
+        @include media-query(large) {
+            display: block;
+        }
+
+        > svg {
+            width: 300px;
+            height: 300px;
+        }
+    }
     .icon__svg-fg {
-        transform: rotate(185deg) translate(-40px, 10px);
+        transform: scale(1.4) rotate(180deg);
+        transform-origin: center;
+        stroke-width: 0.5px;
+    }
+
+    .icon__svg-bg {
+        transform: scale(1.8) rotate(-6deg);
+        transform-origin: center;
     }
 }
