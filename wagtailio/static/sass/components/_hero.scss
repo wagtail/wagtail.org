@@ -43,8 +43,10 @@
     }
 
     &__heading {
+
         @include media-query(large) {
             width: 120%; // to get a bit of overlap on the icon
+            max-width: 92vw; // prevent off screen
         }
     }
 
@@ -59,7 +61,6 @@
         z-index: -1;
         width: 170px;
         height: 170px;
-        transform: scale(1.5);
 
         @include media-query(medium) {
             right: -50px;
@@ -81,25 +82,25 @@
 
         &--paper-plane {
             right: 0;
-            top: 50px;
-            width: 400px;
-            height: 200px;
+            top: 0;
+            width: 670px;
+            height: 460px;
 
             @include media-query(large) {
-                top: 100px;
+                top: -36px;
                 width: 760px;
-                height: 400px;
+                height: 600px;
             }
         }
 
         // Icon overrides
         .icon__svg-bg {
             color: $color--eggshell;
-            transform: scale(1) translateX(-20px);
+            transform: scale(1.4) translateX(-20px) rotate(-4deg);
         }
 
         .icon__svg-fg {
-            transform: scale(1) rotate(-4deg);
+            transform: scale(1);
         }
     }
 

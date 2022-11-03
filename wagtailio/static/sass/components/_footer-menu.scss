@@ -46,7 +46,7 @@
     &__icon {
         width: 20px;
         height: 20px;
-        color: $color--teal;
+        fill: $color--teal;
         flex-shrink: 0;
 
         @include media-query(large) {
@@ -60,6 +60,7 @@
 
     &__toggle {
         padding: 5px;
+        cursor: pointer;
 
         @include media-query(large) {
             display: none;
@@ -115,17 +116,6 @@
         }
 
         #{$root}__list {
-            display: block;
-        }
-    }
-
-    &__logo {
-        display: none;
-
-        @include media-query(large) {
-            margin-top: auto;
-            width: 155px;
-            height: 65px;
             display: block;
         }
     }

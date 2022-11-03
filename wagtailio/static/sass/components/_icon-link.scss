@@ -23,6 +23,14 @@
             width: inherit;
             height: inherit;
         }
+
+        .get-started &,
+        .modal__grid--get-started & {
+            @include media-query(medium) {
+                width: 100px;
+                height: 95px;
+            }
+        }
     }
 
     &__content {
