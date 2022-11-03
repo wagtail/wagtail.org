@@ -1,8 +1,7 @@
 .cookie {
     $root: &;
     @include z-index(modal);
-
-    padding: 0 10px 10px;
+    margin: 0 10px 10px;
     position: fixed;
     right: auto;
     bottom: 0;
@@ -23,7 +22,7 @@
     }
 
     &__container {
-        padding: 5px 5px 10px 10px;
+        padding: $gutter-sm;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -38,7 +37,8 @@
 
     &__message {
         p {
-            margin-bottom: 0;
+            font-size: 16px;
+            margin-botto: 0;
         }
     }
 
