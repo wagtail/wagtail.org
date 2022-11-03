@@ -1,3 +1,5 @@
+import { createFocusTrap } from 'focus-trap';
+
 class MobileMenu {
     static selector() {
         return '[data-mobile-menu-toggle]';
@@ -11,13 +13,22 @@ class MobileMenu {
         this.state = {
             open: false,
         };
-
+        this.focusTrap = createFocusTrap([
+            this.node.parentElement,
+            this.mobileMenu,
+        ]);
         this.bindEventListeners();
     }
 
     bindEventListeners() {
         this.node.addEventListener('click', () => {
             this.toggle();
+        });
+
+        // Allow pressing Escape to close
+        this.mobileMenu.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            this.close();
         });
     }
 
@@ -43,13 +54,14 @@ class MobileMenu {
         this.body.classList.add('no-scroll');
         this.mobileMenu.classList.add('is-visible');
 
-        const siteWideAlert = document.querySelector('.sitewide-alert')
+        const siteWideAlert = document.querySelector('.sitewide-alert');
         if (siteWideAlert) {
             // adjust for the site-wider alert height
             this.mobileMenu.style.marginTop = siteWideAlert.clientHeight + 'px';
         }
 
         this.state.open = true;
+        this.focusTrap.activate();
     }
 
     close() {
@@ -59,6 +71,7 @@ class MobileMenu {
         this.mobileMenu.classList.remove('is-visible');
 
         this.state.open = false;
+        this.focusTrap.deactivate();
     }
 }
 
