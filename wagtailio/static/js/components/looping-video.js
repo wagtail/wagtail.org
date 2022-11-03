@@ -6,7 +6,14 @@ class LoopingVideo {
     constructor(node) {
         this.node = node;
         this.toggle = this.toggle.bind(this);
+        this.preventAutoplay();
         this.bindEventListeners();
+    }
+
+    preventAutoplay() {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (!mediaQuery.matches || !this.node.autoplay) return;
+      this.node.pause();
     }
 
     bindEventListeners() {
