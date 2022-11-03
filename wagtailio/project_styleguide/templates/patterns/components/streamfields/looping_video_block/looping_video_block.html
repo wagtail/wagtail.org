@@ -2,7 +2,7 @@
 
 <div class="home-embed">
     <div class="responsive-object" style="padding-bottom: 56.25%;">
-        <video {% if value.autoplay %}autoplay loop muted{% else %}controls{% endif %}>
+        <video {% if value.autoplay %}autoplay loop muted tabindex="0" data-looping-video{% else %}controls{% endif %}>
             {% for source in value.video.sources %}
                 <source type="{{ source.type }}" src="{{ source.src }}">
             {% endfor %}
