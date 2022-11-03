@@ -37,9 +37,9 @@
     {% endif %}
     <meta property="og:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
     {% if page.social_image %}
-        {% image page.social_image width-1200 height-630 as social_img %}
+        {% image page.social_image width-1200 height-627 as social_img %}
     {% elif page.main_image %}
-        {% image page.main_image width-1200 height-630 as social_img %}
+        {% image page.main_image width-1200 height-627 as social_img %}
     {% endif %}
 
     {% if social_img %}
