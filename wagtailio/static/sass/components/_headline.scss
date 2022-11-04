@@ -12,6 +12,10 @@
         padding: 230px 0 0;
     }
 
+    &:last-child {
+        margin-bottom: 0; // prevent space between footer
+    }
+
     &__grid {
         position: relative;
     }
@@ -118,7 +122,7 @@
             fill: $color--teal-200;
             stroke: none;
             opacity: 0.5;
-            transform: rotate(7deg) translate(40px, -30px) scale(0.9);
+            transform: rotate(3deg) translate(40px, -20px) scale(0.9);
         }
     }
 }

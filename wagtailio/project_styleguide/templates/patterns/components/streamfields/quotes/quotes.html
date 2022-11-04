@@ -2,7 +2,9 @@
 
 <div class="quotes grid">
     <h2 class="quotes__header heading-one">{{ value.heading }}</h2>
-    {% include "patterns/components/icon/icon.html" with icon="quotes" classes="quotes__icon" %}
+    <div class="quotes__icon-container">
+        {% include "patterns/components/icon/icon.html" with icon="quotes" classes="quotes__icon" %}
+    </div>
     {% for item in value.quotes %}
         <blockquote class="quotes__item">
             <p class="heading-four">{{ item.quote }}</p>

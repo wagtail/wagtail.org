@@ -9,6 +9,7 @@
     border-radius: 15px;
     background-color: $color--white;
     padding: 20px;
+    left: -20px;
 
     &__meta {
         margin-bottom: 10px;
@@ -19,12 +20,13 @@
     }
 
     &__heading {
-        margin-bottom: 10px;
         transition: color .3s ease;
+        margin-bottom: 0;
     }
 
     &__description {
         color: $color--grey;
+        margin-top: 10px;
         padding-bottom: 20px;
 
         @include media-query(large) {
@@ -62,20 +64,5 @@
         #{$root}__image {
             border-radius: 50%;
         }
-    }
-}
-
-.logo-cards__heading {
-    padding: 0 20px;
-    margin-bottom: 20px;
-    grid-column: 2 / span 2;
-
-    @include media-query(medium) {
-        margin-bottom: 40px;
-        grid-column: 2 / span 3;
-    }
-
-    @include media-query(large) {
-        grid-column: 2 / span 4;
     }
 }

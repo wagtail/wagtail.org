@@ -43,6 +43,12 @@ class MobileMenu {
         this.body.classList.add('no-scroll');
         this.mobileMenu.classList.add('is-visible');
 
+        const siteWideAlert = document.querySelector('.sitewide-alert')
+        if (siteWideAlert) {
+            // adjust for the site-wider alert height
+            this.mobileMenu.style.marginTop = siteWideAlert.clientHeight + 'px';
+        }
+
         this.state.open = true;
     }
 

@@ -1,6 +1,8 @@
 <div class="card {% if classes %}{{ classes }}{% endif %}">
     {% include "patterns/components/meta/meta.html" with classes="card__meta" %}
-    <h4 class="card__heading heading-three">{{ value.heading }}</h4>
+    {% if value.heading %}
+        <h4 class="card__heading heading-three">{{ value.heading }}</h4>
+    {% endif %}
     {% if value.description %}
         <div class="card__description mini-meta">
             {{ value.description }}

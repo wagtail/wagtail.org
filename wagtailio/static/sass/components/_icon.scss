@@ -17,14 +17,14 @@
     &__svg-bg {
         fill: rgba($color--teal-200, 0.3);
         transform-origin: center;
-        transform: scale(1.5) rotate(4deg);
-        transition: transform 0.15s ease-out;
+        transform: scale(1.3) rotate(-8deg);
+        transition: transform 0.15s ease-out, fill 0.15s ease-out;
     }
 
     &__svg-fg {
         fill: transparent;
         stroke: $color--black;
-        stroke-width: 1px;
+        stroke-width: 2px;
 
         .hero &,
         .headline & {

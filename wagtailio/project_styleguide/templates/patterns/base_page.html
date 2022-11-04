@@ -1,138 +1,127 @@
 {% extends "patterns/base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
-<!doctype html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8" />
-        <title>{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %} {% block title_suffix %}| Wagtail CMS{% endblock %}</title>
-        <meta name="description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% endif %}" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+{% block title_suffix %} | Wagtail CMS{% endblock %}
 
-        {% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />{% endif %}
+{% block meta_tags %}
+    <meta name="description" content="{% firstof page.social_text page.listing_intro %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@wagtailcms" />
-        <meta name="twitter:creator" content="@wagtailcms" />
-        <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
-        <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:160 }}{% endif %}" />
-        <meta name="twitter:image" content="{% if page.social_image %}{% image page.social_image width-400 as img %}{{ img.url }}{% elif page.main_image %}{% image page.main_image width-400 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
+    {% if page.canonical_url or page.full_url %}
+        <link rel="canonical" href="{% firstof page.canonical_url page.full_url %}" />
+    {% endif %}
 
-        <meta property="fb:app_id" content="{{ FB_APP_ID }}" />
-        <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@wagtailcms" />
+    <meta name="twitter:creator" content="@wagtailcms" />
+    <meta name="twitter:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
+    <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:160 }}{% endif %}" />
+
+    {% if page.social_image %}
+        {% image page.social_image width-400 as twitter_img %}
+    {% elif page.main_image %}
+        {% image page.main_image width-400 as twitter_img %}
+    {% endif %}
+    {% if twitter_img %}
+        <meta name="twitter:image" content="{{ twitter_img.url }}" />
+        {% if twitter_img.alt %}<meta name="twitter:image:alt" content="{{ twitter_img.alt }}" />{% endif %}
+    {% else %}
+        <meta name="twitter:image" content="{% static 'img/default-sharing-image.png' %}" />
+    {% endif %}
+
+    {% if FB_APP_ID %}<meta property="fb:app_id" content="{{ FB_APP_ID }}" />{% endif %}
+    <meta property="og:type" content="website" />
+    {% if page %}
         {% wagtail_site as site %}
-        <meta property="og:url" content="https://{{ site.hostname }}{{ page.url }}" />
-        <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | Wagtail CMS" />
-        <meta property="og:image" content="{% if page.social_image %}{% image page.social_image width-1024 as img %}{{ img.url }}{% elif page.main_image %}{% image page.main_image width-1024 as img %}{{ img.url }}{% else %}{% static 'img/default-sharing-image.png' %}{% endif %}" />
-        <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
-        <meta property="og:site_name" content="Wagtail CMS" />
+        <meta property="og:url" content="https://{{ site.root_url }}{% pageurl page %}" />
+    {% endif %}
+    <meta property="og:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
+    {% if page.social_image %}
+        {% image page.social_image width-1200 height-627 as social_img %}
+    {% elif page.main_image %}
+        {% image page.main_image width-1200 height-627 as social_img %}
+    {% endif %}
 
-        <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
-        <link title="This week in Wagtail" type="application/atom+xml" rel="alternate" href="{% url 'newsletter_feed' %}">
+    {% if social_img %}
+        <meta property="og:image" content="{{ social_img.url }}" />
+        <meta property="og:image:width" content="{{ social_img.width }}" />
+        <meta property="og:image:height" content="{{ social_img.height }}" />
+    {% else %}
+        <meta property="og:image" content="{% static 'img/default-sharing-image.png' %}" />
+    {% endif %}
+    <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
+    <meta property="og:site_name" content="Wagtail CMS" />
 
-        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}"/>
-        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicons/apple-touch-icon-60x60.png' %}"/>
-        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicons/apple-touch-icon-72x72.png' %}"/>
-        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicons/apple-touch-icon-76x76.png' %}"/>
-        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicons/apple-touch-icon-114x114.png' %}"/>
-        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicons/apple-touch-icon-120x120.png' %}"/>
-        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicons/apple-touch-icon-144x144.png' %}"/>
-        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicons/apple-touch-icon-152x152.png' %}"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon-180x180.png' %}"/>
-        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-32x32.png' %}" sizes="32x32"/>
-        <link rel="icon" type="image/png" href="{% static 'img/favicons/android-chrome-192x192.png' %}" sizes="192x192"/>
-        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-96x96.png' %}" sizes="96x96"/>
-        <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-16x16.png' %}" sizes="16x16"/>
-        <link rel="manifest" href="{% static 'img/favicons/manifest.json' %}" />
-        <link rel="shortcut icon" href="{% static 'img/favicons/favicon.ico' %}" />
-        <meta name="msapplication-TileColor" content="#43b1b0"/>
-        <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-144x144.png' %}"/>
-        <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}" />
-        <meta name="theme-color" content="#43b1b0"/>
+    <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
+    <link title="This Week in Wagtail" type="application/atom+xml" rel="alternate" href="{% url 'newsletter_feed' %}">
 
-        {% if not DEBUG %}
-            <!-- Google Tag Manager -->
-            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5XDDLH');
-            </script>
-            <!-- End Google Tag Manager -->
-        {% endif %}
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicons/apple-touch-icon-60x60.png' %}"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicons/apple-touch-icon-72x72.png' %}"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicons/apple-touch-icon-76x76.png' %}"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicons/apple-touch-icon-114x114.png' %}"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicons/apple-touch-icon-120x120.png' %}"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicons/apple-touch-icon-144x144.png' %}"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicons/apple-touch-icon-152x152.png' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon-180x180.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-32x32.png' %}" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favicons/android-chrome-192x192.png' %}" sizes="192x192"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-96x96.png' %}" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-16x16.png' %}" sizes="16x16"/>
+    <link rel="manifest" href="{% static 'img/favicons/manifest.json' %}" />
+    <link rel="shortcut icon" href="{% static 'img/favicons/favicon.ico' %}" />
+    <meta name="msapplication-TileColor" content="#43b1b0"/>
+    <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-144x144.png' %}"/>
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}" />
+    <meta name="theme-color" content="#43b1b0"/>
 
-    </head>
-    <body class="{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% block body_class %}{% endblock %} ">
-        {% if not DEBUG %}
-            <!-- Google Tag Manager (noscript) -->
-            <noscript>
-                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-            </noscript>
-            <!-- End Google Tag Manager (noscript) -->
-        {% endif %}
+    {% if GOOGLE_TAG_MANAGER_ID %}
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ GOOGLE_TAG_MANAGER_ID|escapejs }}');
+        </script>
+        <!-- End Google Tag Manager -->
+    {% endif %}
+{% endblock meta_tags %}
+{% block body_class %}{{ block.super }}{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% endblock %}
 
+{% block body_top %}
+    {% if GOOGLE_TAG_MANAGER_ID %}
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% endif %}
 
-        <div data-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
+    <div data-site-wide-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
+{% endblock body_top %}
 
-        {% block header %}
-            {% include "patterns/includes/header.html" %}
-        {% endblock %}
+{% block header %}
+    {% include "patterns/includes/header.html" %}
+{% endblock header %}
 
-        {% block sidebar %}{% endblock %}
+{% block footer %}
+    {% include "patterns/includes/footer.html" %}
 
-        <section>
-            {% block content %}{% endblock %}
-        </section>
+    {% include "patterns/includes/cookie_message.html" %}
 
-        {% block footer %}
-            {% include "patterns/includes/footer.html" %}
-        {% endblock %}
+    <a href="https://tally.so/r/wQqagw" target="_blank" class="footer__survey-link">
+        <img src="{% static 'img/clipboard.svg' %}" alt="Help improve wagtail.org clipboard icon">
+        <span>Help improve wagtail.org</span>
+    </a>
+{% endblock footer %}
 
-        {% include "includes/cookie_message.html" %}
+{% block extra_js %}
+    {% if FB_APP_ID %}
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {FB.init({appId: {{ FB_APP_ID }}, xfbml: true, version: 'v2.1'});};
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id; js.src = "https://connect.facebook.net/en_US/sdk.js"; fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    {% endif %}
 
-        <a href="https://tally.so/r/wQqagw" target="_blank" class="survey-link">
-            <span>Help improve wagtail.org</span>
-        </a>
-
-        {% if FB_APP_ID %}
-            <div id="fb-root"></div>
-
-            <script>
-                window.fbAsyncInit = function() {
-                    FB.init({appId: {{ FB_APP_ID }}, xfbml: true, version: 'v2.1'});
-                };
-
-                (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "https://connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            </script>
-        {% endif %}
-
-        {% if not DEBUG %}
-            <!-- twitter campaign tracking code -->
-            <script src="https://platform.twitter.com/oct.js"></script>
-            <script>
-                twttr.conversion.trackPid('l6ggy', {
-                    tw_sale_amount: 0,
-                    tw_order_quantity: 0
-                });
-            </script>
-            <noscript>
-                <img height="1" width="1" style="display:none;" alt=""
-                    src="https://analytics.twitter.com/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
-                />
-                <img height="1" width="1" style="display:none;" alt=""
-                    src="//t.co/i/adsct?txn_id=l6ggy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0"
-                />
-            </noscript>
-            <!-- end twitter campaign tracking code -->
-        {% endif %}
-
-        <script src="https://platform.twitter.com/widgets.js" async></script>
-    </body>
-</html>
+    <script src="https://platform.twitter.com/widgets.js" async></script>
+{% endblock extra_js %}

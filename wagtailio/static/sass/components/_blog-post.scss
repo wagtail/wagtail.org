@@ -35,7 +35,7 @@
         left: -$gutter-sm; // offset padding for vertical alignment
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
         background: $color--white;
         padding: $gutter-sm;
     }
@@ -50,7 +50,9 @@
         width: 100%;
 
         @include media-query(large) {
-            width: auto;
+            position: static;
+            transform: none;
+            display: block;
         }
     }
 
@@ -85,7 +87,7 @@
         }
 
         @include media-query(large) {
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 2fr 3fr;
         }
 
         #{$root}__content {

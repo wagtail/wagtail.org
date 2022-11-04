@@ -75,7 +75,6 @@ INSTALLED_APPS = [
     "wagtailio.search",
     "wagtailio.navigation",
     "wagtailio.newsletter",
-    "wagtailio.developers",
     "wagtailio.blog",
     "wagtailio.features",
     "wagtailio.packages",
@@ -264,13 +263,39 @@ SITEWIDE_ALERT_SMAXAGE = int(env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7)
 # Cache
 # Use Redis or database as the cache backend
 
-if "REDIS_URL" in env:
+# Prefer the TLS connection URL over non
+REDIS_URL = env.get("REDIS_TLS_URL", env.get("REDIS_URL"))
+
+if REDIS_URL:
+    connection_pool_kwargs = {}
+
+    if REDIS_URL.startswith("rediss"):
+        # Heroku Redis uses self-signed certificates for secure redis conections.
+        # https://stackoverflow.com/a/66286068
+        # When using TLS, we need to disable certificate validation checks.
+        connection_pool_kwargs["ssl_cert_reqs"] = None
+
+    redis_options = {
+        "IGNORE_EXCEPTIONS": True,
+        "SOCKET_CONNECT_TIMEOUT": 2,  # seconds
+        "SOCKET_TIMEOUT": 2,  # seconds
+        "CONNECTION_POOL_KWARGS": connection_pool_kwargs,
+    }
+
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": env["REDIS_URL"],
-        }
+            "LOCATION": f"{REDIS_URL}/0",
+            "OPTIONS": redis_options,
+        },
+        "renditions": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL + "/1",
+            "OPTIONS": redis_options,
+        },
     }
+
+    DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
 else:
     CACHES = {
         "default": {
@@ -565,3 +590,7 @@ PATTERN_LIBRARY = {
 if "MAILCHIMP_NEWSLETTER_ID" in env and "MAILCHIMP_ACCOUNT_ID" in env:
     MAILCHIMP_ACCOUNT_ID = env.get("MAILCHIMP_ACCOUNT_ID")
     MAILCHIMP_NEWSLETTER_ID = env.get("MAILCHIMP_NEWSLETTER_ID")
+
+# all the tracking
+FB_APP_ID = env.get("FB_APP_ID", "")
+GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID", "")

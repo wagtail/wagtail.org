@@ -1,6 +1,5 @@
 .hero {
     $root: &;
-
     @include sf-spacing();
     position: relative;
     grid-column: 2 / span 2;
@@ -11,6 +10,10 @@
 
     @include media-query(large) {
         grid-column: 2 / span 5;
+    }
+
+    &--small-margin {
+        margin-bottom: 75px;
     }
 
     &__inner {
@@ -40,8 +43,10 @@
     }
 
     &__heading {
+
         @include media-query(large) {
             width: 120%; // to get a bit of overlap on the icon
+            max-width: 92vw; // prevent off screen
         }
     }
 
@@ -77,25 +82,25 @@
 
         &--paper-plane {
             right: 0;
-            width: 290px;
-            height: 230px;
-
-            @include media-query(medium) {
-                top: -20px;
-                width: 450px;
-                height: 340px;
-            }
+            top: 0;
+            width: 670px;
+            height: 460px;
 
             @include media-query(large) {
-                top: 0;
+                top: -36px;
                 width: 760px;
-                height: 460px;
+                height: 600px;
             }
         }
 
         // Icon overrides
         .icon__svg-bg {
             color: $color--eggshell;
+            transform: scale(1.4) translateX(-20px) rotate(-4deg);
+        }
+
+        .icon__svg-fg {
+            transform: scale(1);
         }
     }
 

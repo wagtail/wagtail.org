@@ -21,6 +21,10 @@
     }
 
     &--search {
+        #{$root}__overlay {
+            align-items: flex-start;
+        }
+
         #{$root}__container {
             max-width: 850px;
             overflow: visible;
@@ -51,13 +55,13 @@
     }
 
     &__overlay {
+        @include z-index(modal);
         position: fixed;
         inset: 0;
         background: $color--off-black-30;
         display: flex;
         justify-content: center;
-        align-items: flex-start;
-        z-index: 10;
+        align-items: center;
     }
 
     &__container {
@@ -69,8 +73,8 @@
         overflow-y: auto;
         box-sizing: border-box;
         width: calc(100% - 40px);
-        inset: 140px 0;
         position: relative;
+        border: 2px solid transparent;
     }
 
     &__grid {
@@ -93,6 +97,12 @@
     &__close-button {
         display: block;
         margin-left: auto;
+
+        svg {
+            @media (forced-colors: active) {
+                fill: ButtonText;
+            }
+        }
     }
 
     &__close-icon {

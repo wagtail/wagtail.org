@@ -20,7 +20,7 @@
     overflow-x: hidden;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
-    box-shadow: 0 0 30px rgba($color--black, 0.05);
+    box-shadow: 0 0 40px rgba($color--black, 0.2);
 
     @include media-query(medium) {
         padding: 0 50px;
@@ -30,9 +30,11 @@
     @media only screen and (min-width: $header-desktop) {
         display: none;
         align-items: flex-start;
-        width: 100%;
+        width: auto;
         height: auto;
         top: 120px;
+        right: 40px;
+        left: 40px;
         background-color: $color--white;
         padding: 0;
         opacity: 1;
@@ -174,7 +176,7 @@
             // Icon overrides
             .icon__svg-bg {
                 transform: rotate(0) scale(0.95);
-                color: $color--teal-200;
+                fill: $color--teal-200;
             }
         }
 
