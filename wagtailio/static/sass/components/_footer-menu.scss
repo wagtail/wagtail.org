@@ -131,7 +131,7 @@
         }
 
         @media (forced-colors: active) {
-            fill: $color--white; // force white if in high contrast mode
+            fill: CanvasText;
         }
     }
 
