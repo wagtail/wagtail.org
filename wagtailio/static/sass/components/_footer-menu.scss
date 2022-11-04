@@ -120,6 +120,21 @@
         }
     }
 
+    &__logo {
+        display: none;
+
+        @include media-query(large) {
+            margin-top: auto;
+            width: 155px;
+            height: 65px;
+            display: block;
+        }
+
+        @media (forced-colors: active) {
+            fill: CanvasText;
+        }
+    }
+
     .no-js & {
         &__list {
             display: block;
