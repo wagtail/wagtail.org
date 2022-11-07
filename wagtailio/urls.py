@@ -19,6 +19,7 @@ from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.search.views import search
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
 from wagtailio.utils.cache import get_default_cache_control_decorator
+from wagtailio.utils.sitemap_generator import Sitemap
 from wagtailio.utils.views import error_404, error_500, favicon, robots
 
 # Private URLs are not meant to be cached.
@@ -33,7 +34,7 @@ private_urlpatterns = [
 urlpatterns = [
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
-    path("sitemap.xml", sitemap),
+    path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": Sitemap}}),
     path("favicon.ico", favicon),
     path("robots.txt", robots),
 ]
