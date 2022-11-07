@@ -192,9 +192,6 @@ if "AWS_STORAGE_BUCKET_NAME" in env:
     if "AWS_S3_CUSTOM_DOMAIN" in env:
         AWS_S3_CUSTOM_DOMAIN = env["AWS_S3_CUSTOM_DOMAIN"]
 
-    if "AWS_S3_SECURE_URLS" in env:
-        AWS_S3_SECURE_URLS = env["AWS_S3_SECURE_URLS"].strip().lower() == "true"
-
     INSTALLED_APPS += ("storages",)
 
 
