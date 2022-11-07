@@ -1,13 +1,13 @@
 default_language_version:
   node: 18.7.0
-  python: python3.8
+  python: python3.10
 repos:
   - repo: https://github.com/psf/black
-    rev: 22.8.0
+    rev: 22.10.0
     hooks:
       - id: black
         language_version: python3
-        args: ['--target-version', 'py38']
+        args: ['--target-version', 'py310']
   - repo: https://github.com/pycqa/isort
     # isort config is in setup.cfg
     rev: 5.10.1
