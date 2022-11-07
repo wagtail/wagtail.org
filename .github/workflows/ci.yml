@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
-          python-version: 3.8
+          python-version: '3.10'
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
@@ -74,11 +74,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Poetry
-        run: pipx install poetry==1.2.1 # Make sure this matches POETRY_VERSION in the Dockerfile
+        run: pipx install poetry==1.2.2 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: '3.10'
           cache: 'poetry'
       - name: Install Python dependencies
         run: poetry install
