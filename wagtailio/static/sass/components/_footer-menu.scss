@@ -3,6 +3,8 @@
 
     background-color: $color--teal-300;
     padding: 40px 0;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 
     @include media-query(medium) {
         padding: 80px 0;
