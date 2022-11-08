@@ -59,6 +59,8 @@
     }
 
     &__toggle {
+        display: flex;
+        align-items: center;
         padding: 5px;
         cursor: pointer;
 
@@ -97,10 +99,20 @@
         font-weight: $weight--bold;
         font-size: 1.25rem;
         margin-left: 10px;
+        display: none;
+
+        &--collapsible {
+            display: block;
+        }
 
         @include media-query(large) {
             font-size: 1rem;
             margin-left: 0;
+            display: block;
+
+            &--collapsible {
+                display: none;
+            }
         }
     }
 
