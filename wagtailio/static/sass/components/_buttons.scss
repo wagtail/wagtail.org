@@ -6,6 +6,7 @@
     border: 1px solid $color--indigo;
     padding: 15px 30px;
     color: $color--off-black;
+    outline-offset: 4px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     background-color: $color--white;
 

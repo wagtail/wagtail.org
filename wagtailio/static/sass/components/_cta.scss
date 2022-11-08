@@ -8,6 +8,7 @@
     justify-content: center;
     border: 1px solid $color--off-black;
     border-radius: 10px;
+    outline-offset: 4px;
     grid-column: 2 / span 2;
     transition: background-color 0.3s;
 
