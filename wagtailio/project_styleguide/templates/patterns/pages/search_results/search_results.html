@@ -1,5 +1,9 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailsearchpromotions_tags %}
+{% block title %}{% if search_results %}{{ result_count }} Result{{ result_count|pluralize }} for
+    {% if search_query %}{{ search_query }}{% endif %}
+{% else %}No results found{% endif %}
+{% endblock title %}
 
 {% block content %}
     <div class="grid">
