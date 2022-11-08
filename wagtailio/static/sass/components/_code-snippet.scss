@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     padding: 15px 20px;
+    border: 1px solid transparent;
     border-radius: 6px;
     position: relative;
     grid-column: 2 / span 2;
@@ -16,7 +17,7 @@
         justify-content: flex-start;
         grid-column: 2;
         font-size: 1rem;
-        padding: 15px 28px;
+        padding: 15px 26px;
     }
 
     pre {
