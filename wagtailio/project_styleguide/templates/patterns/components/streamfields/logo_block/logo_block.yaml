@@ -12,6 +12,6 @@ context:
 
 tags:
   image:
-    logo max-100x100 class="logos__image":
+    logo max-200x200 class="logos__image":
       raw: |
-        <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
+        <img src="https://placehold.co/200" class="logos__image" alt="Some alt">
