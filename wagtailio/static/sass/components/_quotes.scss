@@ -22,7 +22,7 @@
 
     &__item {
         grid-column: 2 / span 2;
-        padding: 0 0 25px 0;
+        padding: 0 0 50px 0;
 
         @include media-query(medium) {
             grid-column: 2 / span 3;
