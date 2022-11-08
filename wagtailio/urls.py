@@ -19,7 +19,7 @@ from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.search.views import search
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
 from wagtailio.utils.cache import get_default_cache_control_decorator
-from wagtailio.utils.views import favicon, robots, test_500_error
+from wagtailio.utils.views import error_404, error_500, favicon, robots
 
 # Private URLs are not meant to be cached.
 private_urlpatterns = [
@@ -53,7 +53,8 @@ if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
 ):
     urlpatterns += [
         path("pattern-library/", include("pattern_library.urls")),
-        path("test500", test_500_error),
+        path("test404/", error_404),
+        path("test500/", error_500),
     ]
 
 # Set public URLs to use public cache.
