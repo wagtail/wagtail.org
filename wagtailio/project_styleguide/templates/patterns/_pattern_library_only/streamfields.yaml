@@ -26,6 +26,12 @@ tags:
     logo.image max-100 class="logos__image":
       raw: |
         <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
+    logo max-200x200 class="logos__image":
+      raw: |
+        <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
+    value.image width-1300 class="highlight__image":
+      raw: |
+        <img src="https://placehold.co/1300x500" alt="Some alt" class="highlight__image">
   include_block:
     example_pattern:
       template_name: 'patterns/_pattern_library_only/comparison_table.html'
