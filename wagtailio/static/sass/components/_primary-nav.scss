@@ -58,11 +58,6 @@
         &:hover,
         &.active {
             color: $color--primary;
-
-
-            #{$root}__icon {
-                color: $color--primary;
-            }
         }
     }
 
@@ -101,7 +96,7 @@
     &__icon {
         height: 12px;
         width: 12px;
-        fill: $color--cool-grey;
+        fill: $color--primary;
         transition: fill $transition;
         transform: rotate(-90deg);
 
@@ -111,8 +106,6 @@
         }
 
         .active & {
-            fill: $color--primary;
-
             @media only screen and (min-width: $header-desktop) {
                 transform: rotate(180deg);
             }
