@@ -54,6 +54,8 @@
         justify-content: space-between;
         text-decoration: none;
         color: $color--off-black;
+        padding: 0;
+        width: 100%;
 
         &:hover,
         &.active {
