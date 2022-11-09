@@ -19,7 +19,7 @@ class DesktopCloseMenus {
         let close = true;
 
         this.allPrimaryNavs.forEach((item) => {
-            if (item.contains(e.target)) {
+            if (e && item.contains(e.target)) {
                 // don't close the menus if we are clicking anywhere on the primary navigation
                 close = false;
             }
@@ -43,6 +43,12 @@ class DesktopCloseMenus {
                 this.closeMenus(e);
             });
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeMenus();
+            };
+        });
     }
 }
 
