@@ -40,7 +40,9 @@
     {% if page.video %}
         <div class="home-embed">
             <div class="responsive-object" style="padding-bottom: 56.25%;">
-                <video {% if page.autoplay_video %}autoplay loop muted tabindex="0" data-looping-video{% else %}controls{% endif %}>
+                {# Bare-minimum alternative text for the homepage video. To be replaced with YouTube. #}
+                <p id="home-embed-video-description" class="u-sr-only">Promotional homepage video</p>
+                <video aria-describedby="home-embed-video-description" {% if page.autoplay_video %}autoplay loop muted tabindex="0" data-looping-video aria-label="Click to pause/play"{% else %}controls{% endif %}>
                     {% for source in page.video.sources %}
                         <source type="{{ source.type }}" src="{{ source.src }}">
                     {% endfor %}
