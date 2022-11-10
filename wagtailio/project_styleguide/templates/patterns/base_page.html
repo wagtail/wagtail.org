@@ -104,6 +104,14 @@
     {% include "patterns/includes/footer.html" %}
 
     {% include "patterns/includes/cookie_message.html" %}
+    
+    {# Disable survey link for wagtail.org redesign launch #}
+    {% comment %}
+        <a href="https://tally.so/r/wQqagw" target="_blank" class="footer__survey-link">
+            <img src="{% static 'img/clipboard.svg' %}" alt="">
+            <span>Help improve wagtail.org</span>
+        </a>
+    {% endcomment %}
 {% endblock footer %}
 
 {% block extra_js %}
