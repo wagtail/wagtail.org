@@ -500,7 +500,7 @@ WAGTAIL_SITE_NAME = "wagtailio"
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
 if "PRIMARY_HOST" in env:
-    WAGTAILADMIN_BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
+    WAGTAILADMIN_BASE_URL = "https://%s/" % env["PRIMARY_HOST"]
 
 # https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
