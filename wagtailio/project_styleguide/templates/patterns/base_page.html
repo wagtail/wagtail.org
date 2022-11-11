@@ -4,7 +4,7 @@
 {% block title_suffix %} | Wagtail CMS{% endblock %}
 
 {% block meta_tags %}
-    <meta name="description" content="{% firstof page.social_text page.listing_intro %}" />
+    <meta name="description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {% if page.canonical_url or page.full_url %}
