@@ -495,7 +495,7 @@ LOGGING = {
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "wagtailio"
+WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
