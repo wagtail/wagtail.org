@@ -19,6 +19,13 @@ except ValueError:
 
 MANIFEST_LOADER["cache"] = True  # noqa
 
+# Use secure cookies for the session and CSRF cookies.
+# If these are set to True, the cookies will be marked as “secure”, which means
+# browsers may ensure that the cookies are only sent under an HTTPS connection.
+# https://docs.djangoproject.com/en/4.1/ref/settings/#session-cookie-secure
+# https://docs.djangoproject.com/en/4.1/ref/settings/#csrf-cookie-secure
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 try:
     from .local import *  # noqa
