@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.http import Http404, HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.templatetags.static import static
+from django.views import defaults
 
 
 def favicon(request):
@@ -18,8 +19,10 @@ def robots(request):
 
 
 def error_404(request, exception=None):
-    return render(request, "patterns/pages/errors/404.html", {}, status=404)
+    return defaults.page_not_found(
+        request, exception, template_name="patterns/pages/errors/404.html"
+    )
 
 
-def error_500(request, exception=None):
-    return render(request, "patterns/pages/errors/500.html", {}, status=500)
+def error_500(request):
+    return defaults.server_error(request, template="patterns/pages/errors/500.html")
