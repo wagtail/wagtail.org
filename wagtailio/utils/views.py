@@ -18,8 +18,8 @@ def robots(request):
 
 
 def error_404(request, exception=None):
-    return render(request, "patterns/pages/errors/404.html", {})
+    return render(request, "patterns/pages/errors/404.html", {}, status=404)
 
 
 def error_500(request, exception=None):
-    return render(request, "patterns/pages/errors/500.html", {})
+    return render(request, "patterns/pages/errors/500.html", {}, status=500)
