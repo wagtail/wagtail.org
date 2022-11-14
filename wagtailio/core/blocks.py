@@ -432,6 +432,7 @@ class LoopingVideoBlock(blocks.StructBlock):
 
 
 class LogoBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(required=False)
     logos = blocks.ListBlock(
         ImageChooserBlock(),
     )
@@ -439,7 +440,6 @@ class LogoBlock(blocks.StructBlock):
     class Meta:
         icon = "images"
         template = "patterns/components/streamfields/logo_block/logo_block.html"
-
 
 class ContentStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
@@ -465,6 +465,7 @@ class ContentStoryBlock(blocks.StreamBlock):
         template="patterns/components/streamfields/sign_up_form_block/sign_up_form_block.html",
     )
     comparison_table = ComparisonTableBlock()
+    logos = LogoBlock(group="Logos")
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
