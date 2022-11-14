@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="highlight{% if image_on_right %} highlight--reverse{% endif %} grid">
+    {% image value.image width-1300 class="highlight__image" %}
+
+    <div class="highlight__content">
+        {% if value.meta_icon and value.meta_text %}
+            <div class="highlight__meta">
+                {% include "patterns/components/icon/icon.html" with icon=value.meta_icon classes="highlight__meta-icon" %}
+                <span class="highlight__meta-text heading-four">{{ value.meta_text }}</span>
+            </div>
+        {% endif %}
+
+        <h2 class="highlight__heading">{{ value.heading }}</h2>
+
+        {% if value.description %}
+            <p class="highlight__description">{{ value.description }}</p>
+        {% endif %}
+
+        {% if value.cta %}
+            {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta.url title=value.cta.text %}
+        {% endif %}
+    </div>
+</div>

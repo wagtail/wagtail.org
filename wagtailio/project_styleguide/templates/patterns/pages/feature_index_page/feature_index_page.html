@@ -1,0 +1,17 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block body_class %}template-feature-index{% endblock %}
+
+{% block content %}
+
+    <div class="features" {% if page.features %}data-feature-index{% endif %}>
+        {% include "patterns/components/hero/hero.html" with value=page classes="hero--features" %}
+
+        {% include_block page.features %}
+    </div>
+
+    {% include_block page.cta %}
+    {% include_block page.get_started.body %}
+
+{% endblock %}

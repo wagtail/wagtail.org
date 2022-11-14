@@ -1,0 +1,38 @@
+{% load wagtailcore_tags cache %}
+{% if footer_navigation %}
+    {% wagtail_site as current_site %}
+    {% cache 900 footernav current_site.pk request.is_preview is_pattern_library %}
+        <nav class="footer-menu" aria-label="Footer menu">
+            <div class="footer-menu__grid grid">
+                {% for section in footer_navigation.sections %}
+                    {% with section.value as menu_section %}
+                        <div class="footer-menu__column" data-footer-menu-column>
+                            <div class="footer-menu__column-header">
+                                <button class="footer-menu__toggle" aria-label="Open the {{ menu_section.heading }} menu" aria-expanded="false" aria-controls="{{ menu_section.heading|lower }}-menu" data-footer-menu-toggle>
+                                    <svg class="footer-menu__icon footer-menu__icon--open" aria-hidden="true" data-footer-menu-open-icon>
+                                        <use xlink:href="#plus-in-circle"></use>
+                                    </svg>
+                                    <svg class="footer-menu__icon footer-menu__icon--close" aria-hidden="true" data-footer-menu-close-icon>
+                                        <use xlink:href="#minus-in-circle"></use>
+                                    </svg>
+
+                                    <span class="footer-menu__column-heading footer-menu__column-heading--collapsible">{{ menu_section.heading }}</span>
+                                </button>
+
+                                <p class="footer-menu__column-heading">{{ menu_section.heading }}</p>
+                            </div>
+
+                            <ul class="footer-menu__list" id="{{ menu_section.heading|lower }}-menu" data-footer-menu-list>
+                                {% for menu_item in menu_section.links %}
+                                    <li class="footer-menu__item">
+                                        <a class="footer-menu__link" href="{% if menu_item.cta_url %}{{ menu_item.cta_url }}{% elif menu_item.cta_page %}{% pageurl menu_item.cta_page %}{% endif %}">{{ menu_item.text }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </nav>
+    {% endcache %}
+{% endif %}

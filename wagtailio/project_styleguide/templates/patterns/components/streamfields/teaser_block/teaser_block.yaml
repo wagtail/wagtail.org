@@ -1,0 +1,13 @@
+context:
+  value:
+    page:
+    url_chooser: https://loremipsum.io/
+    image_for_external_link: fake
+    heading_for_external_link: Adipisci quo atque
+    subheading_for_ext_link: Non voluptas dolorum magnam nisi fugit eum sapiente rem aut
+
+tags:
+  image:
+    value.image_for_external_link fill-450x300:
+      raw: |
+        <img src="https://placehold.co/450x300" alt="Some alt">

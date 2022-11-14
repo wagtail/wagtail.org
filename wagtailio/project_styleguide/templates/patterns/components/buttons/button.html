@@ -1,0 +1,8 @@
+{% if url %}
+    <a href="{{ url }}" class="button {% if classes %}{{ classes }}{% endif %}">
+        <p class="button__text">{{ title }}</p>
+        {% if arrow %}
+            <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+        {% endif %}
+    </a>
+{% endif %}

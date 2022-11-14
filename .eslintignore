@@ -1,0 +1,4 @@
+node_modules
+static_compiled
+venv
+vendor

@@ -6,42 +6,42 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0036_homepagemaincarouselitem_homepagesecondarycarouselitem'),
+        ("core", "0036_homepagemaincarouselitem_homepagesecondarycarouselitem"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='call_to_action_internal_link',
+            model_name="homepagemaincarouselitem",
+            name="call_to_action_internal_link",
         ),
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='image',
+            model_name="homepagemaincarouselitem",
+            name="image",
         ),
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='page',
+            model_name="homepagemaincarouselitem",
+            name="page",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='author_image',
+            model_name="homepagesecondarycarouselitem",
+            name="author_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='desktop_image',
+            model_name="homepagesecondarycarouselitem",
+            name="desktop_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='mobile_image',
+            model_name="homepagesecondarycarouselitem",
+            name="mobile_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='page',
+            model_name="homepagesecondarycarouselitem",
+            name="page",
         ),
         migrations.DeleteModel(
-            name='HomePageMainCarouselItem',
+            name="HomePageMainCarouselItem",
         ),
         migrations.DeleteModel(
-            name='HomePageSecondaryCarouselItem',
+            name="HomePageSecondaryCarouselItem",
         ),
     ]

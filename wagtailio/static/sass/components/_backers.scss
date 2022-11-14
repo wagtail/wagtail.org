@@ -1,0 +1,34 @@
+.backers {
+    @include sf-spacing();
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 3 / span 3;
+    }
+
+    &__category {
+        margin-bottom: 20px;
+
+        &--gold,
+        &--silver,
+        &--bronze {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid $color--light-grey;
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+
+        @include media-query(medium) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}

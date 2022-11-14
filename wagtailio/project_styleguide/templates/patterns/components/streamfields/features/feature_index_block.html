@@ -1,0 +1,22 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="grid">
+    {# Filters #}
+    <fieldset class="features__filters">
+        <legend class="u-sr-only">{% trans 'Filter features by category' %}</legend>
+        <div class="features__filter-wrap">
+            <input type="checkbox" id="all" name="all" data-feature-filter-all checked>
+            <label class="mini-meta" for="all">{% trans 'All' %}</label>
+        </div>
+        {% for category in value.categories %}
+            <div class="features__filter-wrap">
+                <input type="checkbox" id="{{ category|lower }}" name="{{ category|lower }}" data-feature-filter>
+                <label class="mini-meta" for="{{ category|lower }}">{{ category }}</label>
+            </div>
+        {% endfor %}
+    </fieldset>
+</div>
+
+{% for block in value.blocks %}
+    {% include_block block %}
+{% endfor %}

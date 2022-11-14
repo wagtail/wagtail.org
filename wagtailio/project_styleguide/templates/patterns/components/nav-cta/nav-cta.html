@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+<a class="nav-cta" href="{% if cta.cta_url %}{{ cta.cta_url }}{% elif cta.cta_page %}{% pageurl cta.cta_page %}{% endif %}">
+    <svg class="nav-cta__icon" aria-hidden="true">
+        <use xlink:href="#{{ cta.icon }}" />
+    </svg>
+    <div class="nav-cta__content">
+        <h3 class="nav-cta__heading">{{ cta.text }}</h3>
+        {% if cta.sub_heading %}
+            <h4 class="nav-cta__subheading">{{ cta.sub_heading }}</h4>
+        {% endif %}
+        {% if cta.description %}
+            <p class="nav-cta__description">{{ cta.description }}</p>
+        {% endif %}
+    </div>
+    <svg class="nav-cta__arrow" aria-hidden="true">
+        <use xlink:href="#arrow-alt" />
+    </svg>
+</a>

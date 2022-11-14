@@ -1,9 +1,8 @@
-{% extends "base.html" %}
+{% extends "patterns/base_page.html" %}
 
 {% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    {% include "services/includes/svg_sprites.html" %}
     <div class="page-content">
         <header class="page-heading ">
             <div class="page-heading__content">
@@ -19,10 +18,10 @@
                             <a href="#{{ section.value.title|slugify }}">
                                 <svg class="icon__arrow" viewBox="0 0 100 100">
                                     <use xlink:href="#arrow-alt">
-                                </svg>
-                                {{ section.value.title }}
-                            </a>
-                        </li>
+                                    </svg>
+                                    {{ section.value.title }}
+                                </a>
+                            </li>
                     {% endfor %}
                 </ul>
             </div>

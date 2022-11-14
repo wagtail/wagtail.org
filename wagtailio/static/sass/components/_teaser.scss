@@ -1,0 +1,62 @@
+.teaser {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+    margin-bottom: 140px;
+
+    &:hover {
+        #{$root}__heading {
+            color: $color--teal;
+        }
+
+        #{$root}__content {
+            @include offset-bg-hover-right();
+        }
+    }
+
+    &__image {
+        width: 100%;
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 2;
+        }
+    }
+
+    &__content {
+        @include offset-bg-right();
+        background-color: $color--white;
+        grid-column: 2 / span 2;
+        padding: 20px;
+
+        @include media-query(medium) {
+            padding: 30px 40px;
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            padding: 60px 80px 60px 100px;
+            grid-column: 4 / span 3;
+        }
+    }
+
+    &__heading {
+        transition: color 0.3s;
+    }
+
+    &__meta {
+        margin-bottom: 20px;
+    }
+
+    &__intro {
+        margin-bottom: 20px;
+
+        @include media-query(large) {
+            margin-bottom: 35px;
+        }
+    }
+}

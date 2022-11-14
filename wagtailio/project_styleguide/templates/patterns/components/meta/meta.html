@@ -1,0 +1,19 @@
+{% if value.meta_text %}
+    <div class="meta{% if classes %} {{ classes }}{% endif %}">
+        {% if value.meta_icon %}
+            {% include "patterns/components/icon/icon.html" with icon=value.meta_icon classes="meta__icon" %}
+        {% endif %}
+
+        <p class="meta__text mini-meta mini-meta--bold">{{ value.meta_text }}</p>
+
+        {% if value.publication_date %}
+            <p class="meta__date mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>
+        {% endif %}
+    </div>
+{% elif value.publication_date %}
+    <div class="meta{% if classes %} {{ classes }}{% endif %}">
+        {% include "patterns/components/icon/icon.html" with icon="calendar" classes="meta__icon" %}
+
+        <p class="meta__date mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>
+    </div>
+{% endif %}

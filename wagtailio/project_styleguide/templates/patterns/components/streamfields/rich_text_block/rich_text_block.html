@@ -1,0 +1,7 @@
+{% load wagtailcore_tags %}
+
+<div class="grid">
+    <div class="rich-text rich-text--sf">
+        {% firstof value.rich_text|richtext value|richtext %}
+    </div>
+</div>

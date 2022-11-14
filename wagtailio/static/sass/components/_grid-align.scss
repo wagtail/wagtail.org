@@ -1,0 +1,13 @@
+.grid-align {
+    margin-top: -50px;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 3 / span 3;
+        margin-top: -90px;
+    }
+}

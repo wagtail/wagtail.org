@@ -1,0 +1,14 @@
+<div class="modal modal--search micromodal-slide" id="site-search-modal" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <main class="modal__content">
+                <button class="modal__close-button" aria-label="Close the Search" data-micromodal-close>
+                    <svg class="modal__close-icon" aria-hidden="true">
+                        <use xlink:href="#cross"></use>
+                    </svg>
+                </button>
+                {% include "patterns/includes/search-form.html" with input_id=input_id %}
+            </main>
+        </div>
+    </div>
+</div>

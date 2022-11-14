@@ -6,56 +6,61 @@ from django.db import migrations
 
 
 def forwards_func(apps, schema_editor):
-    ContentType = apps.get_model('contenttypes.ContentType')
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    ContentType.objects.filter(app_label='developers', model='developerspage').delete()
-    ContentType.objects.filter(app_label='core', model='developerspage').update(app_label='developers', model='developerspage')
+    ContentType.objects.filter(app_label="developers", model="developerspage").delete()
+    ContentType.objects.filter(app_label="core", model="developerspage").update(
+        app_label="developers", model="developerspage"
+    )
 
-    ContentType.objects.filter(app_label='developers', model='developerspageoptions').delete()
-    ContentType.objects.filter(app_label='core', model='developerspageoptions').update(app_label='developers', model='developerspageoptions')
+    ContentType.objects.filter(
+        app_label="developers", model="developerspageoptions"
+    ).delete()
+    ContentType.objects.filter(app_label="core", model="developerspageoptions").update(
+        app_label="developers", model="developerspageoptions"
+    )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailredirects', '0005_capitalizeverbose'),
-        ('wagtailcore', '0028_merge'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('core', '0030_auto_20160728_1040'),
+        ("wagtailredirects", "0005_capitalizeverbose"),
+        ("wagtailcore", "0028_merge"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("core", "0030_auto_20160728_1040"),
     ]
 
     operations = [
         migrations.RunPython(forwards_func),
-
         migrations.SeparateDatabaseAndState(
             state_operations=[
                 migrations.RemoveField(
-                    model_name='developerspage',
-                    name='listing_image',
+                    model_name="developerspage",
+                    name="listing_image",
                 ),
                 migrations.RemoveField(
-                    model_name='developerspage',
-                    name='page_ptr',
+                    model_name="developerspage",
+                    name="page_ptr",
                 ),
                 migrations.RemoveField(
-                    model_name='developerspage',
-                    name='social_image',
+                    model_name="developerspage",
+                    name="social_image",
                 ),
                 migrations.RemoveField(
-                    model_name='developerspageoptions',
-                    name='internal_link',
+                    model_name="developerspageoptions",
+                    name="internal_link",
                 ),
                 migrations.RemoveField(
-                    model_name='developerspageoptions',
-                    name='page',
+                    model_name="developerspageoptions",
+                    name="page",
                 ),
                 migrations.DeleteModel(
-                    name='DevelopersPage',
+                    name="DevelopersPage",
                 ),
                 migrations.DeleteModel(
-                    name='DevelopersPageOptions',
+                    name="DevelopersPageOptions",
                 ),
             ],
             database_operations=[],
-        )
+        ),
     ]

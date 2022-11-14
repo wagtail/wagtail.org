@@ -1,0 +1,68 @@
+// Colors
+$color--black: #000;
+$color--off-black: #262626;
+$color--indigo: #2E1F5E;
+$color--teal: #007D7E;
+$color--teal-100: #80D7D8;
+$color--teal-200: #00B0B1;
+$color--teal-300: #d9f3f3;
+$color--eggshell: #B3E7E8;
+$color--grey: #5C5C5C;
+$color--light-grey: #EDEAF3;
+$color--cool-grey: #c8c8c8;
+$color--light-grey-100: #f3f5f8;
+$color--white:#FFF;
+$color--pink: #F9CBCE;
+$color--off-black-30: #2626264d;
+
+// Mapping colours
+$color--primary: $color--teal;
+$color--secondary: $color--indigo;
+
+// Fonts
+$font--primary: 'Kumbh Sans', sans-serif;
+$font--code: 'courier new', monospace;
+
+// Font weights
+$weight--bold: 700;
+$weight--regular: 400;
+
+// Breakpoints
+$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+
+// One off breakpoints
+$header-desktop: 1200px; // point at which we move to burger menu
+$header-github: 1350px; // point at which we show github badge
+
+// Header vars
+$header-mobile-height: 76px;
+$header-tablet-height: 142px;
+
+// Site grid
+$site-width: 1440px;
+$gutter-sm: 20px;
+$gutter: 30px;
+$gutter-lg: 60px;
+$gutter-xl: 80px;
+
+// Border Radius
+$rounded-sm: 3px;
+$rounded-md: 6px;
+$rounded-lg: 10px;
+$rounded-xl: 15px;
+
+// Animation
+$transition: 0.25s ease-out;
+
+// Zindices
+$z-index: (
+    under: -1,
+    base: 10,
+    overlap: 20,
+    header: 30,
+    footer: 40,
+    nav: 50,
+    cookie-message: 100,
+    modal: 110,
+    modal-controls: 120,
+);

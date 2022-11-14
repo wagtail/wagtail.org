@@ -1,0 +1,19 @@
+{% load wagtailimages_tags %}
+
+<div class="backer">
+    {% if value.url %}
+        <a class="backer__link backer__link--with-image" href="{{ value.url }}" target="_blank" rel="noreferrer" aria-label="Go to {{ value.name }} website">
+            {% if value.image %}
+                {% image value.image width-750 alt=value.name %}
+            {% else %}
+                {{ value.name }}
+            {% endif %}
+        </a>
+    {% else %}
+        {% if value.image %}
+            {% image value.image width-750 alt=value.name %}
+        {% else %}
+            {{ value.name }}
+        {% endif %}
+    {% endif %}
+</div>

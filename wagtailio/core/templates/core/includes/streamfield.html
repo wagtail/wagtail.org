@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 
 {% for child in value %}
@@ -11,8 +11,8 @@
     {% elif child.block_type == 'h3' %}
         <div class="sf-block sf-block--heading">
             <div class="heading">
-            <h3>{{ child }}</h3>
-        </div>
+                <h3>{{ child }}</h3>
+            </div>
 
     {% elif child.block_type == 'h4' %}
         <div class="sf-block sf-block--heading">
@@ -97,13 +97,13 @@
         <div class="sf-block">
             <div class="stats">
                 <ul>
-                {% for v in child.value %}
-                    <li>
-                        <span class="image">{% image v.bound_blocks.image.value fill-50x50 %}</span>
-                        <span class="statistic">{{ v.bound_blocks.stat.value }}</span>
-                        <span class="name">{{ v.bound_blocks.text.value }}</span>
-                    </li>
-                {% endfor %}
+                    {% for v in child.value %}
+                        <li>
+                            <span class="image">{% image v.bound_blocks.image.value fill-50x50 %}</span>
+                            <span class="statistic">{{ v.bound_blocks.stat.value }}</span>
+                            <span class="name">{{ v.bound_blocks.text.value }}</span>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

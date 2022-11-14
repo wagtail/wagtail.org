@@ -1,0 +1,47 @@
+{% load static manifest wagtailcore_tags wagtailuserbar %}
+{% wagtail_site as current_site %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% firstof page.seo_title page.title %}{% endblock %}{% block title_suffix %}{% if current_site.site_name %}- {{ current_site.site_name }}{% endif %}{% endblock %}</title>
+
+        {% block meta_tags %}
+            <meta name="description" content="" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% endblock %}
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" href="{% manifest "css/main.css" %}">
+
+        {# Global iconography #}
+        {% include "patterns/includes/svg_sprites.html" %}
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="app {% block body_class %}{% endblock %}">
+        {% block body_top %}{% endblock %}
+        {% wagtailuserbar %}
+
+        {% block header %}{% endblock %}
+
+        <main id="main-content" class="app__content">
+            {% block content %}
+                {{ pattern_library_rendered_pattern }}
+            {% endblock %}
+        </main>
+
+        {% block footer %}{% endblock %}
+
+        {# Global javascript #}
+        <script src="{% manifest 'js/main.js' %}"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

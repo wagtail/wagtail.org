@@ -1,10 +1,11 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
 
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField
+from wagtail.models import Page
+from wagtail.search import index
 
 
 class NewsletterPage(Page):
@@ -14,8 +15,13 @@ class NewsletterPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro", classname="full"),
-        FieldPanel("body", classname="full"),
+        FieldPanel("intro"),
+        FieldPanel("body"),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField("intro"),
+        index.SearchField("body"),
     ]
 
     def get_context(self, request, *args, **kwargs):
@@ -29,6 +35,11 @@ class NewsletterPage(Page):
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+
+    search_fields = Page.search_fields + [
+        index.SearchField("intro"),
+        index.SearchField("body"),
+    ]
 
     @property
     def newsletters(self):

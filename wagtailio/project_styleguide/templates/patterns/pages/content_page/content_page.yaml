@@ -1,0 +1,17 @@
+context:
+  page:
+    has_hero: True
+    title: Content page
+    heading: Wagtail Hero heading
+    sub_heading: This is a sub-heading
+    intro: Here's what appears to be an intro of some sort
+    cta:
+      - value:
+          url: '#'
+          text: Find out more
+    icon: roadmap
+
+tags:
+  include_block:
+    page.body:
+      template_name: 'patterns/components/streamfields/content_story_block.html'

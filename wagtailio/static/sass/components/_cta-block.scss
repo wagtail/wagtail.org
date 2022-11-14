@@ -1,0 +1,8 @@
+.cta-block {
+  @include sf-spacing();
+  grid-column: 2 / span 3;
+
+  @include media-query(large) {
+    grid-column: 2 / span 5;
+  }
+}

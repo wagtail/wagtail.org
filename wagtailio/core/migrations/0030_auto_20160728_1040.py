@@ -6,50 +6,59 @@ from django.db import migrations
 
 
 def forwards_func(apps, schema_editor):
-    ContentType = apps.get_model('contenttypes.ContentType')
+    ContentType = apps.get_model("contenttypes.ContentType")
 
-    ContentType.objects.filter(app_label='newsletter', model='newsletterpage').delete()
-    ContentType.objects.filter(app_label='core', model='newsletterpage').update(app_label='newsletter', model='newsletterpage')
+    ContentType.objects.filter(app_label="newsletter", model="newsletterpage").delete()
+    ContentType.objects.filter(app_label="core", model="newsletterpage").update(
+        app_label="newsletter", model="newsletterpage"
+    )
 
-    ContentType.objects.filter(app_label='newsletter', model='newsletterindexpage').delete()
-    ContentType.objects.filter(app_label='core', model='newsletterindexpage').update(app_label='newsletter', model='newsletterindexpage')
+    ContentType.objects.filter(
+        app_label="newsletter", model="newsletterindexpage"
+    ).delete()
+    ContentType.objects.filter(app_label="core", model="newsletterindexpage").update(
+        app_label="newsletter", model="newsletterindexpage"
+    )
 
-    ContentType.objects.filter(app_label='newsletter', model='newsletteremailaddress').delete()
-    ContentType.objects.filter(app_label='core', model='newsletteremailaddress').update(app_label='newsletter', model='newsletteremailaddress')
+    ContentType.objects.filter(
+        app_label="newsletter", model="newsletteremailaddress"
+    ).delete()
+    ContentType.objects.filter(app_label="core", model="newsletteremailaddress").update(
+        app_label="newsletter", model="newsletteremailaddress"
+    )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0028_merge'),
-        ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailredirects', '0005_capitalizeverbose'),
-        ('core', '0029_auto_20160728_0914'),
+        ("wagtailcore", "0028_merge"),
+        ("wagtailforms", "0003_capitalizeverbose"),
+        ("wagtailredirects", "0005_capitalizeverbose"),
+        ("core", "0029_auto_20160728_0914"),
     ]
 
     operations = [
         migrations.RunPython(forwards_func),
-
         migrations.SeparateDatabaseAndState(
             state_operations=[
                 migrations.DeleteModel(
-                    name='NewsletterEmailAddress',
+                    name="NewsletterEmailAddress",
                 ),
                 migrations.RemoveField(
-                    model_name='newsletterindexpage',
-                    name='page_ptr',
+                    model_name="newsletterindexpage",
+                    name="page_ptr",
                 ),
                 migrations.RemoveField(
-                    model_name='newsletterpage',
-                    name='page_ptr',
+                    model_name="newsletterpage",
+                    name="page_ptr",
                 ),
                 migrations.DeleteModel(
-                    name='NewsletterIndexPage',
+                    name="NewsletterIndexPage",
                 ),
                 migrations.DeleteModel(
-                    name='NewsletterPage',
+                    name="NewsletterPage",
                 ),
             ],
             database_operations=[],
-        )
+        ),
     ]

@@ -1,0 +1,37 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if value.page %}
+    <a href="{{ value.page.url }}" class="teaser grid">
+        {% image value.page.main_image fill-495x495 class="teaser__image" %}
+
+        <div class="teaser__content">
+            {% include "patterns/components/meta/meta.html" with classes="teaser__meta meta--offset-icon" %}
+
+            <h2 class="teaser__heading">{{ value.page.title }}</h2>
+
+            {% if value.page.introduction %}
+                <p class="teaser__intro">{{ value.page.introduction }}</p>
+            {% endif %}
+
+            {% if value.page.author %}
+                {% include "patterns/components/author/author.html" with author=value.page.author classes="author--teaser" %}
+            {% endif %}
+        </div>
+    </a>
+
+{% endif %}
+{% if value.url_chooser %}
+    <a href="{{ value.url_chooser }}" class="teaser grid">
+        {% image value.image_for_external_link fill-495x495 class="teaser__image" %}
+
+        <div class="teaser__content">
+            {% include "patterns/components/meta/meta.html" with classes="teaser__meta meta--offset-icon" %}
+
+            <h2 class="teaser__heading">{{ value.heading_for_external_link }}</h2>
+
+            {% if value.subheading_for_ext_link %}
+                <p class="teaser__intro">{{ value.subheading_for_ext_link }}</p>
+            {% endif %}
+        </div>
+    </a>
+{% endif %}

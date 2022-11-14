@@ -1,0 +1,44 @@
+context:
+  value:
+    cards:
+      - heading: Control how content is displayed and how data is organised.
+        description: Editors love it because they have the freedom to build pages the way they want to without coding. Developers love it because StreamField gives them precise control over how content is displayed and how data is organised.
+        meta_icon: paper-stack
+        meta_text: StreamField
+        publication_date: None
+        cta:
+          text: Check it out
+          description: test
+          url: '#'
+      - heading: A tree structure that makes content easy to find and organise.
+        description: The Wagtail administration panel uses a tree structure that makes content easy to find and organise. Whether you have a handful of page types or dozens, the content sidebar offers editors a quick, intuitive way to navigate to the content they need.
+        meta_icon: paper-stack
+        meta_text: StreamField
+        publication_date: None
+        cta:
+          text: Learn more
+          url: '#'
+      - heading: Control how content is displayed and how data is organised.
+        description: Editors love it because they have the freedom to build pages the way they want to without coding. Developers love it because StreamField gives them precise control over how content is displayed and how data is organised.
+        meta_icon: paper-stack
+        meta_text: StreamField
+        publication_date: None
+        cta:
+          text: Watch the video
+          url: '#'
+      - heading: A tree structure that makes content easy to find and organise.
+        description: The Wagtail administration panel uses a tree structure that makes content easy to find and organise. Whether you have a handful of page types or dozens, the content sidebar offers editors a quick, intuitive way to navigate to the content they need.
+        meta_icon: paper-stack
+        meta_text: StreamField
+        publication_date: None
+        cta:
+          text: Learn more
+          url: '#'
+      - heading: Control how content is displayed and how data is organised.
+        description: Editors love it because they have the freedom to build pages the way they want to without coding. Developers love it because StreamField gives them precise control over how content is displayed and how data is organised.
+        meta_icon: paper-stack
+        meta_text: StreamField
+        publication_date: None
+        cta:
+          text: Watch the video
+          url: '#'

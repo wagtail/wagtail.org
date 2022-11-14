@@ -1,0 +1,17 @@
+context:
+  value:
+    heading: Some of our sponsors
+    logos:
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+
+tags:
+  image:
+    logo max-200x200 class="logos__image":
+      raw: |
+        <img src="https://placehold.co/200" class="logos__image" alt="Some alt">

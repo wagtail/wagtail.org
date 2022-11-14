@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0009_wagtailioimage_file_hash'),
+        ("images", "0009_wagtailioimage_file_hash"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='wagtailioimage',
-            name='exif_datetime',
-            field=models.CharField(blank=True, default='', max_length=100),
+            model_name="wagtailioimage",
+            name="exif_datetime",
+            field=models.CharField(blank=True, default="", max_length=100),
         ),
         migrations.AddField(
-            model_name='wagtailioimage',
-            name='md5_hash',
-            field=models.CharField(blank=True, default='', max_length=32),
+            model_name="wagtailioimage",
+            name="md5_hash",
+            field=models.CharField(blank=True, default="", max_length=32),
         ),
     ]

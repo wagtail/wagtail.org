@@ -1,0 +1,62 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="grid">
+    <div class="backers">
+        {% if value.gold_backers %}
+            <div class="backers__category backers__category--gold">
+                <h3 class="backers__heading">{% trans 'Gold' %}</h3>
+                <div class="backers__list">
+                    {% for gold_backer in value.gold_backers %}
+                        {% include_block gold_backer %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if value.silver_backers %}
+            <div class="backers__category backers__category--silver">
+                <h3 class="backers__heading">{% trans 'Silver' %}</h3>
+                <div class="backers__list">
+                    {% for silver_backer in value.silver_backers %}
+                        {% include_block silver_backer %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if value.bronze_backers %}
+            <div class="backers__category backers__category--bronze">
+                <h3 class="backers__heading">{% trans 'Bronze' %}</h3>
+                <div class="backers__list">
+                    {% for bronze_backer in value.bronze_backers %}
+                        {% include_block bronze_backer %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if value.linked_backers %}
+            <div class="backers__category">
+                <h3 class="backers__heading">{% trans 'Other backers' %}</h3>
+                <div class="backers__list">
+                    {% for linked_backer in value.linked_backers %}
+                        {% include_block linked_backer %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if value.named_backers %}
+            <div class="backers__category">
+                {% if not value.linked_backers %}
+                    <h3 class="backers__heading">{% trans 'Other backers' %}</h3>
+                {% endif %}
+                <div class="backers__list">
+                    {% for named_backer in value.named_backers %}
+                        {% include_block named_backer %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

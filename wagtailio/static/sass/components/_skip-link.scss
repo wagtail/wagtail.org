@@ -1,0 +1,14 @@
+.skip-link {
+    z-index: 20;
+    position: absolute;
+    inset: -500px auto auto 0;
+    color: $color--white;
+    background-color: $color--indigo;
+    padding: 20px;
+    font-weight: $weight--bold;
+    text-decoration: none;
+
+    &:focus {
+        top: 0;
+    }
+}

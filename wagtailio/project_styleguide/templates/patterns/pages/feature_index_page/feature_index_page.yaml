@@ -1,0 +1,16 @@
+context:
+  page:
+    title: Feature index page
+    subheading: Feature index page sub-heading
+    get_started: fake
+    feature_categories:
+      - Editing
+
+tags:
+  include_block:
+    page.features:
+      template_name: 'patterns/components/streamfields/features/feature_index_block.html'
+    page.cta:
+      template_name: 'patterns/components/streamfields/cta/cta.html'
+    page.get_started.body:
+      template_name: 'patterns/components/get-started/get-started.html'

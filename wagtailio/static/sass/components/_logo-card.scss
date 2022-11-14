@@ -1,0 +1,68 @@
+.logo-card {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    border-radius: 15px;
+    background-color: $color--white;
+    padding: 20px;
+    left: -20px;
+
+    &__meta {
+        margin-bottom: 10px;
+
+        p {
+            font-weight: $weight--regular;
+        }
+    }
+
+    &__heading {
+        transition: color .3s ease;
+        margin-bottom: 0;
+    }
+
+    &__description {
+        color: $color--grey;
+        margin-top: 10px;
+        padding-bottom: 20px;
+
+        @include media-query(large) {
+            padding-bottom: 35px;
+            font-size: 0.8rem;
+        }
+    }
+
+    &__image {
+        flex-shrink: 0;
+    }
+
+    &__author-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    &__author {
+        margin-left: 10px;
+    }
+
+    &:is(a) {
+        @include offset-bg-left();
+
+        &:hover {
+            @include offset-bg-hover-left();
+
+            #{$root}__heading {
+                color: $color--teal;
+            }
+        }
+    }
+
+    &--article {
+        #{$root}__image {
+            border-radius: 50%;
+        }
+    }
+}

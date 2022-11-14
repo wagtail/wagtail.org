@@ -1,0 +1,46 @@
+.icon-bullet {
+    margin-bottom: 50px;
+
+    @include media-query(medium) {
+        margin-bottom: 100px;
+    }
+
+    &__svg {
+        grid-column: 2 / span 2;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 1;
+            width: 75px;
+            height: 75px;
+            margin: 0 auto;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    &__content {
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 3 / span 2;
+        }
+
+        @include media-query(large) {
+            grid-column: 3 / span 3;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 5px;
+    }
+
+    &__description {
+        margin-bottom: 20px;
+    }
+}

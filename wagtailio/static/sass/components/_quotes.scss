@@ -1,0 +1,107 @@
+.quotes {
+    @include sf-spacing();
+    position: relative;
+    padding-top: 50px;
+    overflow: hidden;
+
+    &__header {
+        color: $color--off-black;
+        padding-bottom: 30px;
+        grid-column: 2 / span 2;
+        max-width: 950px;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 5;
+            padding-bottom: 60px;
+        }
+    }
+
+    &__item {
+        grid-column: 2 / span 2;
+        padding: 0 0 50px 0;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            padding: 0 100px 100px 0;
+
+            &:nth-child(even) {
+                grid-column: 4 / span 2;
+            }
+
+            &:nth-child(odd) {
+                grid-column: 2 / span 2;
+            }
+        }
+
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        padding: 15px 0 0;
+        color: $color--off-black;
+
+        @include media-query(large) {
+            padding: 30px 0 0;
+        }
+    }
+
+    &__author-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+    }
+
+    &__icon-container {
+        @include z-index(under);
+        position: absolute;
+        inset: 5% 0 auto auto;
+        width: 133px;
+        height: 124px;
+
+        @include media-query(medium) {
+            inset: 0 5% auto auto;
+            width: 220px;
+            height: 220px;
+        }
+
+        @include media-query(large) {
+            height: 275px;
+            width: 280px;
+        }
+    }
+
+    &__icon {
+        display: none;
+        position: relative;
+        fill: $color--teal-200;
+
+        @include media-query(large) {
+            display: block;
+        }
+
+        > svg {
+            width: 300px;
+            height: 300px;
+        }
+    }
+
+    .icon__svg-fg {
+        transform: scale(1.4) rotate(180deg);
+        transform-origin: center;
+        stroke-width: 0.5px;
+    }
+
+    .icon__svg-bg {
+        transform: scale(1.8) rotate(-6deg);
+        transform-origin: center;
+    }
+}

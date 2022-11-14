@@ -30,7 +30,13 @@ Then, to start the development server, open a new terminal window and run:
 make runserver
 ```
 
-This will launch ``django-admin runserver`` in the web container, which serves Wagtail on http://localhost:8000/
+This will launch `django-admin runserver` in the web container, which serves Wagtail on http://localhost:8000/
+
+To run migrations within Docker you'll need to run:
+
+```
+make migrate
+```
 
 ### Creating a superuser
 
@@ -64,6 +70,7 @@ vagrant up
 This will download the base image and provision a local VM that will run the site locally.
 
 You will need to apply migrations, create a super user, and create a cache table once the vagrant environment is setup.
+
 ```
 vagrant ssh
 ./manage.py migrate
@@ -75,18 +82,34 @@ vagrant ssh
 
 Common Vagrant commands:
 
- - ``vagrant up`` starts the VM
- - ``vagrant halt`` stops the VM
- - ``vagrant ssh`` opens a shell in the VM
- - ``vagrant destroy`` deletes the VM
+-   `vagrant up` starts the VM
+-   `vagrant halt` stops the VM
+-   `vagrant ssh` opens a shell in the VM
+-   `vagrant destroy` deletes the VM
 
 Shortcut commands:
 
-Within the VM shell, you can run ``./manage.py`` to run any Django management command. But we have added a couple of shortcuts to save on typing:
+Within the VM shell, you can run `./manage.py` to run any Django management command. But we have added a couple of shortcuts to save on typing:
 
- - ``dj <command> [args]`` - Runs a management command (eg, ``dj shell``)
- - ``djrun`` - Starts the webserver on port 8000
+-   `dj <command> [args]` - Runs a management command (eg, `dj shell`)
+-   `djrun` - Starts the webserver on port 8000
 
+## Frontend tooling
+
+To install and build the frontend:
+
+-   `nvm use` to use the suggested node version (requires [nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm) or similar. You'll also need to run `nvm install` to install and activate the version of node required for the project)
+-   `npm i` to install dependcies
+-   `npm run build` to compile CSS & JS
+
+Other common commands:
+
+-   `npm run start` start the Webpack build in watch mode, without live-reload
+-   `npm run start:reload` start the Webpack server build on port 3000 with live-reload
+-   `npm run lint` lint JS & CSS files
+-   `npm run format` format files
+
+For more info see [Frontend general info](docs/frontend/general-info.md)
 
 ## Deployment
 
@@ -101,7 +124,6 @@ To staging
 To production
 
 `fab deploy_production`
-
 
 ## docs.wagtail.org
 

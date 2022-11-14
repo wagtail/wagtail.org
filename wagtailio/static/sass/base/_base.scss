@@ -1,0 +1,80 @@
+// Box Sizing
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Prevent text size change on orientation change.
+html {
+    font-family: $font--primary;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  // stylelint-disable-next-line property-no-vendor-prefix
+	-webkit-appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+    // stylelint-disable-next-line property-no-vendor-prefix
+	-webkit-appearance: none;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+ol {
+    list-style: roman;
+}

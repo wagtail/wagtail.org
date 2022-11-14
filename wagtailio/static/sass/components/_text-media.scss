@@ -1,0 +1,53 @@
+.text-media {
+    $root: &;
+    @include sf-spacing();
+
+    &__content {
+        margin: auto;
+        grid-row: 2;
+        grid-column: 2 /span 2;
+        padding: 10px 10px 0 0;
+
+        @include media-query(medium) {
+            padding: 35px 0 0 0;
+            margin: auto 0;
+        }
+
+        @include media-query(large) {
+            grid-row: 1;
+            grid-column: 4 / span 3;
+            padding: 0;
+        }
+    }
+
+    &__button {
+        margin: 35px 0 0 0;
+    }
+
+    &__media,
+    &__embed-wrap {
+        margin-bottom: 20px;
+        grid-column: 2 /span 2;
+        width: 100%;
+
+        @include media-query(medium) {
+            padding-right: 25%;
+        }
+    }
+
+    &--right {
+        #{$root}__content {
+            @include media-query(large) {
+                padding: 0 95px 0 0;
+                grid-column: 2 / span 3;
+            }
+        }
+
+        #{$root}__media,
+        #{$root}__embed-wrap {
+            @include media-query(large) {
+                grid-column: 5 / span 2;
+            }
+        }
+    }
+}

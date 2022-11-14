@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "patterns/base_page.html" %}
 
 {% load static wagtailcore_tags wagtailimages_tags %}
 
@@ -7,6 +7,6 @@
 
 {% block content %}
 
-{% include_block page.body %}
+    {% include_block page.body %}
 
 {% endblock %}

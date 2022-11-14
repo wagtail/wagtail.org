@@ -1,0 +1,8 @@
+context:
+  value:
+    icon: arrows
+    heading: Flexibility for developers
+    description: Anything you can do in Python or Django, you can do in Wagtail.
+    cta:
+      url: '#'
+      text: Find out more

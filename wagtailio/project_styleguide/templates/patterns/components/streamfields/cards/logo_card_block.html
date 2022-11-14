@@ -1,0 +1,40 @@
+{% comment %}
+This template is very similar to patterns/components/streamfields/cards/related_page_card_block.html
+The reason for the separation is because of differing context variable names, for example
+    | logo_card_block.html            | related_page_card_block.html      |
+    | ------------------------------- | --------------------------------- |
+    | value.text                      |  value.title                      |
+    | value.description (rich text)   |  value.introduction (plain text)  |
+    | value.logo                      |  -                                |
+{% endcomment %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if value.url %}
+    <a href="{{ value.url }}" class="logo-card {% if classes %}{{ classes }}{% endif %}">
+{% else %}
+    <div class="logo-card">
+{% endif %}
+{% include "patterns/components/meta/meta.html" with classes="logo-card__meta" %}
+
+{% if value.text %}
+    <h4 class="logo-card__heading teaser-heading">{{ value.text }}</h4>
+{% endif %}
+
+{% if value.description %}
+    <div class="logo-card__description">{{ value.description|richtext }}</div>
+{% endif %}
+
+{% if value.author and value.logo %}
+    <div class="logo-card__author-wrap">
+        {% image value.logo fill-40x40 class="logo-card__image" %}
+        <p class="logo-card__author mini-meta">{{ value.author }}</p>
+    </div>
+{% elif value.logo %}
+    {% image value.logo fill-140x90 class="logo-card__image" %}
+{% endif %}
+
+{% if value.url %}
+    </a>
+{% else %}
+    </div>
+{% endif %}

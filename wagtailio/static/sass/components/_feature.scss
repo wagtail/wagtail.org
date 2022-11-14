@@ -1,0 +1,26 @@
+.feature {
+    $root: &;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.8rem;
+
+    &__text {
+        margin-bottom: 10px;
+    }
+
+    &__link {
+        font-weight: $weight--bold;
+        color: $color--teal;
+        transition: color 0.3s;
+        text-decoration: none;
+
+        &:hover {
+            color: $color--indigo;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 10px;
+    }
+}

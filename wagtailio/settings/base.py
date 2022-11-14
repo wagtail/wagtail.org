@@ -2,10 +2,10 @@
 Django settings for wagtailio project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/3.2/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import sys
@@ -13,16 +13,10 @@ from os.path import abspath, dirname, join
 
 import dj_database_url
 
-
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
 
 env = os.environ.copy()
-
-# On Torchbox servers, many environment variables are prefixed with "CFG_"
-for key, value in os.environ.items():
-    if key.startswith("CFG_"):
-        env[key[4:]] = value
 
 
 # Absolute filesystem path to the Django project directory
@@ -44,7 +38,7 @@ APP_NAME = env.get("APP_NAME", "wagtailio")
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     "scout_apm.django",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -53,18 +47,11 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "compressor",
     "taggit",
     "modelcluster",
     "rest_framework",
-    "wagtail_ab_testing",
-    "wagtail_transfer",
-    "wagtail_airtable",
-    "wagtail.core",
-    "wagtail_image_import",
-    "wagtail_content_import",
-    "wagtail_content_import.pickers.google",
-    "wagtail_content_import.pickers.local",
+    "manifest_loader",
+    "wagtail",
     "wagtail.contrib.modeladmin",
     "wagtail.admin",
     "wagtail.documents",
@@ -76,15 +63,18 @@ INSTALLED_APPS = (
     "wagtail.search",
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
-    "wagtail.contrib.postgres_search",
     "wagtail.api.v2",
     "wagtail.contrib.settings",
+    "wagtail.contrib.typed_table_block",
+    "wagtail.contrib.search_promotions",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
     "wagtailio.standardpage",
+    "wagtailio.taxonomy",
+    "wagtailio.search",
+    "wagtailio.navigation",
     "wagtailio.newsletter",
-    "wagtailio.developers",
     "wagtailio.blog",
     "wagtailio.features",
     "wagtailio.packages",
@@ -93,7 +83,10 @@ INSTALLED_APPS = (
     "wagtailio.sitewide_alert",
     "wagtailaltgenerator",
     "wagtailmedia",
-)
+    "pattern_library",
+    "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
+    "wagtailfontawesomesvg",
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -111,9 +104,21 @@ MIDDLEWARE = [
 ROOT_URLCONF = "wagtailio.urls"
 WSGI_APPLICATION = "wagtailio.wsgi.application"
 
+# Password validation
+# https://docs.djangoproject.com/en/stable/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+]
+
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = "en-gb"
 TIME_ZONE = "UTC"
@@ -123,7 +128,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = env.get("STATIC_ROOT", join(BASE_DIR, "static"))
 STATIC_URL = env.get("STATIC_URL", "/static/")
@@ -131,10 +136,9 @@ STATIC_URL = env.get("STATIC_URL", "/static/")
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "compressor.finders.CompressorFinder",
 )
 
-STATICFILES_DIRS = (join(PROJECT_ROOT, "static"),)
+STATICFILES_DIRS = (join(PROJECT_ROOT, "static_compiled"),)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -144,10 +148,18 @@ MEDIA_URL = env.get("MEDIA_URL", "/media/")
 
 
 # Basic auth settings
-if os.environ.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
+if env.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
     MIDDLEWARE.insert(0, "baipw.middleware.BasicAuthIPWhitelistMiddleware")
-    BASIC_AUTH_LOGIN = "wagtailio"
-    BASIC_AUTH_PASSWORD = "showmewagtailio"
+    BASIC_AUTH_LOGIN = env.get("BASIC_AUTH_LOGIN", "wagtailorg")
+    BASIC_AUTH_PASSWORD = env.get("BASIC_AUTH_PASSWORD", "showmewagtailorg")
+
+    # Wagtail requires Authorization header to be present for the previews
+    BASIC_AUTH_DISABLE_CONSUMING_AUTHORIZATION_HEADER = True
+
+    # Paths that shouldn't be protected by basic auth
+    if "BASIC_AUTH_WHITELISTED_PATHS" in env:
+        BASIC_AUTH_WHITELISTED_PATHS = env["BASIC_AUTH_WHITELISTED_PATHS"].split(",")
+
     BASIC_AUTH_WHITELISTED_IP_NETWORKS = [
         "78.32.251.192/28",
         "89.197.53.244/30",
@@ -192,9 +204,6 @@ if "AWS_STORAGE_BUCKET_NAME" in env:
     if "AWS_S3_CUSTOM_DOMAIN" in env:
         AWS_S3_CUSTOM_DOMAIN = env["AWS_S3_CUSTOM_DOMAIN"]
 
-    if "AWS_S3_SECURE_URLS" in env:
-        AWS_S3_SECURE_URLS = env["AWS_S3_SECURE_URLS"].strip().lower() == "true"
-
     INSTALLED_APPS += ("storages",)
 
 
@@ -213,11 +222,7 @@ else:
         }
     }
 
-
-# Django compressor settings
-# http://django-compressor.readthedocs.org/en/latest/settings/
-
-COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 # Template configuration
@@ -226,7 +231,9 @@ COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [join(PROJECT_ROOT, "templates")],
+        "DIRS": [
+            os.path.join(PROJECT_ROOT, "project_styleguide/templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -234,8 +241,10 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "wagtail.contrib.settings.context_processors.settings",
                 "wagtailio.context_processors.global_pages",
-            ]
+            ],
+            "builtins": ["pattern_library.loader_tags"],
         },
     }
 ]
@@ -255,26 +264,47 @@ CACHE_CONTROL_STALE_WHILE_REVALIDATE = int(
     env.get("CACHE_CONTROL_STALE_WHILE_REVALIDATE", 30)
 )
 
-SITEWIDE_ALERT_MAXAGE = int(
-    env.get("SITEWIDE_ALERT_MAXAGE", 300)
-)
+SITEWIDE_ALERT_MAXAGE = int(env.get("SITEWIDE_ALERT_MAXAGE", 300))
 
-SITEWIDE_ALERT_SMAXAGE = int(
-    env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7)
-)
-
+SITEWIDE_ALERT_SMAXAGE = int(env.get("SITEWIDE_ALERT_SMAXAGE", 60 * 60 * 24 * 7))
 
 
 # Cache
 # Use Redis or database as the cache backend
 
-if "REDIS_URL" in env:
+# Prefer the TLS connection URL over non
+REDIS_URL = env.get("REDIS_TLS_URL", env.get("REDIS_URL"))
+
+if REDIS_URL:
+    connection_pool_kwargs = {}
+
+    if REDIS_URL.startswith("rediss"):
+        # Heroku Redis uses self-signed certificates for secure redis conections.
+        # https://stackoverflow.com/a/66286068
+        # When using TLS, we need to disable certificate validation checks.
+        connection_pool_kwargs["ssl_cert_reqs"] = None
+
+    redis_options = {
+        "IGNORE_EXCEPTIONS": True,
+        "SOCKET_CONNECT_TIMEOUT": 2,  # seconds
+        "SOCKET_TIMEOUT": 2,  # seconds
+        "CONNECTION_POOL_KWARGS": connection_pool_kwargs,
+    }
+
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": env["REDIS_URL"],
-        }
+            "LOCATION": f"{REDIS_URL}/0",
+            "OPTIONS": redis_options,
+        },
+        "renditions": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL + "/1",
+            "OPTIONS": redis_options,
+        },
     }
+
+    DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
 else:
     CACHES = {
         "default": {
@@ -315,7 +345,9 @@ if "SERVER_EMAIL" in env:
 
 # Notification emails
 
-WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = env.get("MODERATION_NOTIFY_SUPERUSERS", False)
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = env.get(
+    "MODERATION_NOTIFY_SUPERUSERS", False
+)
 
 
 # Security configuration
@@ -463,12 +495,12 @@ LOGGING = {
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "wagtailio"
+WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
 if "PRIMARY_HOST" in env:
-    BASE_URL = "http://%s/" % env["PRIMARY_HOST"]
+    WAGTAILADMIN_BASE_URL = "https://%s/" % env["PRIMARY_HOST"]
 
 # https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
@@ -477,7 +509,9 @@ WAGTAILEMBEDS_RESPONSIVE_HTML = True
 # Search
 
 WAGTAILSEARCH_BACKENDS = {
-    "default": {"BACKEND": "wagtail.contrib.postgres_search.backend"}
+    "default": {
+        "BACKEND": "wagtail.search.backends.database",
+    }
 }
 
 
@@ -534,89 +568,38 @@ if "FRONTEND_CACHE_CLOUDFLARE_TOKEN" in env:
         }
     }
 
-WAGTAILCONTENTIMPORT_DOCX_PARSER = "wagtailio.utils.parsers.DocxHTMLParser"
-WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY"
-)
-WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
-)
 
-WAGTAILIMAGEIMPORT_GOOGLE_PICKER_API_KEY = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_PICKER_API_KEY"
-)
-WAGTAILIMAGEIMPORT_GOOGLE_OAUTH_CLIENT_SECRET = env.get(
-    "WAGTAILCONTENTIMPORT_GOOGLE_OAUTH_CLIENT_CONFIG"
-)
-
-WAGTAILIMAGEIMPORT_FIELD_MAPPING = {
-    "id": "driveidmapping__drive_id",
-    "name": "title",
-    "imageMediaMetadata__time": "exif_datetime",
-    "md5Checksum": "md5_hash"
+MANIFEST_LOADER = {
+    "output_dir": STATICFILES_DIRS[0],
 }
 
+PATTERN_LIBRARY_ENABLED = env.get("PATTERN_LIBRARY_ENABLED", "false").lower() == "true"
 
-AIRTABLE_API_KEY = env.get(
-    "AIRTABLE_API_KEY"
-)
-BLOG_AIRTABLE_BASE_KEY = env.get(
-    "BLOG_AIRTABLE_BASE_KEY"
-)
-BLOG_AIRTABLE_URL = env.get(
-    "BLOG_AIRTABLE_URL"
-)
-FEATURES_AIRTABLE_BASE_KEY = env.get(
-    "FEATURES_AIRTABLE_BASE_KEY"
-)
-FEATURES_AIRTABLE_URL = env.get(
-    "FEATURES_AIRTABLE_URL"
-)
-WAGTAIL_AIRTABLE_ENABLED = all((AIRTABLE_API_KEY, BLOG_AIRTABLE_BASE_KEY, BLOG_AIRTABLE_URL, FEATURES_AIRTABLE_BASE_KEY, FEATURES_AIRTABLE_URL))
-AIRTABLE_IMPORT_SETTINGS = {
-    'blog.BlogPage': {
-        'AIRTABLE_BASE_KEY': BLOG_AIRTABLE_BASE_KEY,
-        'AIRTABLE_TABLE_NAME': 'Posts',
-        'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'ID': 'id',
-        },
-        'AIRTABLE_SERIALIZER': 'wagtailio.blog.serializers.BlogPageSerializer',
-        'AIRTABLE_BASE_URL': BLOG_AIRTABLE_URL,
-    },
-    'features.FeatureDescription': {
-        'AIRTABLE_BASE_KEY': FEATURES_AIRTABLE_BASE_KEY,
-        'AIRTABLE_TABLE_NAME': 'Feature Descriptions',
-        'AIRTABLE_UNIQUE_IDENTIFIER': {
-            'ID': 'id',
-        },
-        'AIRTABLE_SERIALIZER': 'wagtailio.features.serializers.FeatureDescriptionSerializer',
-        'AIRTABLE_BASE_URL': FEATURES_AIRTABLE_URL,
-    },
+# Pattern library
+PATTERN_LIBRARY = {
+    # Groups of templates for the pattern library navigation. The keys
+    # are the group titles and the values are lists of template name prefixes that will
+    # be searched to populate the groups.
+    "SECTIONS": (
+        ("Style Guide", ["patterns/styleguide"]),
+        ("Components", ["patterns/components"]),
+        ("Pages", ["patterns/pages"]),
+    ),
+    # Configure which files to detect as templates.
+    "TEMPLATE_SUFFIX": ".html",
+    # Set which template components should be rendered inside of,
+    # so they may use page-level component dependencies like CSS.
+    "PATTERN_BASE_TEMPLATE_NAME": "patterns/base.html",
+    # Any template in BASE_TEMPLATE_NAMES or any template that extends a template in
+    # BASE_TEMPLATE_NAMES is a "page" and will be rendered as-is without being wrapped.
+    "BASE_TEMPLATE_NAMES": ["patterns/base_page.html"],
 }
 
-WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME"
-)
-WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL"
-)
-WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY = env.get(
-    "WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY"
-)
+# Mailchimp
+if "MAILCHIMP_NEWSLETTER_ID" in env and "MAILCHIMP_ACCOUNT_ID" in env:
+    MAILCHIMP_ACCOUNT_ID = env.get("MAILCHIMP_ACCOUNT_ID")
+    MAILCHIMP_NEWSLETTER_ID = env.get("MAILCHIMP_NEWSLETTER_ID")
 
-WAGTAILTRANSFER_SOURCES = {
-    WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME: {
-        'BASE_URL': WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL,
-        'SECRET_KEY': WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY,
-    },
-} if all((WAGTAILTRANSFER_CONNECTED_INSTANCE_NAME, WAGTAILTRANSFER_CONNECTED_INSTANCE_BASE_URL, WAGTAILTRANSFER_CONNECTED_INSTANCE_SECRET_KEY)) else {}
-
-WAGTAILTRANSFER_SECRET_KEY = env.get(
-    "WAGTAILTRANSFER_SECRET_KEY"
-)
-
-WAGTAILTRANSFER_UPDATE_RELATED_MODELS = ['features.featureaspect', 'features.featuredescription']
-
-WAGTAIL_AB_TESTING = {
-    'MODE': 'external',
-}
+# all the tracking
+FB_APP_ID = env.get("FB_APP_ID", "")
+GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID", "")

@@ -1,0 +1,40 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if value and value.comparison_table %}
+    <div class="grid grid--comparison-table">
+        <table class="comparison-table">
+            {% for row in value.comparison_table.rows %}
+                {% if forloop.first %}
+                    <thead>
+                        <tr>
+                            {% for col in value.comparison_table.columns %}
+                                <th>{{ col.heading }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% endif %}
+                <tr>
+                    {% for block in row %}
+                        <td>
+                            {% include_block block %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endif %}
+
+{% if pattern_library %}
+    {# This renders the pattern-library values only #}
+    <div class="grid grid--comparison-table">
+        <table class="comparison-table">
+            <tbody>
+                {% include_block example_pattern %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+

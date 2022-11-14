@@ -1,0 +1,54 @@
+.rich-text {
+    a {
+        color: $color--teal;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $color--indigo;
+        }
+    }
+
+    b {
+        font-weight: $weight--bold;
+    }
+
+    ul,
+    ol {
+        list-style: outside;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+        }
+    }
+
+    ol {
+        list-style: roman;
+    }
+
+    p {
+        margin: 0 0 20px;
+
+        @include media-query(large) {
+            margin: 0 0 40px;
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &--sf {
+        @include sf-spacing();
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 3 / span 3;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+context:
+  value:
+    heading: 'People love Wagtail'
+    quotes:
+      - author: 'Wagtail - @Wagtail'
+        quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+        author_image: True
+      - author: 'Wagtail - @Wagtail'
+        quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+      - author: 'Wagtail - @Wagtail'
+        quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+        author_image: True
+      - author: 'Wagtail - @Wagtail'
+        quote: “If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField”
+        author_image: True
+tags:
+  image:
+    item.author_image fill-50x50 class="quotes__author-image":
+      raw: |
+        <img src="https://placehold.co/50x50" class="quotes__author-image" alt="Some alt">

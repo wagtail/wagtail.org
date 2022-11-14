@@ -1,0 +1,14 @@
+<div class="logo-card-grid">
+    {% if value.heading %}
+        <div class="grid">
+            <h3 class="logo-card-grid__heading heading-three">{{ value.heading }}</h3>
+        </div>
+    {% endif %}
+    <ul class="logo-card-grid__content grid">
+        {% for card in value.cards %}
+            <li class="logo-card-grid__item">
+                {% include "patterns/components/streamfields/cards/logo_card_block.html" with value=card %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

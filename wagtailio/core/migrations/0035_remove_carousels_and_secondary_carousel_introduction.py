@@ -8,46 +8,46 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0034_add_body_field_to_home_page'),
+        ("core", "0034_add_body_field_to_home_page"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='call_to_action_internal_link',
+            model_name="homepagemaincarouselitem",
+            name="call_to_action_internal_link",
         ),
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='image',
+            model_name="homepagemaincarouselitem",
+            name="image",
         ),
         migrations.RemoveField(
-            model_name='homepagemaincarouselitem',
-            name='page',
+            model_name="homepagemaincarouselitem",
+            name="page",
         ),
         migrations.DeleteModel(
-            name='HomePageMainCarouselItem',
+            name="HomePageMainCarouselItem",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='author_image',
+            model_name="homepagesecondarycarouselitem",
+            name="author_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='desktop_image',
+            model_name="homepagesecondarycarouselitem",
+            name="desktop_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='mobile_image',
+            model_name="homepagesecondarycarouselitem",
+            name="mobile_image",
         ),
         migrations.RemoveField(
-            model_name='homepagesecondarycarouselitem',
-            name='page',
+            model_name="homepagesecondarycarouselitem",
+            name="page",
         ),
         migrations.DeleteModel(
-            name='HomePageSecondaryCarouselItem',
+            name="HomePageSecondaryCarouselItem",
         ),
         migrations.RemoveField(
-            model_name='homepage',
-            name='secondary_carousel_introduction',
+            model_name="homepage",
+            name="secondary_carousel_introduction",
         ),
     ]

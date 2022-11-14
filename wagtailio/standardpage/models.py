@@ -1,26 +1,28 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import StreamField
+from wagtail.models import Page
+from wagtail.search import index
 
 from wagtailio.utils.blocks import StoryBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
-from wagtail_content_import.models import ContentImportMixin
-from wagtailio.utils.mappers import StreamFieldMapper
 
 
-class StandardPage(Page, ContentImportMixin, SocialMediaMixin, CrossPageMixin):
+class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
-    body = StreamField(StoryBlock())
-
-    mapper_class = StreamFieldMapper
+    body = StreamField(StoryBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
+
+    search_fields = Page.search_fields + [
+        index.SearchField("introduction"),
+        index.SearchField("body"),
+    ]

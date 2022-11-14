@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+{# note: the prefered way of generating page urls is via pageurl so as to pass the request and therefore take advantage of the site-level URL information #}
+<a class="icon-link" href="{% if value.url %}{{ value.url }}{% elif value.page %}{% pageurl value.page %}{% elif value.external_link %}{{ value.external_link }}{% endif %}">
+    {% include "patterns/components/icon/icon.html" with icon=value.icon classes="icon-link__svg" %}
+
+    <div class="icon-link__content">
+        <h3 class="icon-link__heading teaser-heading">{{ value.heading }}</h3>
+
+        <h4 class="icon-link__subheading">{{ value.subheading }}</h4>
+
+        <p class="icon-link__description mini-meta">{{ value.description }}</p>
+    </div>
+</a>

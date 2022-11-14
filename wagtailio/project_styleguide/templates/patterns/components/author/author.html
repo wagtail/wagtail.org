@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+<div class="author{% if classes %} {{ classes }}{% endif %}">
+    {% if author.image %}
+        {% image author.image fill-90x90 class="author__image" %}
+    {% endif %}
+    <div class="author__content">
+        <p class="author__name mini-meta mini-meta--bold">{{ author.name }}</p>
+        {% if author.job_title %}
+            <p class="author__meta mini-meta">{{ author.job_title }}</p>
+        {% endif %}
+    </div>
+</div>

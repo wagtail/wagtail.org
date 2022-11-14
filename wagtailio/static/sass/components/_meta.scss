@@ -1,0 +1,31 @@
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        position: relative;
+
+        svg {
+            top: 0;
+            flex-shrink: 0;
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    &--offset-icon {
+        .icon__svg-bg {
+            transform: rotate(-10deg);
+        }
+    }
+
+    // Overrides
+    .logo-card--article & {
+        &__text {
+            font-weight: $weight--bold;
+        }
+    }
+}

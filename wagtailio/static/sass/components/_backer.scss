@@ -1,0 +1,14 @@
+.backer {
+    &__link {
+        color: $color--teal;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $color--indigo;
+        }
+
+        &--with-image {
+            display: block;
+        }
+    }
+}

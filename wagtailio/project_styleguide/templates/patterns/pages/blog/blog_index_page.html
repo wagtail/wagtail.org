@@ -1,0 +1,101 @@
+{% extends "patterns/base_page.html" %}
+
+{% block body_class %}template-blog{% endblock %}
+
+{% block content %}
+
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
+
+    <div class="grid">
+        <section class="blog-listing">
+            {% for post in posts %}
+                {# only show featured posts on the first pagination page, no filters #}
+                {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
+                    {% comment %}
+                        With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
+                        follows the pattern shown in the table below, which can be summarized as follows:
+
+                        - A FP is only displayed when the loop counter is odd.
+                        - because of the 2-column layout of posts, there has to be an even number of posts
+                          after a FP is displayed, this even number of posts will vary, depending on the number of FPs
+
+                        | loop counter | 5 FPs | 4 FPs | 3 FPs | 2 FPs | 1 FP  |
+                        |--------------|-------|-------|-------|-------|-------|
+                        | 1            | FP1   | FP1   | FP1   | FP1   | FP1   |
+                        |              |  p1   |  p1   |  p1   |  p1   |  p1   |
+                        | 2            |  p2   |  p2   |  p2   |  p2   |  p2   |
+                        | 3            | FP2   | FP2   |       |       |       |
+                        |              |  p3   |  p3   |  p3   |  p3   |  p3   |
+                        | 4            |  p4   |  p4   |  p4   |  p4   |  p4   |
+                        | 5            | FP3   | FP3   | FP2   | FP2   |       |
+                        |              |  p5   |  p5   |  p5   |  p5   |  p5   |
+                        | 6            |  p6   |  p6   |  p6   |  p6   |  p6   |
+                        | 7            | FP4   | FP4   |       |       |       |
+                        |              |  p7   |  p7   |  p7   |  p7   |  p7   |
+                        | 8            |  p8   |  p8   |  p8   |  p8   |  p8   |
+                        | 9            | FP5   |       | FP3   |       |       |
+                        |              |  p9   |  p9   |  p9   |  p9   |  p9   |
+                        | 10           |  p10  |  p10  |  p10  |  p10  |  p10  |
+
+                    {% endcomment %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
+                    {% else %}
+                        {% with num_featured_posts=featured_posts|length %}
+                            {% if forloop.first %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.0 featured=True %}
+                            {% elif forloop.counter == 3 and num_featured_posts >= 4 %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
+                            {% elif forloop.counter == 5 %}
+                                {% if num_featured_posts >= 4 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
+                                {% elif num_featured_posts == 2 or num_featured_posts == 3 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.1 featured=True %}
+                                {% endif %}
+                            {% elif forloop.counter == 7 and num_featured_posts >= 4 %}
+                                {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.3 featured=True %}
+                            {% elif forloop.counter == 9 %}
+                                {% if num_featured_posts == 5 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.4 featured=True %}
+                                {% elif num_featured_posts == 3 %}
+                                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=featured_posts.2 featured=True %}
+                                {% endif %}
+                            {% endif %}
+                        {% endwith %}
+                        {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
+                    {% endif %}
+                {% else %}
+                    {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+
+    <div class="grid">
+        <div class="pagination">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
+                    <p class="button__text">
+                        Previous
+                        <span class="u-sr-only">- Go to page {{ posts.previous_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+
+            <span class="pagination__page-count mini-meta">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
+                    <p class="button__text">
+                        Next
+                        <span class="u-sr-only">- Go to page {{ posts.next_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

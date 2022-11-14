@@ -1,0 +1,90 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci --no-audit
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.HOME }}/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+      - uses: pre-commit/action@v3.0.0
+  test_js:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci --no-audit
+      - run: npm run lint
+      - run: npm run build:prod
+  test_python:
+    runs-on: ubuntu-latest
+    needs: lint
+    env:
+      DJANGO_SETTINGS_MODULE: wagtailio.settings.production
+      DATABASE_URL: postgres://postgres:postgres@localhost/postgres
+      SECRET_KEY: iamnotsosecret
+      ALLOWED_HOSTS: localhost
+      COMPUTER_VISION_API_KEY: fake
+      COMPUTER_VISION_REGION: fake
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgress
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: pipx install poetry==1.2.2 # Make sure this matches POETRY_VERSION in the Dockerfile
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+      - name: Install Python dependencies
+        run: poetry install
+      - name: System checks
+        run: poetry run ./manage.py check
+      - name: Check for missing migrations
+        run: poetry run ./manage.py makemigrations --check --noinput
+      - name: Test
+        run: poetry run ./manage.py test

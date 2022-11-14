@@ -1,0 +1,37 @@
+context:
+  value:
+    heading: Wagtail's global community
+    subheading: Created by the digital agency Torchbox in 2014
+    intro: Once Wagtail was released as an open source project, 46 external contributors participated in creating version 1.0. Since then, hundreds of contributors from around the world have contributed to Wagtail. The first Wagtail conference, called Wagtail Space, was held in March 2017 in Arnhem in the Netherlands. The name Wagtail comes from the pretty little birds that gather on the lawns outside Torchbox’s offices from spring to autumn. Torchbox wanted a charming name that had a sense of light and delight to it. Plus, birds make easy logos.
+    icon: world
+    dark_background: false
+    title: Want to do something swell?
+    description: Click here to get started
+    url: #
+    meta_icon: explanation
+    meta_text: Streamfield
+    cta:
+      text: Check this out
+      url: '#'
+  pattern_library: True
+
+tags:
+  image:
+    value.image fill-650x500 class="highlight__image":
+      raw: |
+        <img src="https://placehold.co/650x500" alt="Some alt" class="highlight__image">
+    item.author_image fill-50x50 class="quotes__author-image":
+      raw: |
+        <img src="https://placehold.co/50x50" class="quotes__author-image" alt="Some alt">
+    logo.image max-100 class="logos__image":
+      raw: |
+        <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
+    logo max-200x200 class="logos__image":
+      raw: |
+        <img src="https://placehold.co/100" class="logos__image" alt="Some alt">
+    value.image width-1300 class="highlight__image":
+      raw: |
+        <img src="https://placehold.co/1300x500" alt="Some alt" class="highlight__image">
+  include_block:
+    example_pattern:
+      template_name: 'patterns/_pattern_library_only/comparison_table.html'

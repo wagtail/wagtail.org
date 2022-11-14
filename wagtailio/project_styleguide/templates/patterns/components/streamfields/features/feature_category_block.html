@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+<div class="features__group" data-feature-group="{{ value.heading|lower|slugify }}">
+    <div class="grid">
+        <h3 class="features__section-heading">{{ value.heading }}</h3>
+    </div>
+
+    <ul class="features__list grid">
+        {% for value in value.features %}
+            {% include_block value %}
+        {% endfor %}
+    </ul>
+</div>

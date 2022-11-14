@@ -1,0 +1,16 @@
+context:
+  value:
+    categories:
+      - Adventures in Wagtail
+      - Category 2
+      - Another Category
+    blocks:
+      - dummy
+      - dummy
+      - dummy
+      - dummy
+
+tags:
+  include_block:
+    block:
+      template_name: 'patterns/components/streamfields/features/feature_category_block.html'

@@ -1,0 +1,158 @@
+.hero {
+    $root: &;
+    @include sf-spacing();
+    position: relative;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+    }
+
+    &--small-margin {
+        margin-bottom: 75px;
+    }
+
+    &__inner {
+        padding-top: 20px;
+
+        @include media-query(medium) {
+            padding-top: 40px;
+            max-width: 80%;
+        }
+
+        @include media-query(large) {
+            padding-top: 80px;
+            max-width: 70%;
+        }
+    }
+
+    &__intro {
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+        }
+
+        @include media-query(large) {
+            margin-right: 80px;
+        }
+    }
+
+    &__heading {
+
+        @include media-query(large) {
+            width: 110%; // to get a bit of overlap on the icon
+            max-width: 92vw; // prevent off screen
+        }
+    }
+
+    &__subheading {
+        font-weight: $weight--regular;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        right: -80px;
+        z-index: -1;
+        width: 170px;
+        height: 170px;
+
+        @include media-query(medium) {
+            right: -50px;
+            top: 40px;
+            width: 250px;
+            height: 250px;
+        }
+
+        @include media-query(large) {
+            right: 0;
+            width: 410px;
+            height: 410px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+
+        &--paper-plane {
+            right: 0;
+            top: 0;
+            width: 670px;
+            height: 460px;
+
+            @include media-query(large) {
+                top: -36px;
+                width: 760px;
+                height: 600px;
+            }
+        }
+
+        // Icon overrides
+        .icon__svg-bg {
+            color: $color--eggshell;
+            transform: scale(1.4) translateX(-20px) rotate(-4deg);
+        }
+
+        .icon__svg-fg {
+            transform: scale(1);
+        }
+    }
+
+    &--search {
+        .icon__svg-fg {
+            stroke-width: 1px;
+        }
+    }
+
+    &--features {
+        margin-bottom: 20px;
+
+        @include media-query(large) {
+            margin-bottom: 50px;
+        }
+
+        #{$root}__subheading {
+            font-weight: $weight--regular;
+        }
+    }
+
+    &--home {
+        margin-bottom: 0;
+
+        #{$root}__inner {
+            max-width: 100%;
+        }
+
+        #{$root}__subheading {
+            font-weight: $weight--regular;
+        }
+
+        #{$root}__intro {
+            margin-bottom: 50px;
+
+            @include media-query(medium) {
+                max-width: 60%;
+            }
+        }
+
+        #{$root}__icon {
+            display: none;
+
+            @include media-query(medium) {
+                display: block;
+            }
+        }
+    }
+
+    .template-feature-index & {
+        &__button {
+            display: none;
+        }
+    }
+}

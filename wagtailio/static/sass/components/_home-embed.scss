@@ -1,0 +1,9 @@
+.home-embed {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 $gutter 50px;
+
+    @include media-query(medium) {
+        padding: 0 calc($gutter * 2) 100px;
+    }
+}

@@ -1,0 +1,4 @@
+context:
+  value:
+    name: ACME Corp
+    url: https://example.co.uk

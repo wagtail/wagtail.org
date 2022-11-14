@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+<div class="grid logos">
+    {% if value.heading %}
+        <h2 class="logos__heading heading-three">{{ value.heading }}</h2>
+    {% endif %}
+
+    <ul class="logos__list">
+        {% for logo in value.logos %}
+            <li class="logos__list-item">
+                {% image logo max-200x200 class="logos__image" %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

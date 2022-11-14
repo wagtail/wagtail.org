@@ -8,20 +8,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletter', '0001_initial'),
+        ("newsletter", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelTable(
-            name='newsletteremailaddress',
+            name="newsletteremailaddress",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='newsletterindexpage',
+            name="newsletterindexpage",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='newsletterpage',
+            name="newsletterpage",
             table=None,
         ),
     ]

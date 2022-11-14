@@ -1,0 +1,5 @@
+context:
+  value:
+    meta_icon: rocket
+    meta_text: Adventures on Wagtail
+    publication_date: !!timestamp '2022-07-29'

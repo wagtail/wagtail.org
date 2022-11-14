@@ -1,0 +1,65 @@
+.cta {
+    $root: &;
+    @include sf-spacing();
+    padding: 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color--off-black;
+    border-radius: 10px;
+    outline-offset: 4px;
+    grid-column: 2 / span 2;
+    transition: background-color 0.3s;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        padding: 25px 30px;
+        grid-column: 3 / span 3;
+
+        > svg {
+            margin: 0 0 0 auto;
+        }
+    }
+
+    > svg {
+        transition: transform 0.3s;
+        margin: 0 0 0 auto;
+        flex-shrink: 0
+    }
+
+    &:hover {
+        background-color: $color--indigo;
+
+        #{$root}__title,
+        #{$root}__description {
+            color: $color--white;
+        }
+
+        > svg {
+            transform: translateX(10px) scale(1.1);
+        }
+    }
+
+    &__title {
+        color: $color--teal;
+        margin-bottom: 10px;
+
+        @include media-query(medium) {
+            margin-bottom: 5px;
+        }
+    }
+
+    &__description {
+        color: $color--off-black;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

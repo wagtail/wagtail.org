@@ -1,0 +1,13 @@
+.responsive-object {
+    position: relative;
+
+    iframe,
+    object,
+    embed,
+    video {
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 100%;
+    }
+}

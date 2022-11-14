@@ -1,0 +1,14 @@
+{# This is a pattern library file to display button variations #}
+
+<div style="display: flex; flex-direction: column; gap: 20px; margin: 0 auto;">
+    {# Default #}
+    {% include "patterns/components/buttons/button.html" %}
+    {# Dark colours #}
+    {% include "patterns/components/buttons/button.html" with classes="button--dark" %}
+    {# Default, with arrow #}
+    {% include "patterns/components/buttons/button.html" with arrow=True %}
+    {# Dark, Inverted, with arrow #}
+    {% include "patterns/components/buttons/button.html" with classes="button--dark button--reverse" arrow=True %}
+    {# Disabled #}
+    {% include "patterns/components/buttons/button.html" with classes="button--disabled" %}
+</div>

@@ -1,0 +1,82 @@
+.icon-link {
+    $root: &;
+    color: $color--off-black;
+    text-decoration: none;
+    display: flex;
+    column-gap: 15px;
+
+    @include media-query(medium) {
+        column-gap: 20px;
+    }
+
+    &__svg {
+        width: 30px;
+        height: 45px;
+        flex-shrink: 0;
+
+        @include media-query(medium) {
+            width: 70px;
+            height: 85px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    &__content {
+        @include media-query(medium) {
+            margin-left: 30px;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 5px;
+        transition: color 0.3s ease;
+    }
+
+    &__subheading {
+        font-weight: $weight--regular;
+        color: $color--teal;
+        margin-bottom: 5px;
+    }
+
+    &:hover {
+        #{$root}__heading {
+            color: $color--teal;
+        }
+
+        // Icon overrides
+        .icon__svg-bg {
+            transform: rotate(5deg) scale(0.95);
+            fill: $color--teal-200;
+        }
+    }
+
+    .get-started &,
+    .modal__grid--get-started & {
+
+        #{$root}__svg {
+            @include media-query(medium) {
+                width: 100px;
+                height: 95px;
+            }
+        }
+
+    }
+
+    .get-started & {
+        flex-direction: column;
+
+        @include media-query(medium) {
+            flex-direction: row;
+        }
+
+        #{$root}__svg {
+            width: 100px;
+            height: 95px;
+            margin-bottom: $gutter-sm;
+        }
+    }
+}

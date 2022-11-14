@@ -1,0 +1,31 @@
+context:
+  related_pages:
+    - page:
+        title: Preparations for Wagtail Space NL are in full swing
+        introduction: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
+        meta_icon: arrows
+        meta_text: Community
+        logo: fake
+        link_url: '#'
+        author:
+          image: true
+          name: John Smith
+    - page:
+        title: How to try Wagtail CMS without coding
+        introduction: How to setup Wagtail and explore the content management system without any coding.
+        meta_icon: location-pin
+        meta_text: Resources
+        logo: fake
+        link_url: '#'
+        author:
+          image: true
+          name: John Smith
+
+tags:
+  image:
+    value.logo fill-40x40 class="logo-card__image":
+      raw: |
+        <img src="https://placehold.co/40x40" alt="Some alt" class="logo-card__image">
+    value.author.image fill-40x40 class="logo-card__image":
+      raw: |
+        <img src="https://placehold.co/40x40" alt="Some alt" class="logo-card__image">

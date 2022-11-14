@@ -1,12 +1,13 @@
 from django.urls import path, reverse
 from django.utils.translation import gettext_lazy as _
+
+from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin,
     ModelAdminGroup,
     modeladmin_register,
 )
-from wagtail.core import hooks
 
 from . import views
 from .models import Grid, Package

@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<figure class="standalone-quote grid">
+    {% include "patterns/components/icon/icon.html" with icon="quotes" classes="standalone-quote__icon" %}
+    <blockquote class="standalone-quote__text heading-three">
+        <p>&ldquo;{% firstof value.quote value %}&rdquo;</p>
+    </blockquote>
+    <figcaption class="standalone-quote__meta">
+        {% if value.author_image %}
+            {% image value.author_image fill-40x40 class="standalone-quote__image" %}
+        {% endif %}
+        <div class="mini-meta">{{ value.author|richtext }}</div>
+    </figcaption>
+</figure>

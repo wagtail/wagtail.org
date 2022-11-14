@@ -1,0 +1,47 @@
+// Hover states should be handled on a component basis - not in here
+.icon {
+    &--relative {
+        position: relative;
+    }
+
+    &__svg {
+        position: absolute;
+        overflow: visible;
+        fill: $color--primary;
+
+        .sub-nav & {
+            inset: 0 auto auto 0;
+        }
+    }
+
+    &__svg-bg {
+        fill: rgba($color--teal-200, 0.3);
+        transform-origin: center;
+        transform: scale(1.3) rotate(-8deg);
+        transition: transform 0.15s ease-out, fill 0.15s ease-out;
+    }
+
+    &__svg-fg {
+        fill: transparent;
+        stroke: $color--black;
+        stroke-width: 2px;
+
+        .hero &,
+        .headline & {
+            stroke-width: 0.5px;
+        }
+
+        .sub-nav__item &,
+        .card-grid & {
+            stroke-width: 3px;
+        }
+
+        .highlight__meta & {
+            stroke-width: 2px;
+        }
+
+        .headline--dark-theme & {
+            stroke-width: 1.5px;
+        }
+    }
+}

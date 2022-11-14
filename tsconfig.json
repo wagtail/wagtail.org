@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    // Only support modern browsers.
+    "target": "es2020",
+    // Webpack will convert ES modules to the required format.
+    "module": "esnext",
+    "esModuleInterop": true,
+    // Make it possible to gradually adopt TypeScript, or not use it at all.
+    "allowJs": true,
+    // Turn on stricter type checking.
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "sourceMap": true
+  },
+  "include": ["wagtailio/static"],
+  "exclude": ["node_modules", "wagtailio/static_compiled"]
+}

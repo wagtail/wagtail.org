@@ -1,0 +1,15 @@
+context:
+  value:
+    heading: Heading Text
+    description: Torchbox provides 24/7 support and scalable, performant and resilient managed cloud hosting optimised for Wagtail.
+    meta_icon: location-pin
+    meta_text: UK, US, Philippines & Remote
+    publication_date: false
+    logo: fake
+    link_url: '#'
+
+tags:
+  image:
+    value.logo fill-140x90 class="logo-card__image":
+      raw: |
+        <img src="https://placehold.co/140x90" alt="Some alt" class="logo-card__image">

@@ -1,0 +1,15 @@
+<div class="icon {% if classes %}{{ classes }}{% endif %}" aria-hidden="true">
+    {% if icon %}
+        <svg class="icon__svg">
+            <use xlink:href="#{{ icon }}" class="icon__svg-bg" />
+        </svg>
+        <svg class="icon__svg">
+            <use xlink:href="#{{ icon }}" class="icon__svg-fg" />
+        </svg>
+    {% endif %}
+    {% if overlay_icon %}
+        <svg class="icon__svg">
+            <use xlink:href="#{{ overlay_icon }}" class="icon__svg-overlay" />
+        </svg>
+    {% endif %}
+</div>

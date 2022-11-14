@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+<div class="get-started grid">
+    {% if value.heading %}
+        <h2 class="get-started__heading heading-one">{{ value.heading }}</h2>
+    {% endif %}
+
+    {% if value.items %}
+        <ul class="get-started__list">
+            {% for item in value.items %}
+                <li class="get-started__list-item">
+                    {% include_block item %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

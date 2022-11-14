@@ -1,89 +1,103 @@
-{% extends "base.html" %}
+{% extends "patterns/base_page.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
-    <header class="page-heading">
-        <h1 class="page-heading__heading">{{ page.title }}</h1>
-        <div class="page-heading__introduction">
-          {{ page.subtitle }}
-        </div>
-        <div>
-          <p>
-            <a href="#{{ page.about_title|slugify }}" class="button button--packages">
-              {{ page.about_title }}
-            </a>
-          </p>
-        </div>
-    </header>
+    {# TODO: hero component should be used here #}
+    <div class="grid">
+        <div class="hero">
+            <div class="hero__inner">
+                <h1 class="hero__heading">{{ page.title }}</h1>
 
-    <div class="features feature--packages" id="additional">
+                {% if page.subtitle %}
+                    <h2 class="hero__subheading intro-big">{{ page.subtitle }}</h2>
+                {% endif %}
 
-        <div class="features__container page-content">
-          <div class="container packages__jumplinks">
-              {% for grid in grids %}
-                <a href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
-              {% endfor %}
-          </div>
-        </div>
-
-        <div class="features__container">
-            <h2 class="features__heading">{{ value.title }}</h2>
-            {% for grid in grids %}
-                <div class="features__section" id="{{ grid.slug }}">
-
-                    <div class="packages__sub-heading">
-                      <h3 class="features__sub-heading">
-                        <a href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
-                        {% if perms.packages.change_grid %}
-                          <a href="{{ grid.get_admin_url }}">✏️</a>
-                        {% endif %}
-                      </h3>
-                      <p>
-                        {{ grid.description }}<br>
-                        <a class="packages__xs" href="{{ grid.get_absolute_url }}">Full grid on Djangopackages.org</a>
-                      </p>
-                    </div>
-
-                    <div class="features__content">
-
-                        {% for package in grid.packages.all %}
-
-                            <article class="feature-item">
-                                <h4 class="feature-item__heading">
-                                  <a href="{{ package.get_absolute_url }}">
-                                    {{ package.title }}
-                                    {% if perms.packages.change_package %}
-                                      <a href="{{ package.get_admin_url }}">✏️</a>
-                                    {% endif %}
-                                  </a>
-                                </h4>
-                                <div class="feature-item__description">
-                                    {% if package.repo_description %}
-                                      {{ package.repo_description }}<br>
-                                    {% endif %}
-                                    {% for url, label in package.links %}
-                                      <a href="{{ url }}">{{ label }}</a>
-                                      {% if not forloop.last %}–{% endif %}
-                                    {% endfor %}
-                                </div>
-                            </article>
-
-                        {% endfor %}
-
-                    </div>
-
-                </div>
-            {% endfor %}
-        </div>
-
-        <header class="page-heading" id="{{ page.about_title|slugify }}">
-            <h2 class="page-heading__heading">{{ page.about_title }}</h2>
-            <div class="page-heading__introduction">
-              {{ page.about_text|richtext }}
+                {% include "patterns/components/buttons/button.html" with arrow=False url="#about" title=page.about_title classes="hero__button" %}
             </div>
-        </header>
+
+            {% include "patterns/components/icon/icon.html" with icon="heart" classes="hero__icon" %}
+        </div>
+    </div>
+
+    <div class="packages" id="additional">
+
+        <div class="grid">
+            <div class="jump-links">
+                <h2 class="jump-links__heading heading-three">Browse by category:</h2>
+                <ul class="jump-links__container">
+                    {% for grid in grids %}
+                        <li class="jump-links__item">
+                            <a class="jump-links__link" href="#{{ grid.slug }}">{{ grid.display_title }}</a>{% if forloop.last %}.{% else %}, {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="overview">
+                <h2 class="overview__heading">Packages</h2>
+                {% for grid in grids %}
+                    <div class="overview__section" id="{{ grid.slug }}">
+
+                        <div class="overview__section-title">
+                            <h3 class="heading-three overview__sub-heading">
+                                <a class="overview__sub-heading-link" href="{{ grid.get_absolute_url }}">{{ grid.display_title }}</a>
+                                {% if perms.packages.change_grid %}
+                                    <a class="overview__sub-heading-link overview__sub-heading-link--edit" href="{{ grid.get_admin_url }}">✏️</a>
+                                {% endif %}
+                            </h3>
+                            <p class="overview__description">{{ grid.description }} - <a class="overview__description-link" href="{{ grid.get_absolute_url }}">View on Djangopackages.org</a></p>
+
+                        </div>
+
+                        <div class="overview__content grid">
+
+                            {% for package in grid.packages.all %}
+
+                                <article class="overview-item">
+                                    <h4 class="overview-item__heading">
+                                        <a class="overview-item__link" href="{{ package.get_absolute_url }}">
+                                            {{ package.title }}
+                                        </a>
+                                        {% if perms.packages.change_package %}
+                                            <a class="overview-item__link overview-item__link--edit" href="{{ package.get_admin_url }}">✏️</a>
+                                        {% endif %}
+                                    </h4>
+                                    {% if package.repo_description %}
+                                        <p class="overview-item__description">{{ package.repo_description }}</p>
+                                    {% endif %}
+                                    <div class="overview-item__package-links">
+                                        {% for url, label in package.links %}
+                                            <a class="overview-item__package-link" href="{{ url }}">{{ label }}</a>
+                                            {% if not forloop.last %}–{% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </article>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {# TODO: Should also use the hero include #}
+        <div class="grid" id="about">
+            <div class="hero">
+                <div class="hero__inner">
+                    <h2 class="hero__heading">{{ page.about_title }}</h2>
+
+                    {% if page.about_text %}
+                        <div class="hero__intro">{{ page.about_text|richtext }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
     </div>
 

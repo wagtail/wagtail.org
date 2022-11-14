@@ -1,0 +1,9 @@
+context:
+  value:
+    heading: Heading Text
+    description: <p><strong>Lorem</strong> <em>ipsum</em> dolor sit amet, consectetur adipiscing elit</p>
+    meta_icon: slack
+    meta_text: Placeholder text
+    cta:
+      text: Check this out
+      url: '#'

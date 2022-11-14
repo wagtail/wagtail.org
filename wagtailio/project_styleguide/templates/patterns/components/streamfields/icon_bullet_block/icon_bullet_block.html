@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+<li class="icon-bullet grid">
+    {% include "patterns/components/icon/icon.html" with icon=value.icon classes="icon-bullet__svg" %}
+
+    <div class="icon-bullet__content">
+        <h2 class="icon-bullet__heading">{{ value.heading }}</h2>
+
+        {% if value.description %}
+            <div class="icon-bullet__description rich-text">{{ value.description|richtext }}</div>
+        {% endif %}
+
+        {% if value.cta %}
+            {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta.url title=value.cta.text classes="icon-bullet__button" %}
+        {% endif %}
+    </div>
+</li>

@@ -1,0 +1,31 @@
+{% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <article class="blog">
+        {# Header #}
+        <header class="blog__header grid">
+            {% include "patterns/components/meta/meta.html" with value=page classes="blog__meta" %}
+
+            <h1 class="blog__heading article-heading">{{ page.title }}</h1>
+
+            {% if page.introduction %}
+                <h2 class="blog__intro intro-small">{{ page.introduction }}</h2>
+            {% endif %}
+
+            {% include "patterns/components/author/author.html" with author=page.author classes="blog__author author--blog" %}
+        </header>
+
+        {% if page.main_image %}
+            <div class="grid">
+                {% image page.main_image width-900 class="blog__main-image" %}
+            </div>
+        {% endif %}
+
+        {# Body Content #}
+        {% include_block page.body %}
+    </article>
+
+    {# Related articles #}
+    {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages %}
+{% endblock %}

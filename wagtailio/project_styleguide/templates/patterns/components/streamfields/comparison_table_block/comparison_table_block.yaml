@@ -1,0 +1,7 @@
+context:
+  pattern_library: True
+
+tags:
+  include_block:
+    example_pattern:
+      template_name: 'patterns/_pattern_library_only/comparison_table.html'

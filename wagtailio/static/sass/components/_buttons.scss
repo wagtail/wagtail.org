@@ -1,0 +1,106 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid $color--indigo;
+    padding: 15px 30px;
+    color: $color--off-black;
+    outline-offset: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    background-color: $color--white;
+
+    @include media-query(large) {
+        font-size: 0.8rem;
+    }
+
+    > svg {
+        transition: transform 0.3s;
+        margin: 0 0 0 15px;
+        fill: $color--teal;
+    }
+
+    &:hover {
+        background-color: $color--indigo;
+        color: $color--white;
+
+        > svg {
+            transform: translateX(6px) scale(1.05);
+            fill: $color--teal-100;
+        }
+    }
+
+    &--dark {
+        border-color: $color--white;
+        background-color: transparent;
+        color: $color--white;
+
+        > svg {
+            fill: $color--teal-100;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: $color--white;
+            color: $color--indigo;
+
+            > svg {
+                fill: $color--teal;
+            }
+        }
+    }
+
+    &--secondary {
+        background-color: $color--indigo;
+        color: $color--white;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: $color--indigo;
+            color: $color--indigo;
+        }
+    }
+
+    &--form {
+        &:hover,
+        &:focus {
+            background-color: $color--indigo;
+            border-color: $color--indigo;
+            color: $color--white;
+        }
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+
+        > svg {
+            margin: 0 15px 0 0;
+            transform: rotate(180deg);
+        }
+
+        &:hover {
+            > svg {
+                transform: rotate(180deg) translateX(6px) scale(1.15);
+            }
+        }
+    }
+
+    &--disabled {
+        background-color: $color--light-grey;
+        border-color: $color--light-grey;
+        pointer-events: none;
+
+        > p {
+            opacity: 0.5;
+            color: $color--off-black;
+        }
+    }
+
+    &__text {
+        font-weight: $weight--bold;
+        line-height: 1.25rem;
+    }
+
+}

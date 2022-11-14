@@ -1,0 +1,12 @@
+context:
+  value:
+    quote: If I could turn one piece of code into a human and marry it, it would be the WagtailCMS StreamField
+    author: |
+      Donald Knuth - <b>@wagtail</b>
+    author_image: fake
+
+tags:
+  image:
+    value.author_image fill-40x40 class="standalone-quote__image":
+      raw: |
+        <img src="https://placehold.co/40x40" alt="Some alt" class="standalone-quote__image">

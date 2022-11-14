@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "patterns/base_page.html" %}
 
-{% load static compress wagtailadmin_tags wagtailcore_tags wagtailimages_tags wagtailio_utils %}
+{% load static wagtailadmin_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}{% endblock %}
 
@@ -18,12 +18,11 @@
 
         </header> <!-- /page-heading -->
 
-    	<div class="container">
-	        {% include_block page.body %}
+        <div class="container">
+            {% include_block page.body %}
         </div>
     </div>
 
     {% include "core/includes/contact_torchbox.html" %}
-    {% include "core/includes/share.html" %}
 
 {% endblock %}

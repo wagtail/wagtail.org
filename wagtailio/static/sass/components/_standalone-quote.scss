@@ -1,0 +1,60 @@
+.standalone-quote {
+    @include sf-spacing();
+    align-items: center;
+
+    &__icon {
+        display: none;
+
+        @include media-query(medium) {
+            margin: 0 auto;
+            display: block;
+            grid-column: 2 / span 1;
+            width: 120px;
+            height: 85px;
+        }
+
+        @include media-query(large) {
+            width: 150px;
+            height: 125px;
+        }
+
+        svg {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    &__text {
+        margin: 0;
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 3 / span 2;
+        }
+
+        @include media-query(large) {
+            grid-column: 3 / span 3;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 3 / span 2;
+        }
+
+        @include media-query(large) {
+            grid-column: 3 / span 3;
+        }
+    }
+
+    &__image {
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+}

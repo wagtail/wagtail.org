@@ -1,0 +1,30 @@
+context:
+  get_started_menu:
+    body:
+      - value:
+          heading: Get started with Wagtail
+          items:
+            - url: '#'
+              icon: one-two-steps
+              heading: Build your first site
+              subheading: 10min install guide
+              description: This tutorial covers setting up a brand new Wagtail project
+            - url: '#'
+              icon: code-file
+              heading: Play with the code
+              subheading: Wagtail on Gitpod
+              description: Wagtail development setup in literally just one click!
+            - url: '#'
+              icon: bread
+              heading: Install the demo
+              subheading: Setup the Wagtail Bakery
+              description: Experience setting up an example Wagtail site, including example content
+            - url: '#'
+              icon: moon
+              heading: Try the latest editor
+              subheading: The Nightly Demo
+              description: Explore the features with example page types and models
+
+tags:
+  get_started_menu:
+    template_name: 'patterns/includes/menu_get_started.html'

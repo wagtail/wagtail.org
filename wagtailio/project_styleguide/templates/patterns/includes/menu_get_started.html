@@ -1,0 +1,33 @@
+{% load wagtailcore_tags %}
+{% if get_started_menu %}
+    <div class="modal modal--get-started micromodal-slide" id="get-started-menu" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            {% for item in get_started_menu.body %} {# there's actually only 1 item, as max_num=1 #}
+                {% with item.value as get_started %}
+                    <div class="modal__container" role="dialog" aria-modal="true" {% if get_started.heading %}aria-labelledby="get-started-menu-title"{% endif %}>
+                        <header class="modal__header">
+                            <button class="modal__close-button" aria-label="Close the Get Started menu" data-micromodal-close>
+                                <svg class="modal__close-icon" aria-hidden="true">
+                                    <use xlink:href="#cross"></use>
+                                </svg>
+                            </button>
+                        </header>
+                        <main class="modal__content">
+                            {% if get_started.heading %}
+                                <p class="modal__title intro-small" id="get-started-menu-title">{{ get_started.heading }}</p>
+                            {% endif %}
+
+                            <ul class="modal__grid modal__grid--get-started">
+                                {% for menu_item in get_started.items %}
+                                    <li class="modal__grid-item">
+                                        {% include_block menu_item %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </main>
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

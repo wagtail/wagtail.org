@@ -1,0 +1,48 @@
+.logos {
+    @include sf-spacing();
+    @include z-index(overlap); // so they sit above the large icons
+    position: relative;
+
+    &__heading {
+        margin-bottom: 20px;
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 4;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        grid-column: 2 / span 2;
+        gap: 20px;
+        justify-content: center;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+            gap: 55px;
+            justify-content: flex-start;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 5;
+        }
+    }
+
+    &__list-item {
+        min-width: 100px;
+        max-width: 100px;
+        flex-basis: 100px;
+    }
+
+    &__image {
+        flex-shrink: 0;
+    }
+}

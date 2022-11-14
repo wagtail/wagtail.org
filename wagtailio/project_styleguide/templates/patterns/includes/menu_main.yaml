@@ -1,0 +1,130 @@
+context:
+  menus:
+    - name: About
+      nav_items:
+        - text: About
+          short_description: Latest from the ecosystem
+          url: 'https://example.org/'
+          icon: arrow-in-circle
+        - text: Sponsors
+          short_description: Qui mollitia sint
+          url: 'https://example.co.uk/'
+          icon: money
+        - text: Features
+          short_description: Nesciunt eaque omnis
+          url: 'https://www.loremipsum.io/'
+          icon: pen-checkbox
+        - text: Core team
+          short_description: Voluptates deserunt hic
+          url: 'https://www.example.com/'
+          icon: flame
+        - text: Wagtail vision
+          short_description: Nam ratione optio
+          url: 'http://foobar.com/'
+          icon: briefcase
+        - text: Who uses wagtail?
+          short_description: Nesciunt alias et
+          url: 'http://https://docs.wagtail.org/'
+          icon: heart
+      call_to_action:
+        text: Do your best work
+        sub_heading: ''
+        description: Check out the very best features Wagtail offers
+        icon: release-cycle
+        url: '#'
+    - name: Resources
+      nav_items:
+        - text: Get started
+          short_description: Latest from the ecosystem
+          url: 'https://example.org/'
+          icon: arrow-in-circle
+        - text: Try Wagtail
+          short_description: Qui mollitia sint
+          url: 'https://example.co.uk/'
+          icon: money
+        - text: Packages
+          short_description: Nesciunt eaque omnis
+          url: 'https://www.loremipsum.io/'
+          icon: pen-checkbox
+        - text: Tutorials
+          short_description: Voluptates deserunt hic
+          url: 'https://www.example.com/'
+          icon: flame
+      call_to_action:
+        text: Developer docs
+        sub_heading: ''
+        description: This is where you want to be
+        icon: map
+        url: '#'
+    - name: Community
+      nav_items:
+        - text: Blog
+          short_description: Latest from the ecosystem
+          url: 'https://example.org/'
+          icon: arrow-in-circle
+        - text: GitHub
+          short_description: Qui mollitia sint
+          url: 'https://example.co.uk/'
+          icon: money
+        - text: Something
+          short_description: Nesciunt eaque omnis
+          url: 'https://www.loremipsum.io/'
+          icon: pen-checkbox
+        - text: Another thing
+          short_description: Voluptates deserunt hic
+          url: 'https://www.example.com/'
+          icon: flame
+      call_to_action:
+        text: Wagtail Space 2022
+        sub_heading: 15 – 17 June 2022
+        description: Arnhem, The Netherlands
+        icon: release-cycle
+        url: '#'
+    - name: Why Wagtail?
+      nav_items:
+        - text: For governments
+          short_description: Latest from the ecosystem
+          url: 'https://example.org/'
+          icon: arrow-in-circle
+        - text: Static websites
+          short_description: Qui mollitia sint
+          url: 'https://example.co.uk/'
+          icon: money
+        - text: Et quo eum
+          short_description: Nesciunt eaque omnis
+          url: 'https://www.loremipsum.io/'
+          icon: pen-checkbox
+        - text: Lorem illo iusto
+          short_description: Voluptates deserunt hic
+          url: 'https://www.example.com/'
+          icon: flame
+      call_to_action:
+        text: Wagtail vs Wordpress
+        sub_heading: ''
+        description: Snappy sentence summarising why Wagtail is more awesome than Wordpress
+        icon: release-cycle
+        url: '#'
+    - name: Services
+      nav_items:
+        - text: Services overview
+          short_description: Latest from the ecosystem
+          url: 'https://example.org/'
+          icon: arrow-in-circle
+        - text: Products
+          short_description: Qui mollitia sint
+          url: 'https://example.co.uk/'
+          icon: money
+        - text: Repudiandae autem at
+          short_description: Nesciunt eaque omnis
+          url: 'https://www.loremipsum.io/'
+          icon: pen-checkbox
+        - text: Fuga earum asperiores
+          short_description: Voluptates deserunt hic
+          url: 'https://www.example.com/'
+          icon: flame
+      call_to_action:
+        text: Wagtail Support
+        sub_heading: ''
+        description: Check out the very best features Wagtail offers
+        icon: code-file
+        url: '#'

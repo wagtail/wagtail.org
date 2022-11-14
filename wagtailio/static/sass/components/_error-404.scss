@@ -1,0 +1,52 @@
+.error-404 {
+    position: relative;
+
+    @include media-query(large) {
+        min-height: 700px;
+    }
+
+    &__intro,
+    &__heading {
+        grid-column: 2 / span 2;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 4;
+        }
+    }
+
+    &__intro {
+        margin-bottom: 50px;
+    }
+
+    &__search {
+        grid-column: 2 / span 2;
+        margin: 0 0 50px 0;
+
+        @include media-query(medium) {
+            grid-column: 2 / span 3;
+            margin: 0 0 100px 0;
+        }
+
+        @include media-query(large) {
+            margin: 0 20% 150px 0;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        width: 360px;
+        height: 430px;
+        transform: rotate(165deg);
+        z-index: -1;
+        inset: 30% 70%;
+        display: none;
+
+        @include media-query(large) {
+            display: block;
+        }
+    }
+}
