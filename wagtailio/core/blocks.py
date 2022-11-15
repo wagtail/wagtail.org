@@ -441,6 +441,7 @@ class LogoBlock(blocks.StructBlock):
         icon = "images"
         template = "patterns/components/streamfields/logo_block/logo_block.html"
 
+
 class ContentStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
     text_and_media = TextAndMediaBlock()
