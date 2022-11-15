@@ -1063,7 +1063,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 
 [[package]]
 name = "wagtail"
-version = "4.1"
+version = "4.1.1"
 description = "A Django content management system."
 category = "main"
 optional = false
@@ -1830,8 +1830,8 @@ virtualenv = [
     {file = "virtualenv-20.16.6.tar.gz", hash = "sha256:530b850b523c6449406dfba859d6345e48ef19b8439606c5d74d7d3c9e14d76e"},
 ]
 wagtail = [
-    {file = "wagtail-4.1-py3-none-any.whl", hash = "sha256:19b5bce9757c4e19322a345b9c314fc588c05fb5af930bcd048e0a6cd9f531eb"},
-    {file = "wagtail-4.1.tar.gz", hash = "sha256:d2f31f2bc6018cc5b152659c2490f7fe9d075c067bacca8a1fcbb244f817b0b1"},
+    {file = "wagtail-4.1.1-py3-none-any.whl", hash = "sha256:fe164fa5bb5f62fa8fa35cb456d523b3f263b6bcc0a5e0b688e2c6c1760bc095"},
+    {file = "wagtail-4.1.1.tar.gz", hash = "sha256:9df6bfe5637ebe5b9e96cd0174cb812d3bb9200913100b6f8007ef31bdc02f70"},
 ]
 wagtail-font-awesome-svg = [
     {file = "wagtail-font-awesome-svg-0.0.3.tar.gz", hash = "sha256:b5cf80366dcaa272b91c9d7a3686aec44c583c3a69eb416e0391e2a0b7479466"},
