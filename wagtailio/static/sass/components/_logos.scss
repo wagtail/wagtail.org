@@ -4,11 +4,11 @@
     position: relative;
 
     &__heading {
-        margin-bottom: 20px;
+        margin-bottom: 80px;
         grid-column: 2 / span 2;
 
         @include media-query(medium) {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             grid-column: 2 / span 3;
         }
 
