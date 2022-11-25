@@ -4,6 +4,11 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
+
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
         <title>{% block title %}{% firstof page.seo_title page.title %}{% endblock %}{% block title_suffix %}{% if current_site.site_name %}- {{ current_site.site_name }}{% endif %}{% endblock %}</title>
 
         {% block meta_tags %}
