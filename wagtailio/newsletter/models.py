@@ -70,8 +70,8 @@ class NewsletterIndexPage(Page):
         )
 
     content_panels = Page.content_panels + [
-        FieldPanel("intro", classname="full"),
-        FieldPanel("body", classname="full"),
+        FieldPanel("intro"),
+        FieldPanel("body"),
     ]
 
 
