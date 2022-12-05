@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.sitemaps",
+    "whitenoise.runserver_nostatic",  # Must be before `django.contrib.staticfiles`
     "django.contrib.staticfiles",
     "taggit",
     "modelcluster",
@@ -141,6 +142,9 @@ STATICFILES_FINDERS = (
 STATICFILES_DIRS = (join(PROJECT_ROOT, "static_compiled"),)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Place static files that need a specific URL (such as robots.txt and favicon.ico) in the "public" folder
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "public")
 
 # Media files
 MEDIA_ROOT = env.get("MEDIA_DIR", join(BASE_DIR, "media"))
