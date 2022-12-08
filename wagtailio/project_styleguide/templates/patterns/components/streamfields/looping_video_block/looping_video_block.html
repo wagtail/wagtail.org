@@ -1,11 +1,20 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailembeds_tags %}
 
 <div class="home-embed">
-    <div class="responsive-object" style="padding-bottom: 56.25%;">
-        <video {% if value.autoplay %}autoplay loop muted tabindex="0" data-looping-video{% else %}controls{% endif %}>
-            {% for source in value.video.sources %}
-                <source type="{{ source.type }}" src="{{ source.src }}">
-            {% endfor %}
-        </video>
-    </div>
+    {% if value.heading %}
+        <h2>{{ value.heading }}</h2>
+    {% endif %}
+    {% if value.video %}
+        <div class="responsive-object" style="padding-bottom: 56.25%;">
+            <video {% if value.autoplay %}autoplay loop muted tabindex="0" data-looping-video{% else %}controls{% endif %}>
+                {% for source in value.video.sources %}
+                    <source type="{{ source.type }}" src="{{ source.src }}">
+                {% endfor %}
+            </video>
+        </div>
+    {% else %}
+        <div class="responsive-object" style="padding-bottom: 56.25%;">
+            {% embed value.embed.url %}
+        </div>
+    {% endif %}
 </div>

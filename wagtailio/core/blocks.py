@@ -423,8 +423,39 @@ class GetStartedBlock(blocks.StructBlock):
 
 class LoopingVideoBlock(blocks.StructBlock):
     # setting autoplay to True adds 'autoplay', 'loop' & 'muted' attrs to video element
-    autoplay = blocks.BooleanBlock(required=False, default=False)
-    video = VideoChooserBlock()
+    heading = blocks.CharBlock(required=False)
+    autoplay = blocks.BooleanBlock(
+        required=False,
+        default=False,
+        help_text="Automatically start and loop the video. Autoplay only works for items in the media library.",
+    )
+    video = VideoChooserBlock(required=False)
+    embed = EmbedBlock(required=False)
+
+    def clean(self, value):
+        errors = {}
+        struct_value = super().clean(value)
+
+        if not value.get("video") and not value.get("embed"):
+            error = ErrorList(
+                [ValidationError("You must specify a video or embedded video.")]
+            )
+            errors["video"] = errors["embed"] = error
+
+        if value.get("embed") and value.get("video"):
+            error = ErrorList(
+                [
+                    ValidationError(
+                        "You must specify a self-hosted video or embedded video. You can't use both."
+                    )
+                ]
+            )
+            errors["video"] = errors["embed"] = error
+
+        if errors:
+            raise StructBlockValidationError(errors)
+
+        return struct_value
 
     class Meta:
         icon = "media"
