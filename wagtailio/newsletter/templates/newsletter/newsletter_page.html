@@ -12,6 +12,10 @@
 
             /* Client-specific Styles and Reset */
 
+            /* Import Google Font*/
+
+            @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
             #outlook a {
                 padding:0;
             }
@@ -56,6 +60,7 @@
                 float: left;
                 clear: both;
                 display: block;
+                margin-bottom: 30px;
             }
 
             center {
@@ -68,7 +73,7 @@
             }
 
             p {
-                margin: 0 0 0 10px;
+                margin: 0 0 0 20px;
             }
 
             table {
@@ -336,34 +341,29 @@
             /* Typography */
 
             body, table.body, h1, h2, h3, h4, h5, h6, p, td {
-                color: #222222;
-                font-family: Helvetica, Arial, sans-serif;
+                color: #000000;
+                font-family: "Kumbh Sans", Helvetica, Arial, sans-serif;
                 font-weight: normal;
                 padding:0;
                 margin: 0;
                 text-align: left;
-                line-height: 1.3;
+                line-height: 1.5;
             }
 
             h1, h2, h3, h4, h5, h6 {
                 word-break: normal;
             }
 
-            h1 {font-size: 40px;}
-            h2 {font-size: 36px;}
-            h3 {font-size: 32px;}
-            h4 {font-size: 28px;}
-            h5 {font-size: 24px;}
-            h6 {font-size: 20px;}
-            body, table.body, p, td {font-size: 14px;line-height:19px;}
-
-            p.lead, p.lede, p.leed {
-                font-size: 18px;
-                line-height:21px;
-            }
+            h1 {font-size: 40px; font-weight:700; margin-bottom: 20px;}
+            h2 {font-size: 36px; font-weight:700; margin-bottom: 20px;}
+            h3 {font-size: 32px; font-weight:700; margin-bottom: 20px;}
+            h4 {font-size: 28px; font-weight:700; margin-bottom: 20px;}
+            h5 {font-size: 24px; font-weight:700; margin-bottom: 20px;}
+            h6 {font-size: 20px; font-weight:700; margin-bottom: 20px;}
+            body, table.body, p, td {font-size: 18px;line-height:1.5;}
 
             p {
-                margin-bottom: 10px;
+                margin-bottom: 30px;
             }
 
             small {
@@ -371,20 +371,20 @@
             }
 
             a {
-                color: #2ba6cb;
+                color: #007d7e;
                 text-decoration: none;
             }
 
             a:hover {
-                color: #2795b6 !important;
+                color: #2E1F5E !important;
             }
 
             a:active {
-                color: #2795b6 !important;
+                color: #007d7e !important;
             }
 
             a:visited {
-                color: #2ba6cb !important;
+                color: #2E1F5E !important;
             }
 
             h1 a,
@@ -393,7 +393,7 @@
             h4 a,
             h5 a,
             h6 a {
-                color: #2ba6cb;
+                color: #007d7e;
             }
 
             h1 a:active,
@@ -402,7 +402,7 @@
             h4 a:active,
             h5 a:active,
             h6 a:active {
-                color: #2ba6cb !important;
+                color: #007d7e !important;
             }
 
             h1 a:visited,
@@ -411,7 +411,7 @@
             h4 a:visited,
             h5 a:visited,
             h6 a:visited {
-                color: #2ba6cb !important;
+                color: #2E1F5E !important;
             }
 
             /* Panels */
@@ -716,27 +716,27 @@
         </style>
         <style>
             a {
-                color: #1b7894;
+                color: #007d7e;
                 text-decoration: underline;
             }
             a:hover {
-                color: #cc362a !important;
+                color: #2E1F5E !important;
             }
 
             a:active {
-                color: #cc362a !important;
+                color: #007d7e!important;
             }
 
             a:visited {
-                color: #cc362a !important;
+                color: #2E1F5E !important;
             }
 
             a.view-online {
-                color: #666666 !important;
+                color: #007d7e !important;
             }
 
             h1 {
-                color: #e55043;
+                color: #000000;
                 margin-bottom: 20px;
                 font-size: 30px;
             }
@@ -747,21 +747,17 @@
 
             h2 {
                 margin-top: 30px;
-                color: #e55043;
+                color: #000000;
                 font-size:25px;
             }
             p.date {
                 text-transform: uppercase;
-                font-size:12px;
+                font-size:16px;
                 color:#666666;
             }
 
-            p.lead {
-                line-height: 25px;
-                color: #333333;
-            }
             p {
-                line-height: 22px;
+                line-height: 1.5;
             }
 
             table.blockquote {
@@ -900,7 +896,7 @@
                                                         <tr>
                                                             <td class="twelve sub-columns">
                                                                 {% wagtail_site as site %}
-                                                                <img src="{{ site.url }}{% static 'img/this-week-in-wagtail.png' %}" alt="This Week in Wagtail" />
+                                                                <img src="{{ site.url }}{% static 'img/this-week-in-wagtail.png' %}" alt="This Week in Wagtail" style="margin-bottom: 0px;" />
                                                             </td>
                                                             <td class="expander"></td>
                                                         </tr>
@@ -922,9 +918,33 @@
                                                     <tr>
                                                         <td>
                                                             {% if page.date %}<p class="date">{{ page.date|date:"j F Y" }}</p>{% endif %}
-                                                            {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
                                                             {% if page.intro %}<p class="lead">{{ page.intro|richtext }}</p>{% endif %}
                                                             {{ page.body|richtext }}
+                                                        </td>
+                                                        <td class="expander"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="row">
+                                        <tr>
+                                            <td class="wrapper last offset-by-three">
+                                                <table class="six columns">
+                                                    <tr>
+                                                        <td>
+                                                            {% wagtail_site as site %}
+                                                            <a href="https://twitter.com/wagtailcms"><img src="{{ site.url }}{% static 'img/twiw-twitter-icon.png' %}" alt="Twitter" style="margin-bottom: 0px;" /></a>
+                                                        </td>
+                                                        <td class="expander"></td>
+                                                        <td>
+                                                            {% wagtail_site as site %}
+                                                            <a href="https://github.com/wagtail/wagtail"><img src="{{ site.url }}{% static 'img/twiw-github-icon.png' %}" alt="Github" style="margin-bottom: 0px;" /></a>
+                                                        </td>
+                                                        <td class="expander"></td>
+                                                        <td>
+                                                            {% wagtail_site as site %}
+                                                            <a href="https://www.youtube.com/channel/UCXsuEmvisPzuJPaIdpVM0yg"><img src="{{ site.url }}{% static 'img/twiw-youtube-icon.png' %}" alt="Youtube" style="margin-bottom: 0px;" /></a>
                                                         </td>
                                                         <td class="expander"></td>
                                                     </tr>
