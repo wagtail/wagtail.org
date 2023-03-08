@@ -17,22 +17,22 @@
     <meta name="twitter:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
     <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:160 }}{% endif %}" />
 
+    {% wagtail_site as site %}
     {% if page.social_image %}
         {% image page.social_image width-400 as twitter_img %}
     {% elif page.main_image %}
         {% image page.main_image width-400 as twitter_img %}
     {% endif %}
     {% if twitter_img %}
-        <meta name="twitter:image" content="{{ site.root_url }}{{ twitter_img.url }}" />
+        <meta name="twitter:image" content="{{ twitter_img.url }}" />
         {% if twitter_img.alt %}<meta name="twitter:image:alt" content="{{ twitter_img.alt }}" />{% endif %}
     {% else %}
-        <meta name="twitter:image" content="{% static 'img/default-sharing-image.png' %}" />
+        <meta name="twitter:image" content="{{ site.root_url }}{% static 'img/default-sharing-image.png' %}" />
     {% endif %}
 
     {% if FB_APP_ID %}<meta property="fb:app_id" content="{{ FB_APP_ID }}" />{% endif %}
     <meta property="og:type" content="website" />
     {% if page %}
-        {% wagtail_site as site %}
         <meta property="og:url" content="{% fullpageurl page %}" />
     {% endif %}
     <meta property="og:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
@@ -43,11 +43,11 @@
     {% endif %}
 
     {% if social_img %}
-        <meta property="og:image" content="{{ site.root_url }}{{ social_img.url }}" />
+        <meta property="og:image" content="{{ social_img.url }}" />
         <meta property="og:image:width" content="{{ social_img.width }}" />
         <meta property="og:image:height" content="{{ social_img.height }}" />
     {% else %}
-        <meta property="og:image" content="{% static 'img/default-sharing-image.png' %}" />
+        <meta property="og:image" content="{{ site.root_url }}{% static 'img/default-sharing-image.png' %}" />
     {% endif %}
     <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
     <meta property="og:site_name" content="Wagtail CMS" />
