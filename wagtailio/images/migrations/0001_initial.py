@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db import migrations, models
 
@@ -133,6 +130,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name="wagtailiorendition",
-            unique_together=set([("image", "filter", "focal_point_key")]),
+            unique_together={("image", "filter", "focal_point_key")},
         ),
     ]
