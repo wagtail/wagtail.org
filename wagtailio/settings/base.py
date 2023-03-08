@@ -123,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-gb"
 TIME_ZONE = "UTC"
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 
@@ -214,7 +213,7 @@ if "DATABASE_URL" in env:
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "ENGINE": "django.db.backends.postgresql",
             "NAME": env.get("PGDATABASE", APP_NAME),
             "CONN_MAX_AGE": 600,
             # User, host and port can be configured by the PGUSER, PGHOST and

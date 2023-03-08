@@ -99,7 +99,7 @@ def clean_local_database(local_database_name=LOCAL_DATABASE_NAME):
 
 def delete_local_database(local_database_name=LOCAL_DATABASE_NAME):
     with warn_only():
-        local("dropdb {database_name}".format(database_name=LOCAL_DATABASE_NAME))
+        local(f"dropdb {LOCAL_DATABASE_NAME}")
 
 
 def deploy_prompt(app_instance):
@@ -190,22 +190,22 @@ def push_database_to_heroku(app_instance):
         "proceed:\n>>> ".format(app_instance=colors.red(app_instance, bold=True))
     )
     prompt(prompt_msg, validate=app_instance)
-    local("heroku maintenance:on --app {app}".format(app=app_instance))
-    local("heroku ps:stop --app {app} web".format(app=app_instance))
-    local("heroku pg:backups:capture --app {app}".format(app=app_instance))
-    local("heroku pg:reset --app {app}".format(app=app_instance))
+    local(f"heroku maintenance:on --app {app_instance}")
+    local(f"heroku ps:stop --app {app_instance} web")
+    local(f"heroku pg:backups:capture --app {app_instance}")
+    local(f"heroku pg:reset --app {app_instance}")
     local(
         "heroku pg:push --app {app} {localdb} DATABASE_URL".format(
             app=app_instance,
             localdb=LOCAL_DATABASE_NAME,
         )
     )
-    local("heroku ps:restart --app {app}".format(app=app_instance))
-    local("heroku maintenance:off --app {app}".format(app=app_instance))
+    local(f"heroku ps:restart --app {app_instance}")
+    local(f"heroku maintenance:off --app {app_instance}")
 
 
 def setup_heroku_git_remote(app_instance):
-    remote_name = "heroku-{app}".format(app=app_instance)
+    remote_name = f"heroku-{app_instance}"
     local(
         "heroku git:remote --app {app} --remote {remote}".format(
             app=app_instance, remote=remote_name
