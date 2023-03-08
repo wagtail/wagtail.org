@@ -12,10 +12,10 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.10"
 beautifulsoup4 = "~4.9.3"
 boto3 = "~1.26.3"
 dj-database-url = "~1.0.0"
+python = "^3.11"
 django = "~3.2"
 django-basic-auth-ip-whitelist = "~0.5"
 django-csp = "~3.7"
