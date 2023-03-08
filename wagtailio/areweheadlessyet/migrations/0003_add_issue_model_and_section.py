@@ -8,7 +8,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("areweheadlessyet", "0002_add_topic_page_model"),
     ]

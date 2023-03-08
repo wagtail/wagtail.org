@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailmedia", "0004_duration_optional_floatfield"),
         ("features", "0009_featuredescription_airtable_record_id"),

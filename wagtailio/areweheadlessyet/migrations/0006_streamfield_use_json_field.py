@@ -9,7 +9,6 @@ import wagtailio.areweheadlessyet.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         (
             "areweheadlessyet",

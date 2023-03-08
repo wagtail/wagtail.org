@@ -8,7 +8,6 @@ import wagtail.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0066_collection_management_permissions"),
         ("images", "0010_add_duplicatefindingmixin"),

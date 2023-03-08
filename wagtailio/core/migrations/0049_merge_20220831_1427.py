@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0047_alter_heading_and_icon_fields_on_contentpage"),
         ("core", "0048_sign_up_form_template_path"),

@@ -13,7 +13,6 @@ def remove_feature_pages(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailredirects", "0005_capitalizeverbose"),
         ("wagtailcore", "0030_index_on_pagerevision_created_at"),

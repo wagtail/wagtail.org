@@ -8,7 +8,6 @@ import taggit.managers
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailimages", "0006_add_verbose_names"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),

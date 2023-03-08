@@ -13,7 +13,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0052_alter_contentpage_body_optional_ctablocks"),
     ]

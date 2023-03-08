@@ -7,7 +7,6 @@ import modelcluster.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "0008_upgrade_to_wagtail19"),
         ("wagtailcore", "0040_page_draft_title"),

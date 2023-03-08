@@ -14,7 +14,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("taxonomy", "0001_initial"),
         ("blog", "0006_blogpage_airtable_record_id"),

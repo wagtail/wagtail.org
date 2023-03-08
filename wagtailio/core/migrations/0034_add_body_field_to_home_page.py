@@ -9,7 +9,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0030_index_on_pagerevision_created_at"),
         ("wagtailforms", "0003_capitalizeverbose"),

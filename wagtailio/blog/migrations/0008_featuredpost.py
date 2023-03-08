@@ -7,7 +7,6 @@ import modelcluster.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("blog", "0007_blogpage_alter_body_add_category_and_related_pages"),
     ]

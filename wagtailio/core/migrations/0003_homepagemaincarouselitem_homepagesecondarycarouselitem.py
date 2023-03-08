@@ -5,7 +5,6 @@ import modelcluster.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "__first__"),
         ("wagtailimages", "0006_add_verbose_names"),

@@ -11,7 +11,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0042_add_get_started_and_signup_snippets_and_alter_contentpage_body"),
     ]

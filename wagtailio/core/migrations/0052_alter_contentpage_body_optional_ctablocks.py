@@ -13,7 +13,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0051_homepage_alter_body_add_hero_video_code_snippet_call_to_action"),
     ]

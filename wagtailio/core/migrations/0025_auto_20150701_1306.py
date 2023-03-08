@@ -10,7 +10,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0024_auto_20150626_1106"),
     ]

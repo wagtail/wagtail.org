@@ -10,7 +10,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0020_newsletteremailaddress"),
     ]

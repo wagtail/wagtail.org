@@ -12,7 +12,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailmedia", "0004_duration_optional_floatfield"),
         ("core", "0050_update_templates"),

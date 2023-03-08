@@ -13,7 +13,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0055_getstarted_logocards_heading"),
     ]

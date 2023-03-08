@@ -8,7 +8,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("features", "0002_auto_20160729_1210"),
     ]

@@ -41,7 +41,6 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         )
 
     def serve(self, request):
-
         if request.GET.get("category"):
             posts = self.posts.filter(category=request.GET.get("category"))
         else:

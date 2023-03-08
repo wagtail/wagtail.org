@@ -7,7 +7,6 @@ import modelcluster.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0040_page_draft_title"),
         ("wagtailforms", "0003_capitalizeverbose"),
