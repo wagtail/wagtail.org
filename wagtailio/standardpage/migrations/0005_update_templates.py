@@ -12,7 +12,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("standardpage", "0004_auto_20190813_0931"),
     ]

@@ -12,7 +12,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("blog", "0009_update_templates"),
     ]

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("features", "0004_featuredescription_featuredescriptionfeatureaspect"),
     ]

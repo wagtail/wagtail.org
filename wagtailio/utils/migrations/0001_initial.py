@@ -4,7 +4,6 @@ import modelcluster.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0015_add_more_verbose_names"),
     ]

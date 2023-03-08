@@ -13,7 +13,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [

@@ -12,7 +12,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("blog", "0008_featuredpost"),
     ]

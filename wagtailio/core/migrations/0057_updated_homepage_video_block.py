@@ -12,7 +12,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0056_add_logo_block_to_content_page"),
     ]

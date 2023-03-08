@@ -27,7 +27,6 @@ def forwards_func(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0028_merge"),
         ("wagtailforms", "0003_capitalizeverbose"),

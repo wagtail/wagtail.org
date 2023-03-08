@@ -9,7 +9,6 @@ import wagtailio.areweheadlessyet.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("areweheadlessyet", "0004_add_news_block_title_field_and_customize_api"),
     ]

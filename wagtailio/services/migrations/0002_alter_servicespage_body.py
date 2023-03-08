@@ -10,7 +10,6 @@ import wagtailio.services.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("services", "0001_initial"),
     ]

@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("features", "0014_remove_featuredescription_airtable_record_id"),
     ]

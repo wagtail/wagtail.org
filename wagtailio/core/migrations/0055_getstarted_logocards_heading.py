@@ -11,7 +11,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0054_alter_signupformsnippet_mailchimp_newsletter_id"),
     ]

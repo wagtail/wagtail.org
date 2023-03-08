@@ -10,7 +10,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0023_developerspage_body"),
     ]

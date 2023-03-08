@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "0005_upgrade_to_wagtail17_schema"),
     ]

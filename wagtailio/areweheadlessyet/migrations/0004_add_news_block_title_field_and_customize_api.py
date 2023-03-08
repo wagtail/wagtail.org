@@ -9,7 +9,6 @@ import wagtailio.areweheadlessyet.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("areweheadlessyet", "0003_add_issue_model_and_section"),
     ]

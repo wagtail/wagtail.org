@@ -3,7 +3,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "__first__"),
         ("core", "0015_auto_20150527_0919"),

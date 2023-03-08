@@ -7,7 +7,6 @@ import wagtail.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0028_merge"),
         ("images", "0002_update_to_wagtail_13"),

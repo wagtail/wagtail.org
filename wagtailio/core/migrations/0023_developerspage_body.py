@@ -4,7 +4,6 @@ import wagtail.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0022_remove_homepagemaincarouselitem_tab_title"),
     ]

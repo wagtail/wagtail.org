@@ -8,7 +8,6 @@ import wagtail.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0046_update_svg_icon_list"),
         ("features", "0010_featureaspect_video"),

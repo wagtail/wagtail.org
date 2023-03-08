@@ -9,7 +9,6 @@ import wagtail.snippets.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0038_auto_20190813_0931"),
     ]

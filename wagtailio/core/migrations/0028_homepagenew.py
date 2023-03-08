@@ -13,7 +13,6 @@ import wagtailio.utils.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("wagtailcore", "0023_alter_page_revision_on_delete_behaviour"),
         ("images", "0002_update_to_wagtail_13"),

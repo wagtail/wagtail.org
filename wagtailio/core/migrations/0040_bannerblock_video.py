@@ -11,7 +11,6 @@ import wagtailmedia.blocks
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("core", "0039_homepage_brands"),
     ]
