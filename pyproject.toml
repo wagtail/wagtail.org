@@ -37,12 +37,12 @@ whitenoise = "~6.3"
 django-redis = "~5.2"
 
 [tool.poetry.group.dev.dependencies]
-black = "22.10.0"
-djhtml = "1.5.1"
+black = "23.1.0"
+djhtml = "3.0.4"
 fabric3 = { git = "https://github.com/wmorgan6796/fabric.git", rev = "77513f3c" }  # TODO switch to fabric/invoke
-flake8 = "5.0.4"
+flake8 = "6.0.0"
 flake8-assertive = "2.1.0"
 flake8-blind-except = "0.2.1"
-flake8-comprehensions = "3.10.0"
-isort = "5.10.1"
+flake8-comprehensions = "3.10.1"
+isort = "5.12.0"
 pre-commit = "2.20.0"
