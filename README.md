@@ -38,6 +38,19 @@ To run migrations within Docker you'll need to run:
 make migrate
 ```
 
+
+### Dashboard
+
+To make the dashboard work, you also need to run the following:
+
+```
+cd ./wagtailio/custom_dashboard
+
+npm install
+npm run dev
+```
+
+
 ### Creating a superuser
 
 To create a new superuser locally, run:
