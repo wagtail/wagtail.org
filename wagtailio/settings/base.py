@@ -68,6 +68,8 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
+    "wagtailio.custom_base",
+    "wagtailio.custom_users",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -108,6 +110,8 @@ WSGI_APPLICATION = "wagtailio.wsgi.application"
 # Password validation
 # https://docs.djangoproject.com/en/stable/ref/settings/#auth-password-validators
 
+# custom user model
+AUTH_USER_MODEL = "custom_users.User"
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
