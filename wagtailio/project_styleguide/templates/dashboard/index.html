@@ -1,21 +1,30 @@
-{% extends 'patterns/base.html' %}
+<!DOCTYPE html>
 
 {% load static %}
 
-{% block title %}
+<html lang="en">
+    <head>
+        <title>
+            Dashboard
+        </title>
 
-    Dashboard
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-{% endblock title %}
+        <!-- Specific CSS -->
+        {% block stylesheets %}{% endblock stylesheets %}
+    </head>
 
-{% block content %}
+    <body style="margin: 0; padding: 0; background: #f5f5f5">
+        <div>
+            <div id="root"></div>
+        </div>
 
-    <div id="root"></div>
+        <!-- User specifics for dashboard -->
+        {{ request.user.email|json_script:'user_name' }}
+        {{ 'blater'|json_script:'user_function' }}
 
-{% endblock content %}
-
-{% block extra_js %}
-
-    <script src="{% static 'bundle.js' %}"></script>
-
-{% endblock extra_js %}
+        <!-- Specific JS  -->
+        <script src="{% static 'bundle.js' %}"></script>
+    </body>
+</html>

@@ -15,20 +15,20 @@ const navigationStructure: ILayoutNavigationItem[] = [
         endpoint: '/',
         badge: 0,
     },
-    // {
-    //     icon: Person,
-    //     label: 'Profiles',
-    //     component: PageProfile,
-    //     endpoint: '/profiles',
-    //     badge: 0,
-    // },
-    // {
-    //     icon: Analytics,
-    //     label: 'Analytics',
-    //     component: PageAnalytics,
-    //     endpoint: '/analytics',
-    //     badge: 0,
-    // },
+    {
+        icon: Person,
+        label: 'Profiles',
+        component: PageProfile,
+        endpoint: '/profiles',
+        badge: 0,
+    },
+    {
+        icon: Analytics,
+        label: 'Analytics',
+        component: PageAnalytics,
+        endpoint: '/analytics',
+        badge: 0,
+    },
 ]
 
 export default navigationStructure

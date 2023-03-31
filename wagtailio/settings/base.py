@@ -175,7 +175,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_DIRS = (
     join(PROJECT_ROOT, "static_compiled"),
-    join(PROJECT_ROOT, "custom_dashboard/dist")
+    join(PROJECT_ROOT, "custom_dashboard/dist"),
 )
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

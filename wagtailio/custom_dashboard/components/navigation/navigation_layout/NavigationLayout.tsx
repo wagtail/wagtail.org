@@ -28,8 +28,8 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
     console.log(theme)
 
     const user = {
-        // name: JSON.parse(document.getElementById('user_name').textContent),
-        // function: JSON.parse(document.getElementById('user_function').textContent),
+        name: JSON.parse(document.getElementById('user_name').textContent),
+        function: JSON.parse(document.getElementById('user_function').textContent),
     }
 
     const drawerWidthOpen = 240
@@ -103,14 +103,13 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
                         sx={{
                             flexShrink: 0,
                             display: drawerIsOpen ? 'flex' : 'none',
-                            margin: '10px 5px',
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}
                     >
                         <LogoSVG
-                            width={100}
-                            height={25}
+                            width={45}
+                            height={45}
                             fill={theme.navigation.colors.content}
                         />
                     </Box>
@@ -185,10 +184,10 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
                             alignContent: 'center',
                         }}
                     >
-                        {/*<CustomAvatarUser*/}
-                        {/*    name={user.name}*/}
-                        {/*    status={'online'}*/}
-                        {/*/>*/}
+                        <CustomAvatarUser
+                            name={user.name}
+                            status={'online'}
+                        />
                     </Box>
 
                     <Box
@@ -208,37 +207,19 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
                                 whiteSpace: 'nowrap',
                                 lineHeight: 'inherit',
                                 color: theme.navigation.colors.content,
-                                marginTop: '5px',
-                                marginBottom: '3px'
                             }}
                         >
-                            {/*{user.name}*/}
-                        </Typography>
-
-                        <Typography
-                            component="span"
-                            variant="caption"
-                            noWrap={true}
-                            sx={{
-                                width: 110,
-                                display: 'block',
-                                color: theme.navigation.colors.content,
-                                margin: 0,
-                                fontStyle: 'italic'
-                            }}
-                        >
-                            {/*{!!user.name && user.function}*/}
+                            {user.name}
                         </Typography>
                     </Box>
 
-                    <CustomLink url={'/admin/logout/'} isExternal={true}>
+                    <CustomLink url={'/logout/'} isExternal={true}>
                         <IconButton
                             sx={{color: theme.navigation.colors.content}}
                         >
                             <ExitToAppIcon/>
                         </IconButton>
                     </CustomLink>
-
                 </Box>
             </Drawer>
 
@@ -247,7 +228,6 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
                 sx={{
                     marginLeft: {
                         xs: `${drawerWidthClosed}px`,
-                        // sm: `${drawerWidth}px`
                     },
                     padding: theme.spacing(2),
                     flexGrow: 1,
