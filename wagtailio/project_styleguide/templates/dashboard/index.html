@@ -1,0 +1,21 @@
+{% extends 'patterns/base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+    Dashboard
+
+{% endblock title %}
+
+{% block content %}
+
+    <div id="root"></div>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+    <script src="{% static 'bundle.js' %}"></script>
+
+{% endblock extra_js %}

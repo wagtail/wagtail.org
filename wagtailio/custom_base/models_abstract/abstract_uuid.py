@@ -1,7 +1,8 @@
 import uuid
 
-from wagtailio.custom_base.models_abstract.abstract_log import AbstractLog
 from django.db import models
+
+from wagtailio.custom_base.models_abstract.abstract_log import AbstractLog
 
 
 class AbstractUuid(AbstractLog):

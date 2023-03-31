@@ -35,6 +35,9 @@ if "ALLOWED_HOSTS" in env:
 
 APP_NAME = env.get("APP_NAME", "wagtailio")
 
+# site id
+SITE_ID = 1
+
 
 # Application definition
 
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "django.contrib.sitemaps",
     "whitenoise.runserver_nostatic",  # Must be before `django.contrib.staticfiles`
     "django.contrib.staticfiles",
@@ -70,6 +74,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.search_promotions",
     "wagtailio.custom_base",
     "wagtailio.custom_users",
+    "wagtailio.custom_core",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -89,6 +94,11 @@ INSTALLED_APPS = [
     "pattern_library",
     "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailfontawesomesvg",
+    "allauth_ui",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -120,7 +130,27 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/dashboard/"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGOUT_REDIRECT_URL = "/login/"
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -143,7 +173,10 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
-STATICFILES_DIRS = (join(PROJECT_ROOT, "static_compiled"),)
+STATICFILES_DIRS = (
+    join(PROJECT_ROOT, "static_compiled"),
+    join(PROJECT_ROOT, "custom_dashboard/dist")
+)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

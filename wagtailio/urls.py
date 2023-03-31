@@ -32,6 +32,7 @@ private_urlpatterns = [
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
+    path("dashboard/", include("wagtailio.custom_core.urls")),
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
     path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": Sitemap}}),
@@ -61,8 +62,11 @@ if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
 # Set public URLs to use public cache.
 urlpatterns = decorate_urlpatterns(urlpatterns, get_default_cache_control_decorator())
 
-
-urlpatterns = private_urlpatterns + urlpatterns + [path("", include(wagtail_urls))]
+urlpatterns = (
+    private_urlpatterns
+    + urlpatterns
+    + [path("", include("allauth.urls")), path("", include(wagtail_urls))]
+)
 
 # Set vary header to instruct cache to serve different version on different
 # cookies, different request method (e.g. AJAX) and different protocol

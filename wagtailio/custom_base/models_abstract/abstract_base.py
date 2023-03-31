@@ -1,7 +1,9 @@
-from wagtailio.custom_base.managers.manager_base import ManagerBase
-from django.db import models
 from django.core.exceptions import FieldDoesNotExist
+from django.db import models
+
 from modelcluster.models import ClusterableModel
+
+from wagtailio.custom_base.managers.manager_base import ManagerBase
 
 
 class AbstractBase(ClusterableModel, models.Model):

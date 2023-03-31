@@ -1,5 +1,6 @@
-from wagtailio.custom_base.models_abstract.abstract_base import AbstractBase
 from django.db import models
+
+from wagtailio.custom_base.models_abstract.abstract_base import AbstractBase
 
 
 class AbstractLog(AbstractBase):
