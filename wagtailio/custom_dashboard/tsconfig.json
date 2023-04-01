@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "../static_compiled/js",
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",

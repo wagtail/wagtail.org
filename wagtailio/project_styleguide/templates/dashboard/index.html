@@ -22,9 +22,8 @@
 
         <!-- User specifics for dashboard -->
         {{ request.user.email|json_script:'user_name' }}
-        {{ 'blater'|json_script:'user_function' }}
 
         <!-- Specific JS  -->
-        <script src="{% static 'bundle.js' %}"></script>
+        <script src="{% static 'js/dashboard.js' %}"></script>
     </body>
 </html>

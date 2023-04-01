@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './index.tsx',
     devServer: {
-        static: './dist',
+        static: '../static_compiled/js',
         hot: true,
     },
     module: {
@@ -23,8 +23,8 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: 'dashboard.js',
+        path: path.resolve(__dirname, '../static_compiled/js'),
         clean: true
     },
 }

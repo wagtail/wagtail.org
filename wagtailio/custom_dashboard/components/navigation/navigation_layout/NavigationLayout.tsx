@@ -25,11 +25,8 @@ const NavigationLayout: React.FunctionComponent<IPropTypesLayoutNavigation> = (p
 
     const theme = useTheme();
 
-    console.log(theme)
-
     const user = {
         name: JSON.parse(document.getElementById('user_name').textContent),
-        function: JSON.parse(document.getElementById('user_function').textContent),
     }
 
     const drawerWidthOpen = 240
