@@ -1,5 +1,5 @@
 .features {
-    @include sf-spacing();
+    @include sf-spacing(2);
 
     &__filters {
         display: flex;

@@ -1,6 +1,6 @@
 .headline {
     $root: &;
-    @include sf-spacing();
+    @include sf-spacing(2);
     position: relative;
     padding: 80px 0 0;
 

@@ -1,6 +1,6 @@
 .hero {
     $root: &;
-    @include sf-spacing();
+    @include sf-spacing(6);
     position: relative;
     grid-column: 2 / span 2;
 

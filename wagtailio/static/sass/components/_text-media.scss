@@ -1,6 +1,6 @@
 .text-media {
     $root: &;
-    @include sf-spacing();
+    @include sf-spacing(2);
 
     &__content {
         margin: auto;

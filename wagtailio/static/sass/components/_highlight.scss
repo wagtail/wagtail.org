@@ -1,6 +1,6 @@
 .highlight {
     $root: &;
-    @include sf-spacing();
+    @include sf-spacing(2);
     align-items: center;
     grid-auto-flow: dense;
 
