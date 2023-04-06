@@ -62,9 +62,6 @@ RUN poetry install --only-root
 COPY --chown=wagtailio --from=frontend ./wagtailio/static_compiled ./wagtailio/static_compiled
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
-# Run application
-CMD gunicorn wagtailio.wsgi:application
-
 
 # This stage builds the image that we use for development
 FROM backend AS dev
