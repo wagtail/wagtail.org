@@ -30,12 +30,8 @@
 }
 
 // Streamfield spacing
-@mixin sf-spacing() {
-    margin-bottom: 50px;
-
-    @include media-query(large) {
-        margin-bottom: 150px;
-    }
+@mixin sf-spacing($multiple) {
+    margin-bottom: 25px * $multiple;
 }
 
 // Adds coloured offset background on the right

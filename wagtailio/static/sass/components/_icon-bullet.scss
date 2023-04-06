@@ -1,10 +1,6 @@
 .icon-bullet {
     margin-bottom: 50px;
 
-    @include media-query(medium) {
-        margin-bottom: 100px;
-    }
-
     &__svg {
         grid-column: 2 / span 2;
         width: 60px;

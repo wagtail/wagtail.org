@@ -1,5 +1,5 @@
 .logo-card-grid {
-    @include sf-spacing();
+    @include sf-spacing(2);
 
     &__heading {
         margin-bottom: 20px;

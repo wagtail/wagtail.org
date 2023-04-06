@@ -1,5 +1,5 @@
 .document {
-    @include sf-spacing();
+    @include sf-spacing(2);
     grid-column: 2 / span 2;
     color: $color--teal;
     transition: color 0.3s;

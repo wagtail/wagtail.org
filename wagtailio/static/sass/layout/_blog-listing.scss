@@ -1,5 +1,5 @@
 .blog-listing {
-    @include sf-spacing();
+    @include sf-spacing(2);
     grid-column: 2 / span 2;
     display: grid;
     grid-template-columns: 1fr;

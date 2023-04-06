@@ -1,6 +1,6 @@
 .sign-up-form {
     $root: &;
-    @include sf-spacing();
+    @include sf-spacing(2);
     grid-column: 2 / span 2;
 
     @include media-query(medium) {
