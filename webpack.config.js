@@ -13,7 +13,7 @@ const projectRoot = 'wagtailio';
 
 const options = {
     entry: {
-        main: `./${projectRoot}/static/js/main.js`,
+        main: `./${projectRoot}/static/js/main.js`
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
