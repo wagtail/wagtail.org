@@ -10,6 +10,8 @@ class State(models.TextChoices):
 
 
 class Item(models.Model):
+    NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
+
     publish = models.BooleanField(default=True)
     needs_sponsorship = models.BooleanField(default=False, editable=False)
     number = models.IntegerField(
@@ -34,6 +36,12 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        labels = set(self.labels.split(","))
+        self.needs_sponsorship = self.NEEDS_SPONSORSHIP_LABEL in labels
+        labels -= {self.NEEDS_SPONSORSHIP_LABEL, ""}
+        self.labels = ",".join(sorted(labels))
 
 
 class Milestone(ClusterableModel):
