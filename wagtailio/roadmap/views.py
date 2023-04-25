@@ -1,5 +1,10 @@
 from django.conf import settings
+from django.db import transaction
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.dateparse import parse_datetime
+from django.views.generic import TemplateView
+from wagtail.admin import messages
 import requests
 
 from wagtailio.roadmap.models import Item, Milestone, State
@@ -80,3 +85,21 @@ def process():
             item.labels = ",".join(labels)
             item.full_clean()
             item.save()
+
+
+class ImportView(TemplateView):
+    template_name = "roadmap/import.html"
+
+    def post(self, request):
+        with transaction.atomic():
+            process()
+        messages.success(
+            request,
+            "Successfully updated roadmap data from GitHub.",
+            buttons=[
+                messages.button(
+                    reverse("wagtailsnippets_roadmap_milestone:list"), "View"
+                )
+            ],
+        )
+        return redirect("roadmap:import")

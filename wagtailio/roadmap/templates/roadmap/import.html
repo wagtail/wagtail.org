@@ -1,0 +1,21 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags %}
+
+{% block titletag %}GitHub Roadmap{% endblock %}
+
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title='GitHub Roadmap' icon='crosshairs' %}
+
+    <div class="nice-padding">
+        <h2>Import</h2>
+        <p>
+            Import roadmap data from
+            <a href="https://github.com/wagtail/roadmap">wagtail/roadmap</a>.
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="button button-longrunning">Import</button>
+        </form>
+    </div>
+
+{% endblock %}
