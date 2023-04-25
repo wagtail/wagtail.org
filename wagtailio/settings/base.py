@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     "wagtailio.blog",
     "wagtailio.features",
     "wagtailio.packages",
+    "wagtailio.roadmap",
     "wagtailio.services",
     "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
