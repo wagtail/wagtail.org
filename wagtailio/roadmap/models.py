@@ -7,11 +7,10 @@ from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
-from wagtail.models import Page, index
+from wagtail.models import Orderable, Page, index
 
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
-
 
 warning = """
 Control whether this item should be published.
@@ -54,11 +53,12 @@ class RoadmapPage(Page, SocialMediaMixin):
         return context
 
 
-class Item(models.Model):
+class Item(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
 
     publish = models.BooleanField(default=True)
     needs_sponsorship = models.BooleanField(default=False, editable=False)
+    sponsorship_url = models.URLField(blank=True, verbose_name="Sponsorship URL")
     number = models.IntegerField(
         unique=True,
         editable=False,
@@ -77,6 +77,7 @@ class Item(models.Model):
 
     panels = [
         FieldPanel("publish", help_text=warning),
+        FieldPanel("sponsorship_url"),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),
@@ -90,6 +91,7 @@ class Item(models.Model):
     class Meta:
         verbose_name = _("roadmap item")
         verbose_name_plural = _("roadmap items")
+        ordering = ["sort_order", "number"]
 
     def __str__(self):
         return self.title
