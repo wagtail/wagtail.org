@@ -8,6 +8,7 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page, index
 
@@ -143,7 +144,7 @@ class Milestone(ClusterableModel):
         verbose_name_plural = _("roadmap milestones")
         ordering = ["-due_on"]
 
-    @property
+    @cached_property
     def display_title(self):
         # Special case: Future
         if not self.due_on:
@@ -151,13 +152,16 @@ class Milestone(ClusterableModel):
         # e.g. August 2022
         return date(self.due_on, "F Y")
 
-    @property
+    @cached_property
     def display_subtitle(self):
         # Special case: Future has no subtitle
         if not self.due_on:
             return ""
         # e.g. v5.0
         return self.title
+
+    def get_admin_url(self):
+        return AdminURLFinder().get_edit_url(self)
 
     def __str__(self):
         return f"{self.display_title} - {self.display_subtitle}".strip(" -")
