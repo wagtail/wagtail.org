@@ -14,7 +14,12 @@
         </p>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="button button-longrunning">Import</button>
+            <button type="submit" name="import-active" class="button button-longrunning">
+                Import active milestones
+            </button>
+            <button type="submit" name="import-all" class="button button-longrunning">
+                Import all milestones
+            </button>
         </form>
     </div>
 
