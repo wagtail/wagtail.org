@@ -1,3 +1,5 @@
+from functools import cached_property
+
 from django import forms
 from django.db import models
 from django.template.defaultfilters import date
@@ -97,10 +99,19 @@ class Item(Orderable):
         return self.title
 
     def clean(self):
-        labels = set(self.labels.split(","))
-        self.needs_sponsorship = self.NEEDS_SPONSORSHIP_LABEL in labels
-        labels -= {self.NEEDS_SPONSORSHIP_LABEL, ""}
-        self.labels = ",".join(sorted(labels))
+        self.labels = ",".join(self.labels_set)
+
+    @cached_property
+    def labels_set(self):
+        return set(self.labels.split(",")) - {""}
+
+    @cached_property
+    def labels_list(self):
+        return list(sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL}))
+
+    @cached_property
+    def needs_sponsorship(self):
+        return self.NEEDS_SPONSORSHIP_LABEL in self.labels_set
 
 
 class Milestone(ClusterableModel):
