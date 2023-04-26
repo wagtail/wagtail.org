@@ -23,6 +23,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         "newsletter.NewsletterIndexPage",
         "standardpage.StandardPage",
         "packages.PackagesPage",
+        "roadmap.RoadmapPage",
         "services.ServicesPage",
     ]
 
