@@ -12,11 +12,12 @@ from wagtailio.roadmap.models import Item, Milestone, State
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
 
-graphql_query = {
-    "query": """
-        query {
+
+def get_graphql_query():
+    return """
+        query RoadmapData($states: [MilestoneState!]) {
           repository(owner: "wagtail", name: "roadmap") {
-            milestones(first: 20, states: [OPEN], orderBy: {field: DUE_DATE, direction: ASC}) {
+            milestones(first: 20, states: $states, orderBy: {field: DUE_DATE, direction: ASC}) {
               nodes {
                 number
                 state
@@ -40,9 +41,8 @@ graphql_query = {
             }
           }
         }
-    """,
-    "variables": {},
-}
+    """
+
 
 headers = {
     "Authorization": f"Bearer {settings.GITHUB_ACCESS_TOKEN}",
@@ -50,11 +50,18 @@ headers = {
 }
 
 
-def process():
+def process(import_all=True):
+    states = ["OPEN"]
+    if import_all:
+        states.append("CLOSED")
+
     response = requests.post(
         GITHUB_GRAPHQL_API_URL,
         headers=headers,
-        json=graphql_query,
+        json={
+            "query": get_graphql_query(),
+            "variables": {"states": states},
+        },
     )
     data = response.json()["data"]
     milestone_nodes = data["repository"]["milestones"]["nodes"]
@@ -91,8 +98,10 @@ class ImportView(TemplateView):
     template_name = "roadmap/import.html"
 
     def post(self, request):
+        import_all = "import-all" in request.POST
         with transaction.atomic():
-            process()
+            process(import_all=import_all)
+
         messages.success(
             request,
             "Successfully updated roadmap data from GitHub.",
