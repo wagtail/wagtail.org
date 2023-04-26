@@ -6,7 +6,6 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.snippets.models import register_snippet
 
 
 warning = """
@@ -70,7 +69,6 @@ class Item(models.Model):
         self.labels = ",".join(sorted(labels))
 
 
-@register_snippet
 class Milestone(ClusterableModel):
     publish = models.BooleanField(default=True)
     number = models.IntegerField(
