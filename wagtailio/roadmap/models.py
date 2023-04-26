@@ -6,6 +6,11 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import StreamField
+from wagtail.models import Page, index
+
+from wagtailio.core.blocks import ContentStoryBlock
+from wagtailio.utils.models import SocialMediaMixin
 
 
 warning = """
@@ -20,6 +25,33 @@ readonly = forms.TextInput(attrs={"readonly": True})
 class State(models.TextChoices):
     OPEN = "OPEN", "Open"
     CLOSED = "CLOSED", "Closed"
+
+
+class RoadmapPage(Page, SocialMediaMixin):
+    parent_page_types = ["core.HomePage"]
+    subpage_types = []
+
+    body = StreamField(ContentStoryBlock(), use_json_field=True)
+
+    content_panels = Page.content_panels + [FieldPanel("body")]
+
+    promote_panels = Page.promote_panels + SocialMediaMixin.panels
+
+    search_fields = Page.search_fields + [
+        index.SearchField("body"),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        items = Item.objects.filter(publish=True).order_by("sort_order")
+        context.update(
+            {
+                "milestones": Milestone.objects.filter(publish=True)
+                .order_by(models.F("due_on").asc(nulls_last=True))
+                .prefetch_related(models.Prefetch("items", queryset=items))
+            }
+        )
+        return context
 
 
 class Item(models.Model):
