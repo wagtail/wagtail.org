@@ -115,6 +115,14 @@ class ImportView(TemplateView):
     template_name = "roadmap/import.html"
 
     def post(self, request):
+        if not settings.GITHUB_ACCESS_TOKEN:
+            messages.error(
+                request,
+                "No GitHub access token set. Please set the GITHUB_ACCESS_TOKEN "
+                "environment variable.",
+            )
+            return redirect("roadmap:import")
+
         import_all = "import-all" in request.POST
         with transaction.atomic():
             process(import_all=import_all)
