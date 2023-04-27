@@ -30,7 +30,11 @@ $weight--medium: 500;
 $weight--regular: 400;
 
 // Breakpoints
-$breakpoints: ('medium' '(min-width: 599px)', 'large' '(min-width: 1023px)');
+$breakpoints: (
+    'medium' '(min-width: 599px)',
+    'large' '(min-width: 1023px)',
+    'extra-large' '(min-width: 1279px)'
+);
 
 // One off breakpoints
 $header-desktop: 1200px; // point at which we move to burger menu
