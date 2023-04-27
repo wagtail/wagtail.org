@@ -3,11 +3,12 @@ from django.utils.translation import gettext_lazy as _
 
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
+from wagtail.admin.ui.tables import StatusTagColumn
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet
 
 from wagtailio.roadmap import views
-from wagtailio.roadmap.models import Milestone
+from wagtailio.roadmap.models import Milestone, State
 
 
 @hooks.register("register_admin_urls")
@@ -29,6 +30,23 @@ def register_roadmap_menu_item():
 
 
 class MilestoneViewSet(SnippetViewSet):
+    list_display = [
+        "display_title",
+        "title",
+        StatusTagColumn(
+            "state",
+            sort_key="state",
+            primary=lambda x: x.state == State.OPEN,
+        ),
+        StatusTagColumn(
+            "publish",
+            label="Published",
+            sort_key="publish",
+            accessor=lambda x: "published" if x.publish else "hidden",
+            primary=lambda x: x.publish,
+        ),
+    ]
+
     def get_url_name(self, view_name):
         if view_name == "add":
             return "roadmap:import"
