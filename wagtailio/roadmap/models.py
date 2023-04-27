@@ -4,11 +4,11 @@ from django import forms
 from django.db import models
 from django.template.defaultfilters import date
 from django.utils.translation import gettext_lazy as _
+
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.admin.admin_url_finder import AdminURLFinder
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page, index
 
@@ -122,7 +122,7 @@ class Item(Orderable):
 
     @cached_property
     def labels_list(self):
-        return list(sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL}))
+        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL})
 
     @cached_property
     def needs_sponsorship(self):
