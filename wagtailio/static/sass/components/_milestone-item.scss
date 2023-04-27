@@ -1,0 +1,84 @@
+.milestone-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 20px;
+    background-color: $color--light-grey-100;
+    border-radius: $rounded-md;
+
+    &__heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+        font-weight: $weight--semibold;
+    }
+
+    &__external-link {
+        color: $color--off-black;
+        transition: color $transition;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: $color--teal;
+
+            .icon {
+                opacity: 1;
+            }
+        }
+
+        .icon {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            opacity: .5;
+            margin-inline-end: -8px;
+            margin-top: -8px;
+        }
+    }
+
+    &__labels {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    &__label {
+        font-weight: $weight--medium;
+        color: $color--teal;
+        border: 1px solid $color--teal-100;
+        background-color: $color--teal-300;
+        padding: 2px 8px;
+        white-space: nowrap;
+        border-radius: $rounded-xl;
+    }
+
+    &__sponsor-label {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transform: rotate(-3.56deg);
+        margin-inline-start: auto;
+        margin-inline-end: -22px;
+        width: max-content;
+        white-space: nowrap;
+        font-weight: $weight--semibold;
+        text-decoration: none;
+        color: $color--white;
+        background-color: $color--indigo;
+        padding: 2px 8px;
+
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background-color: $color--teal;
+        }
+    }
+}
