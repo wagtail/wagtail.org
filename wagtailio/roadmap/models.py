@@ -9,7 +9,7 @@ from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.admin.admin_url_finder import AdminURLFinder
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page, index
 
 from wagtailio.core.blocks import ContentStoryBlock
@@ -33,9 +33,21 @@ class RoadmapPage(Page, SocialMediaMixin):
     parent_page_types = ["core.HomePage"]
     subpage_types = []
 
+    sponsorship_page = models.ForeignKey(
+        "core.ContentPage",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text="This will be used as the default link for the 'Sponsor this' label",
+    )
+    fine_print = RichTextField(blank=True)
     body = StreamField(ContentStoryBlock(), use_json_field=True)
 
-    content_panels = Page.content_panels + [FieldPanel("body")]
+    content_panels = Page.content_panels + [
+        FieldPanel("sponsorship_page"),
+        FieldPanel("fine_print"),
+        FieldPanel("body"),
+    ]
 
     promote_panels = Page.promote_panels + SocialMediaMixin.panels
 
