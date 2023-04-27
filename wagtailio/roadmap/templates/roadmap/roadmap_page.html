@@ -41,31 +41,31 @@
                                         </span>
                                         <svg class="icon" aria-hidden="true" viewBox="0 0 100 100">
                                             <use xlink:href="#arrow-up-right-from-square">
-                                        </svg>
-                                    </h4>
-                                </a>
-                                <div class="milestone-item__labels">
-                                    {% for label in item.labels_list %}
-                                        <span class="milestone-item__label">{{ label }}</span>
-                                    {% endfor %}
+                                            </svg>
+                                        </h4>
+                                    </a>
+                                    <div class="milestone-item__labels">
+                                        {% for label in item.labels_list %}
+                                            <span class="milestone-item__label">{{ label }}</span>
+                                        {% endfor %}
+                                    </div>
                                 </div>
-                            </div>
-                            {% if item.needs_sponsorship or item.sponsorship_url %}
-                                {% pageurl page.sponsorship_page item.url as sponsor_url %}
-                                <a
-                                    class="milestone-item__sponsor-label mini-meta"
-                                    href="{% firstof item.sponsorship_url sponsor_url %}"
-                                    {% if item.sponsorship_url or not page.sponsorship_page %}
-                                        target="_blank" rel="noreferrer"
-                                    {% endif %}
-                                >
-                                    Sponsor this
-                                    <svg aria-hidden="true" class="icon" fill="currentColor">
-                                        <use xlink:href="#arrow"></use>
-                                    </svg>
-                                </a>
-                            {% endif %}
-                        </article>
+                                {% if item.needs_sponsorship or item.sponsorship_url %}
+                                    {% pageurl page.sponsorship_page item.url as sponsor_url %}
+                                    <a
+                                        class="milestone-item__sponsor-label mini-meta"
+                                        href="{% firstof item.sponsorship_url sponsor_url %}"
+                                        {% if item.sponsorship_url or not page.sponsorship_page %}
+                                            target="_blank" rel="noreferrer"
+                                        {% endif %}
+                                    >
+                                        Sponsor this
+                                        <svg aria-hidden="true" class="icon" fill="currentColor">
+                                            <use xlink:href="#arrow"></use>
+                                        </svg>
+                                    </a>
+                                {% endif %}
+                            </article>
                     {% endfor %}
                 </div>
 
