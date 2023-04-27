@@ -132,6 +132,16 @@ h4,
     }
 }
 
+.fine-print {
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    @include media-query(large) {
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+    }
+}
+
 small {
     font-size: 1rem;
     line-height: 1.5rem;
