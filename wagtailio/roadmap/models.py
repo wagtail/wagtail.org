@@ -15,11 +15,8 @@ from wagtail.models import Orderable, Page, index
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
 
-warning = """
-Control whether this item should be published.
-To change other data, edit the corresponding item on GitHub
-and go to Settings > Roadmap > Import to synchronise.
-"""
+publish_help = "Control whether this item should be published"
+github_help = "To change this data, edit the corresponding item on GitHub and go to Settings > Roadmap > Import to synchronise"
 
 readonly = forms.TextInput(attrs={"readonly": True})
 
@@ -73,7 +70,11 @@ class Item(Orderable):
 
     publish = models.BooleanField(default=True)
     needs_sponsorship = models.BooleanField(default=False, editable=False)
-    sponsorship_url = models.URLField(blank=True, verbose_name="Sponsorship URL")
+    sponsorship_url = models.URLField(
+        blank=True,
+        verbose_name="Sponsorship URL",
+        help_text="Custom URL to use for the 'Sponsor this' label",
+    )
     number = models.IntegerField(
         unique=True,
         editable=False,
@@ -91,7 +92,7 @@ class Item(Orderable):
     labels = models.TextField(help_text="Comma-separated list of labels", blank=True)
 
     panels = [
-        FieldPanel("publish", help_text=warning),
+        FieldPanel("publish", help_text=publish_help),
         FieldPanel("sponsorship_url"),
         MultiFieldPanel(
             [
@@ -100,6 +101,7 @@ class Item(Orderable):
                 FieldPanel("labels", widget=readonly),
             ],
             heading="GitHub data",
+            help_text=github_help,
         ),
     ]
 
@@ -140,13 +142,14 @@ class Milestone(ClusterableModel):
     url = models.URLField(verbose_name="URL")
 
     panels = [
-        FieldPanel("publish", help_text=warning),
+        FieldPanel("publish", help_text=publish_help),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),
                 FieldPanel("url", widget=readonly),
             ],
             heading="GitHub data",
+            help_text=github_help,
         ),
         InlinePanel("items", heading="Items", label="Item"),
     ]
