@@ -11,6 +11,18 @@
         <p>
             Import roadmap data from
             <a href="https://github.com/wagtail/roadmap">wagtail/roadmap</a>.
+            Roadmap data is retrieved from the repository's
+            <a href="https://github.com/wagtail/roadmap/milestones">Milestones</a>
+            (not the Projects feature).
+        </p>
+        <p>
+            The import will copy the milestones as
+            <a href="{% url 'wagtailsnippets_roadmap_milestone:list' %}">
+                Roadmap Milestone
+            </a>
+            snippets. If instances of the milestones or issues already exist,
+            they will be updated with the latest data from GitHub. Custom data
+            such as the publish flag and sponsorship URL will be preserved.
         </p>
         <form method="post">
             {% csrf_token %}
