@@ -167,6 +167,9 @@ class Milestone(ClusterableModel):
         # e.g. August 2022
         return date(self.due_on, "F Y")
 
+    display_title.admin_order_field = "due_on"
+    display_title.short_description = "Due on"
+
     @cached_property
     def display_subtitle(self):
         # Special case: Future has no subtitle
