@@ -25,8 +25,14 @@
             they will be updated with the latest data from GitHub. Custom data
             such as the sponsorship URL will be preserved.
         </p>
+        <p>
+            An access token is necessary to use GitHub's GraphQL API. To create an access token, see
+            <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">GitHub docs</a>.
+            The token does not need to have any permissions configured.
+        </p>
         <form method="post">
             {% csrf_token %}
+            {% include "wagtailadmin/shared/field.html" with field=form.github_token %}
             <button type="submit" class="button button-longrunning">Import</button>
         </form>
     </div>
