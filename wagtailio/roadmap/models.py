@@ -127,7 +127,7 @@ class MilestoneItem(Orderable):
 
     @cached_property
     def labels_list(self):
-        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL})
+        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL}, key=str.lower)
 
     @cached_property
     def needs_sponsorship(self):
