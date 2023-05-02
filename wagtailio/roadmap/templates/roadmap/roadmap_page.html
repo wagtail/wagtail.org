@@ -12,7 +12,7 @@
             <section class="milestone" id="{{ milestone.display_title|slugify }}" aria-labelledby="{{ milestone.display_title|slugify }}-heading">
 
                 <div class="milestone__header">
-                    {% include "patterns/components/icon/icon.html" with icon="flag" classes="icon--relative" %}
+                    {% include "patterns/components/icon/icon.html" with icon="flag" classes="icon--relative icon--primary" %}
 
                     <h2 class="heading-three milestone__heading" id="{{ milestone.display_title|slugify }}-heading">
                         <a class="milestone__heading-link" href="#{{ milestone.display_title|slugify }}">{{ milestone.display_title }}</a>
@@ -34,9 +34,7 @@
                                         <span>
                                             {{ item.title }}
                                         </span>
-                                        <svg class="icon" aria-hidden="true" viewBox="0 0 100 100">
-                                            <use xlink:href="#arrow-up-right-from-square"></use>
-                                        </svg>
+                                        {% include "patterns/components/icon/icon.html" with icon="arrow-up-right-from-square" variant="simple" %}
                                     </h3>
                                 </a>
                                 <div class="milestone-item__labels">
@@ -61,9 +59,7 @@
                                     {% endif %}
                                 >
                                     Sponsor this
-                                    <svg aria-hidden="true" class="icon" fill="currentColor">
-                                        <use xlink:href="#arrow"></use>
-                                    </svg>
+                                    {% include "patterns/components/icon/icon.html" with icon="arrow" variant="simple" %}
                                 </a>
                             {% endif %}
                         </div>
