@@ -71,7 +71,7 @@ graphql_query = {
 }
 
 headers = {
-    "Authorization": f"Bearer {settings.GITHUB_ACCESS_TOKEN}",
+    "Authorization": f"Bearer {settings.GITHUB_ROADMAP_ACCESS_TOKEN}",
     "Accept": "application/vnd.github+json",
 }
 
@@ -128,10 +128,10 @@ class ImportView(TemplateView):
     template_name = "roadmap/import.html"
 
     def post(self, request):
-        if not settings.GITHUB_ACCESS_TOKEN:
+        if not settings.GITHUB_ROADMAP_ACCESS_TOKEN:
             messages.error(
                 request,
-                "No GitHub access token set. Please set the GITHUB_ACCESS_TOKEN "
+                "No GitHub access token set. Please set the GITHUB_ROADMAP_ACCESS_TOKEN "
                 "environment variable.",
             )
             return redirect("roadmap:import")
