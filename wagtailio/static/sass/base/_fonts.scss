@@ -1,9 +1,20 @@
 // stylelint-disable scale-unlimited/declaration-strict-value
 @font-face {
     font-family: 'Kumbh Sans';
-    src: url('../fonts/KumbhSans-VariableFont_YOPQ,wght.ttf') format('truetype-variations');
-    font-weight: 100 900;
+    src: url('../fonts/KumbhSans-Regular.woff2') format('woff2');
+    font-weight: 400;
     font-display: block;
 }
 
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url('../fonts/KumbhSans-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url('../fonts/KumbhSans-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
 // stylelint-enable scale-unlimited/declaration-strict-value
