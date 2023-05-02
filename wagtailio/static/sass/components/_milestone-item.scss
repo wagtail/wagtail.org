@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    font-size: 12px;
     overflow: hidden;
     padding: 20px;
     background-color: $color--light-grey-100;
@@ -33,8 +32,8 @@
 
         .icon {
             flex-shrink: 0;
-            width: 16px;
-            height: 16px;
+            width: 0.8rem;
+            height: 0.8rem;
             opacity: .5;
             margin-inline-end: -8px;
             margin-top: -8px;
