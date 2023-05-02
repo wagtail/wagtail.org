@@ -37,13 +37,6 @@ class MilestoneViewSet(SnippetViewSet):
             sort_key="state",
             primary=lambda x: x.state == State.OPEN,
         ),
-        StatusTagColumn(
-            "publish",
-            label="Published",
-            sort_key="publish",
-            accessor=lambda x: "published" if x.publish else "hidden",
-            primary=lambda x: x.publish,
-        ),
     ]
 
     def get_url_name(self, view_name):
