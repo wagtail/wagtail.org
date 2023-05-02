@@ -14,7 +14,6 @@ from wagtail.models import Orderable, Page, index
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
 
-publish_help = "Control whether this item should be published"
 github_help = "To change this data, edit the corresponding item on GitHub and then synchronise from Wagtail settings"
 
 readonly = forms.TextInput(attrs={"readonly": True})
@@ -61,10 +60,10 @@ class RoadmapPage(Page, SocialMediaMixin):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        items = MilestoneItem.objects.filter(publish=True).order_by("sort_order")
+        items = MilestoneItem.objects.order_by("sort_order")
         context.update(
             {
-                "milestones": Milestone.objects.filter(publish=True)
+                "milestones": Milestone.objects.filter(state=State.OPEN)
                 .order_by(models.F("due_on").asc(nulls_last=True))
                 .prefetch_related(models.Prefetch("items", queryset=items))
             }
@@ -75,7 +74,6 @@ class RoadmapPage(Page, SocialMediaMixin):
 class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
 
-    publish = models.BooleanField(default=True, help_text=publish_help)
     needs_sponsorship = models.BooleanField(default=False, editable=False)
     sponsorship_url = models.URLField(
         blank=True,
@@ -99,7 +97,6 @@ class MilestoneItem(Orderable):
     labels = models.TextField(help_text="Comma-separated list of labels", blank=True)
 
     panels = [
-        FieldPanel("publish"),
         FieldPanel("sponsorship_url"),
         MultiFieldPanel(
             [
@@ -138,7 +135,6 @@ class MilestoneItem(Orderable):
 
 
 class Milestone(ClusterableModel):
-    publish = models.BooleanField(default=True, help_text=publish_help)
     number = models.IntegerField(
         unique=True,
         editable=False,
@@ -150,7 +146,6 @@ class Milestone(ClusterableModel):
     url = models.URLField(verbose_name="URL")
 
     panels = [
-        FieldPanel("publish"),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),

@@ -9,7 +9,7 @@ from wagtail.admin import messages
 
 import requests
 
-from wagtailio.roadmap.models import Milestone, MilestoneItem, State
+from wagtailio.roadmap.models import Milestone, MilestoneItem
 
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
@@ -75,7 +75,6 @@ def process(import_all=True):
         milestone, _ = Milestone.objects.update_or_create(
             number=node["number"],
             defaults={
-                "publish": node["state"] == State.OPEN,
                 "state": node["state"],
                 "due_on": due_on,
                 "title": node["title"],
