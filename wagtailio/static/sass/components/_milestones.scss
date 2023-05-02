@@ -2,12 +2,12 @@
     position: relative;
 
     &__border {
+        @include z-index(under);
         position: absolute;
         top: 0;
         inset-inline-start: 24px;
         height: 100%;
         border-inline-start: 2px dashed $color--light-grey;
-        z-index: -999;
         grid-column: 2;
     }
 
@@ -67,20 +67,12 @@
         color: $color--off-black;
         text-decoration: none;
         transition: color $transition;
-
-        &--edit {
-            font-size: 15px;
-
-            &:hover,
-            &:focus {
-                opacity: 0.6;
-            }
-        }
     }
 
     &__items {
         display: grid;
         grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
         gap: 20px;
 
         @include media-query(medium) {
