@@ -6,13 +6,19 @@
     overflow: hidden;
     padding: 20px;
     background-color: $color--light-grey-100;
+    border: 1px solid transparent;
     border-radius: $rounded-md;
 
     &__heading {
+        $padding: 18px;
         display: flex;
         justify-content: space-between;
         gap: 12px;
-        margin-bottom: 16px;
+        margin-inline-start: -$padding;
+        margin-inline-end: -$padding;
+        margin-top: -$padding;
+        padding: $padding;
+        margin-bottom: 6px;
         font-weight: $weight--semibold;
     }
 
@@ -22,7 +28,7 @@
         text-decoration: none;
 
         &:hover,
-        &:focus {
+        &:focus-visible {
             color: $color--teal;
 
             .icon {
@@ -31,12 +37,17 @@
         }
 
         .icon {
+            fill: inherit;
             flex-shrink: 0;
             width: 0.8rem;
             height: 0.8rem;
             opacity: .5;
             margin-inline-end: -8px;
             margin-top: -8px;
+
+            @media (forced-colors: active) {
+                fill: CanvasText;
+            }
         }
     }
 
@@ -68,6 +79,7 @@
         font-weight: $weight--semibold;
         text-decoration: none;
         color: $color--white;
+        border: 1px solid transparent;
         background-color: $color--indigo;
         padding: 2px 8px;
 
@@ -76,8 +88,9 @@
             height: 16px;
         }
 
-        &:hover {
+        &:hover, &:focus-visible {
             background-color: $color--teal;
+            outline-offset: 4px;
         }
     }
 }
