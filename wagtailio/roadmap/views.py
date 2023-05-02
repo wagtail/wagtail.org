@@ -14,35 +14,59 @@ from wagtailio.roadmap.models import Milestone, MilestoneItem
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
 
+milestones_query = """
+    nodes {
+      number
+      state
+      title
+      url
+      dueOn
+      issues(first: 100) {
+        nodes {
+          number
+          state
+          title
+          url
+          labels(first: 10, orderBy: {field: NAME, direction: ASC}) {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+"""
+
 graphql_query = {
     "query": """
         query {
           repository(owner: "wagtail", name: "roadmap") {
-            milestones(first: 20, states: [OPEN], orderBy: {field: DUE_DATE, direction: ASC}) {
-              nodes {
-                number
-                state
-                title
-                url
-                dueOn
-                issues(first: 100) {
-                  nodes {
-                    number
-                    state
-                    title
-                    url
-                    labels(first: 10, orderBy: {field: NAME, direction: ASC}) {
-                      nodes {
-                        name
-                      }
-                    }
-                  }
-                }
-              }
+
+            # "Future" milestone has no due date, fetch separately because
+            # null values are sorted last in descending order.
+            future: milestones(
+              first: 1
+              states: [OPEN]
+              query: "Future"
+            ) {
+              %(milestones_query)s
             }
+
+            # Version milestones, sort by due date descending so that the most recent
+            # versions are always retrieved when we have more than 20 open milestones.
+            versions: milestones(
+              first: 20
+              states: [OPEN]
+              orderBy: {field: DUE_DATE, direction: DESC}
+              query: "v"
+            ) {
+              %(milestones_query)s
+            }
+
           }
         }
-    """,
+    """
+    % {"milestones_query": milestones_query},
     "variables": {},
 }
 
@@ -59,7 +83,8 @@ def process():
         json=graphql_query,
     )
     data = response.json()["data"]
-    milestone_nodes = data["repository"]["milestones"]["nodes"]
+    repo = data["repository"]
+    milestone_nodes = repo["future"]["nodes"] + repo["versions"]["nodes"]
     seen_milestone_numbers = set()
     seen_item_numbers = set()
 
