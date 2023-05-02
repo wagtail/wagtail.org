@@ -1,5 +1,4 @@
 from django.urls import include, path, reverse
-from django.utils.translation import gettext_lazy as _
 
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
@@ -22,7 +21,7 @@ def register_admin_urls():
 @hooks.register("register_settings_menu_item")
 def register_roadmap_menu_item():
     return MenuItem(
-        _("GitHub Roadmap"),
+        "GitHub Roadmap",
         reverse("roadmap:import"),
         icon_name="crosshairs",
         order=1100,

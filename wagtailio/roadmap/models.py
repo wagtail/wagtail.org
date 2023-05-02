@@ -3,7 +3,6 @@ from functools import cached_property
 from django import forms
 from django.db import models
 from django.template.defaultfilters import date
-from django.utils.translation import gettext_lazy as _
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -106,8 +105,8 @@ class Item(Orderable):
     ]
 
     class Meta:
-        verbose_name = _("roadmap item")
-        verbose_name_plural = _("roadmap items")
+        verbose_name = "roadmap item"
+        verbose_name_plural = "roadmap items"
         ordering = ["sort_order", "number"]
 
     def __str__(self):
@@ -155,8 +154,8 @@ class Milestone(ClusterableModel):
     ]
 
     class Meta:
-        verbose_name = _("roadmap milestone")
-        verbose_name_plural = _("roadmap milestones")
+        verbose_name = "roadmap milestone"
+        verbose_name_plural = "roadmap milestones"
         ordering = ["-due_on"]
 
     @cached_property

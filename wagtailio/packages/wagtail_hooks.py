@@ -1,5 +1,4 @@
 from django.urls import path, reverse
-from django.utils.translation import gettext_lazy as _
 
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
@@ -49,5 +48,5 @@ def register_admin_urls():
 @hooks.register("register_settings_menu_item")
 def register_styleguide_menu_item():
     return MenuItem(
-        _("Django Packages"), reverse("package_index"), icon_name="image", order=1000
+        ("Django Packages"), reverse("package_index"), icon_name="image", order=1000
     )
