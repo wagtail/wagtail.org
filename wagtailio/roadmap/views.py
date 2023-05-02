@@ -3,12 +3,13 @@ from django.db import transaction
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.dateparse import parse_datetime
-from django.views.generic import TemplateView
+from django.views.generic import FormView
 
 from wagtail.admin import messages
 
 import requests
 
+from wagtailio.roadmap.forms import ImportForm
 from wagtailio.roadmap.models import Milestone, MilestoneItem
 
 GITHUB_API_HOST = "https://api.github.com"
@@ -70,19 +71,25 @@ graphql_query = {
     "variables": {},
 }
 
-headers = {
-    "Authorization": f"Bearer {settings.GITHUB_ROADMAP_ACCESS_TOKEN}",
-    "Accept": "application/vnd.github+json",
-}
 
+def process(token=""):
+    if not token:
+        token = settings.GITHUB_ROADMAP_ACCESS_TOKEN
 
-def process():
     response = requests.post(
         GITHUB_GRAPHQL_API_URL,
-        headers=headers,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+        },
         json=graphql_query,
     )
-    data = response.json()["data"]
+    data = response.json().get("data")
+    if not data:
+        raise ValueError(
+            "Unable to import data from GitHub. Make sure the token is valid."
+        )
+
     repo = data["repository"]
     milestone_nodes = repo["future"]["nodes"] + repo["versions"]["nodes"]
     seen_milestone_numbers = set()
@@ -124,23 +131,20 @@ def process():
     )
 
 
-class ImportView(TemplateView):
+class ImportView(FormView):
     template_name = "roadmap/import.html"
+    form_class = ImportForm
 
-    def post(self, request):
-        if not settings.GITHUB_ROADMAP_ACCESS_TOKEN:
-            messages.error(
-                request,
-                "No GitHub access token set. Please set the GITHUB_ROADMAP_ACCESS_TOKEN "
-                "environment variable.",
-            )
+    def form_valid(self, form):
+        try:
+            with transaction.atomic():
+                process(token=form.cleaned_data.get("github_token"))
+        except ValueError as e:
+            messages.error(self.request, str(e))
             return redirect("roadmap:import")
 
-        with transaction.atomic():
-            process()
-
         messages.success(
-            request,
+            self.request,
             "Successfully updated roadmap data from GitHub.",
             buttons=[
                 messages.button(
