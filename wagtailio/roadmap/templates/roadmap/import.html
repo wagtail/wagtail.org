@@ -13,7 +13,8 @@
             <a href="https://github.com/wagtail/roadmap">wagtail/roadmap</a>.
             Roadmap data is retrieved from the repository's
             <a href="https://github.com/wagtail/roadmap/milestones">Milestones</a>
-            (not the Projects feature).
+            (not the Projects feature). Only milestones that are in an "open" state
+            will be imported.
         </p>
         <p>
             The import will copy the milestones as
@@ -26,12 +27,7 @@
         </p>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" name="import-active" class="button button-longrunning">
-                Import active milestones
-            </button>
-            <button type="submit" name="import-all" class="button button-longrunning">
-                Import all milestones
-            </button>
+            <button type="submit" class="button button-longrunning">Import</button>
         </form>
     </div>
 
