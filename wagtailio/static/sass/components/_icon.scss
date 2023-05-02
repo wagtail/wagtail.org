@@ -21,6 +21,10 @@
         transition: transform 0.15s ease-out, fill 0.15s ease-out;
     }
 
+    &--primary &__svg-bg {
+        fill: $color--eggshell;
+    }
+
     &__svg-fg {
         fill: transparent;
         stroke: $color--black;

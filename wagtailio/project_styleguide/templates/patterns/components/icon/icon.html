@@ -1,15 +1,21 @@
-<div class="icon {% if classes %}{{ classes }}{% endif %}" aria-hidden="true">
-    {% if icon %}
-        <svg class="icon__svg">
-            <use xlink:href="#{{ icon }}" class="icon__svg-bg" />
-        </svg>
-        <svg class="icon__svg">
-            <use xlink:href="#{{ icon }}" class="icon__svg-fg" />
-        </svg>
-    {% endif %}
-    {% if overlay_icon %}
-        <svg class="icon__svg">
-            <use xlink:href="#{{ overlay_icon }}" class="icon__svg-overlay" />
-        </svg>
-    {% endif %}
-</div>
+{% if variant == "simple" %}
+    <svg aria-hidden="true" class="icon {% if classes %}{{ classes }}{% endif %}" fill="currentColor">
+        <use xlink:href="#{{ icon }}"></use>
+    </svg>
+{% else %}
+    <div class="icon {% if classes %}{{ classes }}{% endif %}" aria-hidden="true">
+        {% if icon %}
+            <svg class="icon__svg">
+                <use xlink:href="#{{ icon }}" class="icon__svg-bg" />
+            </svg>
+            <svg class="icon__svg">
+                <use xlink:href="#{{ icon }}" class="icon__svg-fg" />
+            </svg>
+        {% endif %}
+        {% if overlay_icon %}
+            <svg class="icon__svg">
+                <use xlink:href="#{{ overlay_icon }}" class="icon__svg-overlay" />
+            </svg>
+        {% endif %}
+    </div>
+{% endif %}
