@@ -9,17 +9,17 @@
         <div class="milestones__border"></div>
 
         {% for milestone in milestones %}
-            <section class="milestone" id="{{ milestone.display_title|slugify }}">
+            <section class="milestone" id="{{ milestone.display_title|slugify }}" aria-labelledby="{{ milestone.display_title|slugify }}-heading">
 
                 <div class="milestone__header">
                     {% include "patterns/components/icon/icon.html" with icon="flag" classes="icon--relative" %}
 
-                    <h3 class="heading-three milestone__heading">
+                    <h2 class="heading-three milestone__heading" id="{{ milestone.display_title|slugify }}-heading">
                         <a class="milestone__heading-link" href="#{{ milestone.display_title|slugify }}">{{ milestone.display_title }}</a>
                         {% if milestone.display_subtitle %}
                             <span class="milestone__heading-subtitle">{{ milestone.display_subtitle }}</span>
                         {% endif %}
-                    </h3>
+                    </h2>
                     {% if perms.roadmap.change_milestone %}
                         <a class="milestone__heading-link milestone__heading-link--edit" href="{{ milestone.get_admin_url }}">✏️</a>
                     {% endif %}
@@ -27,40 +27,46 @@
 
                 <div class="milestone__items grid">
                     {% for item in milestone.items.all %}
-                        <article class="milestone-item">
+                        <div class="milestone-item">
                             <div>
                                 <a class="milestone-item__external-link" href="{{ item.url }}" target="_blank" rel="noreferrer">
-                                    <h4 class="milestone-item__heading teaser-intro">
+                                    <h3 class="milestone-item__heading teaser-intro" id="milestone-item-{{ item.number }}">
                                         <span>
                                             {{ item.title }}
                                         </span>
                                         <svg class="icon" aria-hidden="true" viewBox="0 0 100 100">
-                                            <use xlink:href="#arrow-up-right-from-square">
-                                            </svg>
-                                        </h4>
-                                    </a>
-                                    <div class="milestone-item__labels">
-                                        {% for label in item.labels_list %}
-                                            <span class="milestone-item__label">{{ label }}</span>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                {% if item.needs_sponsorship or item.sponsorship_url %}
-                                    {% pageurl page.sponsorship_page item.url as sponsor_url %}
-                                    <a
-                                        class="milestone-item__sponsor-label mini-meta"
-                                        href="{% firstof item.sponsorship_url sponsor_url %}"
-                                        {% if item.sponsorship_url or not page.sponsorship_page %}
-                                            target="_blank" rel="noreferrer"
-                                        {% endif %}
-                                    >
-                                        Sponsor this
-                                        <svg aria-hidden="true" class="icon" fill="currentColor">
-                                            <use xlink:href="#arrow"></use>
+                                            <use xlink:href="#arrow-up-right-from-square"></use>
                                         </svg>
-                                    </a>
-                                {% endif %}
-                            </article>
+                                    </h3>
+                                </a>
+                                <div class="milestone-item__labels">
+                                    <span class="u-sr-only">Labels</span>
+                                    {% for label in item.labels_list %}
+                                        <span class="milestone-item__label">{{ label }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% if item.needs_sponsorship %}
+                                {% comment %}
+                                    Fallback to item.url (GitHub URL) to avoid crashing
+                                    if the sponsorship_page foreign key is unset.
+                                {% endcomment %}
+                                {% pageurl page.sponsorship_page item.url as sponsor_url %}
+                                <a
+                                    class="milestone-item__sponsor-label mini-meta"
+                                    aria-describedby="milestone-item-{{ item.number }}"
+                                    href="{% firstof item.sponsorship_url sponsor_url %}"
+                                    {% if item.sponsorship_url or not page.sponsorship_page %}
+                                        target="_blank" rel="noreferrer"
+                                    {% endif %}
+                                >
+                                    Sponsor this
+                                    <svg aria-hidden="true" class="icon" fill="currentColor">
+                                        <use xlink:href="#arrow"></use>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
 
