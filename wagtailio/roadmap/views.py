@@ -14,12 +14,11 @@ from wagtailio.roadmap.models import Milestone, MilestoneItem
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
 
-
-def get_graphql_query():
-    return """
-        query RoadmapData($states: [MilestoneState!]) {
+graphql_query = {
+    "query": """
+        query {
           repository(owner: "wagtail", name: "roadmap") {
-            milestones(first: 20, states: $states, orderBy: {field: DUE_DATE, direction: ASC}) {
+            milestones(first: 20, states: [OPEN], orderBy: {field: DUE_DATE, direction: ASC}) {
               nodes {
                 number
                 state
@@ -43,8 +42,9 @@ def get_graphql_query():
             }
           }
         }
-    """
-
+    """,
+    "variables": {},
+}
 
 headers = {
     "Authorization": f"Bearer {settings.GITHUB_ACCESS_TOKEN}",
@@ -52,18 +52,11 @@ headers = {
 }
 
 
-def process(import_all=True):
-    states = ["OPEN"]
-    if import_all:
-        states.append("CLOSED")
-
+def process():
     response = requests.post(
         GITHUB_GRAPHQL_API_URL,
         headers=headers,
-        json={
-            "query": get_graphql_query(),
-            "variables": {"states": states},
-        },
+        json=graphql_query,
     )
     data = response.json()["data"]
     milestone_nodes = data["repository"]["milestones"]["nodes"]
@@ -98,10 +91,6 @@ def process(import_all=True):
             item.full_clean()
             item.save()
 
-    # If importing all milestones, remove milestones that are not in the response.
-    if import_all:
-        Milestone.objects.exclude(number__in=seen_milestone_numbers).delete()
-
     # Remove items that are no longer attached to the seen milestones.
     (
         MilestoneItem.objects.filter(milestone__number__in=seen_milestone_numbers)
@@ -122,9 +111,8 @@ class ImportView(TemplateView):
             )
             return redirect("roadmap:import")
 
-        import_all = "import-all" in request.POST
         with transaction.atomic():
-            process(import_all=import_all)
+            process()
 
         messages.success(
             request,
