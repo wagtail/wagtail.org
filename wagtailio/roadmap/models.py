@@ -29,6 +29,11 @@ class RoadmapPage(Page, SocialMediaMixin):
     parent_page_types = ["core.HomePage"]
     subpage_types = []
 
+    intro = RichTextField(
+        verbose_name="Intro",
+        blank=True,
+        features=["bold", "italic", "link"],
+    )
     sponsorship_page = models.ForeignKey(
         "core.ContentPage",
         on_delete=models.SET_NULL,
@@ -40,6 +45,7 @@ class RoadmapPage(Page, SocialMediaMixin):
     body = StreamField(ContentStoryBlock(), use_json_field=True)
 
     content_panels = Page.content_panels + [
+        FieldPanel("intro"),
         FieldPanel("sponsorship_page"),
         FieldPanel("fine_print"),
         FieldPanel("body"),
@@ -48,7 +54,9 @@ class RoadmapPage(Page, SocialMediaMixin):
     promote_panels = Page.promote_panels + SocialMediaMixin.panels
 
     search_fields = Page.search_fields + [
+        index.SearchField("intro"),
         index.SearchField("body"),
+        index.SearchField("fine_print"),
     ]
 
     def get_context(self, request, *args, **kwargs):
@@ -107,7 +115,7 @@ class Item(Orderable):
     class Meta:
         verbose_name = "roadmap item"
         verbose_name_plural = "roadmap items"
-        ordering = ["sort_order", "number"]
+        ordering = ["sort_order"]
 
     def __str__(self):
         return self.title
@@ -117,6 +125,7 @@ class Item(Orderable):
 
     @cached_property
     def labels_set(self):
+        # Return an empty set if labels string is empty, to avoid returning {""}
         return set(self.labels.split(",")) - {""}
 
     @cached_property
