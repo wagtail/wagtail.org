@@ -61,7 +61,7 @@ class RoadmapPage(Page, SocialMediaMixin):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        items = Item.objects.filter(publish=True).order_by("sort_order")
+        items = MilestoneItem.objects.filter(publish=True).order_by("sort_order")
         context.update(
             {
                 "milestones": Milestone.objects.filter(publish=True)
@@ -72,7 +72,7 @@ class RoadmapPage(Page, SocialMediaMixin):
         return context
 
 
-class Item(Orderable):
+class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
 
     publish = models.BooleanField(default=True, help_text=publish_help)
@@ -113,8 +113,8 @@ class Item(Orderable):
     ]
 
     class Meta:
-        verbose_name = "roadmap item"
-        verbose_name_plural = "roadmap items"
+        verbose_name = "roadmap milestone item"
+        verbose_name_plural = "roadmap milestone items"
         ordering = ["sort_order"]
 
     def __str__(self):
