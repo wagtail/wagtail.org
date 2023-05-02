@@ -9,7 +9,7 @@ from wagtail.admin import messages
 
 import requests
 
-from wagtailio.roadmap.models import Item, Milestone, State
+from wagtailio.roadmap.models import Milestone, MilestoneItem, State
 
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
@@ -86,9 +86,9 @@ def process(import_all=True):
 
         for issue in node["issues"]["nodes"]:
             labels = {label["name"] for label in issue["labels"]["nodes"]}
-            item = Item.objects.filter(number=issue["number"]).first()
+            item = MilestoneItem.objects.filter(number=issue["number"]).first()
             if not item:
-                item = Item(number=issue["number"])
+                item = MilestoneItem(number=issue["number"])
             seen_item_numbers.add(issue["number"])
 
             item.state = issue["state"]
@@ -105,7 +105,7 @@ def process(import_all=True):
 
     # Remove items that are no longer attached to the seen milestones.
     (
-        Item.objects.filter(milestone__number__in=seen_milestone_numbers)
+        MilestoneItem.objects.filter(milestone__number__in=seen_milestone_numbers)
         .exclude(number__in=seen_item_numbers)
         .delete()
     )
