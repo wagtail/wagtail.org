@@ -2,13 +2,8 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% block content %}
-    <div class="grid">
-        <div class="hero hero--small-margin">
-            <div class="hero__inner">
-                <h1 class="hero__heading">{{ page.title }}</h1>
-            </div>
-        </div>
-    </div>
+
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
 
     <div class="grid milestones">
         <div class="milestones__border"></div>
