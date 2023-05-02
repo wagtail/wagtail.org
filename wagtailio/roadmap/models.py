@@ -15,7 +15,7 @@ from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
 
 publish_help = "Control whether this item should be published"
-github_help = "To change this data, edit the corresponding item on GitHub and go to Settings > Roadmap > Import to synchronise"
+github_help = "To change this data, edit the corresponding item on GitHub and then synchronise from Wagtail settings"
 
 readonly = forms.TextInput(attrs={"readonly": True})
 
@@ -67,7 +67,7 @@ class RoadmapPage(Page, SocialMediaMixin):
 class Item(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
 
-    publish = models.BooleanField(default=True)
+    publish = models.BooleanField(default=True, help_text=publish_help)
     needs_sponsorship = models.BooleanField(default=False, editable=False)
     sponsorship_url = models.URLField(
         blank=True,
@@ -91,7 +91,7 @@ class Item(Orderable):
     labels = models.TextField(help_text="Comma-separated list of labels", blank=True)
 
     panels = [
-        FieldPanel("publish", help_text=publish_help),
+        FieldPanel("publish"),
         FieldPanel("sponsorship_url"),
         MultiFieldPanel(
             [
@@ -99,7 +99,7 @@ class Item(Orderable):
                 FieldPanel("url", widget=readonly),
                 FieldPanel("labels", widget=readonly),
             ],
-            heading="GitHub data",
+            heading="GitHub data (read-only)",
             help_text=github_help,
         ),
     ]
@@ -129,7 +129,7 @@ class Item(Orderable):
 
 
 class Milestone(ClusterableModel):
-    publish = models.BooleanField(default=True)
+    publish = models.BooleanField(default=True, help_text=publish_help)
     number = models.IntegerField(
         unique=True,
         editable=False,
@@ -141,13 +141,13 @@ class Milestone(ClusterableModel):
     url = models.URLField(verbose_name="URL")
 
     panels = [
-        FieldPanel("publish", help_text=publish_help),
+        FieldPanel("publish"),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),
                 FieldPanel("url", widget=readonly),
             ],
-            heading="GitHub data",
+            heading="GitHub data (read-only)",
             help_text=github_help,
         ),
         InlinePanel("items", heading="Items", label="Item"),
