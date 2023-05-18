@@ -15,6 +15,9 @@ from wagtail.blocks import (
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
+
+from wagtailio.core.blocks import TeaserBlock
 
 from markdown import markdown
 from pygments import highlight
@@ -205,6 +208,7 @@ class StoryBlock(StreamBlock):
     intro = RichTextBlock(
         icon="pilcrow",
         template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
+        group= "DO NOT USE",
     )
     paragraph = RichTextBlock(
         icon="pilcrow",
@@ -222,12 +226,12 @@ class StoryBlock(StreamBlock):
         icon="doc-full-inverse",
         template="patterns/components/streamfields/document/document.html",
     )
-    imagecaption = ImageAndCaptionBlock(label="Image caption")  # to be removed
-    textimage = TextAndImageBlock(icon="image")  # uses text_and_media_block.html
-    colourtext = BackgroundColourTextBlock(icon="pilcrow")  # to be removed
-    calltoaction = CallToActionBlock(icon="pilcrow")  # to be removed
-    tripleimage = TripleImageBlock(icon="image")  # to be removed
-    stats = ListBlock(StatBlock(icon="code"))  # to be removed
+    imagecaption = ImageAndCaptionBlock(label="Image caption", group= "DO NOT USE")  # to be removed
+    textimage = TextAndImageBlock(icon="image", group= "DO NOT USE")  # uses text_and_media_block.html
+    colourtext = BackgroundColourTextBlock(icon="pilcrow", group= "DO NOT USE")  # to be removed
+    calltoaction = CallToActionBlock(icon="pilcrow", group= "DO NOT USE")  # to be removed
+    tripleimage = TripleImageBlock(icon="image", group= "DO NOT USE")  # to be removed
+    stats = ListBlock(StatBlock(icon="code"), group= "DO NOT USE")  # to be removed
     embed = EmbedBlock(
         icon="code", template="patterns/components/streamfields/embed/embed.html"
     )
@@ -237,7 +241,21 @@ class StoryBlock(StreamBlock):
     codeblock = CodeBlock(
         template="patterns/components/streamfields/code_block/code_block.html"
     )
-    backers = BackersBlock()
+    backers = BackersBlock(group= "DO NOT USE")
+    teaser = TeaserBlock(group = "CTA options")
+    get_started_block = SnippetChooserBlock(
+        "core.GetStartedSnippet",
+        icon="th-list",
+        template="patterns/components/streamfields/get_started_block/get_started_block.html",
+        group = "CTA options",
+    )
+    sign_up_form = SnippetChooserBlock(
+        "core.SignupFormSnippet",
+        icon="envelope-open-text",
+        template="patterns/components/streamfields/sign_up_form_block/sign_up_form_block.html",
+        group = "CTA options",
+    )
+
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
