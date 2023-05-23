@@ -27,7 +27,7 @@ django-referrer-policy = "~1.0"
 django-storages = { version ="~1.13", extras = ["boto3"] }
 markdown = "~3.4"
 pygments = "~2.14"
-requests = "~2.28.1"
+requests = "~2.31.0"
 scout-apm = "~2.26"
 sentry-sdk = "~1.16"
 wagtail-font-awesome-svg = "~0.0.3"
