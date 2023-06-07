@@ -5,26 +5,27 @@ from wagtail.blocks import (
     CharBlock,
     ChoiceBlock,
     FieldBlock,
-    ListBlock,
     RichTextBlock,
     StreamBlock,
     StructBlock,
     TextBlock,
-    URLBlock,
 )
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from markdown import markdown
 from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
 
+from wagtailio.core.blocks import HighlightBlock, TeaserBlock
+
 # Common Streamfield blocks
 
 
-class BackgroundColourChoiceBlock(FieldBlock):
+class BackgroundColourChoiceBlock(FieldBlock):  # To be removed?
     field = forms.ChoiceField(choices=(("red", "Red"), ("white", "White")))
 
 
@@ -45,45 +46,6 @@ class SimpleImageFormatChoiceBlock(FieldBlock):
 
 class HTMLAlignmentChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(("normal", "Normal"), ("full", "Full width")))
-
-
-# New blocks
-
-
-class ImageAndCaptionBlock(StructBlock):
-    image = ImageChooserBlock()
-    caption = RichTextBlock()
-
-
-class TextAndImageBlock(StructBlock):
-    text = RichTextBlock()
-    image = ImageChooserBlock()
-    background = BackgroundColourChoiceBlock()
-    alignment = SimpleImageFormatChoiceBlock()
-
-    class Meta:
-        template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
-
-
-class BackgroundColourTextBlock(StructBlock):
-    text = RichTextBlock()
-    background = BackgroundColourChoiceBlock()
-
-
-class CallToActionBlock(BackgroundColourTextBlock):
-    pass
-
-
-class TripleImageBlock(StructBlock):
-    first_image = ImageChooserBlock()
-    second_image = ImageChooserBlock()
-    third_image = ImageChooserBlock()
-
-
-class StatBlock(StructBlock):
-    image = ImageChooserBlock()
-    stat = CharBlock()
-    text = CharBlock()
 
 
 # Code and Markdown blocks https://gist.github.com/frankwiles/74a882f16704db9caa27
@@ -149,40 +111,6 @@ class MarkDownBlock(TextBlock):
         return context
 
 
-class NamedBackerBlock(StructBlock):
-    name = CharBlock()
-
-    class Meta:
-        template = "patterns/components/streamfields/backers/named_backer.html"
-
-
-class LinkedBackerBlock(NamedBackerBlock):
-    url = URLBlock(required=False)
-
-    class Meta:
-        template = "patterns/components/streamfields/backers/linked_backer.html"
-
-
-class ImageBackerBlock(StructBlock):
-    name = CharBlock()
-    image = ImageChooserBlock(required=False)
-    url = URLBlock(required=False)
-
-    class Meta:
-        template = "patterns/components/streamfields/backers/image_backer.html"
-
-
-class BackersBlock(StructBlock):
-    gold_backers = ListBlock(ImageBackerBlock())
-    silver_backers = ListBlock(ImageBackerBlock())
-    bronze_backers = ListBlock(ImageBackerBlock())
-    linked_backers = ListBlock(LinkedBackerBlock())
-    named_backers = ListBlock(NamedBackerBlock())
-
-    class Meta:
-        template = "patterns/components/streamfields/backers/backers.html"
-
-
 # Main streamfield block to be inherited by Pages
 
 
@@ -202,10 +130,6 @@ class StoryBlock(StreamBlock):
         form_classname="title",
         template="patterns/components/streamfields/headings/heading-4.html",
     )
-    intro = RichTextBlock(
-        icon="pilcrow",
-        template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
-    )
     paragraph = RichTextBlock(
         icon="pilcrow",
         template="patterns/components/streamfields/rich_text_block/rich_text_block.html",
@@ -222,12 +146,6 @@ class StoryBlock(StreamBlock):
         icon="doc-full-inverse",
         template="patterns/components/streamfields/document/document.html",
     )
-    imagecaption = ImageAndCaptionBlock(label="Image caption")  # to be removed
-    textimage = TextAndImageBlock(icon="image")  # uses text_and_media_block.html
-    colourtext = BackgroundColourTextBlock(icon="pilcrow")  # to be removed
-    calltoaction = CallToActionBlock(icon="pilcrow")  # to be removed
-    tripleimage = TripleImageBlock(icon="image")  # to be removed
-    stats = ListBlock(StatBlock(icon="code"))  # to be removed
     embed = EmbedBlock(
         icon="code", template="patterns/components/streamfields/embed/embed.html"
     )
@@ -237,7 +155,20 @@ class StoryBlock(StreamBlock):
     codeblock = CodeBlock(
         template="patterns/components/streamfields/code_block/code_block.html"
     )
-    backers = BackersBlock()
+    teaser = TeaserBlock(group="CTA options")
+    get_started_block = SnippetChooserBlock(
+        "core.GetStartedSnippet",
+        icon="th-list",
+        template="patterns/components/streamfields/get_started_block/get_started_block.html",
+        group="CTA options",
+    )
+    sign_up_form = SnippetChooserBlock(
+        "core.SignupFormSnippet",
+        icon="envelope-open-text",
+        template="patterns/components/streamfields/sign_up_form_block/sign_up_form_block.html",
+        group="CTA options",
+    )
+    highlight = HighlightBlock()
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"

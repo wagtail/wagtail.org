@@ -3,4 +3,4 @@ from wagtailio.utils.blocks import StoryBlock
 
 
 class BlogStoryBlock(StoryBlock):
-    standalone_cta = StandaloneCTABlock()
+    standalone_cta = StandaloneCTABlock(group="CTA options")
