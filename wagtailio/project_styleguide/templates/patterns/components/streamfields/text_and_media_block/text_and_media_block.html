@@ -1,0 +1,30 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+<div class="text-media {% if value.image_on_right or value.alignment == "right" %}text-media--right{% endif %} grid">
+
+    {% if value.image %}
+        {% image value.image fill-400x400 class="text-media__media" %}
+    {% else %}
+        <div class="text-media__embed-wrap responsive-object" style="padding-bottom: 56.25%">
+            {% embed value.embed.url %}
+        </div>
+    {% endif %}
+
+    <div class="text-media__content">
+        {% if value.heading %}
+            <h2>{{ value.heading }}</h2>
+        {% endif %}
+
+        {% if value.description  %}
+            <p>{{ value.description }}</p>
+        {% elif value.text %}
+            <div class="rich-text">
+                {{ value.text|richtext }}
+            </div>
+        {% endif %}
+
+        {% if value.cta %}
+            {% include "patterns/components/buttons/button.html" with url=value.cta.url title=value.cta.text arrow=True classes="text-media__button" %}
+        {% endif %}
+    </div>
+</div>
