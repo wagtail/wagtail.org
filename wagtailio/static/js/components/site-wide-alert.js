@@ -29,8 +29,7 @@ class SiteWideAlert {
             document.querySelector('body').classList.add('banner-active');
             aside.innerHTML = data.text;
             this.node.append(aside);
-            // get height to prevent whole page restructuring without animation, scroll height as banner is absolute
-            console.log(this.node.clientHeight);
+            // get height to prevent whole page restructuring without animation
             document.documentElement.style.setProperty(
                 '--banner-height',
                 `${this.node.clientHeight}px`,
