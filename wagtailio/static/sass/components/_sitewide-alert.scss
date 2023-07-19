@@ -1,7 +1,9 @@
 .sitewide-alert {
+    position: relative;
     padding: $gutter-sm $gutter;
     opacity: 0;
     transition: opacity 0.5s ease;
+    margin-top: calc(var(--banner-height) * -1);
 
     &--active {
         opacity: 1;

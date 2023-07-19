@@ -25,9 +25,16 @@ class SiteWideAlert {
     populateAlert(data) {
         if (data.text) {
             const aside = document.createElement("aside");
-            aside.classList.add("sitewide-alert")
+            aside.classList.add("sitewide-alert");
+            document.querySelector('body').classList.add('banner-active');
             aside.innerHTML = data.text;
             this.node.append(aside);
+            // get height to prevent whole page restructuring without animation, scroll height as banner is absolute
+            console.log(this.node.clientHeight);
+            document.documentElement.style.setProperty(
+                '--banner-height',
+                `${this.node.clientHeight}px`,
+            );
 
             if (data.bg_colour) {
                 aside.style.backgroundColor = '#' + data.bg_colour;
