@@ -4,9 +4,14 @@ This is the source code to [Wagtail's website](https://wagtail.org)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/wagtail/wagtail.org)
 
+## Requirements
+
+-   Docker or Vagrant (see below)
+-   [Fabric](https://www.fabfile.org/), [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) (only for downloading production / staging data)
+
 ## Installation (Docker Compose)
 
-You firstly need to install [git](https://git-scm.com), [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
+You firstly need to install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
 
 ```
 git clone https://github.com/wagtail/wagtail.org.git
@@ -55,11 +60,11 @@ fab pull-production-data
 fab pull-production-media
 ```
 
-(you will be prompted to log in to Heroku both times. To log in, hit enter when it asks you and copy and paste the URL it gives you into a browser)
+Access will only be given when absolutely necessary.
 
 ## Installation (Vagrant)
 
-You firstly need to install [git](https://git-scm.com), [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
+You firstly need to install [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
 
 ```
 git clone https://github.com/wagtail/wagtail.org.git
