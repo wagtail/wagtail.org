@@ -51,8 +51,8 @@ make superuser
 If you'd like to work with production data and have access, run the following commands:
 
 ```
-make pull-production-data
-make pull-production-media
+fab pull-production-data
+fab pull-production-media
 ```
 
 (you will be prompted to log in to Heroku both times. To log in, hit enter when it asks you and copy and paste the URL it gives you into a browser)
@@ -113,17 +113,7 @@ For more info see [Frontend general info](docs/frontend/general-info.md)
 
 ## Deployment
 
-The site is hosted on heroku, and is deployed by pushing to the heroku remote.
-
-Creating and pushing to the heroku branch is handled automatically by fabric command.
-
-To staging
-
-`fab deploy_staging`
-
-To production
-
-`fab deploy_production`
+The site is hosted on heroku, and is deployed automatically. `main` deploys to production, and `staging` deploys to staging.
 
 ## docs.wagtail.org
 
