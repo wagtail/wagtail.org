@@ -1,7 +1,6 @@
 .footer-menu {
     $root: &;
-
-    background-color: $color--teal-300;
+    background-color: var(--color--footer-bg);
     padding: 40px 0;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;

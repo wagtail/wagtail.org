@@ -2,7 +2,7 @@
     $root: &;
 
     &__base {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         padding: 60px 0;
         color: $color--white;
     }
