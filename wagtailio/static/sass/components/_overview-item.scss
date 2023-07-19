@@ -3,16 +3,16 @@
     flex-direction: column;
     font-size: 12px;
     padding: 20px;
-    background-color: $color--light-grey-100;
+    background-color: var(--color--card);
 
     &__link {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
 
         &--edit {
@@ -36,7 +36,7 @@
 
     &__description {
         margin-bottom: 10px;
-        color: $color--grey;
+        color: var(--color--meta);
     }
 
     &__package-links {
@@ -46,12 +46,12 @@
     &__package-link {
         font-size: 13px;
         text-decoration: none;
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
     }
 }

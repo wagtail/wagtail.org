@@ -45,8 +45,9 @@
     }
 
     &__title {
-        color: $color--teal;
+        color: var(--color--interaction);
         margin-bottom: 10px;
+        transition: color $transition;
 
         @include media-query(medium) {
             margin-bottom: 5px;
@@ -54,12 +55,16 @@
     }
 
     &__description {
-        color: $color--off-black;
+        color: var(--color--meta);
     }
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .theme-dark & {
+        background-color: var(--color--highlight);
     }
 }

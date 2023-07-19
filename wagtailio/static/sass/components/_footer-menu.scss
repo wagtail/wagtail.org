@@ -80,7 +80,7 @@
     }
 
     &__link {
-        color: $color--off-black;
+        color: var(--color--text);
         text-decoration: none;
 
         &:hover {

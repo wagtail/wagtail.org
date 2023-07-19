@@ -1,6 +1,6 @@
 .icon-link {
     $root: &;
-    color: $color--off-black;
+    color: var(--color--text);
     text-decoration: none;
     display: flex;
     column-gap: 15px;
@@ -38,13 +38,13 @@
 
     &__subheading {
         font-weight: $weight--regular;
-        color: $color--teal;
+        color: var(--color--meta);
         margin-bottom: 5px;
     }
 
     &:hover {
         #{$root}__heading {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
 
         // Icon overrides

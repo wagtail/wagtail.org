@@ -45,7 +45,7 @@
     }
 
     &__description {
-        color: $color--grey;
+        color: var(--color--meta);
     }
 
     &__description-link {

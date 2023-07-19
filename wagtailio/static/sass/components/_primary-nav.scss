@@ -53,13 +53,13 @@
         align-items: center;
         justify-content: space-between;
         text-decoration: none;
-        color: $color--off-black;
+        color: var(--color--text);
         padding: 0;
         width: 100%;
 
         &:hover,
         &.active {
-            color: $color--primary;
+            color: var(--color--interaction);
         }
     }
 

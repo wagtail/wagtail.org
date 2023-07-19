@@ -65,7 +65,7 @@
     }
 
     &__container {
-        background-color: $color--white;
+        background-color: var(--color--card);
         padding: 30px;
         max-width: 1295px;
         max-height: 100vh;
