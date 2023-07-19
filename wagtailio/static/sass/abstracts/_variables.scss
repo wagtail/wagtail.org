@@ -1,24 +1,43 @@
 // Colors
 $color--black: #000;
 $color--off-black: #262626;
-$color--indigo: #2E1F5E;
-$color--teal: #007D7E;
+$color--indigo: #2e1f5e;
+$color--teal: #007d7e;
 $color--light-teal: #effeff;
-$color--teal-100: #80D7D8;
-$color--teal-200: #00B0B1;
+$color--teal-100: #80d7d8;
+$color--teal-200: #00b0b1;
 $color--teal-300: #d9f3f3;
-$color--eggshell: #B3E7E8;
-$color--grey: #5C5C5C;
-$color--light-grey: #EDEAF3;
+$color--eggshell: #b3e7e8;
+$color--grey: #5c5c5c;
+$color--light-grey: #edeaf3;
 $color--cool-grey: #c8c8c8;
 $color--light-grey-100: #f3f5f8;
-$color--white:#FFF;
-$color--pink: #F9CBCE;
+$color--white:#fff;
+$color--pink: #f9cbce;
 $color--off-black-30: #2626264d;
 
 // Mapping colours
+:root {
+    --color--background: #{$color--white};
+    --color--highlight: #{$color--indigo};
+    --color--text: #{$color--off-black};
+    --color--large-icon: #{$color--teal-200};
+    --color--large-icon-border: #{$color--black};
+    --color--footer-bg: #{$color--teal-300};
+}
+
+.theme-dark {
+    --color--background: #{$color--off-black};
+    --color--highlight: #{$color--black};
+    --color--text: #{$color--white};
+    --color--large-icon: #{$color--teal};
+    --color--large-icon-border: #{$color--black};
+    --color--footer-bg: #{$color--off-black};
+}
+
+
 $color--primary: $color--teal;
-$color--secondary: $color--indigo;
+$color--secondary: var(--color--highlight);
 
 // Fonts
 $font--primary: 'Kumbh Sans', sans-serif;
