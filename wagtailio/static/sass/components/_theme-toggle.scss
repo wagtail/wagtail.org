@@ -1,0 +1,91 @@
+.theme-toggle {
+    $root: &;
+    margin-inline-end: $gutter;
+    display: flex;
+    align-items: center;
+
+    @include media-query(large) {
+        margin-inline-end: ($gutter * 1.5);
+    }
+
+    &__label {
+        font-size: 12px;
+        color: $color--off-black;
+    }
+
+    &__button {
+        padding: 0;
+        width: 48px;
+        height: 28px;
+        border: 0;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        border-radius: 14px;
+        margin: 0 ($gutter * 0.5);
+        display: inline-block;
+        cursor: pointer;
+        background: $color--grey;
+
+        &::before {
+            top: 4px;
+            inset-inline-start: 24px;
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: block;
+            position: absolute;
+            border-radius: 12px;
+            background-color: $color--light-grey;
+            transition: inset-inline-start $transition;
+        }
+
+        &::after {
+            content: '';
+            top: 14px;
+            inset-inline-end: 2px;
+            width: 1px;
+            height: 1px;
+            display: block;
+            position: absolute;
+            border-radius: 0.5px;
+            background: $color--off-black;
+        }
+    }
+
+    .dark-only {
+        display: none;
+    }
+
+    .theme-dark & {
+        .dark-only {
+            display: block;
+        }
+
+        .light-only {
+            display: none;
+        }
+
+        #{$root}__button {
+            background: $color--light-grey;
+
+            &::before {
+                background: $color--black;
+                inset-inline-start: 4px;
+            }
+
+            &::after {
+                background: $color--light-grey;
+                top: -2px;
+                inset-inline-end: 2px;
+                width: 32px;
+                height: 32px;
+                border-radius: 16px;
+            }
+        }
+
+        #{$root}__label {
+            color: $color--light-grey;
+        }
+    }
+}
