@@ -82,7 +82,7 @@
         border-style: solid;
         height: 50px;
         margin: 15px 0 0 0;
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         color: $color--white;
 
         @include media-query(medium) {
@@ -104,11 +104,11 @@
     }
 
     &--footer {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         color: $color--white;
 
         #{$root}__input {
-            background-color: $color--indigo;
+            background-color: var(--color--highlight);
             border: 1px solid $color--white;
             color: $color--white;
             border-radius: 6px;
@@ -124,7 +124,7 @@
 
         #{$root}__button {
             background-color: $color--white;
-            color: $color--indigo;
+            color: var(--color--highlight);
             border-radius: 6px;
             border-style: solid none none none;
 

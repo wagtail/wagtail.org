@@ -95,7 +95,7 @@
     }
 
     &--dark-theme {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         padding: 80px 0;
 
         @include media-query(medium) {

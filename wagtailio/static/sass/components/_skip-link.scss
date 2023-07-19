@@ -3,7 +3,7 @@
     position: absolute;
     inset: -500px auto auto 0;
     color: $color--white;
-    background-color: $color--indigo;
+    background-color: var(--color--highlight);
     padding: 20px;
     font-weight: $weight--bold;
     text-decoration: none;

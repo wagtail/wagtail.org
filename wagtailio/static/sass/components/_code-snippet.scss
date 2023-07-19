@@ -1,6 +1,6 @@
 .code-snippet {
     $root: &;
-    background-color: $color--indigo;
+    background-color: var(--color--highlight);
     color: $color--white;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
     }
 
     &__confirmation {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         position: absolute;
         width: min-content;
         height: min-content;
