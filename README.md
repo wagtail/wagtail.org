@@ -11,7 +11,7 @@ This is the source code to [Wagtail's website](https://wagtail.org)
 
 ## Installation (Docker Compose)
 
-You firstly need to install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
+You first need to install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/). Once they are installed, run the following commands to get up and running:
 
 ```
 git clone https://github.com/wagtail/wagtail.org.git
@@ -64,7 +64,7 @@ Access will only be given when absolutely necessary.
 
 ## Installation (Vagrant)
 
-You firstly need to install [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
+You first need to install [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
 
 ```
 git clone https://github.com/wagtail/wagtail.org.git
@@ -118,7 +118,7 @@ For more info see [Frontend general info](docs/frontend/general-info.md)
 
 ## Deployment
 
-The site is hosted on heroku, and is deployed automatically. `main` deploys to production, and `staging` deploys to staging.
+The site is hosted on Heroku, and is deployed automatically. `main` deploys to production, and `staging` deploys to staging.
 
 ## docs.wagtail.org
 
