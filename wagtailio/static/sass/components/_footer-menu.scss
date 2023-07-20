@@ -47,7 +47,7 @@
     &__icon {
         width: 20px;
         height: 20px;
-        fill: $color--teal;
+        fill: var(--color--interaction);
         flex-shrink: 0;
 
         @include media-query(large) {
@@ -103,6 +103,7 @@
         font-size: 1.25rem;
         margin-left: 10px;
         display: none;
+        color: var(--color--heading);
 
         &--collapsible {
             display: block;

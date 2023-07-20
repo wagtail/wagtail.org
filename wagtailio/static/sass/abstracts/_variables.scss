@@ -32,6 +32,7 @@ $color--off-black-30: #2626264d;
     --color--large-icon-border: #{$color--black};
     --color--enhancers: #{$color--eggshell};
     --color--footer-bg: #{$color--teal-300};
+    --color--nav-border: #{$color--light-grey};
 }
 
 .theme-dark {
@@ -48,6 +49,7 @@ $color--off-black-30: #2626264d;
     --color--large-icon-border: #{$color--black};
     --color--enhancers: #{$color--teal-dark};
     --color--footer-bg: #{$color--off-black};
+    --color--nav-border: #{$color--black};
 }
 
 

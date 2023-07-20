@@ -10,7 +10,7 @@
     list-style: none;
     inset: 0 auto auto 0;
     padding: 0 20px;
-    background-color: var(--color--light-dark);
+    background-color: var(--color--background);
     border-radius: $rounded-xl;
     // Extra border for high-contrast mode users.
     border: 1px solid transparent;
@@ -23,6 +23,7 @@
     box-shadow: 0 0 40px rgba($color--black, 0.2);
 
     @include media-query(medium) {
+        background-color: var(--color--light-dark);
         padding: 0 50px;
         height: calc(100% - #{$header-tablet-height});
     }
@@ -171,7 +172,7 @@
 
         &:hover,
         &:focus {
-            color: $color--primary;
+            color: var(--color--interaction);
 
             // Icon overrides
             .icon__svg-bg {
@@ -181,8 +182,8 @@
         }
 
         &--back {
-            border-top: 1px solid $color--cool-grey;
-            border-bottom: 1px solid $color--cool-grey;
+            border-top: 1px solid var(--color--nav-border);
+            border-bottom: 1px solid var(--color--nav-border);
             font-size: 14px;
             line-height: 1;
             padding: 10px 0;

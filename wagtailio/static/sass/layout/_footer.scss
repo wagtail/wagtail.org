@@ -204,10 +204,13 @@
     }
 
     &__sub-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-top: 30px;
+
+        @include media-query(medium) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         @include media-query(large) {
             margin-top: 40px;

@@ -3,6 +3,11 @@
     margin-inline-end: $gutter;
     display: flex;
     align-items: center;
+    margin-top: 30px;
+
+    @include media-query(medium) {
+        margin-top: 0;
+    }
 
     @include media-query(large) {
         margin-inline-end: ($gutter * 1.5);

@@ -27,7 +27,7 @@
     &__input {
         border-radius: 6px 0 0 6px;
         width: 100%;
-        border: 1px solid $color--black;
+        border: 1px solid var(--color--dark-light);
         padding: 15px 20px;
         color: $color--off-black;
         height: 100%;
@@ -47,12 +47,12 @@
         inset: 0;
         opacity: 1;
         transform: translate3d(0, 100%, 0);
-        transition: opacity $transition;
+        transition: opacity $transition, transform $transition;
 
         &.is-hidden {
             opacity: 0;
             pointer-events: none;
-            transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -200%, 0);
         }
 
         #{$root}__button {
