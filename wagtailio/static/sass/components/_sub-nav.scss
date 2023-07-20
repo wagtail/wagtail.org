@@ -10,7 +10,7 @@
     list-style: none;
     inset: 0 auto auto 0;
     padding: 0 20px;
-    background-color: var(--color--background);
+    background-color: var(--color--light-dark);
     border-radius: $rounded-xl;
     // Extra border for high-contrast mode users.
     border: 1px solid transparent;
@@ -29,7 +29,7 @@
 
     @media only screen and (min-width: $header-desktop) {
         display: none;
-        align-items: flex-start;
+        align-items: stretch;
         width: auto;
         height: auto;
         top: 120px;
@@ -93,6 +93,7 @@
             @include media-query(medium) {
                 inset: auto auto auto -50px;
                 width: calc(100% + 100px);
+                padding-bottom: 0;
             }
 
             @media only screen and (min-width: $header-desktop) {

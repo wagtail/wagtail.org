@@ -3,6 +3,7 @@ $color--black: #000;
 $color--off-black: #262626;
 $color--indigo: #2e1f5e;
 $color--teal: #007d7e;
+$color--teal-dark: #065354;
 $color--light-teal: #effeff;
 $color--teal-100: #80d7d8;
 $color--teal-200: #00b0b1;
@@ -22,11 +23,14 @@ $color--off-black-30: #2626264d;
     --color--highlight: #{$color--indigo};
     --color--text: #{$color--off-black};
     --color--heading: #{$color--black};
+    --color--dark-light: #{$color--black};
+    --color--light-dark: #{$color--white};
     --color--meta: #{$color--grey};
     --color--interaction: #{$color--teal};
     --color--card: #{$color--light-grey-100};
     --color--large-icon: #{$color--teal-200};
     --color--large-icon-border: #{$color--black};
+    --color--enhancers: #{$color--eggshell};
     --color--footer-bg: #{$color--teal-300};
 }
 
@@ -35,11 +39,14 @@ $color--off-black-30: #2626264d;
     --color--highlight: #{$color--black};
     --color--text: #{$color--white};
     --color--heading: #{$color--white};
+    --color--dark-light: #{$color--white};
+    --color--light-dark: #{$color--black};
     --color--meta: #{$color--cool-grey};
     --color--interaction: #{$color--teal-200};
     --color--card: #{$color--black};
     --color--large-icon: #{$color--teal};
     --color--large-icon-border: #{$color--black};
+    --color--enhancers: #{$color--teal-dark};
     --color--footer-bg: #{$color--off-black};
 }
 

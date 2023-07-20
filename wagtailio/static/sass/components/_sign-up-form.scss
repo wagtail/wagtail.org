@@ -2,6 +2,7 @@
     $root: &;
     @include sf-spacing(2);
     grid-column: 2 / span 2;
+    overflow: hidden; // prevent scrollbars from svg size
 
     @include media-query(medium) {
       grid-column: 2 / span 3;
@@ -60,7 +61,7 @@
     &__input {
         flex: 1;
         height: 50px;
-        border: 1px solid $color--off-black;
+        border: 1px solid var(--color--text);
         border-radius: $rounded-md;
         padding: 11px 20px;
 
@@ -94,7 +95,7 @@
     }
 
     &--block {
-        border: 1px solid $color--off-black;
+        border: 1px solid var(--color--text);
         border-radius: 15px;
         padding: 30px;
 

@@ -65,7 +65,7 @@
     }
 
     &__container {
-        background-color: var(--color--card);
+        background-color: var(--color--light-dark);
         padding: 30px;
         max-width: 1295px;
         max-height: 100vh;
@@ -103,13 +103,21 @@
                 fill: ButtonText;
             }
         }
+
+        &:hover,
+        &:focus {
+            #{$root}__close-icon {
+                fill: var(--color--interaction);
+            }
+        }
     }
 
     &__close-icon {
-        color: $color--off-black;
+        fill: var(--color--dark-light);
         width: 20px;
         height: 20px;
         pointer-events: none;
+        transition: fill $transition;
     }
 
     &__title {

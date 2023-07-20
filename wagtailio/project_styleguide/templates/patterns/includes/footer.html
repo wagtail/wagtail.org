@@ -34,34 +34,37 @@
                 {# sign up form #}
                 {% include "patterns/components/sign_up_form/sign_up_form.html" with heading="What's new in Wagtail" sub_heading="Sign up for events, features and adventures on Wagtail" %}
 
-                {# Socials #}
-                <div class="footer__socials">
-                    <p class="footer__social-heading heading-four">Follow us</p>
-                    <ul class="footer__social-list">
-                        <li>
-                            <a href="https://github.com/wagtail/wagtail" aria-label="Wagtail on Github">
-                                <svg class="footer__social-icon footer__social-icon--github" aria-hidden="true">
-                                    <use xlink:href="#github"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/wagtailcms" aria-label="Wagtail on Twitter">
-                                <svg class="footer__social-icon" aria-hidden="true">
-                                    <use xlink:href="#twitter"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/channel/UCXsuEmvisPzuJPaIdpVM0yg" aria-label="Wagtail on YouTube">
-                                <svg class="footer__social-icon" aria-hidden="true">
-                                    <use xlink:href="#youtube"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="footer__sub-footer">
+                    {# Socials #}
+                    <div class="footer__socials">
+                        <p class="footer__social-heading heading-four">Follow us</p>
+                        <ul class="footer__social-list">
+                            <li>
+                                <a href="https://github.com/wagtail/wagtail" aria-label="Wagtail on Github">
+                                    <svg class="footer__social-icon footer__social-icon--github" aria-hidden="true">
+                                        <use xlink:href="#github"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/wagtailcms" aria-label="Wagtail on Twitter">
+                                    <svg class="footer__social-icon" aria-hidden="true">
+                                        <use xlink:href="#twitter"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCXsuEmvisPzuJPaIdpVM0yg" aria-label="Wagtail on YouTube">
+                                    <svg class="footer__social-icon" aria-hidden="true">
+                                        <use xlink:href="#youtube"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {# Theme switcher #}
+                    {% include "patterns/components/theme-toggle/theme-toggle.html" %}
                 </div>
-                {% include "patterns/components/theme-toggle/theme-toggle.html" %}
             </div>
 
             {# Credit #}

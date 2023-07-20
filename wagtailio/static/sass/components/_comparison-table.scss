@@ -57,5 +57,9 @@
                 line-height: 1.2rem;
             }
         }
+
+        .theme-dark & {
+            border-color: $color--black;
+        }
     }
 }

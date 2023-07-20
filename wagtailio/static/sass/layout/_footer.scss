@@ -144,16 +144,13 @@
 
     &__socials {
         display: flex;
+        align-items: center;
         gap: 10px;
-        margin-top: 30px;
 
         @include media-query(medium) {
             gap: 20px;
         }
 
-        @include media-query(large) {
-            margin-top: 40px;
-        }
     }
 
     &__social-list {
@@ -203,6 +200,17 @@
         &:hover {
             color: $color--white;
             bottom: 0;
+        }
+    }
+
+    &__sub-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+
+        @include media-query(large) {
+            margin-top: 40px;
         }
     }
 }

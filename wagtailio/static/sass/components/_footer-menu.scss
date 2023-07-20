@@ -82,9 +82,11 @@
     &__link {
         color: var(--color--text);
         text-decoration: none;
+        transition: color $transition;
 
         &:hover {
             text-decoration: underline;
+            color: var(--color--interaction);
         }
     }
 

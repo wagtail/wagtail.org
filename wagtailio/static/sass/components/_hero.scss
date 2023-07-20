@@ -40,6 +40,16 @@
         @include media-query(large) {
             margin-right: 80px;
         }
+
+        a {
+            color: var(--color--dark-light);
+            transition: color $transition;
+
+            &:hover,
+            &:focus {
+                color: var(--color--interaction);
+            }
+        }
     }
 
     &__heading {

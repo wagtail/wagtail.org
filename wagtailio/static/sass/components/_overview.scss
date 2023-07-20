@@ -24,7 +24,7 @@
     }
 
     &__sub-heading-link {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
         text-decoration: none;
 

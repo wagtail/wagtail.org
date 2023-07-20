@@ -1,13 +1,13 @@
 .logo-card {
     $root: &;
-    color: $color--off-black;
+    color: var(--color--text);
     text-decoration: none;
     display: flex;
     flex-direction: column;
     height: 100%;
     align-items: flex-start;
     border-radius: 15px;
-    background-color: $color--white;
+    background-color: var(--color--light-dark);
     padding: 20px;
     left: -20px;
 
@@ -25,7 +25,7 @@
     }
 
     &__description {
-        color: $color--grey;
+        color: var(--color--meta);
         margin-top: 10px;
         padding-bottom: 20px;
 
@@ -55,7 +55,7 @@
             @include offset-bg-hover-left();
 
             #{$root}__heading {
-                color: $color--teal;
+                color: var(--color--interaction);
             }
         }
     }

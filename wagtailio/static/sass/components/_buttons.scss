@@ -30,7 +30,8 @@
         }
     }
 
-    &--dark {
+    &--dark,
+    .theme-dark & {
         border-color: $color--white;
         background-color: transparent;
         color: $color--white;
@@ -102,5 +103,6 @@
         font-weight: $weight--bold;
         line-height: 1.25rem;
     }
+
 
 }
