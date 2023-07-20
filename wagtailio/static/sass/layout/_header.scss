@@ -19,13 +19,8 @@
     }
 
     &__logo {
-        width: 100px;
-        height: 40px;
-
-        @include media-query(medium) {
-            width: 153px;
-            height: 65px;
-        }
+        width: 100%;
+        height: 100%;
 
         @media (forced-colors: active) {
             fill: CanvasText;
@@ -39,6 +34,13 @@
 
     &__link {
         display: block;
+        width: 100px;
+        height: 40px;
+
+        @include media-query(medium) {
+            width: 153px;
+            height: 65px;
+        }
     }
 
     &__identity {
