@@ -16,3 +16,4 @@ node_modules
 /wagtailio/static_compiled
 .idea
 /.python-version
+/database_dumps
