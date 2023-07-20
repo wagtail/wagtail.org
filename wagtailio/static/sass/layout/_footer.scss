@@ -204,7 +204,7 @@
     }
 
     &__sub-footer {
-        margin-top: 30px;
+        margin-bottom: 30px;
 
         @include media-query(medium) {
             display: flex;
@@ -213,7 +213,7 @@
         }
 
         @include media-query(large) {
-            margin-top: 40px;
+            margin-bottom: 40px;
         }
     }
 }

@@ -31,8 +31,6 @@
             </ul>
 
             <div class="footer__sign-up">
-                {# sign up form #}
-                {% include "patterns/components/sign_up_form/sign_up_form.html" with heading="What's new in Wagtail" sub_heading="Sign up for events, features and adventures on Wagtail" %}
 
                 <div class="footer__sub-footer">
                     {# Socials #}
@@ -65,6 +63,11 @@
                     {# Theme switcher #}
                     {% include "patterns/components/theme-toggle/theme-toggle.html" %}
                 </div>
+
+                {# sign up form #}
+                {% include "patterns/components/sign_up_form/sign_up_form.html" with heading="What's new in Wagtail" sub_heading="Sign up for events, features and adventures on Wagtail" %}
+
+
             </div>
 
             {# Credit #}
