@@ -7,7 +7,7 @@
         top: 0;
         inset-inline-start: 24px;
         height: 100%;
-        border-inline-start: 2px dashed $color--light-grey;
+        border-inline-start: 2px dashed var(--color--nav-border);;
         grid-column: 2;
     }
 
@@ -55,12 +55,12 @@
     }
 
     &__heading-subtitle {
-        color: $color--grey;
+        color: var(--color--meta);
         font-weight: $weight--regular;
     }
 
     &__heading-link {
-        color: $color--off-black;
+        color: var(--color--text);
         text-decoration: none;
         transition: color $transition;
     }
