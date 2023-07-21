@@ -3,7 +3,7 @@
   border-bottom: 1px solid $color--black;
 
   &__title {
-    color: $color--black;
+    color: var(--color--heading);
     text-decoration: none;
 
     &:focus,

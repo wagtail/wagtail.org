@@ -5,7 +5,7 @@
     gap: 20px;
     overflow: hidden;
     padding: 20px;
-    background-color: $color--light-grey-100;
+    background-color: var(--color--card);
     border: 1px solid transparent;
     border-radius: $rounded-md;
 
@@ -23,13 +23,13 @@
     }
 
     &__external-link {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
         text-decoration: none;
 
         &:hover,
         &:focus-visible {
-            color: $color--teal;
+            color: var(--color--interaction);
 
             .icon {
                 opacity: 1;
@@ -89,7 +89,7 @@
         }
 
         &:hover, &:focus-visible {
-            background-color: $color--teal;
+            background-color: var(--color--interaction);
             outline-offset: 4px;
         }
     }
