@@ -1,4 +1,5 @@
 .milestone-item {
+    $root: &;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -61,7 +62,7 @@
         font-weight: $weight--regular;
         color: $color--teal;
         border: 1px solid $color--teal-100;
-        background-color: $color--light-teal;
+        background-color: var(--color--tag);
         padding: 2px 8px;
         white-space: nowrap;
         border-radius: $rounded-xl;
@@ -91,6 +92,23 @@
         &:hover, &:focus-visible {
             background-color: var(--color--interaction);
             outline-offset: 4px;
+        }
+    }
+
+    .theme-dark & {
+        #{$root}__label {
+            border-color: var(--color--border);
+            color: $color--cool-grey;
+        }
+
+        #{$root}__sponsor-label {
+            background-color: $color--teal-200;
+            color: $color--black;
+
+            &:hover,
+            &:focus {
+                background-color: $color--white;
+            }
         }
     }
 }

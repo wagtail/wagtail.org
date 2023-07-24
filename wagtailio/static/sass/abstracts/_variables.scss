@@ -32,7 +32,8 @@ $color--off-black-30: #2626264d;
     --color--large-icon-border: #{$color--black};
     --color--enhancers: #{$color--eggshell};
     --color--footer-bg: #{$color--teal-300};
-    --color--nav-border: #{$color--light-grey};
+    --color--border: #{$color--light-grey};
+    --color--tag: #{$color--light-teal};
 }
 
 .theme-dark {
@@ -49,7 +50,8 @@ $color--off-black-30: #2626264d;
     --color--large-icon-border: #{$color--black};
     --color--enhancers: #{$color--teal-dark};
     --color--footer-bg: #{$color--off-black};
-    --color--nav-border: #{$color--black};
+    --color--border: #{$color--black};
+    --color--tag: #{$color--off-black};
 }
 
 

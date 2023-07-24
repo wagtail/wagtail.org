@@ -1,6 +1,7 @@
 .logos {
-    @include sf-spacing(2);
+    @include sf-spacing(4);
     @include z-index(overlap); // so they sit above the large icons
+    $root: &;
     position: relative;
 
     &__heading {
@@ -43,5 +44,15 @@
 
     &__image {
         flex-shrink: 0;
+    }
+
+    .theme-dark & {
+        #{$root}__list-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: $color--white;
+            border-radius: 3px;
+        }
     }
 }
