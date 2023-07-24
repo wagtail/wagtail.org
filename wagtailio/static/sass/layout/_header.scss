@@ -120,6 +120,8 @@
 
             .header__nav--mobile & {
                 display: block; // show get started on mobile
+                margin: 20px 20px 0;
+                width: calc(100% - 40px);
             }
         }
 

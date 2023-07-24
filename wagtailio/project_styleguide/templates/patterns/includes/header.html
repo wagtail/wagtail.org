@@ -54,6 +54,14 @@
 
         <div class="header__nav header__nav--mobile" data-mobile-menu>
             {% main_navigation %}
+            {% if settings.navigation.NavigationSettings.get_started_menu %}
+                <button class="header__button header__button--get-started button" data-get-started>
+                    Get started
+                    <svg class="header__get-started-icon" aria-hidden="true">
+                        <use xlink:href="#chevron"></use>
+                    </svg>
+                </button>
+            {% endif %}
         </div>
 
         {% if settings.navigation.NavigationSettings.get_started_menu %}

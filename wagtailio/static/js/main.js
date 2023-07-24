@@ -15,8 +15,6 @@ import CookieMessage from "./components/cookie-message";
 import SiteWideAlert from "./components/site-wide-alert";
 import LoopingVideo from './components/looping-video';
 
-
-
 function initComponent(ComponentClass) {
     const items = document.querySelectorAll(ComponentClass.selector());
     items.forEach((item) => new ComponentClass(item));
