@@ -1,5 +1,5 @@
 // Colors
-$color--black: #000;
+$color--black: #111;
 $color--off-black: #262626;
 $color--indigo: #2e1f5e;
 $color--teal: #007d7e;
@@ -22,29 +22,32 @@ $color--off-black-30: #2626264d;
     --color--background: #{$color--white};
     --color--highlight: #{$color--indigo};
     --color--text: #{$color--off-black};
+    --color--link: #{$color--teal};
     --color--heading: #{$color--black};
     --color--dark-light: #{$color--black};
     --color--light-dark: #{$color--white};
     --color--meta: #{$color--grey};
-    --color--interaction: #{$color--teal};
+    --color--interaction: #{$color--indigo};
     --color--card: #{$color--light-grey-100};
-    --color--large-icon: #{$color--teal-200};
+    --color--large-icon: #{$color--teal-100};
     --color--large-icon-border: #{$color--black};
     --color--enhancers: #{$color--eggshell};
     --color--footer-bg: #{$color--teal-300};
     --color--border: #{$color--light-grey};
     --color--tag: #{$color--light-teal};
+    --color--code-bg: #f5f5f5;
 }
 
 .theme-dark {
     --color--background: #{$color--off-black};
     --color--highlight: #{$color--black};
     --color--text: #{$color--white};
+    --color--link: #{$color--teal-200};
     --color--heading: #{$color--white};
     --color--dark-light: #{$color--white};
     --color--light-dark: #{$color--black};
     --color--meta: #{$color--cool-grey};
-    --color--interaction: #{$color--teal-200};
+    --color--interaction: #{$color--teal-100};
     --color--card: #{$color--black};
     --color--large-icon: #{$color--teal};
     --color--large-icon-border: #{$color--black};
@@ -52,6 +55,7 @@ $color--off-black-30: #2626264d;
     --color--footer-bg: #{$color--off-black};
     --color--border: #{$color--black};
     --color--tag: #{$color--off-black};
+    --color--code-bg: #{$color--black};
 }
 
 

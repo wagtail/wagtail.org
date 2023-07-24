@@ -122,6 +122,12 @@
                 display: block; // show get started on mobile
                 margin: 20px 20px 0;
                 width: calc(100% - 40px);
+                text-align: center;
+
+                // stylelint-disable-next-line max-nesting-depth
+                @include media-query(medium) {
+                    width: calc(100% - 80px);
+                }
             }
         }
 

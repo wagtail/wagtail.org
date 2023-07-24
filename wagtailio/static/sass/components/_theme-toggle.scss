@@ -30,7 +30,7 @@
         margin: 0 ($gutter * 0.5);
         display: inline-block;
         cursor: pointer;
-        background: $color--grey;
+        background: rgba($color--black, 0.9);
 
         &::before {
             top: 4px;
