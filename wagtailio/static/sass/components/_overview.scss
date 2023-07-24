@@ -49,13 +49,13 @@
     }
 
     &__description-link {
-        color: $color--off-black;
+        color: var(--color--text);
         text-decoration: none;
         transition: color $transition;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
     }
 
