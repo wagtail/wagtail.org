@@ -23,7 +23,7 @@
     box-shadow: 0 0 40px rgba($color--black, 0.2);
 
     @include media-query(medium) {
-        background-color: var(--color--light-dark);
+        background-color: var(--color--background);
         padding: 0 50px;
         height: calc(100% - #{$header-tablet-height});
     }
@@ -40,6 +40,10 @@
         opacity: 1;
         overflow: hidden;
         visibility: visible;
+    }
+
+    .theme-dark & {
+        border: 1px solid $color--black;
     }
 
     // mobile active state

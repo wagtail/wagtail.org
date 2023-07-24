@@ -34,12 +34,24 @@
         @include media-query(large) {
             grid-column: 2 / span 5;
         }
+
+        .theme-dark & {
+            @include media-query(medium) {
+                gap: 30px;
+            }
+        }
     }
 
     &__list-item {
         min-width: 100px;
         max-width: 100px;
         flex-basis: 100px;
+
+        .theme-dark & {
+            min-width: 120px;
+            max-width: 120px;
+            flex-basis: 120px;
+        }
     }
 
     &__image {

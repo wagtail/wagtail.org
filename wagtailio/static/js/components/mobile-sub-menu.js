@@ -1,4 +1,4 @@
-import { createFocusTrap } from 'focus-trap';
+
 
 class MobileSubMenu {
     static selector() {
@@ -9,7 +9,6 @@ class MobileSubMenu {
         this.node = node;
         this.subnav = this.node.nextElementSibling;
         this.backLink = this.subnav.querySelector('[data-subnav-back]');
-        this.focusTrap = createFocusTrap(this.subnav);
         this.bindEventListeners();
     }
 

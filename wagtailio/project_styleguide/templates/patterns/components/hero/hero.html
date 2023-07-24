@@ -22,8 +22,11 @@
         {# Paper plane svg is made of mupltiple paths - different to the other icon choices #}
         {% if value.icon == 'paper-plane' %}
             <div class="hero__icon hero__icon--paper-plane">
-                <svg aria-hidden="true">
+                <svg class="hero__light-mode" aria-hidden="true">
                     <use xlink:href="#paper-plane"></use>
+                </svg>
+                <svg class="hero__dark-mode" aria-hidden="true">
+                    <use xlink:href="#paper-plane-dark"></use>
                 </svg>
             </div>
         {% elif value.icon %}

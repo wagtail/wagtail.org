@@ -1,5 +1,7 @@
 .modal {
     $root: &;
+    @include z-index(modal);
+    position: relative;
 
     &--get-started {
         &.micromodal-slide.is-open {
@@ -57,6 +59,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    &__header {
+        @include z-index(modal-controls);
+        position: relative;
     }
 
     &__container {

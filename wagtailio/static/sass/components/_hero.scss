@@ -111,6 +111,23 @@
         .icon__svg-fg {
             transform: scale(1);
         }
+
+    }
+
+    &__light-mode {
+        display: block;
+
+        .theme-dark & {
+            display: none;
+        }
+    }
+
+    &__dark-mode {
+        display: none;
+
+        .theme-dark & {
+            display: block;
+        }
     }
 
     &--search {

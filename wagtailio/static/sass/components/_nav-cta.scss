@@ -5,7 +5,7 @@
     color: $color--white;
     text-decoration: none;
     padding: 20px 20px 50px 20px;
-    background-color: var(--color--background);
+    background-color: var(--color--highlight);
 
     @include media-query(medium) {
         padding: 20px 50px 50px 50px;
