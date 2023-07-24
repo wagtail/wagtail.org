@@ -66,6 +66,32 @@
 
     }
 
+    .modal__grid--get-started & {
+
+        #{$root}__heading {
+            @include media-query(smallonly) {
+                font-size: 21px;
+                line-height: 1.4;
+            }
+        }
+
+        #{$root}__subheading {
+            @include media-query(smallonly) {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+        }
+
+        #{$root}__svg {
+            display: none;
+
+            @include media-query(medium) {
+                display: block;
+            }
+        }
+
+    }
+
     .get-started & {
         flex-direction: column;
 
