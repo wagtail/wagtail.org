@@ -33,7 +33,6 @@
         &:focus {
             background-color: $color--teal;
 
-            // stylelint-disable-next-line max-nesting-depth
             &::before {
                 background-color: $color--teal-100;
             }
