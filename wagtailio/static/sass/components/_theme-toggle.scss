@@ -22,14 +22,22 @@
         width: 48px;
         height: 28px;
         border: 0;
-        outline: none;
         overflow: hidden;
         position: relative;
         border-radius: 14px;
         margin: 0 ($gutter * 0.5);
         display: inline-block;
         cursor: pointer;
-        background: rgba($color--black, 0.9);
+        background-color: rgba($color--black, 0.9);
+
+        &:focus {
+            background-color: $color--teal;
+
+            // stylelint-disable-next-line max-nesting-depth
+            &::before {
+                background-color: $color--teal-100;
+            }
+        }
 
         &::before {
             top: 4px;
@@ -71,15 +79,24 @@
         }
 
         #{$root}__button {
-            background: $color--light-grey;
+            background-color: $color--light-grey;
+
+            &:focus {
+                background-color: $color--teal-100;
+
+                // stylelint-disable-next-line max-nesting-depth
+                &::after {
+                    background-color: $color--teal-100;
+                }
+            }
 
             &::before {
-                background: $color--black;
+                background-color: $color--black;
                 inset-inline-start: 4px;
             }
 
             &::after {
-                background: $color--light-grey;
+                background-color: $color--light-grey;
                 top: -2px;
                 inset-inline-end: 2px;
                 width: 32px;
