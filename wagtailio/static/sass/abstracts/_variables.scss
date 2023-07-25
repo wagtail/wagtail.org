@@ -21,6 +21,7 @@ $color--off-black-30: #2626264d;
 :root {
     --color--background: #{$color--white};
     --color--highlight: #{$color--indigo};
+    --color--active: #{$color--indigo};
     --color--text: #{$color--off-black};
     --color--link: #{$color--teal};
     --color--heading: #{$color--black};
@@ -41,6 +42,7 @@ $color--off-black-30: #2626264d;
 .theme-dark {
     --color--background: #{$color--off-black};
     --color--highlight: #{$color--black};
+    --color--active: #{$color--teal};
     --color--text: #{$color--white};
     --color--link: #{$color--teal-200};
     --color--heading: #{$color--white};
