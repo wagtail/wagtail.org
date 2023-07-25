@@ -38,13 +38,13 @@
         }
 
         .icon {
-            fill: inherit;
             flex-shrink: 0;
             width: 0.8rem;
             height: 0.8rem;
             opacity: .5;
             margin-inline-end: -8px;
             margin-top: -8px;
+            fill: currentColor;
 
             @media (forced-colors: active) {
                 fill: CanvasText;
