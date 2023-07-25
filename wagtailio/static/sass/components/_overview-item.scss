@@ -52,6 +52,7 @@
         &:hover,
         &:focus {
             color: var(--color--interaction);
+            text-decoration: underline;
         }
     }
 }
