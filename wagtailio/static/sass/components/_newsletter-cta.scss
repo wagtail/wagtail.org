@@ -1,7 +1,7 @@
 .newsletter-cta {
     grid-column: 2 / span 2;
     border-radius: $rounded-xl;
-    border: 1px solid $color--off-black;
+    border: 1px solid var(--color--text);
     margin-bottom: 50px;
     padding: 20px;
 
