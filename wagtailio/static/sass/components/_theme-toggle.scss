@@ -17,6 +17,11 @@
         color: $color--white;
     }
 
+    // Don't display toggle if in high contrast mode
+    @media (prefers-contrast: more) {
+        display: none;
+    }
+
     &__button {
         padding: 0;
         width: 48px;
