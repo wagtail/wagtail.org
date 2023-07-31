@@ -29,9 +29,9 @@
         width: 100%;
         border: 1px solid var(--color--dark-light);
         padding: 15px 20px;
-        color: $color--off-black;
+        color: var(--color--text);
         height: 100%;
-        background-color: $color--white;
+        background-color: var(--color--light-dark);
 
         // remove rounded edges in ios
         &[type="search"] {

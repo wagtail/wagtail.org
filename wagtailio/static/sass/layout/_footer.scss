@@ -131,10 +131,12 @@
 
     &__link {
         color: $color--teal-100;
-        text-decoration: none;
+        text-decoration: underline;
+        transition: color $transition;
 
         &:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            color: $color--white;
         }
     }
 

@@ -3,7 +3,9 @@
 
   &__input {
     appearance: none;
-    border: 1px solid $color--off-black;
+    border: 1px solid var(--color--text);
+    color: var(--color--text);
+    background-color: var(--color--light-dark);
     font-size: 1rem;
     padding: 11px 20px;
     border-radius: $rounded-md;

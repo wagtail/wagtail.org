@@ -42,13 +42,7 @@
         }
 
         a {
-            color: var(--color--dark-light);
             transition: color $transition;
-
-            &:hover,
-            &:focus {
-                color: var(--color--interaction);
-            }
         }
     }
 
