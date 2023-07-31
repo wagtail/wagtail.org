@@ -23,7 +23,7 @@
             <span>{{ post.date|date }}</span>
         </div>
 
-        <h3 class="blog-post__title {% if featured %}heading-two{% endif %}">{{ post.title }}</h3>
+        <h2 class="blog-post__title {% if featured %}heading-two{% endif %}">{{ post.title }}</h2>
         <p class="blog-post__listing-text">{% firstof post.listing_text post.introduction %}</p>
 
         {% if post.author %}

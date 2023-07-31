@@ -41,6 +41,10 @@
     &__button {
         padding: 0;
 
+        &:focus {
+            outline-color: var(--color--heading);
+        }
+
         &:hover,
         &:active,
         &:focus {

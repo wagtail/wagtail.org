@@ -101,6 +101,7 @@ h4,
 .intro-big {
     font-size: 1.5625rem;
     line-height: 2.3125rem;
+    font-weight: $weight--regular;
 
     @include media-query(large) {
         font-size: 2rem;
