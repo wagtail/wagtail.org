@@ -57,7 +57,12 @@
         padding: 0;
         width: 100%;
 
+        &:focus {
+            outline-color: var(--color--heading);
+        }
+
         &:hover,
+        &:focus,
         &.active {
             color: var(--color--interaction);
         }

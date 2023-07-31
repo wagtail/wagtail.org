@@ -91,6 +91,10 @@
         margin: 0;
         width: auto;
 
+        &:focus {
+            outline-color: var(--color--heading);
+        }
+
         &--get-started {
             display: none;
             padding: 10px 13px;
