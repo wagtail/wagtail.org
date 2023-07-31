@@ -33,6 +33,10 @@
         background-color: var(--color--light-dark);
         border: 1px solid var(--color--border);
         border-radius: 5px;
+
+        .theme-dark & {
+            border-color: $color--grey;
+        }
     }
 
     &__message {

@@ -108,4 +108,12 @@
             color: $color--light-grey;
         }
     }
+
+    .no-js & {
+        display: none;
+    }
+
+    @media print {
+        display: none;
+     }
 }
