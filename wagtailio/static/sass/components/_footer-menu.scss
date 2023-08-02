@@ -1,7 +1,6 @@
 .footer-menu {
     $root: &;
-
-    background-color: $color--teal-300;
+    background-color: var(--color--footer-bg);
     padding: 40px 0;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
@@ -48,7 +47,7 @@
     &__icon {
         width: 20px;
         height: 20px;
-        fill: $color--teal;
+        fill: var(--color--interaction);
         flex-shrink: 0;
 
         @include media-query(large) {
@@ -81,11 +80,13 @@
     }
 
     &__link {
-        color: $color--off-black;
+        color: var(--color--text);
         text-decoration: none;
+        transition: color $transition;
 
         &:hover {
             text-decoration: underline;
+            color: var(--color--interaction);
         }
     }
 
@@ -102,6 +103,7 @@
         font-size: 1.25rem;
         margin-left: 10px;
         display: none;
+        color: var(--color--heading);
 
         &--collapsible {
             display: block;

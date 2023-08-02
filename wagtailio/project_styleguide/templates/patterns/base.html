@@ -28,6 +28,10 @@
     </head>
 
     <body class="app {% block body_class %}{% endblock %}">
+
+        {# blocking js loaded first to ensure no flash of white on theme detection #}
+        <script src="{% manifest 'js/blocking.js' %}"></script>
+
         {% block body_top %}{% endblock %}
         {% wagtailuserbar %}
 

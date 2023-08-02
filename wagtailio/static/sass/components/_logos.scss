@@ -1,6 +1,7 @@
 .logos {
-    @include sf-spacing(2);
+    @include sf-spacing(4);
     @include z-index(overlap); // so they sit above the large icons
+    $root: &;
     position: relative;
 
     &__heading {
@@ -33,15 +34,37 @@
         @include media-query(large) {
             grid-column: 2 / span 5;
         }
+
+        .theme-dark & {
+            @include media-query(medium) {
+                gap: 30px;
+            }
+        }
     }
 
     &__list-item {
         min-width: 100px;
         max-width: 100px;
         flex-basis: 100px;
+
+        .theme-dark & {
+            min-width: 120px;
+            max-width: 120px;
+            flex-basis: 120px;
+        }
     }
 
     &__image {
         flex-shrink: 0;
+    }
+
+    .theme-dark & {
+        #{$root}__list-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: $color--white;
+            border-radius: 3px;
+        }
     }
 }

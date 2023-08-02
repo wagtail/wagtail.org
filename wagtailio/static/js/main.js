@@ -1,5 +1,6 @@
 import '../sass/main.scss';
 
+import './components/theme-detect';
 import GetStartedMenu from './components/get-started-menu';
 import SiteSearchDesktop from './components/site-search-desktop';
 import SiteSearchMobile from './components/site-search-mobile';
@@ -13,7 +14,6 @@ import DesktopCloseMenus from './components/desktop-close-menus';
 import CookieMessage from "./components/cookie-message";
 import SiteWideAlert from "./components/site-wide-alert";
 import LoopingVideo from './components/looping-video';
-
 
 function initComponent(ComponentClass) {
     const items = document.querySelectorAll(ComponentClass.selector());

@@ -1,12 +1,12 @@
 .teaser {
     $root: &;
-    color: $color--off-black;
+    color: var(--color--text);
     text-decoration: none;
     margin-bottom: 140px;
 
     &:hover {
         #{$root}__heading {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
 
         #{$root}__content {
@@ -29,7 +29,7 @@
 
     &__content {
         @include offset-bg-right();
-        background-color: $color--white;
+        background-color: var(--color--light-dark);
         grid-column: 2 / span 2;
         padding: 20px;
 
@@ -59,4 +59,5 @@
             margin-bottom: 35px;
         }
     }
+
 }

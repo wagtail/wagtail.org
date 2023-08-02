@@ -5,7 +5,7 @@
     overflow: hidden;
 
     &__header {
-        color: $color--off-black;
+        color: var(--color--text);
         padding-bottom: 30px;
         grid-column: 2 / span 2;
         max-width: 950px;
@@ -46,7 +46,7 @@
         display: flex;
         align-items: center;
         padding: 15px 0 0;
-        color: $color--off-black;
+        color: var(--color--meta);
 
         @include media-query(large) {
             padding: 30px 0 0;

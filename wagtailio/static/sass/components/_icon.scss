@@ -1,5 +1,7 @@
 // Hover states should be handled on a component basis - not in here
 .icon {
+    $root: &;
+
     &--relative {
         position: relative;
     }
@@ -15,14 +17,15 @@
     }
 
     &__svg-bg {
-        fill: rgba($color--teal-200, 0.3);
+        fill: var(--color--large-icon);
         transform-origin: center;
+        opacity: 0.6;
         transform: scale(1.3) rotate(-8deg);
         transition: transform 0.15s ease-out, fill 0.15s ease-out;
-    }
 
-    &--primary &__svg-bg {
-        fill: $color--eggshell;
+        .theme-dark & {
+            opacity: 1;
+        }
     }
 
     &__svg-fg {

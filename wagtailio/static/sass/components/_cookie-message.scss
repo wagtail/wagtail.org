@@ -29,10 +29,14 @@
         max-width: ($gutter-sm * 35);
         margin: 0 auto;
         line-height: 1.4;
-        color: $color--off-black;
-        background-color: $color--white;
-        border: 1px solid $color--cool-grey;
+        color: var(--color--text);
+        background-color: var(--color--light-dark);
+        border: 1px solid var(--color--border);
         border-radius: 5px;
+
+        .theme-dark & {
+            border-color: $color--grey;
+        }
     }
 
     &__message {
@@ -43,12 +47,12 @@
     }
 
     &__link {
-        color: $color--teal;
+        color: var(--color--interaction);
         text-decoration: underline;
         pointer-events: visible;
 
         &:hover {
-            color: $color--secondary;
+            color: var(--color--dark-light);
         }
     }
 
@@ -61,12 +65,12 @@
 
         &:hover {
             #{$root}__btn-icon {
-                fill: $color--secondary;
+                fill: var(--color--dark-light);
             }
         }
     }
 
     &__btn-icon {
-        fill: $color--teal;
+        fill: var(--color--interaction);
     }
 }

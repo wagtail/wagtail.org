@@ -24,7 +24,7 @@
     }
 
     &__sub-heading-link {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
         text-decoration: none;
 
@@ -45,17 +45,17 @@
     }
 
     &__description {
-        color: $color--grey;
+        color: var(--color--meta);
     }
 
     &__description-link {
-        color: $color--off-black;
+        color: var(--color--text);
         text-decoration: none;
         transition: color $transition;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
     }
 

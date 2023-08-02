@@ -25,12 +25,12 @@
     }
 
     &__link {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color $transition;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
     }
 }

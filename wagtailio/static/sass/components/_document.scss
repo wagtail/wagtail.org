@@ -5,7 +5,7 @@
     transition: color 0.3s;
 
     &:hover {
-        color: $color--indigo;
+        color: var(--color--highlight);
     }
 
     @include media-query(medium) {

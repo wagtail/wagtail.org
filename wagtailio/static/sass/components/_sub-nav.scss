@@ -10,7 +10,7 @@
     list-style: none;
     inset: 0 auto auto 0;
     padding: 0 20px;
-    background: $color--white;
+    background-color: var(--color--background);
     border-radius: $rounded-xl;
     // Extra border for high-contrast mode users.
     border: 1px solid transparent;
@@ -23,23 +23,27 @@
     box-shadow: 0 0 40px rgba($color--black, 0.2);
 
     @include media-query(medium) {
+        background-color: var(--color--background);
         padding: 0 50px;
         height: calc(100% - #{$header-tablet-height});
     }
 
     @media only screen and (min-width: $header-desktop) {
         display: none;
-        align-items: flex-start;
+        align-items: stretch;
         width: auto;
         height: auto;
         top: 120px;
         right: 40px;
         left: 40px;
-        background-color: $color--white;
         padding: 0;
         opacity: 1;
         overflow: hidden;
         visibility: visible;
+    }
+
+    .theme-dark & {
+        border: 1px solid $color--black;
     }
 
     // mobile active state
@@ -94,6 +98,7 @@
             @include media-query(medium) {
                 inset: auto auto auto -50px;
                 width: calc(100% + 100px);
+                padding-bottom: 0;
             }
 
             @media only screen and (min-width: $header-desktop) {
@@ -158,7 +163,7 @@
         font-weight: $weight--regular;
         margin-bottom: 20px;
         line-height: 1;
-        color: $color--black;
+        color: var(--color--heading);
     }
 
     &__item-link {
@@ -166,12 +171,12 @@
         flex-direction: row;
         align-items: center;
         text-decoration: none;
-        color: $color--black;
+        color: var(--color--heading);
         transition: color $transition;
 
         &:hover,
         &:focus {
-            color: $color--primary;
+            color: var(--color--interaction);
 
             // Icon overrides
             .icon__svg-bg {
@@ -181,8 +186,8 @@
         }
 
         &--back {
-            border-top: 1px solid $color--cool-grey;
-            border-bottom: 1px solid $color--cool-grey;
+            border-top: 1px solid var(--color--border);
+            border-bottom: 1px solid var(--color--border);
             font-size: 14px;
             line-height: 1;
             padding: 10px 0;
@@ -205,7 +210,7 @@
     &__item-description {
         display: none;
         font-size: 14px;
-        color: $color--grey;
+        color: var(--color--meta);
         font-weight: $weight--regular;
 
         @media only screen and (min-width: $header-desktop) {

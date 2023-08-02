@@ -12,7 +12,7 @@
                             <use xlink:href="#money"></use>
                         </svg>
                         <div class="footer__icon-link-content">
-                            <p class="footer__icon-link-heading">Sponsor Wagtail</p>
+                            <h2 class="footer__icon-link-heading">Sponsor Wagtail</h2>
                             <p class="mini-meta">Help build Wagtail enhancements and support the long-term health of the project</p>
                         </div>
                     </a>
@@ -23,7 +23,7 @@
                             <use xlink:href="#code-file"></use>
                         </svg>
                         <div class="footer__icon-link-content">
-                            <p class="footer__icon-link-heading">Contribute code</p>
+                            <h2 class="footer__icon-link-heading">Contribute code</h2>
                             <p class="mini-meta">200+ contributors in 2022!</p>
                         </div>
                     </a>
@@ -31,36 +31,43 @@
             </ul>
 
             <div class="footer__sign-up">
+
+                <div class="footer__sub-footer">
+                    {# Socials #}
+                    <div class="footer__socials">
+                        <p class="footer__social-heading heading-four">Follow us</p>
+                        <ul class="footer__social-list">
+                            <li>
+                                <a href="https://github.com/wagtail/wagtail" aria-label="Wagtail on Github">
+                                    <svg class="footer__social-icon footer__social-icon--github" aria-hidden="true">
+                                        <use xlink:href="#github"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/wagtailcms" aria-label="Wagtail on Twitter">
+                                    <svg class="footer__social-icon" aria-hidden="true">
+                                        <use xlink:href="#twitter"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCXsuEmvisPzuJPaIdpVM0yg" aria-label="Wagtail on YouTube">
+                                    <svg class="footer__social-icon" aria-hidden="true">
+                                        <use xlink:href="#youtube"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {# Theme switcher #}
+                    {% include "patterns/components/theme-toggle/theme-toggle.html" %}
+                </div>
+
                 {# sign up form #}
                 {% include "patterns/components/sign_up_form/sign_up_form.html" with heading="What's new in Wagtail" sub_heading="Sign up for events, features and adventures on Wagtail" %}
 
-                {# Socials #}
-                <div class="footer__socials">
-                    <p class="footer__social-heading heading-four">Follow us</p>
-                    <ul class="footer__social-list">
-                        <li>
-                            <a href="https://github.com/wagtail/wagtail" aria-label="Wagtail on Github">
-                                <svg class="footer__social-icon footer__social-icon--github" aria-hidden="true">
-                                    <use xlink:href="#github"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/wagtailcms" aria-label="Wagtail on Twitter">
-                                <svg class="footer__social-icon" aria-hidden="true">
-                                    <use xlink:href="#twitter"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/channel/UCXsuEmvisPzuJPaIdpVM0yg" aria-label="Wagtail on YouTube">
-                                <svg class="footer__social-icon" aria-hidden="true">
-                                    <use xlink:href="#youtube"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
 
             {# Credit #}

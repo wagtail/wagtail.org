@@ -23,7 +23,7 @@
     }
 
     &__description {
-        color: $color--grey;
+        color: var(--color--meta);
         padding-bottom: 30px;
 
         @include media-query(large) {
@@ -45,7 +45,6 @@
         justify-content: flex-start;
 
         #{$root}__description {
-            color: $color--off-black;
             padding-bottom: 0;
         }
     }

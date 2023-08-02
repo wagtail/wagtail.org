@@ -1,7 +1,7 @@
 .blog-post {
     $root: &;
     text-decoration: none;
-    color: $color--off-black;
+    color: var(--color--text);
 
     &:hover,
     &:active,
@@ -9,12 +9,12 @@
         text-decoration: none;
 
         #{$root}__title {
-            color: $color--teal;
+            color: var(--color--interaction);
         }
     }
 
     &__title {
-        color: $color--off-black;
+        color: var(--color--text);
         transition: color 0.3s;
         margin-bottom: 0;
     }
@@ -27,7 +27,7 @@
     }
 
     &__listing-text {
-        color: $color--grey;
+        color: var(--color--meta);
     }
 
     &__content {
@@ -36,7 +36,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        background: $color--white;
+        background: var(--color--background);
         padding: $gutter-sm;
     }
 
@@ -61,6 +61,7 @@
         flex-direction: row;
         align-items: center;
         gap: 5px;
+        color: var(--color--meta);
     }
 
     &__icon {
@@ -94,6 +95,7 @@
             @include offset-bg-right();
             border-radius: 0 15px 15px 0;
             gap: 20px;
+            background: var(--color--light-dark);
 
             @include media-query(medium) {
                 padding: $gutter $gutter-lg;

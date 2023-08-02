@@ -13,6 +13,7 @@ const projectRoot = 'wagtailio';
 
 const options = {
     entry: {
+        blocking: `./${projectRoot}/static/js/blocking.js`,
         main: `./${projectRoot}/static/js/main.js`,
     },
     resolve: {

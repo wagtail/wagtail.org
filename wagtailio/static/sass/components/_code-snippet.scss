@@ -1,6 +1,6 @@
 .code-snippet {
     $root: &;
-    background-color: $color--indigo;
+    background-color: var(--color--highlight);
     color: $color--white;
     display: flex;
     align-items: center;
@@ -41,6 +41,10 @@
     &__button {
         padding: 0;
 
+        &:focus {
+            outline-color: var(--color--heading);
+        }
+
         &:hover,
         &:active,
         &:focus {
@@ -51,7 +55,7 @@
     }
 
     &__confirmation {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         position: absolute;
         width: min-content;
         height: min-content;

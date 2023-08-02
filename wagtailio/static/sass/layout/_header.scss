@@ -1,4 +1,5 @@
 .header {
+    $root: &;
     max-width: $site-width;
     margin: 0 auto 70px;
     padding: 15px;
@@ -18,6 +19,21 @@
     }
 
     &__logo {
+        width: 100%;
+        height: 100%;
+
+        @media (forced-colors: active) {
+            fill: CanvasText;
+        }
+
+        &--dark {
+            display: none;
+        }
+
+    }
+
+    &__link {
+        display: block;
         width: 100px;
         height: 40px;
 
@@ -25,15 +41,6 @@
             width: 153px;
             height: 65px;
         }
-
-        @media (forced-colors: active) {
-            fill: CanvasText;
-        }
-
-    }
-
-    &__link {
-        display: block;
     }
 
     &__identity {
@@ -59,7 +66,7 @@
             inset: $header-mobile-height auto auto 0;
             width: 100%;
             height: 100%;
-            background-color: $color--white;
+            background-color: var(--color--background);
             visibility: hidden;
             transform: translate3d(100%,0,0);
             transition: transform $transition;
@@ -83,6 +90,10 @@
     &__button {
         margin: 0;
         width: auto;
+
+        &:focus {
+            outline-color: var(--color--heading);
+        }
 
         &--get-started {
             display: none;
@@ -113,6 +124,14 @@
 
             .header__nav--mobile & {
                 display: block; // show get started on mobile
+                margin: 20px 20px 0;
+                width: calc(100% - 40px);
+                text-align: center;
+
+                // stylelint-disable-next-line max-nesting-depth
+                @include media-query(medium) {
+                    width: calc(100% - 80px);
+                }
             }
         }
 
@@ -120,6 +139,7 @@
             width: 25px;
             height: 25px;
             padding: 0;
+            color: var(--color--text);
 
             svg {
                 width: inherit;
@@ -174,7 +194,7 @@
         transition: color $transition;
 
         &--open {
-            color: $color--black;
+            color: var(--color--dark-light);
 
             .is-expanded & {
                 display: none;
@@ -183,8 +203,8 @@
 
         &--close {
             display: none;
-            color: $color--white;
-            background-color: $color--black;
+            color: var(--color--light-dark);
+            background-color: var(--color--dark-light);
             padding: 5px;
             border-radius: 50%;
 
@@ -195,7 +215,7 @@
 
         &:hover,
         &:focus {
-            color: $color--primary;
+            color: var(--color--interaction);
         }
     }
 
@@ -206,6 +226,18 @@
         @media only screen and (min-width: $header-desktop) {
             display: none;
         }
+    }
+
+    .theme-dark & {
+
+        #{$root}__logo {
+            display: none;
+
+            &--dark {
+                display: block;
+            }
+        }
+
     }
 
 }

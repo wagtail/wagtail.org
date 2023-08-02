@@ -3,7 +3,7 @@
     align-items: center;
     text-decoration: none;
     border-radius: 6px;
-    border: 1px solid $color--indigo;
+    border: 1px solid var(--color--highlight);
     padding: 15px 30px;
     color: $color--off-black;
     outline-offset: 4px;
@@ -21,7 +21,7 @@
     }
 
     &:hover {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         color: $color--white;
 
         > svg {
@@ -30,7 +30,8 @@
         }
     }
 
-    &--dark {
+    &--dark,
+    .theme-dark & {
         border-color: $color--white;
         background-color: transparent;
         color: $color--white;
@@ -43,7 +44,7 @@
         &:focus {
             background-color: $color--white;
             border-color: $color--white;
-            color: $color--indigo;
+            color: var(--color--highlight);
 
             > svg {
                 fill: $color--teal;
@@ -52,22 +53,22 @@
     }
 
     &--secondary {
-        background-color: $color--indigo;
+        background-color: var(--color--highlight);
         color: $color--white;
 
         &:hover,
         &:focus {
             background-color: $color--white;
-            border-color: $color--indigo;
-            color: $color--indigo;
+            border-color: var(--color--highlight);
+            color: var(--color--highlight);
         }
     }
 
     &--form {
         &:hover,
         &:focus {
-            background-color: $color--indigo;
-            border-color: $color--indigo;
+            background-color: var(--color--highlight);
+            border-color: var(--color--highlight);
             color: $color--white;
         }
     }
@@ -102,5 +103,6 @@
         font-weight: $weight--bold;
         line-height: 1.25rem;
     }
+
 
 }

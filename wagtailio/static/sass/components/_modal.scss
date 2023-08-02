@@ -1,18 +1,15 @@
 .modal {
     $root: &;
+    @include z-index(modal);
+    position: relative;
 
     &--get-started {
-        // hide the modal if it's open below medium breakpoint
         &.micromodal-slide.is-open {
-            display: none;
-
-            @include media-query(medium) {
-                display: block;
-            }
+            display: block;
         }
 
         #{$root}__content {
-            padding: 0 20px 20px;
+            padding: 0 10px 10px;
 
             @include media-query(large) {
                 padding: 0 40px 40px;
@@ -64,9 +61,14 @@
         align-items: center;
     }
 
+    &__header {
+        @include z-index(modal-controls);
+        position: relative;
+    }
+
     &__container {
-        background-color: $color--white;
-        padding: 30px;
+        background-color: var(--color--light-dark);
+        padding: 20px;
         max-width: 1295px;
         max-height: 100vh;
         border-radius: 15px;
@@ -75,6 +77,10 @@
         width: calc(100% - 40px);
         position: relative;
         border: 2px solid transparent;
+
+        @include media-query(large) {
+            padding: 30px;
+        }
     }
 
     &__grid {
@@ -89,7 +95,10 @@
             }
 
             #{$root}__grid-item {
-                max-width: 75%;
+                // stylelint-disable-next-line max-nesting-depth
+                @include media-query(large) {
+                    max-width: 75%;
+                }
             }
         }
     }
@@ -103,17 +112,31 @@
                 fill: ButtonText;
             }
         }
+
+        &:hover,
+        &:focus {
+            #{$root}__close-icon {
+                fill: var(--color--interaction);
+            }
+        }
     }
 
     &__close-icon {
-        color: $color--off-black;
+        fill: var(--color--dark-light);
         width: 20px;
         height: 20px;
         pointer-events: none;
+        transition: fill $transition;
     }
 
     &__title {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+        margin-top: -20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
 
         @include media-query(large) {
             margin-bottom: 60px;

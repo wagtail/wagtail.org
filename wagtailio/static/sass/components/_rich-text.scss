@@ -1,10 +1,10 @@
 .rich-text {
     a {
-        color: $color--teal;
+        color: var(--color--link);
         transition: color 0.3s;
 
         &:hover {
-            color: $color--indigo;
+            color: var(--color--interaction);
         }
     }
 
