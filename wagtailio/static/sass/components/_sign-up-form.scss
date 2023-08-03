@@ -19,9 +19,12 @@
 
     &__sub-heading {
         padding: 10px 0 0 0;
+        text-shadow: 2px 2px var(--color--background);
     }
 
     &__icon {
+        @include z-index(under);
+        position: relative;
         width: auto;
         height: 50px;
         margin-left: auto;
