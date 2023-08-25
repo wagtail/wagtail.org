@@ -71,5 +71,9 @@
             padding: 10px 20px;
             background-color: $color--white;
         }
+
+        #{$root}__author-wrap #{$root}__image {
+            padding: 0;
+        }
     }
 }
