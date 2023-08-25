@@ -19,7 +19,6 @@
 
     &__sub-heading {
         padding: 10px 0 0 0;
-        text-shadow: 2px 2px var(--color--background);
     }
 
     &__icon {
@@ -104,6 +103,10 @@
 
         @include media-query(large) {
             padding: 60px;
+        }
+
+        #{$root}__sub-heading {
+            text-shadow: 2px 2px var(--color--background);
         }
     }
 
