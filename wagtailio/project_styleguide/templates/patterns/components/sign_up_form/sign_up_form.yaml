@@ -1,5 +1,5 @@
 context:
   MAILCHIMP_ACCOUNT_ID: 'Fake'
   MAILCHIMP_NEWSLETTER_ID: 'Fake'
-  heading: "What's new in Wagtail"
+  heading: "This Week in Wagtail"
   sub_heading: 'Sign up for events, features and adventures on Wagtail'
