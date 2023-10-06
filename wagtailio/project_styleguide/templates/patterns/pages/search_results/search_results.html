@@ -5,6 +5,10 @@
 {% else %}No results found{% endif %}
 {% endblock title %}
 
+{% block extra_css %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
 {% block content %}
     <div class="grid">
         <div class="hero hero--search">
