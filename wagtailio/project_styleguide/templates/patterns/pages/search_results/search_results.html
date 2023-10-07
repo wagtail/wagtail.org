@@ -5,8 +5,9 @@
 {% else %}No results found{% endif %}
 {% endblock title %}
 
-{% block extra_css %}
+{% block meta_tags %}
     <meta name="robots" content="noindex">
+    {{ block.super }}
 {% endblock %}
 
 {% block content %}
