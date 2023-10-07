@@ -21,18 +21,6 @@ su - postgres -c "createuser -s vagrant"
 # Create database
 su - vagrant -c "createdb $PROJECT_NAME"
 
-# Install Heroku CLI
-curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-
-# Install AWS CLI
-apt-get update -y
-apt-get install -y unzip
-rm -rf /tmp/awscli-bundle || true
-rm -rf /tmp/awscli-bundle.zip || true
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip"
-unzip /tmp/awscli-bundle.zip -d /tmp
-/tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-
 # Install ImageMagick (for Wagtail GIF support through Wand)
 apt-get install -y libmagickwand-dev
 

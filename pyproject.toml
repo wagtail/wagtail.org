@@ -39,7 +39,6 @@ django-redis = "~5.2"
 [tool.poetry.group.dev.dependencies]
 black = "23.1.0"
 djhtml = "3.0.4"
-fabric3 = { git = "https://github.com/wmorgan6796/fabric.git", rev = "77513f3c" }  # TODO switch to fabric/invoke
 flake8 = "6.0.0"
 flake8-assertive = "2.1.0"
 flake8-blind-except = "0.2.1"
