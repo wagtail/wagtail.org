@@ -12,13 +12,13 @@
 
     &__details {
         .blog-post__content & {
-            font-size: 14px;
+            font-size: 14rem;
         }
     }
 
     &__name {
         font-weight: $weight--bold;
-        font-size: 16px;
+        font-size: 16rem;
         margin-bottom: 0;
         line-height: 1;
 
@@ -28,7 +28,7 @@
         }
 
         .blog-post__content & {
-            font-size: 14px;
+            font-size: 14rem;
             font-weight: $weight--regular;
         }
     }
