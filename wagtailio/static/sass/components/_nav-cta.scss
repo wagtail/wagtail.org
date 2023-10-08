@@ -57,7 +57,7 @@
     }
 
     &__heading {
-        font-size: 45px;
+        font-size: 45rem;
         line-height: 1.1;
         margin-bottom: 10px;
         padding-right: 60px;
@@ -65,13 +65,13 @@
 
         @media only screen and (min-width: $header-desktop) {
             padding-right: 0;
-            font-size: 55px;
+            font-size: 55rem;
         }
     }
 
     &__subheading,
     &__description {
-        font-size: 20px;
+        font-size: 20rem;
     }
 
     &__subheading {
