@@ -70,14 +70,14 @@
 
         #{$root}__heading {
             @include media-query(smallonly) {
-                font-size: 21px;
+                font-size: 21rem;
                 line-height: 1.4;
             }
         }
 
         #{$root}__subheading {
             @include media-query(smallonly) {
-                font-size: 16px;
+                font-size: 16rem;
                 line-height: 1.4;
             }
         }
