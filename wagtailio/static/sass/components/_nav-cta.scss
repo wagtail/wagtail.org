@@ -19,6 +19,7 @@
     &:hover,
     &:focus {
         #{$root}__heading,
+        #{$root}__description,
         #{$root}__subheading {
             color: $color--teal-100;
         }
@@ -62,7 +63,6 @@
         line-height: 1.1;
         margin-bottom: 10px;
         padding-right: 60px;
-        transition: color $transition;
 
         @media only screen and (min-width: $header-desktop) {
             padding-right: 0;
@@ -73,6 +73,12 @@
     &__subheading,
     &__description {
         font-size: 20px;
+    }
+
+    &__heading,
+    &__subheading,
+    &__description {
+        transition: color $transition;
     }
 
     &__subheading {
