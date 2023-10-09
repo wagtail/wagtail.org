@@ -21,7 +21,7 @@ class BlogIndex {
         if (!this.allFilterCheckbox.checked) {
             this.showFilterButtonText.innerText = "Hide filters"
             this.node.classList.remove(this.hiddenClass);
-        }  
+        }
         this.bindEvents();
     }
 
