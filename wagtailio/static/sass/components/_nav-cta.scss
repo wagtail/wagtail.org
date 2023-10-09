@@ -18,7 +18,8 @@
 
     &:hover,
     &:focus {
-        #{$root}__heading {
+        #{$root}__heading,
+        #{$root}__subheading {
             color: $color--teal-100;
         }
 
