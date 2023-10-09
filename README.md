@@ -104,7 +104,7 @@ Within the VM shell, you can run `./manage.py` to run any Django management comm
 To install and build the frontend:
 
 -   `nvm use` to use the suggested node version (requires [nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm) or similar. You'll also need to run `nvm install` to install and activate the version of node required for the project)
--   `npm i` to install dependcies
+-   `npm i` to install dependencies 
 -   `npm run build` to compile CSS & JS
 
 Other common commands:
