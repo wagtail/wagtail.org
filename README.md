@@ -50,6 +50,7 @@ To create a new superuser locally, run:
 ```
 make superuser
 ```
+To login with Wagtail, please redirect to http://localhost:8000/admin/
 
 ### Pulling production data / media
 
