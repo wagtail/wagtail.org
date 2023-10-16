@@ -73,6 +73,11 @@
         display: flex;
         gap: 15px;
 
+        &-content {
+            transition: color 0.3s; 
+             
+        }
+
         &:hover {
             #{$root}__icon-link-content {
                 color: $color--teal-100;
@@ -111,7 +116,6 @@
         font-weight: $weight--bold;
         line-height: 1.3rem;
         margin-bottom: 4px;
-        transition: color 0.3s;
         font-size: 1.25rem;
 
         @include media-query(large) {
@@ -119,6 +123,7 @@
         }
     }
 
+    
     &__icon {
         fill: transparent;
         stroke: $color--white;
