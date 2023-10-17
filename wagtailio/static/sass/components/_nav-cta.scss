@@ -18,6 +18,8 @@
 
     &:hover,
     &:focus {
+        color: var(--color--background);
+
         #{$root}__heading {
             color: $color--teal-100;
         }
@@ -25,6 +27,10 @@
         #{$root}__arrow {
             transform: translate3d(20%, 0, 0) scale(1.1);
             fill: $color--white;
+        }
+
+        .theme-dark & {
+            color: var(--color--interaction);
         }
 
     }
