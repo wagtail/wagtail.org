@@ -2,10 +2,10 @@
     <h2 class="sign-up-form__heading heading-three">{{ heading }}</h2>
     <h3 class="sign-up-form__sub-heading">{{ sub_heading }}</h3>
     <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
-        <fieldset>
+        <div>
             <label for="email" class="u-sr-only">Enter your email address</label>
             <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Enter your email address" required/>
-        </fieldset>
+        </div>
         <button class="button sign-up-form__button" type="submit">
             <span class="button__text" aria-label="Click to sign up">Sign up</span>
             <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
