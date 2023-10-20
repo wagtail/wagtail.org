@@ -4,7 +4,7 @@
     <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
         <fieldset>
             <label for="email" class="u-sr-only">Enter your email address</label>
-            <input class="sign-up-form__input" id="email" name="EMAIL" type="email" placeholder="Enter your email address" aria-label="Enter your email address" required/>
+            <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Enter your email address" required/>
         </fieldset>
         <button class="button sign-up-form__button" type="submit">
             <span class="button__text" aria-label="Click to sign up">Sign up</span>
