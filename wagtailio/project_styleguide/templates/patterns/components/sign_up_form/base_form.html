@@ -1,6 +1,6 @@
 <div class="sign-up-form {% if classes %}{{ classes }}{% endif %}">
     <h2 class="sign-up-form__heading heading-three">{{ heading }}</h2>
-    <h3 class="sign-up-form__sub-heading">{{ sub_heading }}</h3>
+    <p class="sign-up-form__sub-heading">{{ sub_heading }}</p>
     <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
         <div>
             <label for="email" class="u-sr-only">Enter your email address</label>
