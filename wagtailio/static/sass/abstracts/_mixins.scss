@@ -94,6 +94,14 @@
     }
 }
 
+// Places the focus indicator within the element
+@mixin focus-internal() {
+    &:focus-visible {
+        outline-offset: -4px;
+        outline: 2px solid currentColor;
+    }
+}
+
 // z-index
 // Map z-index keys
 @function z-index($key) {
