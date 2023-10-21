@@ -51,7 +51,7 @@
 
         > div {
             display: flex;
-            flex-basis: flex-start;
+            justify-content: flex-start;
             margin: 0;
 
             @include media-query(medium) {
