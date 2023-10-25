@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.contrib.frontend_cache.utils import PurgeBatch
+from wagtail.contrib.frontend_cache.utils import purge_url_from_cache
 from wagtail.contrib.settings.models import BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
 from wagtail.fields import RichTextField
@@ -60,11 +60,8 @@ class SiteWideAlertSettings(BaseSiteSetting):
             )
 
     def save(self, *args, **kwargs):
-        alert_url = reverse("sitewide_alert:sitewide_alert")
-
-        batch = PurgeBatch()
-        batch.add_url(alert_url)
-        batch.purge()
+        alert_url = self.site.root_url + reverse("sitewide_alert:sitewide_alert")
+        purge_url_from_cache(alert_url)
         logging.info(f"Frontend cache purged for sitewide alert url ({alert_url})")
 
         super().save(*args, **kwargs)
