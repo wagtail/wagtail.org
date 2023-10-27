@@ -8,19 +8,30 @@
                     <thead>
                         <tr>
                             {% for col in value.comparison_table.columns %}
-                                <th>{{ col.heading }}</th>
+                                {% if col.heading %}
+                                    <th scope="col">{{ col.heading }}</th>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
                             {% endfor %}
                         </tr>
                     </thead>
                     <tbody>
+                {% else %}
+                    <tr>
+                        {% for block in row %}
+                            {% if forloop.first %}
+                                <th scope="row">
+                                    {{ block }}
+                                </th>
+                            {% else %}
+                                <td>
+                                    {% include_block block %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
                 {% endif %}
-                <tr>
-                    {% for block in row %}
-                        <td>
-                            {% include_block block %}
-                        </td>
-                    {% endfor %}
-                </tr>
             {% endfor %}
         </tbody>
     </table>

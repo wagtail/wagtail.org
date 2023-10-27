@@ -61,5 +61,9 @@
         .theme-dark & {
             border-color: $color--black;
         }
+        
+        &[scope="row"] {
+            text-align: left;
+        }
     }
 }
