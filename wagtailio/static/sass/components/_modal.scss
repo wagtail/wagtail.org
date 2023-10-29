@@ -113,10 +113,12 @@
             }
         }
 
-        &:hover,
-        &:focus {
-            #{$root}__close-icon {
-                fill: var(--color--interaction);
+        .theme-dark & {
+            &:hover,
+            &:focus {
+                #{$root}__close-icon {
+                    fill: var(--color--interaction);
+                }
             }
         }
     }
