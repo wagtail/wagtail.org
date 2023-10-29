@@ -213,10 +213,12 @@
             }
         }
 
-        &:hover,
-        &:focus {
-            color: var(--color--interaction);
-        }
+        .theme-dark & {
+            &:hover,
+            &:focus {
+                color: var(--color--interaction);
+            }
+        }        
     }
 
     &__menu-toggle {
