@@ -90,7 +90,7 @@
         }
 
         &:hover, &:focus-visible {
-            background-color: var(--color--interaction);
+            color: $color--teal-100;
             outline-offset: 4px;
         }
     }
