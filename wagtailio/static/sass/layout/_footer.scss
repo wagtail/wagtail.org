@@ -172,8 +172,8 @@
         transition: color 0.3s;
 
         &:hover {
-            color: $color--teal-100;
-            transition: color 0.3s;
+            fill: $color--teal-100;
+            transition: fill  $transition;
         }
 
     }
