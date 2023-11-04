@@ -98,7 +98,6 @@
 @mixin focus-internal() {
     &:focus-visible {
         outline-offset: -4px;
-        outline: 2px solid currentColor;
     }
 }
 
