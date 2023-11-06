@@ -424,11 +424,6 @@ class GetStartedBlock(blocks.StructBlock):
 class LoopingVideoBlock(blocks.StructBlock):
     # setting autoplay to True adds 'autoplay', 'loop' & 'muted' attrs to video element
     heading = blocks.CharBlock(required=False)
-    autoplay = blocks.BooleanBlock(
-        required=False,
-        default=False,
-        help_text="Automatically start and loop the video. Autoplay only works for items in the media library.",
-    )
     video = VideoChooserBlock(required=False)
     embed = EmbedBlock(required=False)
 
