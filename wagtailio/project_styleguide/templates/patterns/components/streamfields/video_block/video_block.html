@@ -6,7 +6,7 @@
     {% endif %}
     {% if value.video %}
         <div class="responsive-object" style="padding-bottom: 56.25%;">
-            <video>
+            <video controls >
                 {% for source in value.video.sources %}
                     <source type="{{ source.type }}" src="{{ source.src }}">
                 {% endfor %}
