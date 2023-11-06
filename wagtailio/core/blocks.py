@@ -498,6 +498,7 @@ class ContentStoryBlock(blocks.StreamBlock):
     )
     comparison_table = ComparisonTableBlock()
     logos = LogoBlock(group="Logos")
+    video = LoopingVideoBlock()
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
