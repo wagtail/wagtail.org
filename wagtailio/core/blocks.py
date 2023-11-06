@@ -454,7 +454,7 @@ class VideoBlock(blocks.StructBlock):
 
     class Meta:
         icon = "media"
-        template = "patterns/components/streamfields/looping_video_block/looping_video_block.html"
+        template = "patterns/components/streamfields/video_block/video_block.html"
 
 
 class LogoBlock(blocks.StructBlock):
