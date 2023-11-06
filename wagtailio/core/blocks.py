@@ -421,7 +421,7 @@ class GetStartedBlock(blocks.StructBlock):
         template = "patterns/components/get-started/get-started.html"
 
 
-class LoopingVideoBlock(blocks.StructBlock):
+class VideoBlock(blocks.StructBlock):
     # setting autoplay to True adds 'autoplay', 'loop' & 'muted' attrs to video element
     heading = blocks.CharBlock(required=False)
     video = VideoChooserBlock(required=False)
@@ -493,7 +493,7 @@ class ContentStoryBlock(blocks.StreamBlock):
     )
     comparison_table = ComparisonTableBlock()
     logos = LogoBlock(group="Logos")
-    video = LoopingVideoBlock()
+    video = VideoBlock()
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
@@ -508,7 +508,7 @@ class HomePageStoryBlock(blocks.StreamBlock):
     multiple_quotes = MultipleQuoteBlock()
     standalone_cta = StandaloneCTABlock()
     teaser = TeaserBlock()
-    video = LoopingVideoBlock()
+    video = VideoBlock()
 
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"
