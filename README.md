@@ -35,7 +35,7 @@ Then, to start the development server, open a new terminal window and run:
 make runserver
 ```
 
-This will launch `django-admin runserver` in the web container, which serves Wagtail on http://localhost:8000/
+This will launch `django-admin runserver` in the web container, which serves the site on http://localhost:8000/, with the admin at http://localhost:8000/admin/.
 
 To run migrations within Docker you'll need to run:
 

@@ -49,9 +49,9 @@
             flex-direction: row;
         }
 
-        > fieldset {
+        > div {
             display: flex;
-            flex-basis: flex-start;
+            justify-content: flex-start;
             margin: 0;
 
             @include media-query(medium) {
@@ -66,6 +66,8 @@
         border: 1px solid var(--color--text);
         border-radius: $rounded-md;
         padding: 11px 20px;
+
+        @include focus-internal();
 
         @include media-query(medium) {
             border-radius: $rounded-md 0 0 $rounded-md;
@@ -87,6 +89,8 @@
         margin: 15px 0 0 0;
         background-color: var(--color--highlight);
         color: $color--white;
+
+        @include focus-internal();
 
         @include media-query(medium) {
             border-radius: 0 $rounded-md $rounded-md 0;
@@ -113,6 +117,12 @@
     &--footer {
         background-color: var(--color--highlight);
         color: $color--white;
+
+        #{$root}__container > div {
+            @include media-query(medium) {
+                flex: 1;
+            }
+        }
 
         #{$root}__input {
             background-color: var(--color--highlight);

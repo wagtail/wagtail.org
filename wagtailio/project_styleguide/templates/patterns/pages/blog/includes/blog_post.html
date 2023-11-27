@@ -21,6 +21,10 @@
                 {% include "patterns/components/icon/icon.html" with icon='arrow-alt' classes="blog-post__icon" %}
             {% endif %}
             <span>{{ post.date|date }}</span>
+            {% if featured %}
+                {% include "patterns/components/icon/icon.html" with icon='flame' classes="blog-post__icon" %}
+                <span>Featured</span>
+            {% endif %}
         </div>
 
         <h2 class="blog-post__title {% if featured %}heading-two{% endif %}">{{ post.title }}</h2>
