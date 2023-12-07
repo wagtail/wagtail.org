@@ -503,6 +503,7 @@ LOGGING = {
 WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
+WILLOW_OPTIMIZERS = True
 
 if "PRIMARY_HOST" in env:
     WAGTAILADMIN_BASE_URL = "https://%s" % env["PRIMARY_HOST"]
