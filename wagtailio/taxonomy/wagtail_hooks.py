@@ -1,21 +1,21 @@
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin,
-    ModelAdminGroup,
-    modeladmin_register,
-)
+from wagtail import hooks
+from wagtail.admin.viewsets.model import ModelViewSet, ModelViewSetGroup
 
 from wagtailio.taxonomy.models import Category
 
 
-class CategoryModelAdmin(ModelAdmin):
+class CategoryModelAdmin(ModelViewSet):
     model = Category
-    menu_icon = "tag"
+    icon = "tag"
+    exclude_form_fields = []
 
 
-class TaxonomiesModelAdminGroup(ModelAdminGroup):
+class TaxonomiesAdminGroup(ModelViewSetGroup):
     menu_label = "Taxonomy"
-    items = (CategoryModelAdmin,)
     menu_icon = "folder-inverse"
+    items = (CategoryModelAdmin,)
 
 
-modeladmin_register(TaxonomiesModelAdminGroup)
+@hooks.register("register_admin_viewset")
+def register_taxonomy_viewsets():
+    return TaxonomiesAdminGroup()

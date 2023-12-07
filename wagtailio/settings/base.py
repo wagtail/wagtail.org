@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "manifest_loader",
     "wagtail",
-    "wagtail.contrib.modeladmin",
     "wagtail.admin",
     "wagtail.documents",
     "wagtail.snippets",
