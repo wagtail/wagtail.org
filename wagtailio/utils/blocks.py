@@ -158,7 +158,7 @@ class StoryBlock(StreamBlock):
     teaser = TeaserBlock(group="CTA options")
     get_started_block = SnippetChooserBlock(
         "core.GetStartedSnippet",
-        icon="th-list",
+        icon="table-list",
         template="patterns/components/streamfields/get_started_block/get_started_block.html",
         group="CTA options",
     )

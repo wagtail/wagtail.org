@@ -29,9 +29,9 @@ def register_icons(icons):
         "wagtailfontawesomesvg/solid/gem.svg",
         "wagtailfontawesomesvg/solid/image.svg",
         "wagtailfontawesomesvg/solid/images.svg",
-        "wagtailfontawesomesvg/solid/list-alt.svg",
+        "wagtailfontawesomesvg/solid/rectangle-list.svg",
         "wagtailfontawesomesvg/solid/newspaper.svg",
-        "wagtailfontawesomesvg/solid/th-list.svg",
+        "wagtailfontawesomesvg/solid/table-list.svg",
         "wagtailfontawesomesvg/solid/rocket.svg",
     ]
 
