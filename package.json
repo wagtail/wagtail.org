@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "focus-trap": "^7.0.0",
+    "htmx.org": "^1.9.9",
     "micromodal": "^0.4.10"
   }
 }

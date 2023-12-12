@@ -1,5 +1,7 @@
 import '../sass/main.scss';
 
+import 'htmx.org';
+
 import './components/theme-detect';
 import GetStartedMenu from './components/get-started-menu';
 import SiteSearchDesktop from './components/site-search-desktop';
@@ -37,3 +39,5 @@ document.addEventListener('DOMContentLoaded', () => {
     /* eslint-disable no-new */
     new DesktopCloseMenus();
 });
+
+window.htmx = require('htmx.org');
