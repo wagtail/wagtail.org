@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div id="showcase_results">
+    {% for item in showcase_items %}
+        {% image item.image max-320x200 as image %}
+        
+        <div>
+            {% if image %}
+                <img src="{{ image.url }}" alt="{{ image.alt }}">
+            {% endif %}
+
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
+            <p><a href="{{ item.url }}">View site</a></p>
+        </div>
+
+    {% endfor %}
+</div>
