@@ -1,0 +1,36 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static i18n wagtailcore_tags wagtailembeds_tags %}
+
+{% block body_class %}template-showcase{% endblock %}
+
+{% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}
+{% block title_suffix %}{% endblock %}
+
+{% block content %}
+
+    <div>
+        <div>
+            <form
+            >
+                <p><label for="id_sector">Sector:</label>
+                    <select
+                        name="sector"
+                        id="id_sector"
+                        hx-get="{% pageurl page %}"
+                        hx-trigger="click changed"
+                        hx-target="#showcase_results"
+                        placeholder="Filtering..."
+                        hx-swap="outerHTML"
+                    >
+                        {% for name in sectors %}
+                            <option {% if name == current_sector %}selected{% endif %}value="{{ name }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+            </form>
+        </div>
+
+        {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+    </div>
+{% endblock %}
