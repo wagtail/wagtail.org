@@ -926,6 +926,21 @@ pytz = ">=2020.1"
 six = "*"
 
 [[package]]
+name = "mailchimp3"
+version = "3.0.21"
+description = "A python client for v3 of MailChimp API"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mailchimp3-3.0.21-py2.py3-none-any.whl", hash = "sha256:6eb335fcd915b3233285a0bdf6317fdfc412b4a638c102ae3a7a52019d3f0970"},
+    {file = "mailchimp3-3.0.21.tar.gz", hash = "sha256:5e2930ece6144abb659d45e692e92135ab05c9027d3f5e807c0f66cfb374b9ad"},
+]
+
+[package.dependencies]
+requests = ">=2.7.0"
+
+[[package]]
 name = "markdown"
 version = "3.4.1"
 description = "Python implementation of Markdown."
@@ -1871,4 +1886,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c4ffe190634f0828c8dc7038c33aebccd8f6c8fafe3e4c84eac4e43b714094a1"
+content-hash = "d352413d8b62814cf319873242e8cca8dbc2a3ff0ca13de0c9700c971d3cf36e"
