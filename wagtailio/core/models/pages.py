@@ -203,9 +203,16 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
 
     def get_context(self, request):
         context = super().get_context(request)
+        sectors = {}
+
+        for sector in self._filter_used_sectors():
+            if sector == request.GET.get("sector"):
+                sectors[sector] = "selected"
+            else:
+                sectors[sector] = ""
 
         context |= {
-            "sectors": self._filter_used_sectors(),
+            "sectors": sectors,
             "showcase_items": self._filtered_showcase_items(request.GET.get("sector")),
             "current_sector": request.GET.get("sector") or "All",
         }

@@ -13,38 +13,34 @@
         {% if page.introduction %}<div class="showcase_page__intro">{{ page.introduction }}</div>{% endif %}
     </div>
     <div class="showcase_page__content">
-        <div>
-            <form
-            >
-                <div class="select-wrapper">
-                    <select
-                        name="sector"
-                        id="id_sector"
-                        class="select-wrapper__select"
-                        hx-get="{% pageurl page %}"
-                        hx-trigger="click changed"
-                        hx-target="#showcase_results"
-                        placeholder="Filtering..."
-                        hx-swap="outerHTML"
-                        aria-label="Filter by sector"
-                    >
-                        {% for name in sectors %}
-                            <option {% if name == current_sector %}selected{% endif %}value="{{ name }}">{{ name }}</option>
-                        {% endfor %}
-                    </select>
-                </form>
-            </div>
-
-            {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
-
-            <div class="showcase_page__detail">
-                <p>List curated by the Wagtail core team.</p>
-            </div>
-
-            {% if page.cta %}
-                <div>
-                    {% include_block page.cta %}
-                </div>
-            {% endif %}
+        <form
+        >
+            <div class="select-wrapper">
+                <select
+                    name="sector"
+                    id="id_sector"
+                    class="select-wrapper__select"
+                    hx-get="{% pageurl page %}"
+                    hx-trigger="click changed"
+                    hx-target="#showcase_results"
+                    placeholder="Filtering..."
+                    hx-swap="outerHTML"
+                    aria-label="Filter by sector"
+                >
+                    {% for name, selected in sectors.items %}
+                        <option {{ selected }} value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
         </div>
+
+        {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+
+        <div class="showcase_page__detail">
+            <p>List curated by the Wagtail core team.</p>
+        </div>
+    </div>
+    {% if page.cta %}
+        {% include_block page.cta with classes="cta--alt" %}
+    {% endif %}
 {% endblock %}
