@@ -40,7 +40,7 @@
         }
 
         > svg {
-            fill: $color--white;
+            color: $color--white;
             transform: translateX(10px) scale(1.1);
         }
     }
@@ -63,5 +63,11 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    &--alt {
+        #{$root}__title {
+            color: var(--color--link);
+        }
     }
 }

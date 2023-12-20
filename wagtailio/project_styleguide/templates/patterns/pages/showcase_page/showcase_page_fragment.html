@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div id="showcase_results" class="showcase-grid">
     {% for item in showcase_items %}
-        <div class="showcase_card">
+        <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase_card">
             {% if pattern_library %}
                 {# I've tried everything to get this to render using the pattern-library, #}
                 {# This is a placeholder until a fix is found. #}
