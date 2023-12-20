@@ -8,29 +8,43 @@
 {% block title_suffix %}{% endblock %}
 
 {% block content %}
-
-    <div>
+    <div class="showcase_page__hero showcase_page__content">
+        <h1 class="showcase_page__title">{{ page.title }}</h1>
+        {% if page.introduction %}<div class="showcase_page__intro">{{ page.introduction }}</div>{% endif %}
+    </div>
+    <div class="showcase_page__content">
         <div>
             <form
             >
-                <p><label for="id_sector">Sector:</label>
+                <div class="select-wrapper">
                     <select
                         name="sector"
                         id="id_sector"
+                        class="select-wrapper__select"
                         hx-get="{% pageurl page %}"
                         hx-trigger="click changed"
                         hx-target="#showcase_results"
                         placeholder="Filtering..."
                         hx-swap="outerHTML"
+                        aria-label="Filter by sector"
                     >
                         {% for name in sectors %}
                             <option {% if name == current_sector %}selected{% endif %}value="{{ name }}">{{ name }}</option>
                         {% endfor %}
                     </select>
-                </p>
-            </form>
-        </div>
+                </form>
+            </div>
 
-        {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
-    </div>
+            {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+
+            <div class="showcase_page__detail">
+                <p>List curated by the Wagtail core team.</p>
+            </div>
+
+            {% if page.cta %}
+                <div>
+                    {% include_block page.cta %}
+                </div>
+            {% endif %}
+        </div>
 {% endblock %}
