@@ -9,7 +9,12 @@ from wagtail.search import index
 
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
-from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBlock
+from wagtailio.core.blocks import (
+    ContentStoryBlock,
+    CTABlock,
+    HomePageStoryBlock,
+    StandaloneCTABlock,
+)
 from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
@@ -141,8 +146,12 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
 
     parent_page_types = ["core.HomePage"]
 
+    introduction = models.TextField(
+        verbose_name="Introduction",
+        blank=True,
+    )
     cta = StreamField(
-        [("cta", CTABlock())],
+        [("cta", StandaloneCTABlock())],
         blank=True,
         max_num=1,
         help_text="Allows for a maximum of 1 CTA blocks",
@@ -150,6 +159,7 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
     )
 
     content_panels = Page.content_panels + [
+        FieldPanel("introduction"),
         FieldPanel("cta"),
         InlinePanel("showcase_items", label="Showcase items"),
     ]
@@ -159,10 +169,8 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField("heading"),
-        index.SearchField("sub_heading"),
-        index.SearchField("intro"),
-        index.SearchField("body"),
+        index.SearchField("description"),
+        index.SearchField("introduction"),
     ]
 
     def _is_htmx_request(self, request):
@@ -214,6 +222,7 @@ class ShowcaseItem(Orderable):
         null=True,
         related_name="+",
     )
+    alt_text = models.CharField(max_length=255, blank=True)
     logo = models.ForeignKey(
         "images.WagtailIOImage",
         models.SET_NULL,
@@ -229,12 +238,13 @@ class ShowcaseItem(Orderable):
         blank=True,
         related_name="+",
     )
+    link_text = models.CharField(max_length=255)
 
     sector = models.ForeignKey(
         "Sector",
-        models.SET_NULL,
-        null=True,
-        blank=True,
+        models.CASCADE,
+        null=False,
+        blank=False,
         related_name="+",
     )
 
@@ -249,9 +259,11 @@ class ShowcaseItem(Orderable):
         FieldPanel("sector"),
         FieldPanel("description"),
         FieldPanel("image"),
+        FieldPanel("alt_text"),
         FieldPanel("logo"),
         FieldPanel("external_link"),
         FieldPanel("internal_link"),
+        FieldPanel("link_text"),
     ]
 
     def clean(self):
@@ -269,3 +281,15 @@ class ShowcaseItem(Orderable):
 
     def __str__(self):
         return self.title
+
+    @property
+    def url(self):
+        if self.external_link:
+            return self.external_link
+        return self.internal_link.url
+
+    @property
+    def link_svg(self):
+        if self.external_link:
+            return "open-link"
+        return "arrow"
