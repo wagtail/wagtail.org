@@ -8,11 +8,11 @@
 {% block title_suffix %}{% endblock %}
 
 {% block content %}
-    <div class="showcase_page__hero showcase_page__content">
-        <h1 class="showcase_page__title">{{ page.title }}</h1>
-        {% if page.introduction %}<div class="showcase_page__intro">{{ page.introduction }}</div>{% endif %}
+    <div class="showcase-page__hero showcase-page__content">
+        <h1 class="showcase-page__title">{{ page.title }}</h1>
+        {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction }}</div>{% endif %}
     </div>
-    <div class="showcase_page__content">
+    <div class="showcase-page__content">
         <form
         >
             <div class="select-wrapper">
@@ -36,7 +36,7 @@
 
         {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
 
-        <div class="showcase_page__detail">
+        <div class="showcase-page__detail">
             <p>List curated by the Wagtail core team.</p>
         </div>
     </div>

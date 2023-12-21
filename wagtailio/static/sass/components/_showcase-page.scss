@@ -1,0 +1,43 @@
+.showcase-page {
+    &__hero {
+        padding-bottom: 50px;
+    }
+
+    &__intro {
+        font-size: 2.5rem;
+        padding-bottom: 50px;
+    }
+
+
+    &__content {
+        padding: 0 15px;
+
+        @include media-query(medium) {
+            padding: 0 15%;
+        }
+    }
+
+    &__detail {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 50px;
+
+        @include media-query(medium) {
+            padding-bottom: 100px;
+        }
+    }
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+
+    padding: 50px 0 50px 0;
+
+    @include media-query(medium) {
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items:center
+    }
+}
