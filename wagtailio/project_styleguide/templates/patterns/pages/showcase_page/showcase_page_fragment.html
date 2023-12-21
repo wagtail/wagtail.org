@@ -1,12 +1,12 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div id="showcase_results" class="showcase-grid">
     {% for item in showcase_items %}
-        <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase_card">
+        <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase-card">
             {% if pattern_library %}
                 {# I've tried everything to get this to render using the pattern-library, #}
                 {# This is a placeholder until a fix is found. #}
-                <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase_card__image">
-                <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase_card__logo">
+                <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase-card__image">
+                <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase-card__logo">
             {% else %}
                 <picture>
                     {% image item.image max-600x400 format-webp as webp_image %}
@@ -22,7 +22,7 @@
                         src="{{ base_img.url }}"
                         height="{{ base_img.height }}"
                         width="{{ base_img.width }}"
-                        class="showcase_card__image"
+                        class="showcase-card__image"
                         alt="{% firstof item.alt_text item.image.alt %}"/>
                 </picture>
                 {% if item.logo %}
@@ -40,15 +40,15 @@
                             src="{{ base_img.url }}"
                             height="{{ base_img.height }}"
                             width="{{ base_img.width }}"
-                            class="showcase_card__logo"
+                            class="showcase-card__logo"
                             alt="{% firstof item.alt_text item.image.alt %}"/>
                     </picture>
                 {% endif %}
             {% endif %}
-            <div class="showcase_card__content">
-                <h2 class="showcase_card__heading">{{ item.title }}</h2>
-                <p class="showcase_card__description">{{ item.description }}</p>
-                <a class="showcase_card__link" href="{{ item.url }}">{{ item.link_text }} <svg class="showcase_card__svg" width="15" height="16"aria-hidden="true">
+            <div class="showcase-card__content">
+                <h2 class="showcase-card__heading">{{ item.title }}</h2>
+                <p class="showcase-card__description">{{ item.description }}</p>
+                <a class="showcase-card__link" href="{{ item.url }}">{{ item.link_text }} <svg class="showcase-card__svg" width="15" height="16"aria-hidden="true">
                     <use xlink:href="#{{ item.link_svg }}"></use>
                 </svg></a>
             </div>
