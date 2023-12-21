@@ -5,7 +5,7 @@ SECTOR_DATA = (
     "Corporations",
     "Education",
     "Cultural institutions",
-    "Charities and nonprofits"
+    "Charities and nonprofits",
 )
 
 
@@ -16,8 +16,8 @@ def _populate_sector_data(apps, schema_editor):
         to_create.append(Sector(name=name))
     Sector.objects.bulk_create(to_create)
 
-class Migration(migrations.Migration):
 
+class Migration(migrations.Migration):
     dependencies = [
         ("core", "0060_sector_showcaseitem_showcasepage"),
     ]
