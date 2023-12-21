@@ -1,57 +1,86 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<div id="showcase_results" class="showcase-grid">
-    {% for item in showcase_items %}
-        <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase-card">
-            {% if pattern_library %}
+<div id="showcase_results">
+    <div class="showcase-grid">
+        {% for item in showcase_items %}
+            <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase-card">
+                {% if pattern_library %}
                 {# I've tried everything to get this to render using the pattern-library, #}
                 {# This is a placeholder until a fix is found. #}
-                <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase-card__image">
-                <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase-card__logo">
-            {% else %}
-                <picture>
-                    {% image item.image max-600x400 format-webp as webp_image %}
-                    <source srcset="{{ image_webp.url }}"
-                            type="image/webp"
-                            alt="{% firstof item.alt_text item.image.alt %}"/>
-                    {% image item.image max-600x400 as image_png %}
-                    <source srcset="{{ image_png.url }}"
-                            type="image/png"
-                            alt="{% firstof item.alt_text item.image.alt %}"/>
-                    {% image item.image max-600x400 as base_img %}
-                    <img
-                        src="{{ base_img.url }}"
-                        height="{{ base_img.height }}"
-                        width="{{ base_img.width }}"
-                        class="showcase-card__image"
-                        alt="{% firstof item.alt_text item.image.alt %}"/>
-                </picture>
-                {% if item.logo %}
+                    <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase-card__image">
+                    <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase-card__logo">
+                {% else %}
                     <picture>
-                        {% image item.logo max-120x100 format-webp as webp_image %}
+                        {% image item.image max-600x400 format-webp as webp_image %}
                         <source srcset="{{ image_webp.url }}"
                                 type="image/webp"
                                 alt="{% firstof item.alt_text item.image.alt %}"/>
-                        {% image item.logo max-120x100 as image_png %}
+                        {% image item.image max-600x400 as image_png %}
                         <source srcset="{{ image_png.url }}"
                                 type="image/png"
                                 alt="{% firstof item.alt_text item.image.alt %}"/>
-                        {% image item.logo max-120x100 as base_img %}
+                        {% image item.image max-600x400 as base_img %}
                         <img
                             src="{{ base_img.url }}"
                             height="{{ base_img.height }}"
                             width="{{ base_img.width }}"
-                            class="showcase-card__logo"
+                            class="showcase-card__image"
                             alt="{% firstof item.alt_text item.image.alt %}"/>
                     </picture>
+                    {% if item.logo %}
+                        <picture>
+                            {% image item.logo max-120x100 format-webp as webp_image %}
+                            <source srcset="{{ image_webp.url }}"
+                                    type="image/webp"
+                                    alt="{% firstof item.alt_text item.image.alt %}"/>
+                            {% image item.logo max-120x100 as image_png %}
+                            <source srcset="{{ image_png.url }}"
+                                    type="image/png"
+                                    alt="{% firstof item.alt_text item.image.alt %}"/>
+                            {% image item.logo max-120x100 as base_img %}
+                            <img
+                                src="{{ base_img.url }}"
+                                height="{{ base_img.height }}"
+                                width="{{ base_img.width }}"
+                                class="showcase-card__logo"
+                                alt="{% firstof item.alt_text item.image.alt %}"/>
+                        </picture>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            <div class="showcase-card__content">
-                <h2 class="showcase-card__heading">{{ item.title }}</h2>
-                <p class="showcase-card__description">{{ item.description }}</p>
-                <a class="showcase-card__link" href="{{ item.url }}">{{ item.link_text }} <svg class="showcase-card__svg" width="15" height="16"aria-hidden="true">
-                    <use xlink:href="#{{ item.link_svg }}"></use>
-                </svg></a>
+                <div class="showcase-card__content">
+                    <h2 class="showcase-card__heading">{{ item.title }}</h2>
+                    <p class="showcase-card__description">{{ item.description }}</p>
+                    <a class="showcase-card__link" href="{{ item.url }}">{{ item.link_text }} <svg class="showcase-card__svg" width="15" height="16"aria-hidden="true">
+                        <use xlink:href="#{{ item.link_svg }}"></use>
+                    </svg></a>
+                </div>
             </div>
+        {% endfor %}
+    </div>
+    <div class="">
+        <div class="pagination pagination--showcase">
+            {% if showcase_items.has_previous %}
+                <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
+                    <p class="button__text">
+                        Previous
+                        <span class="u-sr-only">- Go to page {{ showcase_items.previous_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+
+            <span class="pagination__page-count mini-meta">
+                Page {{ showcase_items.number }} of {{ showcase_items.paginator.num_pages }}
+            </span>
+
+            {% if showcase_items.has_next %}
+                <a href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
+                    <p class="button__text">
+                        Next
+                        <span class="u-sr-only">- Go to page {{ showcase_items.next_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
         </div>
-    {% endfor %}
+    </div>
 </div>

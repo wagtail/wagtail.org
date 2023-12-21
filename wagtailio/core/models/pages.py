@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 
 from modelcluster.fields import ParentalKey
@@ -195,6 +196,7 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
 
     def serve(self, request):
         response = super().serve(request)
+
         if self._is_htmx_request(request):
             # We only return the fragment, rather than the whole page.
             new_url = self.url + "?" + request.GET.urlencode()
@@ -211,9 +213,22 @@ class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
             else:
                 sectors[sector] = ""
 
+        # Pagination
+        paginator = Paginator(
+            self._filtered_showcase_items(request.GET.get("sector")), 6
+        )  # Show 6
+
+        page = request.GET.get("page")
+        try:
+            showcase_items = paginator.page(page)
+        except PageNotAnInteger:
+            showcase_items = paginator.page(1)
+        except EmptyPage:
+            showcase_items = None
+
         context |= {
             "sectors": sectors,
-            "showcase_items": self._filtered_showcase_items(request.GET.get("sector")),
+            "showcase_items": showcase_items,
             "current_sector": request.GET.get("sector") or "All",
         }
 
