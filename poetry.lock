@@ -411,6 +411,22 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-htmx"
+version = "1.17.2"
+description = "Extensions for using Django with htmx."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-htmx-1.17.2.tar.gz", hash = "sha256:4089f2ed38727e9846c2f4cd1daddf6b010c7be8d834cfbcffc8c5ecf445c04e"},
+    {file = "django_htmx-1.17.2-py3-none-any.whl", hash = "sha256:f4971432d2ca45dbb31d9b58add1c50ae54354afe4bf59cafd591b1711b502c0"},
+]
+
+[package.dependencies]
+asgiref = ">=3.6"
+Django = ">=3.2"
+
+[[package]]
 name = "django-manifest-loader"
 version = "1.0.0"
 description = "A Django app to load webpack assets."
