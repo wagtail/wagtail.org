@@ -1,21 +1,13 @@
-from django.core.exceptions import ValidationError
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 
-from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Orderable, Page
+from wagtail.models import Page
 from wagtail.search import index
 
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
-from wagtailio.core.blocks import (
-    ContentStoryBlock,
-    CTABlock,
-    HomePageStoryBlock,
-    StandaloneCTABlock,
-)
+from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBlock
 from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
@@ -27,7 +19,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
     subpage_types = [
         "blog.BlogIndexPage",
         "core.ContentPage",
-        "core.ShowcasePage",
+        "showcase.ShowcasePage",
         "features.FeatureIndexPage",
         "newsletter.NewsletterIndexPage",
         "standardpage.StandardPage",
@@ -139,179 +131,3 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
-
-
-class ShowcasePage(Page, SocialMediaMixin, CrossPageMixin):
-    template = "patterns/pages/showcase_page/showcase_page.html"
-    htmx_template = "patterns/pages/showcase_page/showcase_page_fragment.html"
-
-    parent_page_types = ["core.HomePage"]
-
-    introduction = models.TextField(
-        verbose_name="Introduction",
-        blank=True,
-    )
-    cta = StreamField(
-        [("cta", StandaloneCTABlock())],
-        blank=True,
-        max_num=1,
-        help_text="Allows for a maximum of 1 CTA blocks",
-        use_json_field=True,
-    )
-
-    content_panels = Page.content_panels + [
-        FieldPanel("introduction"),
-        FieldPanel("cta"),
-        InlinePanel("showcase_items", label="Showcase items"),
-    ]
-
-    promote_panels = (
-        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
-    )
-
-    search_fields = Page.search_fields + [
-        index.SearchField("description"),
-        index.SearchField("introduction"),
-    ]
-
-    def _is_htmx_request(self, request):
-        return request.headers.get("HX-Request") == "true"
-
-    def _filter_used_sectors(self):
-        return ["All"] + list(
-            self.showcase_items.values_list("sector__name", flat=True).distinct()
-        )
-
-    def _filtered_showcase_items(self, sector):
-        if sector in self._filter_used_sectors() and sector != "All":
-            return self.showcase_items.filter(sector__name=sector)
-        else:
-            return self.showcase_items.all()
-
-    def get_template(self, request, *args, **kwargs):
-        if self._is_htmx_request(request):
-            return self.htmx_template
-        else:
-            return self.template
-
-    def serve(self, request):
-        response = super().serve(request)
-
-        if self._is_htmx_request(request):
-            # We only return the fragment, rather than the whole page.
-            new_url = self.url + "?" + request.GET.urlencode()
-            response.headers["HX-Push"] = new_url
-        return response
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        sectors = {}
-
-        for sector in self._filter_used_sectors():
-            if sector == request.GET.get("sector"):
-                sectors[sector] = "selected"
-            else:
-                sectors[sector] = ""
-
-        # Pagination
-        paginator = Paginator(
-            self._filtered_showcase_items(request.GET.get("sector")), 6
-        )  # Show 6
-
-        page = request.GET.get("page")
-        try:
-            showcase_items = paginator.page(page)
-        except PageNotAnInteger:
-            showcase_items = paginator.page(1)
-        except EmptyPage:
-            showcase_items = None
-
-        context |= {
-            "sectors": sectors,
-            "showcase_items": showcase_items,
-            "current_sector": request.GET.get("sector") or "All",
-        }
-
-        return context
-
-
-class ShowcaseItem(Orderable):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    image = models.ForeignKey(
-        "images.WagtailIOImage",
-        models.SET_NULL,
-        null=True,
-        related_name="+",
-    )
-    alt_text = models.CharField(max_length=255, blank=True)
-    logo = models.ForeignKey(
-        "images.WagtailIOImage",
-        models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-    external_link = models.URLField(blank=True)
-    internal_link = models.ForeignKey(
-        "wagtailcore.Page",
-        models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="+",
-    )
-    link_text = models.CharField(max_length=255)
-
-    sector = models.ForeignKey(
-        "Sector",
-        models.CASCADE,
-        null=False,
-        blank=False,
-        related_name="+",
-    )
-
-    page = ParentalKey(
-        ShowcasePage,
-        related_name="showcase_items",
-        on_delete=models.CASCADE,
-    )
-
-    panels = [
-        FieldPanel("title"),
-        FieldPanel("sector"),
-        FieldPanel("description"),
-        FieldPanel("image"),
-        FieldPanel("alt_text"),
-        FieldPanel("logo"),
-        FieldPanel("external_link"),
-        FieldPanel("internal_link"),
-        FieldPanel("link_text"),
-    ]
-
-    def clean(self):
-        if not self.external_link and not self.internal_link:
-            raise ValidationError(
-                "You must specify either an external or internal link"
-            )
-        if self.external_link and self.internal_link:
-            raise ValidationError(
-                "You must specify either an external or internal link, not both"
-            )
-
-        if self.logo and not self.image:
-            raise ValidationError("You must specify an image when using a logo")
-
-    def __str__(self):
-        return self.title
-
-    @property
-    def url(self):
-        if self.external_link:
-            return self.external_link
-        return self.internal_link.url
-
-    @property
-    def link_svg(self):
-        if self.external_link:
-            return "open-link"
-        return "arrow"

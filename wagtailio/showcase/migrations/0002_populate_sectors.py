@@ -10,21 +10,26 @@ SECTOR_DATA = (
 
 
 def _populate_sector_data(apps, schema_editor):
-    Sector = apps.get_model("core", "Sector")
+    Sector = apps.get_model("showcase", "Sector")
     to_create = []
     for name in SECTOR_DATA:
         to_create.append(Sector(name=name))
     Sector.objects.bulk_create(to_create)
 
 
+def _remove_sector_data(apps, schema_editor):
+    Sector = apps.get_model("showcase", "Sector")
+    Sector.objects.all().delete()
+
+
 class Migration(migrations.Migration):
     dependencies = [
-        ("core", "0060_sector_showcaseitem_showcasepage"),
+        ("showcase", "0001_initial"),
     ]
 
     operations = [
         migrations.RunPython(
             code=_populate_sector_data,
-            reverse_code=migrations.RunPython.noop,
+            reverse_code=_remove_sector_data,
         ),
     ]
