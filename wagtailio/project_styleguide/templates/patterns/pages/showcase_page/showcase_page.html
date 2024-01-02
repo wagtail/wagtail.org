@@ -2,6 +2,10 @@
 
 {% load static i18n wagtailcore_tags wagtailembeds_tags %}
 
+{% block extra_js %}
+    <script src="{% static 'js/htmx.js' %}" defer></script>
+{% endblock extra_js %}
+
 {% block body_class %}template-showcase{% endblock %}
 
 {% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}

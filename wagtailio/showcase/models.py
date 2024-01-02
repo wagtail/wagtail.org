@@ -45,9 +45,6 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         index.SearchField("introduction"),
     ]
 
-    def _is_htmx_request(self, request):
-        return request.headers.get("HX-Request") == "true"
-
     def _filter_used_sectors(self):
         return ["All"] + list(
             self.showcase_items.values_list("sector__name", flat=True).distinct()
@@ -60,7 +57,7 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
             return self.showcase_items.all()
 
     def get_template(self, request, *args, **kwargs):
-        if self._is_htmx_request(request):
+        if request.htmx:
             return self.htmx_template
         else:
             return self.template
@@ -68,7 +65,7 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
     def serve(self, request):
         response = super().serve(request)
 
-        if self._is_htmx_request(request):
+        if request.htmx:
             # We only return the fragment, rather than the whole page.
             new_url = self.url + "?" + request.GET.urlencode()
             response.headers["HX-Push"] = new_url
