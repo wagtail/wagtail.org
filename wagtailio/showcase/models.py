@@ -62,15 +62,6 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         else:
             return self.template
 
-    def serve(self, request):
-        response = super().serve(request)
-
-        if request.htmx:
-            # We only return the fragment, rather than the whole page.
-            new_url = self.url + "?" + request.GET.urlencode()
-            response.headers["HX-Push"] = new_url
-        return response
-
     def get_context(self, request):
         context = super().get_context(request)
         sectors = {}
