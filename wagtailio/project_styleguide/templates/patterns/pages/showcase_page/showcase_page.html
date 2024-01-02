@@ -27,8 +27,9 @@
                     hx-get="{% pageurl page %}"
                     hx-trigger="click changed"
                     hx-target="#showcase_results"
-                    placeholder="Filtering..."
+                    hx-push-url="true"
                     hx-swap="outerHTML"
+                    placeholder="Filtering..."
                     aria-label="Filter by sector"
                 >
                     {% for name, selected in sectors.items %}
