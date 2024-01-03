@@ -2,7 +2,7 @@
 <div id="showcase_results">
     <div class="showcase-grid">
         {% for item in showcase_items %}
-            <div hx-on:click="window.location.replace('{{ item.url }}')" class="showcase-card">
+            <div hx-on:click="window.location.replace('{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}')" class="showcase-card">
                 {% if pattern_library %}
                 {# I've tried everything to get this to render using the pattern-library, #}
                 {# This is a placeholder until a fix is found. #}
@@ -49,14 +49,14 @@
                 <div class="showcase-card__content">
                     <h2 class="showcase-card__heading">{{ item.title }}</h2>
                     <p class="showcase-card__description">{{ item.description }}</p>
-                    <a class="showcase-card__link" href="{{ item.url }}">{{ item.link_text }} <svg class="showcase-card__svg" width="15" height="16"aria-hidden="true">
-                        <use xlink:href="#{{ item.link_svg }}"></use>
+                    <a class="showcase-card__link" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">{{ item.link_text }} <svg class="showcase-card__svg" width="15" height="16" aria-hidden="true">
+                        <use xlink:href="#{% if self.external_link %}open-link{% else %}arrow{% endif %}"></use>
                     </svg></a>
                 </div>
             </div>
         {% endfor %}
     </div>
-    <div class="">
+    <div>
         <div class="pagination pagination--showcase">
             {% if showcase_items.has_previous %}
                 <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">

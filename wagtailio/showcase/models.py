@@ -3,7 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
@@ -29,6 +29,10 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         max_num=1,
         help_text="Allows for a maximum of 1 CTA blocks",
         use_json_field=True,
+    )
+
+    listing_meta_description = models.CharField(
+        max_length=255, blank=True, help_text="The description beneath the listing"
     )
 
     content_panels = Page.content_panels + [
@@ -95,8 +99,14 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
 
 
 class ShowcaseItem(Orderable):
+    page = ParentalKey(
+        ShowcasePage,
+        related_name="showcase_items",
+        on_delete=models.CASCADE,
+    )
+
     title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     image = models.ForeignKey(
         "images.WagtailIOImage",
         models.SET_NULL,
@@ -111,6 +121,7 @@ class ShowcaseItem(Orderable):
         blank=True,
         related_name="+",
     )
+
     external_link = models.URLField(blank=True)
     internal_link = models.ForeignKey(
         "wagtailcore.Page",
@@ -129,12 +140,6 @@ class ShowcaseItem(Orderable):
         related_name="+",
     )
 
-    page = ParentalKey(
-        ShowcasePage,
-        related_name="showcase_items",
-        on_delete=models.CASCADE,
-    )
-
     panels = [
         FieldPanel("title"),
         FieldPanel("sector"),
@@ -142,9 +147,16 @@ class ShowcaseItem(Orderable):
         FieldPanel("image"),
         FieldPanel("alt_text"),
         FieldPanel("logo"),
-        FieldPanel("external_link"),
-        FieldPanel("internal_link"),
-        FieldPanel("link_text"),
+        MultiFieldPanel(
+            [
+                FieldPanel("external_link"),
+                FieldPanel("internal_link"),
+                FieldPanel("link_text"),
+            ],
+            heading="Link",
+            classname="collapsible",
+            icon="link",
+        ),
     ]
 
     def clean(self):
@@ -162,15 +174,3 @@ class ShowcaseItem(Orderable):
 
     def __str__(self):
         return self.title
-
-    @property
-    def url(self):
-        if self.external_link:
-            return self.external_link
-        return self.internal_link.url
-
-    @property
-    def link_svg(self):
-        if self.external_link:
-            return "open-link"
-        return "arrow"
