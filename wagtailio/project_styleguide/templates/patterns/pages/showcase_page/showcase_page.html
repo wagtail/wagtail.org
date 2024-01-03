@@ -41,9 +41,11 @@
 
         {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
 
-        <div class="showcase-page__detail">
-            <p>List curated by the Wagtail core team.</p>
-        </div>
+        {% if page.listing_meta_description %}
+            <div class="showcase-page__detail">
+                <p>{{ page.listing_meta_description }}.</p>
+            </div>
+        {% endif %}
     </div>
     {% if page.cta %}
         {% include_block page.cta with classes="cta--alt" %}
