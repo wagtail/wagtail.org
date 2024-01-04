@@ -22,6 +22,8 @@
     }
 
     &__icon {
+        @include z-index(under);
+        position: relative;
         width: auto;
         height: 50px;
         margin-left: auto;
@@ -47,9 +49,9 @@
             flex-direction: row;
         }
 
-        > fieldset {
+        > div {
             display: flex;
-            flex-basis: flex-start;
+            justify-content: flex-start;
             margin: 0;
 
             @include media-query(medium) {
@@ -64,6 +66,8 @@
         border: 1px solid var(--color--text);
         border-radius: $rounded-md;
         padding: 11px 20px;
+
+        @include focus-internal();
 
         @include media-query(medium) {
             border-radius: $rounded-md 0 0 $rounded-md;
@@ -86,6 +90,8 @@
         background-color: var(--color--highlight);
         color: $color--white;
 
+        @include focus-internal();
+
         @include media-query(medium) {
             border-radius: 0 $rounded-md $rounded-md 0;
             border-style: solid solid solid none;
@@ -102,11 +108,21 @@
         @include media-query(large) {
             padding: 60px;
         }
+
+        #{$root}__sub-heading {
+            text-shadow: 2px 2px var(--color--background);
+        }
     }
 
     &--footer {
         background-color: var(--color--highlight);
         color: $color--white;
+
+        #{$root}__container > div {
+            @include media-query(medium) {
+                flex: 1;
+            }
+        }
 
         #{$root}__input {
             background-color: var(--color--highlight);

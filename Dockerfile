@@ -73,15 +73,6 @@ FROM backend AS dev
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 
-# Install Heroku CLI
-RUN curl https://cli-assets.heroku.com/install.sh | sh
-
-# Install AWS CLI
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" && \
-    unzip /tmp/awscli-bundle.zip -d /tmp && \
-    /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
-    rm /tmp/awscli-bundle.zip && rm -r /tmp/awscli-bundle
-
 # Switch to the application user
 USER wagtailio
 

@@ -21,6 +21,9 @@ build:  ## 🔨 - Build Docker container
 start:	## 🎬 - Start containers
 	docker-compose up
 
+sh:	## Enter the web container
+	docker-compose exec web bash
+
 runserver:	## 🏃 - Run Django server
 	docker-compose exec web django-admin runserver 0.0.0.0:8000
 
@@ -32,15 +35,3 @@ migrations:	## 🧳 - Make migrations
 
 migrate:  ## 🧳 - Migrate
 	docker-compose run web django-admin migrate
-
-pull-production-data:	## ⬇️ - Pull production data
-	docker-compose run web fab pull_production_data
-
-pull-production-media:	## 📸 - Pull production media
-	docker-compose run web fab pull_production_media
-
-pull-staging-data:	## ⬇️ - Pull production data
-	docker-compose run web fab pull_staging_data
-
-pull-staging-media:	## 📸 - Pull production media
-	docker-compose run web fab pull_staging_media
