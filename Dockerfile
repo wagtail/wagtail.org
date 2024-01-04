@@ -26,8 +26,9 @@ ENV DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
     WEB_CONCURRENCY=3
 
 # Install operating system dependencies.
-RUN apt-get update -y && \
-    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-13 && \
+RUN apt-get update --yes --quiet && \
+    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-13 \
+    jpegoptim pngquant gifsicle libjpeg-progs webp && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
