@@ -33,7 +33,7 @@ class PackageAdmin(BaseModelViewSet):
 
 
 class PackagesAdminGroup(ModelViewSetGroup):
-    menu_label = "Package"
-    menu_icon = "folder-open-inverse"
+    menu_label = "Packages"
+    menu_icon = "cube"
     menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
     items = [GridAdmin, PackageAdmin]
