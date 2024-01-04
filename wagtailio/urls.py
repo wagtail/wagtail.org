@@ -18,7 +18,10 @@ from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.search.views import search
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
-from wagtailio.utils.cache import get_default_cache_control_decorator
+from wagtailio.utils.cache import (
+    get_default_cache_control_decorator,
+    get_default_cache_control_method_decorator,
+)
 from wagtailio.utils.sitemap_generator import Sitemap
 from wagtailio.utils.views import error_404, error_500, favicon, robots
 
@@ -40,7 +43,7 @@ urlpatterns = [
 ]
 
 
-Page.serve = get_default_cache_control_decorator()(Page.serve)
+Page.serve = get_default_cache_control_method_decorator(Page.serve)
 
 
 if settings.DEBUG:
