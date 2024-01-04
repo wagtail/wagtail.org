@@ -57,9 +57,16 @@
         {% endfor %}
     </div>
     <div>
-        <div class="pagination pagination--showcase">
+        <div
+            hx-boost="true"
+            class="pagination pagination--showcase">
             {% if showcase_items.has_previous %}
-                <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
+                <a hx-get="{% pageurl page %}"
+                   hx-trigger="click"
+                   hx-target="#showcase_results"
+                   hx-push-url="true"
+                   hx-swap="innerHTML"
+                   href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
                     <p class="button__text">
                         Previous
                         <span class="u-sr-only">- Go to page {{ showcase_items.previous_page_number}}</span>
@@ -73,7 +80,13 @@
             </span>
 
             {% if showcase_items.has_next %}
-                <a href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
+                <a
+                    hx-trigger="click"
+                    hx-target="#showcase_results"
+                    hx-push-url="true"
+                    hx-swap="outerHTML"
+                    hx-swap="innerHTML"
+                    href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
                     <p class="button__text">
                         Next
                         <span class="u-sr-only">- Go to page {{ showcase_items.next_page_number}}</span>
