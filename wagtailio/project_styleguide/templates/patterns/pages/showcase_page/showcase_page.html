@@ -14,7 +14,7 @@
 {% block content %}
     <div class="showcase-page__hero showcase-page__content">
         <h1 class="showcase-page__title">{{ page.title }}</h1>
-        {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction }}</div>{% endif %}
+        {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction|richtext }}</div>{% endif %}
     </div>
     <div class="showcase-page__content">
         <form
@@ -36,6 +36,9 @@
                         <option {{ selected }} value="{{ name }}">{{ name }}</option>
                     {% endfor %}
                 </select>
+                <button id="submit" type="submit" class="button" data-progressive-enhancement>
+                    Filter
+                </button>
             </form>
         </div>
 
