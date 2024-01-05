@@ -4,7 +4,7 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
 
@@ -15,12 +15,12 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/showcase_page/showcase_page.html"
-    htmx_template = "patterns/pages/showcase_page/showcase_page_fragment.html"
+    ajax_template = "patterns/pages/showcase_page/showcase_page_fragment.html"
 
     parent_page_types = ["core.HomePage"]
 
-    introduction = models.TextField(
-        verbose_name="Introduction",
+    introduction = RichTextField(
+        features=["p", "a", "ul", "ol", "link", "document-link"],
         blank=True,
     )
     cta = StreamField(
@@ -35,10 +35,13 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         max_length=255, blank=True, help_text="The description beneath the listing"
     )
 
+    is_preview = False
+
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("cta"),
         InlinePanel("showcase_items", label="Showcase items"),
+        FieldPanel("listing_meta_description"),
     ]
 
     promote_panels = (
@@ -49,34 +52,45 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         index.SearchField("introduction"),
     ]
 
-    def _filter_used_sectors(self):
-        return ["All"] + list(
+    def _get_used_sectors(self):
+        if self.is_preview:
+            # If we're previewing a page, we're using a FakeQuerySet
+            # which doesn't have distinct() so we need to do it manually
+            # https://github.com/wagtail/django-modelcluster/issues/29
+            items = {}
+            for item in self.showcase_items.all():
+                items[item.sector.name] = ""
+            return list(items.keys())
+        return list(
             self.showcase_items.values_list("sector__name", flat=True).distinct()
         )
 
     def _filtered_showcase_items(self, sector):
-        if sector in self._filter_used_sectors() and sector != "All":
+        if sector in self._get_used_sectors() and sector != "All":
             return self.showcase_items.filter(sector__name=sector)
         else:
             return self.showcase_items.all()
 
     def get_template(self, request, *args, **kwargs):
         if request.htmx:
-            return self.htmx_template
+            return self.ajax_template
         else:
             return self.template
 
     def get_context(self, request):
         context = super().get_context(request)
-        sectors = {}
 
-        for sector in self._filter_used_sectors():
+        sectors = {"All": ""}
+
+        if request.is_preview:
+            self.is_preview = True
+
+        for sector in self._get_used_sectors():
             if sector == request.GET.get("sector"):
                 sectors[sector] = "selected"
             else:
                 sectors[sector] = ""
 
-        # Pagination
         paginator = Paginator(
             self._filtered_showcase_items(request.GET.get("sector")), 6
         )  # Show 6
@@ -89,11 +103,13 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         except EmptyPage:
             showcase_items = None
 
-        context |= {
-            "sectors": sectors,
-            "showcase_items": showcase_items,
-            "current_sector": request.GET.get("sector") or "All",
-        }
+        context.update(
+            {
+                "sectors": sectors,
+                "showcase_items": showcase_items,
+                "current_sector": request.GET.get("sector") or "All",
+            }
+        )
 
         return context
 
