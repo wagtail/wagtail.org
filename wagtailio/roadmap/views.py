@@ -4,11 +4,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.dateparse import parse_datetime
 from django.views.generic import FormView
-
 from wagtail.admin import messages
-
 import requests
-
 from wagtailio.roadmap.forms import ImportForm
 from wagtailio.roadmap.models import Milestone, MilestoneItem
 
@@ -71,7 +68,6 @@ graphql_query = {
     "variables": {},
 }
 
-
 def process(token=""):
     if not token:
         token = settings.GITHUB_ROADMAP_ACCESS_TOKEN
@@ -123,13 +119,17 @@ def process(token=""):
             item.full_clean()
             item.save()
 
+            # Check if the issue needs contributions
+            if "Contribute to this" in labels:
+                item.needs_contributions = True
+                item.save()
+
     # Remove items that are no longer attached to the seen milestones.
     (
         MilestoneItem.objects.filter(milestone__number__in=seen_milestone_numbers)
         .exclude(number__in=seen_item_numbers)
         .delete()
     )
-
 
 class ImportView(FormView):
     template_name = "roadmap/import.html"
