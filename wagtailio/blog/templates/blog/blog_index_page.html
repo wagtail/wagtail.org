@@ -7,12 +7,17 @@
 {% block content %}
 
     <div class="container">
-        <div class="hero">
-            <div class="hero__inner">
-                <h1 aria-hidden="true">Latest Chirps</h1>
-                <span class="u-sr-only">Latest blog posts</span>
-            </div>
-        </div>
+        <h1>{{ page.title }}</h1>
+        <p>By:
+            {% for author in page.authors.all %}
+                {{ author.name }}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        {{ page.body }}
+    </div>
+
+{% endblock %}
 
         <section class="blog-listing">
             {% for post in posts %}
