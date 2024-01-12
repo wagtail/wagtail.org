@@ -35,6 +35,7 @@ wagtailaltgenerator = "~4.1.2"  # Compatible with Wagtail <= 5.0 as far as I can
 wagtailmedia = "~0.13"
 whitenoise = "~6.3"
 django-redis = "~5.2"
+mailchimp3 = "~3.0.21"
 
 [tool.poetry.group.dev.dependencies]
 black = "23.1.0"

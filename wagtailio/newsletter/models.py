@@ -11,17 +11,21 @@ from wagtail.search import index
 class NewsletterPage(Page):
     date = models.DateField("Newsletter date")
     intro = RichTextField(blank=True)
-    body = RichTextField()
+    body = RichTextField(null=True, blank=True)
+    mailchimp_campaign_id = models.CharField(max_length=255, null=True, blank=True)
+    mailchimp_campaign_content = models.TextField(null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
         FieldPanel("intro"),
         FieldPanel("body"),
+        FieldPanel("mailchimp_campaign_content"),
     ]
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
         index.SearchField("body"),
+        index.SearchField("mailchimp_campaign_content"),
     ]
 
     def get_context(self, request, *args, **kwargs):
