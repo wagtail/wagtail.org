@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "manifest_loader",
     "wagtail",
-    "wagtail.contrib.modeladmin",
     "wagtail.admin",
     "wagtail.documents",
     "wagtail.snippets",
@@ -125,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-gb"
 TIME_ZONE = "UTC"
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 
@@ -300,11 +298,6 @@ if REDIS_URL:
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
             "LOCATION": f"{REDIS_URL}/0",
-            "OPTIONS": redis_options,
-        },
-        "renditions": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": REDIS_URL + "/1",
             "OPTIONS": redis_options,
         },
     }

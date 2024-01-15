@@ -122,7 +122,8 @@ class Author(index.Indexed, models.Model):
     ]
 
     search_fields = [
-        index.SearchField("name", partial_match=True),
+        index.SearchField("name"),
+        index.AutocompleteField("name"),
     ]
 
 
