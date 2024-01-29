@@ -5,6 +5,20 @@
         background-color: var(--color--highlight);
         padding: 60px 0;
         color: $color--white;
+
+        @media (forced-colors: active) {
+            a:link, a:visited {
+                svg {
+                  fill: currentColor;
+                  fill: LinkText;
+                }
+            }
+            a:hover {
+                svg {
+                  fill: CanvasText;
+                }
+            }
+        }
     }
 
     &__links-wrap {
