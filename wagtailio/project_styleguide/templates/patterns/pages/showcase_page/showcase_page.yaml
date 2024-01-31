@@ -1,0 +1,19 @@
+context:
+  page:
+    title: 'Showcase'
+    introduction: 'Sites and apps made with Wagtail CMS'
+    cta:
+      text: Want to do something swell?
+      url: #
+      description: Click here to get started
+    listing_meta_description: 'Sites and apps made with Wagtail CMS'
+  sectors:
+    - All
+    - Charity
+    - Education
+    - Government
+    - Media
+
+tags:
+  include:
+    template_name: 'patterns/pages/showcase_page/showcase_page_fragment.html'

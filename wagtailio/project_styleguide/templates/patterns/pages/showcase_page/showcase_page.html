@@ -1,0 +1,56 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static i18n wagtailcore_tags wagtailembeds_tags %}
+
+{% block extra_js %}
+    <script src="{% static 'js/htmx.js' %}" defer></script>
+{% endblock extra_js %}
+
+{% block body_class %}template-showcase{% endblock %}
+
+{% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}
+{% block title_suffix %}{% endblock %}
+
+{% block content %}
+    <div class="showcase-page__hero showcase-page__content">
+        <h1 class="showcase-page__title">{{ page.title }}</h1>
+        {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction|richtext }}</div>{% endif %}
+    </div>
+    <div class="showcase-page__content">
+        <form
+        >
+            <div class="select-wrapper">
+                <select
+                    name="sector"
+                    id="id_sector"
+                    class="select-wrapper__select"
+                    hx-get="{% pageurl page %}"
+                    hx-trigger="click changed"
+                    hx-target="#showcase_results"
+                    hx-push-url="true"
+                    hx-swap="outerHTML"
+                    placeholder="Filtering..."
+                    aria-label="Filter by sector"
+                >
+                    {% for name, selected in sectors.items %}
+                        <option {{ selected }} value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <button id="submit" type="submit" class="button" data-progressive-enhancement>
+                    Filter
+                </button>
+            </form>
+        </div>
+
+        {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+
+        {% if page.listing_meta_description %}
+            <div class="showcase-page__detail">
+                <p>{{ page.listing_meta_description }}.</p>
+            </div>
+        {% endif %}
+    </div>
+    {% if page.cta %}
+        {% include_block page.cta with classes="cta--alt" %}
+    {% endif %}
+{% endblock %}

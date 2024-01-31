@@ -19,6 +19,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
     subpage_types = [
         "blog.BlogIndexPage",
         "core.ContentPage",
+        "showcase.ShowcasePage",
         "features.FeatureIndexPage",
         "newsletter.NewsletterIndexPage",
         "standardpage.StandardPage",

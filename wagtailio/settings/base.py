@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "modelcluster",
     "rest_framework",
     "manifest_loader",
+    "django_htmx",
     "wagtail",
     "wagtail.admin",
     "wagtail.documents",
@@ -80,6 +81,7 @@ INSTALLED_APPS = [
     "wagtailio.packages",
     "wagtailio.roadmap",
     "wagtailio.services",
+    "wagtailio.showcase",
     "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
     "wagtailaltgenerator",
@@ -100,6 +102,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "wagtailio.urls"
