@@ -28,7 +28,11 @@
     > svg {
         transition: transform 0.3s;
         margin: 0 0 0 auto;
-        flex-shrink: 0
+        flex-shrink: 0;
+
+        @media (forced-colors: active) {
+            fill: currentColor;
+        }
     }
 
     &:hover {
@@ -42,13 +46,16 @@
         > svg {
             fill: $color--white;
             transform: translateX(10px) scale(1.1);
+
+            @media (forced-colors: active) {
+                fill: currentColor;
+            }
         }
     }
 
     &__title {
         color: var(--color--interaction);
         margin-bottom: 10px;
-        transition: color $transition;
 
         @include media-query(medium) {
             margin-bottom: 5px;
