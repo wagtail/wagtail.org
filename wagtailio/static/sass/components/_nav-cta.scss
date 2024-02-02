@@ -93,7 +93,7 @@
         position: absolute;
         bottom: 30px;
         right: 20px;
-        stroke: currentColor;
+        stroke: $color--white;
         stroke-width: 4px;
         fill: transparent;
         width: 60px;
@@ -103,6 +103,10 @@
         @media only screen and (min-width: $header-desktop) {
             bottom: 50px;
             right: 60px;
+        }
+
+        @media (forced-colors: active) {
+            stroke: currentColor;
         }
     }
 }
