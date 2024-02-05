@@ -4,9 +4,11 @@
     {% include "patterns/components/icon/icon.html" with icon=value.icon classes="icon-link__svg" %}
 
     <div class="icon-link__content">
-        <h3 class="icon-link__heading teaser-heading">{{ value.heading }}</h3>
+        <hgroup role="group" aria-roledescription="heading group">
+            <h3 class="icon-link__heading teaser-heading">{{ value.heading }}</h3>
 
-        <h4 class="icon-link__subheading">{{ value.subheading }}</h4>
+            <p aria-roledescription="subheading" class="icon-link__subheading heading-four">{{ value.subheading }}</p>
+        </hgroup>
 
         <p class="icon-link__description mini-meta">{{ value.description }}</p>
     </div>
