@@ -10,6 +10,8 @@
         border-top-left-radius: 0;
         padding: 10px;
 
+        @include focus-internal();
+
         @include media-query(medium) {
             padding: 15px 30px;
         }
@@ -32,6 +34,8 @@
         color: var(--color--text);
         height: 100%;
         background-color: var(--color--light-dark);
+        
+        @include focus-internal();
 
         // remove rounded edges in ios
         &[type="search"] {
