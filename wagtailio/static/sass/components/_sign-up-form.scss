@@ -25,19 +25,22 @@
         @include z-index(under);
         position: relative;
         width: auto;
-        height: 50px;
         margin-left: auto;
         display: none;
 
-        @include media-query(large) {
+        @include media-query(medium) {
             display: block;
+            height: 50px;
         }
 
         > svg {
             position: relative;
-            inset: -100px 0 auto auto;
             width: 170px;
             height: 170px;
+
+            @include media-query(medium) {
+                inset: -100px 0 auto auto;
+            }
         }
     }
 
@@ -55,6 +58,7 @@
             margin: 0;
 
             @include media-query(medium) {
+                flex: 1;
                 width: 50%;
             }
         }
@@ -118,12 +122,6 @@
         background-color: var(--color--highlight);
         color: $color--white;
 
-        #{$root}__container > div {
-            @include media-query(medium) {
-                flex: 1;
-            }
-        }
-
         #{$root}__input {
             background-color: var(--color--highlight);
             border: 1px solid $color--white;
@@ -157,7 +155,6 @@
     }
 
     .footer & {
-
       @include media-query(large) {
         margin-bottom: 50px;
       }
@@ -172,6 +169,5 @@
       &__container {
         margin-top: 0;
       }
-
     }
 }
