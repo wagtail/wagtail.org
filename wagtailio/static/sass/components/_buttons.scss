@@ -18,6 +18,10 @@
         transition: transform 0.3s;
         margin: 0 0 0 15px;
         fill: $color--teal;
+
+        @media (forced-colors: active) {
+            fill: currentColor;
+        }
     }
 
     &:hover {
@@ -27,6 +31,10 @@
         > svg {
             transform: translateX(6px) scale(1.05);
             fill: $color--teal-100;
+
+            @media (forced-colors: active) {
+                fill: currentColor;
+            }
         }
     }
 
@@ -38,6 +46,10 @@
 
         > svg {
             fill: $color--teal-100;
+
+            @media (forced-colors: active) {
+                fill: currentColor;
+            }
         }
 
         &:hover,
@@ -48,6 +60,11 @@
 
             > svg {
                 fill: $color--teal;
+
+                // stylelint-disable-next-line max-nesting-depth
+                @media (forced-colors: active) {
+                    fill: currentColor;
+                }
             }
         }
     }
@@ -103,6 +120,4 @@
         font-weight: $weight--bold;
         line-height: 1.25rem;
     }
-
-
 }
