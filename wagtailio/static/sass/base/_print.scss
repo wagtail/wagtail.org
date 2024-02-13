@@ -1,0 +1,87 @@
+// Print styles
+// stylelint-disable declaration-no-important
+
+@media print {
+    * {
+        background: transparent !important;
+        color: $color--black !important;
+        border-color: $color--black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    .header, .hero {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href^='http']::after {
+        content: ' (' attr(href) ')'; // Display link URL
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    p a {
+        word-wrap: break-word;
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        width: 50%;  // Prevent images from spanning the entire page
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    // Hide integrated videos and remove whitespace
+    iframe, video {
+        display: none;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        line-height: 0pt !important;
+        white-space: nowrap;
+    }
+
+    .embed, .home-embed {
+        position: absolute;
+        height: 0;
+        overflow: hidden;
+    }
+
+    // Hide interactive elements
+    header .header__actions, footer,
+    .cookie .cookie__container,
+    .related-content.grid,
+    .sign-up-form, .hero__icon, .headline__icon{
+        display: none;
+    }
+}
