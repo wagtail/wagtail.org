@@ -213,12 +213,10 @@
             }
         }
 
-        .theme-dark & {
-            &:hover,
-            &:focus {
-                color: var(--color--interaction);
-            }
-        }        
+        &:hover,
+        &:focus {
+            color: var(--color--interaction);
+        }
     }
 
     &__menu-toggle {
