@@ -25,4 +25,6 @@ def error_404(request, exception=None):
 
 
 def error_500(request):
-    return defaults.server_error(request, template="patterns/pages/errors/500.html")
+    return defaults.server_error(
+        request, template_name="patterns/pages/errors/500.html"
+    )

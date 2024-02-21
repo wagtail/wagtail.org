@@ -103,7 +103,8 @@ class Package(models.Model):
         return self.pypi_url
 
     def get_admin_url(self):
-        return reverse("packages_package_modeladmin_edit", args=(self.id,))
+        if hasattr(self, "model_viewset"):
+            return reverse(self.model_viewset.get_url_name("edit"), args=(self.id,))
 
     def links(self):
         links = []
@@ -146,7 +147,8 @@ class Grid(models.Model):
         return f"https://djangopackages.org/grids/g/{self.slug}/"
 
     def get_admin_url(self):
-        return reverse("packages_grid_modeladmin_edit", args=(self.id,))
+        if hasattr(self, "model_viewset"):
+            return reverse(self.model_viewset.get_url_name("edit"), args=(self.id,))
 
     def display_title(self):
         return (

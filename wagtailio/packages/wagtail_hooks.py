@@ -2,40 +2,14 @@ from django.urls import path, reverse
 
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin,
-    ModelAdminGroup,
-    modeladmin_register,
-)
 
 from . import views
-from .models import Grid, Package
+from .viewsets import PackagesAdminGroup
 
 
-class GridAdmin(ModelAdmin):
-    model = Grid
-    menu_icon = "doc-full-inverse"
-    list_display = ["title", "publish"]
-    list_filter = ["publish"]
-    search_fields = ["title"]
-
-
-class PackageAdmin(ModelAdmin):
-    model = Package
-    menu_icon = "doc-full-inverse"
-    list_display = ["title", "publish"]
-    list_filter = ["publish"]
-    search_fields = ["title"]
-
-
-class PackagesAdminGroup(ModelAdminGroup):
-    menu_label = "Package"
-    menu_icon = "folder-open-inverse"
-    menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
-    items = [GridAdmin, PackageAdmin]
-
-
-modeladmin_register(PackagesAdminGroup)
+@hooks.register("register_admin_viewset")
+def register_viewset():
+    return PackagesAdminGroup()
 
 
 @hooks.register("register_admin_urls")
@@ -48,5 +22,5 @@ def register_admin_urls():
 @hooks.register("register_settings_menu_item")
 def register_styleguide_menu_item():
     return MenuItem(
-        ("Django Packages"), reverse("package_index"), icon_name="image", order=1000
+        "Django Packages", reverse("package_index"), icon_name="image", order=1000
     )

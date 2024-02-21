@@ -474,8 +474,8 @@ class ContentStoryBlock(blocks.StreamBlock):
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     teaser = TeaserBlock()
-    icon_bullets = IconBulletsBlock(icon="list-alt")
-    cards = CardsBlock(icon="th-list", group="Cards")
+    icon_bullets = IconBulletsBlock(icon="rectangle-list")
+    cards = CardsBlock(icon="table-list", group="Cards")
     logo_cards = LogoCardsBlock(icon="images", group="Cards")
     cta = CTABlock(group="Call to action")
     standalone_cta = StandaloneCTABlock(group="Call to action")
@@ -483,7 +483,7 @@ class ContentStoryBlock(blocks.StreamBlock):
     multiple_quotes = MultipleQuoteBlock(group="Quotes")
     get_started_block = SnippetChooserBlock(
         "core.GetStartedSnippet",
-        icon="th-list",
+        icon="table-list",
         template="patterns/components/streamfields/get_started_block/get_started_block.html",
     )
     sign_up_form = SnippetChooserBlock(
@@ -503,7 +503,7 @@ class HomePageStoryBlock(blocks.StreamBlock):
     get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
     headline = HeadlineBlock()
     highlight = HighlightBlock()
-    icon_bullets = IconBulletsBlock(icon="list-alt")
+    icon_bullets = IconBulletsBlock(icon="rectangle-list")
     logos = LogoBlock()
     multiple_quotes = MultipleQuoteBlock()
     standalone_cta = StandaloneCTABlock()
