@@ -17,21 +17,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                {% else %}
-                    <tr>
-                        {% for block in row %}
-                            {% if forloop.first %}
-                                <th scope="row">
-                                    {{ block }}
-                                </th>
-                            {% else %}
-                                <td>
-                                    {% include_block block %}
-                                </td>
-                            {% endif %}
-                        {% endfor %}
-                    </tr>
                 {% endif %}
+                <tr>
+                    {% for block in row %}
+                        {% if forloop.first %}
+                            <th scope="row">
+                                {{ block }}
+                            </th>
+                        {% else %}
+                            <td>
+                                {% include_block block %}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
             {% endfor %}
         </tbody>
     </table>

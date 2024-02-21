@@ -13,15 +13,6 @@
         grid-column: 2 / span 5;
     }
 
-    td:first-child {
-        font-weight: $weight--bold;
-        width: 150px;
-
-        @include media-query(large) {
-            width: 250px
-        }
-    }
-
     tbody {
         grid-column: 2 / span 2;
         grid-gap: 20px;
@@ -34,13 +25,23 @@
             grid-column: 2 / span 5;
         }
 
+        th {
+            // stylelint-disable-next-line declaration-property-value-allowed-list
+            text-align: left;
+            font-weight: $weight--bold;
+            width: 150px;
+
+            @include media-query(large) {
+                width: 250px
+            }
+        }
+
         > tr:last-child {
-            td {
+            td, th {
                 border: unset;
             }
         }
     }
-
 
     td,
     th {
@@ -60,10 +61,6 @@
 
         .theme-dark & {
             border-color: $color--black;
-        }
-        
-        &[scope="row"] {
-            text-align: left;
         }
     }
 }
