@@ -496,6 +496,14 @@ LOGGING = {
 WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
+
+WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "png", "webp"]
+
+WAGTAILIMAGES_FORMAT_CONVERSIONS = {
+    "avif": "avif",
+    "webp": "webp",
+}
+
 WILLOW_OPTIMIZERS = True
 
 if "PRIMARY_HOST" in env:
