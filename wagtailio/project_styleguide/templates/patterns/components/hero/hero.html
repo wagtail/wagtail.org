@@ -3,11 +3,11 @@
 <div class="grid">
     <div class="hero {% if classes %}{{ classes }}{% endif %}">
         <div class="hero__inner">
-            <hgroup role="group" aria-roledescription="heading group">
+            <hgroup>
                 <h1 class="hero__heading">{% firstof value.heading value.title %}</h1>
 
                 {% if value.sub_heading or value.subheading %}
-                    <p aria-roledescription="subheading" class="hero__subheading intro-big">{% firstof value.sub_heading value.subheading %}</p>
+                    <p class="hero__subheading intro-big">{% firstof value.sub_heading value.subheading %}</p>
                 {% endif %}
             </hgroup>
 

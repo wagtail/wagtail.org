@@ -4,11 +4,11 @@
             {% include "patterns/components/icon/icon.html" with icon=value.icon classes="headline__icon" %}
         {% endif %}
         <div class="headline__inner">
-            <hgroup role="group" aria-roledescription="heading group">
+            <hgroup>
                 <h2 class="headline__heading heading-one">{{ value.heading }}</h2>
 
                 {% if value.sub_heading %}
-                    <p aria-roledescription="subheading" class="headline__subheading intro-big">{{ value.sub_heading }}</p>
+                    <p class="headline__subheading intro-big">{{ value.sub_heading }}</p>
                 {% endif %}
             </hgroup>
             {% if value.intro %}
