@@ -1,6 +1,6 @@
 {% load wagtailcore_tags %}
 <div class="grid">
-    <div class="code-block">
+    <div class="code-block code-block--{{ self.block.name|default:'markdownblock' }}">
         {{ code }}
     </div>
 </div>
