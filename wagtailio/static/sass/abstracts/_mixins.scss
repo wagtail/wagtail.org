@@ -110,3 +110,46 @@
 @mixin z-index($key) {
     z-index: z-index($key);
 }
+
+// Apply formatting for elements using richtext 
+@mixin richtext() {
+    a {
+        color: var(--color--link);
+        transition: color 0.3s;
+
+        &:hover {
+            color: var(--color--interaction);
+        }
+    }
+
+    b {
+        font-weight: $weight--bold;
+    }
+
+    ul,
+    ol {
+        list-style: outside;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        @include media-query(medium) {
+            margin-bottom: 40px;
+        }
+    }
+
+    ol {
+        list-style: roman;
+    }
+
+    p {
+        margin: 0 0 20px;
+
+        @include media-query(large) {
+            margin: 0 0 40px;
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}

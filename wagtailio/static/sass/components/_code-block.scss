@@ -1,4 +1,6 @@
-.grid-align {
+.code-block {
+    @include richtext();
+    
     grid-column: 2 / span 2;
 
     @include media-query(medium) {
