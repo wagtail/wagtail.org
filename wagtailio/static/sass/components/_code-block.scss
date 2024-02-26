@@ -1,0 +1,23 @@
+.code-block {
+    @include sf-spacing(2);
+    
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 3 / span 3;
+    }
+
+    &--markdownblock {
+        // Ensure HTML components are styled correctly.
+        @include richtext();
+        
+        // Make `CodeBlock` and code blocks within `MarkDownBlock` look the same.
+        pre {
+            @include sf-spacing(2);
+        }
+    }
+}
