@@ -147,10 +147,6 @@
         @include media-query(large) {
             margin: 0 0 40px;
         }
-
-        &:last-child {
-            margin: 0;
-        }
     }
 
     // Remove whatever margin is on the last child as we rely on the parent
