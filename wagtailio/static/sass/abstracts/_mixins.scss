@@ -152,4 +152,10 @@
             margin: 0;
         }
     }
+
+    // Remove whatever margin is on the last child as we rely on the parent
+    // container's margin (i.e. the block itself).
+    > :last-child {
+        margin-bottom: 0;
+    }
 }
