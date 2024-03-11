@@ -19,10 +19,7 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
 
     parent_page_types = ["core.HomePage"]
 
-    introduction = RichTextField(
-        features=["p", "a", "ul", "ol", "link", "document-link"],
-        blank=True,
-    )
+    introduction = RichTextField(blank=True)
     cta = StreamField(
         [("cta", StandaloneCTABlock())],
         blank=True,
