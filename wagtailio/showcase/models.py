@@ -31,17 +31,12 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         use_json_field=True,
     )
 
-    listing_meta_description = models.CharField(
-        max_length=255, blank=True, help_text="The description beneath the listing"
-    )
-
     is_preview = False
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("cta"),
         InlinePanel("showcase_items", label="Showcase items"),
-        FieldPanel("listing_meta_description"),
     ]
 
     promote_panels = (
