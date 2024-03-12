@@ -56,6 +56,9 @@
             </div>
         {% endfor %}
     </div>
+    {% if page.cta %}
+        {% include_block page.cta with classes="cta--alt" %}
+    {% endif %}
     <div>
         <div
             hx-boost="true"
