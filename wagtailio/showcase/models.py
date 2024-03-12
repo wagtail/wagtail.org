@@ -19,10 +19,7 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
 
     parent_page_types = ["core.HomePage"]
 
-    introduction = RichTextField(
-        features=["p", "a", "ul", "ol", "link", "document-link"],
-        blank=True,
-    )
+    introduction = RichTextField(blank=True)
     cta = StreamField(
         [("cta", StandaloneCTABlock())],
         blank=True,
@@ -31,17 +28,12 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         use_json_field=True,
     )
 
-    listing_meta_description = models.CharField(
-        max_length=255, blank=True, help_text="The description beneath the listing"
-    )
-
     is_preview = False
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("cta"),
         InlinePanel("showcase_items", label="Showcase items"),
-        FieldPanel("listing_meta_description"),
     ]
 
     promote_panels = (

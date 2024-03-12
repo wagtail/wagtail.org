@@ -18,7 +18,7 @@
     }
 
     // Don't display toggle if in high contrast mode
-    @media (prefers-contrast: more) {
+    @media (forced-colors: active) {
         display: none;
     }
 
@@ -117,8 +117,4 @@
     .no-js & {
         display: none;
     }
-
-    @media print {
-        display: none;
-     }
 }

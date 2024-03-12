@@ -7,6 +7,7 @@ from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.areweheadlessyet.blocks import HomePageBlock, TopicPageBlock
+from wagtailio.areweheadlessyet.fields import ImageRenditionURLField
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
@@ -56,6 +57,14 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
         APIField("strapline_icon"),
         APIField("strapline_text"),
         APIField("body"),
+    ]
+
+    api_meta_fields = [
+        APIField("social_text"),
+        APIField(
+            "social_image_url",
+            serializer=ImageRenditionURLField("fill-100x100", source="social_image"),
+        ),
     ]
 
     promote_panels = (

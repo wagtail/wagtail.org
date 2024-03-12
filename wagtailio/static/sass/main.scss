@@ -11,6 +11,7 @@
 @import 'base/base';
 @import 'base/container';
 @import 'base/typography';
+@import 'base/print';
 
 // Components
 @import 'components/app';
@@ -27,6 +28,7 @@
 @import 'components/code-snippet';
 @import 'components/comparison-table';
 @import 'components/cookie-message';
+@import 'components/code-block';
 @import 'components/cta';
 @import 'components/cta-block';
 @import 'components/document';
@@ -38,7 +40,6 @@
 @import 'components/footer-menu';
 @import 'components/get-started';
 @import 'components/grid';
-@import 'components/grid-align';
 @import 'components/heading';
 @import 'components/headline';
 @import 'components/hero';

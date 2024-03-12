@@ -12,6 +12,10 @@
     &:focus {
         #{$root}__line {
             background-color: var(--color--interaction);
+
+            @media (forced-colors: active) {
+                background-color: ButtonText;
+            }
         }
     }
 
@@ -27,6 +31,10 @@
         transform: translateX(-50%) rotate(0deg);
         transition: top $transition, width $transition, opacity $transition, transform $transition, background-color $transition, left $transition;
 
+        @media (forced-colors: active) {
+            background-color: ButtonText;
+        }
+        
         .is-open & {
             width: 27px;
             height: 4px;

@@ -36,22 +36,24 @@
         width: 20px;
         height: 20px;
         transition: color 0.3s;
-    }
 
-    &__button {
-        padding: 0;
-
-        &:focus {
-            outline-color: var(--color--heading);
+        @media (forced-colors: active) {
+            fill: currentColor;
         }
 
         &:hover,
         &:active,
         &:focus {
-            #{$root}__icon {
                 fill: $color--white;
-            }
+
+                @media (forced-colors: active) {
+                    fill: currentColor;
+                }
         }
+    }
+
+    &__button {
+        padding: 0;
     }
 
     &__confirmation {

@@ -1,17 +1,18 @@
 <div class="sign-up-form {% if classes %}{{ classes }}{% endif %}">
-    <h2 class="sign-up-form__heading heading-three">{{ heading }}</h2>
-    <p class="sign-up-form__sub-heading">{{ sub_heading }}</p>
-    <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
-        <div>
-            <label for="email" class="u-sr-only">Enter your email address</label>
-            <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" required/>
-        </div>
-        <button class="button sign-up-form__button" type="submit">
-            <span class="button__text">Sign up</span>
-            <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-        </button>
-        {% if icon %}
-            {% include "patterns/components/icon/icon.html" with classes="sign-up-form__icon" icon="" overlay_icon="wagtail-envelope"  %}
-        {% endif %}
-    </form>
+    <div class="sign-up-form__inner">
+        <h2 class="sign-up-form__heading heading-three">{{ heading }}</h2>
+        <p class="sign-up-form__sub-heading">{{ sub_heading }}</p>
+        <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
+            <div>
+                <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Email" required/>
+            </div>
+            <button class="button sign-up-form__button" type="submit">
+                <span class="button__text">Sign up</span>
+                <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+            </button>
+        </form>
+    </div>
+    {% if icon %}
+        {% include "patterns/components/icon/icon.html" with classes="sign-up-form__icon" icon="" overlay_icon="wagtail-envelope"  %}
+    {% endif %}
 </div>

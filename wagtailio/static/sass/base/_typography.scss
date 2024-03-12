@@ -79,7 +79,8 @@ h4,
 .intro-small {
     font-size: 1.25rem;
     line-height: 1.9375rem;
-
+    font-weight: $weight--regular;
+    
     @include media-query(large) {
         font-size: 1.25rem;
         line-height: 1.85rem;
@@ -111,6 +112,7 @@ h4,
     font-size: 1.5625rem;
     line-height: 2.3125rem;
     font-weight: $weight--regular;
+    margin: 0 0 20px;
 
     @include media-query(large) {
         font-size: 2rem;

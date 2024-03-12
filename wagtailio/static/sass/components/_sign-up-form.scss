@@ -3,7 +3,7 @@
     @include sf-spacing(2);
     grid-column: 2 / span 2;
     overflow: hidden; // prevent scrollbars from svg size
-
+    
     @include media-query(medium) {
       grid-column: 2 / span 3;
     }
@@ -25,25 +25,32 @@
         @include z-index(under);
         position: relative;
         width: auto;
-        height: 50px;
-        margin-left: auto;
-        display: none;
 
-        @include media-query(large) {
+        @include media-query(medium) {
             display: block;
+        }
+        
+        @include media-query(large) {
+            flex-grow: 1.5;
         }
 
         > svg {
             position: relative;
-            inset: -100px 0 auto auto;
             width: 170px;
             height: 170px;
+        }
+    }
+
+    &__inner {
+        @include media-query(large) {
+            flex-grow: 1.5;
         }
     }
 
     &__container {
         display: flex;
         flex-direction: column;
+        margin: 30px 0 0 0;
 
         @include media-query(medium) {
             flex-direction: row;
@@ -55,6 +62,7 @@
             margin: 0;
 
             @include media-query(medium) {
+                flex: 1;
                 width: 50%;
             }
         }
@@ -78,10 +86,6 @@
         }
     }
 
-    > form {
-        margin: 30px 0 0 0;
-    }
-
     &__button {
         border-radius: $rounded-md;
         border-style: solid;
@@ -101,28 +105,24 @@
     }
 
     &--block {
+        display: flex;
+        flex-direction: column;
         border: 1px solid var(--color--text);
         border-radius: 15px;
         padding: 30px;
 
-        @include media-query(large) {
-            padding: 60px;
+        @include media-query(medium) {
+            flex-direction: row;
         }
 
-        #{$root}__sub-heading {
-            text-shadow: 2px 2px var(--color--background);
+        @include media-query(large) {
+            padding: 40px 60px;
         }
     }
 
     &--footer {
         background-color: var(--color--highlight);
         color: $color--white;
-
-        #{$root}__container > div {
-            @include media-query(medium) {
-                flex: 1;
-            }
-        }
 
         #{$root}__input {
             background-color: var(--color--highlight);
@@ -157,7 +157,6 @@
     }
 
     .footer & {
-
       @include media-query(large) {
         margin-bottom: 50px;
       }
@@ -172,6 +171,5 @@
       &__container {
         margin-top: 0;
       }
-
     }
 }

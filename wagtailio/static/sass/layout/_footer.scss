@@ -125,7 +125,7 @@
 
     &__icon {
         fill: transparent;
-        stroke: $color--white;
+        stroke: currentColor;
         stroke-width: 3px;
         width: 45px;
         height: 50px;
@@ -176,6 +176,9 @@
             transition: fill  $transition;
         }
 
+        @media (forced-colors: active) {
+            fill: currentColor;
+        }
     }
 
     &__survey-link {
