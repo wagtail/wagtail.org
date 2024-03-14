@@ -2,13 +2,14 @@
 <div id="showcase_results">
     <div class="showcase-grid">
         {% for item in showcase_items %}
-            <div hx-on:click="window.location.replace('{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}')" class="showcase-card">
+            <div class="showcase-card">
                 {% if pattern_library %}
                 {# I've tried everything to get this to render using the pattern-library, #}
                 {# This is a placeholder until a fix is found. #}
                     <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase-card__image">
                     <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase-card__logo">
                 {% else %}
+                    <a class="showcase-card__link" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">
                     <picture>
                         {% image item.image max-600x400 format-webp as webp_image %}
                         <source srcset="{{ image_webp.url }}"
@@ -26,7 +27,9 @@
                             class="showcase-card__image"
                             alt="{% firstof item.alt_text item.image.alt %}"/>
                     </picture>
+                    </a>
                     {% if item.logo %}
+                        <a class="showcase-card__link" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">
                         <picture>
                             {% image item.logo max-120x100 format-webp as webp_image %}
                             <source srcset="{{ image_webp.url }}"
@@ -44,6 +47,7 @@
                                 class="showcase-card__logo"
                                 alt="{% firstof item.alt_text item.image.alt %}"/>
                         </picture>
+                        </a>
                     {% endif %}
                 {% endif %}
                 <div class="showcase-card__content">
@@ -64,11 +68,7 @@
             hx-boost="true"
             class="pagination pagination--showcase">
             {% if showcase_items.has_previous %}
-                <a hx-trigger="click"
-                   hx-target="#showcase_results"
-                   hx-push-url="true"
-                   hx-swap="outerHTML"
-                   href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
+                <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
                     <p class="button__text">
                         Previous
                         <span class="u-sr-only">- Go to page {{ showcase_items.previous_page_number }}</span>
@@ -82,11 +82,7 @@
             </span>
 
             {% if showcase_items.has_next %}
-                <a hx-trigger="click"
-                   hx-target="#showcase_results"
-                   hx-push-url="true"
-                   hx-swap="outerHTML"
-                   href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
+                <a href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
                     <p class="button__text">
                         Next
                         <span class="u-sr-only">- Go to page {{ showcase_items.next_page_number }}</span>
