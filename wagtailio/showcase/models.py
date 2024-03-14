@@ -63,11 +63,11 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
         else:
             return self.showcase_items.all()
 
-    def get_template(self, request, *args, **kwargs):
-        if request.htmx:
-            return self.ajax_template
-        else:
-            return self.template
+    # def get_template(self, request, *args, **kwargs):
+    #     if request.htmx:
+    #         return self.ajax_template
+    #     else:
+    #         return self.template
 
     def get_context(self, request):
         context = super().get_context(request)

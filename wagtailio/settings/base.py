@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     "modelcluster",
     "rest_framework",
     "manifest_loader",
-    "django_htmx",
     "wagtail",
     "wagtail.admin",
     "wagtail.documents",
@@ -102,7 +101,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "wagtailio.urls"
