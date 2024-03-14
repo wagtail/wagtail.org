@@ -2,10 +2,6 @@
 
 {% load static i18n wagtailcore_tags wagtailembeds_tags %}
 
-{% block extra_js %}
-    <script src="{% static 'js/htmx.js' %}" defer></script>
-{% endblock extra_js %}
-
 {% block body_class %}template-showcase{% endblock %}
 
 {% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}
@@ -24,11 +20,6 @@
                     name="sector"
                     id="id_sector"
                     class="select-wrapper__select"
-                    hx-get="{% pageurl page %}"
-                    hx-trigger="click changed"
-                    hx-target="#showcase_results"
-                    hx-push-url="true"
-                    hx-swap="outerHTML"
                     placeholder="Filtering..."
                     aria-label="Filter by sector"
                 >

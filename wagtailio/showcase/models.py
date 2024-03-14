@@ -15,7 +15,6 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/showcase_page/showcase_page.html"
-    ajax_template = "patterns/pages/showcase_page/showcase_page_fragment.html"
 
     parent_page_types = ["core.HomePage"]
 
@@ -64,10 +63,7 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
             return self.showcase_items.all()
 
     def get_template(self, request, *args, **kwargs):
-        if request.htmx:
-            return self.ajax_template
-        else:
-            return self.template
+        return self.template
 
     def get_context(self, request):
         context = super().get_context(request)
