@@ -117,7 +117,7 @@ class ShowcaseItem(Orderable):
         null=True,
         related_name="+",
     )
-    alt_text = models.CharField(max_length=255, blank=True)
+    alt_text = models.CharField(max_length=255)
     logo = models.ForeignKey(
         "images.WagtailIOImage",
         models.SET_NULL,
