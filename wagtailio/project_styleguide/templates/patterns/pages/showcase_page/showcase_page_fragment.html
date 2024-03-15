@@ -11,14 +11,6 @@
                 {% else %}
                     <a class="showcase-card__link" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">
                         <picture>
-                            {% image item.image max-600x400 format-webp as webp_image %}
-                            <source srcset="{{ image_webp.url }}"
-                                    type="image/webp"
-                                    alt="{% firstof item.alt_text item.image.alt %}"/>
-                            {% image item.image max-600x400 as image_png %}
-                            <source srcset="{{ image_png.url }}"
-                                    type="image/png"
-                                    alt="{% firstof item.alt_text item.image.alt %}"/>
                             {% image item.image max-600x400 as base_img %}
                             <img
                                 src="{{ base_img.url }}"
@@ -31,14 +23,6 @@
                     {% if item.logo %}
                         <a class="showcase-card__link" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">
                             <picture>
-                                {% image item.logo max-120x100 format-webp as webp_image %}
-                                <source srcset="{{ image_webp.url }}"
-                                        type="image/webp"
-                                        alt="{% firstof item.alt_text item.image.alt %}"/>
-                                {% image item.logo max-120x100 as image_png %}
-                                <source srcset="{{ image_png.url }}"
-                                        type="image/png"
-                                        alt="{% firstof item.alt_text item.image.alt %}"/>
                                 {% image item.logo max-120x100 as base_img %}
                                 <img
                                     src="{{ base_img.url }}"
