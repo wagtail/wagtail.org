@@ -1,4 +1,6 @@
 .pagination {
+    $root: &;
+
     @include sf-spacing(2);
     grid-column: 2 / span 2;
     display: flex;
@@ -30,6 +32,22 @@
         @include media-query(medium) {
             padding: 15px 30px;
             margin-left: 20px;
+        }
+    }
+
+    &--showcase {
+        padding: 50px 0 100px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        
+        @include media-query(smallonly){
+            flex-direction: column;
+            #{$root}__previous,
+                #{$root}__next {
+                width: 60%;
+            }
         }
     }
 }
