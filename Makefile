@@ -18,9 +18,6 @@ setup: build  ## 🔨 - Set instance up
 build:  ## 🔨 - Build Docker container
 	bash -c "docker-compose build --build-arg UID=$$(id -u) --build-arg GID=$$(id -g)"
 
-pre-commit:  ## 🚦 - Run pre-commit
-	docker-compose exec web pre-commit run --all-files
-
 start:	## 🎬 - Start containers
 	docker-compose up
 
