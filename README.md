@@ -51,6 +51,15 @@ To create a new superuser locally, run:
 make superuser
 ```
 
+### Setting up the cache table
+
+This should only need to be done the first time you set up a new database:
+
+```
+make sh
+python manage.py createcachetable
+```
+
 ### Pulling production data / media
 
 If you'd like to work with production data and have access, run the following commands:
