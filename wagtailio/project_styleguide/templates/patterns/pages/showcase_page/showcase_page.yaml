@@ -1,5 +1,6 @@
 context:
   page:
+    seo_title: 'Showcase'
     title: 'Showcase'
     introduction: 'Sites and apps made with Wagtail CMS'
     cta:
@@ -12,7 +13,3 @@ context:
     - Education
     - Government
     - Media
-
-tags:
-  include:
-    template_name: 'patterns/pages/showcase_page/showcase_page_fragment.html'
