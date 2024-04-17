@@ -13,7 +13,6 @@ import DesktopSubMenu from './components/desktop-sub-menu';
 import DesktopCloseMenus from './components/desktop-close-menus';
 import CookieMessage from "./components/cookie-message";
 import SiteWideAlert from "./components/site-wide-alert";
-import ProgressiveEnhancement from "./components/progressive-enhancement";
 
 function initComponent(ComponentClass) {
     const items = document.querySelectorAll(ComponentClass.selector());
@@ -35,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initComponent(MobileMenu);
     initComponent(MobileSubMenu);
     initComponent(DesktopSubMenu);
-    initComponent(ProgressiveEnhancement);
-
     /* eslint-disable no-new */
     new DesktopCloseMenus();
 });
