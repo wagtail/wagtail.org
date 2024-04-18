@@ -51,6 +51,15 @@ To create a new superuser locally, run:
 make superuser
 ```
 
+### Setting up the cache table
+
+This should only need to be done the first time you set up a new database:
+
+```
+make sh
+python manage.py createcachetable
+```
+
 ### Pulling production data / media
 
 If you'd like to work with production data and have access, run the following commands:
@@ -99,18 +108,22 @@ Within the VM shell, you can run `./manage.py` to run any Django management comm
 -   `dj <command> [args]` - Runs a management command (eg, `dj shell`)
 -   `djrun` - Starts the webserver on port 8000
 
-## Frontend tooling
+## Frontend tooling (Docker and Vagrant)
 
-To install and build the frontend:
+During the initial setup, you will need to build the frontend assets:
 
 -   `nvm use` to use the suggested node version (requires [nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm) or similar. You'll also need to run `nvm install` to install and activate the version of node required for the project)
 -   `npm i` to install dependencies
 -   `npm run build` to compile CSS & JS
 
-Other common commands:
+If you are editing frontend assets, you will also need to rebuild assets while
+you edit:
 
 -   `npm run start` start the Webpack build in watch mode, without live-reload
 -   `npm run start:reload` start the Webpack server build on port 3000 with live-reload
+
+Other common commands:
+
 -   `npm run lint` lint JS & CSS files
 -   `npm run format` format files
 
