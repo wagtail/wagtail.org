@@ -1,0 +1,57 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div id="showcase_results">
+    <div class="showcase-grid">
+        {% for item in showcase_items %}
+            <div class="showcase-card">
+                {% image item.image max-600x400 as base_img %}
+                <img
+                    src="{{ base_img.url }}"
+                    height="{{ base_img.height }}"
+                    width="{{ base_img.width }}"
+                    class="showcase-card__image"
+                    alt="{% firstof item.alt_text item.image.alt %}"
+                />
+                {% if item.logo %}
+                    {% image item.logo max-120x100 class="showcase-card__logo" %}
+                {% endif %}
+                <div class="showcase-card__content">
+                    <h2 id="showcase-{{ item.title|slugify }}" class="showcase-card__heading">{{ item.title }}</h2>
+                    <p class="showcase-card__description">{{ item.description }}</p>
+                    <a class="showcase-card__link" aria-describedby="showcase-{{ item.title|slugify }}" href="{% if item.external_link %}{{ item.external_link }}{% else %}{% pageurl item.internal_link %}{% endif %}">
+                        {{ item.link_text }}
+                        <svg class="showcase-card__svg" width="15" height="16" aria-hidden="true">
+                            <use xlink:href="#{% if item.external_link %}open-link{% else %}arrow{% endif %}"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if page.cta %}
+        {% include_block page.cta %}
+    {% endif %}
+    <div>
+        <div class="pagination pagination--showcase print:hidden">
+            {% if showcase_items.has_previous %}
+                <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
+                    <p class="button__text">
+                        Previous
+                        <span class="u-sr-only">- Go to page {{ showcase_items.previous_page_number }}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+
+            <span class="pagination__page-count mini-meta">
+                Page {{ showcase_items.number }} of {{ showcase_items.paginator.num_pages }}
+            </span>
+
+            {% if showcase_items.has_next %}
+                <a href="?page={{ showcase_items.next_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__next button">
+                    <p class="button__text">Next</p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

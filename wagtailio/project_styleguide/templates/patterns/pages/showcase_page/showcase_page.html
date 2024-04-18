@@ -1,0 +1,36 @@
+{% extends "patterns/base_page.html" %}
+
+{% load static i18n wagtailcore_tags wagtailembeds_tags %}
+
+{% block content %}
+    <div class="grid">
+        <div class="hero showcase-page__hero">
+            <h1 class="showcase-page__title">{{ page.title }}</h1>
+            {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction|richtext }}</div>{% endif %}
+        </div>
+    </div>
+    <div class="grid">
+        <div class="showcase-page__content">
+            <form class="print:hidden">
+                <div class="select-wrapper">
+                    <select
+                        name="sector"
+                        id="id_sector"
+                        class="select-wrapper__select"
+                        aria-label="Filter by sector"
+                    >
+                        {% if sector.items %}
+                            {% for name, selected in sectors.items %}
+                                <option {{ selected }} value="{{ name }}">{{ name }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <button id="submit" type="submit" class="button">
+                        Filter
+                    </button>
+                </form>
+            </div>
+            {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+        </div>
+    </div>
+{% endblock %}
