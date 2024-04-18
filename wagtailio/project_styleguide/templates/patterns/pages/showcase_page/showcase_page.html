@@ -2,11 +2,6 @@
 
 {% load static i18n wagtailcore_tags wagtailembeds_tags %}
 
-{% block body_class %}template-showcase{% endblock %}
-
-{% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}
-{% block title_suffix %}{% endblock %}
-
 {% block content %}
     <div class="grid">
         <div class="hero showcase-page__hero">
@@ -24,9 +19,11 @@
                         class="select-wrapper__select"
                         aria-label="Filter by sector"
                     >
-                        {% for name, selected in sectors.items %}
-                            <option {{ selected }} value="{{ name }}">{{ name }}</option>
-                        {% endfor %}
+                        {% if sector.items %}
+                            {% for name, selected in sectors.items %}
+                                <option {{ selected }} value="{{ name }}">{{ name }}</option>
+                            {% endfor %}
+                        {% endif %}
                     </select>
                     <button id="submit" type="submit" class="button">
                         Filter

@@ -3,30 +3,16 @@
     <div class="showcase-grid">
         {% for item in showcase_items %}
             <div class="showcase-card">
-                {% if pattern_library %}
-                {# I've tried everything to get this to render using the pattern-library, #}
-                {# This is a placeholder until a fix is found. #}
-                    <img src="https://placehold.co/600x400" width="600" height="400" alt="Some alt" class="showcase-card__image">
-                    <img src="https://placehold.co/120x100" width="120" height="100" alt="Some alt" class="showcase-card__logo">
-                {% else %}
-                    {% image item.image max-600x400 as base_img %}
-                    <img
-                        src="{{ base_img.url }}"
-                        height="{{ base_img.height }}"
-                        width="{{ base_img.width }}"
-                        class="showcase-card__image"
-                        alt="{% firstof item.alt_text item.image.alt %}"
-                    />
-                    {% if item.logo %}
-                        {% image item.logo max-120x100 as base_img %}
-                        <img
-                            src="{{ base_img.url }}"
-                            height="{{ base_img.height }}"
-                            width="{{ base_img.width }}"
-                            class="showcase-card__logo"
-                            alt="{% firstof item.alt_text item.image.alt %}"
-                        />
-                    {% endif %}
+                {% image item.image max-600x400 as base_img %}
+                <img
+                    src="{{ base_img.url }}"
+                    height="{{ base_img.height }}"
+                    width="{{ base_img.width }}"
+                    class="showcase-card__image"
+                    alt="{% firstof item.alt_text item.image.alt %}"
+                />
+                {% if item.logo %}
+                    {% image item.logo max-120x100 class="showcase-card__logo" %}
                 {% endif %}
                 <div class="showcase-card__content">
                     <h2 id="showcase-{{ item.title|slugify }}" class="showcase-card__heading">{{ item.title }}</h2>

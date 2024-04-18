@@ -1,15 +1,17 @@
 context:
   page:
-    seo_title: 'Showcase'
-    title: 'Showcase'
-    introduction: 'Sites and apps made with Wagtail CMS'
-    cta:
-      text: Want to do something swell?
-      url: #
-      description: Click here to get started
-  sectors:
-    - All
-    - Charity
-    - Education
-    - Government
-    - Media
+    get_verbose_name: 'showcase page'
+    seo_title: Showcase
+    title: Showcase
+    introduction: Sites and apps made with Wagtail CMS
+    cta: true
+tags:
+  include_block:
+    page.cta:
+      template_name: 'patterns/components/streamfields/cta/cta.html'
+  image:
+    'item.image max-600x400 as base_img':
+      raw: ''
+    'item.logo max-120x100 class="showcase-card__logo"':
+      raw: |
+        <img src="https://placehold.co/120x100" width="120" height="100" alt="Logo" class="showcase-card__logo">'

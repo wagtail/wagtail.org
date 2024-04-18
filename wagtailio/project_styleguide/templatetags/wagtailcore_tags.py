@@ -9,4 +9,4 @@ override_tag(register, name="pageurl", default_html="/")
 override_tag(register, name="slugurl", default_html="/")
 override_tag(register, name="fullpageurl", default_html="/")
 
-override_tag(django_register, name="url")
+override_tag(django_register, name="url", default_html="/")
