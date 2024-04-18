@@ -8,30 +8,32 @@
 {% block title_suffix %}{% endblock %}
 
 {% block content %}
-    <div class="showcase-page__hero showcase-page__content">
-        <h1 class="showcase-page__title">{{ page.title }}</h1>
-        {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction|richtext }}</div>{% endif %}
-    </div>
-    <div class="showcase-page__content">
-        <form
-        >
-            <div class="select-wrapper">
-                <select
-                    name="sector"
-                    id="id_sector"
-                    class="select-wrapper__select"
-                    placeholder="Filtering..."
-                    aria-label="Filter by sector"
-                >
-                    {% for name, selected in sectors.items %}
-                        <option {{ selected }} value="{{ name }}">{{ name }}</option>
-                    {% endfor %}
-                </select>
-                <button id="submit" type="submit" class="button">
-                    Filter
-                </button>
-            </form>
+    <div class="grid">
+        <div class="hero showcase-page__hero">
+            <h1 class="showcase-page__title">{{ page.title }}</h1>
+            {% if page.introduction %}<div class="showcase-page__intro">{{ page.introduction|richtext }}</div>{% endif %}
         </div>
-        {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+    </div>
+    <div class="grid">
+        <div class="showcase-page__content">
+            <form class="print:hidden">
+                <div class="select-wrapper">
+                    <select
+                        name="sector"
+                        id="id_sector"
+                        class="select-wrapper__select"
+                        aria-label="Filter by sector"
+                    >
+                        {% for name, selected in sectors.items %}
+                            <option {{ selected }} value="{{ name }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="submit" type="submit" class="button">
+                        Filter
+                    </button>
+                </form>
+            </div>
+            {% include "patterns/pages/showcase_page/showcase_page_fragment.html" %}
+        </div>
     </div>
 {% endblock %}

@@ -1,79 +1,85 @@
 .showcase-card {
     $root: &;
-    cursor: pointer;
-
-    box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 1);
-
-    border-radius: 0 0 6px 6px;
-    gap: 15px;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    padding: 10px;
     max-width: 800px;
     position: relative;
+    box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.1);
+    // Showcase cards use the same styles in light and dark mode.
+    background: $color--white;
+    color: $color--off-black;
 
-    &:hover{
-        transform: translateY(2px);
+    border-radius: 10px;
+
+    &:has(a:hover) {
         box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.2);
-    
-        #{$root}__link {
-            fill: $color--indigo;
-            color: $color--indigo;
-        }
+    }
+
+    @media (forced-colors: active) {
+        color: LinkText;
+        border: 1px solid currentColor;
     }
 
     &__logo {
         position: absolute;
         top: 10px;
         right: 10px;
-        border-radius: 0 12px 0 3px;
-        box-shadow: -12px 8px 8px 0 rgba(0, 0, 0, 0.03);
+        border-end-start-radius: 3px;
+        max-width: 12vw;
+        max-height: 12vw;
     }
 
     &__image {
-        padding: 10px;
-        height: auto; 
+        display: block;
         width: 100%;
+        height: auto;
     }
 
     &__heading {
-        font-size: 35px;
-        font-weight: 700;
-        line-height: 45px;
+        @include media-query(large) {
+            font-size: 2.1875rem;
+        }
     }
 
     &__content {
-        color: $color--off-black;
-        margin: 10px 10px;
-        
+        display: grid;
+        grid-template-rows: min-content min-content 1fr;
+        padding: 10px;
+
         @include media-query(medium) {
-            margin: 15px 20px;
+            padding: 20px;
         }
 
-        @include media-query(large) {
-            margin: 40px 60px;
+        @include media-query(extra-large) {
+            padding: 60px;
         }
     }
 
     &__description {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0;
+        line-height: 1.5;
         margin-bottom: 15px;
     }
 
     &__link {
+        color: $color--teal;
+        align-self: self-end;
         text-decoration: none;
-        font-size: 19px;
+        font-size: 1.25rem;
         font-weight: 700;
-        line-height: 29px;
-        fill: $color--teal;
-        padding-top: 15px;
+        line-height: 1.25;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
     }
 
     &__svg {
         width: 20px;
         height: 20px;
-        fill: $color--teal-200;
+        fill: currentColor;
         position: relative;
         top: 0.2rem;
         left: 0.2rem;
