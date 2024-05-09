@@ -19,7 +19,7 @@
                         class="select-wrapper__select"
                         aria-label="Filter by sector"
                     >
-                        {% if sector.items %}
+                        {% if sectors.items %}
                             {% for name, selected in sectors.items %}
                                 <option {{ selected }} value="{{ name }}">{{ name }}</option>
                             {% endfor %}
