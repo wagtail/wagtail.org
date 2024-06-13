@@ -14,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 20px;
+    margin: 0 0 15px;
     font-weight: $weight--bold;
 }
 
@@ -38,8 +38,8 @@ h1,
     letter-spacing: -0.01em;
 
     @include media-query(large) {
-        font-size: 4.5rem;
-        line-height: 5.4rem;
+        font-size: 3.8rem;
+        line-height: 4.8rem;
     }
 }
 
@@ -49,8 +49,8 @@ h2,
     line-height: 2.125rem;
 
     @include media-query(large) {
-        font-size: 2.25rem;
-        line-height: 2.9rem;
+        font-size: 1.7rem;
+        line-height: 2.3rem;
     }
 }
 
@@ -80,7 +80,7 @@ h4,
     font-size: 1.25rem;
     line-height: 1.9375rem;
     font-weight: $weight--regular;
-    
+
     @include media-query(large) {
         font-size: 1.25rem;
         line-height: 1.85rem;
@@ -115,8 +115,8 @@ h4,
     margin: 0 0 20px;
 
     @include media-query(large) {
-        font-size: 2rem;
-        line-height: 2.6rem;
+        font-size: 1.7rem;
+        line-height: 2.3rem;
     }
 }
 
