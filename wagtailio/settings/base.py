@@ -134,14 +134,21 @@ USE_TZ = True
 STATIC_ROOT = env.get("STATIC_ROOT", join(BASE_DIR, "static"))
 STATIC_URL = env.get("STATIC_URL", "/static/")
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
 STATICFILES_DIRS = (join(PROJECT_ROOT, "static_compiled"),)
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Place static files that need a specific URL (such as robots.txt and favicon.ico) in the "public" folder
 WHITENOISE_ROOT = os.path.join(BASE_DIR, "public")
@@ -179,7 +186,7 @@ if env.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
 # S3 configuration
 
 if "AWS_STORAGE_BUCKET_NAME" in env:
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STORAGES["default"]["BACKEND"] = "storages.backends.s3boto3.S3Boto3Storage"
     AWS_STORAGE_BUCKET_NAME = env["AWS_STORAGE_BUCKET_NAME"]
     AWS_S3_FILE_OVERWRITE = False
 
