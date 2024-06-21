@@ -32,7 +32,7 @@ scout-apm = "~3.0"
 sentry-sdk = "~1.38"
 wagtail-font-awesome-svg = "~1.0.1"
 wagtailaltgenerator = "~4.1.2"  # Compatible with Wagtail <= 5.0 as far as I can tell, but not explicitly supported/tested by the package.
-wagtailmedia = "~0.14.5"
+wagtailmedia = "~0.15.2"
 whitenoise = "~6.6"
 django-redis = "~5.4"
 

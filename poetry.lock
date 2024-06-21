@@ -1584,18 +1584,22 @@ rekognition = ["boto3 (>=1.4,<1.5)"]
 
 [[package]]
 name = "wagtailmedia"
-version = "0.14.5"
+version = "0.15.2"
 description = "A Wagtail module for audio and video files."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtailmedia-0.14.5-py3-none-any.whl", hash = "sha256:591f38f72980f8494c41e7df70c583ba8b40f284ec109f178ef73876747a139b"},
-    {file = "wagtailmedia-0.14.5.tar.gz", hash = "sha256:f3300f57d326c571420af4bc9381b3bb508dab402fb0f4b7957991a41fe91ef3"},
+    {file = "wagtailmedia-0.15.2-py3-none-any.whl", hash = "sha256:319a87114258099252205ad3596b22680f8efb1e2b4f4a4c1af9df519af4dd85"},
+    {file = "wagtailmedia-0.15.2.tar.gz", hash = "sha256:8e1406f432d159e195f5627eec187ec91b02389b9a97dc9ae214a74305592aa3"},
 ]
 
 [package.dependencies]
-Django = ">=3.2"
-Wagtail = ">=4.1"
+Django = ">=4.2"
+Wagtail = ">=5.2"
+
+[package.extras]
+linting = ["pre-commit (>=3.6.0)"]
+testing = ["coverage (>=7.4.0)"]
 
 [[package]]
 name = "whitenoise"
@@ -1719,4 +1723,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2e113b279c7fbb8aa750213481c8566cf9df437f922a18789ab213c5f41ace23"
+content-hash = "f9e79dce9a38571953dc058fbbb7b59e1629848e6c90beb38a492afb7e507b19"
