@@ -344,20 +344,20 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-basic-auth-ip-whitelist"
-version = "0.5"
+version = "0.6.0"
 description = "Hide your Django site behind basic authentication mechanism with IP whitelisting support."
 optional = false
 python-versions = ">=3.4"
 files = [
-    {file = "django-basic-auth-ip-whitelist-0.5.tar.gz", hash = "sha256:8e859303a802574a121a1787bdf96ca2c16140bb9003da96e28323e7a80d99fc"},
-    {file = "django_basic_auth_ip_whitelist-0.5-py3-none-any.whl", hash = "sha256:c64cc3e1bbf736d5e6d6c3468c16003cfc4d01cdfb92cd9e7bbe9fbcd5bdf9be"},
+    {file = "django_basic_auth_ip_whitelist-0.6.0-py3-none-any.whl", hash = "sha256:f866c1822861ab6612efb9adec03b12279a82314783aa721c843acfbea04b0b7"},
+    {file = "django_basic_auth_ip_whitelist-0.6.0.tar.gz", hash = "sha256:51fbef4d483cfccb15d0c38605fd149fd307314ad8a9308580a6b693b94b3329"},
 ]
 
 [package.dependencies]
-Django = ">=1.8,<5"
+Django = ">=1.8,<6"
 
 [package.extras]
-lint = ["black (==20.8b1)", "flake8 (==3.8.4)", "isort (==5.7.0)"]
+lint = ["black (==24.4.2)", "flake8 (==7.0.0)", "isort (==5.13.2)"]
 
 [[package]]
 name = "django-csp"
@@ -425,17 +425,17 @@ taggit = ["django-taggit (>=3.1)"]
 
 [[package]]
 name = "django-pattern-library"
-version = "1.1.0"
+version = "1.2.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "django_pattern_library-1.1.0-py3-none-any.whl", hash = "sha256:0ade8446f5f3dc9fa88fe0e64c65b7e2e22e2195b05fbbd3f4e84311f634c53c"},
-    {file = "django_pattern_library-1.1.0.tar.gz", hash = "sha256:beca4d9df9004cc3e46b14de20943bca919d5940b41d490f5be491533a51c459"},
+    {file = "django_pattern_library-1.2.0-py3-none-any.whl", hash = "sha256:7fa75d7a4251c08562fd6ec4bbb485bf12e1952d3ff12ba5692f35950be767a5"},
+    {file = "django_pattern_library-1.2.0.tar.gz", hash = "sha256:dd4ce104947bbfc7e227873afe442da9e961c68663f7b8fe50d16fc86ba906b3"},
 ]
 
 [package.dependencies]
-Django = ">=3.2,<5.0"
+Django = ">=3.2,<5.1"
 Markdown = ">=3.1,<4.0"
 PyYAML = ">=5.1,<7.0"
 
@@ -1719,4 +1719,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "54485af1f020fb427cd6d416aad9e77b15e4b4ee7f654de7eac9c10c5a4633e8"
+content-hash = "a667698a0821edf7229204d5d644deb0869f267bd08a70d2d8238f7cbb862c24"
