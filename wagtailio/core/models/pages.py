@@ -63,7 +63,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         use_json_field=True,
     )
 
-    body = StreamField(HomePageStoryBlock(), use_json_field=True)
+    body = StreamField(HomePageStoryBlock())
 
     hero_panels = [
         MultiFieldPanel(
@@ -117,7 +117,7 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     parent_page_types = ["core.HomePage"]
     # subpage_types = []  # TODO
 
-    body = StreamField(ContentStoryBlock(), use_json_field=True)
+    body = StreamField(ContentStoryBlock())
 
     content_panels = Page.content_panels + HeroMixin.panels + [FieldPanel("body")]
 
