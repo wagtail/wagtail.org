@@ -1566,25 +1566,6 @@ files = [
 ]
 
 [[package]]
-name = "wagtailaltgenerator"
-version = "4.1.2"
-description = "Insert image description and tags with the help of computer vision"
-optional = false
-python-versions = "*"
-files = [
-    {file = "wagtailaltgenerator-4.1.2.tar.gz", hash = "sha256:baac6b9a4d1a964c8cadff2f9652132fec4250c3152d24909c5c46c7c19c67c3"},
-]
-
-[package.dependencies]
-requests = "*"
-wagtail = ">=1.12"
-
-[package.extras]
-google-translate = ["google-cloud-translate"]
-google-vision = ["google-api-python-client (>=1.5.5)"]
-rekognition = ["boto3 (>=1.4,<1.5)"]
-
-[[package]]
 name = "wagtailmedia"
 version = "0.15.2"
 description = "A Wagtail module for audio and video files."
@@ -1725,4 +1706,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f9e79dce9a38571953dc058fbbb7b59e1629848e6c90beb38a492afb7e507b19"
+content-hash = "f5c57bd54db9c8135e0f2241158563572eb44cd800ab9d74778c6d370f2f5a9b"

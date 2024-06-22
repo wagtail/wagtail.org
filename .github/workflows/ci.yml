@@ -59,8 +59,6 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost/postgres
       SECRET_KEY: iamnotsosecret
       ALLOWED_HOSTS: localhost
-      COMPUTER_VISION_API_KEY: fake
-      COMPUTER_VISION_REGION: fake
     services:
       postgres:
         image: postgres:13

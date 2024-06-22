@@ -83,7 +83,6 @@ INSTALLED_APPS = [
     "wagtailio.showcase",
     "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
-    "wagtailaltgenerator",
     "wagtailmedia",
     "pattern_library",
     "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",

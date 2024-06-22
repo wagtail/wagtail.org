@@ -1,5 +1,3 @@
-from django.conf import settings
-
 from .base import *  # noqa
 
 # Debugging to be enabled locally only
@@ -20,13 +18,6 @@ SECURE_SSL_REDIRECT = False
 # Enable FE component library
 PATTERN_LIBRARY_ENABLED = True
 ALLOWED_HOSTS = ["*"]
-
-# Remove wagtailaltgenerator from INSTALLED_APPS
-# The key is needed to be able to upload images locally
-if not getattr(
-    settings, "COMPUTER_VISION_API_KEY", False
-) and settings.INSTALLED_APPS.index("wagtailaltgenerator"):
-    settings.INSTALLED_APPS.remove("wagtailaltgenerator")
 
 # Mailchimp
 MAILCHIMP_ACCOUNT_ID = "Fake"
