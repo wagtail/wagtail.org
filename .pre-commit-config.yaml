@@ -23,7 +23,7 @@ repos:
           - flake8-assertive==2.1.0
           - flake8-blind-except==0.2.1
           - flake8-comprehensions==3.10.1
-  - repo: https://github.com/pre-commit/mirrors-prettier
+  - repo: https://github.com/pycontribs/mirrors-prettier
     rev: v2.7.1
     hooks:
       - id: prettier
