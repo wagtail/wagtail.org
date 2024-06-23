@@ -154,7 +154,7 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    body = StreamField(BlogStoryBlock(), use_json_field=True)
+    body = StreamField(BlogStoryBlock())
 
     @property
     def siblings(self):

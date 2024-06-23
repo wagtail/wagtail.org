@@ -14,7 +14,7 @@ from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField
 @register_snippet
 class FooterMenu(models.Model):
     name = models.CharField(max_length=255)
-    sections = StreamField(NavStreamField(), use_json_field=True)
+    sections = StreamField(NavStreamField())
 
     panels = [
         FieldPanel("name"),
@@ -37,9 +37,7 @@ class FooterMenu(models.Model):
 @register_snippet
 class MainMenu(ClusterableModel):
     name = models.CharField(max_length=255)
-    menu_sections = StreamField(
-        [("menu_section", MainMenuSectionBlock())], use_json_field=True
-    )
+    menu_sections = StreamField([("menu_section", MainMenuSectionBlock())])
 
     panels = [
         FieldPanel("name"),

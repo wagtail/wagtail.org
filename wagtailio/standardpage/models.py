@@ -11,7 +11,7 @@ from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 class StandardPage(Page, SocialMediaMixin, CrossPageMixin):
     introduction = models.CharField(max_length=511)
-    body = StreamField(StoryBlock(), use_json_field=True)
+    body = StreamField(StoryBlock())
 
     content_panels = Page.content_panels + [
         FieldPanel("introduction"),

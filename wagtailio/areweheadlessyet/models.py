@@ -39,7 +39,7 @@ class AreWeHeadlessYetHomePage(Page, SocialMediaMixin, CrossPageMixin):
         default=THUMBS_UP,
     )
     strapline_text = RichTextField(features=["bold", "italic"])
-    body = StreamField(HomePageBlock(), use_json_field=True)
+    body = StreamField(HomePageBlock())
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -91,7 +91,7 @@ class AreWeHeadlessYetTopicPage(Page, SocialMediaMixin, CrossPageMixin):
     ]
     status_color = models.CharField(max_length=5, choices=COLOR_CHOICES)
     introduction = models.TextField(blank=True)
-    body = StreamField(TopicPageBlock(), use_json_field=True)
+    body = StreamField(TopicPageBlock())
 
     content_panels = Page.content_panels + [
         FieldPanel("status_color"),
