@@ -24,7 +24,7 @@ repos:
           - flake8-blind-except==0.2.1
           - flake8-comprehensions==3.10.1
   - repo: https://github.com/pycontribs/mirrors-prettier
-    rev: v2.7.1
+    rev: v3.3.2
     hooks:
       - id: prettier
         types_or: [css, scss, javascript, ts, tsx, json, yaml]
