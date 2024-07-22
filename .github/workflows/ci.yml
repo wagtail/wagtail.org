@@ -63,7 +63,7 @@ jobs:
       COMPUTER_VISION_REGION: fake
     services:
       postgres:
-        image: postgres:13
+        image: postgres:16
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgress
