@@ -82,12 +82,8 @@ class FeatureIndexPage(Page):
     template = "patterns/pages/feature_index_page/feature_index_page.html"
 
     subheading = models.TextField(verbose_name="Sub heading", blank=True)
-    features = StreamField(
-        [("features", FeatureIndexBlock())], blank=True, max_num=1, use_json_field=True
-    )
-    cta = StreamField(
-        [("cta", StandaloneCTABlock())], blank=True, max_num=1, use_json_field=True
-    )
+    features = StreamField([("features", FeatureIndexBlock())], blank=True, max_num=1)
+    cta = StreamField([("cta", StandaloneCTABlock())], blank=True, max_num=1)
     get_started = models.ForeignKey(
         "core.GetStartedSnippet",
         null=True,

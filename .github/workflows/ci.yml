@@ -59,8 +59,6 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost/postgres
       SECRET_KEY: iamnotsosecret
       ALLOWED_HOSTS: localhost
-      COMPUTER_VISION_API_KEY: fake
-      COMPUTER_VISION_REGION: fake
     services:
       postgres:
         image: postgres:13
@@ -74,7 +72,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Poetry
-        run: pipx install poetry==1.4.0 # Make sure this matches POETRY_VERSION in the Dockerfile
+        run: pipx install poetry==1.8.3 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
         uses: actions/setup-python@v4
         with:

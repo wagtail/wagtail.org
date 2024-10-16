@@ -41,7 +41,7 @@ class RoadmapPage(Page, SocialMediaMixin):
         help_text="This will be used as the default link for the 'Sponsor this' label",
     )
     fine_print = RichTextField(blank=True)
-    body = StreamField(ContentStoryBlock(), use_json_field=True)
+    body = StreamField(ContentStoryBlock())
 
     content_panels = Page.content_panels + [
         FieldPanel("intro"),
