@@ -14,7 +14,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "~5.0.6"
-wagtail = "~6.1.2"
+wagtail = "~6.2.2"
 psycopg2 = "~2.9"
 gunicorn = "~21.2.0"
 dj-database-url = "~2.1.0"
