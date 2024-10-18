@@ -1,5 +1,5 @@
 # (Keep the version in sync with the node install below)
-FROM node:18 as frontend
+FROM node:20 as frontend
 
 # Install front-end dependencies.
 COPY package.json package-lock.json tsconfig.json webpack.config.js ./
@@ -71,7 +71,7 @@ CMD gunicorn wagtailio.wsgi:application
 FROM backend AS dev
 
 # Install Node.js because newer versions of Heroku CLI have a node binary dependency
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
 
 # Switch to the application user
