@@ -142,10 +142,12 @@ const webpackConfig = (environment, argv) => {
             compress: true,
             host: '0.0.0.0',
             port: 3000,
-            proxy: {
-                context: () => true,
-                target: 'http://localhost:8000',
-            },
+            proxy: [
+                {
+                    context: () => true,
+                    target: 'http://localhost:8000',
+                },
+            ],
             client: {
                 logging: 'error',
                 // Shows a full-screen overlay in the browser when there are compiler errors.
@@ -158,7 +160,7 @@ const webpackConfig = (environment, argv) => {
                 // Write compiled files to disk. This makes live-reload work on both port 3000 and 8000.
                 writeToDisk: true,
                 stats,
-                index: '',
+                index: false,
                 publicPath: '/static/',
             },
         };
