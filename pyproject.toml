@@ -24,7 +24,7 @@ django-manifest-loader = "~1.0.0"
 django-pattern-library = "~1.2.0"
 django-permissions-policy = "~4.22"
 django-referrer-policy = "~1.0"
-django-storages = { version ="~1.13", extras = ["boto3"] }
+django-storages = { version ="~1.14", extras = ["s3"] }
 markdown = "~3.7"
 pygments = "~2.18"
 requests = "~2.32.3"
