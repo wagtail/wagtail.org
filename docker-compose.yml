@@ -27,7 +27,7 @@ services:
         condition: service_healthy
 
   db:
-    image: postgres:13
+    image: postgres:16
     expose:
       - 5432
     environment:
