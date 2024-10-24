@@ -7,7 +7,7 @@ from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
 from wagtail.whitelist import allow_without_attributes
 
-from storages.backends.s3boto3 import S3Boto3Storage
+from storages.backends.s3 import S3Storage
 
 
 @hooks.register("construct_whitelister_element_rules")
@@ -48,7 +48,7 @@ def serve_document_from_s3(document, request):
     and potentially risking DoS attack and the server timing out.
     """
     # Skip this hook if not using django-storages boto3 backend.
-    if not issubclass(get_storage_class(), S3Boto3Storage):
+    if not issubclass(get_storage_class(), S3Storage):
         return
 
     # Send document_served signal, same as Wagtail does.

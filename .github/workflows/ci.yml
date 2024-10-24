@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.11
+      - name: Set up Python 3.12
         uses: actions/setup-python@v3
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
@@ -61,7 +61,7 @@ jobs:
       ALLOWED_HOSTS: localhost
     services:
       postgres:
-        image: postgres:13
+        image: postgres:16
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgress
@@ -76,7 +76,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.12'
           cache: 'poetry'
       - name: Install Python dependencies
         run: poetry install

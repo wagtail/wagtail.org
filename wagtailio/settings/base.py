@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 import os
 import sys
 from os.path import abspath, dirname, join
@@ -185,7 +186,7 @@ if env.get("BASIC_AUTH_ENABLED", "false").lower() == "true":
 # S3 configuration
 
 if "AWS_STORAGE_BUCKET_NAME" in env:
-    STORAGES["default"]["BACKEND"] = "storages.backends.s3boto3.S3Boto3Storage"
+    STORAGES["default"]["BACKEND"] = "storages.backends.s3.S3Storage"
     AWS_STORAGE_BUCKET_NAME = env["AWS_STORAGE_BUCKET_NAME"]
     AWS_S3_FILE_OVERWRITE = False
 

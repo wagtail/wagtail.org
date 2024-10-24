@@ -9,7 +9,9 @@ class ImportForm(forms.Form):
         max_length=64,
         required=requires_token,
         label="GitHub access token",
-        help_text="Optional — if not supplied, a default token will be used"
-        if not requires_token
-        else None,
+        help_text=(
+            "Optional — if not supplied, a default token will be used"
+            if not requires_token
+            else None
+        ),
     )
