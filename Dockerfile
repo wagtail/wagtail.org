@@ -11,7 +11,7 @@ RUN npm run build:prod
 
 
 # Build Python app - this stage is a common base for the prod and dev stages
-FROM python:3.12-bookworm AS backend
+FROM python:3.12-bullseye AS backend
 
 ARG POETRY_VERSION=1.8.3
 ARG UID=1000
