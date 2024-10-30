@@ -11,7 +11,7 @@ RUN npm run build:prod
 
 
 # Build Python app - this stage is a common base for the prod and dev stages
-FROM python:3.11-bullseye AS backend
+FROM python:3.12-bookworm AS backend
 
 ARG POETRY_VERSION=1.8.3
 ARG UID=1000
@@ -27,7 +27,7 @@ ENV DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
 
 # Install operating system dependencies.
 RUN apt-get update --yes --quiet && \
-    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-13 \
+    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-15 \
     jpegoptim pngquant gifsicle libjpeg-progs webp && \
     rm -rf /var/lib/apt/lists/*
 
@@ -46,7 +46,7 @@ RUN chown --recursive $UID:$GID /app /venv
 
 
 # This stage builds the image that will run in production
-FROM backend AS prod
+FROM backend as prod
 
 # Switch to application user
 USER wagtailio

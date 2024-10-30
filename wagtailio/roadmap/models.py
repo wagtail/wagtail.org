@@ -74,7 +74,6 @@ class RoadmapPage(Page, SocialMediaMixin):
 class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
 
-    needs_sponsorship = models.BooleanField(default=False, editable=False)
     sponsorship_url = models.URLField(
         blank=True,
         verbose_name="Sponsorship URL",
