@@ -12,7 +12,7 @@ from wagtail.blocks import (
 )
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from markdown import markdown
@@ -139,7 +139,7 @@ class StoryBlock(StreamBlock):
         form_classname="title",
         template="patterns/components/streamfields/quotes/standalone_quote_block.html",
     )
-    image = ImageChooserBlock(
+    image = ImageBlock(
         icon="image", template="patterns/components/streamfields/image/image.html"
     )
     document = DocumentChooserBlock(
