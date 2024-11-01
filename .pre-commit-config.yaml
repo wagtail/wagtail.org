@@ -39,14 +39,14 @@ repos:
           - eslint@8.20.0
           - '@wagtail/eslint-config-wagtail@0.4.0'
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: v14.9.1
+    rev: v15.11.0
     hooks:
       - id: stylelint
         files: \.scss$
         args: [--report-needless-disables]
         additional_dependencies:
-          - stylelint@14.9.1
-          - '@wagtail/stylelint-config-wagtail@0.5.0'
+          - stylelint@15.11.0
+          - '@wagtail/stylelint-config-wagtail@0.8.0'
   - repo: https://github.com/rtts/djhtml
     rev: 3.0.7
     hooks:
