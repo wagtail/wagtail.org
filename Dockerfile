@@ -1,5 +1,5 @@
 # (Keep the version in sync with the node install below)
-FROM node:20 as frontend
+FROM node:22 as frontend
 
 # Install front-end dependencies.
 COPY package.json package-lock.json tsconfig.json webpack.config.js ./
