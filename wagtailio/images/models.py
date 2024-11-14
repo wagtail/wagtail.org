@@ -6,11 +6,6 @@ from wagtail.images.models import AbstractImage, AbstractRendition
 
 
 class WagtailIOImage(AbstractImage):
-    alternative_text = models.CharField(
-        max_length=255,
-        blank=True,
-        help_text="The alternative text for the image, provided for the benefit of visually impaired users",
-    )
     admin_form_fields = (
         "title",
         "file",
