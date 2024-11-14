@@ -1,6 +1,7 @@
 module.exports = {
     extends: '@wagtail/stylelint-config-wagtail',
     rules: {
+        'scss/selector-no-union-class-name': null,
         'scss/at-rule-no-unknown': [
             true,
             {
