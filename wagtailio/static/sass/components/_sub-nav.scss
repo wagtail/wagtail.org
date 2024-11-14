@@ -16,8 +16,7 @@
     border: 1px solid transparent;
     opacity: 0;
     visibility: hidden;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden scroll;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
     box-shadow: 0 0 40px rgba($color--black, 0.2);
