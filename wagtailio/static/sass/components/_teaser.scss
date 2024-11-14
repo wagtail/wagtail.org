@@ -28,10 +28,10 @@
     }
 
     &__content {
-        @include offset-bg-right();
         background-color: var(--color--light-dark);
         grid-column: 2 / span 2;
         padding: 20px;
+        @include offset-bg-right();
 
         @include media-query(medium) {
             padding: 30px 40px;

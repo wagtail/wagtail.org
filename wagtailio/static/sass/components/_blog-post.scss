@@ -92,10 +92,10 @@
         }
 
         #{$root}__content {
-            @include offset-bg-right();
             border-radius: 0 15px 15px 0;
             gap: 20px;
             background: var(--color--light-dark);
+            @include offset-bg-right();
 
             @include media-query(medium) {
                 padding: $gutter $gutter-lg;
