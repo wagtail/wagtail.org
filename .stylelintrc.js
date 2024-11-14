@@ -80,9 +80,12 @@ module.exports = {
         ],
         // Allow use of 'right', 'left' and 'text-transform'
         'property-disallowed-list': null,
+        // Refined ordering to align with media mixin usage - see https://github.com/wagtail/stylelint-config-wagtail/issues/37
         'order/order': [
             'dollar-variables',
             'custom-properties',
+            // Disabled until we migrate existing code.
+            // { type: 'at-rule', hasBlock: true },  // @-rules that have no nesting.
             'declarations',
         ],
     },
