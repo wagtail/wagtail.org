@@ -102,7 +102,7 @@ class SectionBlock(blocks.StructBlock):
     )
 
     section_media = SectionMediaBlock(required=False)
-    section_image = image_blocks.ImageChooserBlock(
+    section_image = image_blocks.ImageBlock(
         required=False,
         help_text="Section image is used as a fallback when no media is defined.",
     )
