@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:map';
 
 // Media queries
 @mixin media-query($queries...) {
@@ -104,14 +105,14 @@
 // z-index
 // Map z-index keys
 @function z-index($key) {
-    @return map-get($z-index, $key);
+    @return map.get($z-index, $key);
 }
 
 @mixin z-index($key) {
     z-index: z-index($key);
 }
 
-// Apply formatting for elements using richtext 
+// Apply formatting for elements using richtext
 @mixin richtext() {
     a {
         color: var(--color--link);
