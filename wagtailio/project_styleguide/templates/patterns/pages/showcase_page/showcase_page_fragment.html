@@ -31,7 +31,7 @@
         {% include_block page.cta %}
     {% endif %}
     <div>
-        <div class="pagination pagination--showcase print:hidden">
+        <div class="pagination pagination--showcase print-hidden">
             {% if showcase_items.has_previous %}
                 <a href="?page={{ showcase_items.previous_page_number }}{% if current_sector %}&sector={{ current_sector }}{% endif %}" class="pagination__previous button button--reverse">
                     <p class="button__text">
