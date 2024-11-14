@@ -105,6 +105,9 @@ const webpackConfig = (environment, argv) => {
 
     options.mode = isProduction ? 'production' : 'development';
 
+    // We'll migrate away from @import rules in the future, but for now we'll ignore the warnings as they are noisy.
+    options.ignoreWarnings = [{ message: /Sass @import rules are deprecated/ }];
+
     if (!isProduction) {
         // https://webpack.js.org/configuration/stats/
         const stats = {
