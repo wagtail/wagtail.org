@@ -77,7 +77,7 @@ Steps for resetting the `staging` git branch, and deploying it with a clone of t
 1. Force-push to Heroku, otherwise CI will later fail `$ git push --force heroku-staging main` (this will trigger a deployment, bear in mind that there may be incompatibilities between the old staging database and the new code from main; this will be resolved in the Database step below)
 1. Merge in the relevant branches
     ```bash
-    $ git merge --no-ff origin/feature/123-extra-spangles
+    $ git merge --ff-only origin/feature/123-extra-spangles
     ```
 1. Check for any newly necessary merge migrations `$ ./manage.py makemigrations --check`
 
