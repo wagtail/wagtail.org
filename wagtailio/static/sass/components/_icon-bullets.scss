@@ -1,6 +1,6 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .icon-bullets {
-    @include mixins.sf-spacing(2);
+    @include sf-spacing(2);
     padding: 0;
 }

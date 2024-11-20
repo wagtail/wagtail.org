@@ -1,5 +1,5 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .blog {
     &__meta,
@@ -8,19 +8,19 @@
     &__heading {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 2 / span 4;
         }
     }
 
     &__intro {
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 2 / span 3;
         }
     }
@@ -31,7 +31,7 @@
 
     &__intro,
     &__heading {
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-bottom: 30px;
         }
     }
@@ -39,12 +39,12 @@
     &__header {
         padding-bottom: 50px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             padding-bottom: 80px;
             padding-top: 80px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             padding-bottom: (20vh);
         }
 
@@ -54,11 +54,11 @@
         grid-column: 2 / span 2;
         margin-bottom: 25px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 3 / span 3;
             margin-bottom: 75px;
         }

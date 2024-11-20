@@ -1,13 +1,13 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .standalone-quote {
-    @include mixins.sf-spacing(2);
+    @include sf-spacing(2);
     align-items: center;
 
     &__icon {
         display: none;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin: 0 auto;
             display: block;
             grid-column: 2 / span 1;
@@ -15,7 +15,7 @@
             height: 85px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             width: 150px;
             height: 125px;
         }
@@ -30,11 +30,11 @@
         margin: 0;
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 3 / span 2;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 3 / span 3;
         }
     }
@@ -45,11 +45,11 @@
         margin-top: 10px;
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 3 / span 2;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 3 / span 3;
         }
     }

@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .meta {
     display: flex;
@@ -27,7 +27,7 @@
     // Overrides
     .logo-card--article & {
         &__text {
-            font-weight: variables.$weight--bold;
+            font-weight: $weight--bold;
         }
     }
 }

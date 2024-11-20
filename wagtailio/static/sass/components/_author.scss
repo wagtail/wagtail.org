@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .author {
     $root: &;
@@ -19,19 +19,19 @@
     }
 
     &__name {
-        font-weight: variables.$weight--bold;
+        font-weight: $weight--bold;
         font-size: 16px;
         margin-bottom: 0;
         line-height: 1;
 
         a {
             text-decoration: none;
-            color: variables.$color--off-black;
+            color: $color--off-black;
         }
 
         .blog-post__content & {
             font-size: 14px;
-            font-weight: variables.$weight--regular;
+            font-weight: $weight--regular;
         }
     }
 

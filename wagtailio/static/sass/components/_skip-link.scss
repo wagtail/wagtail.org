@@ -1,13 +1,13 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .skip-link {
     z-index: 20;
     position: absolute;
     inset: -500px auto auto 0;
-    color: variables.$color--white;
+    color: $color--white;
     background-color: var(--color--highlight);
     padding: 20px;
-    font-weight: variables.$weight--bold;
+    font-weight: $weight--bold;
     text-decoration: none;
 
     &:focus {

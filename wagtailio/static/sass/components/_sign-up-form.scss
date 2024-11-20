@@ -1,17 +1,17 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .sign-up-form {
     $root: &;
-    @include mixins.sf-spacing(2);
+    @include sf-spacing(2);
     grid-column: 2 / span 2;
     overflow: hidden; // prevent scrollbars from svg size
-    
-    @include mixins.media-query(medium) {
+
+    @include media-query(medium) {
       grid-column: 2 / span 3;
     }
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
       grid-column: 2 / span 5;
     }
 
@@ -25,15 +25,15 @@
     }
 
     &__icon {
-        @include mixins.z-index(under);
+        @include z-index(under);
         position: relative;
         width: auto;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             display: block;
         }
-        
-        @include mixins.media-query(large) {
+
+        @include media-query(large) {
             flex-grow: 1.5;
         }
 
@@ -45,7 +45,7 @@
     }
 
     &__inner {
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             flex-grow: 1.5;
         }
     }
@@ -55,7 +55,7 @@
         flex-direction: column;
         margin: 30px 0 0 0;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             flex-direction: row;
         }
 
@@ -64,7 +64,7 @@
             justify-content: flex-start;
             margin: 0;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 flex: 1;
                 width: 50%;
             }
@@ -75,32 +75,32 @@
         flex: 1;
         height: 50px;
         border: 1px solid var(--color--text);
-        border-radius: variables.$rounded-md;
+        border-radius: $rounded-md;
         padding: 11px 20px;
 
-        @include mixins.focus-internal();
+        @include focus-internal();
 
-        @include mixins.media-query(medium) {
-            border-radius: variables.$rounded-md 0 0 variables.$rounded-md;
+        @include media-query(medium) {
+            border-radius: $rounded-md 0 0 $rounded-md;
         }
 
         &::placeholder {
-            color: variables.$color--off-black;
+            color: $color--off-black;
         }
     }
 
     &__button {
-        border-radius: variables.$rounded-md;
+        border-radius: $rounded-md;
         border-style: solid;
         height: 50px;
         margin: 15px 0 0 0;
         background-color: var(--color--highlight);
-        color: variables.$color--white;
+        color: $color--white;
 
-        @include mixins.focus-internal();
+        @include focus-internal();
 
-        @include mixins.media-query(medium) {
-            border-radius: 0 variables.$rounded-md variables.$rounded-md 0;
+        @include media-query(medium) {
+            border-radius: 0 $rounded-md $rounded-md 0;
             border-style: solid solid solid none;
             border-left-width: 0;
             margin: 0;
@@ -114,41 +114,41 @@
         border-radius: 15px;
         padding: 30px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             flex-direction: row;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             padding: 40px 60px;
         }
     }
 
     &--footer {
         background-color: var(--color--highlight);
-        color: variables.$color--white;
+        color: $color--white;
 
         #{$root}__input {
             background-color: var(--color--highlight);
-            border: 1px solid variables.$color--white;
-            color: variables.$color--white;
+            border: 1px solid $color--white;
+            color: $color--white;
             border-radius: 6px;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 border-radius: 6px 0 0 6px;
             }
 
             &::placeholder {
-                color: variables.$color--white;
+                color: $color--white;
             }
         }
 
         #{$root}__button {
-            background-color: variables.$color--white;
+            background-color: $color--white;
             color: var(--color--highlight);
             border-radius: 6px;
             border-style: solid none none none;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 border-radius: 0 6px 6px 0;
                 border-style: none none none solid;
             }
@@ -160,7 +160,7 @@
     }
 
     .footer & {
-      @include mixins.media-query(large) {
+      @include media-query(large) {
         margin-bottom: 50px;
       }
 
@@ -168,7 +168,7 @@
         font-size: 16px;
         margin-bottom: 20px;
         padding-top: 0;
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
       }
 
       &__container {

@@ -1,9 +1,9 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .modal {
     $root: &;
-    @include mixins.z-index(modal);
+    @include z-index(modal);
     position: relative;
 
     &--get-started {
@@ -14,7 +14,7 @@
         #{$root}__content {
             padding: 0 10px 10px;
 
-            @include mixins.media-query(large) {
+            @include media-query(large) {
                 padding: 0 40px 40px;
             }
         }
@@ -31,7 +31,7 @@
             padding: 10px;
             inset: 50px 0;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 padding: 25px;
                 inset: 140px 0;
             }
@@ -40,15 +40,15 @@
         #{$root}__close-button {
             position: absolute;
             inset: -10px -10px auto auto;
-            background-color: variables.$color--off-black;
+            background-color: $color--off-black;
             border-radius: 50%;
             width: 30px;
             height: 30px;
-            border: 3px solid variables.$color--white;
+            border: 3px solid $color--white;
         }
 
         #{$root}__close-icon {
-            fill: variables.$color--white;
+            fill: $color--white;
             width: 12px;
             height: 22px;
 
@@ -59,17 +59,17 @@
     }
 
     &__overlay {
-        @include mixins.z-index(modal);
+        @include z-index(modal);
         position: fixed;
         inset: 0;
-        background: variables.$color--off-black-30;
+        background: $color--off-black-30;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     &__header {
-        @include mixins.z-index(modal-controls);
+        @include z-index(modal-controls);
         position: relative;
     }
 
@@ -85,7 +85,7 @@
         position: relative;
         border: 2px solid transparent;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             padding: 30px;
         }
     }
@@ -96,14 +96,14 @@
             display: grid;
             row-gap: 40px;
 
-            @include mixins.media-query(large) {
+            @include media-query(large) {
                 row-gap: 80px;
                 grid-template-columns: 1fr 1fr;
             }
 
             #{$root}__grid-item {
                 // stylelint-disable-next-line max-nesting-depth
-                @include mixins.media-query(large) {
+                @include media-query(large) {
                     max-width: 75%;
                 }
             }
@@ -124,7 +124,7 @@
             &:hover,
             &:focus {
                 #{$root}__close-icon {
-                    fill: variables.$color--teal-100;
+                    fill: $color--teal-100;
                 }
             }
         }
@@ -135,19 +135,19 @@
         width: 20px;
         height: 20px;
         pointer-events: none;
-        transition: fill variables.$transition;
+        transition: fill $transition;
     }
 
     &__title {
         margin-bottom: 30px;
         margin-top: -20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-bottom: 40px;
             margin-top: 0;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-bottom: 60px;
         }
     }

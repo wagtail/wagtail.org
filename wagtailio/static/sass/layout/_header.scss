@@ -1,9 +1,9 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .header {
     $root: &;
-    max-width: variables.$site-width;
+    max-width: $site-width;
     margin: 0 auto 70px;
     padding: 15px;
     display: flex;
@@ -11,7 +11,7 @@
     align-items: center;
     position: relative;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         padding: 35px 50px;
         margin: 0 auto;
     }
@@ -40,7 +40,7 @@
         width: 100px;
         height: 40px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             width: 153px;
             height: 65px;
         }
@@ -56,29 +56,29 @@
         &--desktop {
             display: none;
 
-            @media only screen and (min-width: variables.$header-desktop) {
+            @media only screen and (min-width: $header-desktop) {
                 display: flex;
             }
         }
 
         &--mobile {
-            @include mixins.z-index(nav);
+            @include z-index(nav);
             display: flex;
             flex-direction: column;
             position: fixed;
-            inset: variables.$header-mobile-height auto auto 0;
+            inset: $header-mobile-height auto auto 0;
             width: 100%;
             height: 100%;
             background-color: var(--color--background);
             visibility: hidden;
             transform: translate3d(100%,0,0);
-            transition: transform variables.$transition;
+            transition: transform $transition;
 
-            @include mixins.media-query(medium) {
-                inset: variables.$header-tablet-height auto auto 0;
+            @include media-query(medium) {
+                inset: $header-tablet-height auto auto 0;
             }
 
-            @media only screen and (min-width: variables.$header-desktop) {
+            @media only screen and (min-width: $header-desktop) {
                 display: none;
             }
 
@@ -101,18 +101,18 @@
         &--get-started {
             display: none;
             padding: 10px 13px;
-            font-weight: variables.$weight--bold;
+            font-weight: $weight--bold;
             font-size: 0.8rem;
             margin-right: 15px;
 
-            @media only screen and (min-width: variables.$header-desktop) {
+            @media only screen and (min-width: $header-desktop) {
                 display: inline-flex;
                 padding: 15px 20px;
                 margin-right: 0;
             }
 
             svg {
-                color: variables.$color--teal;
+                color: $color--teal;
                 width: 15px;
                 height: 15px;
                 transition: color 0.3s;
@@ -121,7 +121,7 @@
             &:hover {
                 // stylelint-disable-next-line max-nesting-depth
                 svg {
-                    color: variables.$color--teal-100;
+                    color: $color--teal-100;
                 }
             }
 
@@ -132,7 +132,7 @@
                 text-align: center;
 
                 // stylelint-disable-next-line max-nesting-depth
-                @include mixins.media-query(medium) {
+                @include media-query(medium) {
                     width: calc(100% - 80px);
                 }
             }
@@ -162,7 +162,7 @@
         display: none;
         margin-right: 64px;
 
-        @media only screen and (min-width: variables.$header-github) {
+        @media only screen and (min-width: $header-github) {
             display: block;
         }
     }
@@ -174,19 +174,19 @@
         align-items: center;
         margin-right: 10px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-right: 20px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             top: -3px;
         }
 
-        @media only screen and (min-width: variables.$header-github) {
+        @media only screen and (min-width: $header-github) {
             margin-right: 40px;
         }
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             top: 1px;
             margin-right: 30px;
         }
@@ -194,7 +194,7 @@
     }
 
     &__search-icon {
-        transition: color variables.$transition;
+        transition: color $transition;
 
         &--open {
             color: var(--color--dark-light);
@@ -226,7 +226,7 @@
         position: relative;
         top: -7px;
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             display: none;
         }
     }

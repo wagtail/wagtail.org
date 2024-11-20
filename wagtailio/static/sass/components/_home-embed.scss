@@ -1,12 +1,12 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .home-embed {
     max-width: 1024px;
     margin: 0 auto;
-    padding: 0 variables.$gutter 50px;
+    padding: 0 $gutter 50px;
 
-    @include mixins.media-query(medium) {
-        padding: 0 calc(variables.$gutter * 2) 100px;
+    @include media-query(medium) {
+        padding: 0 calc($gutter * 2) 100px;
     }
 }

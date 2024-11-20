@@ -1,5 +1,5 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .search {
     $root: &;
@@ -13,9 +13,9 @@
         border-top-left-radius: 0;
         padding: 10px;
 
-        @include mixins.focus-internal();
+        @include focus-internal();
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             padding: 15px 30px;
         }
 
@@ -23,7 +23,7 @@
             // remove hover on mobile to save space
             transform: none;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 transform: translateX(10px) scale(1.25);
             }
         }
@@ -37,8 +37,8 @@
         color: var(--color--text);
         height: 100%;
         background-color: var(--color--light-dark);
-        
-        @include mixins.focus-internal();
+
+        @include focus-internal();
 
         // remove rounded edges in ios
         &[type="search"] {
@@ -48,13 +48,13 @@
     }
 
     &--mobile {
-        @include mixins.z-index(modal);
+        @include z-index(modal);
         padding: 0 20px;
         position: absolute;
         inset: 0;
         opacity: 1;
         transform: translate3d(0, 100%, 0);
-        transition: opacity variables.$transition, transform variables.$transition;
+        transition: opacity $transition, transform $transition;
 
         &.is-hidden {
             opacity: 0;

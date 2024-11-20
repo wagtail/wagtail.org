@@ -1,14 +1,14 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .image {
-    @include mixins.sf-spacing(2);
+    @include sf-spacing(2);
     grid-column: 2 / span 2;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
         grid-column: 3 / span 3;
     }
 }
