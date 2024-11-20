@@ -117,7 +117,7 @@ $ diff bucket-contents-{production,staging}.txt
 
 ### Comms
 
-1. Inform the client of the changes, e.g.
+1. Inform the stakeholders of the changes, e.g.
     > All user accounts have been copied across, so your old staging password will no longer work. Log in with your production password (and then change it), or use the 'forgot password' feature.
     > Any test content has been reset. This is probably the biggest inconvenience. Sorry.
     > I have deleted the personally-identifying data from form submissions **and anywhere else relevant**. If there's any more on production (there shouldn't be) then please let me know and I'll remove it from staging.
