@@ -1542,13 +1542,13 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "6.3"
+version = "6.3.1"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "wagtail-6.3-py3-none-any.whl", hash = "sha256:627e4d5c2a47cd8533994503f473da231a782dbd0f1f8f53641e0d994556a0f2"},
-    {file = "wagtail-6.3.tar.gz", hash = "sha256:98d94d12183b8fc689a0186ab095e6056bf116c21d94f245bdfd02ed4775442a"},
+    {file = "wagtail-6.3.1-py3-none-any.whl", hash = "sha256:d7d4e4fcb5edb4a5d0aaff5de72eaf33a51e4fa26c2d3a57801c58c4da35b209"},
+    {file = "wagtail-6.3.1.tar.gz", hash = "sha256:93876cc7a3bfcfff4c0393949562cbf249f244c4ca653d58a2dbab737f455715"},
 ]
 
 [package.dependencies]
@@ -1723,4 +1723,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "346aa151a76eaab128faec5720e8b5e0ac6ccbc4b2618cd0159ec89b063f26bd"
+content-hash = "529255463a81a883d92a512ed34e2a739a3ef83810e335ed68d3baa29f8ccae7"
