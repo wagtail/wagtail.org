@@ -1,5 +1,5 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .icon-link {
     $root: &;
@@ -8,7 +8,7 @@
     display: flex;
     column-gap: 15px;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         column-gap: 20px;
     }
 
@@ -17,7 +17,7 @@
         height: 45px;
         flex-shrink: 0;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             width: 70px;
             height: 85px;
         }
@@ -29,7 +29,7 @@
     }
 
     &__content {
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-left: 30px;
         }
     }
@@ -40,7 +40,7 @@
     }
 
     &__subheading {
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
         color: var(--color--meta);
         margin-bottom: 5px;
     }
@@ -53,7 +53,7 @@
         // Icon overrides
         .icon__svg-bg {
             transform: rotate(5deg) scale(0.95);
-            fill: variables.$color--teal-200;
+            fill: $color--teal-200;
         }
     }
 
@@ -61,7 +61,7 @@
     .modal__grid--get-started & {
 
         #{$root}__svg {
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 width: 100px;
                 height: 95px;
             }
@@ -72,14 +72,14 @@
     .modal__grid--get-started & {
 
         #{$root}__heading {
-            @include mixins.media-query(smallonly) {
+            @include media-query(smallonly) {
                 font-size: 21px;
                 line-height: 1.4;
             }
         }
 
         #{$root}__subheading {
-            @include mixins.media-query(smallonly) {
+            @include media-query(smallonly) {
                 font-size: 16px;
                 line-height: 1.4;
             }
@@ -88,7 +88,7 @@
         #{$root}__svg {
             display: none;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 display: block;
             }
         }
@@ -98,14 +98,14 @@
     .get-started & {
         flex-direction: column;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             flex-direction: row;
         }
 
         #{$root}__svg {
             width: 100px;
             height: 95px;
-            margin-bottom: variables.$gutter-sm;
+            margin-bottom: $gutter-sm;
         }
     }
 }

@@ -1,4 +1,4 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .showcase-page {
     &__hero {
@@ -14,11 +14,11 @@
     &__content {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column-end: span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column-end: span 5;
         }
     }
@@ -30,7 +30,7 @@
     gap: 30px;
     padding: 50px 0;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         grid-template-columns: 1fr 1fr;
     }
 }

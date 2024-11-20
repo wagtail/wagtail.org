@@ -1,12 +1,12 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .u {
     &-sr-only {
-        @include mixins.hidden();
+        @include hidden();
     }
 
     &-mobile-only {
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             display: none;
         }
     }
@@ -14,7 +14,7 @@
     &-desktop-only {
         display: none;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             display: block;
         }
     }

@@ -1,18 +1,18 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .logo-card-grid {
-    @include mixins.sf-spacing(2);
+    @include sf-spacing(2);
 
     &__heading {
         margin-bottom: 20px;
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-bottom: 40px;
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 2 / span 4;
         }
     }
@@ -21,11 +21,11 @@
         list-style: none;
         row-gap: 20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             row-gap: 50px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             row-gap: 100px;
         }
     }
@@ -34,7 +34,7 @@
     &__item {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             &:nth-child(odd) {
                 grid-column: 2 / span 2;
                 max-width: 75%;

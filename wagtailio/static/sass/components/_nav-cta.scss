@@ -1,21 +1,21 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .nav-cta {
     $root: &;
     display: block;
     position: relative;
-    color: variables.$color--white;
+    color: $color--white;
     text-decoration: none;
     padding: 20px 20px 50px 20px;
     background-color: var(--color--highlight);
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         padding: 20px 50px 50px 50px;
         height: 100%;
     }
 
-    @media only screen and (min-width: variables.$header-desktop) {
+    @media only screen and (min-width: $header-desktop) {
         padding: 60px 60px 100px 60px;
     }
 
@@ -24,12 +24,12 @@
         color: var(--color--background);
 
         #{$root}__heading {
-            color: variables.$color--teal-100;
+            color: $color--teal-100;
         }
 
         #{$root}__arrow {
             transform: translate3d(20%, 0, 0) scale(1.1);
-            fill: variables.$color--white;
+            fill: $color--white;
         }
 
         .theme-dark & {
@@ -39,15 +39,15 @@
     }
 
     &__icon {
-        @include mixins.z-index(base);
+        @include z-index(base);
         position: absolute;
         top: 30px;
         right: 20px;
         width: 190px;
         height: auto;
-        fill: rgba(variables.$color--teal-200, 0.75);
+        fill: rgba($color--teal-200, 0.75);
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             top: 30px;
             right: 10px;
             width: 250px;
@@ -55,12 +55,12 @@
     }
 
     &__content {
-        @include mixins.z-index(overlap);
+        @include z-index(overlap);
         position: relative;
         padding-top: 40px;
         text-align: start;
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             padding-top: 100px;
         }
     }
@@ -70,9 +70,9 @@
         line-height: 1.1;
         margin-bottom: 10px;
         padding-right: 60px;
-        transition: color variables.$transition;
+        transition: color $transition;
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             padding-right: 0;
             font-size: 55px;
         }
@@ -88,7 +88,7 @@
     }
 
     &__description {
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
         margin: 0;
     }
 
@@ -96,14 +96,14 @@
         position: absolute;
         bottom: 30px;
         right: 20px;
-        stroke: variables.$color--white;
+        stroke: $color--white;
         stroke-width: 4px;
         fill: transparent;
         width: 60px;
         height: 60px;
-        transition: transform variables.$transition, fill variables.$transition;
+        transition: transform $transition, fill $transition;
 
-        @media only screen and (min-width: variables.$header-desktop) {
+        @media only screen and (min-width: $header-desktop) {
             bottom: 50px;
             right: 60px;
         }

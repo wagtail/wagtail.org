@@ -1,4 +1,4 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .search-page {
   &__results {
@@ -7,12 +7,12 @@
     margin: 40px 0;
     grid-column: 2 / span 2;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
       margin: 60px 0;
       grid-column: 2 / span 3;
     }
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
       margin: 80px 0;
       grid-column: 2 / span 5;
     }

@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 // Hover states should be handled on a component basis - not in here
 .icon {
@@ -11,7 +11,7 @@
     &__svg {
         position: absolute;
         overflow: visible;
-        fill: variables.$color--primary;
+        fill: $color--primary;
 
         .sub-nav & {
             inset: 0 auto auto 0;
@@ -32,7 +32,7 @@
 
     &__svg-fg {
         fill: transparent;
-        stroke: variables.$color--black;
+        stroke: $color--black;
         stroke-width: 2px;
 
         .hero &,

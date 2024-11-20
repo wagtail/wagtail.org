@@ -1,11 +1,11 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .milestones {
     position: relative;
 
     &__border {
-        @include mixins.z-index(under);
+        @include z-index(under);
         position: absolute;
         top: 0;
         inset-inline-start: 24px;
@@ -23,9 +23,9 @@
         gap: 8px;
         grid-column: 2/-2;
         margin-inline-start: 20px;
-        margin-bottom: variables.$gutter-xl;
+        margin-bottom: $gutter-xl;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 2/span 4;
         }
     }
@@ -34,10 +34,10 @@
 .milestone {
     grid-column: 2 / -2;
     width: 100%;
-    margin-bottom: variables.$gutter-xl;
+    margin-bottom: $gutter-xl;
 
     &__header {
-        margin-bottom: variables.$gutter;
+        margin-bottom: $gutter;
         display: flex;
         align-items: center;
         gap: 16px;
@@ -59,13 +59,13 @@
 
     &__heading-subtitle {
         color: var(--color--meta);
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
     }
 
     &__heading-link {
         color: var(--color--text);
         text-decoration: none;
-        transition: color variables.$transition;
+        transition: color $transition;
     }
 
     &__items {
@@ -74,15 +74,15 @@
         grid-auto-rows: 1fr;
         gap: 20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-template-columns: 1fr 1fr;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-template-columns: 1fr 1fr 1fr;
         }
 
-        @include mixins.media-query(extra-large) {
+        @include media-query(extra-large) {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
     }

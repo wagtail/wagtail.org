@@ -1,5 +1,5 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .footer {
     $root: &;
@@ -7,18 +7,18 @@
     &__base {
         background-color: var(--color--highlight);
         padding: 60px 0;
-        color: variables.$color--white;
+        color: $color--white;
     }
 
     &__links-wrap {
         grid-column: 2 / span 2;
         margin-bottom: 60px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-bottom: 0;
             grid-column: 2 / span 2;
             padding-right: 20%;
@@ -29,11 +29,11 @@
         list-style: none;
         margin-bottom: 20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-bottom: 40px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
           margin-bottom: 60px;
       }
 
@@ -45,11 +45,11 @@
     &__sign-up {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 4 / span 3;
         }
     }
@@ -59,11 +59,11 @@
         font-size: 1rem;
         margin-top: 30px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-top: 0;
             font-size: 0.8rem;
             grid-column: 2 / span 3;
@@ -71,23 +71,23 @@
     }
 
     &__icon-link {
-        color: variables.$color--white;
+        color: $color--white;
         text-decoration: none;
         display: flex;
         gap: 15px;
 
         &-content {
-            transition: color 0.3s; 
-             
+            transition: color 0.3s;
+
         }
 
         &:hover {
             #{$root}__icon-link-content {
-                color: variables.$color--teal-100;
+                color: $color--teal-100;
             }
 
             #{$root}__icon {
-                stroke: variables.$color--teal-100;
+                stroke: $color--teal-100;
             }
         }
 
@@ -96,11 +96,11 @@
 
             &::after {
                 content: '200+';
-                background-color: variables.$color--teal-100;
-                border: 2px solid variables.$color--off-black;
-                color: variables.$color--off-black;
+                background-color: $color--teal-100;
+                border: 2px solid $color--off-black;
+                color: $color--off-black;
                 font-size: 0.5rem;
-                font-weight: variables.$weight--bold;
+                font-weight: $weight--bold;
                 border-radius: 50%;
                 position: absolute;
                 width: 30px;
@@ -116,12 +116,12 @@
     }
 
     &__icon-link-heading {
-        font-weight: variables.$weight--bold;
+        font-weight: $weight--bold;
         line-height: 1.3rem;
         margin-bottom: 4px;
         font-size: 1.25rem;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             font-size: 1rem;
         }
     }
@@ -137,18 +137,18 @@
     }
 
     &__link {
-        color: variables.$color--teal-100;
+        color: $color--teal-100;
         text-decoration: underline;
-        transition: color variables.$transition;
+        transition: color $transition;
 
         &:hover {
             text-decoration: none;
-            color: variables.$color--white;
+            color: $color--white;
         }
     }
 
     &__social-heading {
-        font-weight: variables.$weight--bold;
+        font-weight: $weight--bold;
     }
 
     &__socials {
@@ -156,7 +156,7 @@
         align-items: center;
         gap: 10px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             gap: 20px;
         }
 
@@ -169,14 +169,14 @@
     }
 
     &__social-icon {
-        fill: variables.$color--white;
+        fill: $color--white;
         width: 34px;
         height: 34px;
         transition: color 0.3s;
 
         &:hover {
-            fill: variables.$color--teal-100;
-            transition: fill  variables.$transition;
+            fill: $color--teal-100;
+            transition: fill  $transition;
         }
 
         @media (forced-colors: active) {
@@ -185,18 +185,18 @@
     }
 
     &__survey-link {
-        background-color: variables.$color--teal;
+        background-color: $color--teal;
         position: fixed;
         bottom: -2px;
         right: 2rem;
         padding: 12px 16px 10px;
-        color: variables.$color--white;
+        color: $color--white;
         display: flex;
         z-index: 10;
         border-radius: 10px 10px 0 0;
         transition: bottom 0.1s linear;
         font-size: 0.75rem;
-        font-family: variables.$font--primary;
+        font-family: $font--primary;
         width: 230px;
         justify-content: space-between;
         align-items: center;
@@ -210,7 +210,7 @@
         }
 
         &:hover {
-            color: variables.$color--white;
+            color: $color--white;
             bottom: 0;
         }
     }
@@ -218,13 +218,13 @@
     &__sub-footer {
         margin-bottom: 30px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-bottom: 40px;
         }
     }

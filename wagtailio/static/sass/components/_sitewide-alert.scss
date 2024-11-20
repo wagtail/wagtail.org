@@ -1,8 +1,8 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .sitewide-alert {
     position: relative;
-    padding: variables.$gutter-sm variables.$gutter;
+    padding: $gutter-sm $gutter;
     opacity: 0;
     transition: opacity 0.5s ease;
     margin-top: calc(var(--banner-height) * -1);
@@ -16,7 +16,7 @@
     }
 
     p {
-        max-width: variables.$site-width;
+        max-width: $site-width;
         margin: 0 auto;
         font-size: 16px;
         text-align: center;
@@ -32,21 +32,21 @@
     }
 
     &--default {
-        background-color: variables.$color--pink;
-        color: variables.$color--white;
+        background-color: $color--pink;
+        color: $color--white;
 
         h2, h3 {
             color: var(--color--highlight);
         }
 
         a {
-            color: variables.$color--off-black-30;
-            border-bottom-color: variables.$color--grey;
+            color: $color--off-black-30;
+            border-bottom-color: $color--grey;
 
             &:hover,
             &:active {
-                color: variables.$color--grey;
-                border-bottom-color: variables.$color--cool-grey;
+                color: $color--grey;
+                border-bottom-color: $color--cool-grey;
             }
         }
     }

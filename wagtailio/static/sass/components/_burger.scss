@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .burger {
     $root: &;
@@ -31,12 +31,12 @@
         background-color: var(--color--dark-light);
         opacity: 1;
         transform: translateX(-50%) rotate(0deg);
-        transition: top variables.$transition, width variables.$transition, opacity variables.$transition, transform variables.$transition, background-color variables.$transition, left variables.$transition;
+        transition: top $transition, width $transition, opacity $transition, transform $transition, background-color $transition, left $transition;
 
         @media (forced-colors: active) {
             background-color: ButtonText;
         }
-        
+
         .is-open & {
             width: 27px;
             height: 4px;

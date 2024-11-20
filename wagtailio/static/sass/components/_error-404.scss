@@ -1,9 +1,9 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .error-404 {
     position: relative;
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
         min-height: 700px;
     }
 
@@ -11,11 +11,11 @@
     &__heading {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 2 / span 4;
         }
     }
@@ -28,12 +28,12 @@
         grid-column: 2 / span 2;
         margin: 0 0 50px 0;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 3;
             margin: 0 0 100px 0;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin: 0 20% 150px 0;
         }
     }
@@ -47,7 +47,7 @@
         inset: 30% 70%;
         display: none;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             display: block;
         }
     }

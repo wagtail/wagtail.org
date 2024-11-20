@@ -1,13 +1,13 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .heading {
     grid-column: 2 / span 2;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
         grid-column: 3 / span 4;
     }
 }

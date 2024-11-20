@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .overview-item {
     display: flex;
@@ -9,7 +9,7 @@
 
     &__link {
         color: var(--color--text);
-        transition: color variables.$transition;
+        transition: color $transition;
         text-decoration: none;
 
         &:hover,
@@ -49,7 +49,7 @@
         font-size: 13px;
         text-decoration: none;
         color: var(--color--text);
-        transition: color variables.$transition;
+        transition: color $transition;
 
         &:hover,
         &:focus {

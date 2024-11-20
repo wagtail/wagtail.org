@@ -1,4 +1,4 @@
-@use "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .feature {
     $root: &;
@@ -12,8 +12,8 @@
     }
 
     &__link {
-        font-weight: variables.$weight--bold;
-        color: variables.$color--teal;
+        font-weight: $weight--bold;
+        color: $color--teal;
         transition: color 0.3s;
         text-decoration: none;
 

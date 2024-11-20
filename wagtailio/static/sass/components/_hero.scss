@@ -1,17 +1,17 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .hero {
     $root: &;
-    @include mixins.sf-spacing(6);
+    @include sf-spacing(6);
     position: relative;
     grid-column: 2 / span 2;
 
-    @include mixins.media-query(medium) {
+    @include media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include mixins.media-query(large) {
+    @include media-query(large) {
         grid-column: 2 / span 5;
     }
 
@@ -22,12 +22,12 @@
     &__inner {
         padding-top: 20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             padding-top: 40px;
             max-width: 80%;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             padding-top: 80px;
             max-width: 70%;
         }
@@ -36,29 +36,29 @@
     &__intro {
         margin-bottom: 20px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             margin-bottom: 40px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-right: 80px;
         }
 
         a {
-            transition: color variables.$transition;
+            transition: color $transition;
         }
     }
 
     &__heading {
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             width: 110%; // to get a bit of overlap on the icon
             max-width: 92vw; // prevent off screen
         }
     }
 
     &__subheading {
-        font-weight: variables.$weight--regular;
+        font-weight: $weight--regular;
     }
 
     &__icon {
@@ -69,14 +69,14 @@
         width: 170px;
         height: 170px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             right: -50px;
             top: 40px;
             width: 250px;
             height: 250px;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             right: 0;
             width: 410px;
             height: 410px;
@@ -93,7 +93,7 @@
             width: 670px;
             height: 460px;
 
-            @include mixins.media-query(large) {
+            @include media-query(large) {
                 top: -36px;
                 width: 760px;
                 height: 600px;
@@ -136,12 +136,12 @@
     &--features {
         margin-bottom: 20px;
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             margin-bottom: 50px;
         }
 
         #{$root}__subheading {
-            font-weight: variables.$weight--regular;
+            font-weight: $weight--regular;
         }
     }
 
@@ -153,13 +153,13 @@
         }
 
         #{$root}__subheading {
-            font-weight: variables.$weight--regular;
+            font-weight: $weight--regular;
         }
 
         #{$root}__intro {
             margin-bottom: 50px;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 max-width: 60%;
             }
         }
@@ -167,7 +167,7 @@
         #{$root}__icon {
             display: none;
 
-            @include mixins.media-query(medium) {
+            @include media-query(medium) {
                 display: block;
             }
         }

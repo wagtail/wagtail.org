@@ -1,4 +1,4 @@
-@use "../abstracts/mixins";
+@use "../abstracts/mixins" as *;
 
 .icon-bullet {
     margin-bottom: 50px;
@@ -9,7 +9,7 @@
         height: 60px;
         margin-bottom: 10px;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 2 / span 1;
             width: 75px;
             height: 75px;
@@ -25,11 +25,11 @@
     &__content {
         grid-column: 2 / span 2;
 
-        @include mixins.media-query(medium) {
+        @include media-query(medium) {
             grid-column: 3 / span 2;
         }
 
-        @include mixins.media-query(large) {
+        @include media-query(large) {
             grid-column: 3 / span 3;
         }
     }
