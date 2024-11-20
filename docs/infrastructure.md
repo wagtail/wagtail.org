@@ -34,7 +34,7 @@ fab pull-production-media
 
 ## File storage
 
-AWS S3, `media.wagtail.org` bucket
+AWS S3, `media.wagtail.org` bucket for production, `wagtailio-staging` for staging
 
 ## Resetting the Staging site
 
