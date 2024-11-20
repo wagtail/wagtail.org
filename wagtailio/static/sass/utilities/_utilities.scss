@@ -1,10 +1,12 @@
+@use "../abstracts/mixins";
+
 .u {
     &-sr-only {
-        @include hidden();
+        @include mixins.hidden();
     }
 
     &-mobile-only {
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             display: none;
         }
     }
@@ -12,7 +14,7 @@
     &-desktop-only {
         display: none;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             display: block;
         }
     }

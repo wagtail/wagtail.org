@@ -1,6 +1,8 @@
+@use "../abstracts/variables";
+
 .sitewide-alert {
     position: relative;
-    padding: $gutter-sm $gutter;
+    padding: variables.$gutter-sm variables.$gutter;
     opacity: 0;
     transition: opacity 0.5s ease;
     margin-top: calc(var(--banner-height) * -1);
@@ -14,7 +16,7 @@
     }
 
     p {
-        max-width: $site-width;
+        max-width: variables.$site-width;
         margin: 0 auto;
         font-size: 16px;
         text-align: center;
@@ -30,21 +32,21 @@
     }
 
     &--default {
-        background-color: $color--pink;
-        color: $color--white;
+        background-color: variables.$color--pink;
+        color: variables.$color--white;
 
         h2, h3 {
             color: var(--color--highlight);
         }
 
         a {
-            color: $color--off-black-30;
-            border-bottom-color: $color--grey;
+            color: variables.$color--off-black-30;
+            border-bottom-color: variables.$color--grey;
 
             &:hover,
             &:active {
-                color: $color--grey;
-                border-bottom-color: $color--cool-grey;
+                color: variables.$color--grey;
+                border-bottom-color: variables.$color--cool-grey;
             }
         }
     }

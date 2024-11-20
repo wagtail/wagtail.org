@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .form {
   $root: &;
 
@@ -8,7 +11,7 @@
     background-color: var(--color--light-dark);
     font-size: 1rem;
     padding: 11px 20px;
-    border-radius: $rounded-md;
+    border-radius: variables.$rounded-md;
 
     &::placeholder {
       font-size: 16px;
@@ -21,17 +24,17 @@
       flex-wrap: wrap;
       gap: 20px;
 
-      @include media-query(medium) {
+      @include mixins.media-query(medium) {
         gap: 0;
 
         // stylelint-disable max-nesting-depth
         #{$root}__input {
-          border-radius: $rounded-md 0 0 $rounded-md;
+          border-radius: variables.$rounded-md 0 0 variables.$rounded-md;
           border-right: 0;
         }
 
         .button {
-          border-radius: 0 $rounded-md $rounded-md 0;
+          border-radius: 0 variables.$rounded-md variables.$rounded-md 0;
         }
       }
     }

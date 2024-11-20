@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .select-wrapper {
     position: relative;
     display: flex;
@@ -8,13 +11,13 @@
         position: absolute;
         transform: translateY(-50%);
         padding-right: 10px;
-        font-weight: $weight--semibold;
+        font-weight: variables.$weight--semibold;
         pointer-events: none;
 
         left: 10px;
         top: 50%;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             left: 20px;
             top: 50%;
         }
@@ -28,7 +31,7 @@
         appearance: none;
         border: 1px solid var(--color--text);
         border-radius: 5px;
-        font-weight: $weight--semibold;
+        font-weight: variables.$weight--semibold;
 
         background-image: url('data:image/svg+xml;utf8,<svg fill="%23007D7E" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg"><path d="M4.91 6.402a.644.644 0 00.902 0l3.72-3.718c.273-.274.273-.684 0-.93l-.602-.629c-.274-.246-.684-.246-.93 0L5.348 3.777 2.723 1.125c-.246-.246-.657-.246-.93 0l-.602.629c-.273.246-.273.656 0 .93l3.72 3.718z"/></svg>');
         background-repeat: no-repeat;
@@ -37,17 +40,17 @@
         color: var(--color--text);
         background-position-x: 95%;
 
-        @include media-query(smallonly) {
+        @include mixins.media-query(smallonly) {
             width: 100%;
             padding: 10px 25px 10px 70px;
         }
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             width: 325px;
             padding: 10px 25px 10px 75px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             width: 350px;
             padding: 10px 25px 10px 90px;
         }

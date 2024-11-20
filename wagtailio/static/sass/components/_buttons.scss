@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -5,19 +8,19 @@
     border-radius: 6px;
     border: 1px solid var(--color--highlight);
     padding: 15px 30px;
-    color: $color--off-black;
+    color: variables.$color--off-black;
     outline-offset: 4px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    background-color: $color--white;
+    background-color: variables.$color--white;
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         font-size: 0.8rem;
     }
 
     > svg {
         transition: transform 0.3s;
         margin: 0 0 0 15px;
-        fill: $color--teal;
+        fill: variables.$color--teal;
 
         @media (forced-colors: active) {
             fill: currentColor;
@@ -26,11 +29,11 @@
 
     &:hover {
         background-color: var(--color--highlight);
-        color: $color--white;
+        color: variables.$color--white;
 
         > svg {
             transform: translateX(6px) scale(1.05);
-            fill: $color--teal-100;
+            fill: variables.$color--teal-100;
 
             @media (forced-colors: active) {
                 fill: currentColor;
@@ -40,12 +43,12 @@
 
     &--dark,
     .theme-dark & {
-        border-color: $color--white;
+        border-color: variables.$color--white;
         background-color: transparent;
-        color: $color--white;
+        color: variables.$color--white;
 
         > svg {
-            fill: $color--teal-100;
+            fill: variables.$color--teal-100;
 
             @media (forced-colors: active) {
                 fill: currentColor;
@@ -54,12 +57,12 @@
 
         &:hover,
         &:focus {
-            background-color: $color--white;
-            border-color: $color--white;
+            background-color: variables.$color--white;
+            border-color: variables.$color--white;
             color: var(--color--highlight);
 
             > svg {
-                fill: $color--teal;
+                fill: variables.$color--teal;
 
                 // stylelint-disable-next-line max-nesting-depth
                 @media (forced-colors: active) {
@@ -71,11 +74,11 @@
 
     &--secondary {
         background-color: var(--color--highlight);
-        color: $color--white;
+        color: variables.$color--white;
 
         &:hover,
         &:focus {
-            background-color: $color--white;
+            background-color: variables.$color--white;
             border-color: var(--color--highlight);
             color: var(--color--highlight);
         }
@@ -86,7 +89,7 @@
         &:focus {
             background-color: var(--color--highlight);
             border-color: var(--color--highlight);
-            color: $color--white;
+            color: variables.$color--white;
         }
     }
 
@@ -106,18 +109,18 @@
     }
 
     &--disabled {
-        background-color: $color--light-grey;
-        border-color: $color--light-grey;
+        background-color: variables.$color--light-grey;
+        border-color: variables.$color--light-grey;
         pointer-events: none;
 
         > p {
             opacity: 0.5;
-            color: $color--off-black;
+            color: variables.$color--off-black;
         }
     }
 
     &__text {
-        font-weight: $weight--bold;
+        font-weight: variables.$weight--bold;
         line-height: 1.25rem;
     }
 }

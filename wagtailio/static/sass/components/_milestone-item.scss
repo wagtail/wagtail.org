@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .milestone-item {
     $root: &;
     display: flex;
@@ -8,7 +10,7 @@
     padding: 20px;
     background-color: var(--color--card);
     border: 1px solid transparent;
-    border-radius: $rounded-md;
+    border-radius: variables.$rounded-md;
 
     &__heading {
         $padding: 18px;
@@ -19,12 +21,12 @@
         margin-top: -$padding;
         padding: $padding;
         margin-bottom: 6px;
-        font-weight: $weight--semibold;
+        font-weight: variables.$weight--semibold;
     }
 
     &__external-link {
         color: var(--color--text);
-        transition: color $transition;
+        transition: color variables.$transition;
         text-decoration: none;
 
         &:hover,
@@ -58,13 +60,13 @@
     }
 
     &__label {
-        font-weight: $weight--regular;
-        color: $color--teal;
-        border: 1px solid $color--teal-100;
+        font-weight: variables.$weight--regular;
+        color: variables.$color--teal;
+        border: 1px solid variables.$color--teal-100;
         background-color: var(--color--tag);
         padding: 2px 8px;
         white-space: nowrap;
-        border-radius: $rounded-xl;
+        border-radius: variables.$rounded-xl;
     }
 
     &__sponsor-label {
@@ -75,9 +77,9 @@
         margin-inline: auto -22px;
         width: max-content;
         white-space: nowrap;
-        font-weight: $weight--semibold;
+        font-weight: variables.$weight--semibold;
         text-decoration: none;
-        color: $color--white;
+        color: variables.$color--white;
         border: 1px solid transparent;
         background-color: var(--color--highlight);
         padding: 2px 8px;
@@ -88,7 +90,7 @@
         }
 
         &:hover, &:focus-visible {
-            color: $color--teal-100;
+            color: variables.$color--teal-100;
             outline-offset: 4px;
         }
     }
@@ -96,16 +98,16 @@
     .theme-dark & {
         #{$root}__label {
             border-color: var(--color--border);
-            color: $color--cool-grey;
+            color: variables.$color--cool-grey;
         }
 
         #{$root}__sponsor-label {
-            background-color: $color--teal-200;
-            color: $color--black;
+            background-color: variables.$color--teal-200;
+            color: variables.$color--black;
 
             &:hover,
             &:focus {
-                background-color: $color--white;
+                background-color: variables.$color--white;
             }
         }
     }

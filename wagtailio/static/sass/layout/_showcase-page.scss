@@ -1,3 +1,5 @@
+@use "../abstracts/mixins";
+
 .showcase-page {
     &__hero {
         margin-bottom: 50px;
@@ -12,11 +14,11 @@
     &__content {
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column-end: span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column-end: span 5;
         }
     }
@@ -28,7 +30,7 @@
     gap: 30px;
     padding: 50px 0;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         grid-template-columns: 1fr 1fr;
     }
 }

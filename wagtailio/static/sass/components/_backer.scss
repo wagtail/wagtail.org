@@ -1,6 +1,8 @@
+@use "../abstracts/variables";
+
 .backer {
     &__link {
-        color: $color--teal;
+        color: variables.$color--teal;
         transition: color 0.3s;
 
         &:hover {

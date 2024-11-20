@@ -1,11 +1,13 @@
+@use "../abstracts/mixins";
+
 .standalone-quote {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     align-items: center;
 
     &__icon {
         display: none;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin: 0 auto;
             display: block;
             grid-column: 2 / span 1;
@@ -13,7 +15,7 @@
             height: 85px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             width: 150px;
             height: 125px;
         }
@@ -28,11 +30,11 @@
         margin: 0;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 3 / span 2;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 3 / span 3;
         }
     }
@@ -43,11 +45,11 @@
         margin-top: 10px;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 3 / span 2;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 3 / span 3;
         }
     }

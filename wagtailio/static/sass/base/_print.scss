@@ -1,11 +1,13 @@
+@use "../abstracts/variables";
+
 // Print styles
 // stylelint-disable declaration-no-important
 
 @media print {
     * {
         background: transparent !important;
-        color: $color--black !important;
-        border-color: $color--black !important;
+        color: variables.$color--black !important;
+        border-color: variables.$color--black !important;
         box-shadow: none !important;
         text-shadow: none !important;
     }

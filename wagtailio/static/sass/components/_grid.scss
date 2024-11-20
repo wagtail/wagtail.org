@@ -1,15 +1,18 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .grid {
     display: grid;
-    grid-template-columns: $gutter 1fr 1fr $gutter;
-    max-width: $site-width;
+    grid-template-columns: variables.$gutter 1fr 1fr variables.$gutter;
+    max-width: variables.$site-width;
     margin: 0 auto;
 
-    @include media-query(medium) {
-        grid-template-columns: calc($gutter * 2) 1fr 1fr 1fr calc($gutter * 2);
+    @include mixins.media-query(medium) {
+        grid-template-columns: calc(variables.$gutter * 2) 1fr 1fr 1fr calc(variables.$gutter * 2);
     }
 
-    @include media-query(large) {
-        grid-template-columns: calc($gutter * 3) 1fr 1fr 1fr 1fr 1fr calc($gutter * 3);
+    @include mixins.media-query(large) {
+        grid-template-columns: calc(variables.$gutter * 3) 1fr 1fr 1fr 1fr 1fr calc(variables.$gutter * 3);
     }
 
     // allow scrolling on mobile tables
@@ -17,7 +20,7 @@
         margin: 0 auto 50px;
         overflow-x: scroll;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin: 0 auto;
             overflow-x: auto;
         }

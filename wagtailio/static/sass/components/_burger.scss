@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .burger {
     $root: &;
     position: relative;
@@ -29,7 +31,7 @@
         background-color: var(--color--dark-light);
         opacity: 1;
         transform: translateX(-50%) rotate(0deg);
-        transition: top $transition, width $transition, opacity $transition, transform $transition, background-color $transition, left $transition;
+        transition: top variables.$transition, width variables.$transition, opacity variables.$transition, transform variables.$transition, background-color variables.$transition, left variables.$transition;
 
         @media (forced-colors: active) {
             background-color: ButtonText;

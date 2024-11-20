@@ -1,10 +1,12 @@
+@use "variables";
+
 @use 'sass:list';
 @use 'sass:map';
 
 // Media queries
 @mixin media-query($queries...) {
     @each $query in $queries {
-        @each $breakpoint in $breakpoints {
+        @each $breakpoint in variables.$breakpoints {
             $name: list.nth($breakpoint, 1);
             $declaration: list.nth($breakpoint, 2);
 
@@ -105,7 +107,7 @@
 // z-index
 // Map z-index keys
 @function z-index($key) {
-    @return map.get($z-index, $key);
+    @return map.get(variables.$z-index, $key);
 }
 
 @mixin z-index($key) {
@@ -124,7 +126,7 @@
     }
 
     b {
-        font-weight: $weight--bold;
+        font-weight: variables.$weight--bold;
     }
 
     ul,

@@ -1,4 +1,6 @@
+@use "../abstracts/mixins";
+
 .icon-bullets {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     padding: 0;
 }

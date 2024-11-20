@@ -1,14 +1,17 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .comparison-table {
     padding: 0 0 20px 0;
     grid-column: 2 / span 2;
     width: 700px;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         width: auto;
         grid-column: 2 / span 3;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         padding: 0 0 100px 0;
         grid-column: 2 / span 5;
     }
@@ -17,21 +20,21 @@
         grid-column: 2 / span 2;
         grid-gap: 20px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
         }
 
         th {
             // stylelint-disable-next-line declaration-property-value-allowed-list
             text-align: left;
-            font-weight: $weight--bold;
+            font-weight: variables.$weight--bold;
             width: 150px;
 
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 width: 250px
             }
         }
@@ -46,21 +49,21 @@
     td,
     th {
         padding: 20px 20px 20px 0;
-        border: 1px $color--cool-grey;
+        border: 1px variables.$color--cool-grey;
         border-style: none none dashed none;
 
         > div > p {
             font-size: 1rem;
             line-height: 1.5rem;
 
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 font-size: 0.8rem;
                 line-height: 1.2rem;
             }
         }
 
         .theme-dark & {
-            border-color: $color--black;
+            border-color: variables.$color--black;
         }
     }
 }

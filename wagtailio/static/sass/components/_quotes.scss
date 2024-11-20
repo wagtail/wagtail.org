@@ -1,5 +1,8 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .quotes {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     position: relative;
     padding-top: 50px;
     overflow: hidden;
@@ -10,11 +13,11 @@
         grid-column: 2 / span 2;
         max-width: 950px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
             padding-bottom: 60px;
         }
@@ -24,11 +27,11 @@
         grid-column: 2 / span 2;
         padding: 0 0 50px 0;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             padding: 0 100px 100px 0;
 
             &:nth-child(even) {
@@ -48,7 +51,7 @@
         padding: 15px 0 0;
         color: var(--color--meta);
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             padding: 30px 0 0;
         }
     }
@@ -61,19 +64,19 @@
     }
 
     &__icon-container {
-        @include z-index(under);
+        @include mixins.z-index(under);
         position: absolute;
         inset: 5% 0 auto auto;
         width: 133px;
         height: 124px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             inset: 0 5% auto auto;
             width: 220px;
             height: 220px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             height: 275px;
             width: 280px;
         }
@@ -82,9 +85,9 @@
     &__icon {
         display: none;
         position: relative;
-        fill: $color--teal-200;
+        fill: variables.$color--teal-200;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: block;
         }
 

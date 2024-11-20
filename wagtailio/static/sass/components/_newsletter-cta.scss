@@ -1,11 +1,14 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .newsletter-cta {
     grid-column: 2 / span 2;
-    border-radius: $rounded-xl;
+    border-radius: variables.$rounded-xl;
     border: 1px solid var(--color--text);
     margin-bottom: 50px;
     padding: 20px;
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2 / span 5;
         padding: 60px;
         margin-bottom: 80px;
@@ -13,7 +16,7 @@
 
     &__form {
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: flex;
             justify-content: stretch;
             max-width: 560px;

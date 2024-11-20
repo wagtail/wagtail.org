@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .primary-nav {
     $root: &;
 
@@ -11,7 +14,7 @@
         margin: 0;
         list-style: none;
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             flex-direction: row;
             justify-content: flex-end;
         }
@@ -22,15 +25,15 @@
         cursor: pointer;
         width: 100%;
         padding: 15px 0;
-        font-weight: $weight--bold;
+        font-weight: variables.$weight--bold;
         text-align: center;
         border-bottom: 1px solid var(--color--border);
-        transition: color $transition;
+        transition: color variables.$transition;
 
         &:first-child {
             border-top: 1px solid var(--color--border);
 
-            @media only screen and (min-width: $header-desktop) {
+            @media only screen and (min-width: variables.$header-desktop) {
                 border-top: 0;
             }
         }
@@ -39,7 +42,7 @@
             border-bottom: 0;
         }
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             width: auto;
             padding: 0;
             margin: 0 40px 0 0;
@@ -69,7 +72,7 @@
     }
 
     &__link {
-        color: rgba($color--off-black, -0.8);
+        color: rgba(variables.$color--off-black, -0.8);
         border-bottom: 1px solid transparent;
         transition: color, border 0.3s ease;
 
@@ -77,25 +80,25 @@
         &:focus {
             cursor: pointer;
 
-            @media only screen and (min-width: $header-desktop) {
-                color: $color--black;
-                border-bottom: 1px solid $color--black;
+            @media only screen and (min-width: variables.$header-desktop) {
+                color: variables.$color--black;
+                border-bottom: 1px solid variables.$color--black;
             }
         }
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             padding: 5px 0;
             margin: 0 10px;
-            color: $color--black;
+            color: variables.$color--black;
         }
     }
 
     &__label {
         padding-right: 10px;
         font-size: 16px;
-        font-weight: $weight--bold;
+        font-weight: variables.$weight--bold;
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             padding-right: 7px;
         }
     }
@@ -103,17 +106,17 @@
     &__icon {
         height: 12px;
         width: 12px;
-        fill: $color--primary;
-        transition: fill $transition;
+        fill: variables.$color--primary;
+        transition: fill variables.$transition;
         transform: rotate(-90deg);
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             display: inline-block;
             transform: none;
         }
 
         .active & {
-            @media only screen and (min-width: $header-desktop) {
+            @media only screen and (min-width: variables.$header-desktop) {
                 transform: rotate(180deg);
             }
         }
@@ -125,7 +128,7 @@
         #{$root}__container {
             padding: 0 20px;
 
-            @include media-query(medium) {
+            @include mixins.media-query(medium) {
                 padding: 0 50px;
             }
         }

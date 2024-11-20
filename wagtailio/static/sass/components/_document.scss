@@ -1,18 +1,21 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .document {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     grid-column: 2 / span 2;
-    color: $color--teal;
+    color: variables.$color--teal;
     transition: color 0.3s;
 
     &:hover {
         color: var(--color--highlight);
     }
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2 / span 5;
     }
 }

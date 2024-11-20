@@ -1,7 +1,10 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .jump-links {
     grid-column: 2/span 2;
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2/span 5;
     }
 
@@ -26,7 +29,7 @@
 
     &__link {
         color: var(--color--text);
-        transition: color $transition;
+        transition: color variables.$transition;
 
         &:hover,
         &:focus {
