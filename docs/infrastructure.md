@@ -2,7 +2,7 @@
 
 ## Database
 
-PostgreSQL 16 (Heroku Postgres, Standard 0)
+PostgreSQL (Heroku Postgres, Standard 0)
 
 #### Pulling data
 
