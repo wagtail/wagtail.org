@@ -1,33 +1,36 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .card-grid {
     display: grid;
 
     grid-column: 2 / span 2;
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2 / span 5;
     }
 
    &__item {
         padding: 0 0 50px 0;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             padding-bottom: 100px;
 
             &:nth-child(odd) {
-                padding-right: $gutter-xl;
+                padding-right: variables.$gutter-xl;
             }
 
             &:nth-child(even) {
-                padding-left: $gutter-xl;
+                padding-left: variables.$gutter-xl;
             }
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             &:nth-child(odd) {
                 grid-column: 2 / span 2;
             }

@@ -1,6 +1,8 @@
+@use "../abstracts/variables";
+
 .search-result {
   padding-bottom: 40px;
-  border-bottom: 1px solid $color--black;
+  border-bottom: 1px solid variables.$color--black;
 
   &__title {
     color: var(--color--heading);

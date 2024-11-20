@@ -1,7 +1,10 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .code-snippet {
     $root: &;
     background-color: var(--color--highlight);
-    color: $color--white;
+    color: variables.$color--white;
     display: flex;
     align-items: center;
     padding: 15px 20px;
@@ -13,7 +16,7 @@
     font-size: 0.9375rem;
     justify-content: space-between;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         justify-content: flex-start;
         grid-column: 2;
         font-size: 1rem;
@@ -23,16 +26,16 @@
     pre {
         margin: 0 15px 0 0;
         white-space: nowrap;
-        font-weight: $weight--bold;
-        font-family: $font--code;
+        font-weight: variables.$weight--bold;
+        font-family: variables.$font--code;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin: 0 70px 0 0;
         }
     }
 
     &__icon {
-        fill: $color--eggshell;
+        fill: variables.$color--eggshell;
         width: 20px;
         height: 20px;
         transition: color 0.3s;
@@ -44,7 +47,7 @@
         &:hover,
         &:active,
         &:focus {
-                fill: $color--white;
+                fill: variables.$color--white;
 
                 @media (forced-colors: active) {
                     fill: currentColor;
@@ -73,7 +76,7 @@
         z-index: -1;
         visibility: hidden;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             font-size: 0.7rem;
         }
 
@@ -86,7 +89,7 @@
     &--bottom-space {
         margin-bottom: 50px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin-bottom: 100px;
         }
     }

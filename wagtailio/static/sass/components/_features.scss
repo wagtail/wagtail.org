@@ -1,5 +1,8 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .features {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
 
     &__filters {
         display: flex;
@@ -8,12 +11,12 @@
         margin-bottom: 40px;
         flex-direction: column;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             flex-flow: row wrap;
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-bottom: 100px;
             grid-column: 2 / span 5;
         }
@@ -37,7 +40,7 @@
             &:checked + label {
                 border-color: var(--color--active);
                 background-color: var(--color--active);
-                color: $color--white;
+                color: variables.$color--white;
             }
 
             &:checked + label::before {
@@ -55,7 +58,7 @@
             padding: 10px 10px 10px 40px;
             border-radius: 6px;
             position: relative;
-            font-weight: $weight--bold;
+            font-weight: variables.$weight--bold;
 
             &:hover {
                 cursor: pointer;
@@ -90,19 +93,19 @@
     &__list-item {
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
         &:nth-child(odd) {
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 padding-right: 20%;
                 grid-column: 2 / span 2;
             }
         }
 
         &:nth-child(even) {
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 padding-right: 20%;
                 grid-column: 4 / span 2;
             }
@@ -112,11 +115,11 @@
     &__section-heading {
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
         }
     }

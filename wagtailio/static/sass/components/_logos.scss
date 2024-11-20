@@ -1,6 +1,9 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .logos {
-    @include sf-spacing(4);
-    @include z-index(overlap); // so they sit above the large icons
+    @include mixins.sf-spacing(4);
+    @include mixins.z-index(overlap); // so they sit above the large icons
     $root: &;
     position: relative;
 
@@ -8,11 +11,11 @@
         margin-bottom: 60px;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 4;
         }
     }
@@ -25,18 +28,18 @@
         gap: 20px;
         justify-content: center;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
             gap: 55px;
             justify-content: flex-start;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
         }
 
         .theme-dark & {
-            @include media-query(medium) {
+            @include mixins.media-query(medium) {
                 gap: 30px;
             }
         }
@@ -63,7 +66,7 @@
             display: flex;
             align-items: center;
             padding: 10px 20px;
-            background-color: $color--white;
+            background-color: variables.$color--white;
             border-radius: 3px;
         }
     }

@@ -1,8 +1,10 @@
+@use "../abstracts/mixins";
+
 .cta-block {
-  @include sf-spacing(2);
+  @include mixins.sf-spacing(2);
   grid-column: 2 / span 3;
 
-  @include media-query(large) {
+  @include mixins.media-query(large) {
     grid-column: 2 / span 5;
   }
 }

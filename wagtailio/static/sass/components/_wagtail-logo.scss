@@ -1,9 +1,11 @@
+@use "../abstracts/variables";
+
 .wagtail-logo {
     &__dark {
-        fill: $color--black;
+        fill: variables.$color--black;
     }
 
     &__light {
-        fill: $color--white;
+        fill: variables.$color--white;
     }
 }

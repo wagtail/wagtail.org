@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .feature {
     $root: &;
     display: flex;
@@ -10,8 +12,8 @@
     }
 
     &__link {
-        font-weight: $weight--bold;
-        color: $color--teal;
+        font-weight: variables.$weight--bold;
+        color: variables.$color--teal;
         transition: color 0.3s;
         text-decoration: none;
 

@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .blog-post {
     $root: &;
     text-decoration: none;
@@ -32,12 +35,12 @@
 
     &__content {
         position: relative;
-        left: -$gutter-sm; // offset padding for vertical alignment
+        left: -(variables.$gutter-sm); // offset padding for vertical alignment
         display: flex;
         flex-direction: column;
         gap: 15px;
         background: var(--color--background);
-        padding: $gutter-sm;
+        padding: variables.$gutter-sm;
     }
 
     &__image {
@@ -49,7 +52,7 @@
         max-width: none;
         width: 100%;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             position: static;
             transform: none;
             display: block;
@@ -78,7 +81,7 @@
         display: grid;
         margin-bottom: 30px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 1 / span 2;
             margin-bottom: 0;
 
@@ -87,7 +90,7 @@
             }
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-template-columns: 2fr 3fr;
         }
 
@@ -95,10 +98,10 @@
             border-radius: 0 15px 15px 0;
             gap: 20px;
             background: var(--color--light-dark);
-            @include offset-bg-right();
+            @include mixins.offset-bg-right();
 
-            @include media-query(medium) {
-                padding: $gutter $gutter-lg;
+            @include mixins.media-query(medium) {
+                padding: variables.$gutter variables.$gutter-lg;
 
                 // stylelint-disable-next-line max-nesting-depth
                 &::after {
@@ -107,8 +110,8 @@
                 }
             }
 
-            @include media-query(large) {
-                padding: $gutter-lg $gutter-xl;
+            @include mixins.media-query(large) {
+                padding: variables.$gutter-lg variables.$gutter-xl;
 
                 // stylelint-disable-next-line max-nesting-depth
                 &::after {
@@ -120,13 +123,13 @@
 
     &--small {
         #{$root}__content {
-            @include offset-bg-left();
+            @include mixins.offset-bg-left();
         }
 
         #{$root}__listing-text {
             font-size: 1rem;
 
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 font-size: 0.8rem;
             }
         }
@@ -136,7 +139,7 @@
             &:active,
             &:focus {
                 #{$root}__content {
-                    @include offset-bg-hover-left();
+                    @include mixins.offset-bg-hover-left();
                 }
             }
         }

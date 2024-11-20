@@ -1,8 +1,11 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .overview {
     grid-column: 2 / span 2;
     width: 100%;
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2 / span 5;
     }
 
@@ -11,11 +14,11 @@
     }
 
     &__section {
-        margin-bottom: $gutter-xl;
+        margin-bottom: variables.$gutter-xl;
     }
 
     &__section-title {
-        margin-bottom: $gutter;
+        margin-bottom: variables.$gutter;
     }
 
     &__sub-heading {
@@ -25,12 +28,12 @@
 
     &__sub-heading-link {
         color: var(--color--text);
-        transition: color $transition;
+        transition: color variables.$transition;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: $color--teal;
+            color: variables.$color--teal;
         }
 
         &--edit {
@@ -51,7 +54,7 @@
     &__description-link {
         color: var(--color--text);
         text-decoration: none;
-        transition: color $transition;
+        transition: color variables.$transition;
 
         &:hover,
         &:focus {
@@ -64,7 +67,7 @@
         grid-template-columns: 1fr;
         gap: 20px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
     }

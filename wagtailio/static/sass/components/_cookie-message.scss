@@ -1,6 +1,9 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .cookie {
     $root: &;
-    @include z-index(modal);
+    @include mixins.z-index(modal);
     margin: 0 10px 10px;
     position: fixed;
     right: auto;
@@ -22,11 +25,11 @@
     }
 
     &__container {
-        padding: $gutter-sm;
+        padding: variables.$gutter-sm;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-width: ($gutter-sm * 35);
+        max-width: (variables.$gutter-sm * 35);
         margin: 0 auto;
         line-height: 1.4;
         color: var(--color--text);
@@ -35,7 +38,7 @@
         border-radius: 5px;
 
         .theme-dark & {
-            border-color: $color--grey;
+            border-color: variables.$color--grey;
         }
     }
 

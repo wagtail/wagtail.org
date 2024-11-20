@@ -1,23 +1,26 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .get-started {
     padding-bottom: 50px;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         padding-bottom: 100px;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         padding-bottom: 200px;
     }
 
     &__heading {
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
             margin-bottom: 40px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
             margin-bottom: 100px;
         }
@@ -30,12 +33,12 @@
         row-gap: 20px;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
             row-gap: 50px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 5;
             flex-flow: row wrap;
             row-gap: 100px;
@@ -43,9 +46,9 @@
     }
 
     &__list-item {
-        margin-bottom: $gutter;
+        margin-bottom: variables.$gutter;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-bottom: 0;
             flex-basis: 50%;
             padding: 0 calc(5% + 40px) 0 40px;

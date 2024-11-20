@@ -1,16 +1,19 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .related-content {
     margin-bottom: 50px;
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         margin-bottom: 100px;
     }
 
     &__heading {
-        font-weight: $weight--regular;
+        font-weight: variables.$weight--regular;
         grid-column: 2 / span 2;
         margin-bottom: 30px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-bottom: 50px;
         }
     }
@@ -20,11 +23,11 @@
         flex-direction: column;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             flex-direction: row;
             gap: 170px;
             grid-column: 2 / span 5;
@@ -36,7 +39,7 @@
         max-width: 490px;
         margin-bottom: 30px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-bottom: 0;
         }
     }

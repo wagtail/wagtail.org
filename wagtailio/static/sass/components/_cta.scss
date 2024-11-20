@@ -1,6 +1,9 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .cta {
     $root: &;
-    @include sf-spacing(3);
+    @include mixins.sf-spacing(3);
     padding: 30px;
     text-decoration: none;
     display: flex;
@@ -12,11 +15,11 @@
     grid-column: 2 / span 2;
     transition: background-color 0.3s;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         grid-column: 2 / span 3;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         padding: 25px 30px;
         grid-column: 3 / span 3;
 
@@ -40,11 +43,11 @@
 
         #{$root}__title,
         #{$root}__description {
-            color: $color--white;
+            color: variables.$color--white;
         }
 
         > svg {
-            color: $color--white;
+            color: variables.$color--white;
             transform: translateX(10px) scale(1.1);
 
             @media (forced-colors: active) {
@@ -57,7 +60,7 @@
         color: var(--color--interaction);
         margin-bottom: 10px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin-bottom: 5px;
         }
     }

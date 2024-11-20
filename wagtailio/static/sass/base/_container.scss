@@ -1,16 +1,19 @@
-.container {
-  max-width: $site-width;
-  margin: 0 auto;
-  padding-left: $gutter-sm;
-  padding-right: $gutter-sm;
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
 
-  @include media-query(medium) {
-    padding-left: $gutter;
-    padding-right: $gutter;
+.container {
+  max-width: variables.$site-width;
+  margin: 0 auto;
+  padding-left: variables.$gutter-sm;
+  padding-right: variables.$gutter-sm;
+
+  @include mixins.media-query(medium) {
+    padding-left: variables.$gutter;
+    padding-right: variables.$gutter;
   }
 
-  @include media-query(large) {
-    padding-left: $gutter-lg;
-    padding-right: $gutter-lg;
+  @include mixins.media-query(large) {
+    padding-left: variables.$gutter-lg;
+    padding-right: variables.$gutter-lg;
   }
 }

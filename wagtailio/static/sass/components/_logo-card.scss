@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .logo-card {
     $root: &;
     color: var(--color--text);
@@ -15,7 +18,7 @@
         margin-bottom: 10px;
 
         p {
-            font-weight: $weight--regular;
+            font-weight: variables.$weight--regular;
         }
     }
 
@@ -29,7 +32,7 @@
         margin-top: 10px;
         padding-bottom: 20px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             padding-bottom: 35px;
             font-size: 0.8rem;
         }
@@ -49,10 +52,10 @@
     }
 
     &:is(a) {
-        @include offset-bg-left();
+        @include mixins.offset-bg-left();
 
         &:hover {
-            @include offset-bg-hover-left();
+            @include mixins.offset-bg-hover-left();
 
             #{$root}__heading {
                 color: var(--color--interaction);
@@ -69,7 +72,7 @@
     .theme-dark & {
         #{$root}__image {
             padding: 10px 20px;
-            background-color: $color--white;
+            background-color: variables.$color--white;
         }
 
         #{$root}__author-wrap #{$root}__image {

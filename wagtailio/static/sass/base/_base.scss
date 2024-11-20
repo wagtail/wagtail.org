@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 // Box Sizing
 *,
 *::before,
@@ -7,7 +9,7 @@
 
 // Prevent text size change on orientation change.
 html {
-    font-family: $font--primary;
+    font-family: variables.$font--primary;
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

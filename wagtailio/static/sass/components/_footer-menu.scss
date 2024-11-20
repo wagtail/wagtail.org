@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .footer-menu {
     $root: &;
     background-color: var(--color--footer-bg);
@@ -5,12 +8,12 @@
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         padding: 80px 0;
     }
 
     &__grid {
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column-gap: 15px;
         }
     }
@@ -19,14 +22,14 @@
         grid-column: 2 / span 2;
         margin-bottom: 17px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: flex;
             flex-direction: column;
             grid-column: auto;
         }
 
         &:first-child {
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 grid-column-start: 2;
             }
         }
@@ -38,7 +41,7 @@
         margin-top: 18px;
         margin-left: 40px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: block;
             margin-left: 0;
         }
@@ -50,7 +53,7 @@
         fill: var(--color--interaction);
         flex-shrink: 0;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: none;
         }
 
@@ -65,7 +68,7 @@
         padding: 5px;
         cursor: pointer;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: none;
         }
     }
@@ -73,7 +76,7 @@
     &__item {
         margin-bottom: 10px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             font-size: 0.7rem;
             line-height: 1.05rem;
         }
@@ -82,7 +85,7 @@
     &__link {
         color: var(--color--text);
         text-decoration: none;
-        transition: color $transition;
+        transition: color variables.$transition;
 
         &:hover {
             text-decoration: underline;
@@ -93,13 +96,13 @@
     &__column-header {
         display: flex;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             display: block;
         }
     }
 
     &__column-heading {
-        font-weight: $weight--bold;
+        font-weight: variables.$weight--bold;
         font-size: 1.25rem;
         margin-left: 10px;
         display: none;
@@ -109,7 +112,7 @@
             display: block;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             font-size: 1rem;
             margin-left: 0;
             display: block;
@@ -139,7 +142,7 @@
     &__logo {
         display: none;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-top: auto;
             width: 155px;
             height: 65px;

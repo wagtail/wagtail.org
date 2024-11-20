@@ -1,20 +1,23 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .theme-toggle {
     $root: &;
-    margin-inline-end: $gutter;
+    margin-inline-end: variables.$gutter;
     display: flex;
     align-items: center;
     margin-top: 30px;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         margin-top: 0;
     }
 
-    @include media-query(large) {
-        margin-inline-end: ($gutter * 1.5);
+    @include mixins.media-query(large) {
+        margin-inline-end: (variables.$gutter * 1.5);
     }
 
     &__label {
-        color: $color--white;
+        color: variables.$color--white;
     }
 
     // Don't display toggle if in high contrast mode
@@ -30,16 +33,16 @@
         overflow: hidden;
         position: relative;
         border-radius: 14px;
-        margin: 0 ($gutter * 0.5);
+        margin: 0 (variables.$gutter * 0.5);
         display: inline-block;
         cursor: pointer;
-        background-color: rgba($color--black, 0.9);
+        background-color: rgba(variables.$color--black, 0.9);
 
         &:focus {
-            background-color: $color--teal;
+            background-color: variables.$color--teal;
 
             &::before {
-                background-color: $color--teal-100;
+                background-color: variables.$color--teal-100;
             }
         }
 
@@ -52,8 +55,8 @@
             display: block;
             position: absolute;
             border-radius: 12px;
-            background-color: $color--light-grey;
-            transition: inset-inline-start $transition;
+            background-color: variables.$color--light-grey;
+            transition: inset-inline-start variables.$transition;
         }
 
         &::after {
@@ -65,7 +68,7 @@
             display: block;
             position: absolute;
             border-radius: 0.5px;
-            background: $color--off-black;
+            background: variables.$color--off-black;
         }
     }
 
@@ -83,24 +86,24 @@
         }
 
         #{$root}__button {
-            background-color: $color--light-grey;
+            background-color: variables.$color--light-grey;
 
             &:focus {
-                background-color: $color--teal-100;
+                background-color: variables.$color--teal-100;
 
                 // stylelint-disable-next-line max-nesting-depth
                 &::after {
-                    background-color: $color--teal-100;
+                    background-color: variables.$color--teal-100;
                 }
             }
 
             &::before {
-                background-color: $color--black;
+                background-color: variables.$color--black;
                 inset-inline-start: 4px;
             }
 
             &::after {
-                background-color: $color--light-grey;
+                background-color: variables.$color--light-grey;
                 top: -2px;
                 inset-inline-end: 2px;
                 width: 32px;
@@ -110,7 +113,7 @@
         }
 
         #{$root}__label {
-            color: $color--light-grey;
+            color: variables.$color--light-grey;
         }
     }
 

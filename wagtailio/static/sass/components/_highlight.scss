@@ -1,6 +1,8 @@
+@use "../abstracts/mixins";
+
 .highlight {
     $root: &;
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     align-items: center;
     grid-auto-flow: dense;
 
@@ -8,11 +10,11 @@
         grid-column: 2 / span 2;
         margin-bottom: 20px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 3;
             grid-row: auto;
             padding-right: 100px;
@@ -24,11 +26,11 @@
     &__content {
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 5 / span 2;
         }
     }
@@ -38,7 +40,7 @@
         align-items: center;
         margin-bottom: 10px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin-bottom: 20px;
         }
     }
@@ -49,7 +51,7 @@
         height: 40px;
 
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             width: 60px;
             height: 60px;
         }
@@ -66,7 +68,7 @@
     &__description {
         margin-bottom: 20px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             margin-bottom: 40px;
         }
     }
@@ -74,7 +76,7 @@
     // image on right / content on left
     &--reverse {
         #{$root}__image {
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 grid-column: 4 / span 3;
                 margin-left: auto;
                 padding-left: 100px;
@@ -83,7 +85,7 @@
         }
 
         #{$root}__content {
-            @include media-query(large) {
+            @include mixins.media-query(large) {
                 grid-column: 2 / span 2;
             }
         }

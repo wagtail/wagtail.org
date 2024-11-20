@@ -1,18 +1,21 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .blog-listing {
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     grid-column: 2 / span 2;
     display: grid;
     grid-template-columns: 1fr;
-    gap: $gutter;
+    gap: variables.$gutter;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         grid-column: 2 / span 3;
-        gap: $gutter-lg;
+        gap: variables.$gutter-lg;
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         grid-column: 2 / span 5;
-        gap: $gutter-xl;
+        gap: variables.$gutter-xl;
     }
 }

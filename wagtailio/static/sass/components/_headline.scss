@@ -1,14 +1,17 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .headline {
     $root: &;
-    @include sf-spacing(2);
+    @include mixins.sf-spacing(2);
     position: relative;
     padding: 80px 0 0;
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         padding: 130px 0 0;
     }
 
-    @include media-query(large) {
+    @include mixins.media-query(large) {
         padding: 230px 0 0;
     }
 
@@ -21,23 +24,23 @@
     }
 
     &__inner {
-        @include z-index(overlap);
+        @include mixins.z-index(overlap);
         grid-column: 2 / span 2;
       
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             grid-column: 2 / span 3;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 3;
         }
     }
 
     &__heading {
         
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             width: 120%; // to get a bit of overlap on the icon
-            padding-top: $gutter-lg;
+            padding-top: variables.$gutter-lg;
         }
     }
 
@@ -49,7 +52,7 @@
         margin-bottom: 20px;
         grid-column: 2 / span 2;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             margin-bottom: 40px;
         }
     }
@@ -57,20 +60,20 @@
     &__button-wrap {
         margin: 0;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             grid-column: 2 / span 2;
         }
     }
 
     &__icon {
-        @include z-index(base);
+        @include mixins.z-index(base);
         position: absolute;
         width: 230px;
         height: 300px;
         right: -70px;
         top: -110px;
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             width: 500px;
             height: 545px;
             right: 70px;
@@ -87,28 +90,28 @@
         background-color: var(--color--highlight);
         padding: 80px 0;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             padding: 130px 0 100px;
         }
 
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             padding: 130px 0 130px;
         }
 
         #{$root}__intro,
         #{$root}__heading,
         #{$root}__subheading {
-            color: $color--white;
+            color: variables.$color--white;
         }
 
         // Icon overrides
         .icon__svg-bg {
-            stroke: rgba($color--teal-200, 0.2);
+            stroke: rgba(variables.$color--teal-200, 0.2);
             fill: transparent;
         }
 
         .icon__svg-fg {
-            fill: $color--teal-200;
+            fill: variables.$color--teal-200;
             stroke: none;
             opacity: 0.5;
             transform: rotate(3deg) translate(40px, -20px) scale(0.9);

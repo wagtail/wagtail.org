@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .showcase-card {
     $root: &;
     display: grid;
@@ -7,8 +10,8 @@
     position: relative;
     box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.1);
     // Showcase cards use the same styles in light and dark mode.
-    background: $color--white;
-    color: $color--off-black;
+    background: variables.$color--white;
+    color: variables.$color--off-black;
 
     border-radius: 10px;
 
@@ -37,7 +40,7 @@
     }
 
     &__heading {
-        @include media-query(large) {
+        @include mixins.media-query(large) {
             font-size: 2.1875rem;
         }
     }
@@ -47,11 +50,11 @@
         grid-template-rows: min-content min-content 1fr;
         padding: 10px;
 
-        @include media-query(medium) {
+        @include mixins.media-query(medium) {
             padding: 20px;
         }
 
-        @include media-query(extra-large) {
+        @include mixins.media-query(extra-large) {
             padding: 60px;
         }
     }
@@ -62,7 +65,7 @@
     }
 
     &__link {
-        color: $color--teal;
+        color: variables.$color--teal;
         align-self: self-end;
         text-decoration: none;
         font-size: 1.25rem;

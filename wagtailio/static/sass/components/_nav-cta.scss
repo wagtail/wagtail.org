@@ -1,18 +1,21 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .nav-cta {
     $root: &;
     display: block;
     position: relative;
-    color: $color--white;
+    color: variables.$color--white;
     text-decoration: none;
     padding: 20px 20px 50px 20px;
     background-color: var(--color--highlight);
 
-    @include media-query(medium) {
+    @include mixins.media-query(medium) {
         padding: 20px 50px 50px 50px;
         height: 100%;
     }
 
-    @media only screen and (min-width: $header-desktop) {
+    @media only screen and (min-width: variables.$header-desktop) {
         padding: 60px 60px 100px 60px;
     }
 
@@ -21,12 +24,12 @@
         color: var(--color--background);
 
         #{$root}__heading {
-            color: $color--teal-100;
+            color: variables.$color--teal-100;
         }
 
         #{$root}__arrow {
             transform: translate3d(20%, 0, 0) scale(1.1);
-            fill: $color--white;
+            fill: variables.$color--white;
         }
 
         .theme-dark & {
@@ -36,15 +39,15 @@
     }
 
     &__icon {
-        @include z-index(base);
+        @include mixins.z-index(base);
         position: absolute;
         top: 30px;
         right: 20px;
         width: 190px;
         height: auto;
-        fill: rgba($color--teal-200, 0.75);
+        fill: rgba(variables.$color--teal-200, 0.75);
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             top: 30px;
             right: 10px;
             width: 250px;
@@ -52,12 +55,12 @@
     }
 
     &__content {
-        @include z-index(overlap);
+        @include mixins.z-index(overlap);
         position: relative;
         padding-top: 40px;
         text-align: start;
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             padding-top: 100px;
         }
     }
@@ -67,9 +70,9 @@
         line-height: 1.1;
         margin-bottom: 10px;
         padding-right: 60px;
-        transition: color $transition;
+        transition: color variables.$transition;
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             padding-right: 0;
             font-size: 55px;
         }
@@ -85,7 +88,7 @@
     }
 
     &__description {
-        font-weight: $weight--regular;
+        font-weight: variables.$weight--regular;
         margin: 0;
     }
 
@@ -93,14 +96,14 @@
         position: absolute;
         bottom: 30px;
         right: 20px;
-        stroke: $color--white;
+        stroke: variables.$color--white;
         stroke-width: 4px;
         fill: transparent;
         width: 60px;
         height: 60px;
-        transition: transform $transition, fill $transition;
+        transition: transform variables.$transition, fill variables.$transition;
 
-        @media only screen and (min-width: $header-desktop) {
+        @media only screen and (min-width: variables.$header-desktop) {
             bottom: 50px;
             right: 60px;
         }
