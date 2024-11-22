@@ -38,7 +38,7 @@ AWS S3, `media.wagtail.org` bucket for production, `wagtailio-staging` for stagi
 
 ## Resetting the Staging site
 
-Steps for resetting the `staging` git branch, and deploying it with a clone of the production site database.
+We regularly reset the staging site to match production. Here are the steps for resetting the `staging` git branch, and deploying it with a clone of the production site database.
 
 ### Pre-flight checks
 
