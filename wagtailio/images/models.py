@@ -8,6 +8,7 @@ from wagtail.images.models import AbstractImage, AbstractRendition
 class WagtailIOImage(AbstractImage):
     admin_form_fields = (
         "title",
+        "description",
         "file",
         "tags",
         "focal_point_x",
