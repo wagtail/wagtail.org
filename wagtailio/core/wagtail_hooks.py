@@ -1,4 +1,4 @@
-from django.core.files.storage import get_storage_class
+from django.core.files.storage import default_storage
 from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
 
@@ -48,7 +48,7 @@ def serve_document_from_s3(document, request):
     and potentially risking DoS attack and the server timing out.
     """
     # Skip this hook if not using django-storages boto3 backend.
-    if not issubclass(get_storage_class(), S3Storage):
+    if not issubclass(default_storage, S3Storage):
         return
 
     # Send document_served signal, same as Wagtail does.
