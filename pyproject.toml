@@ -12,7 +12,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 django = "~5.1.4"
 wagtail = "~6.3.1"
 psycopg = "~3.2"
