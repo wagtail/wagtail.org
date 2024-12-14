@@ -7,12 +7,16 @@ context:
         introduction: The introduction for the page
         depth: 6
         url: '#'
+        site: 
+          site_name: Site A
     - specific:
         title: Page title two
         listing_intro: Listing summary
         introduction: The introduction for the page
         depth: 6
         url: '#'
+        site:
+          site_name: Site B
 
 tags:
   url:

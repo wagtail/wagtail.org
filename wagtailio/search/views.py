@@ -3,7 +3,7 @@ from django.template.response import TemplateResponse
 from django.utils.cache import add_never_cache_headers, patch_cache_control
 
 from wagtail.contrib.search_promotions.models import Query
-from wagtail.models import Page
+from wagtail.models import Page, Site
 
 from wagtailio.utils.cache import get_default_cache_control_kwargs
 
@@ -43,6 +43,15 @@ def search(request):
     except EmptyPage:
         search_results = paginator.page(paginator.num_pages)
 
+    # Enrich results with site information if there are multiple sites
+    enriched_results = []
+    if Site.objects.count() > 1:  # Only process site info if there are multiple sites
+        for page in search_results:
+            site = page.get_site()
+            enriched_results.append({"page": page, "site": site})
+    else:
+        enriched_results = [{"page": page, "site": None} for page in search_results]
+
     # Include promoted results in search count
     if search_results:
         result_count = search_results.paginator.count + len(promoted_page_pks)
@@ -54,7 +63,7 @@ def search(request):
         "patterns/pages/search_results/search_results.html",
         {
             "search_query": search_query,
-            "search_results": search_results,
+            "search_results": enriched_results,  # Pass enriched results
             "result_count": result_count,
         },
     )

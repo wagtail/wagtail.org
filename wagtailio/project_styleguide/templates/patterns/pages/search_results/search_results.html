@@ -1,8 +1,12 @@
 {% extends "patterns/base_page.html" %}
 {% load wagtailcore_tags wagtailsearchpromotions_tags %}
-{% block title %}{% if search_results %}{{ result_count }} Result{{ result_count|pluralize }} for
-    {% if search_query %}{{ search_query }}{% endif %}
-{% else %}No results found{% endif %}
+{% block title %}
+    {% if search_results %}
+        {{ result_count }} Result{{ result_count|pluralize }} for
+        {% if search_query %}{{ search_query }}{% endif %}
+    {% else %}
+        No results found
+    {% endif %}
 {% endblock title %}
 
 {% block meta_tags %}
@@ -19,11 +23,23 @@
                 <form action="{% url 'search' %}" class="form" method="get" role="search">
                     <fieldset class="form__field form__field--with-button">
                         <label for="search" class="u-sr-only">Search</label>
-                        <input name="query" id="search" type="search" placeholder="Enter your search term" class="form__input"
-                               {% if search_query %} value="{{ search_query }}"{% endif %}>
-                        <button type="submit" class="button button--secondary button--form search__button" aria-label="Search the site content">
+                        <input
+                            name="query"
+                            id="search"
+                            type="search"
+                            placeholder="Enter your search term"
+                            class="form__input"
+                            {% if search_query %} value="{{ search_query }}"{% endif %}
+                        >
+                        <button
+                            type="submit"
+                            class="button button--secondary button--form search__button"
+                            aria-label="Search the site content"
+                        >
                             <span class="button__text">Search</span>
-                            <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                            <svg class="arrow" aria-hidden="true">
+                                <use xlink:href="#arrow"></use>
+                            </svg>
                         </button>
                     </fieldset>
                 </form>
@@ -36,30 +52,26 @@
     <div class="grid">
         <div class="search-page__results">
             {% get_search_promotions search_query as search_picks %}
+            
             {% if search_picks %}
                 {% for pick in search_picks %}
                     {% with page=pick.page %}
-                        <div class="search-result">
-                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                            <p>{% firstof page.listing_intro page.introduction %}</p>
-                        </div>
+                        {% include "patterns/components/search_result.html" with page=page site=None %}
                     {% endwith %}
                 {% endfor %}
             {% endif %}
 
             {% if search_results %}
-                <p class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
-                    {{ search_query }}{% endif %}</p>
+                <p class="intro-small">
+                    {{ result_count }} Result{{ result_count|pluralize }} for 
+                    {% if search_query %}{{ search_query }}{% endif %}
+                </p>
 
-                {% for page in search_results %}
-                    <div class="search-result">
-                        <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                        <p>{% firstof page.listing_intro page.introduction %}</p>
-                    </div>
+                {% for result in search_results %}
+                    {% include "patterns/components/search_result.html" with page=result.page site=result.site %}
                 {% endfor %}
-
             {% elif search_query and not search_picks %}
-                <p>No results found. Please try again.</p>
+                <p>No results found for "{{ search_query }}". Please try again with a different term.</p>
             {% endif %}
         </div>
     </div>
@@ -68,9 +80,14 @@
         <div class="grid">
             <div class="pagination">
                 {% if search_results.has_previous %}
-                    <a href="?page={{ search_results.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__previous button button--reverse">
+                    <a
+                        href="?page={{ search_results.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}"
+                        class="pagination__previous button button--reverse"
+                    >
                         <p class="button__text">Previous</p>
-                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                        <svg class="arrow" aria-hidden="true">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
                     </a>
                 {% endif %}
 
@@ -79,9 +96,14 @@
                 </span>
 
                 {% if search_results.has_next %}
-                    <a href="?page={{ search_results.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__next button">
+                    <a
+                        href="?page={{ search_results.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}"
+                        class="pagination__next button"
+                    >
                         <p class="button__text">Next</p>
-                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                        <svg class="arrow" aria-hidden="true">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
                     </a>
                 {% endif %}
             </div>
