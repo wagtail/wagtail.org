@@ -1,0 +1,35 @@
+target-version = "py313"
+
+[lint]
+extend-select = [
+    "B",    # flake8-bugbear
+    "BLE",  # flake8-blind-except
+    "C4",   # flake8-comprehensions
+    "DJ",   # flake8-django
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "INT",  # flake8-gettext
+    "PIE",  # flake8-pie
+    "PGH",  # pygrep-hooks
+    "S",    # flake8-bandit
+    "SIM",  # flake8-simplify
+    "T20",  # flake8-print
+    "W",    # pycodestyle warnings
+    "YTT",  # flake8-2020
+    "UP",   # pyupgrade
+    "RUF100",  # unused noqa
+]
+
+extend-ignore = [
+    "E501",  # no line length errors
+]
+fixable = ["C4", "E", "F", "I", "UP"]
+
+[lint.per-file-ignores]
+"fabfile.py" = ["S603", "S607", "T201"]
+
+[lint.isort]
+known-first-party = ["wagtailio"]
+lines-between-types = 1
+lines-after-imports = 2
