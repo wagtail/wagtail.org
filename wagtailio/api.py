@@ -4,6 +4,7 @@ from wagtail.models import Page
 
 from wagtailio.areweheadlessyet.models import AreWeHeadlessYetHomePage
 
+
 api_router = WagtailAPIRouter("wagtailapi")
 
 

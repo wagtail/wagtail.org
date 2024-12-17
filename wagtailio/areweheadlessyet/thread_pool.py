@@ -1,9 +1,11 @@
 import logging
+
 from concurrent.futures import ThreadPoolExecutor
+
+import requests
 
 from django.conf import settings
 
-import requests
 
 logger = logging.getLogger("wagtailio")
 
@@ -53,5 +55,5 @@ def deploy(sender, **kwargs):
     except (KeyboardInterrupt, SystemExit):
         raise
 
-    except Exception:  # noqa: B902
+    except Exception:
         logger.exception("The request to trigger a new build on Vercel has failed.")

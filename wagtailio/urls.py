@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
-
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -24,6 +23,7 @@ from wagtailio.utils.cache import (
 )
 from wagtailio.utils.sitemap_generator import Sitemap
 from wagtailio.utils.views import error_404, error_500, favicon, robots
+
 
 # Private URLs are not meant to be cached.
 private_urlpatterns = [

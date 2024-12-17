@@ -1,6 +1,6 @@
-from django.core.management.base import BaseCommand
-
 import requests
+
+from django.core.management.base import BaseCommand
 
 from wagtailio.areweheadlessyet.models import WagtailHeadlessIssue
 
@@ -12,6 +12,7 @@ class Command(BaseCommand):
         response = requests.get(
             "https://api.github.com/repos/wagtail/wagtail/issues",
             params={"labels": "headless"},
+            timeout=10,
         )
         response.raise_for_status()
 

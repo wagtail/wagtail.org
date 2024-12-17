@@ -1,5 +1,4 @@
 from django.db import models
-
 from wagtail import blocks, fields
 from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page
@@ -9,7 +8,7 @@ from wagtailio.services.blocks import SectionBlock
 
 
 class ServicesPage(Page):
-    intro = models.TextField(null=True, blank=True)
+    intro = models.TextField(blank=True)
     body = fields.StreamField(
         blocks.StreamBlock(
             [("section", SectionBlock())],

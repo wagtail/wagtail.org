@@ -1,7 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
-
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
@@ -78,3 +77,6 @@ class NewsletterIndexPage(Page):
 class NewsletterEmailAddress(models.Model):
     email = models.EmailField()
     signed_up_at = models.DateTimeField(null=True, auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"NewsletterEmmail: {self.email}"

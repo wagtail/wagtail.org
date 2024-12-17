@@ -8,11 +8,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import contextlib
 import os
 import sys
+
 from os.path import abspath, dirname, join
 
 import dj_database_url
+
 
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
@@ -263,10 +266,8 @@ TEMPLATES = [
 
 # Set s-max-age header that is used by reverse proxy/front end cache. See
 # urls.py
-try:
+with contextlib.suppress(ValueError):
     CACHE_CONTROL_S_MAXAGE = int(env.get("CACHE_CONTROL_S_MAXAGE", 600))
-except ValueError:
-    pass
 
 
 # Give front-end cache 30 second to revalidate the cache to avoid hitting the
@@ -326,10 +327,8 @@ if "EMAIL_HOST" in env:
     EMAIL_HOST = env["EMAIL_HOST"]
 
 if "EMAIL_PORT" in env:
-    try:
+    with contextlib.suppress(ValueError):
         EMAIL_PORT = int(env["EMAIL_PORT"])
-    except ValueError:
-        pass
 
 if "EMAIL_HOST_USER" in env:
     EMAIL_HOST_USER = env["EMAIL_HOST_USER"]
@@ -377,10 +376,8 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
 SECURE_HSTS_SECONDS = DEFAULT_HSTS_SECONDS
 if "SECURE_HSTS_SECONDS" in env:
-    try:
+    with contextlib.suppress(ValueError):
         SECURE_HSTS_SECONDS = int(env["SECURE_HSTS_SECONDS"])
-    except ValueError:
-        pass
 
 # Do not use the `includeSubDomains` directive for HSTS. This needs to be prevented
 # because the apps are running on client domains (or our own for staging), that are
@@ -515,7 +512,7 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 WILLOW_OPTIMIZERS = True
 
 if "PRIMARY_HOST" in env:
-    WAGTAILADMIN_BASE_URL = "https://%s" % env["PRIMARY_HOST"]
+    WAGTAILADMIN_BASE_URL = "https://{}".format(env["PRIMARY_HOST"])
 
 # https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
@@ -535,6 +532,7 @@ is_in_shell = len(sys.argv) > 1 and sys.argv[1] in ["shell", "shell_plus"]
 
 if "SENTRY_DSN" in env and not is_in_shell:
     import sentry_sdk
+
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.utils import get_default_release
 
@@ -572,7 +570,7 @@ FAVICON_PATH = "img/favicons/favicon.ico"
 # Frontend cache
 
 if "FRONTEND_CACHE_CLOUDFLARE_TOKEN" in env:
-    INSTALLED_APPS += ("wagtail.contrib.frontend_cache",)  # noqa
+    INSTALLED_APPS += ["wagtail.contrib.frontend_cache"]
     WAGTAILFRONTENDCACHE = {
         "default": {
             "BACKEND": "wagtail.contrib.frontend_cache.backends.CloudflareBackend",

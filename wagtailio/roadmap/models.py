@@ -3,7 +3,6 @@ from functools import cached_property
 from django import forms
 from django.db import models
 from django.template.defaultfilters import date
-
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.admin_url_finder import AdminURLFinder
@@ -13,6 +12,7 @@ from wagtail.models import Orderable, Page, index
 
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
+
 
 github_help = "To change this data, edit the corresponding item on GitHub and then synchronise from Wagtail settings"
 

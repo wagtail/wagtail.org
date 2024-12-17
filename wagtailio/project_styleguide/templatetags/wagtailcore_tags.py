@@ -1,8 +1,7 @@
 from django.template.defaulttags import register as django_register
-
+from pattern_library.monkey_utils import override_tag
 from wagtail.templatetags.wagtailcore_tags import register
 
-from pattern_library.monkey_utils import override_tag
 
 override_tag(register, name="include_block")
 override_tag(register, name="pageurl", default_html="/")

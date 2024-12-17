@@ -1,7 +1,6 @@
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
-
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
@@ -21,17 +20,17 @@ class FooterMenu(models.Model):
         FieldPanel("sections"),
     ]
 
+    class Meta:
+        verbose_name = "Footer menu"
+
+    def __str__(self) -> str:
+        return f"FooterMenu: {self.name}"
+
     def save(self, **kwargs):
         super().save(**kwargs)
 
         for nav in NavigationSettings.objects.filter(footer_navigation=self):
             nav.save(fragment_to_clear="footernav")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Footer menu"
 
 
 @register_snippet
@@ -44,17 +43,17 @@ class MainMenu(ClusterableModel):
         FieldPanel("menu_sections", classname="collapsible"),
     ]
 
+    class Meta:
+        verbose_name = "Main menu"
+
+    def __str__(self) -> str:
+        return f"Main menu: {self.name}"
+
     def save(self, **kwargs):
         super().save(**kwargs)
 
         for nav in NavigationSettings.objects.filter(main_navigation=self):
             nav.save(fragment_to_clear="primarynav")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Main menu"
 
 
 @register_setting(icon="list-ul")

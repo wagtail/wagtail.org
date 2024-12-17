@@ -1,5 +1,4 @@
 from django.db import models
-
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 
@@ -31,9 +30,9 @@ class HeroMixin(models.Model):
         )
     ]
 
+    class Meta:
+        abstract = True
+
     @property
     def has_hero(self):
         return any([self.heading, self.sub_heading, self.intro, self.icon, self.cta])
-
-    class Meta:
-        abstract = True

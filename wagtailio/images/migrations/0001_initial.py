@@ -1,10 +1,9 @@
-from django.conf import settings
-from django.db import migrations, models
-
+import taggit.managers
 import wagtail.images.models
 import wagtail.search.index
 
-import taggit.managers
+from django.conf import settings
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):

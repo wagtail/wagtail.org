@@ -1,5 +1,4 @@
 from django.db import models
-
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -7,7 +6,6 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
 from wagtailio.core.blocks import StandaloneCTABlock
@@ -20,6 +18,9 @@ class Bullet(Orderable, models.Model):
     text = RichTextField()
 
     panels = [FieldPanel("title"), FieldPanel("text")]
+
+    def __str__(self) -> str:
+        return f"Bullet: {self.title}"
 
 
 @register_snippet
@@ -41,9 +42,6 @@ class FeatureAspect(ClusterableModel):
         related_name="+",
     )
 
-    def __str__(self):
-        return self.title
-
     panels = [
         FieldPanel("title"),
         InlinePanel("bullets", label="Bullets"),
@@ -51,6 +49,9 @@ class FeatureAspect(ClusterableModel):
         FieldPanel("video_url"),
         MediaChooserPanel("video"),
     ]
+
+    def __str__(self) -> str:
+        return f"FeatureAspect: {self.title}"
 
 
 class FeaturePageFeatureAspect(Orderable, models.Model):
@@ -60,6 +61,9 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     )
 
     panels = [FieldPanel("feature_aspect")]
+
+    def __str__(self) -> str:
+        return f"FeaturePageFeatureAspect: Page ({self.page_id} FeatureAspect({self.feature_aspect_id})"
 
 
 @register_snippet

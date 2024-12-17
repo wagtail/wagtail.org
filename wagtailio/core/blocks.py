@@ -1,13 +1,11 @@
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
-
 from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
-
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.core.choices import SVGIcon
@@ -328,9 +326,9 @@ class TeaserBlock(blocks.StructBlock):
                     )
                 ]
             )
-            errors["image_for_external_link"] = errors["heading_for_external_link"] = (
-                errors["subheading_for_ext_link"]
-            ) = error
+            errors["image_for_external_link"] = errors[
+                "heading_for_external_link"
+            ] = errors["subheading_for_ext_link"] = error
 
         if errors:
             raise StructBlockValidationError(errors)

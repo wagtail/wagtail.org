@@ -1,6 +1,9 @@
 from django import forms
 from django.utils.safestring import mark_safe
-
+from markdown import markdown
+from pygments import highlight
+from pygments.formatters import get_formatter_by_name
+from pygments.lexers import get_lexer_by_name
 from wagtail.blocks import (
     CharBlock,
     ChoiceBlock,
@@ -15,12 +18,8 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
-from markdown import markdown
-from pygments import highlight
-from pygments.formatters import get_formatter_by_name
-from pygments.lexers import get_lexer_by_name
-
 from wagtailio.core.blocks import HighlightBlock, TeaserBlock
+
 
 # Common Streamfield blocks
 
@@ -85,7 +84,7 @@ class CodeBlock(StructBlock):
             style="default",
             noclasses=False,
         )
-        return mark_safe(highlight(src, lexer, formatter))
+        return mark_safe(highlight(src, lexer, formatter))  # noqa: S308
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
@@ -103,7 +102,7 @@ class MarkDownBlock(TextBlock):
         md = markdown(
             value, extensions=["markdown.extensions.fenced_code", "codehilite"]
         )
-        return mark_safe(md)
+        return mark_safe(md)  # noqa: S308
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)

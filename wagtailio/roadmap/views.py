@@ -1,16 +1,16 @@
+import requests
+
 from django.conf import settings
 from django.db import transaction
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.dateparse import parse_datetime
 from django.views.generic import FormView
-
 from wagtail.admin import messages
-
-import requests
 
 from wagtailio.roadmap.forms import ImportForm
 from wagtailio.roadmap.models import Milestone, MilestoneItem
+
 
 GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
@@ -49,9 +49,9 @@ graphql_query = {
               first: 1
               states: [OPEN]
               query: "Future"
-            ) {
-              %(milestones_query)s
-            }
+            ) {{
+              {milestones_query}
+            }}
 
             # Version milestones, sort by due date descending so that the most recent
             # versions are always retrieved when we have more than 20 open milestones.
@@ -60,14 +60,13 @@ graphql_query = {
               states: [OPEN]
               orderBy: {field: DUE_DATE, direction: DESC}
               query: "v"
-            ) {
-              %(milestones_query)s
-            }
+            ) {{
+              {milestones_query}
+            }}
 
           }
         }
-    """
-    % {"milestones_query": milestones_query},
+    """,
     "variables": {},
 }
 
@@ -76,7 +75,7 @@ def process(token=""):
     if not token:
         token = settings.GITHUB_ROADMAP_ACCESS_TOKEN
 
-    response = requests.post(
+    response = requests.post(  # noqa: S113
         GITHUB_GRAPHQL_API_URL,
         headers={
             "Authorization": f"Bearer {token}",

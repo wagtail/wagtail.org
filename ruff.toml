@@ -27,7 +27,7 @@ extend-ignore = [
 fixable = ["C4", "E", "F", "I", "UP"]
 
 [lint.per-file-ignores]
-"fabfile.py" = ["S603", "S607", "T201"]
+"fabfile.py" = ["S101", "S603", "S607", "S608", "T201"]
 
 [lint.isort]
 known-first-party = ["wagtailio"]
