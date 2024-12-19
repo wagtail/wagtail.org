@@ -26,11 +26,11 @@ class GetStartedSnippet(models.Model):
         FieldPanel("body"),
     ]
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = "Get started block"
+
+    def __str__(self) -> str:
+        return self.name
 
 
 @register_snippet
@@ -67,8 +67,8 @@ class SignupFormSnippet(models.Model):
         ),
     ]
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = "Signup form"
+
+    def __str__(self) -> str:
+        return self.name

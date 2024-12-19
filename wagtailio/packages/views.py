@@ -10,7 +10,7 @@ from .models import Grid, Package
 
 
 def process(url="https://djangopackages.org/api/v4/grids/?q=wagtail"):
-    grid_data = requests.get(url).json()
+    grid_data = requests.get(url).json()  # noqa: S113
     for item in grid_data.get("results", []):
         title = item.get("title", "")
         if "wagtail" in title.lower():
@@ -19,7 +19,7 @@ def process(url="https://djangopackages.org/api/v4/grids/?q=wagtail"):
                 uid=item.get("id"), defaults=defaults
             )
             for url in item.get("packages", []):
-                package_data = requests.get(url).json()
+                package_data = requests.get(url, timeout=10).json()
                 defaults = {
                     key: package_data[key]
                     for key in [

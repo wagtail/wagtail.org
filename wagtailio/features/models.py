@@ -21,6 +21,9 @@ class Bullet(Orderable, models.Model):
 
     panels = [FieldPanel("title"), FieldPanel("text")]
 
+    def __str__(self) -> str:
+        return f"Bullet: {self.title}"
+
 
 @register_snippet
 class FeatureAspect(ClusterableModel):
@@ -41,9 +44,6 @@ class FeatureAspect(ClusterableModel):
         related_name="+",
     )
 
-    def __str__(self):
-        return self.title
-
     panels = [
         FieldPanel("title"),
         InlinePanel("bullets", label="Bullets"),
@@ -51,6 +51,9 @@ class FeatureAspect(ClusterableModel):
         FieldPanel("video_url"),
         MediaChooserPanel("video"),
     ]
+
+    def __str__(self) -> str:
+        return f"FeatureAspect: {self.title}"
 
 
 class FeaturePageFeatureAspect(Orderable, models.Model):
@@ -60,6 +63,9 @@ class FeaturePageFeatureAspect(Orderable, models.Model):
     )
 
     panels = [FieldPanel("feature_aspect")]
+
+    def __str__(self) -> str:
+        return f"FeaturePageFeatureAspect: Page ({self.page_id} FeatureAspect({self.feature_aspect_id})"
 
 
 @register_snippet

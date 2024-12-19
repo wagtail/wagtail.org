@@ -21,7 +21,6 @@ def backwards(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "0015_wagtailioimage_description"),
     ]

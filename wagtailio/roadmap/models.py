@@ -14,6 +14,7 @@ from wagtail.models import Orderable, Page, index
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
 
+
 github_help = "To change this data, edit the corresponding item on GitHub and then synchronise from Wagtail settings"
 
 readonly = forms.TextInput(attrs={"readonly": True})

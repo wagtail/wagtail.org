@@ -9,7 +9,7 @@ from wagtailio.services.blocks import SectionBlock
 
 
 class ServicesPage(Page):
-    intro = models.TextField(null=True, blank=True)
+    intro = models.TextField(blank=True)
     body = fields.StreamField(
         blocks.StreamBlock(
             [("section", SectionBlock())],

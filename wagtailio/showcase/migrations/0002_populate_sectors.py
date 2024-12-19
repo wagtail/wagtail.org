@@ -1,5 +1,6 @@
 from django.db import migrations
 
+
 SECTOR_DATA = (
     "Government agencies",
     "Corporations",

@@ -33,7 +33,7 @@ jobs:
         with:
           path: ${{ env.HOME }}/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
   test_js:
     runs-on: ubuntu-latest
     needs: lint

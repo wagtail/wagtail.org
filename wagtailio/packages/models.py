@@ -12,6 +12,7 @@ from wagtail.search import index
 
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
+
 warning = """
     <p>
         Edit this data on Djangopackages.org.<br>

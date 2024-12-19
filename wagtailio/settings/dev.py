@@ -1,10 +1,11 @@
-from .base import *  # noqa
+from .base import *  # noqa: F403
+
 
 # Debugging to be enabled locally only
 DEBUG = True
 
 # This key to be used locally only.
-SECRET_KEY = "7nn(g(lb*8!r_+cc3m8bjxm#xu!q)6fidwgg&$p$6a+alm+eex"
+SECRET_KEY = "not-a-secret"  # noqa: S105
 
 # Display sent emails in the console while developing locally.
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -24,7 +25,5 @@ MAILCHIMP_ACCOUNT_ID = "Fake"
 MAILCHIMP_NEWSLETTER_ID = "Fake"
 
 
-try:
-    from .local import *  # noqa
-except ImportError:
-    pass
+with contextlib.suppress(ImportError):  # noqa: F405
+    from .local import *  # noqa: F403

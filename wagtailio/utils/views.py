@@ -9,7 +9,7 @@ def favicon(request):
     try:
         favicon_path = settings.FAVICON_PATH
     except AttributeError:
-        raise Http404
+        raise Http404 from None
     return redirect(static(favicon_path), permanent=True)
 
 

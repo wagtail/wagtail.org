@@ -3,6 +3,7 @@ from wagtail import blocks
 from wagtailio.core.blocks import CTALinkMixin
 from wagtailio.core.choices import SVGIcon
 
+
 # --------------- Footer Navigation ---------------
 
 
