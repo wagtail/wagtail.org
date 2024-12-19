@@ -1,4 +1,5 @@
 from django.db import models
+
 from wagtail import blocks, fields
 from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page

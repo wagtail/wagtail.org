@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.http import JsonResponse
 from django.utils.cache import patch_cache_control
+
 from wagtail.models import Site
 from wagtail.rich_text import expand_db_html
 

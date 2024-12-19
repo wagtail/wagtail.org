@@ -1,9 +1,6 @@
 from django import forms
 from django.utils.safestring import mark_safe
-from markdown import markdown
-from pygments import highlight
-from pygments.formatters import get_formatter_by_name
-from pygments.lexers import get_lexer_by_name
+
 from wagtail.blocks import (
     CharBlock,
     ChoiceBlock,
@@ -17,6 +14,11 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
+
+from markdown import markdown
+from pygments import highlight
+from pygments.formatters import get_formatter_by_name
+from pygments.lexers import get_lexer_by_name
 
 from wagtailio.core.blocks import HighlightBlock, TeaserBlock
 

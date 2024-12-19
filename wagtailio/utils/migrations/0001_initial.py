@@ -1,6 +1,6 @@
-import modelcluster.fields
-
 from django.db import migrations, models
+
+import modelcluster.fields
 
 
 class Migration(migrations.Migration):

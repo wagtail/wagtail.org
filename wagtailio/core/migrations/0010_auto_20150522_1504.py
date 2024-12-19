@@ -1,9 +1,9 @@
+from django.db import migrations, models
+
 import wagtail.blocks
 import wagtail.documents.blocks
 import wagtail.fields
 import wagtail.images.blocks
-
-from django.db import migrations, models
 
 import wagtailio.utils.blocks
 

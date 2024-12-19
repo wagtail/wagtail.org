@@ -1,8 +1,7 @@
 import datetime
 import os
-import subprocess
-
 from shlex import quote
+import subprocess
 
 from invoke import run as local
 from invoke.tasks import task

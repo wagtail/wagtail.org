@@ -1,12 +1,13 @@
-import requests
-
 from django.conf import settings
 from django.db import transaction
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.dateparse import parse_datetime
 from django.views.generic import FormView
+
 from wagtail.admin import messages
+
+import requests
 
 from wagtailio.roadmap.forms import ImportForm
 from wagtailio.roadmap.models import Milestone, MilestoneItem

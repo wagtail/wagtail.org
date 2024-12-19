@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.contrib.frontend_cache.utils import purge_url_from_cache
 from wagtail.contrib.settings.models import BaseSiteSetting

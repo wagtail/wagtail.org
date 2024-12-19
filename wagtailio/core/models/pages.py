@@ -1,8 +1,10 @@
 from django.db import models
+
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
+
 from wagtailmedia.edit_handlers import MediaChooserPanel
 
 from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBlock

@@ -10,9 +10,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import contextlib
 import os
-import sys
-
 from os.path import abspath, dirname, join
+import sys
 
 import dj_database_url
 
@@ -532,7 +531,6 @@ is_in_shell = len(sys.argv) > 1 and sys.argv[1] in ["shell", "shell_plus"]
 
 if "SENTRY_DSN" in env and not is_in_shell:
     import sentry_sdk
-
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.utils import get_default_release
 

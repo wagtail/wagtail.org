@@ -1,7 +1,7 @@
-import django.db.models.deletion
-import modelcluster.fields
-
 from django.db import migrations, models
+import django.db.models.deletion
+
+import modelcluster.fields
 
 
 class Migration(migrations.Migration):

@@ -1,6 +1,7 @@
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
+
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting

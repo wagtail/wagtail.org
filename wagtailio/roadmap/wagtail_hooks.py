@@ -1,4 +1,5 @@
 from django.urls import include, path, reverse
+
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 from wagtail.admin.ui.tables import StatusTagColumn

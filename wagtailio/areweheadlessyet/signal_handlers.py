@@ -1,4 +1,5 @@
 from django.conf import settings
+
 from wagtail.signals import page_published, page_unpublished
 
 from .models import AreWeHeadlessYetHomePage, AreWeHeadlessYetTopicPage
