@@ -29,7 +29,12 @@ fixable = ["C4", "E", "F", "I", "UP"]
 [lint.per-file-ignores]
 "fabfile.py" = ["S101", "S603", "S607", "S608", "T201"]
 
+[lint.isort.sections]
+"django" = ["django"]
+"wagtail" = ["wagtail", "modelcluster"]
+
 [lint.isort]
 known-first-party = ["wagtailio"]
-lines-between-types = 1
+section-order = ["future", "standard-library", "django", "wagtail", "third-party", "first-party", "local-folder"]
+force-sort-within-sections = true
 lines-after-imports = 2
