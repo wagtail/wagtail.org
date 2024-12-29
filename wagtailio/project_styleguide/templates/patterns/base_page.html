@@ -63,7 +63,7 @@
 
     <meta name="theme-color" content="#2e1f5e"/>
 
-    {% if GOOGLE_TAG_MANAGER_ID %}
+    {% if GOOGLE_TAG_MANAGER_ID and not request.is_preview and not is_pattern_library %}
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -77,8 +77,8 @@
 {% block body_class %}{{ block.super }}{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% endblock %}
 
 {% block body_top %}
-    {% if GOOGLE_TAG_MANAGER_ID %}
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% if GOOGLE_TAG_MANAGER_ID and not request.is_preview and not is_pattern_library %}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% endif %}
 
     <div data-site-wide-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
