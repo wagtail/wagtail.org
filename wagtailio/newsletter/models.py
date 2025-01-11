@@ -7,8 +7,12 @@ from wagtail.fields import RichTextField
 from wagtail.models import Page
 from wagtail.search import index
 
+from wagtail_newsletter.models import NewsletterPageMixin
 
-class NewsletterPage(Page):
+
+class NewsletterPage(NewsletterPageMixin, Page):
+    newsletter_template = "newsletter/newsletter_page_mjml.html"
+
     date = models.DateField("Newsletter date")
     intro = RichTextField(blank=True)
     body = RichTextField()
