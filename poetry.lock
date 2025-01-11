@@ -843,6 +843,21 @@ files = [
 ]
 
 [[package]]
+name = "mjml-python"
+version = "1.3.4"
+description = "A Python wrapper for MRML (Rust port of MJML)."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mjml_python-1.3.4-cp37-abi3-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:45dfb2fe3cc14d56cd72473d403e184557d43ddfe5740559f31dc8139b32ecfd"},
+    {file = "mjml_python-1.3.4-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:90cb077f4a8af6f788567d52175cda69c5a88fb7e5864217d9af08569f8bee6f"},
+    {file = "mjml_python-1.3.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:534a68f368fae1acd9b9e186e8d0fbbe6971d294268e3694b216571ba6ed73b9"},
+    {file = "mjml_python-1.3.4-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:f4cab6a804a3a53a2390e70ce36ee81b8d8249a31c4f052295949fe7d2202b6d"},
+    {file = "mjml_python-1.3.4-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:1dd15993b709b49232488c543c6bdc2276a5b955ebe38dc95f9184abd622f5d8"},
+    {file = "mjml_python-1.3.4-cp37-abi3-win_amd64.whl", hash = "sha256:7d85df5fa0fd431fb5519fc4adc90ce71a57272b0b9e99aae16cd11d6db4bd11"},
+]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
@@ -1775,4 +1790,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "79383e94d00e1fac9ecd033ae61e47e30ca0388f853f2cf171b5356b6dae16ff"
+content-hash = "bcdddb8db150853d50854fdf7a44080c1e405d256fca1686ee7013198860fab4"
