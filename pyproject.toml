@@ -36,6 +36,7 @@ wagtailmedia = "~0.15.2"
 whitenoise = "~6.9"
 django-redis = "~5.4"
 wagtail-newsletter = {extras = ["mailchimp"], version = "^0.2.1"}
+mjml-python = "^1.3.4"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.1.0"
