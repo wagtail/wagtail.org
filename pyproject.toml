@@ -35,6 +35,7 @@ wagtail-font-awesome-svg = "~1.0.1"
 wagtailmedia = "~0.15.2"
 whitenoise = "~6.9"
 django-redis = "~5.4"
+wagtail-newsletter = {extras = ["mailchimp"], version = "^0.2.1"}
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.1.0"
