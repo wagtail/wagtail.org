@@ -800,6 +800,23 @@ dev = ["black (==24.1.1)", "blacken-docs (==1.16.0)", "coverage (==7.3.4)", "dja
 testing = ["coverage (==7.3.4)", "dj-database-url (==2.1.0)"]
 
 [[package]]
+name = "mailchimp-marketing"
+version = "3.0.80"
+description = "Mailchimp Marketing API"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mailchimp_marketing-3.0.80-py3-none-any.whl", hash = "sha256:a5bcb3ebd3be60908c65af765f8195724e6fd2d61ecf6da667a794c5bc7b84d3"},
+]
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+python-dateutil = ">=2.1"
+requests = ">=2.23"
+six = ">=1.10"
+urllib3 = ">=1.23"
+
+[[package]]
 name = "markdown"
 version = "3.7"
 description = "Python implementation of John Gruber's Markdown."
@@ -823,6 +840,21 @@ python-versions = ">=3.6"
 files = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
     {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
+]
+
+[[package]]
+name = "mjml-python"
+version = "1.3.4"
+description = "A Python wrapper for MRML (Rust port of MJML)."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mjml_python-1.3.4-cp37-abi3-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:45dfb2fe3cc14d56cd72473d403e184557d43ddfe5740559f31dc8139b32ecfd"},
+    {file = "mjml_python-1.3.4-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:90cb077f4a8af6f788567d52175cda69c5a88fb7e5864217d9af08569f8bee6f"},
+    {file = "mjml_python-1.3.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:534a68f368fae1acd9b9e186e8d0fbbe6971d294268e3694b216571ba6ed73b9"},
+    {file = "mjml_python-1.3.4-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:f4cab6a804a3a53a2390e70ce36ee81b8d8249a31c4f052295949fe7d2202b6d"},
+    {file = "mjml_python-1.3.4-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:1dd15993b709b49232488c543c6bdc2276a5b955ebe38dc95f9184abd622f5d8"},
+    {file = "mjml_python-1.3.4-cp37-abi3-win_amd64.whl", hash = "sha256:7d85df5fa0fd431fb5519fc4adc90ce71a57272b0b9e99aae16cd11d6db4bd11"},
 ]
 
 [[package]]
@@ -1247,6 +1279,23 @@ files = [
 ]
 
 [[package]]
+name = "queryish"
+version = "0.2"
+description = "A library for constructing queries on arbitrary data sources following Django's QuerySet API"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "queryish-0.2-py3-none-any.whl", hash = "sha256:2e460537f6b7cd5af187b78a3635e80ceec421221adb62883282d419dc170ea8"},
+    {file = "queryish-0.2.tar.gz", hash = "sha256:60150be41673af3d0597f78fb5e77be0e30dc49658a83d274b2a0959c4f97c1b"},
+]
+
+[package.dependencies]
+requests = ">=2.28,<3.0"
+
+[package.extras]
+testing = ["responses (>=0.23,<1.0)"]
+
+[[package]]
 name = "redis"
 version = "5.2.1"
 description = "Python client for Redis database and key-value store"
@@ -1585,6 +1634,30 @@ files = [
 ]
 
 [[package]]
+name = "wagtail-newsletter"
+version = "0.2.1"
+description = "Turn Wagtail pages into newsletters."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "wagtail_newsletter-0.2.1-py3-none-any.whl", hash = "sha256:f273c67e1fb42981bea20466106243bb8266cca3598df81734c1e37d41d2fa99"},
+    {file = "wagtail_newsletter-0.2.1.tar.gz", hash = "sha256:55264a060daf3eb75d9d41ab6fb9f1b06ec7ecda1c5eabaae7e5ea0eaf80b263"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+mailchimp-marketing = {version = ">=3.0.80", optional = true, markers = "extra == \"mailchimp\""}
+queryish = ">=0.2"
+Wagtail = ">=5.2"
+
+[package.extras]
+ci = ["tox (==4.11.3)", "tox-gh-actions (==3.1.3)"]
+docs = ["sphinx (==7.3.7)", "sphinx-wagtail-theme (==6.3.0)"]
+mailchimp = ["mailchimp-marketing (>=3.0.80)"]
+mrml = ["mrml (>=0.1.13)"]
+testing = ["dj-database-url (==2.1.0)", "django-debug-toolbar (==4.4.2)", "django-stubs (==4.2.7)", "pre-commit (==3.4.0)", "pyright (==1.1.360)", "pytest (==8.1.1)", "pytest-cov (==5.0.0)", "pytest-django (==4.8.0)"]
+
+[[package]]
 name = "wagtailmedia"
 version = "0.15.2"
 description = "A Wagtail module for audio and video files."
@@ -1717,4 +1790,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "303ad4f7e4cce38a27702ae74aa7d3176c71f2f061a5fa2f7ef5d4f024e6277f"
+content-hash = "bcdddb8db150853d50854fdf7a44080c1e405d256fca1686ee7013198860fab4"
