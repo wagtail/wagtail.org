@@ -29,12 +29,12 @@ class SiteWideAlertSettings(BaseSiteSetting):
     background_colour = models.CharField(
         max_length=6,
         blank=True,
-        help_text=mark_safe("Background RGB value. e.g. <code>fd5765</code>"),
+        help_text=mark_safe("Background RGB value. e.g. <code>fd5765</code>"),  # noqa: S308
     )
     text_colour = models.CharField(
         max_length=6,
         blank=True,
-        help_text=mark_safe("Text colour RGB value. e.g. <code>ffffff</code>"),
+        help_text=mark_safe("Text colour RGB value. e.g. <code>ffffff</code>"),  # noqa: S308
     )
 
     panels = [

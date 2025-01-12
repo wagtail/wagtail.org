@@ -78,3 +78,6 @@ class NewsletterIndexPage(Page):
 class NewsletterEmailAddress(models.Model):
     email = models.EmailField()
     signed_up_at = models.DateTimeField(null=True, auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"NewsletterEmmail: {self.email}"

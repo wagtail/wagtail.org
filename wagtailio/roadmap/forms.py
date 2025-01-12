@@ -1,6 +1,7 @@
 from django import forms
 from django.conf import settings
 
+
 requires_token = not settings.GITHUB_ROADMAP_ACCESS_TOKEN
 
 

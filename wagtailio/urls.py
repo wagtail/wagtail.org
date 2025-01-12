@@ -25,6 +25,7 @@ from wagtailio.utils.cache import (
 from wagtailio.utils.sitemap_generator import Sitemap
 from wagtailio.utils.views import error_404, error_500, favicon, robots
 
+
 # Private URLs are not meant to be cached.
 private_urlpatterns = [
     path("django-admin/", admin.site.urls),

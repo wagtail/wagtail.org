@@ -21,8 +21,8 @@ class Category(models.Model):
         FieldPanel("icon"),
     ]
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name_plural = "Categories"
+
+    def __str__(self) -> str:
+        return self.title

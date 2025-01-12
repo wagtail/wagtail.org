@@ -328,9 +328,9 @@ class TeaserBlock(blocks.StructBlock):
                     )
                 ]
             )
-            errors["image_for_external_link"] = errors["heading_for_external_link"] = (
-                errors["subheading_for_ext_link"]
-            ) = error
+            errors["image_for_external_link"] = errors[
+                "heading_for_external_link"
+            ] = errors["subheading_for_ext_link"] = error
 
         if errors:
             raise StructBlockValidationError(errors)

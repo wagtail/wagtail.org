@@ -1,5 +1,6 @@
-from .base import *  # noqa
+from .base import *  # noqa: F403
 from .base import env
+
 
 VERCEL_DEPLOY_HOOK_URL = env.get("VERCEL_DEPLOY_HOOK_URL", None)
 try:
@@ -12,7 +13,7 @@ try:
 except ValueError:
     VERCEL_DEPLOY_MAX_WORKERS = 10
 
-MANIFEST_LOADER["cache"] = True  # noqa
+MANIFEST_LOADER["cache"] = True  # noqa: F405
 
 # Use secure cookies for the session and CSRF cookies.
 # If these are set to True, the cookies will be marked as “secure”, which means
@@ -22,7 +23,5 @@ MANIFEST_LOADER["cache"] = True  # noqa
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-try:
-    from .local import *  # noqa
-except ImportError:
-    pass
+with contextlib.suppress(ImportError):  # noqa: F405
+    from .local import *  # noqa: F403

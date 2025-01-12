@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("images", "0016_copy_alternative_text_to_description"),
     ]
