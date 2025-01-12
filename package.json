@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "focus-trap": "^7.0.0",
-    "micromodal": "^0.4.10"
+    "micromodal": "^0.4.10",
+    "wagtail.org": "file:"
   }
 }

@@ -1,50 +1,82 @@
+{# templates/includes/header.html #}
 {% load navigation_tags %}
 
-<header class="app__header header">
+{# Main Header Component #}
+<header class="app__header header" role="banner">
+    {# Skip Link for Accessibility #}
     {% include "patterns/components/skip-link/skip-link.html" %}
 
+    {# Brand Identity Section #}
     <div class="header__identity">
         <a class="header__link" href="/" aria-label="Wagtail.org homepage">
-            <svg class="header__logo header__logo--dark" aria-hidden="true">
+            <svg class="header__logo header__logo--dark" aria-hidden="true" focusable="false">
                 <use xlink:href="#wagtail-dark" />
             </svg>
-            <svg class="header__logo header__logo--light" aria-hidden="true">
+            <svg class="header__logo header__logo--light" aria-hidden="true" focusable="false">
                 <use xlink:href="#wagtail-light" />
             </svg>
         </a>
     </div>
 
+    {# Header Actions Container #}
     <div class="header__actions">
-
+        {# GitHub Integration #}
         <div class="header__github">
-            <a class="github-button" href="https://github.com/wagtail/wagtail"  data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" size="large" data-show-count="true" aria-label="Visit Wagtail on GitHub to star the repo">Star</a>
+            <a class="github-button"
+               href="https://github.com/wagtail/wagtail"
+               data-color-scheme="no-preference: light; light: light; dark: dark;"
+               data-icon="octicon-star"
+               data-size="large"
+               data-show-count="true"
+               aria-label="Visit Wagtail on GitHub to star the repo">
+                Star
+            </a>
         </div>
 
-        <div class="header__nav header__nav--desktop" data-desktop-menu>
+        {# Desktop Navigation #}
+        <nav class="header__nav header__nav--desktop" data-desktop-menu aria-label="Desktop navigation">
             {% main_navigation %}
-        </div>
+        </nav>
 
+        {# Search Components #}
         <div class="header__search">
-            {# Desktop Search #}
-            <button class="header__button header__button--search u-desktop-only" aria-controls="site-search-modal" aria-label="Open the search" data-site-search-desktop>
-                <svg class="header__search-icon" aria-hidden="true">
+            {# Desktop Search Button #}
+            <button class="header__button header__button--search u-desktop-only"
+                    type="button"
+                    aria-controls="site-search-modal"
+                    aria-label="Open search"
+                    data-site-search-desktop
+                    data-search-toggle>
+                <svg class="header__search-icon" aria-hidden="true" focusable="false">
                     <use xlink:href="#magnifying-glass"></use>
                 </svg>
             </button>
 
-            {# Mobile Search #}
-            <button class="header__button header__button--search u-mobile-only" aria-expanded="false" aria-controls="mobile-search-form" aria-label="Open the search" data-site-search-mobile>
-                <svg class="header__search-icon header__search-icon--open" aria-hidden="true">
+            {# Mobile Search Button #}
+            <button class="header__button header__button--search u-mobile-only"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="mobile-search-form"
+                    aria-label="Toggle mobile search"
+                    data-site-search-mobile
+                    data-search-toggle>
+                <svg class="header__search-icon header__search-icon--open" aria-hidden="true" focusable="false">
                     <use xlink:href="#magnifying-glass"></use>
                 </svg>
-                <svg class="header__search-icon header__search-icon--close" aria-hidden="true">
+                <svg class="header__search-icon header__search-icon--close" aria-hidden="true" focusable="false">
                     <use xlink:href="#cross"></use>
                 </svg>
             </button>
         </div>
 
+        {# Mobile Menu Toggle #}
         <div class="header__menu-toggle">
-            <button class="burger" data-mobile-menu-toggle aria-haspopup="true" aria-expanded="false" aria-label="Mobile menu toggle">
+            <button class="burger"
+                    type="button"
+                    data-mobile-menu-toggle
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="Toggle mobile menu">
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
@@ -52,31 +84,209 @@
             </button>
         </div>
 
-        <div class="header__nav header__nav--mobile" data-mobile-menu>
+        {# Mobile Navigation #}
+        <nav class="header__nav header__nav--mobile" data-mobile-menu aria-label="Mobile navigation">
             {% main_navigation %}
             {% if settings.navigation.NavigationSettings.get_started_menu %}
                 <a href="/get-started/" class="header__button header__button--get-started button">
                     Get started
                 </a>
             {% endif %}
-        </div>
+        </nav>
 
+        {# Get Started Button (Desktop) #}
         {% if settings.navigation.NavigationSettings.get_started_menu %}
-            <button class="header__button header__button--get-started button" data-get-started>
+            <button class="header__button header__button--get-started button"
+                    type="button"
+                    data-get-started
+                    aria-expanded="false"
+                    aria-controls="get-started-menu">
                 Get started
-                <svg class="header__get-started-icon" aria-hidden="true">
+                <svg class="header__get-started-icon" aria-hidden="true" focusable="false">
                     <use xlink:href="#chevron"></use>
                 </svg>
             </button>
         {% endif %}
 
-        {# Mobile search #}
-        {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}
-
+        {# Mobile Search Form #}
+        {% include "patterns/includes/search-form.html" with
+            classes="search--mobile is-hidden u-mobile-only"
+            data_attrs="data-search-mobile"
+            form_id="mobile-search-form"
+            input_id="search-input-mobile"
+        %}
     </div>
 </header>
 
+{# Get Started Menu #}
 {% get_started_menu %}
 
-{# Desktop search #}
-{% include "patterns/includes/search-modal.html" with input_id="search-input-desktop" %}
+{# Desktop Search Modal #}
+{% include "patterns/includes/search-modal.html" with
+    input_id="search-input-desktop"
+    modal_class="site-search-modal"
+%}
+
+{# Required CSS #}
+<style>
+/* Base header styles */
+.header {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--header-bg, #fff);
+}
+
+/* Header actions container */
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Search components */
+.header__search {
+    position: relative;
+    z-index: 1001; /* Ensure search stays above mobile menu */
+}
+
+/* Search modal */
+.site-search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1002; /* Above mobile menu */
+    display: none;
+}
+
+.site-search-modal.is-active {
+    display: block;
+}
+
+/* Mobile menu */
+.header__nav--mobile {
+    position: fixed;
+    top: var(--header-height, 4rem);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height, 4rem));
+    background-color: var(--mobile-menu-bg, #fff);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.header__nav--mobile.is-active {
+    transform: translateX(0);
+}
+
+/* Utility classes */
+.u-desktop-only {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .u-desktop-only {
+        display: block;
+    }
+
+    .u-mobile-only {
+        display: none;
+    }
+}
+
+/* Accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+</style>
+
+{# Required JavaScript #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const mobileMenuToggle = document.querySelector('[data-mobile-menu-toggle]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+    const searchToggles = document.querySelectorAll('[data-search-toggle]');
+    const desktopSearchModal = document.querySelector('.site-search-modal');
+    const mobileSearchForm = document.querySelector('#mobile-search-form');
+
+    // Mobile menu toggle
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('is-active');
+
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
+        });
+    }
+
+    // Search functionality
+    searchToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isMobile = this.hasAttribute('data-site-search-mobile');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+            // Toggle appropriate search interface
+            if (isMobile) {
+                mobileSearchForm.classList.toggle('is-hidden');
+                this.setAttribute('aria-expanded', !isExpanded);
+            } else {
+                desktopSearchModal.classList.toggle('is-active');
+                this.setAttribute('aria-expanded', !isExpanded);
+
+                if (!isExpanded) {
+                    const input = desktopSearchModal.querySelector('input');
+                    if (input) input.focus();
+                }
+            }
+        });
+    });
+
+    // Close search modal on outside click
+    document.addEventListener('click', function(e) {
+        if (desktopSearchModal && desktopSearchModal.classList.contains('is-active')) {
+            if (!desktopSearchModal.contains(e.target)) {
+                desktopSearchModal.classList.remove('is-active');
+                document.querySelector('[data-site-search-desktop]')
+                    .setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+
+    // Close search modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (desktopSearchModal && desktopSearchModal.classList.contains('is-active')) {
+                desktopSearchModal.classList.remove('is-active');
+                document.querySelector('[data-site-search-desktop]')
+                    .setAttribute('aria-expanded', 'false');
+            }
+            if (mobileSearchForm && !mobileSearchForm.classList.contains('is-hidden')) {
+                mobileSearchForm.classList.add('is-hidden');
+                document.querySelector('[data-site-search-mobile]')
+                    .setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+});
+</script>
