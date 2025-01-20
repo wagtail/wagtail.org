@@ -13,8 +13,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python = "^3.13"
-django = "~5.1.4"
-wagtail = "~6.3.1"
+django = "~5.1.5"
+wagtail = "~6.3.2"
 psycopg = "~3.2"
 gunicorn = "~23.0.0"
 dj-database-url = "~2.3.0"
@@ -39,4 +39,4 @@ django-redis = "~5.4"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.0.1"
 djhtml = "3.0.7"
-ruff = "0.8.3"  # keep in sync with .pre-commit-config.yaml
+ruff = "0.9.1"  # keep in sync with .pre-commit-config.yaml
