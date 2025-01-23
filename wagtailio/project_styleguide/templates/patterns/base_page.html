@@ -54,6 +54,8 @@
 
     <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
     <link title="This Week in Wagtail" type="application/atom+xml" rel="alternate" href="{% url 'newsletter_feed' %}">
+    
+    <meta name="fediverse:creator" content="@wagtail@fosstodon.org">
 
     {# Reference: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
     <link rel="icon" href="{% static 'img/favicons/favicon.ico' %}" sizes="32x32">{# 32x32 #}
