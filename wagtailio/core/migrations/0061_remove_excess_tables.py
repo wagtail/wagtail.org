@@ -19,12 +19,7 @@ class Migration(migrations.Migration):
                 "DROP TABLE IF EXISTS wagtail_ab_testing_abtesthourlylog;",
                 "DROP TABLE IF EXISTS wagtail_ab_testing_abtest;",
                 "DROP TABLE IF EXISTS wagtail_image_import_driveidmapping;",
-                
             ],
-            reverse_sql=[
-                migrations.RunSQL.noop,
-                migrations.RunSQL.noop
-            ],
+            reverse_sql=[migrations.RunSQL.noop, migrations.RunSQL.noop],
         )
     ]
-
