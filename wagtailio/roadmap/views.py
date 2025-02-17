@@ -50,9 +50,9 @@ graphql_query = {
               first: 1
               states: [OPEN]
               query: "Future"
-            ) {{
-              {milestones_query}
-            }}
+            ) {
+              %(milestones_query)s
+            }
 
             # Version milestones, sort by due date descending so that the most recent
             # versions are always retrieved when we have more than 20 open milestones.
@@ -61,13 +61,14 @@ graphql_query = {
               states: [OPEN]
               orderBy: {field: DUE_DATE, direction: DESC}
               query: "v"
-            ) {{
-              {milestones_query}
-            }}
+            ) {
+              %(milestones_query)s
+            }
 
           }
         }
-    """,
+    """
+    % {"milestones_query": milestones_query},
     "variables": {},
 }
 
