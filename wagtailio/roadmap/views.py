@@ -17,32 +17,34 @@ GITHUB_API_HOST = "https://api.github.com"
 GITHUB_GRAPHQL_API_URL = f"{GITHUB_API_HOST}/graphql"
 
 milestones_query = """
-    nodes {
-      number
-      state
-      title
-      url
-      dueOn
-      issues(first: 100) {
+    {
         nodes {
-          number
-          state
-          title
-          url
-          labels(first: 10, orderBy: {field: NAME, direction: ASC}) {
+        number
+        state
+        title
+        url
+        dueOn
+        issues(first: 100) {
             nodes {
-              name
+            number
+            state
+            title
+            url
+            labels(first: 10, orderBy: {field: NAME, direction: ASC}) {
+                nodes {
+                name
+                }
             }
-          }
+            }
         }
-      }
+        }
     }
 """
 
 graphql_query = {
-    "query": """
-        query {
-          repository(owner: "wagtail", name: "roadmap") {
+    "query": f"""
+        query {{
+          repository(owner: "wagtail", name: "roadmap") {{
 
             # "Future" milestone has no due date, fetch separately because
             # null values are sorted last in descending order.
@@ -50,25 +52,19 @@ graphql_query = {
               first: 1
               states: [OPEN]
               query: "Future"
-            ) {
-              %(milestones_query)s
-            }
+            ) {milestones_query}
 
             # Version milestones, sort by due date descending so that the most recent
             # versions are always retrieved when we have more than 20 open milestones.
             versions: milestones(
               first: 20
               states: [OPEN]
-              orderBy: {field: DUE_DATE, direction: DESC}
+              orderBy: {{field: DUE_DATE, direction: DESC}}
               query: "v"
-            ) {
-              %(milestones_query)s
-            }
-
-          }
-        }
-    """
-    % {"milestones_query": milestones_query},
+            ) {milestones_query}
+          }}
+        }}
+    """,
     "variables": {},
 }
 
