@@ -37,6 +37,6 @@ whitenoise = "~6.8"
 django-redis = "~5.4"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "4.0.1"
+pre-commit = "4.1.0"
 djhtml = "3.0.7"
-ruff = "0.9.1"  # keep in sync with .pre-commit-config.yaml
+ruff = "0.9.6"  # keep in sync with .pre-commit-config.yaml
