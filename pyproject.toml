@@ -26,14 +26,14 @@ django-permissions-policy = "~4.22"
 django-referrer-policy = "~1.0"
 django-storages = { version ="~1.14", extras = ["s3"] }
 markdown = "~3.7"
-pygments = "~2.18"
+pygments = "~2.19"
 requests = "~2.32.3"
-scout-apm = "~3.2"
-sentry-sdk = "~2.17"
+scout-apm = "~3.3"
+sentry-sdk = "~2.22"
 wagtail-font-awesome-svg = "~1.0.1"
 
 wagtailmedia = "~0.15.2"
-whitenoise = "~6.8"
+whitenoise = "~6.9"
 django-redis = "~5.4"
 
 [tool.poetry.group.dev.dependencies]
