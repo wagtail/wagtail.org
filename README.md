@@ -142,14 +142,17 @@ For more info see [Frontend general info](docs/frontend/general-info.md)
 ## Pulling staging data on Windows
 
 The `fab pull-staging-data` command does not work on Windows. Windows seems to bark at the way quotes in the commands are handled in the `fabfile.py` file. You will have to run the pertinent `fabfile.py` commands manually. These are the `dexec()` commands, and they are of three types:
+
 1. The ones to be run on the `web` container.
 2. The ones to be run on the `db` container.
 3. The ones to be run directly on my local terminal.
+
 The ones for the web container and local machine are somewhat more straightforward to run. I used the VS code editor, and the terminal in it. More than one terminal instance is required for the `web` container and local commands, but the db container instructions should be done from within the Docker terminal.
 
 Spotting whether a command should be run in the `web` or `db` is a matter of looking at the second argument passed to dexec() when invoked.
 
 The commands, the location, and the order in which to run them are as follows:
+
 1. `heroku pg:backups:download --output=here.dump --app wagtail-org-staging`. To avoid less typing, Substitute the `original{LOCAL_DUMP_DIR}/{datestamp}.dump}` with `here.dump`. Also substitute the `app_instance` variable with the literal `wagtail-org-staging`. Run this on your local terminal instance.
 2. The next command is to be run within the `db` container, so open it and type `dropdb --if-exists --host db --username=wagtailorg wagtailorg`.
 3. Afterwards, still in the `db` container, run `createdb --host db --username=wagtailorg wagtailorg`.
