@@ -154,6 +154,7 @@
     &__socials {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 10px;
 
         @include media-query(medium) {
@@ -217,6 +218,7 @@
 
     &__sub-footer {
         margin-bottom: 30px;
+        gap: 20px;
 
         @include media-query(medium) {
             display: flex;
