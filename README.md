@@ -71,7 +71,7 @@ fab pull-production-media
 
 ### Pulling staging data
 
-If you'd like to work with staging data and have access, run the following commands if you're on Mac/Linux (POSIX):
+If you'd like to work with staging data and have been granted access, run the following commands if you're on Mac/Linux (POSIX):
 
 ```
 fab pull-staging-data
@@ -79,7 +79,7 @@ fab pull-staging-data
 
 Access will only be given when absolutely necessary.
 
-If you're on Windows, we recommend you follow these [steps.](#pulling-staging-data-on-windows)
+If you're on Windows, we recommend you follow the [specific steps for Windows.](#pulling-staging-data-on-windows)
 
 ## Installation (Vagrant)
 
@@ -141,27 +141,27 @@ For more info see [Frontend general info](docs/frontend/general-info.md)
 
 ## Pulling staging data on Windows
 
-The `fab pull-staging-data` command does not work on Windows. Windows seems to bark at the way quotes in the commands are handled in the `fabfile.py` file. You will have to run the pertinent `fabfile.py` commands manually. These are the `dexec()` commands, and they are of three types:
+The `fab pull-staging-data` command does not currently work on Windows due to the way quotes are handled.
+
+The recommended workaround is to run the necessary commands manually. It's important to note that there are 3 categories of commands to run:
 
 1. The ones to be run on the `web` container.
 2. The ones to be run on the `db` container.
-3. The ones to be run directly on my local terminal.
+3. The ones to be run directly on a local terminal.
 
-The ones for the web container and local machine are somewhat more straightforward to run. I used the VS code editor, and the terminal in it. More than one terminal instance is required for the `web` container and local commands, but the db container instructions should be done from within the Docker terminal.
-
-Spotting whether a command should be run in the `web` or `db` is a matter of looking at the second argument passed to dexec() when invoked.
+You will need two separate terminal instances for the `web` and local. We suggest using the VS code editor, and the terminal in it. The `db` container instructions should be done from within the Docker terminal.
 
 The commands, the location, and the order in which to run them are as follows:
 
-1. `heroku pg:backups:download --output=here.dump --app wagtail-org-staging`. To avoid less typing, Substitute the `original{LOCAL_DUMP_DIR}/{datestamp}.dump}` with `here.dump`. Also substitute the `app_instance` variable with the literal `wagtail-org-staging`. Run this on your local terminal instance.
-2. The next command is to be run within the `db` container, so open it and type `dropdb --if-exists --host db --username=wagtailorg wagtailorg`.
+1. Run the following on your local terminal instance: `heroku pg:backups:download --output=here.dump --app wagtail-org-staging`.
+2. In the `db` container terminal, run: `dropdb --if-exists --host db --username=wagtailorg wagtailorg`.
 3. Afterwards, still in the `db` container, run `createdb --host db --username=wagtailorg wagtailorg`.
-4. The next command involves connecting the local postgres DB using `psql`. For this, run the following in the `db` container: `psql -d wagtailorg -U wagtailorg -c "CREATE SCHEMA heroku_ext;"`
-5. Still in the db container, run the following command for importing the database file to the `db` container: `pg_restore --clean --no-acl --if-exists --no-owner --host db --username=wagtailorg -d wagtailorg /app/here.dump `. This is possible if you also named the dump file `"here.dump"` as I did in step 1.
-6. The next command to run is to be in the web container (in one of the open terminals on possibly your VS code editor, after previously running `make sh`). It is: `psql -c "UPDATE wagtailcore_site SET hostname = 'localhost', port = 8000 WHERE is_default_site IS TRUE;"`.
-7. The last command to run is in the local terminal, and it is `rm here.dump`.
+4. To connect the local postgres DB, run the following in the `db` container: `psql -d wagtailorg -U wagtailorg -c "CREATE SCHEMA heroku_ext;"`
+5. Still in the `db` container, run: `pg_restore --clean --no-acl --if-exists --no-owner --host db --username=wagtailorg -d wagtailorg /app/here.dump `.
+6. In your `web` container, run: `psql -c "UPDATE wagtailcore_site SET hostname = 'localhost', port = 8000 WHERE is_default_site IS TRUE;"`.
+7. Finally, in the local terminal, run: `rm here.dump`.
 
-With `npm` installed, you can run `npm install` directly, since nvm isn't supported for Windows (non-POSIX). Optionally, you can use `fnm` to first switch to the appropriate version of node.
+With `npm` installed, you can run `npm install` directly, since nvm isn't supported for Windows (non-POSIX). Optionally, `fnm` can be used to first switch to the appropriate version of node.
 
 Afterwards, the recommended next step would be setting up your [frontend tooling.](#frontend-tooling-docker-and-vagrant)
 
