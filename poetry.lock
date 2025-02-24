@@ -1372,23 +1372,23 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "6.4"
+version = "6.4.1"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "wagtail-6.4-py3-none-any.whl", hash = "sha256:3d89b93079711fd1703be057a06cf5d34303a20ee31b2f51384954e21fff38ce"},
-    {file = "wagtail-6.4.tar.gz", hash = "sha256:3e311f367867741a2a025ae1c6d498c177ae1936a4b92444177804fa713edff0"},
+    {file = "wagtail-6.4.1-py3-none-any.whl", hash = "sha256:85206f86b04876d5596190e042d30de0430fdb5cdd71b6005748c8a0d45066ec"},
+    {file = "wagtail-6.4.1.tar.gz", hash = "sha256:cec3e6d4920a6d178fa1eb6f4af80b370fdd5570ed924b979104e157f10ca097"},
 ]
 
 [package.dependencies]
 anyascii = ">=0.1.5"
-beautifulsoup4 = ">=4.8,<4.13"
+beautifulsoup4 = ">=4.8,<5"
 Django = ">=4.2,<6.0"
-django-filter = ">=23.3,<25"
+django-filter = ">=23.3"
 django-modelcluster = ">=6.2.1,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
-django-taggit = ">=5.0,<6.2"
+django-taggit = ">=5.0,<7"
 django-tasks = ">=0.6.1,<0.7"
 django-treebeard = ">=4.5.1,<5.0"
 djangorestframework = ">=3.15.1,<4.0"
@@ -1401,7 +1401,7 @@ telepath = ">=0.3.1,<1"
 Willow = {version = ">=1.8.0,<2", extras = ["heif"]}
 
 [package.extras]
-docs = ["Sphinx (>=7.3)", "myst-parser (==2.0.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==6.4.0)", "sphinxcontrib-spelling (>=7,<8)"]
+docs = ["Sphinx (>=7.3)", "myst-parser (==2.0.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==6.5.0)", "sphinxcontrib-spelling (>=7,<8)"]
 testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "boto3 (>=1.28,<2)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7)", "djhtml (==3.0.6)", "doc8 (==0.8.1)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "ruff (==0.1.5)", "semgrep (==1.40.0)", "tblib (>=2.0,<3.0)"]
 
 [[package]]
