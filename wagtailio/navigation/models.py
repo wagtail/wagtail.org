@@ -97,8 +97,8 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
             fragment_key_seeds = ["primarynav", "footernav"]
         keys = [
             # The fragment cache varies on:
-            # the current site pk, whether used in preview, or in the pattern library
-            make_template_fragment_key(key, vary_on=[self.site.pk, False, False])
+            # the current site pk, whether it is used in the pattern library
+            make_template_fragment_key(key, vary_on=[self.site.pk, False])
             for key in fragment_key_seeds
         ]
         cache.delete_many(keys)

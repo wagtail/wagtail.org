@@ -1,6 +1,6 @@
-{% load wagtailcore_tags cache %}
+{% load wagtailcore_tags wagtail_cache %}
 {% wagtail_site as current_site %}
-{% cache 900 primarynav current_site.pk request.is_preview is_pattern_library %}
+{% wagtailcache 900 primarynav current_site.pk is_pattern_library %}
     <nav class="primary-nav" aria-label="Primary">
         <ul class="primary-nav__container" data-primary-nav>
             {% for menu_section in menus %}
@@ -42,4 +42,4 @@
             {% endfor %}
         </ul>
     </nav>
-{% endcache %}
+{% endwagtailcache %}

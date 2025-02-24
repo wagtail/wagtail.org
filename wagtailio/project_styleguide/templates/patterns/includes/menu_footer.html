@@ -1,7 +1,7 @@
-{% load wagtailcore_tags cache %}
+{% load wagtailcore_tags wagtail_cache %}
 {% if footer_navigation %}
     {% wagtail_site as current_site %}
-    {% cache 900 footernav current_site.pk request.is_preview is_pattern_library %}
+    {% wagtailcache 900 footernav current_site.pk is_pattern_library %}
         <nav class="footer-menu" aria-label="Footer menu">
             <div class="footer-menu__grid grid">
                 {% for section in footer_navigation.sections %}
@@ -34,5 +34,5 @@
                 {% endfor %}
             </div>
         </nav>
-    {% endcache %}
+    {% endwagtailcache %}
 {% endif %}
