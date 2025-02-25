@@ -1,0 +1,7 @@
+{% if value.theme == "purple" %}
+    <div class="themed-text-block themed-text-block--purple">
+{% else %}
+    <div class="themed-text-block themed-text-block--white">
+{% endif %}
+{{ value.text }}
+</div>

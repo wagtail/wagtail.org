@@ -2,78 +2,14 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
 
-from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Page
 from wagtail.search import index
 
 from wagtail_newsletter.models import NewsletterPageMixin
 
-
-class HeadingBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(required=True, help_text="The heading text")
-    size = blocks.ChoiceBlock(
-        choices=[
-            ("h1", "H1"),
-            ("h2", "H2"),
-        ],
-        default="h1",
-    )
-
-    class Meta:
-        icon = "title"
-        template = "newsletter/blocks/heading_block.html"
-
-
-class ContentBlock(blocks.StructBlock):
-    text = blocks.RichTextBlock(required=True)
-
-    class Meta:
-        icon = "doc-full"
-        template = "newsletter/blocks/content_block.html"
-
-
-class ImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=True)
-    alt_text = blocks.CharBlock(
-        required=True, help_text="Provide descriptive alt text for the image"
-    )
-    caption = blocks.CharBlock(required=False)
-
-    class Meta:
-        icon = "image"
-        template = "newsletter/blocks/image_block.html"
-
-
-class CallToActionBlock(blocks.StructBlock):
-    text = blocks.CharBlock(required=True)
-    url = blocks.URLBlock(required=True)
-    button_text = blocks.CharBlock(required=True)
-
-    class Meta:
-        icon = "link"
-        template = "newsletter/blocks/cta_block.html"
-
-
-class PackageUpdateBlock(blocks.StructBlock):
-    name = blocks.CharBlock(required=True)
-    version = blocks.CharBlock(required=True)
-    url = blocks.URLBlock(required=True)
-
-    class Meta:
-        icon = "package"
-        template = "newsletter/blocks/package_block.html"
-
-
-class PackageListBlock(blocks.StructBlock):
-    title = blocks.CharBlock(default="Packages")
-    packages = blocks.ListBlock(PackageUpdateBlock())
-
-    class Meta:
-        icon = "list-ul"
-        template = "newsletter/blocks/package_list_block.html"
+from .blocks import NewsletterStoryBlock
 
 
 class NewsletterPage(NewsletterPageMixin, Page):
@@ -89,17 +25,7 @@ class NewsletterPage(NewsletterPageMixin, Page):
         blank=True,
     )
 
-    content = StreamField(
-        [
-            ("heading", HeadingBlock()),
-            ("content", ContentBlock()),
-            ("image", ImageBlock()),
-            ("call_to_action", CallToActionBlock()),
-            ("package_list", PackageListBlock()),
-        ],
-        use_json_field=True,
-        blank=True,
-    )
+    content = StreamField(NewsletterStoryBlock(), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
