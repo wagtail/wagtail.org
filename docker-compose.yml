@@ -18,6 +18,7 @@ services:
       PGUSER: wagtailorg
       PGPASSWORD: wagtailorg
       PGDATABASE: wagtailorg
+      MAILCHIMP_API_KEY: ${MAILCHIMP_API_KEY}
     ports:
       - 8000:8000
     volumes:
