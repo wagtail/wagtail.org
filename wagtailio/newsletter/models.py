@@ -14,19 +14,12 @@ class NewsletterPage(NewsletterPageMixin, Page):
     newsletter_template = "newsletter/newsletter_page_mjml.html"
 
     date = models.DateField("Newsletter date")
-    intro = RichTextField(blank=True)
-    body = RichTextField()
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro"),
-        FieldPanel("body"),
     ]
 
-    search_fields = Page.search_fields + [
-        index.SearchField("intro"),
-        index.SearchField("body"),
-    ]
+    search_fields = Page.search_fields + []
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
