@@ -1,0 +1,6 @@
+<div class="package-list">
+    <h2>{{ value.title }}</h2>
+    {% for package in value.packages %}
+        {% include "newsletter/blocks/package_block.html" with value=package %}
+    {% endfor %}
+</div>
