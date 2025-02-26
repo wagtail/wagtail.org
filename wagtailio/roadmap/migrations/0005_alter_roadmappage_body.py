@@ -6,7 +6,6 @@ import wagtail.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("roadmap", "0004_alter_roadmappage_body"),
     ]

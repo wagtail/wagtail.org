@@ -6,7 +6,6 @@ import wagtail.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("standardpage", "0008_alter_standardpage_body"),
     ]
