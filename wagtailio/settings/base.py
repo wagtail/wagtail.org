@@ -421,6 +421,8 @@ if "CSP_DEFAULT_SRC" in env:
         CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
     if "CSP_OBJECT_SRC" in env:
         CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
+    if "CSP_MANIFEST_SRC" in env:
+        CSP_MANIFEST_SRC = env["CSP_MANIFEST_SRC"].split(",")
     if "CSP_REPORT_URI" in env:
         CSP_REPORT_URI = env["CSP_REPORT_URI"].split(",")
 
