@@ -397,6 +397,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 if "CSP_DEFAULT_SRC" in env:
     MIDDLEWARE.append("csp.middleware.CSPMiddleware")
 
+    CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+
     CSP_REPORT_ONLY = env.get("CSP_REPORT_ONLY", "false").lower() == "true"
 
     # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
