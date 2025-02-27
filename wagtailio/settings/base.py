@@ -409,6 +409,8 @@ if "CSP_DEFAULT_SRC" in env:
         CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
     if "CSP_IMG_SRC" in env:
         CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
+    if "CSP_MEDIA_SRC" in env:
+        CSP_MEDIA_SRC = env["CSP_MEDIA_SRC"].split(",")
     if "CSP_CONNECT_SRC" in env:
         CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
     if "CSP_FONT_SRC" in env:
