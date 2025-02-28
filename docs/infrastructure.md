@@ -129,3 +129,39 @@ We use [Sentry](https://sentry.io/welcome/) and their Python SDK configured for 
 ## Performance monitoring
 
 We use [DebugBear](https://www.debugbear.com/)’s lab tests to keep tabs on the site’s accessibility and performance over time. View the reports: [DebugBear wagtail.org lab tests](https://www.debugbear.com/project/25758?interval=month&share=SABlYrvo9gP5234W5TMmANCgD).
+
+## Content Security Policy
+
+The site supports enforcing a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), to block a range of attacks including cross-site scripting (XSS) and clickjacking.
+The policy is experimental as not all aspects of the site are currently compatible. To test and make incremental improvements, manually turn on the CSP by setting the relevant `CSP_` environment variables. Their presence will enable [django-csp](https://django-csp.readthedocs.io/en/3.8/configuration.html).
+
+Here are the CSP values currently trialed in production:
+
+```bash
+# Turns on CSP headers.
+CSP_DEFAULT_SRC="'self'"
+# Ensures CSP is in report-only mode, so violations are reported but not enforced.
+CSP_REPORT_ONLY=true
+CSP_STYLE_SRC="'self'"
+# Allows JS from:
+# - GitHub button
+# - Google Tag Manager and Google Analytics
+# - YouTube embeds
+CSP_SCRIPT_SRC="'self', buttons.github.io, *.googletagmanager.com, www.google-analytics.com, www.youtube.com"
+# Allows images from:
+# - Gravatar (for CMS user avatars)
+# - Media uploaded to the CMS
+# - Google Tag Manager and Google Analytics
+CSP_IMG_SRC="'self', data:, www.gravatar.com, media.wagtail.org, *.google-analytics.com, *.googletagmanager.com"
+# Allows loading the favicon.webmanifest
+CSP_MANIFEST_SRC='wagtail.org'
+# Allows loading user-uploaded video.
+CSP_MEDIA_SRC="'self', media.wagtail.org"
+# Allows fetching from:
+# - Wagtail releases checker
+# - GitHub API
+# - Google Analytics and Google Tag Manager
+CSP_CONNECT_SRC="'self', releases.wagtail.org, api.github.com, www.google-analytics.com, *.analytics.google.com, *.googletagmanager.com"
+# Reports errors to Sentry.
+CSP_REPORT_URI="https://o158364.ingest.us.sentry.io/api/1220804/security/?sentry_key=aba4c2744622498793ff4f90a3cc6111"
+```
