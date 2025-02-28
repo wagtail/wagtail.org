@@ -121,3 +121,11 @@ $ diff bucket-contents-{production,staging}.txt
     > All user accounts have been copied across, so your old staging password will no longer work. Log in with your production password (and then change it), or use the 'forgot password' feature.
     > Any test content has been reset. This is probably the biggest inconvenience. Sorry.
     > I have deleted the personally-identifying data from form submissions **and anywhere else relevant**. If there's any more on production (there shouldn't be) then please let me know and I'll remove it from staging.
+
+## Error monitoring
+
+We use [Sentry](https://sentry.io/welcome/) and their Python SDK configured for Django for error monitoring. Here is a direct link to the [wagtail-org Sentry project](https://torchbox.sentry.io/projects/wagtail-org/?project=1220804).
+
+## Performance monitoring
+
+We use [DebugBear](https://www.debugbear.com/)’s lab tests to keep tabs on the site’s accessibility and performance over time. View the reports: [DebugBear wagtail.org lab tests](https://www.debugbear.com/project/25758?interval=month&share=SABlYrvo9gP5234W5TMmANCgD).
