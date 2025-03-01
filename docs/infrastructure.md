@@ -142,12 +142,12 @@ Here are the CSP values currently trialed in production:
 CSP_DEFAULT_SRC="'self'"
 # Ensures CSP is in report-only mode, so violations are reported but not enforced.
 CSP_REPORT_ONLY=true
-CSP_STYLE_SRC="'self'"
+CSP_STYLE_SRC="'self', 'report-sample'"
 # Allows JS from:
 # - GitHub button
 # - Google Tag Manager and Google Analytics
 # - YouTube embeds
-CSP_SCRIPT_SRC="'self', buttons.github.io, *.googletagmanager.com, www.google-analytics.com, www.youtube.com"
+CSP_SCRIPT_SRC="'self', 'report-sample', buttons.github.io, *.googletagmanager.com, www.google-analytics.com, www.youtube.com"
 # Allows images from:
 # - Gravatar (for CMS user avatars)
 # - Media uploaded to the CMS
