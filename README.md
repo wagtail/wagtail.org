@@ -69,7 +69,17 @@ fab pull-production-data
 fab pull-production-media
 ```
 
+### Pulling staging data
+
+If you'd like to work with staging data and have been granted access, run the following commands if you're on Mac/Linux (POSIX):
+
+```
+fab pull-staging-data
+```
+
 Access will only be given when absolutely necessary.
+
+If you're on Windows, we recommend you follow the [specific steps for Windows.](#pulling-staging-data-on-windows)
 
 ## Installation (Vagrant)
 
@@ -128,6 +138,32 @@ Other common commands:
 -   `npm run format` format files
 
 For more info see [Frontend general info](docs/frontend/general-info.md)
+
+## Pulling staging data on Windows
+
+The `fab pull-staging-data` command does not currently work on Windows due to the way quotes are handled.
+
+The recommended workaround is to run the necessary commands manually. It's important to note that there are 3 categories of commands to run:
+
+1. The ones to be run on the `web` container.
+2. The ones to be run on the `db` container.
+3. The ones to be run directly on a local terminal.
+
+You will need two separate terminal instances for the `web` and local. We suggest using the VS code editor, and the terminal in it. The `db` container instructions should be done from within the Docker Desktop terminal because that is one of the easiest ways to [activate a shell within Docker](https://docs.docker.com/desktop/use-desktop/container/#open-the-integrated-terminal).
+
+The commands, the location, and the order in which to run them are as follows:
+
+1. Run the following on your local terminal instance: `heroku pg:backups:download --output=here.dump --app wagtail-org-staging`.
+2. In the `db` container terminal, run: `dropdb --if-exists --host db --username=wagtailorg wagtailorg`.
+3. Afterwards, still in the `db` container, run `createdb --host db --username=wagtailorg wagtailorg`.
+4. To connect the local postgres DB, run the following in the `db` container: `psql -d wagtailorg -U wagtailorg -c "CREATE SCHEMA heroku_ext;"`
+5. Still in the `db` container, run: `pg_restore --clean --no-acl --if-exists --no-owner --host db --username=wagtailorg -d wagtailorg /app/here.dump `.
+6. In your `web` container, run: `psql -c "UPDATE wagtailcore_site SET hostname = 'localhost', port = 8000 WHERE is_default_site IS TRUE;"`.
+7. Finally, in the local terminal, run: `rm here.dump`.
+
+With `npm` installed, you can run `npm install` directly, since nvm isn't supported for Windows (non-POSIX). Optionally, `fnm` can be used to first switch to the appropriate version of node.
+
+Afterwards, the recommended next step would be setting up your [frontend tooling.](#frontend-tooling-docker-and-vagrant)
 
 ## Deployment
 
