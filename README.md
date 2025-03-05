@@ -149,7 +149,7 @@ The recommended workaround is to run the necessary commands manually. It's impor
 2. The ones to be run on the `db` container.
 3. The ones to be run directly on a local terminal.
 
-You will need two separate terminal instances for the `web` and local. We suggest using the VS code editor, and the terminal in it. The `db` container instructions should be done from within the Docker terminal.
+You will need two separate terminal instances for the `web` and local. We suggest using the VS code editor, and the terminal in it. The `db` container instructions should be done from within the Docker Desktop terminal because that is one of the easiest ways to [activate a shell within Docker](https://docs.docker.com/desktop/use-desktop/container/#open-the-integrated-terminal).
 
 The commands, the location, and the order in which to run them are as follows:
 
