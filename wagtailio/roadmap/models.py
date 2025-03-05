@@ -74,6 +74,7 @@ class RoadmapPage(Page, SocialMediaMixin):
 
 class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
+    SPONSORED_LABEL = "sponsored"
 
     sponsorship_url = models.URLField(
         blank=True,
@@ -127,11 +128,15 @@ class MilestoneItem(Orderable):
 
     @cached_property
     def labels_list(self):
-        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL}, key=str.lower)
+        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL, self.SPONSORED_LABEL}, key=str.lower)
 
     @cached_property
     def needs_sponsorship(self):
         return self.NEEDS_SPONSORSHIP_LABEL in self.labels_set
+
+    @cached_property
+    def sponsored(self):
+        return self.SPONSORED_LABEL in self.labels_set
 
 
 class Milestone(ClusterableModel):
