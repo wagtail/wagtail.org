@@ -1,6 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import CharField, Count, IntegerField, OuterRef, Subquery
-from django.db.models.functions import Cast
+from django.db.models.functions import Cast, Coalesce
 from django.utils.translation import gettext_lazy as _
 
 from wagtail.admin.ui.tables import TitleColumn
@@ -44,5 +44,5 @@ class ImageUsageReport(ReportView):
         )
 
         return WagtailIOImage.objects.annotate(
-            usage_count=Subquery(reference_index_subquery)
+            usage_count=Coalesce(Subquery(reference_index_subquery.values("count")), 0)
         )
