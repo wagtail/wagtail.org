@@ -12,7 +12,7 @@ def register_image_usage_report_menu_item():
         "Image usage report",
         reverse("image_usage_report"),
         icon_name=ImageUsageReport.header_icon,
-        order=700,
+        order=1250,  # Place this after Page types usage report
     )
 
 
