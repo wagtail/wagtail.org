@@ -24,6 +24,9 @@ ALLOWED_HOSTS = ["*"]
 MAILCHIMP_ACCOUNT_ID = "Fake"
 MAILCHIMP_NEWSLETTER_ID = "Fake"
 
+# Load django-extensions only in dev
+INSTALLED_APPS += ["django_extensions"]  # noqa: F405
+
 
 with contextlib.suppress(ImportError):  # noqa: F405
     from .local import *  # noqa: F403

@@ -40,3 +40,4 @@ django-redis = "~5.4"
 pre-commit = "4.1.0"
 djhtml = "3.0.7"
 ruff = "0.9.6"  # keep in sync with .pre-commit-config.yaml
+django-extensions = "^3.2.3"
