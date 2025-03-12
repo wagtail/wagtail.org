@@ -19,7 +19,7 @@ class DividerBlock(blocks.StaticBlock):
 
 
 class CardBlock(blocks.StructBlock):
-    image = image_blocks.ImageChooserBlock(required=True)
+    image = image_blocks.ImageBlock(required=True)
     text = blocks.RichTextBlock(required=True, features=["bold", "italic"])
     link = blocks.URLBlock(required=True)
     link_text = blocks.CharBlock(required=True, default="Find out more")
@@ -102,7 +102,7 @@ class SectionBlock(blocks.StructBlock):
     )
 
     section_media = SectionMediaBlock(required=False)
-    section_image = image_blocks.ImageChooserBlock(
+    section_image = image_blocks.ImageBlock(
         required=False,
         help_text="Section image is used as a fallback when no media is defined.",
     )
