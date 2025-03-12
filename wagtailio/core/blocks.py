@@ -5,7 +5,7 @@ from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageBlock, ImageChooserBlock
+from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailmedia.blocks import VideoChooserBlock
@@ -106,7 +106,7 @@ class LogoCardBlock(CTALinkMixin):
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
-    logo = ImageChooserBlock(required=False)
+    logo = ImageBlock(required=False)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
@@ -460,7 +460,7 @@ class VideoBlock(blocks.StructBlock):
 class LogoBlock(blocks.StructBlock):
     heading = blocks.CharBlock(required=False)
     logos = blocks.ListBlock(
-        ImageChooserBlock(),
+        ImageBlock(),
     )
 
     class Meta:
