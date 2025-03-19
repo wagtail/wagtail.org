@@ -5,7 +5,7 @@ from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailmedia.blocks import VideoChooserBlock
@@ -106,7 +106,7 @@ class LogoCardBlock(CTALinkMixin):
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     meta_icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     meta_text = blocks.TextBlock(max_length=50)
-    logo = ImageChooserBlock(required=False)
+    logo = ImageBlock(required=False)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
@@ -137,7 +137,7 @@ class TableContentBlock(blocks.StreamBlock):
     rich_text = blocks.RichTextBlock(
         required=False, features=["bold", "italic", "link"]
     )
-    image = ImageChooserBlock(required=False)
+    image = ImageBlock(required=False)
 
 
 class ComparisonTableBlock(blocks.StructBlock):
@@ -169,7 +169,7 @@ class HeadlineBlock(blocks.StructBlock):
 class HighlightBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=100)
     description = blocks.TextBlock(required=False)
-    image = ImageChooserBlock()
+    image = ImageBlock()
     image_on_right = blocks.BooleanBlock(required=False, default=False)
     meta_text = blocks.CharBlock(required=False, max_length=50)
     meta_icon = blocks.ChoiceBlock(required=False, choices=SVGIcon.choices)
@@ -242,7 +242,7 @@ class StandaloneQuoteBlock(blocks.StructBlock):
         required=True,
         features=["link"],
     )
-    author_image = ImageChooserBlock(required=False)
+    author_image = ImageBlock(required=False)
 
     class Meta:
         icon = "openquote"
@@ -289,7 +289,7 @@ class StandaloneCTABlock(blocks.StructBlock):
 class TeaserBlock(blocks.StructBlock):
     page = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
     url_chooser = blocks.URLBlock(required=False)
-    image_for_external_link = ImageChooserBlock(required=False)
+    image_for_external_link = ImageBlock(required=False)
     heading_for_external_link = blocks.TextBlock(required=False)
     subheading_for_ext_link = blocks.TextBlock(
         label="Subheading for external link", required=False
@@ -344,7 +344,7 @@ class TeaserBlock(blocks.StructBlock):
 
 
 class TextAndMediaBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=False)
+    image = ImageBlock(required=False)
     embed = EmbedBlock(required=False)
     image_on_right = blocks.BooleanBlock(required=False, default=False)
     heading = blocks.TextBlock(required=True)
@@ -460,7 +460,7 @@ class VideoBlock(blocks.StructBlock):
 class LogoBlock(blocks.StructBlock):
     heading = blocks.CharBlock(required=False)
     logos = blocks.ListBlock(
-        ImageChooserBlock(),
+        ImageBlock(),
     )
 
     class Meta:
