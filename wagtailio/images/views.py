@@ -1,5 +1,5 @@
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import CharField, Count, IntegerField, OuterRef, Subquery
+from django.db.models import CharField, Count, OuterRef, Subquery
 from django.db.models.functions import Cast, Coalesce
 from django.utils.translation import gettext_lazy as _
 
@@ -39,8 +39,11 @@ class ImageUsageReport(ReportView):
                 # to_object_id is a varchar so we need to cast the image PK to a varchar for comparison
                 to_object_id=Cast(OuterRef("pk"), output_field=CharField()),
             )
-            .values(cast_to_object_id=Cast("to_object_id", output_field=IntegerField()))
-            .values(count=Count("id"))
+            .values("object_id", "to_object_id")
+            .distinct()
+            .values("to_object_id")
+            .annotate(count=Count("object_id", distinct=True))
+            .values("count")
         )
 
         return WagtailIOImage.objects.annotate(
