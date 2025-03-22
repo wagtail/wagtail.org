@@ -57,12 +57,32 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         except EmptyPage:
             posts = None
 
+        #Generate Pagination Sequence
+        current_page = posts.number
+        total_pages = last_page = paginator.num_pages
+        pagination_sequence = []
+
+        if total_pages <= 7:
+            pagination_sequence = list(paginator.page_range)
+        else:
+            if current_page <= 3:
+                pagination_sequence.extend([1, 2, 3, 4, 5, 0, last_page])
+            elif current_page >= total_pages - 2:
+                pagination_sequence.extend([1, 0, last_page -4, last_page -3, last_page - 2, last_page - 1, last_page])
+            else:
+                pagination_sequence.extend([1, 0, current_page - 2, current_page - 1, current_page, current_page + 1, current_page +2, 0, last_page])
+                if current_page + 3 == last_page:
+                    pagination_sequence.pop(-2)
+                if current_page - 3 == 1:
+                    pagination_sequence.pop(1)
+
         return render(
             request,
             self.template,
             {
                 "page": self,
                 "posts": posts,
+                "pagination_sequence": pagination_sequence,
                 "featured_posts": [post.page for post in self.featured_posts.all()],
                 "categories": Category.objects.filter(
                     pk__in=models.Subquery(self.posts.values("category"))
