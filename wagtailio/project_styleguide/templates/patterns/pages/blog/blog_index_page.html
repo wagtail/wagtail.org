@@ -83,9 +83,23 @@
                 </a>
             {% endif %}
 
-            <span class="pagination__page-count mini-meta">
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
-            </span>
+            <ul class="pagination__sequence">
+                {% for num in pagination_sequence %}
+                    {% if num == 0 %}
+                        <li>
+                            <span class="pagination__ellipsis">...</span>
+                        </li>
+                    {% elif num == posts.number %}
+                        <li>
+                            <a href="?page={{ num }}" class="pagination__page-number pagination__page-number--current">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="?page={{ num }}" class="pagination__page-number">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
             {% if posts.has_next %}
                 <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
