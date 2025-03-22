@@ -6,12 +6,15 @@
     @include sf-spacing(2);
     grid-column: 2 / span 2;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
 
+    @include media-query(smallonly) {
+        flex-direction: column;
+    }
+
     @include media-query(medium) {
-        display: block;
         grid-column: 2 / span 3;
     }
 
@@ -19,22 +22,40 @@
         grid-column: 2 / span 5;
     }
 
-    &__previous {
-        padding: 10px;
-
-        @include media-query(medium) {
-            margin-right: 20px;
-            padding: 15px 30px;
-        }
-    }
-
+    &__previous,
     &__next {
         padding: 10px;
 
         @include media-query(medium) {
-            padding: 15px 30px;
-            margin-left: 20px;
+            .button__text{
+                display: none;
+            }
         }
+
+        @include media-query(large) {
+            padding: 15px;
+        }
+    }
+
+    &__sequence {
+        display: flex;
+        gap: 3px;
+        list-style: none;
+        align-items: center;
+    }
+
+    &__page-number {
+        text-decoration: none;
+        font-size: 1.25rem;
+        padding: 10px;
+
+        &--current {
+            color: var(--color--text);;
+        }
+    }
+
+    &__ellipsis {
+        font-size: 1.25rem;
     }
 
     &--showcase {
@@ -44,7 +65,7 @@
         align-items: center;
         flex-direction: row;
 
-        @include media-query(smallonly){
+        @include media-query(smallonly) {
             flex-direction: column;
             #{$root}__previous,
                 #{$root}__next {
