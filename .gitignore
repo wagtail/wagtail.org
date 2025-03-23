@@ -17,3 +17,4 @@ node_modules
 .idea
 /.python-version
 /database_dumps
+/wagtailio/newsletter/archive
