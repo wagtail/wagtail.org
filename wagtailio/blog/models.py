@@ -47,52 +47,22 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             posts = self.posts
 
         # Pagination
-        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
+        paginator = Paginator(posts, 1)  # Show 10 blog posts per page
 
         page = request.GET.get("page")
         try:
             posts = paginator.page(page)
+            current_page = posts.number
         except PageNotAnInteger:
             posts = paginator.page(1)
+            current_page = 1
         except EmptyPage:
             posts = None
+            current_page = 1
 
-        # Generate Pagination Sequence
-        current_page = posts.number
-        total_pages = last_page = paginator.num_pages
-        pagination_sequence = []
-
-        if total_pages <= 7:
-            pagination_sequence = list(paginator.page_range)
-        else:
-            if current_page <= 3:
-                pagination_sequence = [1, 2, 3, 4, 5, 0, last_page]
-            elif current_page >= total_pages - 2:
-                pagination_sequence = [
-                    1,
-                    0,
-                    last_page - 4,
-                    last_page - 3,
-                    last_page - 2,
-                    last_page - 1,
-                    last_page,
-                ]
-            else:
-                pagination_sequence = [
-                    1,
-                    0,
-                    current_page - 2,
-                    current_page - 1,
-                    current_page,
-                    current_page + 1,
-                    current_page + 2,
-                    0,
-                    last_page,
-                ]
-                if current_page + 3 == last_page:
-                    pagination_sequence.pop(-2)
-                if current_page - 3 == 1:
-                    pagination_sequence.pop(1)
+        pagination_sequence = paginator.get_elided_page_range(
+            number=current_page, on_each_side=2, on_ends=1
+        )
 
         return render(
             request,
