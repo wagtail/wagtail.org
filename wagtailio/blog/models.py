@@ -47,7 +47,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             posts = self.posts
 
         # Pagination
-        paginator = Paginator(posts, 1)  # Show 10 blog posts per page
+        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
 
         page = request.GET.get("page")
         try:
