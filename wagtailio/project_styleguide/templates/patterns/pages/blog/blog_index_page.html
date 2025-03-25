@@ -83,23 +83,17 @@
 
             <ul class="pagination__sequence" aria-label="Pagination Sequence">
                 {% for num in pagination_sequence %}
-                    {% if num == "…" %}
+                    {% if num == posts.paginator.ELLIPSIS %}
                         <li>
                             <span class="pagination__ellipsis" aria-hidden="true">{{ num }}</span>
                         </li>
                     {% elif num == posts.number %}
                         <li>
-                            <a href="?page={{ num }}" class="pagination__page-number pagination__page-number--current" aria-current="page">
-                                <span class="u-sr-only">Page </span>
-                                {{ num }}
-                            </a>
+                            <a href="?page={{ num }}" class="pagination__page-number pagination__page-number--current" aria-current="page"><span class="u-sr-only">Page </span>{{ num }}</a>
                         </li>
                     {% else %}
                         <li>
-                            <a href="?page={{ num }}" class="pagination__page-number">
-                                <span class="u-sr-only">Page </span>
-                                {{ num }}
-                            </a>
+                            <a href="?page={{ num }}" class="pagination__page-number"><span class="u-sr-only">Page </span>{{ num }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
