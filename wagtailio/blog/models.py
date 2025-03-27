@@ -36,7 +36,8 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         return (
             BlogPage.objects.live()
             .descendant_of(self)
-            .select_related("author", "author__image", "category")
+            .select_related("category")
+            .prefetch_related("blog_page_authors__author")
             .order_by("-date", "pk")
         )
 
@@ -127,17 +128,23 @@ class Author(index.Indexed, models.Model):
     ]
 
 
+class BlogPageAuthor(Orderable):
+    page = ParentalKey("blog.BlogPage", related_name="blog_page_authors")
+    author = models.ForeignKey(
+        "blog.Author",
+        on_delete=models.CASCADE,
+        related_name="+",
+    )
+
+    panels = [
+        FieldPanel("author"),
+    ]
+
+
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_page.html"
     subpage_types = []
     canonical_url = models.URLField(blank=True)
-    author = models.ForeignKey(
-        "blog.Author",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
     main_image = models.ForeignKey(
         "images.WagtailIOImage",
         null=True,
@@ -161,7 +168,12 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         return self.__class__.objects.live().sibling_of(self).order_by("-date")
 
     content_panels = Page.content_panels + [
-        FieldPanel("author"),
+        InlinePanel(
+            "blog_page_authors",
+            heading="Authors",
+            label="Author",
+            max_num=3,
+        ),
         FieldPanel("main_image"),
         FieldPanel("date"),
         FieldPanel("category"),
