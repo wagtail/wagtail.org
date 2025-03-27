@@ -1,0 +1,64 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.cards__section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+
+    @include media-query(medium) {
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+}
+
+.cards__card-wrapper {
+    flex: 1 1 300px;
+    min-width: 250px;
+
+
+    .card {
+        height: 100%;
+        background-color: var(--color--background);
+        border-radius: 15px;
+        padding: 20px;
+        color: var(--color--text);
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        
+        
+        @include offset-bg-left();
+
+        &:hover {
+            @include offset-bg-hover-left();
+        }
+        
+        &__upper {
+            margin-bottom: 20px;
+        }
+        
+        &__divider {
+            margin: 15px 0;
+            border: none;
+            height: 1px;
+            background-color: var(--color--border);
+        }
+        
+        &__text {
+            font-size: 0.9rem;
+        }
+        
+        &__button {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            
+            svg {
+                width: 14px;
+                height: 14px;
+                margin-left: 5px;
+            }
+        }
+    }
+} 

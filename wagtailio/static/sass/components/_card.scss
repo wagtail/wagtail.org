@@ -6,6 +6,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    
+    @include offset-bg-left();
+    
+    &:hover {
+        @include offset-bg-hover-left();
+        
+        #{$root}__heading {
+            color: var(--color--interaction);
+        }
+    }
 
     &__meta {
         margin-bottom: 10px;
