@@ -7,7 +7,7 @@
     @include sf-spacing(2);
     grid-column: 2 / span 2;
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     gap: 20px;
     align-items: center;
 
@@ -20,17 +20,10 @@
     }
 
     @media screen and (min-width: $pagination-row-view) {
-        flex-flow: row wrap;
+        flex-direction: row;
     }
 
-    &__previous {
-        padding: 10px;
-    
-        @include media-query(medium) {
-            padding: 15px 30px;
-        }
-    }
-
+    &__previous,
     &__next {
         padding: 10px;
     
@@ -41,7 +34,6 @@
 
     &__sequence {
         display: flex;
-        gap: 2px;
         list-style: none;
         align-items: center;
     }
@@ -52,7 +44,7 @@
         padding: 10px;
 
         &--current {
-            color: var(--color--text);;
+            color: var(--color--text);
         }
     }
 
