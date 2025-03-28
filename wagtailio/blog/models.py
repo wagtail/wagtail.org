@@ -52,10 +52,17 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         page = request.GET.get("page")
         try:
             posts = paginator.page(page)
+            current_page = posts.number
         except PageNotAnInteger:
             posts = paginator.page(1)
+            current_page = 1
         except EmptyPage:
             posts = None
+            current_page = 1
+
+        pagination_sequence = paginator.get_elided_page_range(
+            number=current_page, on_each_side=2, on_ends=1
+        )
 
         return render(
             request,
@@ -63,6 +70,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             {
                 "page": self,
                 "posts": posts,
+                "pagination_sequence": pagination_sequence,
                 "featured_posts": [post.page for post in self.featured_posts.all()],
                 "categories": Category.objects.filter(
                     pk__in=models.Subquery(self.posts.values("category"))
