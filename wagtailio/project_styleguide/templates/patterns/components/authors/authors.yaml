@@ -1,16 +1,16 @@
 context:
   authors:
     - author:
-        name: "John Doe"
-        job_title: "Writer"
+        name: John Doe
+        job_title: Wagtail community manager
         image: True
     - author:
-        name: "Jane Smith"
-        job_title: "Editor"
+        name: Jane Smith
+        job_title: Wagtail core team
         image: True
     - author:
-        name: "John Smith"
-        job_title: "Developer"
+        name: John Smith
+        job_title: Wagtail developer
         image: True
 
 tags:
