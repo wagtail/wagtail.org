@@ -1,0 +1,20 @@
+context:
+  authors:
+    - author:
+        name: "John Doe"
+        job_title: "Writer"
+        image: True
+    - author:
+        name: "Jane Smith"
+        job_title: "Editor"
+        image: True
+    - author:
+        name: "John Smith"
+        job_title: "Developer"
+        image: True
+
+tags:
+  image:
+    author.image fill-90x90 class="author__image":
+      raw: |
+        <img src="https://placehold.co/90x90" width="90" height="90" alt="Some alt" class="author__image">

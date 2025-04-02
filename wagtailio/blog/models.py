@@ -37,7 +37,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             BlogPage.objects.live()
             .descendant_of(self)
             .select_related("category")
-            .prefetch_related("blog_page_authors__author")
+            .prefetch_related("authors__author")
             .order_by("-date", "pk")
         )
 
@@ -129,7 +129,7 @@ class Author(index.Indexed, models.Model):
 
 
 class BlogPageAuthor(Orderable):
-    page = ParentalKey("blog.BlogPage", related_name="blog_page_authors")
+    page = ParentalKey("blog.BlogPage", related_name="authors")
     author = models.ForeignKey(
         "blog.Author",
         on_delete=models.CASCADE,
@@ -169,7 +169,7 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
 
     content_panels = Page.content_panels + [
         InlinePanel(
-            "blog_page_authors",
+            "authors",
             heading="Authors",
             label="Author",
             max_num=3,
