@@ -6,16 +6,23 @@ import django.db.models.deletion
 import modelcluster.fields
 
 
+def migrate_author_data(apps, schema_editor):
+    BlogPage = apps.get_model("blog", "BlogPage")
+    BlogPageAuthor = apps.get_model("blog", "BlogPageAuthor")
+
+    for blog_page in BlogPage.objects.all():
+        if blog_page.author:
+            BlogPageAuthor.objects.create(
+                page=blog_page, author=blog_page.author, sort_order=0
+            )
+
+
 class Migration(migrations.Migration):
     dependencies = [
         ("blog", "0014_add_new_imageblock"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="blogpage",
-            name="author",
-        ),
         migrations.CreateModel(
             name="BlogPageAuthor",
             fields=[
@@ -53,5 +60,10 @@ class Migration(migrations.Migration):
                 "ordering": ["sort_order"],
                 "abstract": False,
             },
+        ),
+        migrations.RunPython(migrate_author_data),
+        migrations.RemoveField(
+            model_name="blogpage",
+            name="author",
         ),
     ]
