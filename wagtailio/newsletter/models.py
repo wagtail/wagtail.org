@@ -3,25 +3,41 @@ from django.db import models
 from django.shortcuts import render
 
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
+from wagtail_newsletter.models import NewsletterPageMixin
 
-class NewsletterPage(Page):
+from .blocks import NewsletterStoryBlock
+
+
+class NewsletterPage(NewsletterPageMixin, Page):
+    newsletter_template = "newsletter/newsletter_page_mjml.html"
+
     date = models.DateField("Newsletter date")
-    intro = RichTextField(blank=True)
-    body = RichTextField()
+    issue_number = models.IntegerField(
+        help_text="The issue number of the newsletter", default=0
+    )
+    preview_text = models.CharField(
+        max_length=300,
+        help_text="A short preview of the newsletter content that appears in email clients",
+        blank=True,
+    )
+
+    content = StreamField(NewsletterStoryBlock(), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro"),
-        FieldPanel("body"),
+        FieldPanel("issue_number"),
+        FieldPanel("preview_text"),
+        FieldPanel("content"),
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField("intro"),
-        index.SearchField("body"),
+        index.SearchField("content"),
+        index.FilterField("date"),
+        index.FilterField("issue_number"),
     ]
 
     def get_context(self, request, *args, **kwargs):
