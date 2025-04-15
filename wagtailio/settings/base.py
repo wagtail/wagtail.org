@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
     "wagtailmedia",
+    "wagtail_newsletter",
     "pattern_library",
     "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailfontawesomesvg",
@@ -622,6 +623,20 @@ GITHUB_ROADMAP_ACCESS_TOKEN = env.get("GITHUB_ROADMAP_ACCESS_TOKEN", "")
 if "MAILCHIMP_NEWSLETTER_ID" in env and "MAILCHIMP_ACCOUNT_ID" in env:
     MAILCHIMP_ACCOUNT_ID = env.get("MAILCHIMP_ACCOUNT_ID")
     MAILCHIMP_NEWSLETTER_ID = env.get("MAILCHIMP_NEWSLETTER_ID")
+
+if all(
+    _key in env
+    for _key in [
+        "WAGTAIL_NEWSLETTER_MAILCHIMP_API_KEY",
+        "WAGTAIL_NEWSLETTER_FROM_NAME",
+        "WAGTAIL_NEWSLETTER_REPLY_TO",
+    ]
+):
+    WAGTAIL_NEWSLETTER_MAILCHIMP_API_KEY = env.get(
+        "WAGTAIL_NEWSLETTER_MAILCHIMP_API_KEY"
+    )
+    WAGTAIL_NEWSLETTER_FROM_NAME = env.get("WAGTAIL_NEWSLETTER_FROM_NAME")
+    WAGTAIL_NEWSLETTER_REPLY_TO = env.get("WAGTAIL_NEWSLETTER_REPLY_TO")
 
 # all the tracking
 FB_APP_ID = env.get("FB_APP_ID", "")
