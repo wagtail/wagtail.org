@@ -69,7 +69,7 @@
         {% if newsletters.has_next %}
             <div class="grid">
                 <div class="button-align button-align--home">
-                    <a href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="button">
+                    <a href="?page={{ newsletters.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="button">
                         <p class="button__text">Older</p>
                         <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
                     </a>
