@@ -41,13 +41,6 @@ class NewsletterPage(NewsletterPageMixin, Page):
         index.SearchField("content"),
     ]
 
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        if request.GET.get("email", "false") == "true":
-            context["is_email"] = True
-
-        return context
-
 
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
