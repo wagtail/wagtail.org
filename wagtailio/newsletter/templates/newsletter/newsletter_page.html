@@ -1,0 +1,17 @@
+{% extends "patterns/base_page.html" %}
+
+{% block title %}{{ page.title }} | This Week in Wagtail{% endblock %}
+
+{% block content %}
+    <div id="newsletter-container"></div>
+    {{ email_html|json_script:"email-html-data" }}
+    <script>
+        (function() {
+            const container = document.getElementById("newsletter-container");
+            const shadow = container.attachShadow({mode: "open"});
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML = JSON.parse(document.getElementById("email-html-data").textContent);
+            shadow.appendChild(wrapper);
+        })();
+    </script>
+{% endblock %}
