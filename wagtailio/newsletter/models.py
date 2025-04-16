@@ -24,21 +24,19 @@ class NewsletterSettings(BaseGenericSetting):
 
 class NewsletterPage(NewsletterPageMixin, Page):
     date = models.DateField()
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
     preview = models.TextField(blank=True)
-    content = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
+    body = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
         FieldPanel("preview"),
-        FieldPanel("content"),
+        FieldPanel("body"),
     ]
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
         index.SearchField("body"),
-        index.SearchField("content"),
+        index.SearchField("body"),
     ]
 
 
