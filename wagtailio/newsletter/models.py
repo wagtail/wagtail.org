@@ -24,8 +24,6 @@ class NewsletterSettings(BaseGenericSetting):
 
 class NewsletterPage(NewsletterPageMixin, Page):
     date = models.DateField()
-    intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
     preview = models.TextField(blank=True)
     content = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
 
