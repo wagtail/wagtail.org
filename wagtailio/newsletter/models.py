@@ -3,27 +3,42 @@ from django.db import models
 from django.shortcuts import render
 
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import RichTextField
+from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
 from wagtail_newsletter.models import NewsletterPageMixin
 
+from wagtailio.newsletter.blocks import NewsletterContentBlock
+
+
+@register_setting
+class NewsletterSettings(BaseGenericSetting):
+    footer = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
+
+    panels = [
+        FieldPanel("footer"),
+    ]
+
 
 class NewsletterPage(NewsletterPageMixin, Page):
-    date = models.DateField("Newsletter date")
+    date = models.DateField()
     intro = RichTextField(blank=True)
-    body = RichTextField()
+    body = RichTextField(blank=True)
+    preview = models.TextField(blank=True)
+    content = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro"),
-        FieldPanel("body"),
+        FieldPanel("preview"),
+        FieldPanel("content"),
     ]
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
         index.SearchField("body"),
+        index.SearchField("content"),
     ]
 
     def get_context(self, request, *args, **kwargs):
@@ -37,6 +52,8 @@ class NewsletterPage(NewsletterPageMixin, Page):
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+
+    subpage_types = ["newsletter.NewsletterPage"]
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
