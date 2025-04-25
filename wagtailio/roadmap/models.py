@@ -87,7 +87,7 @@ class MilestoneItem(Orderable):
         editable=False,
         help_text="GitHub issue number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
     milestone = ParentalKey(
@@ -149,7 +149,7 @@ class Milestone(ClusterableModel):
         editable=False,
         help_text="GitHub milestone number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     due_on = models.DateField(null=True, blank=True, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
