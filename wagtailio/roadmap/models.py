@@ -9,7 +9,8 @@ from modelcluster.models import ClusterableModel
 from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Orderable, Page, index
+from wagtail.models import Orderable, Page
+from wagtail.search import index
 
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
