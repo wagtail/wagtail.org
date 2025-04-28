@@ -1,0 +1,9 @@
+{% load wagtail_newsletter %}
+
+<mj-section padding="0px 52px">
+    <mj-column>
+        <mj-text css-class="rich-text">
+            {{ value|newsletter_richtext }}
+        </mj-text>
+    </mj-column>
+</mj-section>

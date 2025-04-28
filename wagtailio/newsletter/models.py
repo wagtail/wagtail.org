@@ -39,6 +39,24 @@ class NewsletterPage(NewsletterPageMixin, Page):
         index.SearchField("body"),
     ]
 
+    newsletter_template = "newsletter/newsletter_mjml.html"
+
+    def get_newsletter_subject(self):
+        if self.newsletter_subject:
+            return self.newsletter_subject
+
+        return f"This Week in Wagtail: {self.title}"
+
+    def get_newsletter_context(self):
+        context = super().get_newsletter_context()
+        context["newsletter_settings"] = NewsletterSettings.load()
+        return context
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["email_html"] = self.get_newsletter_html()
+        return context
+
 
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)

@@ -522,7 +522,8 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 WILLOW_OPTIMIZERS = True
 
 if "PRIMARY_HOST" in env:
-    WAGTAILADMIN_BASE_URL = "https://{}".format(env["PRIMARY_HOST"])
+    _protocol = "http" if ":" in env["PRIMARY_HOST"] else "https"
+    WAGTAILADMIN_BASE_URL = f"{_protocol}://{env['PRIMARY_HOST']}"
 
 # https://docs.wagtail.org/en/v2.8.1/releases/2.8.html#responsive-html-for-embeds-no-longer-added-by-default
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
