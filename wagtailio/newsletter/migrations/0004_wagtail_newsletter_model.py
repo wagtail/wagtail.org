@@ -6,22 +6,6 @@ import django.db.models.deletion
 import wagtail.fields
 
 
-def convert_body_to_streamfield(apps, schema_editor):
-    from bs4 import BeautifulSoup
-
-    NewsletterPage = apps.get_model("newsletter", "NewsletterPage")
-    for page in NewsletterPage.objects.all():
-        soup = BeautifulSoup(page.intro, "html.parser")
-        preview = soup.get_text(strip=True)
-        if preview:
-            page.preview = preview
-            page.save()
-
-        if page.body:
-            page.content = [{"type": "rich_text", "value": page.body}]
-            page.save()
-
-
 class Migration(migrations.Migration):
     dependencies = [
         ("newsletter", "0003_newsletteremailaddress_signed_up_at"),
@@ -182,26 +166,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="newsletterpage",
-            name="body",
-            field=wagtail.fields.RichTextField(blank=True),
-        ),
-        migrations.AlterField(
-            model_name="newsletterpage",
             name="date",
             field=models.DateField(),
-        ),
-        migrations.RunPython(convert_body_to_streamfield, migrations.RunPython.noop),
-        migrations.RemoveField(
-            model_name="newsletterpage",
-            name="body",
-        ),
-        migrations.RemoveField(
-            model_name="newsletterpage",
-            name="intro",
-        ),
-        migrations.RenameField(
-            model_name="newsletterpage",
-            old_name="content",
-            new_name="body",
         ),
     ]
