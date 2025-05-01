@@ -26,17 +26,4 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(convert_body_to_streamfield, migrations.RunPython.noop),
-        migrations.RemoveField(
-            model_name="newsletterpage",
-            name="body",
-        ),
-        migrations.RemoveField(
-            model_name="newsletterpage",
-            name="intro",
-        ),
-        migrations.RenameField(
-            model_name="newsletterpage",
-            old_name="content",
-            new_name="body",
-        ),
     ]
