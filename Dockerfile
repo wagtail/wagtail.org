@@ -1,5 +1,5 @@
 # (Keep the version in sync with the node install below)
-FROM node:22 as frontend
+FROM node:22 AS frontend
 
 # Install front-end dependencies.
 COPY package.json package-lock.json tsconfig.json webpack.config.js ./
@@ -46,7 +46,7 @@ RUN chown --recursive $UID:$GID /app /venv
 
 
 # This stage builds the image that will run in production
-FROM backend as prod
+FROM backend AS prod
 
 # Switch to application user
 USER wagtailio
