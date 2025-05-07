@@ -129,6 +129,8 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# We override some templatetags, this raises a warning we don't care about
+SILENCED_SYSTEM_CHECKS = ["templates.W003"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -397,6 +399,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 if "CSP_DEFAULT_SRC" in env:
     MIDDLEWARE.append("csp.middleware.CSPMiddleware")
 
+    CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+
+    CSP_REPORT_ONLY = env.get("CSP_REPORT_ONLY", "false").lower() == "true"
+
     # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
     # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
 
@@ -407,6 +413,8 @@ if "CSP_DEFAULT_SRC" in env:
         CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
     if "CSP_IMG_SRC" in env:
         CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
+    if "CSP_MEDIA_SRC" in env:
+        CSP_MEDIA_SRC = env["CSP_MEDIA_SRC"].split(",")
     if "CSP_CONNECT_SRC" in env:
         CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
     if "CSP_FONT_SRC" in env:
@@ -415,6 +423,10 @@ if "CSP_DEFAULT_SRC" in env:
         CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
     if "CSP_OBJECT_SRC" in env:
         CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
+    if "CSP_MANIFEST_SRC" in env:
+        CSP_MANIFEST_SRC = env["CSP_MANIFEST_SRC"].split(",")
+    if "CSP_REPORT_URI" in env:
+        CSP_REPORT_URI = env["CSP_REPORT_URI"].split(",")
 
 
 # Permissions policy settings

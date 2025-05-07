@@ -44,7 +44,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            {% if item.needs_sponsorship %}
+                            {% if item.needs_sponsorship or item.sponsored %}
                                 {% comment %}
                                     Fallback to item.url (GitHub URL) to avoid crashing
                                     if the sponsorship_page foreign key is unset.
@@ -58,8 +58,13 @@
                                         target="_blank" rel="noreferrer"
                                     {% endif %}
                                 >
-                                    Sponsor this
-                                    {% include "patterns/components/icon/icon.html" with icon="arrow" variant="simple" %}
+                                    {% if item.needs_sponsorship %}
+                                        Sponsor this
+                                        {% include "patterns/components/icon/icon.html" with icon="arrow" variant="simple" %}
+                                    {% elif item.sponsored %}
+                                        Sponsored
+                                        {% include "patterns/components/icon/icon.html" with icon="heart" variant="simple" %}
+                                    {% endif %}
                                 </a>
                             {% endif %}
                         </div>

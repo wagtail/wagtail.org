@@ -9,7 +9,8 @@ from modelcluster.models import ClusterableModel
 from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Orderable, Page, index
+from wagtail.models import Orderable, Page
+from wagtail.search import index
 
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
@@ -74,6 +75,7 @@ class RoadmapPage(Page, SocialMediaMixin):
 
 class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
+    SPONSORED_LABEL = "sponsored"
 
     sponsorship_url = models.URLField(
         blank=True,
@@ -85,7 +87,7 @@ class MilestoneItem(Orderable):
         editable=False,
         help_text="GitHub issue number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
     milestone = ParentalKey(
@@ -127,11 +129,18 @@ class MilestoneItem(Orderable):
 
     @cached_property
     def labels_list(self):
-        return sorted(self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL}, key=str.lower)
+        return sorted(
+            self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL, self.SPONSORED_LABEL},
+            key=str.lower,
+        )
 
     @cached_property
     def needs_sponsorship(self):
         return self.NEEDS_SPONSORSHIP_LABEL in self.labels_set
+
+    @cached_property
+    def sponsored(self):
+        return self.SPONSORED_LABEL in self.labels_set
 
 
 class Milestone(ClusterableModel):
@@ -140,7 +149,7 @@ class Milestone(ClusterableModel):
         editable=False,
         help_text="GitHub milestone number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     due_on = models.DateField(null=True, blank=True, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
