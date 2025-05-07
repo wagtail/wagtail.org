@@ -5,15 +5,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0014_add_new_imageblock'),
+        ("blog", "0014_add_new_imageblock"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogpage',
-            name='date',
+            model_name="blogpage",
+            name="date",
             field=models.DateField(null=True),
         ),
     ]
