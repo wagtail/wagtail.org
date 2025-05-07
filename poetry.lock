@@ -479,13 +479,13 @@ Django = ">=4.1"
 
 [[package]]
 name = "django-tasks"
-version = "0.6.1"
+version = "0.7.0"
 description = "An implementation and backport of background workers and tasks in Django"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "django_tasks-0.6.1-py3-none-any.whl", hash = "sha256:b3648e28bdcda809cb7831f3aff98aa46c327025447c462b8943cce9dfbb0281"},
-    {file = "django_tasks-0.6.1.tar.gz", hash = "sha256:4086e7eb9e965f79c4ac76f5c3690ec3bf41c461585237b71b4bde729ced9826"},
+    {file = "django_tasks-0.7.0-py3-none-any.whl", hash = "sha256:8a8d64f2dc6e29ac2f45092d90e2dd82dc1dca100dfe3a4f2ce1209db99f3527"},
+    {file = "django_tasks-0.7.0.tar.gz", hash = "sha256:499f80d1a051566443cfa88a300d8b03435af7fc5708cad4d8da6d285614f739"},
 ]
 
 [package.dependencies]
@@ -494,9 +494,10 @@ django-stubs-ext = "*"
 typing_extensions = "*"
 
 [package.extras]
-dev = ["coverage", "dj-database-url", "django-stubs[compatible-mypy]", "ruff"]
+dev = ["coverage", "dj-database-url", "django-stubs[compatible-mypy]", "django-tasks[rq]", "fakeredis", "ruff"]
 mysql = ["mysqlclient"]
 postgres = ["psycopg[binary]"]
+rq = ["django-rq", "rq_scheduler"]
 
 [[package]]
 name = "django-treebeard"
@@ -1379,13 +1380,13 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "7.0rc1"
+version = "7.0"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "wagtail-7.0rc1-py3-none-any.whl", hash = "sha256:ccf226f557ea61f9c3f08614342fda8f03b15069693b1f249788b2f8dfae2c4c"},
-    {file = "wagtail-7.0rc1.tar.gz", hash = "sha256:c71a6d5a337534346ba5a669b0006cf1706518c28f853c17e66dacb78bad757d"},
+    {file = "wagtail-7.0-py3-none-any.whl", hash = "sha256:6a254ef84a740689dd844aabc5254828ecb62840257721e639929cb0e1a2b3c1"},
+    {file = "wagtail-7.0.tar.gz", hash = "sha256:7c267ead43da3aa9469f233b111624aa1a508a5840f1ddda72d104957fdb3426"},
 ]
 
 [package.dependencies]
@@ -1396,7 +1397,7 @@ django-filter = ">=23.3"
 django-modelcluster = ">=6.2.1,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
 django-taggit = ">=5.0,<7"
-django-tasks = ">=0.6.1,<0.7"
+django-tasks = ">=0.7,<0.8"
 django-treebeard = ">=4.5.1,<5.0"
 djangorestframework = ">=3.15.1,<4.0"
 draftjs_exporter = ">=2.1.5,<6.0"
@@ -1569,4 +1570,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "092a78e089cb6145478c30ba97330b780d3fba284ad6c1506b5cf402acb8ac9d"
+content-hash = "a308c0e8b2de367b68ae4e3ac6403e62d00114f8bcf6a131adf718d06e7a9897"
