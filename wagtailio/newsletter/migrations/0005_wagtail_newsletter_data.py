@@ -18,17 +18,21 @@ def convert_body_to_streamfield(apps, schema_editor):
 
         if page.body:
             # Split content on image embeds
-            pattern = r'(<embed[^>]*embedtype="image"[^>]*id="(\d+)"[^>]*>)'
+            pattern = r'(<embed[^>]*embedtype="image"[^>]*id="(?:\d+)"[^>]*>)'
             parts = re.split(pattern, page.body)
 
             content_blocks = []
-            for i, part in enumerate(parts):
-                if i % 2 == 0:
-                    content_blocks.append({"type": "rich_text", "value": part})
 
+            for part in parts:
+                if part.startswith("<embed") and part.endswith(">"):
+                    # This is an image embed
+                    image_id = re.search(r'id="(\d+)"', part)
+                    if image_id:
+                        content_blocks.append(
+                            {"type": "image", "value": int(image_id.group(1))}
+                        )
                 else:
-                    image_id = int(part)
-                    content_blocks.append({"type": "image", "value": image_id})
+                    content_blocks.append({"type": "rich_text", "value": part})
 
             page.content = content_blocks
             page.save()
