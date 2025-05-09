@@ -1,0 +1,96 @@
+{% load wagtailcore_tags wagtail_newsletter %}
+
+{% mrml %}
+    <mjml>
+        <mj-head>
+            <mj-attributes>
+                <mj-all font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" padding="0" />
+                <mj-section background-color="#fff" />
+                <mj-text font-size="17px" line-height="1.5" />
+            </mj-attributes>
+
+            <mj-style>
+                .rich-text p { margin-top: 1.5em }
+                .rich-text a { color: #007d7e }
+                h2 { margin: 0; padding: 0; line-height: 1.25; font-weight: bold; font-size: 31px }
+                .rich-text.rich-text--accent h2 { margin-bottom: 42px }
+                .rich-text.rich-text--accent a { color: #fff }
+            </mj-style>
+
+            {% if page.preview %}
+                <mj-preview>{{ page.preview }}</mj-preview>
+            {% endif %}
+        </mj-head>
+
+        <mj-body width="660px" background-color="#f4f4f4">
+            <mj-section padding="13px 0" background-color="">
+                <mj-column>
+                    <mj-text align="center" css-class="rich-text">
+                        <a href="{{ page.full_url }}">View this email online</a>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            <mj-section background-color="">
+                <mj-column>
+                    <mj-image
+                        src="{% newsletter_static 'img/twiw-hero.png' %}"
+                    />
+                </mj-column>
+            </mj-section>
+
+            <mj-section padding="52px 52px 0">
+                <mj-column>
+                    <mj-text font-size="14px" font-weight="bold">
+                        {{ page.date|date:"d F Y" }}
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            {% for block in page.body %}
+                {% include_block block %}
+            {% endfor %}
+
+            {% for block in newsletter_settings.footer %}
+                {% include_block block %}
+            {% endfor %}
+
+            <mj-section padding="40px 0 0">
+                <mj-column>
+                    <mj-social icon-size="32px">
+                        <mj-social-element
+                            href="https://www.linkedin.com/company/wagtail-cms/"
+                            src="https://cdn-images.mailchimp.com/icons/social-block-v3/block-icons-v3/linkedin-filled-gray-40.png"
+                            alt="LinkedIn"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://www.youtube.com/@wagtailcms"
+                            src="https://cdn-images.mailchimp.com/icons/social-block-v3/block-icons-v3/youtube-filled-gray-40.png"
+                            alt="YouTube"
+                            padding="0px 12px"
+                        />
+                    </mj-social>
+                </mj-column>
+            </mj-section>
+
+            <mj-section padding="6px 52px 30px">
+                <mj-column>
+                    <mj-text css-class="rich-text">
+                        <p>
+                            Want to change how you receive these emails? You can
+                            <a href="*|UPDATE_PROFILE|*">update your preferences</a> or
+                            <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                        </p>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            <mj-section background-color="">
+                <mj-column>
+                    <mj-spacer height="157px" />
+                </mj-column>
+            </mj-section>
+        </mj-body>
+    </mjml>
+{% endmrml %}
