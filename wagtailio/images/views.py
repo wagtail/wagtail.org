@@ -30,6 +30,11 @@ class ImageUsageReport(ReportView):
             sort_key="usage_count",
         ),
     ]
+    list_export = ["title", "description", "usage_count", "created_at"]
+    export_headings = {
+        "usage_count": _("Times Used"),
+    }
+    export_filename = "image_usage_report"
 
     def get_base_queryset(self):
         # Create the subquery to count matching ReferenceIndex rows
