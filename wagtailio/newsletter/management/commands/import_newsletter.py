@@ -5,7 +5,7 @@ from pprint import pprint
 from django.core.files.images import ImageFile
 from django.core.management.base import BaseCommand
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 import requests
 import willow
 
@@ -24,14 +24,19 @@ def clean_tag(tag):
     return tag
 
 
-def parse_newsletter_html(soup):
-    main_wrapper = soup.select(".mceWrapperInner")[1]
-    content_container = main_wrapper.select_one(
-        "table table table table table table > tbody"
-    )
-    for child in content_container.children:
-        if child.name:
-            yield child
+def parse_newsletter_html(soup: Tag):
+    h1 = soup.select("h1")[0]
+    title_tr = h1.findParent("tr")
+
+    while not title_tr.previous_sibling:
+        # On issue 160, the title is inside two nested `tr` tags.
+        # On issue 187, it's 12 nested `tr` tags deep, hence the loop. Don't ask.
+        title_tr = title_tr.findParent("tr")
+
+    tr = title_tr.previous_sibling  # the row that contains the date
+    while tr:
+        yield tr
+        tr = tr.next_sibling
 
 
 def parse_date(date_str):
@@ -69,7 +74,9 @@ def process_block_content(block):
     if h1:
         return {"type": "heading", "value": h1.get_text().strip()}
 
-    button_table = block.select_one("table.mceButtonContainer")
+    button_table = block.select_one("table.mceButtonContainer") or block.select_one(
+        "td.mceButton"
+    )
     if button_table:
         link = button_table.find("a")
         if link:
@@ -104,7 +111,9 @@ def process_newsletter_content(url):
 
     soup = BeautifulSoup(html_content, "html.parser")
 
-    newsletter_subject = soup.title.string.split(":", 1)[1].strip()
+    newsletter_subject = soup.title.string.strip()
+    if newsletter_subject.startswith("This Week in Wagtail:"):
+        newsletter_subject = soup.title.string.split(":", 1)[1].strip()
 
     blocks_iterator = parse_newsletter_html(soup)
 
