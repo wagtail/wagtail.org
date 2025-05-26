@@ -26,7 +26,11 @@
             <mj-section padding="13px 0" background-color="">
                 <mj-column>
                     <mj-text align="center" css-class="rich-text">
-                        <a href="{{ page.full_url }}">View this email online</a>
+                        {% if rendering_for_web %}
+                            <!-- this whitespace intentionally left blank -->
+                        {% else %}
+                            <a href="{{ page.full_url }}">View this email online</a>
+                        {% endif %}
                     </mj-text>
                 </mj-column>
             </mj-section>
@@ -78,9 +82,13 @@
                 <mj-column>
                     <mj-text css-class="rich-text">
                         <p>
-                            Want to change how you receive these emails? You can
-                            <a href="*|UPDATE_PROFILE|*">update your preferences</a> or
-                            <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                            {% if rendering_for_web %}
+                                <!-- this whitespace intentionally left blank -->
+                            {% else %}
+                                Want to change how you receive these emails? You can
+                                <a href="*|UPDATE_PROFILE|*">update your preferences</a> or
+                                <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                            {% endif %}
                         </p>
                     </mj-text>
                 </mj-column>

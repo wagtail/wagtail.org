@@ -1,6 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
@@ -53,8 +54,24 @@ class NewsletterPage(NewsletterPageMixin, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["email_html"] = self.get_newsletter_html()
+        email_html = self.get_newsletter_html(extra_context={"rendering_for_web": True})
+        context["email_html"] = email_html
         return context
+
+    def get_newsletter_html(self, extra_context=None):
+        """
+        Local version of the upstream `get_newsletter_html`, with extra context.
+
+        https://github.com/wagtail/wagtail-newsletter/issues/80
+        """
+
+        context = self.get_newsletter_context()
+        if extra_context:
+            context.update(extra_context)
+        return render_to_string(
+            template_name=self.get_newsletter_template(),
+            context=context,
+        )
 
 
 class NewsletterIndexPage(Page):
