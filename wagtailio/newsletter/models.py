@@ -15,7 +15,7 @@ from wagtailio.newsletter.blocks import NewsletterContentBlock
 
 @register_setting
 class NewsletterSettings(BaseGenericSetting):
-    footer = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
+    footer = StreamField(NewsletterContentBlock(), blank=True)
 
     panels = [
         FieldPanel("footer"),
@@ -25,7 +25,7 @@ class NewsletterSettings(BaseGenericSetting):
 class NewsletterPage(NewsletterPageMixin, Page):
     date = models.DateField()
     preview = models.TextField(blank=True)
-    body = StreamField(NewsletterContentBlock(), blank=True, use_json_field=True)
+    body = StreamField(NewsletterContentBlock(), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
@@ -35,7 +35,6 @@ class NewsletterPage(NewsletterPageMixin, Page):
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
-        index.SearchField("body"),
         index.SearchField("body"),
     ]
 
