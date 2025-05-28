@@ -9,7 +9,8 @@ from modelcluster.models import ClusterableModel
 from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Orderable, Page, index
+from wagtail.models import Orderable, Page
+from wagtail.search import index
 
 from wagtailio.core.blocks import ContentStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
@@ -86,7 +87,7 @@ class MilestoneItem(Orderable):
         editable=False,
         help_text="GitHub issue number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
     milestone = ParentalKey(
@@ -148,7 +149,7 @@ class Milestone(ClusterableModel):
         editable=False,
         help_text="GitHub milestone number",
     )
-    state = models.CharField(choices=State.choices, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32, editable=False)
     due_on = models.DateField(null=True, blank=True, editable=False)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
