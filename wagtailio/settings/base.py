@@ -129,6 +129,8 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# We override some templatetags, this raises a warning we don't care about
+SILENCED_SYSTEM_CHECKS = ["templates.W003"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

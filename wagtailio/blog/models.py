@@ -145,7 +145,7 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    date = models.DateField()
+    date = models.DateField(null=True)
     introduction = models.CharField(max_length=511)
     category = models.ForeignKey(
         "taxonomy.Category",
