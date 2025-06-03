@@ -130,6 +130,8 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# We override some templatetags, this raises a warning we don't care about
+SILENCED_SYSTEM_CHECKS = ["templates.W003"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -512,7 +514,7 @@ WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
-WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "png", "webp"]
+WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "jpeg", "png", "webp"]
 
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
     "avif": "avif",
