@@ -1,0 +1,105 @@
+{% extends "patterns/base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title_suffix %} | Wagtail CMS{% endblock %}
+
+{% block meta_tags %}
+    <meta name="description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% if page.canonical_url or page.full_url %}
+        <link rel="canonical" href="{% firstof page.canonical_url page.full_url %}" />
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@wagtailcms" />
+    <meta name="twitter:creator" content="@wagtailcms" />
+    <meta name="twitter:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
+    <meta name="twitter:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:160 }}{% endif %}" />
+
+    {% wagtail_site as site %}
+    {% if page.social_image %}
+        {% image page.social_image width-400 as twitter_img %}
+    {% elif page.main_image %}
+        {% image page.main_image width-400 as twitter_img %}
+    {% endif %}
+    {% if twitter_img %}
+        <meta name="twitter:image" content="{{ twitter_img.url }}" />
+        {% if twitter_img.alt %}<meta name="twitter:image:alt" content="{{ twitter_img.alt }}" />{% endif %}
+    {% else %}
+        <meta name="twitter:image" content="{{ site.root_url }}{% static 'img/default-sharing-image.png' %}" />
+    {% endif %}
+
+    {% if FB_APP_ID %}<meta property="fb:app_id" content="{{ FB_APP_ID }}" />{% endif %}
+    <meta property="og:type" content="website" />
+    {% if page %}
+        <meta property="og:url" content="{% fullpageurl page %}" />
+    {% endif %}
+    <meta property="og:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
+    {% if page.social_image %}
+        {% image page.social_image width-1200 height-627 as social_img %}
+    {% elif page.main_image %}
+        {% image page.main_image width-1200 height-627 as social_img %}
+    {% endif %}
+
+    {% if social_img %}
+        <meta property="og:image" content="{{ social_img.url }}" />
+        <meta property="og:image:width" content="{{ social_img.width }}" />
+        <meta property="og:image:height" content="{{ social_img.height }}" />
+    {% else %}
+        <meta property="og:image" content="{{ site.root_url }}{% static 'img/default-sharing-image.png' %}" />
+    {% endif %}
+    <meta property="og:description" content="{% if page.social_text %}{{ page.social_text }}{% elif page.listing_intro %}{{ page.listing_intro }}{% elif page.introduction %}{{ page.introduction|truncatechars:200 }}{% endif %}" />
+    <meta property="og:site_name" content="Wagtail CMS" />
+
+    <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="{% url 'blog_feed' %}">
+    <link title="This Week in Wagtail" type="application/atom+xml" rel="alternate" href="{% url 'newsletter_feed' %}">
+
+    <meta name="fediverse:creator" content="@wagtail@fosstodon.org">
+
+    {# Reference: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
+    <link rel="icon" href="{% static 'img/favicons/favicon.ico' %}" sizes="32x32">{# 32x32 #}
+    <link rel="icon" href="{% static 'img/favicons/favicon.svg'%}" type="image/svg+xml">{# todo: finish icon (bg, white fill), and @media (prefers-color-scheme: dark) #}
+    <link rel="apple-touch-icon" href="{% static 'img/favicons/apple-touch-icon.png' %}">{# 180x180 #}
+    <link rel="manifest" href="{% static 'img/favicons/favicon.webmanifest' %}">
+
+    <meta name="theme-color" content="#2e1f5e"/>
+
+    {% if GOOGLE_TAG_MANAGER_ID and not request.is_preview and not is_pattern_library %}
+        <!-- Google Tag Manager -->
+        <script nonce="{{ request.csp_nonce }}">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                                                      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ GOOGLE_TAG_MANAGER_ID|escapejs }}');
+        </script>
+        <!-- End Google Tag Manager -->
+    {% endif %}
+{% endblock meta_tags %}
+{% block body_class %}{{ block.super }}{% if page %}template-{{ page.get_verbose_name|slugify }}{% endif %} {% endblock %}
+
+{% block body_top %}
+    {% if GOOGLE_TAG_MANAGER_ID and not request.is_preview and not is_pattern_library %}
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XDDLH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% endif %}
+
+    <div data-site-wide-alert="{% url 'sitewide_alert:sitewide_alert' %}"></div>
+{% endblock body_top %}
+
+{% block header %}
+    {% include "patterns/includes/spaceheader.html" %}
+{% endblock header %}
+
+{% block footer %}
+    {% include "patterns/includes/footer.html" %}
+
+    {% include "patterns/includes/cookie_message.html" %}
+
+    {# Disable survey link for wagtail.org redesign launch #}
+    {% comment %}
+        <a href="https://tally.so/r/wQqagw" target="_blank" class="footer__survey-link">
+            <img src="{% static 'img/clipboard.svg' %}" alt="">
+            <span>Help improve wagtail.org</span>
+        </a>
+    {% endcomment %}
+{% endblock footer %}
