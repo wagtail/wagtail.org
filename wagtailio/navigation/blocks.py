@@ -74,3 +74,14 @@ class MainMenuSectionBlock(blocks.StructBlock):
     class Meta:
         icon = "bars"
         label = "Main menu section"
+
+# --------------- Wagtail Space Navigation ---------------
+
+class SpaceMenuSectionBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255)
+    space_menu_page = blocks.PageChooserBlock(label="Page", required=False)
+    space_menu_url = blocks.URLBlock(label="External Link", required=False)
+
+    class Meta:
+        icon = "bars"
+        label = "Space menu section"

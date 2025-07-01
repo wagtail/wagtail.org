@@ -8,7 +8,7 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField
+from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField, SpaceMenuSectionBlock
 
 
 @register_snippet
@@ -56,6 +56,28 @@ class MainMenu(ClusterableModel):
         for nav in NavigationSettings.objects.filter(main_navigation=self):
             nav.save(fragment_to_clear="primarynav")
 
+@register_snippet
+class SpaceMenu(ClusterableModel):
+    name = models.CharField(max_length=255)
+    menu_sections = StreamField([("menu_section", SpaceMenuSectionBlock())])
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("menu_sections", classname="collapsible"),
+    ]
+
+    class Meta:
+        verbose_name = "Wagtail Space menu"
+
+    def __str__(self) -> str:
+        return f"Wagtail Space menu: {self.name}"
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+
+        for nav in NavigationSettings.objects.filter(space_navigation=self):
+            nav.save(fragment_to_clear="spacenav")
+
 
 @register_setting(icon="list-ul")
 class NavigationSettings(BaseSiteSetting, ClusterableModel):
@@ -80,11 +102,19 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+    space_navigation = models.ForeignKey(
+        "navigation.SpaceMenu",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     panels = [
         FieldPanel("get_started_menu"),
         FieldPanel("main_navigation"),
         FieldPanel("footer_navigation"),
+        FieldPanel("space_navigation"),
     ]
 
     def save(self, **kwargs):
