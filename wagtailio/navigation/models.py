@@ -8,7 +8,11 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField, SpaceMenuSectionBlock
+from wagtailio.navigation.blocks import (
+    MainMenuSectionBlock,
+    NavStreamField,
+    SpaceMenuSectionBlock,
+)
 
 
 @register_snippet
@@ -55,6 +59,7 @@ class MainMenu(ClusterableModel):
 
         for nav in NavigationSettings.objects.filter(main_navigation=self):
             nav.save(fragment_to_clear="primarynav")
+
 
 @register_snippet
 class SpaceMenu(ClusterableModel):

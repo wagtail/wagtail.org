@@ -513,14 +513,14 @@ class HomePageStoryBlock(blocks.StreamBlock):
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"
 
-class SpaceStoryBlock(blocks.StreamBlock): 
+
+class SpaceStoryBlock(blocks.StreamBlock):
     rich_text = RichTextBlock()
     heading = blocks.RichTextBlock(
         required=False,
         features=["bold", "italic", "h2", "h3", "link"],
     )
     image = ImageBlock(required=False)
+
     class Meta:
         template = "patterns/components/streamfields/space_story_block.html"
-
-

@@ -75,7 +75,9 @@ class MainMenuSectionBlock(blocks.StructBlock):
         icon = "bars"
         label = "Main menu section"
 
+
 # --------------- Wagtail Space Navigation ---------------
+
 
 class SpaceMenuSectionBlock(blocks.StructBlock):
     name = blocks.CharBlock(max_length=255)
