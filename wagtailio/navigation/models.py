@@ -65,10 +65,12 @@ class MainMenu(ClusterableModel):
 class SpaceMenu(ClusterableModel):
     name = models.CharField(max_length=255)
     menu_sections = StreamField([("menu_section", SpaceMenuSectionBlock())])
+    registration_url = models.URLField(blank=False, null=True)
 
     panels = [
         FieldPanel("name"),
         FieldPanel("menu_sections", classname="collapsible"),
+        FieldPanel("registration_url"),
     ]
 
     class Meta:

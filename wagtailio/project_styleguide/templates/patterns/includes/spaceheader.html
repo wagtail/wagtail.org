@@ -16,10 +16,6 @@
 
     <div class="header__actions">
 
-        <div class="header__github">
-            <a class="github-button" href="https://github.com/wagtail/wagtail"  data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" size="large" data-show-count="true" aria-label="Visit Wagtail on GitHub to star the repo">Star</a>
-        </div>
-
         <div class="header__nav header__nav--desktop" data-desktop-menu>
             {% space_navigation %}
         </div>
@@ -54,10 +50,10 @@
 
         <div class="header__nav header__nav--mobile" data-mobile-menu>
             {% space_navigation %}
-            {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+            {% include "patterns/components/buttons/button.html" with arrow=True url="#" title="Get Tickets" classes="button--space-button-primary" %}
         </div>
 
-        {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+        {% include "patterns/components/buttons/button.html" with arrow=True url="#" title="Get Tickets" classes="button--space-button-primary" %}
 
         {# Mobile search #}
         {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}

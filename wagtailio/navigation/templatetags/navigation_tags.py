@@ -1,5 +1,7 @@
 from django import template
 
+from wagtailio.navigation.models import SpaceMenu
+
 
 register = template.Library()
 
@@ -57,7 +59,7 @@ def get_started_menu(context):
 
 @register.inclusion_tag("patterns/includes/space_main.html", takes_context=True)
 def space_navigation(context):
-    menus = []
+    spacemenus = []
 
     try:
         space_navigation = context["settings"]["navigation"][
@@ -65,13 +67,26 @@ def space_navigation(context):
         ].space_navigation
 
         for block in space_navigation.menu_sections:
-            menus.append(
+            spacemenus.append(
                 {
                     "name": block.value.get("name"),
-                    "nav_items": block.value.get("nav_items"),
+                    "menu_page": block.value.get("space_menu_page"),
+                    "menu_url": block.value.get("space_menu_url"),
                 }
             )
     except (KeyError, AttributeError):
         return {}
 
     return {"spacemenus": spacemenus}
+
+
+@register.inclusion_tag("patterns/components/buttons/button.html", takes_context=True)
+def get_reg_url(context):
+    if SpaceMenu.objects.exists():
+        return {
+            "reg_url": SpaceMenu.objects.all(),
+            "request": context["request"],
+        }
+
+
+# TODO: Fix this template tag to grab registration URL from the SpaceMenu model
