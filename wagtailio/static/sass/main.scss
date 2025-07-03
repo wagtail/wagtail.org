@@ -73,6 +73,7 @@
 @use 'components/search';
 @use 'components/sign-up-form';
 @use 'components/skip-link';
+@use 'components/spacehero';
 @use 'components/standalone-quote';
 @use 'components/sub-nav';
 @use 'components/teaser';
@@ -91,6 +92,7 @@
 @use 'layout/search-page';
 @use 'layout/blog-listing';
 @use 'layout/showcase-page';
+@use 'layout/space-page';
 
 // Utilities
 @use 'utilities/utilities';

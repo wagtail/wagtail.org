@@ -2,9 +2,6 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 
 {% block content %}
-    {% if page.has_hero %}
-        {% include "patterns/components/hero/space_hero.html" with value=page %}
-    {% endif %}
-
+    {% include "patterns/components/hero/space_hero.html" with value=page %}
     {% include_block page.body %}
 {% endblock %}

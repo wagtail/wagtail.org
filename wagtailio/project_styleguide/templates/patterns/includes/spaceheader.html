@@ -21,7 +21,7 @@
         </div>
 
         <div class="header__nav header__nav--desktop" data-desktop-menu>
-            {% main_navigation %}
+            {% space_navigation %}
         </div>
 
         <div class="header__search">
@@ -54,21 +54,10 @@
 
         <div class="header__nav header__nav--mobile" data-mobile-menu>
             {% space_navigation %}
-            {% if settings.navigation.NavigationSettings.get_started_menu %}
-                <a href="/get-started/" class="header__button header__button--get-started button">
-                    Get started
-                </a>
-            {% endif %}
+            {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
         </div>
 
-        {% if settings.navigation.NavigationSettings.get_started_menu %}
-            <button class="header__button header__button--get-started button" data-get-started>
-                Get started
-                <svg class="header__get-started-icon" aria-hidden="true">
-                    <use xlink:href="#chevron"></use>
-                </svg>
-            </button>
-        {% endif %}
+        {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
 
         {# Mobile search #}
         {% include "patterns/includes/search-form.html" with classes="search--mobile is-hidden u-mobile-only" data_attrs="data-search-mobile" form_id="mobile-search-form" input_id="search-input-mobile" %}

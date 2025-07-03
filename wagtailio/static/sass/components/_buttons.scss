@@ -84,6 +84,30 @@
         }
     }
 
+    &--space-button-primary {
+        background-color: $color-cosmic-pink;
+        color: $color--off-black;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: var(--color--highlight);
+            color: var(--color--highlight);
+        }
+    }
+
+    &--space-button-secondary {
+        background-color: $color-cosmic-green;
+        color: $color--off-black;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: var(--color--highlight);
+            color: var(--color--highlight);
+        }
+    }
+
     &--form {
         &:hover,
         &:focus {

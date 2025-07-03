@@ -11,15 +11,15 @@ from wagtailio.utils.models import SocialMediaMixin
 class WagtailSpaceIndexPage(
     SocialMediaMixin, Page
 ):  # TODO: Determine if CrossPageMixin is needed
-    template = "patterns/pages/wagtailspace/space_page.html"
+    template = "patterns/pages/space_index_page/space_index_page.html"
     parent_page_types = ["core.HomePage"]
-    # subpage_types = ["wagtailspace.WagtailSpacePage"]
+    subpage_types = ["wagtailspace.WagtailSpacePage"]
 
     # ----------------- Hero -----------------
     heading = models.TextField(verbose_name="Heading", blank=True)
     event_date_subhead = models.TextField(verbose_name="Event date", blank=True)
     tagline = models.TextField(verbose_name="Tagline", blank=True)
-    cta = StreamField([("cta", CTABlock())], blank=True, max_num=1)
+    cta = StreamField([("cta", CTABlock())], blank=True, max_num=2)
 
     body = StreamField(SpaceStoryBlock(), blank=True)
     contact_subhead = RichTextField(
@@ -43,7 +43,8 @@ class WagtailSpaceIndexPage(
     ]
 
 
-class WagtailSpacePage:
+class WagtailSpacePage(SocialMediaMixin, Page):
+    parent_page_types = ["wagtailspace.WagtailSpaceIndexPage"]
     heading = models.TextField(verbose_name="Heading", blank=True)
     sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
     body = StreamField(SpaceStoryBlock(), blank=True)

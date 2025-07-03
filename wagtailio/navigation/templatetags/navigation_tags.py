@@ -53,3 +53,25 @@ def get_started_menu(context):
     return {
         "get_started_menu": get_started_menu,
     }
+
+
+@register.inclusion_tag("patterns/includes/space_main.html", takes_context=True)
+def space_navigation(context):
+    menus = []
+
+    try:
+        space_navigation = context["settings"]["navigation"][
+            "NavigationSettings"
+        ].space_navigation
+
+        for block in space_navigation.menu_sections:
+            menus.append(
+                {
+                    "name": block.value.get("name"),
+                    "nav_items": block.value.get("nav_items"),
+                }
+            )
+    except (KeyError, AttributeError):
+        return {}
+
+    return {"spacemenus": spacemenus}

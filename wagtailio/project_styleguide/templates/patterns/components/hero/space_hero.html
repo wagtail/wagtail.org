@@ -2,37 +2,41 @@
 
 <div class="grid">
     <div class="spacehero {% if classes %}{{ classes }}{% endif %}">
-        <div class="spacehero__inner">
-            <hgroup>
-                <h1 class="hero__heading">{% firstof value.heading value.title %}</h1>
-
-                {% if value.sub_heading or value.subheading %}
-                    <p class="hero__subheading intro-big">{% firstof value.sub_heading value.subheading %}</p>
-                {% endif %}
-            </hgroup>
-
-            {% if value.intro %}
-                <div class="hero__intro">{{ value.intro|richtext }}</div>
-            {% endif %}
-
-            {# We're actually only dealing with 1 block, since `max_num=1` #}
-            {% for block in value.cta %}
-                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="hero__button" %}
-            {% endfor %}
-        </div>
-
-        {# Paper plane svg is made of mupltiple paths - different to the other icon choices #}
-        {% if value.icon == 'paper-plane' %}
-            <div class="hero__icon hero__icon--paper-plane">
-                <svg class="hero__light-mode" aria-hidden="true">
-                    <use xlink:href="#paper-plane"></use>
-                </svg>
-                <svg class="hero__dark-mode" aria-hidden="true">
-                    <use xlink:href="#paper-plane-dark"></use>
-                </svg>
+        <section class="hero-section">
+            <div class="stars-bg" style="background-image: url('{{ STATIC_URL }}images/stars-background.png');"></div>
+            <div class="hero-container">
+                <div class="hero-parent">
+                    <div class="heading-container">
+                        {% if value.heading %}
+                            <div class="space-heading">{{ value.heading }}</div>
+                        {% endif %}
+                        <div class="frame-wrapper">
+                            <div class="frame-container">
+                                <div class="date-container">
+                                    {% if value.event_date_subhead %}
+                                        <b class="space-date">{{ value.event_date_subhead }}</b>
+                                    {% endif %}
+                                    {% if value.tagline %}
+                                        <div class="space-tagline">{{ value.tagline }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if value.cta %}
+                        <div class="button-parent">
+                            {% for block in value.cta %}
+                                {% if forloop.first %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
+                                {% else %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <img class="frame-child" alt="" src="{{ STATIC_URL }}images/Group 462.png">
+                </div>
             </div>
-        {% elif value.icon %}
-            {% include "patterns/components/icon/icon.html" with icon=value.icon classes="icon--primary hero__icon" %}
-        {% endif %}
+        </section>
     </div>
 </div>

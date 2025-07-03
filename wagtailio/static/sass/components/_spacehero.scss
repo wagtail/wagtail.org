@@ -1,0 +1,33 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.spacehero {
+    $root: &;
+    @include sf-spacing(6);
+    position: relative;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+    }
+
+    &__light-mode {
+        display: block;
+
+        .theme-dark & {
+            display: none;
+        }
+    }
+
+    &__dark-mode {
+        display: none;
+
+        .theme-dark & {
+            display: block;
+        }
+    }
+}
