@@ -1,10 +1,11 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
 
-.spacehero {
+.spacegrid {
     $root: &;
     @include sf-spacing(6);
     position: relative;
+    margin-bottom: 0;
     grid-column: 2 / span 2;
 
     @include media-query(medium) {

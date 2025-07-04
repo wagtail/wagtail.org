@@ -1,11 +1,45 @@
 from django.db import models
 
+from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.fields import RichTextField, StreamField
+from wagtail.fields import StreamField
 from wagtail.models import Page
+from wagtail.snippets.models import register_snippet
 
-from wagtailio.core.blocks import CTABlock, SpaceStoryBlock
+from wagtailio.core.blocks import CTABlock, ImageBlock, SpaceStoryBlock
 from wagtailio.utils.models import SocialMediaMixin
+
+
+@register_snippet
+class SpaceSocialSnippet(models.Model):
+    heading = models.CharField(max_length=255)
+    subheading = models.CharField(max_length=255)
+    social = StreamField(
+        [
+            (
+                "social",
+                blocks.StructBlock(
+                    [
+                        ("name", blocks.CharBlock()),
+                        ("url", blocks.URLBlock()),
+                        ("logo", ImageBlock()),
+                    ],
+                ),
+            ),
+        ]
+    )
+
+    class Meta:
+        verbose_name = "Wagtail Space Social Menu"
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel("heading"),
+        FieldPanel("subheading"),
+        FieldPanel("social"),
+    ]
 
 
 class WagtailSpaceIndexPage(
@@ -22,11 +56,6 @@ class WagtailSpaceIndexPage(
     cta = StreamField([("cta", CTABlock())], blank=True, max_num=2)
 
     body = StreamField(SpaceStoryBlock(), blank=True)
-    contact_subhead = RichTextField(
-        verbose_name="Contact Subhead",
-        blank=True,
-        features=["bold", "italic", "link"],
-    )  # TODO: Turn the contact and social media piece into a Snippet
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
@@ -39,7 +68,6 @@ class WagtailSpaceIndexPage(
             classname="collapsible",
         ),
         FieldPanel("body"),
-        FieldPanel("contact_subhead"),
     ]
 
 
