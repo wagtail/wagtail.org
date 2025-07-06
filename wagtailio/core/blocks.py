@@ -566,8 +566,8 @@ class SpeakerHighlightBlock(blocks.StructBlock):
 
 class SponsorBlock(blocks.StructBlock):
     sponsor_type = blocks.CharBlock(max_length=255, required=True)
-    sponsor_logo = blocks.StreamBlock(
-        [("sponsor_logo", ImageBlock())], required=True, null=True
+    sponsor_logo = blocks.ListBlock(
+        ImageBlock(),
     )
 
     class Meta:

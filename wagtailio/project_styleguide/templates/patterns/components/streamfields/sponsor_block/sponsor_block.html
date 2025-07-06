@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="sponsor-container">
+   <p class="sponsor-type">{{ value.sponsor_type }}</p>
+    <div>
+        {% for logo in value.sponsor_logo %}
+            {% image logo max-200x200 %}
+        {% endfor %}
+    </div>
+</div>
