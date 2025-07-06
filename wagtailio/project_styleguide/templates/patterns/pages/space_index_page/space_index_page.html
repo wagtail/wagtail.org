@@ -3,5 +3,7 @@
 
 {% block content %}
     {% include "patterns/components/hero/space_hero.html" with value=page %}
-    {% include_block page.body %}
+    <div class ="space-body-container">
+        {% include_block page.body %}
+    </div>
 {% endblock %}

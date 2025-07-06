@@ -535,6 +535,11 @@ class SpaceCTABlock(CTALinkMixin):
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
 
+    class Meta:
+        icon = "bullhorn"
+        template = "patterns/components/streamfields/cta/cta_space.html"
+        label = "CTA"
+
 
 class SpeakerBlock(blocks.StructBlock):
     speaker_image = ImageBlock(

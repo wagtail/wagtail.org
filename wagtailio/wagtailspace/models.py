@@ -1,34 +1,27 @@
 from django.db import models
 
-from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
-from wagtail.snippets.models import register_snippet
+from wagtail import blocks
 
-from wagtailio.core.blocks import CTABlock, ImageBlock, SpaceStoryBlock
+from wagtailio.core.blocks import CTABlock, SpaceStoryBlock, ImageBlock
 from wagtailio.utils.models import SocialMediaMixin
-
+from wagtail.snippets.models import register_snippet
 
 @register_snippet
 class SpaceSocialSnippet(models.Model):
     heading = models.CharField(max_length=255)
     subheading = models.CharField(max_length=255)
-    social = StreamField(
-        [
-            (
-                "social",
-                blocks.StructBlock(
-                    [
-                        ("name", blocks.CharBlock()),
-                        ("url", blocks.URLBlock()),
-                        ("logo", ImageBlock()),
-                    ],
-                ),
-            ),
-        ]
-    )
-
+    social = StreamField([
+        ('social', blocks.StructBlock([
+            ('name', blocks.CharBlock()),
+            ('url', blocks.URLBlock()),
+            ('logo', ImageBlock()),
+                ],
+            )),
+        ])
+    
     class Meta:
         verbose_name = "Wagtail Space Social Menu"
 
@@ -55,6 +48,7 @@ class WagtailSpaceIndexPage(
     tagline = models.TextField(verbose_name="Tagline", blank=True)
     cta = StreamField([("cta", CTABlock())], blank=True, max_num=2)
 
+    body = StreamField(SpaceStoryBlock(), blank=True)
     body = StreamField(SpaceStoryBlock(), blank=True)
     content_panels = Page.content_panels + [
         MultiFieldPanel(
