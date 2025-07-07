@@ -74,6 +74,7 @@ class WagtailSpaceIndexPage(
 
 class WagtailSpacePage(SocialMediaMixin, Page):
     parent_page_types = ["wagtailspace.WagtailSpaceIndexPage"]
+    template = "patterns/pages/space_page/space_page.html"
     heading = models.TextField(verbose_name="Heading", blank=True)
     sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
     body = StreamField(SpaceStoryBlock(), blank=True)
