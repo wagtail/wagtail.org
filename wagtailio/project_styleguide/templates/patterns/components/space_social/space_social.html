@@ -1,0 +1,29 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-speaker-container">
+            <div class ="centered-space-container">
+                {% if value.heading %}
+                    <h2 class="centered-space-text">
+                        {{ value.heading }}
+                    </h2>
+                {% endif %}
+                {% if value.subheading %}
+                    <p class="centered-space-text">
+                        {{ value.subheading|richtext }}
+                    </p>
+                {% endif %}
+                {% if value.social %}
+                    <div class ="">
+                        {% for social in value.social %}
+                            <a href="{{ social.value.url}}">
+                                {% image social.value.logo max-100x100 class="speaker-image" %}
+                            </a>         
+                        {% endfor %}    
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

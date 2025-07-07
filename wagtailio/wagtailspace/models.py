@@ -12,12 +12,12 @@ from wagtail.snippets.models import register_snippet
 @register_snippet
 class SpaceSocialSnippet(models.Model):
     heading = models.CharField(max_length=255)
-    subheading = models.CharField(max_length=255)
+    subheading = RichTextField(max_length=255)
     social = StreamField([
         ('social', blocks.StructBlock([
             ('name', blocks.CharBlock()),
             ('url', blocks.URLBlock()),
-            ('logo', ImageBlock()),
+            ('logo', ImageBlock(help_text="Max image width of 100px for best results.")),
                 ],
             )),
         ])
@@ -26,7 +26,7 @@ class SpaceSocialSnippet(models.Model):
         verbose_name = "Wagtail Space Social Menu"
 
     def __str__(self):
-        return self.name
+        return self.heading
 
     panels = [
         FieldPanel("heading"),
@@ -47,9 +47,15 @@ class WagtailSpaceIndexPage(
     event_date_subhead = models.TextField(verbose_name="Event date", blank=True)
     tagline = models.TextField(verbose_name="Tagline", blank=True)
     cta = StreamField([("cta", CTABlock())], blank=True, max_num=2)
+    body = StreamField(SpaceStoryBlock(), blank=True)
+    space_social = models.ForeignKey(
+          'wagtailspace.SpaceSocialSnippet',
+          null=True,
+          blank=True,
+          on_delete=models.SET_NULL,
+          related_name='+'
+      )
 
-    body = StreamField(SpaceStoryBlock(), blank=True)
-    body = StreamField(SpaceStoryBlock(), blank=True)
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
@@ -62,6 +68,7 @@ class WagtailSpaceIndexPage(
             classname="collapsible",
         ),
         FieldPanel("body"),
+        FieldPanel("space_social")
     ]
 
 
@@ -70,5 +77,15 @@ class WagtailSpacePage(SocialMediaMixin, Page):
     heading = models.TextField(verbose_name="Heading", blank=True)
     sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
     body = StreamField(SpaceStoryBlock(), blank=True)
+    space_social = models.ForeignKey(
+          'wagtailspace.SpaceSocialSnippet',
+          null=True,
+          blank=True,
+          on_delete=models.SET_NULL,
+          related_name='+'
+      )
 
-    content_panels = Page.content_panels + [FieldPanel("body")]
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+        FieldPanel("space_social")
+        ]
