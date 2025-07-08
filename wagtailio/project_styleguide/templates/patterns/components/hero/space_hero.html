@@ -2,9 +2,7 @@
 
 <div class="grid">
     <div class="spacegrid {% if classes %}{{ classes }}{% endif %}">
-        <section class="hero-section">
-            <div class="stars-bg" style="background-image: url('{{ STATIC_URL }}images/stars-background.png');"></div>
-            <div class="hero-container">
+        <section class="hero-section">            <div class="hero-container">
                 <div class="hero-parent">
                     <div class="heading-container">
                         {% if value.heading %}
@@ -34,7 +32,6 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    <img class="frame-child" alt="" src="{{ STATIC_URL }}images/Group 462.png">
                 </div>
             </div>
         </section>

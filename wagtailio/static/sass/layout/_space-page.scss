@@ -77,15 +77,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   @include flex-center;
 }
 
-.stars-bg {
-  @include absolute-full;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-  animation: subtleFloat 8s ease-in-out infinite;
-}
-
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -220,22 +211,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-family: 'Font Awesome 6 Free';
   display: inline-block;
   z-index: 1;
-}
-
-// Decorative Image
-.frame-child {
-  width: 104.13%;
-  position: absolute;
-  margin: 0 !important;
-  top: -562.9px;
-  right: -3.96%;
-  left: -0.17%;
-  max-width: 100%;
-  overflow: hidden;
-  height: 1497.4px;
-  flex-shrink: 0;
-  object-fit: contain;
-  z-index: 0;
 }
 
 // Space Centering Styles
@@ -622,38 +597,38 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 // TODO: Clear out this responsive design section once the design is finalized
 
 // Responsive Design
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 4rem 0 5rem;
-    min-height: 70vh;
-  }
+// @media (max-width: 768px) {
+//   .hero-section {
+//     padding: 4rem 0 5rem;
+//     min-height: 70vh;
+//   }
   
-  .hero-container {
-    padding: 0 1rem;
-  }
+//   .hero-container {
+//     padding: 0 1rem;
+//   }
   
-  .space-heading {
-    font-size: 2.5rem;
-    width: 100%;
-  }
+//   .space-heading {
+//     font-size: 2.5rem;
+//     width: 100%;
+//   }
   
-  .hero-parent {
-    padding: 4rem 1rem;
-  }
+//   .hero-parent {
+//     padding: 4rem 1rem;
+//   }
 
-  .frame-wrapper {
-    width: 100%;
-    padding: 0 1rem;
-  }
+//   .frame-wrapper {
+//     width: 100%;
+//     padding: 0 1rem;
+//   }
 
-  .space-date,
-  .space-tagline {
-    width: 100%;
-  }
+//   .space-date,
+//   .space-tagline {
+//     width: 100%;
+//   }
 
-  .button-parent {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
+//   .button-parent {
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 10px;
+//   }
+// }
