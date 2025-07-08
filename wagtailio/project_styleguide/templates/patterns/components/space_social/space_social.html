@@ -2,23 +2,27 @@
 
 <div class="grid">
     <div class="spacegrid">
-        <div class="space-speaker-container">
-            <div class ="centered-space-container">
+        <div class="space-social-container">
+            <div class ="social-heading">
                 {% if value.heading %}
-                    <h2 class="centered-space-text">
+                    <h2>
                         {{ value.heading }}
                     </h2>
                 {% endif %}
+            </div>
+            <div class="social-subhead">
                 {% if value.subheading %}
-                    <p class="centered-space-text">
+                    <p>
                         {{ value.subheading|richtext }}
                     </p>
                 {% endif %}
+            </div>
+            <div class="social-logo-container">
                 {% if value.social %}
-                    <div class ="">
+                    <div class ="social-logo-link">
                         {% for social in value.social %}
                             <a href="{{ social.value.url}}">
-                                {% image social.value.logo max-100x100 class="speaker-image" %}
+                                {% image social.value.logo max-100x100 class="social-logo" %}
                             </a>
                         {% endfor %}
                     </div>

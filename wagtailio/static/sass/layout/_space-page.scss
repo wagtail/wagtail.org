@@ -42,10 +42,14 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
     font-family: $font-family-system;
 }
 
-.wagtail-space-landing {
-  min-height: 100vh;
-  background-color: $color-dark-bg;
+.template-wagtail-space-page {
+    background-color: $color-dark-bg;
+    color: $color--white;
+    font-family: $font-family-system;
 }
+
+// TODO: Figure out why this .template code works
+
 
 // Hero Section
 .hero-section {
@@ -260,6 +264,58 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   }
 }
 
+// Space Child Page Text Styles
+
+.space-text {
+  margin-bottom: 40px;
+  font-family: $font-family-primary;
+  h2 {
+    position: relative;
+    font-size: 40px;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+    font-family: $font-family-primary;
+    color: #ff8fea;
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom:30px;
+  }
+  h3 {
+    position: relative;
+    font-size: 25px;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+    font-family: $font-family-primary;
+    color: #ff8fea;
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom:30px;
+  }
+  p {
+    width: 744px;
+    position: relative;
+    font-size: 20px;
+    line-height: 160%;
+    text-align: left;
+    margin-bottom:20px;
+  }
+
+  a {
+    color:#f5f3f8;
+
+    &:hover,
+    &:active,
+    &:visited,{
+      color:#f5f3f8;
+    }
+  }
+
+  ul{
+    padding: 0px 50px 20px;
+  }
+  
+}
+
 // Speaker Styles
 
 .space-speaker-parent{
@@ -379,7 +435,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 .sponsor-background {
   width: 100%;
   background-color: #ffd3f7;
-  transform: rotate(-1.4deg);
 }
 
 .sponsor-fill {
@@ -389,7 +444,20 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 
 .sponsor-rectangle {
   padding: 110px 0px 140px 0px;
-  transform: rotate(1.4deg);
+  position: relative;
+    z-index: 2;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        background: #ffd3f7;
+        transform: rotate(-1.4deg);
+        z-index: -1;
+    }
 }
 
 .sponsor-heading {
@@ -428,6 +496,92 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 
 .sponsor-container {
   width: 100%;
+}
+
+// Space Social Styles
+
+.space-social-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px 140px;
+  box-sizing: border-box; 
+}
+
+.social-heading {
+  width: 100%;
+  font-size: 50px;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-family: $font-family-primary;
+  color: #f5f3f8;
+  text-align: center;
+}
+
+.social-subhead {
+  width: 100%;
+  position: relative;
+  font-size: 34px;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  font-family: $font-family-primary;
+  text-align: center;
+  display: inline-block;
+  color: #f5f3f8;
+
+  a {
+    color:#f5f3f8;
+
+    &:hover,
+    &:active,
+    &:visited,{
+      color:#f5f3f8;
+    }
+  }
+}
+
+.social-logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+  z-index: 0;
+  align-self: stretch;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 70px;
+}
+
+.social-logo-link {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 0;
+  gap: 44px;
+}
+
+// Subpage Styles
+
+.space-heading-container {
+  display: flex;
+  justify-content: center;
+}
+
+.space-heading-2 {
+  width: 744px;
+  font-size: 76px;
+  letter-spacing: -0.01em;
+  line-height: 120%;
+  font-family: $font-family-primary;
+  color: $color-text-light;
+  padding-bottom: 40px;
 }
 
 

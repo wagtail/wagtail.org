@@ -519,7 +519,7 @@ class HomePageStoryBlock(blocks.StreamBlock):
 
 class SpaceTextBlock(RichTextBlock):
     class Meta:
-        template = "patterns/components/streamfields/centered_space_text_block.html"
+        template = "patterns/components/streamfields/space_text_block.html"
         label = "Text"
 
 
