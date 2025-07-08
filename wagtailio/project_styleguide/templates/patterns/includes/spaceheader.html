@@ -9,7 +9,7 @@
                 <use xlink:href="#wagtail-dark" />
             </svg>
             <svg class="header__logo header__logo--light" aria-hidden="true">
-                <use xlink:href="#wagtail-light" />
+                <use xlink:href="#wagtail-dark" />
             </svg>
         </a>
     </div>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="header__menu-toggle">
-            <button class="burger" data-mobile-menu-toggle aria-haspopup="true" aria-expanded="false" aria-label="Mobile menu toggle">
+            <button class="burger theme-dark" data-mobile-menu-toggle aria-haspopup="true" aria-expanded="false" aria-label="Mobile menu toggle">
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
@@ -48,7 +48,7 @@
             </button>
         </div>
 
-        <div class="header__nav header__nav--mobile" data-mobile-menu>
+        <div class="header__nav header__nav--mobile theme-dark" data-mobile-menu>
             {% space_navigation %}
             {% include "patterns/components/buttons/button.html" with arrow=True url="#" title="Get Tickets" classes="button--space-button-primary" %}
         </div>
