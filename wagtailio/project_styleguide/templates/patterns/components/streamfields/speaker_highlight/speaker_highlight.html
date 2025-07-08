@@ -2,25 +2,25 @@
 
 <div class="grid">
     <div class="spacegrid">
-            <div class="space-speaker-parent">
-                <div class="speaker-heading">
-                        {% if value.heading %}
-                            <h2>
-                                {{ value.heading }}
-                            </h2>
-                        {% endif %}
-                </div>
-                <div class="space-speaker-container">
-                    <div class="speaker-card-container">
-                        {% if value.speaker %}
-                            <div class ="speaker-card">
-                                {% for speaker in value.speaker %}
-                                    {% include_block speaker %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
+        <div class="space-speaker-parent">
+            <div class="speaker-heading">
+                {% if value.heading %}
+                    <h2>
+                        {{ value.heading }}
+                    </h2>
+                {% endif %}
+            </div>
+            <div class="space-speaker-container">
+                <div class="speaker-card-container">
+                    {% if value.speaker %}
+                        <div class ="speaker-card">
+                            {% for speaker in value.speaker %}
+                                {% include_block speaker %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
+        </div>
     </div>
 </div>
