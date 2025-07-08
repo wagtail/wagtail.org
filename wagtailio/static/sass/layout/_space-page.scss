@@ -125,6 +125,27 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-weight: 900;
   display: inline-block;
   @include text-stroke(2px, $color-cosmic-pink);
+  
+  // Add some padding so text doesn't sit directly on the image
+  padding: 20px;
+  
+  // Background image as pseudo-element
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/static/img/wagtail-rocketship.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  // Ensure the text appears above the background
+  z-index: 1;
 }
 
 .frame-wrapper {
