@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 // Mixins
 @mixin flex-center {
@@ -96,7 +97,8 @@
 }
 
 .space-heading {
-  width: 1314px;
+  width: 100%;
+  max-width: 1314px;
   position: relative;
   letter-spacing: -0.01em;
   line-height: 110%;
@@ -124,7 +126,8 @@
 }
 
 .frame-wrapper {
-  width: 1240px;
+  width: 100%;
+  max-width: 1240px;
   @include flex-column;
   align-items: flex-start;
   justify-content: flex-start;
@@ -148,7 +151,8 @@
 }
 
 .space-date {
-  width: 744px;
+  width: 100%;
+  max-width: 744px;
   position: relative;
   letter-spacing: -0.01em;
   line-height: 150%;
@@ -564,43 +568,271 @@
   padding-bottom: 40px;
 }
 
-
-
-// TODO: Clear out this responsive design section once the design is finalized
-
-// Responsive Design
-// @media (max-width: 768px) {
-//   .hero-section {
-//     padding: 4rem 0 5rem;
-//     min-height: 70vh;
-//   }
+// Mobile Styles
+@include media-query(smallonly) {
+  .hero-section {
+    padding: 60px 15px 30px;
+  }
   
-//   .hero-container {
-//     padding: 0 1rem;
-//   }
+  .hero-parent {
+    font-size: 48px;
+    gap: 15px;
+  }
   
-//   .space-heading {
-//     font-size: 2.5rem;
-//     width: 100%;
-//   }
+  .space-heading {
+    width: 100%;
+    max-width: 1314px;
+    font-size: 48px;
+    padding: 10px;
+  }
   
-//   .hero-parent {
-//     padding: 4rem 1rem;
-//   }
+  .frame-wrapper {
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 15px;
+  }
+  
+  .space-date,
+  .space-tagline {
+    width: 100%;
+    max-width: 744px;
+  }
+  
+  .space-date {
+    font-size: 28px;
+  }
+  
+  .space-tagline {
+    font-size: 18px;
+  }
+  
+  .button-parent {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .centered-space-container {
+    padding: 60px 15px;
+  }
+  
+  .centered-space-text {
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      width: 100%;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .space-speaker-parent {
+    padding: 60px 0 40px 0;
+  }
+  
+  .speaker-heading {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .speaker-card-container {
+    padding: 40px 15px 60px;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .speaker-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .speaker-container {
+    min-height: auto;
+    width: 100%;
+  }
+  
+  .speaker-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .speaker-info {
+    padding: 20px;
+  }
+  
+  .speaker-name {
+    font-size: 22px;
+  }
+  
+  .speaker-talk {
+    font-size: 15px;
+  }
+  
+  .space-text {
+    h2 {
+      font-size: 28px;
+      padding-top: 60px;
+      padding-bottom: 20px;
+    }
+    
+    h3 {
+      font-size: 20px;
+      padding-top: 60px;
+      padding-bottom: 20px;
+    }
+    
+    p {
+      width: 100%;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    
+    ul {
+      padding: 0 30px 15px;
+    }
+  }
+}
 
-//   .frame-wrapper {
-//     width: 100%;
-//     padding: 0 1rem;
-//   }
-
-//   .space-date,
-//   .space-tagline {
-//     width: 100%;
-//   }
-
-//   .button-parent {
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 10px;
-//   }
-// }
+@media only screen and (max-width: 1022px) {
+  .hero-section {
+    padding: 80px 20px 40px;
+  }
+  
+  .hero-parent {
+    font-size: 60px;
+    gap: 20px;
+  }
+  
+  .space-heading {
+    width: 100%;
+    max-width: 1314px;
+    font-size: 60px;
+    padding: 10px;
+  }
+  
+  .frame-wrapper {
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 20px;
+  }
+  
+  .space-date,
+  .space-tagline {
+    width: 100%;
+    max-width: 744px;
+  }
+  
+  .space-date {
+    font-size: 32px;
+  }
+  
+  .space-tagline {
+    font-size: 20px;
+  }
+  
+  .button-parent {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .centered-space-container {
+    padding: 80px 20px;
+  }
+  
+  .centered-space-text {
+    h2 {
+      font-size: 40px;
+      margin-bottom: 30px;
+    }
+    
+    h3 {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+    
+    p {
+      width: 100%;
+      font-size: 19px;
+      margin-bottom: 18px;
+    }
+  }
+  
+  .space-speaker-parent {
+    padding: 80px 0 60px 0;
+  }
+  
+  .speaker-heading {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .speaker-card-container {
+    padding: 50px 20px 80px;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .speaker-card {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .speaker-container {
+    min-height: auto;
+    width: 100%;
+  }
+  
+  .speaker-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .speaker-info {
+    padding: 25px;
+  }
+  
+  .speaker-name {
+    font-size: 24px;
+  }
+  
+  .speaker-talk {
+    font-size: 16px;
+  }
+  
+  .space-text {
+    h2 {
+      font-size: 32px;
+      padding-top: 80px;
+      padding-bottom: 25px;
+    }
+    
+    h3 {
+      font-size: 22px;
+      padding-top: 80px;
+      padding-bottom: 25px;
+    }
+    
+    p {
+      width: 100%;
+      font-size: 19px;
+      margin-bottom: 18px;
+    }
+    
+    ul {
+      padding: 0 40px 18px;
+    }
+  }
+}
