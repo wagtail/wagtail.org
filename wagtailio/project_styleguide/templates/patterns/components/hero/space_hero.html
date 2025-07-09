@@ -3,37 +3,37 @@
 <div class="grid">
     <div class="spacegrid {% if classes %}{{ classes }}{% endif %}">
         <section class="hero-section">            <div class="hero-container">
-                <div class="hero-parent">
-                    <div class="heading-container">
-                        {% if value.heading %}
-                            <div class="space-heading">{{ value.heading }}</div>
-                        {% endif %}
-                        <div class="frame-wrapper">
-                            <div class="frame-container">
-                                <div class="date-container">
-                                    {% if value.event_date_subhead %}
-                                        <b class="space-date">{{ value.event_date_subhead }}</b>
-                                    {% endif %}
-                                    {% if value.tagline %}
-                                        <div class="space-tagline">{{ value.tagline }}</div>
-                                    {% endif %}
-                                </div>
+            <div class="hero-parent">
+                <div class="heading-container">
+                    {% if value.heading %}
+                        <div class="space-heading">{{ value.heading }}</div>
+                    {% endif %}
+                    <div class="frame-wrapper">
+                        <div class="frame-container">
+                            <div class="date-container">
+                                {% if value.event_date_subhead %}
+                                    <b class="space-date">{{ value.event_date_subhead }}</b>
+                                {% endif %}
+                                {% if value.tagline %}
+                                    <div class="space-tagline">{{ value.tagline }}</div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-                    {% if value.cta %}
-                        <div class="button-parent">
-                            {% for block in value.cta %}
-                                {% if forloop.first %}
-                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
-                                {% else %}
-                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
                 </div>
+                {% if value.cta %}
+                    <div class="button-parent">
+                        {% for block in value.cta %}
+                            {% if forloop.first %}
+                                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
+                            {% else %}
+                                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
+        </div>
         </section>
     </div>
 </div>

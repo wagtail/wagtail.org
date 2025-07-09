@@ -1,15 +1,4 @@
-// Variables
-$color-dark-bg: #2a2a2a;
-$color-dark-bg-gradient: #1a1a1a;
-$color--white:#fff;
-$color-cosmic-pink: #ff8fea;
-$color-cosmic-green: #77fcff;
-$color-text-light: #f5f3f8;
-$color-text-dark: #2b2833;
-$color-border-dark: #262626;
-
-$font-family-primary: 'Kumbh Sans';
-$font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+@use "../abstracts/variables" as *;
 
 // Mixins
 @mixin flex-center {
@@ -37,23 +26,21 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 
 // Base Styles
 .template-wagtail-space-index-page {
-    background-color: $color-dark-bg;
+    background-color: $color-darkspace-bg;
     color: $color--white;
-    font-family: $font-family-system;
 }
 
 .template-wagtail-space-page {
-    background-color: $color-dark-bg;
+    background-color: $color-darkspace-bg;
     color: $color--white;
-    font-family: $font-family-system;
 }
 
 .space-stars{
   width: 100%;
   position: absolute;
-  margin: 0 !important;
-  top: 0px;
-  left: 0px;
+  margin: 0;
+  top: 0;
+  left: 0;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
@@ -73,7 +60,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   padding: 140px 99px 10px;
   box-sizing: border-box;
   gap: 40px;
-  font-family: 'Kumbh Sans';
+  font-family: $font--primary;
   @include flex-center;
 }
 
@@ -96,8 +83,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   gap: 40px;
   text-align: center;
   font-size: 110px;
-  color: $color-text-dark;
-  font-family: $font-family-primary;
+  color: $color-spacetext-dark;
+  font-family: $font--primary;
 }
 
 .heading-container {
@@ -124,10 +111,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0 0 0 0;
     background-image: url('/static/img/wagtail-rocketship.png');
     background-size: contain;
     background-position: center;
@@ -144,7 +128,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   @include flex-column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 0px 247px 0px 249px;
+  padding: 0 247px 0 249px;
   box-sizing: border-box;
   font-size: 40px;
   color: $color-cosmic-green;
@@ -177,7 +161,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 25px;
   letter-spacing: -0.01em;
   line-height: 150%;
-  color: $color-text-light;
+  color: $color-spacetext-light;
   display: inline-block;
 }
 
@@ -189,9 +173,9 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   justify-content: flex-start;
   gap: 15px;
   z-index: 1;
-  text-align: left;
+  text-align: start;
   font-size: 16px;
-  color: $color-border-dark;
+  color: $color--off-black;
 }
 
 .call-to-action {
@@ -199,47 +183,31 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   z-index: 0;
 }
 
-.div {
-  width: 15px;
-  position: absolute;
-  margin: 0 !important;
-  top: calc(50% - 10px);
-  right: 21px;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  line-height: 130%;
-  font-family: 'Font Awesome 6 Free';
-  display: inline-block;
-  z-index: 1;
-}
-
 // Space Centering Styles
-
 .space-body-container {
-  color: $color-text-light;
+  color: $color-spacetext-light;
   text-align: center;
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 140px 0px;
+  padding: 140px 0;
   box-sizing: border-box;
-  text-align: left;
 }
 
 .centered-space-container {
-  color: $color-text-light;
+  color: $color-spacetext-light;
   text-align: center;
   position: relative;
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
-  text-align: left;
   @include flex-center;
 }
 
 .centered-space-text {
   margin-bottom: 40px;
-  font-family: $font-family-primary;
+  font-family: $font--primary;
+
   h2 {
     font-size: 50px;
     align-self: stretch;
@@ -251,6 +219,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
     display: inline-block;
     margin-bottom: 40px;
   }
+
   h3 {
     font-size: 30px;
     align-self: stretch;
@@ -262,70 +231,76 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
     display: inline-block;
     margin-bottom: 40px;
   }
+
   p {
     width: 744px;
     position: relative;
     font-size: 20px;
     line-height: 160%;
-    text-align: left;
+    text-align: start;
     margin-bottom:20px;
   }
 }
 
 // Space Child Page Text Styles
-
 .space-text {
   margin-bottom: 40px;
-  font-family: $font-family-primary;
+  font-family: $font--primary;
+
   h2 {
     position: relative;
     font-size: 40px;
     letter-spacing: -0.01em;
     line-height: 150%;
-    font-family: $font-family-primary;
-    color: #ff8fea;
-    text-align: left;
+    font-family: $font--primary;
+    color: $color-cosmic-pink;
+    text-align: start;
     padding-top: 100px;
     padding-bottom:30px;
   }
+
   h3 {
     position: relative;
     font-size: 25px;
     letter-spacing: -0.01em;
     line-height: 150%;
-    font-family: $font-family-primary;
-    color: #ff8fea;
-    text-align: left;
+    font-family: $font--primary;
+    color: $color-cosmic-pink;
+    text-align: start;
     padding-top: 100px;
     padding-bottom:30px;
   }
+
   p {
     width: 744px;
     position: relative;
     font-size: 20px;
     line-height: 160%;
-    text-align: left;
+    text-align: start;
     margin-bottom:20px;
   }
 
   a {
-    color:#f5f3f8;
+    color:$color-spacetext-light;
 
     &:hover,
     &:active,
     &:visited,{
-      color:#f5f3f8;
+      color:$color-spacetext-light;
     }
   }
 
   ul{
-    padding: 0px 50px 20px;
+    padding: 0 50px 20px;
+  }
+
+  li{
+    text-align: start;
   }
   
 }
 
 // Speaker Styles
-
 .space-speaker-parent{
   position: relative;
   width: 100%;
@@ -333,7 +308,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 140px 0px 80px 0px;
+  padding: 140px 0 80px 0;
   box-sizing: border-box;
 }
 
@@ -351,8 +326,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 50px;
   letter-spacing: -0.01em;
   line-height: 150%;
-  font-family: $font-family-primary;
-  color: #f5f3f8;
+  font-family: $font--primary;
+  color: $color-spacetext-light;
   text-align: center;
 }
 
@@ -406,9 +381,9 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   letter-spacing: -0.01em;
   line-height: 130%;
   display: inline-block;
-  font-family: $font-family-primary;
-  color: #fff;
-  text-align: left;
+  font-family: $font--primary;
+  color: $color--white;
+  text-align: start;
 }
 
 .speaker-name{
@@ -417,9 +392,9 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 25px;
   letter-spacing: -0.01em;
   line-height: 140%;
-  font-family: $font-family-primary;
-  color: #f5f3f8;
-  text-align: left;
+  font-family: $font--primary;
+  color: $color-spacetext-light;
+  text-align: start;
 }
 
 .speaker-info {
@@ -429,7 +404,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 }
 
 // Sponsor Styles
-
 .space-sponsor-container{
   width: 100%;
   position: relative;
@@ -437,21 +411,21 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: #ffd3f7;
+  background-color: $color-sponsor-pink;
 }
 
 .sponsor-background {
   width: 100%;
-  background-color: #ffd3f7;
+  background-color: $color-sponsor-pink;
 }
 
 .sponsor-fill {
-  background-color: #ffd3f7;
-  padding: 0px 100px;
+  background-color: $color-sponsor-pink;
+  padding: 0 100px;
 }
 
 .sponsor-rectangle {
-  padding: 110px 0px 140px 0px;
+  padding: 110px 0 140px 0;
   position: relative;
     z-index: 2;
     
@@ -462,7 +436,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
         left: -20px;
         width: calc(100% + 40px);
         height: calc(100% + 40px);
-        background: #ffd3f7;
+        background: $color-sponsor-pink;
         transform: rotate(-1.4deg);
         z-index: -1;
     }
@@ -473,8 +447,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 50px;
   letter-spacing: -0.01em;
   line-height: 150%;
-  font-family: $font-family-primary;
-  color: $color-border-dark;
+  font-family: $font--primary;
+  color: $color--off-black;
   text-align: center;
 }
 
@@ -483,8 +457,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   position: relative;
   font-size: 20px;
   line-height: 160%;
-  font-family: $font-family-primary;
-  color: $color-border-dark;
+  font-family: $font--primary;
+  color: $color--off-black;
   text-align: center;
   display: inline-block;
 }
@@ -497,7 +471,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0px 60px;
+  padding: 20px 0 60px;
   gap: 30px;
   font-size: 20px;
 }
@@ -507,7 +481,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 }
 
 // Space Social Styles
-
 .space-social-container {
   position: relative;
   width: 100%;
@@ -515,7 +488,7 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 0px 0px 140px;
+  padding: 0 0 140px;
   box-sizing: border-box; 
 }
 
@@ -524,8 +497,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 50px;
   letter-spacing: -0.01em;
   line-height: 150%;
-  font-family: $font-family-primary;
-  color: #f5f3f8;
+  font-family: $font--primary;
+  color: $color-spacetext-light;
   text-align: center;
 }
 
@@ -535,18 +508,18 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 34px;
   letter-spacing: -0.01em;
   line-height: 150%;
-  font-family: $font-family-primary;
+  font-family: $font--primary;
   text-align: center;
   display: inline-block;
-  color: #f5f3f8;
+  color: $color-spacetext-light;
 
   a {
-    color:#f5f3f8;
+    color:$color-spacetext-light;
 
     &:hover,
     &:active,
     &:visited,{
-      color:#f5f3f8;
+      color:$color-spacetext-light;
     }
   }
 }
@@ -576,7 +549,6 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 }
 
 // Subpage Styles
-
 .space-heading-container {
   display: flex;
   justify-content: center;
@@ -587,8 +559,8 @@ $font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
   font-size: 76px;
   letter-spacing: -0.01em;
   line-height: 120%;
-  font-family: $font-family-primary;
-  color: $color-text-light;
+  font-family: $font--primary;
+  color: $color-spacetext-light;
   padding-bottom: 40px;
 }
 
