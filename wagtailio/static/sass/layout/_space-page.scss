@@ -570,13 +570,25 @@
 
 // Mobile Styles
 @include media-query(smallonly) {
+  .sponsor-rectangle{
+    padding: 55px 0 140px 0;
+  }
+  
+  .centered-space-container {
+    padding: 20px 15px;
+  }
+
   .hero-section {
-    padding: 60px 15px 30px;
+    padding: 40px 15px 20px;
   }
   
   .hero-parent {
     font-size: 48px;
     gap: 15px;
+  }
+
+  .space-body-container{
+    padding: 70px 0;
   }
   
   .space-heading {
@@ -613,10 +625,6 @@
     width: 100%;
   }
   
-  .centered-space-container {
-    padding: 60px 15px;
-  }
-  
   .centered-space-text {
     h2 {
       font-size: 32px;
@@ -636,7 +644,7 @@
   }
   
   .space-speaker-parent {
-    padding: 60px 0 40px 0;
+    padding: 40px 0 30px 0;
   }
   
   .speaker-heading {
@@ -645,7 +653,7 @@
   }
   
   .speaker-card-container {
-    padding: 40px 15px 60px;
+    padding: 30px 15px 40px;
     flex-direction: column;
     gap: 30px;
   }
@@ -681,13 +689,13 @@
   .space-text {
     h2 {
       font-size: 28px;
-      padding-top: 60px;
+      padding-top: 40px;
       padding-bottom: 20px;
     }
     
     h3 {
       font-size: 20px;
-      padding-top: 60px;
+      padding-top: 40px;
       padding-bottom: 20px;
     }
     
@@ -704,13 +712,25 @@
 }
 
 @media only screen and (max-width: 1022px) {
+  .sponsor-rectangle{
+    padding: 55px 0 140px 0;
+  }
+  
+  .centered-space-container{
+    padding: 20px 15px;
+  }
+
   .hero-section {
-    padding: 80px 20px 40px;
+    padding: 60px 20px 30px;
   }
   
   .hero-parent {
     font-size: 60px;
     gap: 20px;
+  }
+
+  .space-body-container{
+    padding: 70px 0;
   }
   
   .space-heading {
@@ -747,10 +767,6 @@
     width: 100%;
   }
   
-  .centered-space-container {
-    padding: 80px 20px;
-  }
-  
   .centered-space-text {
     h2 {
       font-size: 40px;
@@ -770,7 +786,7 @@
   }
   
   .space-speaker-parent {
-    padding: 80px 0 60px 0;
+    padding: 60px 0 40px 0;
   }
   
   .speaker-heading {
@@ -779,7 +795,7 @@
   }
   
   .speaker-card-container {
-    padding: 50px 20px 80px;
+    padding: 40px 20px 60px;
     flex-direction: column;
     gap: 25px;
   }
@@ -815,13 +831,13 @@
   .space-text {
     h2 {
       font-size: 32px;
-      padding-top: 80px;
+      padding-top: 60px;
       padding-bottom: 25px;
     }
     
     h3 {
       font-size: 22px;
-      padding-top: 80px;
+      padding-top: 60px;
       padding-bottom: 25px;
     }
     
