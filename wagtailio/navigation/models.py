@@ -65,7 +65,7 @@ class MainMenu(ClusterableModel):
 class SpaceMenu(ClusterableModel):
     name = models.CharField(max_length=255)
     menu_sections = StreamField([("menu_section", SpaceMenuSectionBlock())])
-    registration_url = models.URLField(default="", blank=False)
+    registration_url = models.URLField()
 
     panels = [
         FieldPanel("name"),
