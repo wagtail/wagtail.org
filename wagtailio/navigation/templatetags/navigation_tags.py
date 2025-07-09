@@ -80,11 +80,13 @@ def space_navigation(context):
     return {"spacemenus": spacemenus}
 
 
-@register.inclusion_tag("patterns/components/buttons/button.html", takes_context=True)
+@register.inclusion_tag(
+    "patterns/components/buttons/spacereg-button.html", takes_context=True
+)
 def get_reg_url(context):
     if SpaceMenu.objects.exists():
         return {
-            "reg_url": SpaceMenu.objects.all(),
+            "reg_url": SpaceMenu.objects.first(),
             "request": context["request"],
         }
 
