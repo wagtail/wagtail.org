@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('navigation', '0005_spacemenu_registration_url'),
+        ("navigation", "0005_spacemenu_registration_url"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='spacemenu',
-            name='registration_url',
-            field=models.URLField(blank=True, default=''),
+            model_name="spacemenu",
+            name="registration_url",
+            field=models.URLField(blank=True, default=""),
         ),
     ]
