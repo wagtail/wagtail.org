@@ -484,6 +484,14 @@
   width: 100%;
 }
 
+.sponsor-logo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
 // Space Social Styles
 .space-social-container {
   position: relative;
