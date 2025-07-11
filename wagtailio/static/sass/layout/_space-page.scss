@@ -720,7 +720,7 @@
   }
 }
 
-@media only screen and (max-width: 1022px) {
+@include media-query(mediumlarge) {
   .sponsor-rectangle{
     padding: 55px 0 140px 0;
   }

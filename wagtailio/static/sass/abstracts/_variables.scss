@@ -83,6 +83,7 @@ $weight--regular: 400;
 $breakpoints: (
     'smallonly' '(max-width: 599px)',
     'medium' '(min-width: 599px)',
+    'mediumlarge' '(min-width: 599px) and (max-width: 1022px)',
     'large' '(min-width: 1023px)',
     'extra-large' '(min-width: 1279px)'
 );
