@@ -102,3 +102,6 @@ class WagtailSpacePage(SocialMediaMixin, Page):
         FieldPanel("body"),
         FieldPanel("space_social"),
     ]
+
+    class Meta:
+        verbose_name = "Wagtail Space Page"

@@ -1,9 +1,14 @@
-{% load navigation_tags %}
+{% load navigation_tags wagtailcore_tags static space_tags %}
 
 <header class="app__header header">
     {% include "patterns/components/skip-link/skip-link.html" %}
 
     <div class="header__identity">
+        {% if page.get_verbose_name == 'Wagtail Space Page' %}
+            <a href="{% pageurl page.get_parent %}" aria-label="Wagtail.org homepage">
+                <img src="{% static 'img/WagtailSpace2025Logo.png' %}" alt="Wagtail Space 2025">
+            </a>
+        {% else %}
         <a class="header__link" href="/" aria-label="Wagtail.org homepage">
             <svg class="header__logo header__logo--dark" aria-hidden="true">
                 <use xlink:href="#wagtail-dark" />
@@ -12,6 +17,7 @@
                 <use xlink:href="#wagtail-dark" />
             </svg>
         </a>
+        {% endif %}
     </div>
 
     <div class="header__actions">
