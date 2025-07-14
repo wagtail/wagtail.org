@@ -274,6 +274,7 @@
     text-align: start;
     padding-top: 100px;
     padding-bottom:30px;
+    max-width: 800px;
   }
 
   h3 {
@@ -289,7 +290,7 @@
   }
 
   p {
-    width: 744px;
+    max-width: 744px;
     position: relative;
     font-size: 20px;
     line-height: 160%;
