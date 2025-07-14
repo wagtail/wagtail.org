@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wagtailspace', '0015_wagtailspacepage_space_social_and_more'),
+        ("wagtailspace", "0015_wagtailspacepage_space_social_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='wagtailspacepage',
-            options={'verbose_name': 'Wagtail Space Page'},
+            name="wagtailspacepage",
+            options={"verbose_name": "Wagtail Space Page"},
         ),
     ]
