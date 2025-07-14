@@ -182,6 +182,19 @@
   color: $color--off-black;
 }
 
+.spacecta-button-parent{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+  z-index: 1;
+  text-align: start;
+  font-size: 16px;
+  color: $color--off-black;
+  padding: 15px 0 15px 0;
+}
+
 .call-to-action {
   position: relative;
   z-index: 0;
@@ -632,6 +645,13 @@
     gap: 10px;
     width: 100%;
   }
+
+  .spacecta-button-parent {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
   
   .centered-space-text {
     h2 {
@@ -770,6 +790,13 @@
   }
   
   .button-parent {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .spacecta-button-parent {
     flex-direction: column;
     align-items: center;
     gap: 10px;
