@@ -90,7 +90,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
 class BlogPageRelatedPage(Orderable):
     parent = ParentalKey("blog.BlogPage", related_name="related_posts")
     page = models.ForeignKey(
-        "blog.BlogPage",
+        "wagtailcore.Page",
         on_delete=models.CASCADE,
         related_name="+",
     )
