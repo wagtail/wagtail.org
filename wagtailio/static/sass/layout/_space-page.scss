@@ -224,6 +224,7 @@
 .centered-space-text {
   margin-bottom: 40px;
   font-family: $font--primary;
+  max-width: 800px;
 
   h2 {
     font-size: 50px;
@@ -263,6 +264,7 @@
 .space-text {
   margin-bottom: 40px;
   font-family: $font--primary;
+  max-width: 800px;
 
   h2 {
     position: relative;
@@ -274,7 +276,6 @@
     text-align: start;
     padding-top: 100px;
     padding-bottom:30px;
-    max-width: 800px;
   }
 
   h3 {
@@ -290,12 +291,12 @@
   }
 
   p {
-    max-width: 744px;
     position: relative;
     font-size: 20px;
     line-height: 160%;
     text-align: start;
     margin-bottom:20px;
+    max-width: 744px;
   }
 
   a {
@@ -310,6 +311,7 @@
 
   ul{
     padding: 0 50px 20px;
+    max-width: 744px;
   }
 
   li{
@@ -669,6 +671,12 @@
       width: 100%;
       font-size: 18px;
       margin-bottom: 15px;
+      max-width: 744px;
+    }
+
+    ul {
+    padding: 0 50px 20px;
+    max-width: 744px;
     }
   }
   
