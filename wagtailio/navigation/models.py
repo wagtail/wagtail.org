@@ -84,7 +84,7 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         related_name="+",
     )
     space_navigation = models.ForeignKey(
-        "navigation.SpaceMenu",
+        "wagtailspace.SpaceMenu",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

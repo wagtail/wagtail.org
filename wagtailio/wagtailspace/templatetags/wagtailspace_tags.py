@@ -1,6 +1,6 @@
 from django import template
 
-from wagtailio.navigation.models import SpaceMenu
+from wagtailio.wagtailspace.models import SpaceMenu
 
 
 register = template.Library()
