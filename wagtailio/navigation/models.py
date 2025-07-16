@@ -11,7 +11,6 @@ from wagtail.snippets.models import register_snippet
 from wagtailio.navigation.blocks import (
     MainMenuSectionBlock,
     NavStreamField,
-    SpaceMenuSectionBlock,
 )
 
 
@@ -59,31 +58,6 @@ class MainMenu(ClusterableModel):
 
         for nav in NavigationSettings.objects.filter(main_navigation=self):
             nav.save(fragment_to_clear="primarynav")
-
-
-@register_snippet
-class SpaceMenu(ClusterableModel):
-    name = models.CharField(max_length=255)
-    menu_sections = StreamField([("menu_section", SpaceMenuSectionBlock())])
-    registration_url = models.URLField(default="", blank=True)
-
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("menu_sections"),
-        FieldPanel("registration_url"),
-    ]
-
-    class Meta:
-        verbose_name = "Wagtail Space menu"
-
-    def __str__(self) -> str:
-        return f"Wagtail Space menu: {self.name}"
-
-    def save(self, **kwargs):
-        super().save(**kwargs)
-
-        for nav in NavigationSettings.objects.filter(space_navigation=self):
-            nav.save(fragment_to_clear="spacenav")
 
 
 @register_setting(icon="list-ul")

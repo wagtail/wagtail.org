@@ -1,5 +1,6 @@
 from django.db import models
 
+from modelcluster.models import ClusterableModel
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -7,8 +8,34 @@ from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.core.blocks import CTABlock, ImageBlock
+from wagtailio.navigation.models import NavigationSettings
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
-from wagtailio.wagtailspace.blocks import SpaceStoryBlock
+from wagtailio.wagtailspace.blocks import SpaceMenuSectionBlock, SpaceStoryBlock
+
+
+@register_snippet
+class SpaceMenu(ClusterableModel):
+    name = models.CharField(max_length=255)
+    menu_sections = StreamField([("menu_section", SpaceMenuSectionBlock())])
+    registration_url = models.URLField(default="", blank=True)
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("menu_sections"),
+        FieldPanel("registration_url"),
+    ]
+
+    class Meta:
+        verbose_name = "Wagtail Space menu"
+
+    def __str__(self) -> str:
+        return f"Wagtail Space menu: {self.name}"
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+
+        for nav in NavigationSettings.objects.filter(space_navigation=self):
+            nav.save(fragment_to_clear="spacenav")
 
 
 @register_snippet

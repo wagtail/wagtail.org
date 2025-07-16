@@ -81,3 +81,16 @@ class SpaceStoryBlock(blocks.StreamBlock):
 
     class Meta:
         template = "patterns/components/streamfields/space_story_block.html"
+
+
+# --------------- Wagtail Space Navigation ---------------
+
+
+class SpaceMenuSectionBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255)
+    space_menu_page = blocks.PageChooserBlock(label="Page", required=False)
+    space_menu_url = blocks.URLBlock(label="External Link", required=False)
+
+    class Meta:
+        icon = "bars"
+        label = "Space menu section"
