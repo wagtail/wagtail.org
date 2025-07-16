@@ -543,7 +543,7 @@ class SpaceCTABlock(CTALinkMixin):
 
 class SpeakerBlock(blocks.StructBlock):
     speaker_image = ImageBlock(
-        required=True, null=True, help_text="Use a square image for best results."
+        required=True, help_text="Use a square image for best results."
     )
     speaker_name = blocks.CharBlock(max_length=255, required=True)
     speaker_talk = blocks.TextBlock(max_length=255, required=False)
