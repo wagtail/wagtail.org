@@ -7,7 +7,7 @@ from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.core.blocks import CTABlock, ImageBlock, SpaceStoryBlock
-from wagtailio.utils.models import SocialMediaMixin
+from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 
 
 @register_snippet
@@ -47,9 +47,7 @@ class SpaceSocialSnippet(models.Model):
     ]
 
 
-class WagtailSpaceIndexPage(
-    SocialMediaMixin, Page
-):  # TODO: Determine if CrossPageMixin is needed
+class WagtailSpaceIndexPage(SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/space_index_page/space_index_page.html"
     parent_page_types = ["core.HomePage"]
     subpage_types = ["wagtailspace.WagtailSpacePage"]
@@ -83,8 +81,12 @@ class WagtailSpaceIndexPage(
         FieldPanel("space_social"),
     ]
 
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
 
-class WagtailSpacePage(SocialMediaMixin, Page):
+
+class WagtailSpacePage(SocialMediaMixin, CrossPageMixin, Page):
     parent_page_types = ["wagtailspace.WagtailSpaceIndexPage"]
     template = "patterns/pages/space_page/space_page.html"
     heading = models.TextField(verbose_name="Heading", blank=True)
@@ -102,6 +104,10 @@ class WagtailSpacePage(SocialMediaMixin, Page):
         FieldPanel("body"),
         FieldPanel("space_social"),
     ]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
 
     class Meta:
         verbose_name = "Wagtail Space Page"

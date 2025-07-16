@@ -89,6 +89,3 @@ def get_reg_url(context):
             "reg_url": space_menu,
             "request": context["request"],
         }
-
-
-# TODO: Fix this template tag to grab registration URL from the SpaceMenu model
