@@ -6,8 +6,9 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.core.blocks import CTABlock, ImageBlock, SpaceStoryBlock
+from wagtailio.core.blocks import CTABlock, ImageBlock
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.wagtailspace.blocks import SpaceStoryBlock
 
 
 @register_snippet
