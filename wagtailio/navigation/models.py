@@ -69,7 +69,7 @@ class SpaceMenu(ClusterableModel):
 
     panels = [
         FieldPanel("name"),
-        FieldPanel("menu_sections", classname="collapsible"),
+        FieldPanel("menu_sections"),
         FieldPanel("registration_url"),
     ]
 
