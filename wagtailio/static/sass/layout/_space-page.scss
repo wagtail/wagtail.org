@@ -468,6 +468,8 @@
   font-family: $font--primary;
   color: $color--off-black;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .sponsor-type {
