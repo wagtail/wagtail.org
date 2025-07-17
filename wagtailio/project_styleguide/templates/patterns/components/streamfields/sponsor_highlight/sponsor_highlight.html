@@ -1,0 +1,29 @@
+{% load wagtailcore_tags %}
+
+<div class="sponsor-background">
+    <div class="sponsor-rectangle">
+        <div class="sponsor-fill">
+            <div class="grid">
+                <div class="spacegrid">
+                    <div class="space-sponsor-container">
+                        <div class="sponsor-heading">
+                            {% if value.heading %}
+                                <h2 class="centered-space-text">
+                                    {{ value.heading }}
+                                </h2>
+                            {% endif %}
+                        </div>
+                        <div class="sponsor-container">
+                            {% if value.sponsor %}
+
+                                {% for sponsor in value.sponsor %}
+                                    {% include_block sponsor %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

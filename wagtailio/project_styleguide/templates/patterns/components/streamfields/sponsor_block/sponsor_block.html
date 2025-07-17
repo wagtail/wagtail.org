@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="sponsor-card">
+    <p class="sponsor-type">{{ value.sponsor_type }}</p>
+    <div class="sponsor-logo">
+        {% for logo in value.sponsor_logo %}
+            {% image logo width-500 %}
+        {% endfor %}
+    </div>
+</div>
