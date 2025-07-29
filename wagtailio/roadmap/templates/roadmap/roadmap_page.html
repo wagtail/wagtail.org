@@ -20,9 +20,6 @@
                             <span class="milestone__heading-subtitle">{{ milestone.display_subtitle }}</span>
                         {% endif %}
                     </h2>
-                    {% if perms.roadmap.change_milestone %}
-                        <a class="milestone__heading-link milestone__heading-link--edit" href="{{ milestone.get_admin_url }}">✏️</a>
-                    {% endif %}
                 </div>
 
                 <div class="milestone__items grid">
