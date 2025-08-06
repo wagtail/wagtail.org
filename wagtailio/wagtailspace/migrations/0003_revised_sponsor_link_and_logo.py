@@ -7,7 +7,7 @@ import wagtail.fields
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("wagtailspace", "0002_alter_wagtailspaceindexpage_body_and_more"),
+        ("wagtailspace", "0002_added_sponsor_link"),
     ]
 
     operations = [
