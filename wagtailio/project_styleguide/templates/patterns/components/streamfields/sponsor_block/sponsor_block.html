@@ -3,7 +3,12 @@
     <p class="sponsor-type">{{ value.sponsor_type }}</p>
     <div class="sponsor-logo">
         {% for logo in value.sponsor_logo %}
-            <a href="{{ value.sponsor_link }}">{% image logo width-500 %}</a>
+            {% image logo width-500 as logo_img %}
+            {% if value.sponsor_link %}
+                <a href="{{ value.sponsor_link }}">{{ logo_img }}</a>
+            {% else %}
+                {{ logo_img }}
+            {% endif %}
         {% endfor %}
     </div>
 </div>
