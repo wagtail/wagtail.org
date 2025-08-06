@@ -51,10 +51,19 @@ class SpeakerHighlightBlock(blocks.StructBlock):
         label = "Speaker Highlight"
 
 
+class SponsorLogoBlock(blocks.StructBlock):
+    sponsor_logo = ImageBlock(required=True)
+    sponsor_link = blocks.URLBlock(label="Sponsor Link", required=True)
+
+    class Meta:
+        template = (
+            "patterns/components/streamfields/sponsor_logo/sponsorlogo_block.html"
+        )
+
+
 class SponsorBlock(blocks.StructBlock):
     sponsor_type = blocks.CharBlock(max_length=255, required=True)
-    sponsor_logo = blocks.ListBlock(ImageBlock())
-    sponsor_link = blocks.URLBlock(label="Sponsor Link", required=False)
+    sponsors = blocks.ListBlock(SponsorLogoBlock())
 
     class Meta:
         template = "patterns/components/streamfields/sponsor_block/sponsor_block.html"
