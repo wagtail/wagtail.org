@@ -16,7 +16,11 @@ headers = {
 
 
 def process(url="https://djangopackages.org/api/v4/grids/?q=wagtail"):
-    grid_data = requests.get(url, headers=headers).json()  # noqa: S113
+    response = requests.get(url, headers=headers, timeout=10)
+    if not response.ok:
+        raise ValueError(f"Failed to fetch data from {url}: {response.status_code}")
+
+    grid_data = response.json()
     for item in grid_data.get("results", []):
         title = item.get("title", "")
         if "wagtail" in title.lower():
