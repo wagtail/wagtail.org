@@ -3,7 +3,7 @@ default_language_version:
   python: python3.13
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.9.6' # keep in sync with pyproject.toml
+    rev: 'v0.12.8' # keep in sync with pyproject.toml
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -33,6 +33,6 @@ repos:
           - stylelint@15.11.0
           - '@wagtail/stylelint-config-wagtail@0.8.0'
   - repo: https://github.com/rtts/djhtml
-    rev: 3.0.7
+    rev: 3.0.9
     hooks:
       - id: djhtml
