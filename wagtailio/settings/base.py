@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.utils.csp import CSP
 import contextlib
 import os
 from os.path import abspath, dirname, join
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "whitenoise.runserver_nostatic",  # Must be before `django.contrib.staticfiles`
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
     "taggit",
     "modelcluster",
     "rest_framework",
@@ -397,38 +399,48 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Content Security policy settings
 # http://django-csp.readthedocs.io/en/latest/configuration.html
+# if "CSP_DEFAULT_SRC" in env:
+#     MIDDLEWARE.append("csp.middleware.CSPMiddleware")
+
+#     CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+
+#     CSP_REPORT_ONLY = env.get("CSP_REPORT_ONLY", "false").lower() == "true"
+
+#     # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
+#     # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
+
+#     CSP_DEFAULT_SRC = env["CSP_DEFAULT_SRC"].split(",")
+#     if "CSP_SCRIPT_SRC" in env:
+#         CSP_SCRIPT_SRC = env["CSP_SCRIPT_SRC"].split(",")
+#     if "CSP_STYLE_SRC" in env:
+#         CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
+#     if "CSP_IMG_SRC" in env:
+#         CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
+#     if "CSP_MEDIA_SRC" in env:
+#         CSP_MEDIA_SRC = env["CSP_MEDIA_SRC"].split(",")
+#     if "CSP_CONNECT_SRC" in env:
+#         CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
+#     if "CSP_FONT_SRC" in env:
+#         CSP_FONT_SRC = env["CSP_FONT_SRC"].split(",")
+#     if "CSP_BASE_URI" in env:
+#         CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
+#     if "CSP_OBJECT_SRC" in env:
+#         CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
+#     if "CSP_MANIFEST_SRC" in env:
+#         CSP_MANIFEST_SRC = env["CSP_MANIFEST_SRC"].split(",")
+#     if "CSP_REPORT_URI" in env:
+#         CSP_REPORT_URI = env["CSP_REPORT_URI"].split(",")
+
 if "CSP_DEFAULT_SRC" in env:
-    MIDDLEWARE.append("csp.middleware.CSPMiddleware")
+    MIDDLEWARE.append("django.middleware.csp.ContentSecurityPolicyMiddleware")
+    # Gravatar images should be disabled for strict CSP
+    WAGTAIL_GRAVATAR_PROVIDER_URL = None
 
-    CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
-
-    CSP_REPORT_ONLY = env.get("CSP_REPORT_ONLY", "false").lower() == "true"
-
-    # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
-    # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
-
-    CSP_DEFAULT_SRC = env["CSP_DEFAULT_SRC"].split(",")
-    if "CSP_SCRIPT_SRC" in env:
-        CSP_SCRIPT_SRC = env["CSP_SCRIPT_SRC"].split(",")
-    if "CSP_STYLE_SRC" in env:
-        CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
-    if "CSP_IMG_SRC" in env:
-        CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
-    if "CSP_MEDIA_SRC" in env:
-        CSP_MEDIA_SRC = env["CSP_MEDIA_SRC"].split(",")
-    if "CSP_CONNECT_SRC" in env:
-        CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
-    if "CSP_FONT_SRC" in env:
-        CSP_FONT_SRC = env["CSP_FONT_SRC"].split(",")
-    if "CSP_BASE_URI" in env:
-        CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
-    if "CSP_OBJECT_SRC" in env:
-        CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
-    if "CSP_MANIFEST_SRC" in env:
-        CSP_MANIFEST_SRC = env["CSP_MANIFEST_SRC"].split(",")
-    if "CSP_REPORT_URI" in env:
-        CSP_REPORT_URI = env["CSP_REPORT_URI"].split(",")
-
+    # To enforce a CSP policy in report-only mode:
+    SECURE_CSP_REPORT_ONLY = {
+        "default-src": [CSP.SELF, "*.wagtail.org"],
+        # Add more directives as needed.
+    }
 
 # Permissions policy settings
 # Uses django-permissions-policy to return the header.
