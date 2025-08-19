@@ -5,7 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.contrib.frontend_cache.utils import purge_url_from_cache
 from wagtail.contrib.settings.models import BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
@@ -37,9 +37,32 @@ class SiteWideAlertSettings(BaseSiteSetting):
         help_text=mark_safe("Text colour RGB value. e.g. <code>ffffff</code>"),
     )
 
+    cta_button_text = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name="CTA Text",
+    )
+
+    # This allows both internal and external URLs
+    cta_button_link = models.URLField(blank=True, verbose_name="CTA Link")
+
+    cta_button_page = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
     panels = [
         MultiFieldPanel(
-            [FieldPanel("sitewide_alert_enabled"), FieldPanel("sitewide_alert_text")],
+            [
+                FieldPanel("sitewide_alert_enabled"),
+                FieldPanel("sitewide_alert_text"),
+                FieldPanel("cta_button_text"),
+                PageChooserPanel("cta_button_page"),
+                FieldPanel("cta_button_link"),  # For external URLs
+            ],
             "Sitewide alert",
         ),
         MultiFieldPanel(
@@ -58,6 +81,40 @@ class SiteWideAlertSettings(BaseSiteSetting):
                     ),
                 }
             )
+        # CTA validation
+        if self.cta_button_text:
+            if not self.cta_button_page and not self.cta_button_link:
+                raise ValidationError(
+                    {
+                        "cta_button_page": ValidationError(
+                            "Please provide either an internal page or external URL for the CTA button."
+                        ),
+                    }
+                )
+            if self.cta_button_page and self.cta_button_link:
+                raise ValidationError(
+                    {
+                        "cta_button_link": ValidationError(
+                            "Please provide either an internal page OR an external URL, not both."
+                        ),
+                    }
+                )
+
+        # Check if link is provided without button text
+        if (self.cta_button_page or self.cta_button_link) and not self.cta_button_text:
+            raise ValidationError(
+                {
+                    "cta_button_text": ValidationError(
+                        "Please provide button text for the CTA."
+                    ),
+                }
+            )
+
+    def get_cta_url(self):
+        """Return the page URL if set, otherwise the external URL"""
+        if self.cta_button_page:
+            return self.cta_button_page.url
+        return self.cta_button_link
 
     def save(self, *args, **kwargs):
         alert_url = self.site.root_url + reverse("sitewide_alert:sitewide_alert")
