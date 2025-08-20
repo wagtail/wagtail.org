@@ -53,7 +53,7 @@ class SiteWideAlertSettings(BaseSiteSetting):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        verbose_name="CTA Page"
+        verbose_name="CTA Page",
     )
 
     panels = [
