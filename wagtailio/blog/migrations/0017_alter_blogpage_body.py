@@ -7,7 +7,7 @@ import wagtail.fields
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("blog", "0014_add_new_imageblock"),
+        ("blog", "0016_blogpage_allow_any_related_page"),
     ]
 
     operations = [
