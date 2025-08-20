@@ -10,12 +10,7 @@ class SiteWideAlert {
         }
     }
 
-    checkAndInitializeAlert() {
-        // Skip alert for /wagtail-space paths
-        if (window.location.pathname.startsWith('/wagtail-space')) {
-            return;
-        }
-        
+    checkAndInitializeAlert() {        
         fetch(this.node.dataset.siteWideAlert)
             .then((response) => response.json())
             .then((data) => {
