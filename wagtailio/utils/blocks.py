@@ -51,25 +51,16 @@ class HTMLAlignmentChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(("normal", "Normal"), ("full", "Full width")))
 
 
-# Chooser blocks that require a database query to get the preview value
-# Can be replaced with functions with no arguments as the preview_value once
-# https://github.com/wagtail/wagtail/issues/13094 is implemented
-
-
 class CustomImageBlock(ImageBlock):
-    def get_preview_value(self):
-        return get_image_model().objects.last()
-
     class Meta:
         description = "An image with an alt text"
+        preview_value = staticmethod(lambda: get_image_model().objects.last())
 
 
 class CustomDocumentBlock(DocumentChooserBlock):
-    def get_preview_value(self):
-        return get_document_model().objects.last()
-
     class Meta:
         description = "A link to a document from the document library"
+        preview_value = staticmethod(lambda: get_document_model().objects.last())
 
 
 class CustomSnippetBlock(SnippetChooserBlock):
