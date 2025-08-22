@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
+    "wagtailio.wagtailspace",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",

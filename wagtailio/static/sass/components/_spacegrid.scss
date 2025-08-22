@@ -1,0 +1,34 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.spacegrid {
+    $root: &;
+    @include sf-spacing(6);
+    position: relative;
+    margin-bottom: 0;
+    grid-column: 2 / span 2;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 5;
+    }
+
+    &__light-mode {
+        display: block;
+
+        .theme-dark & {
+            display: none;
+        }
+    }
+
+    &__dark-mode {
+        display: none;
+
+        .theme-dark & {
+            display: block;
+        }
+    }
+}

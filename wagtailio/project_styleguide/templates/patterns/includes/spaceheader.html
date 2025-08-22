@@ -1,0 +1,45 @@
+{% load wagtailspace_tags wagtailcore_tags static %}
+
+<header class="app__header header">
+    {% include "patterns/components/skip-link/skip-link.html" %}
+
+    <div class="header__identity">
+        {% if page.get_verbose_name == 'Wagtail Space Page' %}
+            <a href="{% pageurl page.get_parent %}" aria-label="Wagtail.org homepage">
+                <img src="{% static 'img/WagtailSpace2025Logo.png' %}" alt="Wagtail Space 2025">
+            </a>
+        {% else %}
+            <a class="header__link" href="/" aria-label="Wagtail.org homepage">
+                <svg class="header__logo header__logo--dark" aria-hidden="true">
+                    <use xlink:href="#wagtail-dark" />
+                </svg>
+                <svg class="header__logo header__logo--light" aria-hidden="true">
+                    <use xlink:href="#wagtail-dark" />
+                </svg>
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="header__actions">
+
+        <div class="header__nav header__nav--desktop" data-desktop-menu>
+            {% space_navigation %}
+        </div>
+
+        <div class="header__menu-toggle">
+            <button class="burger theme-dark" data-mobile-menu-toggle aria-haspopup="true" aria-expanded="false" aria-label="Mobile menu toggle">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+        </div>
+
+        <div class="header__nav header__nav--mobile theme-dark" data-mobile-menu>
+            {% space_navigation %}
+            {% get_reg_url %}
+        </div>
+        {% get_reg_url %}
+
+    </div>
+</header>

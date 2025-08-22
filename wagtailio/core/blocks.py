@@ -5,6 +5,7 @@ from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images import get_image_model
 from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
@@ -199,9 +200,24 @@ class HighlightBlock(blocks.StructBlock):
 
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
-        if value["image_on_right"]:
+        if value.get("image_on_right"):
             context["image_on_right"] = value["image_on_right"]
         return context
+
+    def get_preview_value(self):
+        return {
+            "heading": "Wagtail: The open-source CMS for your next project",
+            "description": (
+                "Wagtail is a free and open-source content management system "
+                "(CMS) built on Django. It is designed to make it easy for "
+                "developers to create and manage websites, while also providing "
+                "a user-friendly interface for content editors."
+            ),
+            "image": get_image_model()
+            .objects.filter(tags__name="screenshot")
+            .order_by("-created_at")
+            .first(),
+        }
 
     class Meta:
         icon = "newspaper"
@@ -283,7 +299,15 @@ class StandaloneCTABlock(blocks.StructBlock):
     class Meta:
         icon = "bullhorn"
         label = "Standalone CTA"
+        description = "A call to action with a short description"
         template = "patterns/components/streamfields/cta/cta.html"
+        preview_value = {
+            "cta": {
+                "cta_url": "https://wagtail.org",
+                "text": "Learn more about Wagtail",
+            },
+            "description": "Visit the Wagtail website to learn more about the project and how to get started.",
+        }
 
 
 class TeaserBlock(blocks.StructBlock):
@@ -337,9 +361,15 @@ class TeaserBlock(blocks.StructBlock):
 
         return struct_value
 
+    def get_preview_value(self):
+        from wagtailio.blog.models import BlogPage
+
+        return self.normalize({"page": BlogPage.objects.last()})
+
     class Meta:
         icon = "gem"
         label = "Teaser"
+        description = "A teaser for a page or an external link with an optional image, heading, and subheading"
         template = "patterns/components/streamfields/teaser_block/teaser_block.html"
 
 
