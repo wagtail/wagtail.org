@@ -449,6 +449,8 @@ if "CSP_DEFAULT_SRC" in env:
         # To handle nonce configuration
         # Include nonces in directives as required here
         CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+        # Ensure the context processor is enabled
+        TEMPLATES.options["context_processors"].append("django.template.context_processors.csp")
 
         for directive in CSP_INCLUDE_NONCE_IN:
             if directive in csp_config:
