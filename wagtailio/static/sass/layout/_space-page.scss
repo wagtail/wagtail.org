@@ -1,7 +1,6 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-// Mixins
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -25,7 +24,6 @@
   height: 100%;
 }
 
-// Base Styles
 .template-wagtail-space-index-page {
     background-color: $color-darkspace-bg;
     color: $color--white;
@@ -48,8 +46,6 @@
   object-fit: cover;
 }
 
-
-// Hero Section
 .hero-section {
   color: $color--white;
   text-align: center;
@@ -104,10 +100,8 @@
   display: inline-block;
   @include text-stroke(2px, $color-cosmic-pink);
   
-  // Add some padding so text doesn't sit directly on the image
   padding: 20px;
   
-  // Background image as pseudo-element
   &::before {
     content: '';
     position: absolute;
@@ -119,7 +113,6 @@
     z-index: -1;
   }
   
-  // Ensure the text appears above the background
   z-index: 1;
 }
 
@@ -167,7 +160,6 @@
   display: inline-block;
 }
 
-// Buttons
 .button-parent {
   display: flex;
   flex-direction: row;
@@ -198,7 +190,6 @@
   z-index: 0;
 }
 
-// Space Centering Styles
 .space-body-container {
   color: $color-spacetext-light;
   text-align: center;
@@ -258,7 +249,6 @@
   }
 }
 
-// Space Child Page Text Styles
 .space-text {
   margin-bottom: 40px;
   font-family: $font--primary;
@@ -318,7 +308,6 @@
   
 }
 
-// Speaker Styles
 .space-speaker-parent{
   position: relative;
   width: 100%;
@@ -357,9 +346,9 @@
   z-index: 0;
   align-self: stretch;
   box-sizing: border-box;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
   gap: 20px;
 }
@@ -367,11 +356,13 @@
 .speaker-card {
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: flex-start;
   z-index: 0;
   gap: 20px;
+  max-width: 1400px;
+  width: 100%;
 }
 
 .speaker-container {
@@ -380,6 +371,9 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  width: calc(25% - 15px);
+  flex: 0 0 calc(25% - 15px);
+  max-width: 320px;
 }
 
 .speaker-image {
@@ -421,7 +415,6 @@
   flex-direction: column;
 }
 
-// Sponsor Styles
 .space-sponsor-container{
   width: 100%;
   position: relative;
@@ -509,7 +502,6 @@
   padding: 30px 0 30px;
 }
 
-// Space Social Styles
 .space-social-container {
   position: relative;
   width: 100%;
@@ -577,7 +569,6 @@
   gap: 44px;
 }
 
-// Subpage Styles
 .space-heading-container {
   display: flex;
   justify-content: center;
@@ -593,7 +584,6 @@
   padding-bottom: 40px;
 }
 
-// Mobile Styles
 @include media-query(smallonly) {
   .sponsor-rectangle{
     padding: 55px 0 140px 0;
@@ -705,6 +695,8 @@
   .speaker-container {
     min-height: auto;
     width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   
   .speaker-image {
@@ -848,13 +840,15 @@
   }
   
   .speaker-card {
-    flex-direction: column;
     gap: 25px;
+    justify-content: center;
   }
   
   .speaker-container {
     min-height: auto;
-    width: 100%;
+    width: calc(50% - 12.5px);
+    flex: 0 0 calc(50% - 12.5px);
+    max-width: 400px;
   }
   
   .speaker-image {
