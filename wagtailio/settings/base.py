@@ -403,6 +403,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 if "CSP_DEFAULT_SRC" in env:
     if django.VERSION >= (6, 0):
         from django.utils.csp import CSP
+
         MIDDLEWARE.append("django.middleware.csp.ContentSecurityPolicyMiddleware")
         # Gravatar images should be disabled for strict CSP
         WAGTAIL_GRAVATAR_PROVIDER_URL = None
@@ -450,7 +451,9 @@ if "CSP_DEFAULT_SRC" in env:
         # Include nonces in directives as required here
         CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
         # Ensure the context processor is enabled
-        TEMPLATES.options["context_processors"].append("django.template.context_processors.csp")
+        TEMPLATES.options["context_processors"].append(
+            "django.template.context_processors.csp"
+        )
 
         for directive in CSP_INCLUDE_NONCE_IN:
             if directive in csp_config:
