@@ -19,6 +19,7 @@
 @use 'components/backer';
 @use 'components/backers';
 @use 'components/burger';
+@use 'components/block-preview';
 @use 'components/blog';
 @use 'components/blog-post';
 @use 'components/button-align';
@@ -73,6 +74,7 @@
 @use 'components/search';
 @use 'components/sign-up-form';
 @use 'components/skip-link';
+@use 'components/spacegrid';
 @use 'components/standalone-quote';
 @use 'components/sub-nav';
 @use 'components/teaser';
@@ -91,6 +93,7 @@
 @use 'layout/search-page';
 @use 'layout/blog-listing';
 @use 'layout/showcase-page';
+@use 'layout/space-page';
 
 // Utilities
 @use 'utilities/utilities';

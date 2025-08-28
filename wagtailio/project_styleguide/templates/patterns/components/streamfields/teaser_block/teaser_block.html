@@ -2,7 +2,7 @@
 
 {% if value.page %}
     <a href="{{ value.page.url }}" class="teaser grid">
-        {% image value.page.main_image fill-495x495 class="teaser__image" %}
+        {% image value.page.main_image fill-495x495 class="teaser__image" loading="lazy" %}
 
         <div class="teaser__content">
             {% include "patterns/components/meta/meta.html" with classes="teaser__meta meta--offset-icon" %}

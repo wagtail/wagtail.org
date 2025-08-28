@@ -1,7 +1,7 @@
 context:
   value:
     image: True
-    caption: "<p>This is an example caption for the image.</p>"
+    caption: '<p>This is an example caption for the image.</p>'
 
 tags:
   image:

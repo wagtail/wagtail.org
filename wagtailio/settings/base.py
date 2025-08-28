@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
+    "wagtailio.wagtailspace",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -456,7 +457,7 @@ PERMISSIONS_POLICY = {
 # Referrer-policy header settings
 # https://django-referrer-policy.readthedocs.io/en/1.0/
 
-REFERRER_POLICY = env.get(
+SECURE_REFERRER_POLICY = env.get(
     "SECURE_REFERRER_POLICY", "no-referrer-when-downgrade"
 ).strip()
 
