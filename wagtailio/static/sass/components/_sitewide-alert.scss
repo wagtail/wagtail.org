@@ -11,7 +11,8 @@
         opacity: 1;
     }
 
-    h2, h3 {
+    h2,
+    h3 {
         color: inherit;
     }
 
@@ -31,11 +32,32 @@
         }
     }
 
+    &__wrapper {
+        max-width: $site-width;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__text {
+        margin-bottom: 0.75rem; // Space between text and button
+    }
+
+    &__cta {
+        display: inline-block;
+        padding: 0.25rem 1rem;
+        font-size: 14px;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: opacity 0.3s ease;
+    }
+
     &--default {
+        
         background-color: $color--pink;
         color: $color--white;
 
-        h2, h3 {
+        h2,
+        h3 {
             color: var(--color--highlight);
         }
 
