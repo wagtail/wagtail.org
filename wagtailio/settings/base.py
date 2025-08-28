@@ -13,8 +13,9 @@ import os
 from os.path import abspath, dirname, join
 import sys
 
-import dj_database_url
 import django
+
+import dj_database_url
 
 
 # Configuration from environment variables
