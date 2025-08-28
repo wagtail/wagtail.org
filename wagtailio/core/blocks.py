@@ -5,7 +5,7 @@ from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageBlock
+from wagtail.images.blocks import ImageBlock, ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from wagtailmedia.blocks import VideoChooserBlock
@@ -512,3 +512,21 @@ class HomePageStoryBlock(blocks.StreamBlock):
 
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"
+
+
+class ImageCaptionBlock(blocks.StructBlock):
+    """
+    A block that allows adding an image with an optional caption.
+    """
+
+    image = ImageChooserBlock(required=True)
+    caption = blocks.RichTextBlock(
+        required=False,
+        features=["bold", "italic", "link"],
+        help_text="Optional caption to display below the image",
+    )
+
+    class Meta:
+        icon = "image"
+        label = "Image with caption"
+        template = "patterns/components/streamfields/image_caption_block/image_caption_block.html"

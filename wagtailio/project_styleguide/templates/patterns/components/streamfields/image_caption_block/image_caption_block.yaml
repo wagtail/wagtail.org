@@ -1,0 +1,10 @@
+context:
+  value:
+    image: True
+    caption: "<p>This is an example caption for the image.</p>"
+
+tags:
+  image:
+    value.image fill-800x600:
+      raw: |
+        <img src="https://placehold.co/800x600" alt="Some alt">

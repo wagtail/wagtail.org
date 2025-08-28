@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+<figure class="image-caption-block">
+  {% image value.image fill-800x600 %}
+  {% if value.caption %}
+    <figcaption class="caption">
+      {{ value.caption|richtext }}
+    </figcaption>
+  {% endif %}
+</figure>
