@@ -12,14 +12,24 @@ def sitewide_alert(request):
     site = Site.find_for_request(request)
     alert_settings = SiteWideAlertSettings.for_site(site)
     data = {}
+
     if alert_settings.sitewide_alert_enabled:
         data = {
             "text": expand_db_html(alert_settings.sitewide_alert_text),
         }
+
         if alert_settings.background_colour:
             data["bg_colour"] = alert_settings.background_colour
+
         if alert_settings.text_colour:
             data["text_colour"] = alert_settings.text_colour
+
+        # Add CTA button data if present
+        if alert_settings.cta_button_text:
+            cta_url = alert_settings.get_cta_url()
+            if cta_url:
+                data["cta_text"] = alert_settings.cta_button_text
+                data["cta_url"] = cta_url
 
     response = JsonResponse(data)
 
@@ -28,4 +38,5 @@ def sitewide_alert(request):
     # FE cache can cache indefinitely, as will be purged on change
     s_maxage = getattr(settings, "SITEWIDE_ALERT_SMAXAGE", 604800)
     patch_cache_control(response, max_age=max_age, s_maxage=s_maxage, public=True)
+
     return response
