@@ -41,7 +41,7 @@ class SpeakerBlock(blocks.StructBlock):
 
 class SpeakerHighlightBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255, required=False)
-    speaker = blocks.StreamBlock([("speaker", SpeakerBlock())], blank=True, max_num=4)
+    speaker = blocks.ListBlock(SpeakerBlock())
 
     class Meta:
         icon = "group"
