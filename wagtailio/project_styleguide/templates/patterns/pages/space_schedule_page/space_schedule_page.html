@@ -1,0 +1,29 @@
+{% extends "patterns/base_space_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="space-page-container">
+        <div class="space-body-container">
+            <div class="space-heading-container">
+                <div class="space-heading-2">
+                    <h1>{{page.title}}</h1>
+                </div>
+            </div>
+            {% include_block page.body %}
+            <div class="pretalx-container">
+                {% if page.schedule_url %}
+                    <pretalx-schedule event-url="{{ page.schedule_url.url }}" locale="en" format="grid" style="--pretalx-clr-primary: #2b2833; background: #fff;"></pretalx-schedule>
+                {% endif %}
+                    <noscript>
+                        <div class="pretalx-widget">
+                            <div class="pretalx-widget-info-message">
+                                JavaScript is disabled in your browser. To access our schedule without JavaScript,
+                                please <a target="_blank" href="https://pretalx.com/wagtail-space-2025/schedule/">click here</a>.
+                            </div>
+                        </div>
+                    </noscript>
+            </div>
+        </div>
+    </div>
+    {% include "patterns/components/space_social/space_social.html" with value=page.space_social %}
+{% endblock %}

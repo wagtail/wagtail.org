@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from modelcluster.models import ClusterableModel
@@ -75,10 +76,42 @@ class SpaceSocialSnippet(models.Model):
     ]
 
 
+@register_snippet
+class SpaceScheduleLink(models.Model):
+    """
+    A snippet for storing the schedule link from Pretalx.
+    """
+
+    url = models.URLField(
+        verbose_name="Schedule URL", help_text="Enter the event URL from Pretalx"
+    )
+
+    panels = [
+        FieldPanel("url"),
+    ]
+
+    class Meta:
+        verbose_name = "Wagtail Space Schedule URL"
+        verbose_name_plural = "Wagtail Space Schedule URLs"
+
+    def __str__(self):
+        return self.url
+
+    def save(self, *args, **kwargs):
+        # Check if we're creating a new instance (not updating existing)
+        if not self.pk and SpaceScheduleLink.objects.exists():
+            raise ValidationError("Only one Space Schedule URL is allowed at a time.")
+        super().save(*args, **kwargs)
+
+    def clean(self):
+        if not self.pk and SpaceScheduleLink.objects.exists():
+            raise ValidationError("Only one Space Schedule URL is allowed at a time.")
+
+
 class WagtailSpaceIndexPage(SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/space_index_page/space_index_page.html"
     parent_page_types = ["core.HomePage"]
-    subpage_types = ["wagtailspace.WagtailSpacePage"]
+    subpage_types = ["wagtailspace.WagtailSpacePage", "wagtailspace.SpaceSchedulePage"]
 
     # ----------------- Hero -----------------
     heading = models.TextField(verbose_name="Heading", blank=True)
@@ -137,5 +170,47 @@ class WagtailSpacePage(SocialMediaMixin, CrossPageMixin, Page):
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
     )
 
+    page_description = "Use this page for most Wagtail Space pages"
+
     class Meta:
         verbose_name = "Wagtail Space Page"
+
+
+class SpaceSchedulePage(SocialMediaMixin, CrossPageMixin, Page):
+    parent_page_types = ["wagtailspace.WagtailSpaceIndexPage"]
+    template = "patterns/pages/space_schedule_page/space_schedule_page.html"
+    heading = models.TextField(verbose_name="Heading", blank=True)
+    sub_heading = models.TextField(verbose_name="Sub heading", blank=True)
+    body = StreamField(SpaceStoryBlock(), blank=True)
+    schedule_url = models.ForeignKey(
+        SpaceScheduleLink,
+        verbose_name="Schedule URL",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    space_social = models.ForeignKey(
+        "wagtailspace.SpaceSocialSnippet",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+        FieldPanel("schedule_url"),
+        FieldPanel("space_social"),
+    ]
+
+    promote_panels = (
+        Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
+    )
+
+    page_description = (
+        "Contains the Pretalx schedule widget. Use only for the schedule."
+    )
+
+    class Meta:
+        verbose_name = "Wagtail Space Schedule Page"
