@@ -1,4 +1,4 @@
-{% load static manifest wagtailcore_tags wagtailuserbar %}
+{% load static manifest wagtailcore_tags wagtailuserbar wagtailspace_tags %}
 {% wagtail_site as current_site %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -48,6 +48,10 @@
         {# Global javascript #}
         <script src="{% manifest 'js/main.js' %}"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
+        {% get_schedule_link as schedule_link %}
+        {% if schedule_link %}
+            <script type="text/javascript" src="{{ schedule_link.url }}widgets/schedule.js"></script>
+        {% endif %}
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
