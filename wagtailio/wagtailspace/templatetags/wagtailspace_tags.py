@@ -1,6 +1,6 @@
 from django import template
 
-from wagtailio.wagtailspace.models import SpaceMenu
+from wagtailio.wagtailspace.models import SpaceMenu, SpaceScheduleLink
 
 
 register = template.Library()
@@ -38,3 +38,8 @@ def get_reg_url(context):
             "reg_url": space_menu,
             "request": context["request"],
         }
+
+
+@register.simple_tag
+def get_schedule_link():
+    return SpaceScheduleLink.objects.first()
