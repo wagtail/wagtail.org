@@ -24,12 +24,7 @@
   height: 100%;
 }
 
-.template-wagtail-space-index-page {
-    background-color: $color-darkspace-bg;
-    color: $color--white;
-}
-
-.template-wagtail-space-page {
+.template-wagtail-space-index-page, .template-wagtail-space-page, .template-wagtail-space-schedule-page {
     background-color: $color-darkspace-bg;
     color: $color--white;
 }
