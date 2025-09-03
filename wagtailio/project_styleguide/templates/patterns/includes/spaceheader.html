@@ -4,7 +4,7 @@
     {% include "patterns/components/skip-link/skip-link.html" %}
 
     <div class="header__identity">
-        {% if page.get_verbose_name == 'Wagtail Space Page' %}
+        {% if page.get_verbose_name == 'Wagtail Space Page' or 'Wagtail Space Schedule Page' %}
             <a href="{% pageurl page.get_parent %}" aria-label="Wagtail.org homepage">
                 <img src="{% static 'img/WagtailSpace2025Logo.png' %}" alt="Wagtail Space 2025">
             </a>
