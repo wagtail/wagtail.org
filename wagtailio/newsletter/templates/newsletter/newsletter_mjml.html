@@ -39,7 +39,7 @@
             <mj-section background-color="">
                 <mj-column>
                     <mj-image
-                        src="{% newsletter_static 'img/twiw-hero.png' %}"
+                        src="{% newsletter_static 'img/newsletter/twiw-hero.png' %}"
                     />
                 </mj-column>
             </mj-section>
@@ -65,14 +65,26 @@
                     <mj-social icon-size="32px">
                         <mj-social-element
                             href="https://www.linkedin.com/company/wagtail-cms/"
-                            src="https://cdn-images.mailchimp.com/icons/social-block-v3/block-icons-v3/linkedin-filled-gray-40.png"
+                            src="{% newsletter_static 'img/newsletter/linkedin.png' %}"
                             alt="LinkedIn"
                             padding="0px 12px"
                         />
                         <mj-social-element
                             href="https://www.youtube.com/@wagtailcms"
-                            src="https://cdn-images.mailchimp.com/icons/social-block-v3/block-icons-v3/youtube-filled-gray-40.png"
+                            src="{% newsletter_static 'img/newsletter/youtube.png' %}"
                             alt="YouTube"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://fosstodon.org/@wagtail"
+                            src="{% newsletter_static 'img/newsletter/mastodon.png' %}"
+                            alt="Mastodon"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://bsky.app/profile/wagtail.org"
+                            src="{% newsletter_static 'img/newsletter/bluesky.png' %}"
+                            alt="Bluesky"
                             padding="0px 12px"
                         />
                     </mj-social>
