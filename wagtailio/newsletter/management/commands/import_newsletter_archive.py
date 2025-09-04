@@ -53,6 +53,14 @@ ARCHIVE_URLS = {
     "185": "http://eepurl.com/jdEVZo",
     "186": "http://eepurl.com/jepIFY",
     "187": "http://eepurl.com/jeIw_Y",
+    "188": "https://mailchi.mp/wagtail/twiw-11036059",
+    "189": "https://mailchi.mp/wagtail/twiw-11036356",
+    "190": "https://mailchi.mp/wagtail/twiw-11036662",
+    "191": "https://mailchi.mp/wagtail/twiw-11036961",
+    "192": "https://mailchi.mp/wagtail/twiw-11037103",
+    "193": "https://mailchi.mp/wagtail/twiw-11037192",
+    "194": "https://mailchi.mp/wagtail/twiw-11037409",
+    "195": "https://mailchi.mp/wagtail/twiw-11037646",
 }
 
 
