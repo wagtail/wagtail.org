@@ -16,6 +16,12 @@ $color--light-grey-100: #f3f5f8;
 $color--white:#fff;
 $color--pink: #f9cbce;
 $color--off-black-30: #2626264d;
+$color-darkspace-bg: #2a2a2a;
+$color-cosmic-pink: #ff8fea;
+$color-cosmic-green: #77fcff;
+$color-sponsor-pink: #ffd3f7;
+$color-spacetext-light: #f5f3f8;
+$color-spacetext-dark: #2b2833;
 
 // Mapping colours
 :root {
@@ -76,7 +82,9 @@ $weight--regular: 400;
 // Breakpoints
 $breakpoints: (
     'smallonly' '(max-width: 599px)',
+    'mediumsmall' '(max-width: 799px)',
     'medium' '(min-width: 599px)',
+    'mediumlarge' '(min-width: 599px) and (max-width: 1022px)',
     'large' '(min-width: 1023px)',
     'extra-large' '(min-width: 1279px)'
 );

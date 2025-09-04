@@ -8,7 +8,10 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
-from wagtailio.navigation.blocks import MainMenuSectionBlock, NavStreamField
+from wagtailio.navigation.blocks import (
+    MainMenuSectionBlock,
+    NavStreamField,
+)
 
 
 @register_snippet
@@ -80,11 +83,19 @@ class NavigationSettings(BaseSiteSetting, ClusterableModel):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+    space_navigation = models.ForeignKey(
+        "wagtailspace.SpaceMenu",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     panels = [
         FieldPanel("get_started_menu"),
         FieldPanel("main_navigation"),
         FieldPanel("footer_navigation"),
+        FieldPanel("space_navigation"),
     ]
 
     def save(self, **kwargs):

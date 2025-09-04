@@ -1,0 +1,10 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="speaker-container">
+    <div>
+        {% image value.speaker_image max-315x315 class="speaker-image" %}
+    </div>
+    <div class="speaker-info">
+        <h3 class="speaker-name">{{ value.speaker_name }}</h3>
+        <p class="speaker-talk">{{ value.speaker_talk }}</p>
+    </div>
+</div>
