@@ -3,7 +3,7 @@
 <mj-section padding="8px 24px 0">
     <mj-column>
         <mj-button
-            href="{{ value.url }}"
+            href="{{ value.link_url }}"
             background-color="#007d7e"
             border="2px solid #007d7e"
             color="white"

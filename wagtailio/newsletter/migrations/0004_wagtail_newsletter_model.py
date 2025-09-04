@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                             ("rich_text", 1),
                             ("accent_rich_text", 2),
                             ("image", 3),
-                            ("button", 6),
+                            ("button", 7),
                         ],
                         blank=True,
                         block_lookup={
@@ -70,10 +70,25 @@ class Migration(migrations.Migration):
                             ),
                             3: ("wagtailio.newsletter.blocks.ImageBlock", (), {}),
                             4: ("wagtail.blocks.CharBlock", (), {"required": True}),
-                            5: ("wagtail.blocks.URLBlock", (), {"required": True}),
+                            5: (
+                                "wagtail.blocks.URLBlock",
+                                (),
+                                {
+                                    "help_text": "External URL to link to",
+                                    "required": False,
+                                },
+                            ),
                             6: (
+                                "wagtail.blocks.PageChooserBlock",
+                                (),
+                                {
+                                    "help_text": "Internal page to link to",
+                                    "required": False,
+                                },
+                            ),
+                            7: (
                                 "wagtail.blocks.StructBlock",
-                                [[("text", 4), ("url", 5)]],
+                                [[("text", 4), ("url", 5), ("page", 6)]],
                                 {},
                             ),
                         },
@@ -98,7 +113,7 @@ class Migration(migrations.Migration):
                     ("rich_text", 1),
                     ("accent_rich_text", 2),
                     ("image", 3),
-                    ("button", 6),
+                    ("button", 7),
                 ],
                 blank=True,
                 block_lookup={
@@ -135,8 +150,21 @@ class Migration(migrations.Migration):
                     ),
                     3: ("wagtailio.newsletter.blocks.ImageBlock", (), {}),
                     4: ("wagtail.blocks.CharBlock", (), {"required": True}),
-                    5: ("wagtail.blocks.URLBlock", (), {"required": True}),
-                    6: ("wagtail.blocks.StructBlock", [[("text", 4), ("url", 5)]], {}),
+                    5: (
+                        "wagtail.blocks.URLBlock",
+                        (),
+                        {"help_text": "External URL to link to", "required": False},
+                    ),
+                    6: (
+                        "wagtail.blocks.PageChooserBlock",
+                        (),
+                        {"help_text": "Internal page to link to", "required": False},
+                    ),
+                    7: (
+                        "wagtail.blocks.StructBlock",
+                        [[("text", 4), ("url", 5), ("page", 6)]],
+                        {},
+                    ),
                 },
             ),
         ),

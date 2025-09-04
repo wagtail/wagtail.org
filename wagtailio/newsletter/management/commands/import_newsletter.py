@@ -85,6 +85,7 @@ def process_block_content(block):
                 "value": {
                     "text": link.get_text().strip(),
                     "url": link.get("href", ""),
+                    "page": None,
                 },
             }
 
