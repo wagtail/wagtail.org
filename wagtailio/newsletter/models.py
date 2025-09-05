@@ -3,19 +3,33 @@ from django.db import models
 from django.shortcuts import render
 
 from wagtail.admin.panels import FieldPanel
-from wagtail.fields import RichTextField
+from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
+from wagtail_newsletter.models import NewsletterPageMixin
 
-class NewsletterPage(Page):
-    date = models.DateField("Newsletter date")
-    intro = RichTextField(blank=True)
-    body = RichTextField()
+from wagtailio.newsletter.blocks import NewsletterContentBlock
+
+
+@register_setting
+class NewsletterSettings(BaseGenericSetting):
+    footer = StreamField(NewsletterContentBlock(), blank=True)
+
+    panels = [
+        FieldPanel("footer"),
+    ]
+
+
+class NewsletterPage(NewsletterPageMixin, Page):
+    date = models.DateField()
+    preview = models.TextField(blank=True)
+    body = StreamField(NewsletterContentBlock(), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("date"),
-        FieldPanel("intro"),
+        FieldPanel("preview"),
         FieldPanel("body"),
     ]
 
@@ -24,17 +38,31 @@ class NewsletterPage(Page):
         index.SearchField("body"),
     ]
 
+    newsletter_template = "newsletter/newsletter_mjml.html"
+
+    def get_newsletter_subject(self):
+        if self.newsletter_subject:
+            return self.newsletter_subject
+
+        return f"This Week in Wagtail: {self.title}"
+
+    def get_newsletter_context(self):
+        context = super().get_newsletter_context()
+        context["newsletter_settings"] = NewsletterSettings.load()
+        return context
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        if request.GET.get("email", "false") == "true":
-            context["is_email"] = True
-
+        email_html = self.get_newsletter_html(extra_context={"rendering_for_web": True})
+        context["email_html"] = email_html
         return context
 
 
 class NewsletterIndexPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField()
+
+    subpage_types = ["newsletter.NewsletterPage"]
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
