@@ -61,6 +61,7 @@ ARCHIVE_URLS = {
     "193": "https://mailchi.mp/wagtail/twiw-11037192",
     "194": "https://mailchi.mp/wagtail/twiw-11037409",
     "195": "https://mailchi.mp/wagtail/twiw-11037646",
+    "196": "https://mailchi.mp/wagtail/twiw-11037909",
 }
 
 
