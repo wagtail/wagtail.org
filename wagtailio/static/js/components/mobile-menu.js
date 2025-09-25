@@ -10,26 +10,42 @@ class MobileMenu {
         this.body = document.querySelector('body');
         this.mobileMenu = document.querySelector('[data-mobile-menu]');
 
+        // Check initial state based on CSS classes
+        const nodeHasOpenClass = this.node.classList.contains('is-open');
+        const menuHasVisibleClass = this.mobileMenu.classList.contains('is-visible');
+        const bodyHasNoScrollClass = this.body.classList.contains('no-scroll');
+        
+        const isInitiallyOpen = nodeHasOpenClass && menuHasVisibleClass && bodyHasNoScrollClass;
+        
         this.state = {
-            open: false,
+            open: isInitiallyOpen,
         };
-        this.focusTrap = createFocusTrap([
-            this.node.parentElement,
-            this.mobileMenu,
-        ]);
+
+        // Only create focus trap if required elements exist
+        if (this.mobileMenu) {
+            this.focusTrap = createFocusTrap(this.mobileMenu);
+        } else {
+            this.focusTrap = null;
+        }
+
         this.bindEventListeners();
     }
 
     bindEventListeners() {
-        this.node.addEventListener('click', () => {
+        // Use mousedown since click events are being prevented
+        this.node.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             this.toggle();
         });
 
         // Allow pressing Escape to close
-        this.mobileMenu.addEventListener('keydown', (e) => {
-            if (e.key !== 'Escape') return;
-            this.close();
-        });
+        if (this.mobileMenu) {
+            this.mobileMenu.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                this.close();
+            });
+        }
     }
 
     toggle() {
@@ -55,13 +71,22 @@ class MobileMenu {
         this.mobileMenu.classList.add('is-visible');
 
         const siteWideAlert = document.querySelector('.sitewide-alert');
+        const spaceBanner = document.querySelector('.space-banner');
+        
         if (siteWideAlert) {
             // adjust for the site-wider alert height
             this.mobileMenu.style.marginTop = siteWideAlert.clientHeight + 'px';
         }
+        
+        if (spaceBanner) {
+            // hide the space banner when mobile menu is open
+            spaceBanner.style.display = 'none';
+        }
 
         this.state.open = true;
-        this.focusTrap.activate();
+        if (this.focusTrap) {
+            this.focusTrap.activate();
+        }
     }
 
     close() {
@@ -70,8 +95,16 @@ class MobileMenu {
         this.body.classList.remove('no-scroll');
         this.mobileMenu.classList.remove('is-visible');
 
+        // show the space banner again when menu is closed
+        const spaceBanner = document.querySelector('.space-banner');
+        if (spaceBanner) {
+            spaceBanner.style.display = '';
+        }
+
         this.state.open = false;
-        this.focusTrap.deactivate();
+        if (this.focusTrap) {
+            this.focusTrap.deactivate();
+        }
     }
 }
 
