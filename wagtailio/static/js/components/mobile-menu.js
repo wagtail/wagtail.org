@@ -10,8 +10,15 @@ class MobileMenu {
         this.body = document.querySelector('body');
         this.mobileMenu = document.querySelector('[data-mobile-menu]');
 
+        // Check initial state based on CSS classes
+        const nodeHasOpenClass = this.node.classList.contains('is-open');
+        const menuHasVisibleClass = this.mobileMenu.classList.contains('is-visible');
+        const bodyHasNoScrollClass = this.body.classList.contains('no-scroll');
+        
+        const isInitiallyOpen = nodeHasOpenClass && menuHasVisibleClass && bodyHasNoScrollClass;
+        
         this.state = {
-            open: false,
+            open: isInitiallyOpen,
         };
 
         // Only create focus trap if required elements exist
@@ -25,15 +32,20 @@ class MobileMenu {
     }
 
     bindEventListeners() {
-        this.node.addEventListener('click', () => {
+        // Use mousedown since click events are being prevented
+        this.node.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             this.toggle();
         });
 
         // Allow pressing Escape to close
-        this.mobileMenu.addEventListener('keydown', (e) => {
-            if (e.key !== 'Escape') return;
-            this.close();
-        });
+        if (this.mobileMenu) {
+            this.mobileMenu.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                this.close();
+            });
+        }
     }
 
     toggle() {
@@ -59,9 +71,16 @@ class MobileMenu {
         this.mobileMenu.classList.add('is-visible');
 
         const siteWideAlert = document.querySelector('.sitewide-alert');
+        const spaceBanner = document.querySelector('.space-banner');
+        
         if (siteWideAlert) {
             // adjust for the site-wider alert height
             this.mobileMenu.style.marginTop = siteWideAlert.clientHeight + 'px';
+        }
+        
+        if (spaceBanner) {
+            // hide the space banner when mobile menu is open
+            spaceBanner.style.display = 'none';
         }
 
         this.state.open = true;
@@ -75,6 +94,12 @@ class MobileMenu {
         this.node.setAttribute('aria-expanded', 'false');
         this.body.classList.remove('no-scroll');
         this.mobileMenu.classList.remove('is-visible');
+
+        // show the space banner again when menu is closed
+        const spaceBanner = document.querySelector('.space-banner');
+        if (spaceBanner) {
+            spaceBanner.style.display = '';
+        }
 
         this.state.open = false;
         if (this.focusTrap) {

@@ -951,3 +951,8 @@
         margin-top: 5px; /* Reduced from 10px */
     }
 }
+
+/* Hide space banner when mobile menu is active */
+.no-scroll .space-banner {
+    display: none !important;
+}
