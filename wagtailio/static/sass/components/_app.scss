@@ -1,5 +1,9 @@
 .app {
     &__content {
         overflow-x: hidden;
+
+        .template-wagtail-space-schedule-page & {
+            overflow-x: visible;
+        }
     }
 }
