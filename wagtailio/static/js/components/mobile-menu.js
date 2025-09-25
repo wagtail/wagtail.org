@@ -13,10 +13,14 @@ class MobileMenu {
         this.state = {
             open: false,
         };
-        this.focusTrap = createFocusTrap([
-            this.node.parentElement,
-            this.mobileMenu,
-        ]);
+
+        // Only create focus trap if required elements exist
+        if (this.mobileMenu) {
+            this.focusTrap = createFocusTrap(this.mobileMenu);
+        } else {
+            this.focusTrap = null;
+        }
+
         this.bindEventListeners();
     }
 
@@ -61,7 +65,9 @@ class MobileMenu {
         }
 
         this.state.open = true;
-        this.focusTrap.activate();
+        if (this.focusTrap) {
+            this.focusTrap.activate();
+        }
     }
 
     close() {
@@ -71,7 +77,9 @@ class MobileMenu {
         this.mobileMenu.classList.remove('is-visible');
 
         this.state.open = false;
-        this.focusTrap.deactivate();
+        if (this.focusTrap) {
+            this.focusTrap.deactivate();
+        }
     }
 }
 
