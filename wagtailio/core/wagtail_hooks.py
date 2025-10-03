@@ -5,9 +5,21 @@ from django.utils.cache import add_never_cache_headers
 from wagtail import hooks
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
+from wagtail.models import Page
 from wagtail.whitelist import allow_without_attributes
 
 from storages.backends.s3 import S3Storage
+from wagtail_ai.panels import AIFieldPanel, AITitleFieldPanel
+from wagtail_ai.prompts import DefaultPrompt
+
+
+# Enable AI prompts on the title field
+Page.content_panels[0] = AITitleFieldPanel("title", prompts=[DefaultPrompt.TITLE])
+# Enable AI prompts on the search_description field
+Page.promote_panels[0].args[0][-1] = AIFieldPanel(
+    "search_description",
+    prompts=[DefaultPrompt.DESCRIPTION],
+)
 
 
 @hooks.register("construct_whitelister_element_rules")
