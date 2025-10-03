@@ -2,6 +2,9 @@ from django.db import models
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
+from wagtail_ai.panels import AIFieldPanel
+from wagtail_ai.prompts import DefaultPrompt
+
 
 class SocialMediaMixin(models.Model):
     social_text = models.CharField(
@@ -22,7 +25,13 @@ class SocialMediaMixin(models.Model):
 
     panels = [
         MultiFieldPanel(
-            [FieldPanel("social_text"), FieldPanel("social_image")],
+            [
+                AIFieldPanel(
+                    "social_text",
+                    prompts=[DefaultPrompt.DESCRIPTION],
+                ),
+                FieldPanel("social_image"),
+            ],
             "Social/Meta descriptions",
         )
     ]
@@ -47,7 +56,13 @@ class CrossPageMixin(models.Model):
 
     panels = [
         MultiFieldPanel(
-            [FieldPanel("listing_intro"), FieldPanel("listing_image")],
+            [
+                AIFieldPanel(
+                    "listing_intro",
+                    prompts=[DefaultPrompt.DESCRIPTION],
+                ),
+                FieldPanel("listing_image"),
+            ],
             "Cross-page behaviour",
         )
     ]
