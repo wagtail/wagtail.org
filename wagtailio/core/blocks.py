@@ -9,9 +9,19 @@ from wagtail.images import get_image_model
 from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
+from wagtail_ai.prompts import DefaultPrompt
 from wagtailmedia.blocks import VideoChooserBlock
 
 from wagtailio.core.choices import SVGIcon
+
+
+# Enable AI prompts on the alt text field of ImageBlock
+ImageBlock._meta_class.form_attrs = {
+    "data-controller": "wai-field-panel",
+    "data-wai-field-panel-main-input-value": '[data-contentpath="alt_text"] input',
+    "data-wai-field-panel-image-input-value": '[data-contentpath="image"] input',
+    "data-wai-field-panel-prompts-value": f"[{DefaultPrompt.CONTEXTUAL_ALT_TEXT}]",
+}
 
 
 class CTALinkStructValue(blocks.StructValue):
