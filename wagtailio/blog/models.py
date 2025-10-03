@@ -10,6 +10,9 @@ from wagtail.models import Orderable, Page
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from wagtail_ai.panels import AIFieldPanel
+from wagtail_ai.prompts import DefaultPrompt
+
 from wagtailio.blog.blocks import BlogStoryBlock
 from wagtailio.taxonomy.models import Category
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
@@ -165,7 +168,10 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         FieldPanel("main_image"),
         FieldPanel("date"),
         FieldPanel("category"),
-        FieldPanel("introduction"),
+        AIFieldPanel(
+            "introduction",
+            prompts=[DefaultPrompt.DESCRIPTION],
+        ),
         FieldPanel("body"),
         InlinePanel(
             "related_posts",
