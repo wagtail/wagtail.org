@@ -30,7 +30,7 @@ requests = "~2.32.3"
 scout-apm = "~3.4"
 sentry-sdk = "~2.34"
 wagtail-font-awesome-svg = "~1.1"
-
+wagtail-ai = { version = "~3.0.0a1", allow-prereleases = true }
 wagtailmedia = "~0.16"
 whitenoise = "~6.9"
 django-redis = "~6.0"

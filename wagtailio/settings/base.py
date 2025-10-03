@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "modelcluster",
     "rest_framework",
     "manifest_loader",
+    "wagtail_ai",
     "wagtail",
     "wagtail.admin",
     "wagtail.documents",
@@ -629,3 +630,25 @@ if "MAILCHIMP_NEWSLETTER_ID" in env and "MAILCHIMP_ACCOUNT_ID" in env:
 # all the tracking
 FB_APP_ID = env.get("FB_APP_ID", "")
 GOOGLE_TAG_MANAGER_ID = env.get("GOOGLE_TAG_MANAGER_ID", "")
+
+# Wagtail AI settings
+# https://wagtail-ai.readthedocs.io
+
+WAGTAIL_AI = {
+    "BACKENDS": {
+        "default": {
+            "CLASS": "wagtail_ai.ai.llm.LLMBackend",
+            "CONFIG": {
+                # Model ID recognizable by the "LLM" library.
+                "MODEL_ID": os.environ.get(
+                    "WAGTAIL_AI_DEFAULT_MODEL_ID", "gpt-4.1-mini"
+                ),
+                "TOKEN_LIMIT": int(
+                    os.environ.get("WAGTAIL_AI_DEFAULT_TOKEN_LIMIT", 32768)
+                ),
+            },
+        },
+    },
+}
+
+WAGTAILIMAGES_IMAGE_FORM_BASE = "wagtail_ai.forms.DescribeImageForm"
