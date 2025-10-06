@@ -13,15 +13,12 @@
             <div class="pretalx-container">
                 {% if page.schedule_url %}
                     <pretalx-schedule event-url="{{ page.schedule_url.url }}" locale="en" format="grid" style="--pretalx-clr-primary: #2b2833; background: #fff; text-align:left;"></pretalx-schedule>
-                {% endif %}
+                    <script src="{{ schedule_link.url }}widgets/schedule.js"></script>
                     <noscript>
-                        <div class="pretalx-widget">
-                            <div class="pretalx-widget-info-message">
-                                JavaScript is disabled in your browser. To access our schedule without JavaScript,
-                                please <a target="_blank" href="https://pretalx.com/wagtail-space-2025/schedule/">click here</a>.
-                            </div>
-                        </div>
+                        JavaScript is disabled in your browser. To access our schedule without JavaScript,
+                        please <a target="_blank" href="{{ page.schedule_url.url }}">go to the schedule page</a>.
                     </noscript>
+                {% endif %}
             </div>
         </div>
     </div>
