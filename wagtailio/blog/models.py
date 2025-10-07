@@ -1,5 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models import Case, IntegerField, Value, When
+from django.db.models.functions import Lower
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
@@ -30,21 +32,50 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_index_page.html"
     subpage_types = ["blog.BlogPage"]
 
-    @property
+    @cached_property
     def posts(self):
         # Get list of blog pages that are descendants of this page, ordered by date
         return (
             BlogPage.objects.live()
             .descendant_of(self)
             .select_related("author", "author__image", "category")
+            .annotate(category_title_lower=Lower("category__title"))
             .order_by("-date", "pk")
         )
 
+    @cached_property
+    def categories(self):
+        return (
+            Category.objects.filter(
+                pk__in=models.Subquery(self.posts.values("category"))
+            )
+            .annotate(title_lower=Lower("title"))
+            .annotate(checked=Value(0))
+        )
+
     def serve(self, request):
-        if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+        posts = self.posts
+        categories = self.categories
+        category_selected = False
+
+        if request.GET and not request.GET.get("all"):
+            filtered_categories = list(request.GET)
+
+            # Prevent non-category values being filtered
+            if all(
+                category in categories.values_list("title_lower", flat=True)
+                for category in filtered_categories
+            ):
+                # Filter and annotate checked categories
+                categories = categories.annotate(
+                    checked=Case(
+                        When(title_lower__in=filtered_categories, then=Value(1)),
+                        default=Value(0),
+                        output_field=IntegerField(),
+                    )
+                )
+                posts = self.posts.filter(category_title_lower__in=filtered_categories)
+                category_selected = True
 
         # Pagination
         paginator = Paginator(posts, 10)  # Show 10 blog posts per page
@@ -64,12 +95,10 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
                 "page": self,
                 "posts": posts,
                 "featured_posts": [post.page for post in self.featured_posts.all()],
-                "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
-                )
-                .values_list("pk", "title")
+                "categories": categories.values_list("pk", "title", "checked")
                 .distinct()
                 .order_by("title"),
+                "category_selected": category_selected,
             },
         )
 
