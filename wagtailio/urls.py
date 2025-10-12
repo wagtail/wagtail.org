@@ -13,7 +13,6 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.models import Page
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
-from wagtailio.api import api_router
 from wagtailio.blog.feeds import BlogFeed
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.search.views import search
@@ -32,7 +31,6 @@ private_urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("search/", search, name="search"),
     path("sitewide_alert/", include(sitewide_alert_urls, namespace="sitewide_alert")),
-    path("api/v2/", api_router.urls),
 ] + decorate_urlpatterns([path("documents/", include(wagtaildocs_urls))], never_cache)
 
 urlpatterns = [
