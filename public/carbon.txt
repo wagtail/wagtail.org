@@ -1,0 +1,10 @@
+[org]
+disclosures = [
+	{ doc_type='sustainability-page', url='https://wagtail.org/sustainability/', domain='wagtail.org' },
+    { doc_type='annual-report', url='https://wagtail.org/blog/estimating-wagtail-websites-emissions/', domain='wagtail.org' },
+    { doc_type='annual-report', url='https://wagtail.org/blog/wagtail-2024-carbon-footprint/', domain='wagtail.org' },
+    { doc_type='web-page', url='https://wagtail.org/digital-emissions/', domain='wagtail.org' }
+]
+
+[upstream]
+services = [ ]
