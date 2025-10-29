@@ -16,7 +16,11 @@ The reason for the separation is because of differing context variable names, fo
         <h4 class="logo-card__heading teaser-heading">{{ value.title }}</h4>
     {% endif %}
 
-    <div class="logo-card__description">{{ value.introduction }}</div>
+    {% if value.introduction %}
+        <div class="logo-card__description">{{ value.introduction }}</div>
+    {% elif value.intro %}
+        <div class="logo-card__description">{{ value.intro }}</div>
+    {% endif %}
 
     {% if value.author %}
         <div class="logo-card__author-wrap">
