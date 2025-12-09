@@ -27,15 +27,15 @@ django-storages = { version ="~1.14", extras = ["s3"] }
 markdown = "~3.7"
 pygments = "~2.19"
 requests = "~2.32.3"
-scout-apm = "~3.4"
-sentry-sdk = "~2.34"
+scout-apm = "~3.5"
+sentry-sdk = "~2.47"
 wagtail-font-awesome-svg = "~1.1"
 
 wagtailmedia = "~0.16"
-whitenoise = "~6.9"
+whitenoise = "~6.11"
 django-redis = "~6.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.3.0"
-djhtml = "3.0.9"
+djhtml = "3.0.10"
 ruff = "0.12.8"  # keep in sync with .pre-commit-config.yaml
