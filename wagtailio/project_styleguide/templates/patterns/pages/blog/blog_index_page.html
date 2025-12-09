@@ -7,10 +7,31 @@
     {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
 
     <div class="grid">
+        <form method="get" class="blog-filter">
+            <select name="author" onchange="this.form.submit()">
+                <option value="">All authors</option>
+
+                {% for author in authors %}
+                    <option value="{{ author.id }}"
+                        {% if request.GET.author == author.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+                        {{ author.name }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            {# preserve category filter if present #}
+            {% if request.GET.category %}
+                <input type="hidden" name="category" value="{{ request.GET.category }}">
+            {% endif %}
+        </form>
+
         <section class="blog-listing">
             {% for post in posts %}
                 {# only show featured posts on the first pagination page, no filters #}
-                {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
+                {% if featured_posts and posts.number == 1 and 'category' not in request.GET and 'author' not in request.GET %}
                     {% comment %}
                         With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
                         follows the pattern shown in the table below, which can be summarized as follows:
@@ -74,7 +95,12 @@
     <div class="grid">
         <div class="pagination">
             {% if posts.has_previous %}
-                <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
+                <a
+                    href="?page={{ posts.previous_page_number }}
+                    {% if request.GET.author %}&author={{ request.GET.author }}{% endif %}
+                    {% if request.GET.category %}&category={{ request.GET.category }}{% endif %}"
+                    class="pagination__previous button button--reverse"
+                >
                     <p class="button__text">
                         Previous
                         <span class="u-sr-only">- Go to page {{ posts.previous_page_number}}</span>
@@ -88,7 +114,12 @@
             </span>
 
             {% if posts.has_next %}
-                <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
+                <a 
+                    href="?page={{ posts.next_page_number }}
+                    {% if request.GET.author %}&author={{ request.GET.author }}{% endif %}
+                    {% if request.GET.category %}&category={{ request.GET.category }}{% endif %}"
+                    class="pagination__next button"
+                >
                     <p class="button__text">
                         Next
                         <span class="u-sr-only">- Go to page {{ posts.next_page_number}}</span>

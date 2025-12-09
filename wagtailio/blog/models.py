@@ -41,13 +41,16 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         )
 
     def serve(self, request):
+        posts_qs = self.posts
+
         if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+            posts_qs = posts_qs.filter(category=request.GET.get("category"))
+
+        if request.GET.get("author"):
+            posts_qs = posts_qs.filter(author__id=request.GET.get("author"))
 
         # Pagination
-        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
+        paginator = Paginator(posts_qs, 10)  # Show 10 blog posts per page
 
         page = request.GET.get("page")
         try:
@@ -55,7 +58,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         except PageNotAnInteger:
             posts = paginator.page(1)
         except EmptyPage:
-            posts = None
+            posts = paginator.page(1)
 
         return render(
             request,
@@ -63,9 +66,10 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             {
                 "page": self,
                 "posts": posts,
+                "authors": Author.objects.all().order_by("name"),
                 "featured_posts": [post.page for post in self.featured_posts.all()],
                 "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
+                    pk__in=models.Subquery(posts_qs.values("category"))
                 )
                 .values_list("pk", "title")
                 .distinct()
