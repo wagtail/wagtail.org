@@ -29,7 +29,7 @@ pygments = "~2.19"
 requests = "~2.32.3"
 scout-apm = "~3.5"
 sentry-sdk = "~2.47"
-wagtail-font-awesome-svg = "~1.1"
+wagtail-font-awesome-svg = "~2.0"
 
 wagtailmedia = "~0.17"
 whitenoise = "~6.11"

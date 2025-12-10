@@ -1565,15 +1565,18 @@ testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-f
 
 [[package]]
 name = "wagtail-font-awesome-svg"
-version = "1.1"
-description = "Font Awesome icons as SVG for Wagtail"
+version = "2.0"
+description = "Font Awesome 7 icons as SVG for Wagtail"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "wagtail_font_awesome_svg-1.1-py3-none-any.whl", hash = "sha256:f78276281f227accede5b61bfa521911a8f7970553829c74d1ce3025da73c41f"},
-    {file = "wagtail_font_awesome_svg-1.1.tar.gz", hash = "sha256:f2a19c23d071e58157a3ac4cea61c1dfeddf6cc337d8c99bc88aa0fe52d1ff61"},
+    {file = "wagtail_font_awesome_svg-2.0-py3-none-any.whl", hash = "sha256:031e0d3d64ec96a87216519502c97a29ef6e6f10f4f8d6bbb4c98dce567bd9b7"},
+    {file = "wagtail_font_awesome_svg-2.0.tar.gz", hash = "sha256:aac01b5ea8b0c3de3e363a91aa5067f514b9cd385224d6ba7153d9de47120493"},
 ]
+
+[package.dependencies]
+wagtail = "*"
 
 [[package]]
 name = "wagtailmedia"
@@ -1728,4 +1731,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "de1f412f95d1ccc50307ffe5da6017947bd0f0df8ff2443c1442f53fb91f5d69"
+content-hash = "1bfb6319c24a67d1fec7174f0c2900f9a454493dc7446e6fcea6e2d3e48131bb"
