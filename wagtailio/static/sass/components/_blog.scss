@@ -64,3 +64,45 @@
         }
     }
 }
+
+.blog-filter {
+    grid-column: 2 / span 2;
+    margin-bottom: 30px;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 4;
+    }
+
+    select {
+        appearance: none;
+        min-width: 280px;
+
+        padding: 10px 40px 10px 14px;
+        font-size: 1rem;
+
+        color: var(--color--text);
+        background-color: var(--color--background);
+        border: 1px solid var(--color--border);
+        border-radius: $rounded-sm;
+
+        cursor: pointer;
+
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='currentColor' stroke-width='1.5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 10px 6px;
+    }
+
+    select:hover {
+        border-color: var(--color--active);
+    }
+
+    select:focus {
+        outline: none;
+        border-color: var(--color--active);
+    }
+}
