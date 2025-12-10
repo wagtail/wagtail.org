@@ -31,7 +31,7 @@
         <section class="blog-listing">
             {% for post in posts %}
                 {# only show featured posts on the first pagination page, no filters #}
-                {% if featured_posts and posts.number == 1 and 'category' not in request.GET and 'author' not in request.GET %}
+                {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
                     {% comment %}
                         With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
                         follows the pattern shown in the table below, which can be summarized as follows:
