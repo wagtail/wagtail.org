@@ -41,21 +41,28 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         )
 
     def serve(self, request):
-        if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+        posts_qs = self.posts
+        featured_qs = [fp.page for fp in self.featured_posts.all()]
 
-        # Pagination
-        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
+        author_id = request.GET.get("author")
+        category_id = request.GET.get("category")
 
+        if category_id:
+            posts_qs = posts_qs.filter(category=category_id)
+
+        if author_id:
+            posts_qs = posts_qs.filter(author__id=author_id)
+            featured_qs = []
+
+        paginator = Paginator(posts_qs, 10)
         page = request.GET.get("page")
+
         try:
             posts = paginator.page(page)
         except PageNotAnInteger:
             posts = paginator.page(1)
         except EmptyPage:
-            posts = None
+            posts = paginator.page(1)
 
         return render(
             request,
@@ -63,16 +70,17 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             {
                 "page": self,
                 "posts": posts,
-                "featured_posts": [post.page for post in self.featured_posts.all()],
+                "authors": Author.objects.all().order_by("name"),
+                "featured_posts": featured_qs,
                 "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
+                    pk__in=models.Subquery(posts_qs.values("category"))
                 )
                 .values_list("pk", "title")
                 .distinct()
                 .order_by("title"),
             },
         )
-
+    
     content_panels = Page.content_panels + [
         InlinePanel(
             "featured_posts",
