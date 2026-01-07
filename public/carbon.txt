@@ -1,10 +1,18 @@
+version="0.4"
+last_updated="2026-01-07"
+
 [org]
 disclosures = [
-	{ doc_type='sustainability-page', url='https://wagtail.org/sustainability/', domain='wagtail.org' },
-    { doc_type='annual-report', url='https://wagtail.org/blog/estimating-wagtail-websites-emissions/', domain='wagtail.org' },
-    { doc_type='annual-report', url='https://wagtail.org/blog/wagtail-2024-carbon-footprint/', domain='wagtail.org' },
-    { doc_type='web-page', url='https://wagtail.org/digital-emissions/', domain='wagtail.org' }
+	{ doc_type='sustainability-page', url='https://wagtail.org/sustainability/', domain='wagtail.org', title='Sustainability commitments' },
+    { doc_type='annual-report', url='https://wagtail.org/blog/estimating-wagtail-websites-emissions/', domain='wagtail.org', valid_until='2023-12-31', title='Estimating Wagtail websites emissions in 2023' },
+    { doc_type='annual-report', url='https://wagtail.org/blog/wagtail-2024-carbon-footprint/', domain='wagtail.org', valid_until='2024-12-31', title='Wagtail 2024 carbon footprint' },
+    { doc_type='web-page', url='https://wagtail.org/digital-emissions/', domain='wagtail.org', title='Digital emissions' },
 ]
 
 [upstream]
-services = [ ]
+services = [
+    { domain="cloudflare.com", service_type="content-delivery-network" },
+    { domain="heroku.com", service_type=["platform-as-a-service", "database","cache"] },
+    { domain="aws.amazon.com", service_type="object-storage" },
+    { domain="github.com", service_type="ci-cd" },
+]
