@@ -13,6 +13,8 @@
     background-color: var(--color--background);
     padding: 20px;
     left: -20px;
+    position: relative;
+    transition: transform 0.3s ease;
 
     &__meta {
         margin-bottom: 10px;
@@ -51,15 +53,13 @@
         margin-left: 10px;
     }
 
-    &:is(a) {
-        @include offset-bg-left();
+    @include offset-bg-left();
 
-        &:hover {
-            @include offset-bg-hover-left();
+    &:hover {
+        @include offset-bg-hover-left();
 
-            #{$root}__heading {
-                color: var(--color--interaction);
-            }
+        #{$root}__heading {
+            color: var(--color--interaction);
         }
     }
 
