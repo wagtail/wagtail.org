@@ -43,6 +43,19 @@
             padding-top: $gutter-lg;
         }
     }
+    @include media-query(small) {
+        &__heading {
+            display: inline-block;
+            background-color: color-mix(
+                in srgb,
+                var(--color-background) 70%,
+                transparent
+            );
+            padding: 0.25em 0.5em;
+            border-radius: 4px;
+        }
+    }
+
 
     &__subheading {
         margin-bottom: 20px;
