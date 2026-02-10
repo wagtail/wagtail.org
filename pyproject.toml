@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wagtail-org"
-version = "2.2.0"
+version = "2.3.0"
 description = "The wagtail.org Wagtail site"
 authors = ["Torchbox <hello@torchbox.com>"]
 license = "BSD-3-Clause"
@@ -14,7 +14,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.dependencies]
 python = "^3.13"
 django = "~6.0.0"
-wagtail = "~7.2.1"
+wagtail = "~7.3.0"
 psycopg = "~3.3"
 gunicorn = "~23.0.0"
 dj-database-url = "~3.0.0"
