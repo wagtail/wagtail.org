@@ -2,3 +2,16 @@ node_modules
 static_compiled
 venv
 vendor
+static/admin
+static/js/main.js
+static/pattern_library/dist
+static/rest_framework
+static/typed_table_block
+static/wagtail_newsletter
+static/wagtailadmin
+static/wagtaildocs
+static/wagtailembeds
+static/wagtailimages
+static/wagtailmedia
+static/wagtailsearchpromotions
+static/wagtailsnippets
