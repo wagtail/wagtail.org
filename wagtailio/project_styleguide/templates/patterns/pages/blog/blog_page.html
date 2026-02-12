@@ -18,7 +18,8 @@
 
         {% if page.main_image %}
             <div class="grid">
-                {% image page.main_image width-900 class="blog__main-image" %}
+                {% comment %} {% image page.main_image width-900 class="blog__main-image" %} {% endcomment %}
+                {% picture page.main_image format-{avif,webp,jpeg} width-{400,900} class="blog__main-image" %}
             </div>
         {% endif %}
 
