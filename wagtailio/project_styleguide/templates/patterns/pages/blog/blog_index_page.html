@@ -72,7 +72,7 @@
     </div>
 
     <div class="grid">
-        <div class="pagination">
+        <nav class="pagination">
             {% if posts.has_previous %}
                 <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
                     <p class="button__text">
@@ -83,9 +83,23 @@
                 </a>
             {% endif %}
 
-            <span class="pagination__page-count mini-meta">
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
-            </span>
+            <ul class="pagination__sequence" aria-label="Pagination Sequence">
+                {% for num in pagination_sequence %}
+                    {% if num == posts.paginator.ELLIPSIS %}
+                        <li>
+                            <span class="pagination__ellipsis" aria-hidden="true">{{ num }}</span>
+                        </li>
+                    {% elif num == posts.number %}
+                        <li>
+                            <a href="?page={{ num }}" class="pagination__page-number pagination__page-number--current" aria-current="page"><span class="u-sr-only">Page </span>{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="?page={{ num }}" class="pagination__page-number"><span class="u-sr-only">Page </span>{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
             {% if posts.has_next %}
                 <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
@@ -96,6 +110,6 @@
                     <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
                 </a>
             {% endif %}
-        </div>
+        </nav>
     </div>
 {% endblock %}
