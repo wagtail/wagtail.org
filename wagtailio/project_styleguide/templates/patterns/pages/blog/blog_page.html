@@ -13,7 +13,9 @@
                 <h2 class="blog__intro intro-small">{{ page.introduction }}</h2>
             {% endif %}
 
-            {% include "patterns/components/author/author.html" with author=page.author classes="blog__author author--blog" %}
+            {% if page.authors.all %}
+                {% include "patterns/components/authors/authors.html" with authors=page.authors.all author_class="author--blog" authors_class="blog__authors"%}
+            {% endif %}
         </header>
 
         {% if page.main_image %}
