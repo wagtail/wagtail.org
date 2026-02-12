@@ -86,7 +86,6 @@ INSTALLED_APPS = [
     "wagtailio.roadmap",
     "wagtailio.services",
     "wagtailio.showcase",
-    "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
     "wagtailmedia",
     "pattern_library",
