@@ -1,0 +1,71 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// NOTE: This banner was originally created for Wagtail Space 2025. This has been reconfigured to be a general announcement banner that can be added manually to the top of the base page. The template code for the banner can be found in PR #565 and the original text color was $color-cosmic-pink.
+// Headline Banner Styles
+.headline-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+    gap: 20px;
+    background-color: $color-darkspace-bg;
+}
+
+.banner-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: $color--teal-100;
+}
+
+.banner-image {
+    max-width: 500px;
+    height: auto;
+    display: block;
+}
+
+.banner-button {
+    display: inline-block;
+    background-color: $color--teal-100;
+    color: $color-darkspace-bg;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.banner-button:hover {
+    background-color: $color--white;
+    color: $color-darkspace-bg;
+    text-decoration: none;
+}
+
+/* Wagtail Space Banner Mobile Styles */
+@include media-query(mediumsmall) {
+    .headline-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px; /* Reduced from 20px */
+    }
+    
+    .banner-text {
+        margin-bottom: 5px; /* Reduced from 10px */
+    }
+    
+    .banner-image {
+        max-width: 500px;
+        width:100%;
+        margin: 0 auto;
+    }
+    
+    .banner-button {
+        margin-top: 5px; /* Reduced from 10px */
+    }
+}
+
+/* Hide space banner when mobile menu is active */
+.no-scroll .space-banner {
+    display: none;
+}
