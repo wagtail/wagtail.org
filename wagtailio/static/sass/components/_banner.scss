@@ -9,7 +9,7 @@
     justify-content: center;
     padding: 20px 15px;
     gap: 20px;
-    background-color: $color-darkspace-bg;
+    background-color: $color--black;
 }
 
 .banner-text {
@@ -27,7 +27,7 @@
 .banner-button {
     display: inline-block;
     background-color: $color--teal-100;
-    color: $color-darkspace-bg;
+    color: $color--black;
     padding: 6px 16px;
     font-size: 14px;
     font-weight: bold;
