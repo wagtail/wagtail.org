@@ -72,7 +72,8 @@
     </div>
 
     <div class="grid">
-        <nav class="pagination">
+        <nav class="pagination" aria-labelledby="pagination-label">
+            <span id="pagination-label" class="u-sr-only">Pagination</span>
             {% if posts.has_previous %}
                 <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
                     <p class="button__text">
@@ -83,7 +84,7 @@
                 </a>
             {% endif %}
 
-            <ul class="pagination__sequence" aria-label="Pagination Sequence">
+            <ul class="pagination__sequence">
                 {% for num in pagination_sequence %}
                     {% if num == posts.paginator.ELLIPSIS %}
                         <li>
