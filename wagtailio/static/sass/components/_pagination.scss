@@ -1,4 +1,5 @@
 @use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
 
 .pagination {
     $root: &;
@@ -11,7 +12,6 @@
     align-items: center;
 
     @include media-query(medium) {
-        display: block;
         grid-column: 2 / span 3;
     }
 
@@ -19,22 +19,37 @@
         grid-column: 2 / span 5;
     }
 
-    &__previous {
-        padding: 10px;
+    @media screen and (min-width: $pagination-row-view) {
+        flex-direction: row;
+    }
 
+    &__previous,
+    &__next {
+        padding: 10px;
+    
         @include media-query(medium) {
-            margin-right: 20px;
             padding: 15px 30px;
         }
     }
 
-    &__next {
+    &__sequence {
+        display: flex;
+        list-style: none;
+        align-items: center;
+    }
+
+    &__page-number {
+        text-decoration: none;
+        font-size: 1.25rem;
         padding: 10px;
 
-        @include media-query(medium) {
-            padding: 15px 30px;
-            margin-left: 20px;
+        &--current {
+            color: var(--color--text);
         }
+    }
+
+    &__ellipsis {
+        font-size: 1.25rem;
     }
 
     &--showcase {
@@ -44,7 +59,7 @@
         align-items: center;
         flex-direction: row;
 
-        @include media-query(smallonly){
+        @include media-query(smallonly) {
             flex-direction: column;
             #{$root}__previous,
                 #{$root}__next {
