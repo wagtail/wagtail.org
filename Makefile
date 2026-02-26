@@ -35,3 +35,12 @@ migrations:	## 🧳 - Make migrations
 
 migrate:  ## 🧳 - Migrate
 	docker-compose run web django-admin migrate
+
+dumpfixtures:  # 📦 - Dump fixtures
+	docker compose run --rm web django-admin dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.rendition -e sessions -e wagtailsearch.indexentry -e wagtailcore.referenceindex -e wagtailcore.pagesubscription -e wagtailcore.workflowcontenttype -e wagtailadmin.editingsession -e wagtailio.wagtailiorendition > fixtures/wagtail.org-demo.json
+	npx prettier --write fixtures/wagtail.org-demo.json
+	docker compose run --rm web cp -r media/original_images/* fixtures/media/original_images
+	docker compose run --rm web cp -r media/documents/* fixtures/media/documents
+
+load_initial_data:  # 📦 - Load initial data
+	docker-compose run --rm web django-admin load_initial_data
