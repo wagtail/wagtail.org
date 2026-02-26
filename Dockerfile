@@ -64,7 +64,7 @@ COPY --chown=wagtailio --from=frontend ./wagtailio/static_compiled ./wagtailio/s
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
 # Run application
-CMD gunicorn wagtailio.wsgi:application
+CMD ["gunicorn", "wagtailio.wsgi:application"]
 
 
 # This stage builds the image that we use for development
