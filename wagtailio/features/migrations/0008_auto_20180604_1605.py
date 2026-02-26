@@ -58,10 +58,12 @@ class Migration(migrations.Migration):
             model_name="featurepage",
             name="listing_image",
         ),
-        migrations.RemoveField(
-            model_name="featurepage",
-            name="page_ptr",
-        ),
+        # When migrating with a fresh database, this raises django.db.utils.InternalError: cannot drop column page_ptr_id of table features_featurepage because other objects depend on it
+        # Likely something has changed since Django 2.0.6 that made the line below problematic...
+        # migrations.RemoveField(
+        #     model_name="featurepage",
+        #     name="page_ptr",
+        # ),
         migrations.RemoveField(
             model_name="featurepage",
             name="social_image",
