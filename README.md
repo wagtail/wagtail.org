@@ -17,9 +17,10 @@ You first need to install [Docker](https://docs.docker.com/get-docker/) and [Doc
 git clone https://github.com/wagtail/wagtail.org.git
 cd wagtail.org
 make setup
+make load_initial_data
 ```
 
-This will create a set of Docker containers on your local machine and also create a blank database.
+This will create a set of Docker containers on your local machine and also create a database filled with initial data for you to work with.
 
 ### Starting the development environment
 
@@ -43,13 +44,12 @@ To run migrations within Docker you'll need to run:
 make migrate
 ```
 
-### Creating a superuser
+### Logging in to the Wagtail admin
 
-To create a new superuser locally, run:
+The initial data includes a superuser with the following credentials:
 
-```
-make superuser
-```
+-   Username: `admin`
+-   Password: `changeme`
 
 ### Setting up the cache table
 
@@ -81,6 +81,14 @@ Access will only be given when absolutely necessary.
 
 If you're on Windows, we recommend you follow the [specific steps for Windows.](#pulling-staging-data-on-windows)
 
+### Dumping your database to a fixture
+
+Fixtures allow you to export your database to a JSON file, which is useful for populating the database with demo content or to share a snapshot of the database with others. To dump your database (and media files) to fixtures, run the following command:
+
+```
+make dumpfixtures
+```
+
 ## Installation (Vagrant)
 
 You first need to install [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/). Once they are installed, run the following commands to get up and running:
@@ -93,13 +101,15 @@ vagrant up
 
 This will download the base image and provision a local VM that will run the site locally.
 
-You will need to apply migrations, create a super user, and create a cache table once the vagrant environment is setup.
+You will need to apply migrations, create a super user, create a cache table and
+load the initial data once the vagrant environment is setup.
 
 ```
 vagrant ssh
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py createcachetable
+./manage.py load_initial_data
 ```
 
 ## Usage (Vagrant)
