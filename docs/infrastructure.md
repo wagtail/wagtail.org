@@ -29,8 +29,8 @@ fab pull-production-media
 
 ## Cache
 
--   Application cache: Redis (Heroku Key-Value Store, Mini)
--   CDN cache: Cloudflare
+- Application cache: Redis (Heroku Key-Value Store, Mini)
+- CDN cache: Cloudflare
 
 ## File storage
 
