@@ -12,29 +12,29 @@ help:  ## ⁉️  - Display help comments for each make command
 		| sort
 
 setup: build  ## 🔨 - Set instance up
-	docker-compose run web django-admin migrate
-	docker-compose run web django-admin createcachetable
+	docker compose run web django-admin migrate
+	docker compose run web django-admin createcachetable
 
 build:  ## 🔨 - Build Docker container
-	bash -c "docker-compose build --build-arg UID=$$(id -u) --build-arg GID=$$(id -g)"
+	bash -c "docker compose build --build-arg UID=$$(id -u) --build-arg GID=$$(id -g)"
 
 start:	## 🎬 - Start containers
-	docker-compose up
+	docker compose up
 
 sh:	## Enter the web container
-	docker-compose exec web bash
+	docker compose exec web bash
 
 runserver:	## 🏃 - Run Django server
-	docker-compose exec web django-admin runserver 0.0.0.0:8000
+	docker compose exec web django-admin runserver 0.0.0.0:8000
 
 superuser:	## 🔒 - Create superuser
-	docker-compose run web django-admin createsuperuser
+	docker compose run web django-admin createsuperuser
 
 migrations:	## 🧳 - Make migrations
-	docker-compose run web django-admin makemigrations
+	docker compose run web django-admin makemigrations
 
 migrate:  ## 🧳 - Migrate
-	docker-compose run web django-admin migrate
+	docker compose run web django-admin migrate
 
 dumpfixtures:  # 📦 - Dump fixtures
 	docker compose run --rm web django-admin dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.rendition -e sessions -e wagtailsearch.indexentry -e wagtailcore.referenceindex -e wagtailcore.pagesubscription -e wagtailcore.workflowcontenttype -e wagtailadmin.editingsession -e wagtailio.wagtailiorendition > fixtures/wagtail.org-demo.json

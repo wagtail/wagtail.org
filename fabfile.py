@@ -35,7 +35,7 @@ LOCAL_DATABASE_USERNAME = "wagtailorg"
 
 
 def dexec(cmd, service="web"):
-    return local(f"docker-compose exec -T {quote(service)} bash -c {quote(cmd)}")
+    return local(f"docker compose exec -T {quote(service)} bash -c {quote(cmd)}")
 
 
 @task
@@ -44,7 +44,7 @@ def psql(c, command=None):
     Connect to the local postgres DB using psql
     """
     cmd_list = [
-        "docker-compose",
+        "docker compose",
         "exec",
         "db",
         "psql",
