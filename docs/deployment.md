@@ -32,4 +32,3 @@ The following scheduled tasks are set up with Heroku Scheduler.
 | django-admin publish_scheduled_pages | Every 10 minutes      |
 | django-admin clearsessions           | Daily at 12:00 AM UTC |
 | django-admin import_packages         | Daily at 3:00 AM UTC  |
-| django-admin fetch_headless_issues   | Daily at 11:00 AM UTC |
