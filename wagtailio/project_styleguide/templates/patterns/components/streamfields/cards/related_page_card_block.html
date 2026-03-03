@@ -17,9 +17,9 @@ The reason for the separation is because of differing context variable names, fo
     {% endif %}
 
     {% if value.introduction %}
-        <div class="logo-card__description">{{ value.introduction }}</div>
+        <div class="logo-card__description">{{ value.introduction|richtext|striptags }}</div>
     {% elif value.intro %}
-        <div class="logo-card__description">{{ value.intro }}</div>
+        <div class="logo-card__description">{{ value.intro|richtext|striptags }}</div>
     {% endif %}
 
     {% if value.author %}
