@@ -1,0 +1,1509 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$6iYg5TFuJK1BQE2krq5tU6$XPSFV9L7o0eKhru9vpLtHm3Y5CZlJRWjUv/AjA/kxj8=",
+      "last_login": "2026-02-25T22:38:42.689Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-02-25T22:38:20.977Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "taggit.tag",
+    "pk": 1,
+    "fields": {
+      "name": "gsoc",
+      "slug": "gsoc"
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "pk": 1,
+    "fields": {
+      "tag": ["gsoc"],
+      "content_type": ["images", "wagtailioimage"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "wagtailcore.locale",
+    "pk": 1,
+    "fields": {
+      "language_code": "en-gb"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 1,
+    "fields": {
+      "content_type": ["wagtailcore", "site"],
+      "label": "Wagtail.org",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:10:20.889Z",
+      "uuid": "e2b241a2-8276-48f9-b38d-58c380a6e1ec",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 2,
+    "fields": {
+      "content_type": ["navigation", "mainmenu"],
+      "label": "Main menu: Main Navigation",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:12:39.229Z",
+      "uuid": "17cec495-d2e2-47ec-a5bc-b4715174c61b",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 3,
+    "fields": {
+      "content_type": ["navigation", "navigationsettings"],
+      "label": "navigation settings for Wagtail.org",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:13:02.817Z",
+      "uuid": "c918f363-5d39-4cde-84b1-f80d3ee0d5e9",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 4,
+    "fields": {
+      "content_type": ["blog", "author"],
+      "label": "Sage Abdullah",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:14:58.712Z",
+      "uuid": "e8200b2c-f96d-4155-aad9-c0de471c9f68",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 5,
+    "fields": {
+      "content_type": ["images", "wagtailioimage"],
+      "label": "Google Summer of Code and Wagtail",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:16:11.106Z",
+      "uuid": "2ad68dd9-e08e-465f-9f57-17581ba9652b",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "2"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 6,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Accessibility",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:16:47.550Z",
+      "uuid": "c31f43e1-c3b8-4b26-ac1a-d045b0de9ac7",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 7,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Community",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:17:00.266Z",
+      "uuid": "52428970-d49a-479b-9f35-cb289b4c09ac",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "2"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 8,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "What's New in Wagtail",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:17:12.421Z",
+      "uuid": "b523d564-25f6-4a84-b3e7-d769d0e2b4a9",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "3"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 9,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "How To",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:17:24.495Z",
+      "uuid": "da9ad1e4-8b5d-45e8-b36d-9bf15a7f5fe4",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "4"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 10,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Events",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:17:35.944Z",
+      "uuid": "df99e22c-6506-49e4-bf06-5711c702cd08",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "5"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 11,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Adventures in Wagtail",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:17:51.986Z",
+      "uuid": "e360da35-c01d-4de4-b5a4-26b3e51d1caa",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "6"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 12,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Wagtail Space",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:18:04.868Z",
+      "uuid": "75d95afb-4b5c-4cd8-8602-66fab3fa5e58",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "7"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 13,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Tutorials",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:18:19.220Z",
+      "uuid": "5759c3cb-97fa-4a7f-aeeb-c389bafd765a",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "8"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 14,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Security",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:18:46.691Z",
+      "uuid": "d3d6a876-0df4-4859-8389-6613c04ed31d",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "9"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 15,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "Perspectives",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:18:56.364Z",
+      "uuid": "7a0ad78c-65aa-4eba-8ace-d474a16a1c30",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "10"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 16,
+    "fields": {
+      "content_type": ["taxonomy", "category"],
+      "label": "News",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:19:14.963Z",
+      "uuid": "895a94e6-e015-4db6-8a46-fb2064dcca81",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "11"
+    }
+  },
+  {
+    "model": "wagtailcore.modellogentry",
+    "pk": 17,
+    "fields": {
+      "content_type": ["navigation", "mainmenu"],
+      "label": "Main menu: Main Navigation",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:22:51.262Z",
+      "uuid": "ec80750c-55f1-4ef3-9adf-56bd9ab82457",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "object_id": "1"
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 1,
+    "fields": {
+      "content_type": ["core", "homepage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "2",
+      "created_at": "2026-02-25T23:09:00.730Z",
+      "user": ["admin"],
+      "object_str": "Homepage",
+      "content": {
+        "pk": 2,
+        "body": "[{\"type\": \"headline\", \"value\": {\"heading\": \"NASA, Google, the NHS.\", \"sub_heading\": \"A CMS trusted by organisations you know\", \"intro\": \"\", \"cta\": {\"text\": \"\", \"cta_page\": null, \"cta_url\": \"\"}, \"icon\": \"\", \"dark_background\": false}, \"id\": \"9c2842fc-0e90-4965-808e-4314c551b938\"}]",
+        "icon": "paper-plane",
+        "live": true,
+        "path": "00010001",
+        "slug": "homepage",
+        "depth": 2,
+        "intro": "<p data-block-key=\"a5hmr\">It's fast, elegant, and designed to give everyone on your team the tools they need to manage content at enterprise scale</p>",
+        "owner": 1,
+        "title": "Homepage",
+        "video": null,
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "heading": "Create content that soars",
+        "alias_of": null,
+        "numchild": 0,
+        "url_path": "/homepage/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "draft_title": "Homepage",
+        "social_text": "",
+        "sub_heading": "Wagtail is the leading open-source Python CMS",
+        "code_snippet": "pip install wagtail",
+        "content_type": 55,
+        "social_image": null,
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "show_in_menus": false,
+        "autoplay_video": false,
+        "call_to_action": "[]",
+        "latest_revision": null,
+        "translation_key": "8fd77094-d2b9-43d7-8a67-81513913acb5",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": false,
+        "latest_revision_created_at": null
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 2,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "3",
+      "created_at": "2026-02-25T23:09:40.966Z",
+      "user": ["admin"],
+      "object_str": "Latest chirps",
+      "content": {
+        "pk": 3,
+        "live": false,
+        "path": "000100010001",
+        "slug": "latest-chirps",
+        "depth": 3,
+        "owner": 1,
+        "title": "Latest chirps",
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "alias_of": null,
+        "numchild": 0,
+        "url_path": "/homepage/latest-chirps/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "draft_title": "Latest chirps",
+        "social_text": "",
+        "content_type": 68,
+        "social_image": null,
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "show_in_menus": false,
+        "featured_posts": [],
+        "latest_revision": null,
+        "translation_key": "b044323b-93d1-4433-82d2-ace3ecee6b57",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": false,
+        "latest_revision_created_at": null
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 3,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "3",
+      "created_at": "2026-02-25T23:09:49.365Z",
+      "user": ["admin"],
+      "object_str": "Latest chirps",
+      "content": {
+        "pk": 3,
+        "live": false,
+        "path": "000100010001",
+        "slug": "latest-chirps",
+        "depth": 3,
+        "owner": 1,
+        "title": "Latest chirps",
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "alias_of": null,
+        "numchild": 0,
+        "url_path": "/homepage/latest-chirps/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "draft_title": "Latest chirps",
+        "social_text": "",
+        "content_type": 68,
+        "social_image": null,
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "show_in_menus": false,
+        "featured_posts": [],
+        "latest_revision": 2,
+        "translation_key": "b044323b-93d1-4433-82d2-ace3ecee6b57",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": true,
+        "latest_revision_created_at": "2026-02-25T23:09:40.966Z"
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 4,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "4",
+      "created_at": "2026-02-25T23:15:53.072Z",
+      "user": ["admin"],
+      "object_str": "7 tips for applying to Google Summer of Code",
+      "content": {
+        "pk": 4,
+        "body": "[]",
+        "date": "2026-01-22",
+        "live": false,
+        "path": "0001000100010001",
+        "slug": "7-tips-for-applying-to-google-summer-of-code",
+        "depth": 4,
+        "owner": 1,
+        "title": "7 tips for applying to Google Summer of Code",
+        "author": 1,
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "alias_of": null,
+        "category": null,
+        "numchild": 0,
+        "url_path": "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "main_image": 2,
+        "draft_title": "7 tips for applying to Google Summer of Code",
+        "social_text": "",
+        "content_type": 69,
+        "introduction": "",
+        "social_image": null,
+        "canonical_url": "",
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "related_posts": [],
+        "show_in_menus": false,
+        "latest_revision": 4,
+        "translation_key": "713d6040-df7a-4cbe-9b35-a2bd6973cd99",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": true,
+        "latest_revision_created_at": "2026-02-25T23:15:12.796Z"
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 5,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "4",
+      "created_at": "2026-02-25T23:20:23.818Z",
+      "user": ["admin"],
+      "object_str": "7 tips for applying to Google Summer of Code",
+      "content": {
+        "pk": 4,
+        "body": "[{\"type\": \"paragraph\", \"value\": \"<p data-block-key=\\\"qj86y\\\"><i>This is the time of the year when a lot of students and other folks hoping to contribute to open source start thinking about how they can put together strong applications for the Google Summer of Code program. We still haven't officially announced whether Wagtail is participating in Google Summer of Code 2026 (have patience with us!), but we thought it might be helpful to share some advice that one of our core team members shared during an interview a while back.</i></p><p data-block-key=\\\"coj08\\\"><i>Sage Abdullah participated in the Google Summer of Code program for Django and has successfully turned his experience into a career as a core developer for Wagtail CMS. Here are his tips for participating in Google Summer of Code:</i></p><p data-block-key=\\\"5l07o\\\"></p><h2 data-block-key=\\\"eh7u3\\\">1) Start early</h2><p data-block-key=\\\"25an3\\\">If you're looking to participate, I'd recommend starting early. Learn how people communicate in open source. Learn how things move in the project you're interested in: how issues are triaged, how pull requests are reviewed, how decisions are made. You can learn a lot just by reading discussions and exploring the documentation for the project you're interested in. Most projects have contributor guides \\u2013 <a href=\\\"https://docs.wagtail.org/en/stable/contributing/index.html\\\">Wagtail has one too</a> (in addition to our specific <a href=\\\"https://wagtail.org/gsoc-guide/\\\">guide for GSoC</a>). Definitely take time to read what the maintainers have to say in those guides. Maintainers really appreciate contributors who follow their instructions.</p><h2 data-block-key=\\\"fv93\\\">2) Start with just one issue, study it well and fix it if you can</h2><p data-block-key=\\\"burog\\\">It is <b>never</b> a good idea to start by spamming every single issue you find with \\\"I want to work on this, please assign me this issue\\\". It's often not how things work in open source, and it's not a good way to make a good first impression.</p><p data-block-key=\\\"265fh\\\">Instead, try to find an issue \\u2013not two, not three, but one\\u2013 that you can understand. If it's a bug report, make sure that it is \\\"confirmed\\\". Open source projects get bug reports daily, and not all of them are valid. It's not uncommon for a bug report to be \\\"unconfirmed\\\", meaning that no one has confirmed that they can replicate the issue. That's where you could step in. Try to replicate the issue, and if you can, leave a comment saying that you can replicate it. Attach screenshots or other details if necessary. If you can't, leave a comment saying that you can't, and maybe ask for more details to the reporter.</p><p data-block-key=\\\"c28sf\\\">Once you get a good understanding of the issue, you can start looking into the codebase. A simple code search on GitHub or your text editor can go a long way to help you find where the issue might be. Search for the error message, the function name, or the variable name, etc. If you're not sure where to start, you can ask for help. Don't expect people to give you the answer right away, but they might be able to give you some hints on where to look.</p><p data-block-key=\\\"816s\\\">If you're feeling confident, you can leave a comment on the issue you chose, stating your intention to fix it. Depending on the issue, sometimes the fix can be straightforward, and you can just go ahead and submit a pull request. Sometimes the fix can be more complex, and you might want to discuss your approach first. In any case, make sure to follow the project's contributing guidelines. They're there for a reason, and not following them can make your contribution harder to review, and it certainly does not demonstrate a good reading comprehension. That last point is especially important, as it's a common issue that I see with new contributors.</p><h2 data-block-key=\\\"a22to\\\">3) Learn the basics of Git and GitHub before making your first pull request (PR)</h2><p data-block-key=\\\"r4m\\\">Learn Git and GitHub (or the platform that the organization uses). Learn how to work with branches, how to write good commits and commit messages, how to rebase your changes, and how to resolve conflicts. Learn Markdown to make your written communication more effective. It's not uncommon for a pull request to have to go through several rounds of reviews, and you'll want to keep your changes up-to-date with the latest changes in the project so that they're easier to review.</p><p data-block-key=\\\"2dco1\\\">This is very painful for me to say, but if you're still struggling with the basics of Git \\u2013 which is a very common tool in open source \\u2013 you might want to work on that first before getting into Google Summer of Code. Some maintainers might be willing to help you with that, but it's not something you can expect from everyone. If your PR contains unrelated code from your other PRs, or if you commit your entire virtual environment to your branch \\u2013which are all easy mistakes to make when you're a beginner\\u2013 it's not a good look. GitHub and other platforms make it easy to review your changes before you submit them, so make sure to use that feature. Failure in doing so does not demonstrate that you know what you're doing. It's not the end of the world, but it's something you'll want to avoid, especially when there are other applicants who might be on their way to make their third or fourth PR.</p><h2 data-block-key=\\\"9d1ni\\\">4) Make your pull requests as thorough as possible</h2><p data-block-key=\\\"9qd4i\\\">When making pull requests, don't think of a pull request as a one-time thing. Before you hit submit, don't forget to review your changes. GitHub will show you a list of changes you've made, and you will want to ensure that they are what you intended. An excellent pull request is not just about the code changes, but also about the context. Make sure to link to the issue that you are fixing, how you fixed it, and <b>why</b> you fixed it that way. A good thing to do is to put yourself in the shoes of the reviewer. What would you want to know if you were reviewing the pull request? Do the changes make sense?</p><p data-block-key=\\\"2dhsa\\\">As a reviewer, I want to see the contributor's own understanding of the issue, the reasoning behind the chosen approach, and any alternatives they've tried or considered. Written in <i>their own</i> words. <b>I don't want an AI-generated summary of the PR in the description.</b> If I wanted that, I'd ask an AI directly.</p><p data-block-key=\\\"9v6qo\\\">Also, it's important to note that we value quality over quantity. We'd much rather have one really good pull request than five low-quality ones. It's even worse if the author does not understand the changes they are submitting.</p>\", \"id\": \"704c38b9-9895-4907-84a8-3bb199b24ee2\"}, {\"type\": \"paragraph\", \"value\": \"<h2 data-block-key=\\\"qj86y\\\">5) Think of ways to make your application stand out</h2><p data-block-key=\\\"brrq\\\">Did I mention how competitive GSoC has become? With so many applicants, the project maintainers don't have the time to hold your hand through the whole process. To stand a chance against the other applicants, you need to stand out. From what I've seen, the best applicants tend to be ones who can work independently, understand the context of what they are working on, and communicate their thoughts and opinions in their own words. If you can show that you're capable of those things, you're already ahead of the game.</p><p data-block-key=\\\"13i2t\\\">When you're writing your proposal, make sure to be clear and concise. Explain what you want to do, why you want to do it, and how you plan to do it. Show that you've done your homework, and that you're familiar with the project. If you're proposing your own project idea, explain why it's important, and how it fits into the project's goals. If you're proposing to work on an existing project idea, ensure you understand the project's goals, and demonstrate why you're the right person for the job.</p><p data-block-key=\\\"k5sc\\\"><b>Most importantly, use your own words.</b> It does not have to be perfect. We can tell when you have put a lot of effort in communicating your own thoughts. On the flip side, AI-generated proposals will stand out, too. Like a sore thumb. And we'll just reject them.</p><h2 data-block-key=\\\"2fmc4\\\">6) Ask for feedback early and revise your proposal</h2><p data-block-key=\\\"em81h\\\">Make a draft proposal, and ask for feedback as soon as you have something to show. People in the community will be able to give you feedback on your proposal, and you'll be able to iterate on it until it's ready to be submitted. You'll have a better chance of getting accepted this way, as opposed to submitting a half-baked proposal at the last minute.</p><h2 data-block-key=\\\"e58oj\\\">7) Don't give up if you don't get accepted</h2><p data-block-key=\\\"8kl5i\\\">Finally, it's not uncommon for a project to have more applicants than they can accept. If you're not accepted, don't be discouraged. By this point, you'll have learned a lot. There are many other ways to contribute to open source, and GSoC is just one of them. Check out other similar programs, like <a href=\\\"https://www.outreachy.org/\\\">Outreachy</a> and <a href=\\\"https://djangonaut.space/\\\">Djangonaut Space</a>.</p><p data-block-key=\\\"1u98m\\\">And if you still want to get into GSoC... your work this year didn't go to waste. You'll stand out next year!</p><p data-block-key=\\\"8ffh3\\\"><i>If you want to keep track of Wagtail's plans for Google Summer of Code 2026, we recommend you follow the instructions in our</i> <a href=\\\"https://github.com/wagtail/gsoc\\\"><i>Google Summer of Code repository</i></a><i> on GitHub. Also,</i> <a linktype=\\\"page\\\" id=\\\"871\\\"><i>sign up for our newsletter</i></a><i> so you can learn more about our software and community.</i></p>\", \"id\": \"f4092f7f-84f1-4142-a952-e8d7cded6210\"}]",
+        "date": "2026-01-22",
+        "live": false,
+        "path": "0001000100010001",
+        "slug": "7-tips-for-applying-to-google-summer-of-code",
+        "depth": 4,
+        "owner": 1,
+        "title": "7 tips for applying to Google Summer of Code",
+        "author": 1,
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "alias_of": null,
+        "category": 2,
+        "numchild": 0,
+        "url_path": "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "main_image": 2,
+        "draft_title": "7 tips for applying to Google Summer of Code",
+        "social_text": "",
+        "content_type": 69,
+        "introduction": "Advice for applicants from Wagtail Core Developer Sage Abdullah",
+        "social_image": null,
+        "canonical_url": "",
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "related_posts": [],
+        "show_in_menus": false,
+        "latest_revision": 5,
+        "translation_key": "713d6040-df7a-4cbe-9b35-a2bd6973cd99",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": true,
+        "latest_revision_created_at": "2026-02-25T23:20:16.765Z"
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.revision",
+    "pk": 6,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "base_content_type": ["wagtailcore", "page"],
+      "object_id": "4",
+      "created_at": "2026-02-25T23:20:28.497Z",
+      "user": ["admin"],
+      "object_str": "7 tips for applying to Google Summer of Code",
+      "content": {
+        "pk": 4,
+        "body": "[{\"type\": \"paragraph\", \"value\": \"<p data-block-key=\\\"qj86y\\\"><i>This is the time of the year when a lot of students and other folks hoping to contribute to open source start thinking about how they can put together strong applications for the Google Summer of Code program. We still haven't officially announced whether Wagtail is participating in Google Summer of Code 2026 (have patience with us!), but we thought it might be helpful to share some advice that one of our core team members shared during an interview a while back.</i></p><p data-block-key=\\\"coj08\\\"><i>Sage Abdullah participated in the Google Summer of Code program for Django and has successfully turned his experience into a career as a core developer for Wagtail CMS. Here are his tips for participating in Google Summer of Code:</i></p><p data-block-key=\\\"5l07o\\\"></p><h2 data-block-key=\\\"eh7u3\\\">1) Start early</h2><p data-block-key=\\\"25an3\\\">If you're looking to participate, I'd recommend starting early. Learn how people communicate in open source. Learn how things move in the project you're interested in: how issues are triaged, how pull requests are reviewed, how decisions are made. You can learn a lot just by reading discussions and exploring the documentation for the project you're interested in. Most projects have contributor guides \\u2013 <a href=\\\"https://docs.wagtail.org/en/stable/contributing/index.html\\\">Wagtail has one too</a> (in addition to our specific <a href=\\\"https://wagtail.org/gsoc-guide/\\\">guide for GSoC</a>). Definitely take time to read what the maintainers have to say in those guides. Maintainers really appreciate contributors who follow their instructions.</p><h2 data-block-key=\\\"fv93\\\">2) Start with just one issue, study it well and fix it if you can</h2><p data-block-key=\\\"burog\\\">It is <b>never</b> a good idea to start by spamming every single issue you find with \\\"I want to work on this, please assign me this issue\\\". It's often not how things work in open source, and it's not a good way to make a good first impression.</p><p data-block-key=\\\"265fh\\\">Instead, try to find an issue \\u2013not two, not three, but one\\u2013 that you can understand. If it's a bug report, make sure that it is \\\"confirmed\\\". Open source projects get bug reports daily, and not all of them are valid. It's not uncommon for a bug report to be \\\"unconfirmed\\\", meaning that no one has confirmed that they can replicate the issue. That's where you could step in. Try to replicate the issue, and if you can, leave a comment saying that you can replicate it. Attach screenshots or other details if necessary. If you can't, leave a comment saying that you can't, and maybe ask for more details to the reporter.</p><p data-block-key=\\\"c28sf\\\">Once you get a good understanding of the issue, you can start looking into the codebase. A simple code search on GitHub or your text editor can go a long way to help you find where the issue might be. Search for the error message, the function name, or the variable name, etc. If you're not sure where to start, you can ask for help. Don't expect people to give you the answer right away, but they might be able to give you some hints on where to look.</p><p data-block-key=\\\"816s\\\">If you're feeling confident, you can leave a comment on the issue you chose, stating your intention to fix it. Depending on the issue, sometimes the fix can be straightforward, and you can just go ahead and submit a pull request. Sometimes the fix can be more complex, and you might want to discuss your approach first. In any case, make sure to follow the project's contributing guidelines. They're there for a reason, and not following them can make your contribution harder to review, and it certainly does not demonstrate a good reading comprehension. That last point is especially important, as it's a common issue that I see with new contributors.</p><h2 data-block-key=\\\"a22to\\\">3) Learn the basics of Git and GitHub before making your first pull request (PR)</h2><p data-block-key=\\\"r4m\\\">Learn Git and GitHub (or the platform that the organization uses). Learn how to work with branches, how to write good commits and commit messages, how to rebase your changes, and how to resolve conflicts. Learn Markdown to make your written communication more effective. It's not uncommon for a pull request to have to go through several rounds of reviews, and you'll want to keep your changes up-to-date with the latest changes in the project so that they're easier to review.</p><p data-block-key=\\\"2dco1\\\">This is very painful for me to say, but if you're still struggling with the basics of Git \\u2013 which is a very common tool in open source \\u2013 you might want to work on that first before getting into Google Summer of Code. Some maintainers might be willing to help you with that, but it's not something you can expect from everyone. If your PR contains unrelated code from your other PRs, or if you commit your entire virtual environment to your branch \\u2013which are all easy mistakes to make when you're a beginner\\u2013 it's not a good look. GitHub and other platforms make it easy to review your changes before you submit them, so make sure to use that feature. Failure in doing so does not demonstrate that you know what you're doing. It's not the end of the world, but it's something you'll want to avoid, especially when there are other applicants who might be on their way to make their third or fourth PR.</p><h2 data-block-key=\\\"9d1ni\\\">4) Make your pull requests as thorough as possible</h2><p data-block-key=\\\"9qd4i\\\">When making pull requests, don't think of a pull request as a one-time thing. Before you hit submit, don't forget to review your changes. GitHub will show you a list of changes you've made, and you will want to ensure that they are what you intended. An excellent pull request is not just about the code changes, but also about the context. Make sure to link to the issue that you are fixing, how you fixed it, and <b>why</b> you fixed it that way. A good thing to do is to put yourself in the shoes of the reviewer. What would you want to know if you were reviewing the pull request? Do the changes make sense?</p><p data-block-key=\\\"2dhsa\\\">As a reviewer, I want to see the contributor's own understanding of the issue, the reasoning behind the chosen approach, and any alternatives they've tried or considered. Written in <i>their own</i> words. <b>I don't want an AI-generated summary of the PR in the description.</b> If I wanted that, I'd ask an AI directly.</p><p data-block-key=\\\"9v6qo\\\">Also, it's important to note that we value quality over quantity. We'd much rather have one really good pull request than five low-quality ones. It's even worse if the author does not understand the changes they are submitting.</p>\", \"id\": \"704c38b9-9895-4907-84a8-3bb199b24ee2\"}, {\"type\": \"paragraph\", \"value\": \"<h2 data-block-key=\\\"qj86y\\\">5) Think of ways to make your application stand out</h2><p data-block-key=\\\"brrq\\\">Did I mention how competitive GSoC has become? With so many applicants, the project maintainers don't have the time to hold your hand through the whole process. To stand a chance against the other applicants, you need to stand out. From what I've seen, the best applicants tend to be ones who can work independently, understand the context of what they are working on, and communicate their thoughts and opinions in their own words. If you can show that you're capable of those things, you're already ahead of the game.</p><p data-block-key=\\\"13i2t\\\">When you're writing your proposal, make sure to be clear and concise. Explain what you want to do, why you want to do it, and how you plan to do it. Show that you've done your homework, and that you're familiar with the project. If you're proposing your own project idea, explain why it's important, and how it fits into the project's goals. If you're proposing to work on an existing project idea, ensure you understand the project's goals, and demonstrate why you're the right person for the job.</p><p data-block-key=\\\"k5sc\\\"><b>Most importantly, use your own words.</b> It does not have to be perfect. We can tell when you have put a lot of effort in communicating your own thoughts. On the flip side, AI-generated proposals will stand out, too. Like a sore thumb. And we'll just reject them.</p><h2 data-block-key=\\\"2fmc4\\\">6) Ask for feedback early and revise your proposal</h2><p data-block-key=\\\"em81h\\\">Make a draft proposal, and ask for feedback as soon as you have something to show. People in the community will be able to give you feedback on your proposal, and you'll be able to iterate on it until it's ready to be submitted. You'll have a better chance of getting accepted this way, as opposed to submitting a half-baked proposal at the last minute.</p><h2 data-block-key=\\\"e58oj\\\">7) Don't give up if you don't get accepted</h2><p data-block-key=\\\"8kl5i\\\">Finally, it's not uncommon for a project to have more applicants than they can accept. If you're not accepted, don't be discouraged. By this point, you'll have learned a lot. There are many other ways to contribute to open source, and GSoC is just one of them. Check out other similar programs, like <a href=\\\"https://www.outreachy.org/\\\">Outreachy</a> and <a href=\\\"https://djangonaut.space/\\\">Djangonaut Space</a>.</p><p data-block-key=\\\"1u98m\\\">And if you still want to get into GSoC... your work this year didn't go to waste. You'll stand out next year!</p><p data-block-key=\\\"8ffh3\\\"><i>If you want to keep track of Wagtail's plans for Google Summer of Code 2026, we recommend you follow the instructions in our</i> <a href=\\\"https://github.com/wagtail/gsoc\\\"><i>Google Summer of Code repository</i></a><i> on GitHub. Also,</i> <a linktype=\\\"page\\\" id=\\\"871\\\"><i>sign up for our newsletter</i></a><i> so you can learn more about our software and community.</i></p>\", \"id\": \"f4092f7f-84f1-4142-a952-e8d7cded6210\"}]",
+        "date": "2026-01-22",
+        "live": false,
+        "path": "0001000100010001",
+        "slug": "7-tips-for-applying-to-google-summer-of-code",
+        "depth": 4,
+        "owner": 1,
+        "title": "7 tips for applying to Google Summer of Code",
+        "author": 1,
+        "locale": 1,
+        "locked": false,
+        "expired": false,
+        "alias_of": null,
+        "category": 2,
+        "numchild": 0,
+        "url_path": "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/",
+        "expire_at": null,
+        "locked_at": null,
+        "locked_by": null,
+        "seo_title": "",
+        "go_live_at": null,
+        "main_image": 2,
+        "draft_title": "7 tips for applying to Google Summer of Code",
+        "social_text": "",
+        "content_type": 69,
+        "introduction": "Advice for applicants from Wagtail Core Developer Sage Abdullah",
+        "social_image": null,
+        "canonical_url": "",
+        "listing_image": null,
+        "listing_intro": "",
+        "live_revision": null,
+        "related_posts": [],
+        "show_in_menus": false,
+        "latest_revision": 5,
+        "translation_key": "713d6040-df7a-4cbe-9b35-a2bd6973cd99",
+        "last_published_at": null,
+        "first_published_at": null,
+        "search_description": "",
+        "wagtail_admin_comments": [],
+        "has_unpublished_changes": true,
+        "latest_revision_created_at": "2026-02-25T23:20:23.818Z"
+      },
+      "approved_go_live_at": null
+    }
+  },
+  {
+    "model": "wagtailcore.collection",
+    "pk": 1,
+    "fields": {
+      "path": "0001",
+      "depth": 1,
+      "numchild": 0,
+      "name": "Root"
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 1,
+    "fields": {
+      "path": "0001",
+      "depth": 1,
+      "numchild": 2,
+      "translation_key": "1a77d39a-f25d-485b-ac42-d7f8e2646a6b",
+      "locale": 1,
+      "latest_revision": null,
+      "live": true,
+      "has_unpublished_changes": false,
+      "first_published_at": null,
+      "last_published_at": null,
+      "live_revision": null,
+      "go_live_at": null,
+      "expire_at": null,
+      "expired": false,
+      "locked": true,
+      "locked_at": null,
+      "locked_by": null,
+      "title": "Root",
+      "draft_title": "Root",
+      "slug": "root",
+      "content_type": ["wagtailcore", "page"],
+      "url_path": "/",
+      "owner": null,
+      "seo_title": "",
+      "show_in_menus": false,
+      "search_description": "",
+      "latest_revision_created_at": null,
+      "alias_of": null
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 2,
+    "fields": {
+      "path": "00010001",
+      "depth": 2,
+      "numchild": 1,
+      "translation_key": "8fd77094-d2b9-43d7-8a67-81513913acb5",
+      "locale": 1,
+      "latest_revision": 1,
+      "live": true,
+      "has_unpublished_changes": false,
+      "first_published_at": "2026-02-25T23:09:00.767Z",
+      "last_published_at": "2026-02-25T23:09:00.767Z",
+      "live_revision": 1,
+      "go_live_at": null,
+      "expire_at": null,
+      "expired": false,
+      "locked": false,
+      "locked_at": null,
+      "locked_by": null,
+      "title": "Homepage",
+      "draft_title": "Homepage",
+      "slug": "homepage",
+      "content_type": ["core", "homepage"],
+      "url_path": "/homepage/",
+      "owner": ["admin"],
+      "seo_title": "",
+      "show_in_menus": false,
+      "search_description": "",
+      "latest_revision_created_at": "2026-02-25T23:09:00.730Z",
+      "alias_of": null
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 3,
+    "fields": {
+      "path": "000100010001",
+      "depth": 3,
+      "numchild": 1,
+      "translation_key": "b044323b-93d1-4433-82d2-ace3ecee6b57",
+      "locale": 1,
+      "latest_revision": 3,
+      "live": true,
+      "has_unpublished_changes": false,
+      "first_published_at": "2026-02-25T23:09:49.388Z",
+      "last_published_at": "2026-02-25T23:09:49.388Z",
+      "live_revision": 3,
+      "go_live_at": null,
+      "expire_at": null,
+      "expired": false,
+      "locked": false,
+      "locked_at": null,
+      "locked_by": null,
+      "title": "Latest chirps",
+      "draft_title": "Latest chirps",
+      "slug": "latest-chirps",
+      "content_type": ["blog", "blogindexpage"],
+      "url_path": "/homepage/latest-chirps/",
+      "owner": ["admin"],
+      "seo_title": "",
+      "show_in_menus": false,
+      "search_description": "",
+      "latest_revision_created_at": "2026-02-25T23:09:49.365Z",
+      "alias_of": null
+    }
+  },
+  {
+    "model": "wagtailcore.page",
+    "pk": 4,
+    "fields": {
+      "path": "0001000100010001",
+      "depth": 4,
+      "numchild": 0,
+      "translation_key": "713d6040-df7a-4cbe-9b35-a2bd6973cd99",
+      "locale": 1,
+      "latest_revision": 6,
+      "live": true,
+      "has_unpublished_changes": false,
+      "first_published_at": "2026-02-25T23:20:28.543Z",
+      "last_published_at": "2026-02-25T23:20:28.543Z",
+      "live_revision": 6,
+      "go_live_at": null,
+      "expire_at": null,
+      "expired": false,
+      "locked": false,
+      "locked_at": null,
+      "locked_by": null,
+      "title": "7 tips for applying to Google Summer of Code",
+      "draft_title": "7 tips for applying to Google Summer of Code",
+      "slug": "7-tips-for-applying-to-google-summer-of-code",
+      "content_type": ["blog", "blogpage"],
+      "url_path": "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/",
+      "owner": ["admin"],
+      "seo_title": "",
+      "show_in_menus": false,
+      "search_description": "",
+      "latest_revision_created_at": "2026-02-25T23:20:28.497Z",
+      "alias_of": null
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 1,
+    "fields": {
+      "content_type": ["core", "homepage"],
+      "label": "Homepage",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:00.613Z",
+      "uuid": "2c50f777-bae6-48fd-8ad3-07be3b880346",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 2,
+    "fields": {
+      "content_type": ["core", "homepage"],
+      "label": "Homepage",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:00.738Z",
+      "uuid": "2c50f777-bae6-48fd-8ad3-07be3b880346",
+      "user": ["admin"],
+      "revision": 1,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 3,
+    "fields": {
+      "content_type": ["core", "homepage"],
+      "label": "Homepage",
+      "action": "wagtail.publish",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:00.806Z",
+      "uuid": "2c50f777-bae6-48fd-8ad3-07be3b880346",
+      "user": ["admin"],
+      "revision": 1,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 4,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "label": "Latest chirps",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:40.923Z",
+      "uuid": "1ab82dc6-34c6-4725-a873-1312088d5645",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/latest-chirps/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 5,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "label": "Latest chirps",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:40.972Z",
+      "uuid": "1ab82dc6-34c6-4725-a873-1312088d5645",
+      "user": ["admin"],
+      "revision": 2,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/latest-chirps/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 6,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "label": "Latest chirps",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:49.369Z",
+      "uuid": "8dec758d-b880-44e6-bfdd-82a329b1e0c1",
+      "user": ["admin"],
+      "revision": 3,
+      "content_changed": true,
+      "deleted": false,
+      "page": ["/homepage/latest-chirps/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 7,
+    "fields": {
+      "content_type": ["blog", "blogindexpage"],
+      "label": "Latest chirps",
+      "action": "wagtail.publish",
+      "data": {},
+      "timestamp": "2026-02-25T23:09:49.422Z",
+      "uuid": "8dec758d-b880-44e6-bfdd-82a329b1e0c1",
+      "user": ["admin"],
+      "revision": 3,
+      "content_changed": false,
+      "deleted": false,
+      "page": ["/homepage/latest-chirps/"]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 8,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.create",
+      "data": {},
+      "timestamp": "2026-02-25T23:13:54.442Z",
+      "uuid": "99f75b13-e792-48cf-9b7c-25abb3d00ee3",
+      "user": ["admin"],
+      "revision": null,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 9,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:13:54.464Z",
+      "uuid": "99f75b13-e792-48cf-9b7c-25abb3d00ee3",
+      "user": ["admin"],
+      "revision": 4,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 10,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:15:07.747Z",
+      "uuid": "8f615e65-7b2d-43aa-a25f-1624f4091162",
+      "user": ["admin"],
+      "revision": 4,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 11,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:15:12.802Z",
+      "uuid": "66b49617-11e8-447b-ab1b-5c8eb77768ef",
+      "user": ["admin"],
+      "revision": 4,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 12,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:15:53.081Z",
+      "uuid": "f331c92b-98e7-4873-9ac5-81ae2632f4ff",
+      "user": ["admin"],
+      "revision": 4,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 13,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:19:34.461Z",
+      "uuid": "44fd18e0-f649-4e8b-a558-b219bf35b139",
+      "user": ["admin"],
+      "revision": 5,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 14,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:19:37.984Z",
+      "uuid": "451e5de5-b417-4879-9b1a-e53f979d59cb",
+      "user": ["admin"],
+      "revision": 5,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 15,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:19:54.634Z",
+      "uuid": "62b68f1d-cf0e-4d57-94fd-ba7864ba5917",
+      "user": ["admin"],
+      "revision": 5,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 16,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:20:16.772Z",
+      "uuid": "89c04df7-8d84-460e-98e7-0a9800090121",
+      "user": ["admin"],
+      "revision": 5,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 17,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:20:23.823Z",
+      "uuid": "79cd1b67-7937-4282-b2e9-7ba8d3fa228a",
+      "user": ["admin"],
+      "revision": 5,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 18,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.edit",
+      "data": {},
+      "timestamp": "2026-02-25T23:20:28.504Z",
+      "uuid": "dd640bd7-9bd3-4957-8dd5-a03d03f02662",
+      "user": ["admin"],
+      "revision": 6,
+      "content_changed": true,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailcore.pagelogentry",
+    "pk": 19,
+    "fields": {
+      "content_type": ["blog", "blogpage"],
+      "label": "7 tips for applying to Google Summer of Code",
+      "action": "wagtail.publish",
+      "data": {},
+      "timestamp": "2026-02-25T23:20:28.610Z",
+      "uuid": "dd640bd7-9bd3-4957-8dd5-a03d03f02662",
+      "user": ["admin"],
+      "revision": 6,
+      "content_changed": false,
+      "deleted": false,
+      "page": [
+        "/homepage/latest-chirps/7-tips-for-applying-to-google-summer-of-code/"
+      ]
+    }
+  },
+  {
+    "model": "wagtailusers.userprofile",
+    "pk": 1,
+    "fields": {
+      "user": ["admin"],
+      "submitted_notifications": true,
+      "approved_notifications": true,
+      "rejected_notifications": true,
+      "updated_comments_notifications": true,
+      "preferred_language": "",
+      "current_time_zone": "",
+      "avatar": "",
+      "dismissibles": {},
+      "theme": "system",
+      "contrast": "system",
+      "density": "default",
+      "keyboard_shortcuts": true
+    }
+  },
+  {
+    "model": "core.homepage",
+    "pk": 2,
+    "fields": {
+      "social_text": "",
+      "social_image": null,
+      "listing_image": null,
+      "listing_intro": "",
+      "heading": "Create content that soars",
+      "sub_heading": "Wagtail is the leading open-source Python CMS",
+      "intro": "<p data-block-key=\"a5hmr\">It's fast, elegant, and designed to give everyone on your team the tools they need to manage content at enterprise scale</p>",
+      "icon": "paper-plane",
+      "video": null,
+      "autoplay_video": false,
+      "code_snippet": "pip install wagtail",
+      "call_to_action": "[]",
+      "body": "[{\"id\": \"9c2842fc-0e90-4965-808e-4314c551b938\", \"type\": \"headline\", \"value\": {\"cta\": {\"text\": \"\", \"cta_url\": \"\", \"cta_page\": null}, \"icon\": \"\", \"intro\": \"\", \"heading\": \"NASA, Google, the NHS.\", \"sub_heading\": \"A CMS trusted by organisations you know\", \"dark_background\": false}}]"
+    }
+  },
+  {
+    "model": "images.wagtailioimage",
+    "pk": 1,
+    "fields": {
+      "collection": ["Root"],
+      "title": "sage-abdullah-portrait",
+      "file": "original_images/sage-abdullah-portrait.jpg",
+      "description": "",
+      "width": 512,
+      "height": 512,
+      "created_at": "2026-02-25T23:14:54.931Z",
+      "uploaded_by_user": ["admin"],
+      "focal_point_x": null,
+      "focal_point_y": null,
+      "focal_point_width": null,
+      "focal_point_height": null,
+      "file_size": 46628,
+      "file_hash": "adea43b88e4ed5d0d9b2216181e6bc99969dce46"
+    }
+  },
+  {
+    "model": "images.wagtailioimage",
+    "pk": 2,
+    "fields": {
+      "collection": ["Root"],
+      "title": "Google Summer of Code and Wagtail",
+      "file": "original_images/GSoc-2022_Os9ko8b.png",
+      "description": "Wagtail and Google Summer of Code logos on an underwater backgrond with rays of sunlight shining through",
+      "width": 2400,
+      "height": 1800,
+      "created_at": "2026-02-25T23:15:51.307Z",
+      "uploaded_by_user": ["admin"],
+      "focal_point_x": null,
+      "focal_point_y": null,
+      "focal_point_width": null,
+      "focal_point_height": null,
+      "file_size": 1584096,
+      "file_hash": "d30df8bbc4050cc528945f2a8b8bc14098c3c358"
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 1,
+    "fields": {
+      "filter_spec": "max-165x165",
+      "file": "images/sage-abdullah-portrait.max-165x165.jpg",
+      "width": 165,
+      "height": 165,
+      "focal_point_key": "",
+      "image": 1
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 2,
+    "fields": {
+      "filter_spec": "max-165x165",
+      "file": "images/GSoc-2022_Os9ko8b.max-165x165.png",
+      "width": 165,
+      "height": 123,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 3,
+    "fields": {
+      "filter_spec": "original",
+      "file": "images/GSoc-2022_Os9ko8b.original.png",
+      "width": 2400,
+      "height": 1800,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 4,
+    "fields": {
+      "filter_spec": "max-800x600",
+      "file": "images/GSoc-2022_Os9ko8b.max-800x600.png",
+      "width": 800,
+      "height": 600,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 5,
+    "fields": {
+      "filter_spec": "width-400",
+      "file": "images/GSoc-2022_Os9ko8b.width-400.png",
+      "width": 400,
+      "height": 300,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 6,
+    "fields": {
+      "filter_spec": "width-1200|height-627",
+      "file": "images/GSoc-2022_Os9ko8b.width-1200.height-627.png",
+      "width": 836,
+      "height": 627,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 7,
+    "fields": {
+      "filter_spec": "fill-90x90",
+      "file": "images/sage-abdullah-portrait.2e16d0ba.fill-90x90.jpg",
+      "width": 90,
+      "height": 90,
+      "focal_point_key": "2e16d0ba",
+      "image": 1
+    }
+  },
+  {
+    "model": "images.wagtailiorendition",
+    "pk": 8,
+    "fields": {
+      "filter_spec": "width-900",
+      "file": "images/GSoc-2022_Os9ko8b.width-900.png",
+      "width": 900,
+      "height": 675,
+      "focal_point_key": "",
+      "image": 2
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 1,
+    "fields": {
+      "title": "Accessibility",
+      "short_title": "Accessibility",
+      "icon": "eye"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 2,
+    "fields": {
+      "title": "Community",
+      "short_title": "Community",
+      "icon": "document"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 3,
+    "fields": {
+      "title": "What's New in Wagtail",
+      "short_title": "WNIW",
+      "icon": "code-file"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 4,
+    "fields": {
+      "title": "How To",
+      "short_title": "How To",
+      "icon": "document"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 5,
+    "fields": {
+      "title": "Events",
+      "short_title": "Events",
+      "icon": "flame"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 6,
+    "fields": {
+      "title": "Adventures in Wagtail",
+      "short_title": "Adventures",
+      "icon": "eye"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 7,
+    "fields": {
+      "title": "Wagtail Space",
+      "short_title": "Wagtail Space",
+      "icon": "document"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 8,
+    "fields": {
+      "title": "Tutorials",
+      "short_title": "Tutorials",
+      "icon": "eye"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 9,
+    "fields": {
+      "title": "Security",
+      "short_title": "Security",
+      "icon": "arrow-in-circle"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 10,
+    "fields": {
+      "title": "Perspectives",
+      "short_title": "Perspectives",
+      "icon": "arrow-alt"
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 11,
+    "fields": {
+      "title": "News",
+      "short_title": "News",
+      "icon": "paper-stack"
+    }
+  },
+  {
+    "model": "navigation.mainmenu",
+    "pk": 1,
+    "fields": {
+      "name": "Main Navigation",
+      "menu_sections": "[{\"id\": \"63ba8709-6058-4d59-87ef-b8b01842f716\", \"type\": \"menu_section\", \"value\": {\"name\": \"About\", \"nav_items\": [{\"id\": \"9423e46f-61e5-4cae-a567-1e054c135b98\", \"type\": \"item\", \"value\": {\"icon\": \"arrow-in-circle\", \"text\": \"About\", \"cta_url\": \"https://wagtail.org/about-wagtail/\", \"cta_page\": null, \"short_description\": \"All about Wagtail\"}}], \"call_to_action\": {\"icon\": \"flame\", \"text\": \"Do your best work\", \"cta_url\": \"https://wagtail.org/\", \"cta_page\": null, \"description\": \"\", \"sub_heading\": \"Check out the very best features Wagtail offers\"}}}, {\"id\": \"a8c88371-2b15-4eca-8d63-741cfbcb0bc9\", \"type\": \"menu_section\", \"value\": {\"name\": \"Community\", \"nav_items\": [{\"id\": \"726c1b07-5da8-435d-8b5a-61ebc2a7572e\", \"type\": \"item\", \"value\": {\"icon\": \"blog\", \"text\": \"Blog\", \"cta_url\": \"\", \"cta_page\": 3, \"short_description\": \"The latest Wagtail news\"}}], \"call_to_action\": {\"icon\": \"envelope\", \"text\": \"Sign up for our newsletter\", \"cta_url\": \"https://wagtail.org/newsletter/\", \"cta_page\": null, \"description\": \"\", \"sub_heading\": \"Don't miss the latest Wagtail news, events and releases\"}}}]"
+    }
+  },
+  {
+    "model": "blog.blogindexpage",
+    "pk": 3,
+    "fields": {
+      "social_text": "",
+      "social_image": null,
+      "listing_image": null,
+      "listing_intro": ""
+    }
+  },
+  {
+    "model": "blog.author",
+    "pk": 1,
+    "fields": {
+      "name": "Sage Abdullah",
+      "job_title": "Wagtail Developer",
+      "image": 1,
+      "url": "https://github.com/laymonage"
+    }
+  },
+  {
+    "model": "blog.blogpage",
+    "pk": 4,
+    "fields": {
+      "social_text": "",
+      "social_image": null,
+      "listing_image": null,
+      "listing_intro": "",
+      "canonical_url": "",
+      "author": 1,
+      "main_image": 2,
+      "date": "2026-01-22",
+      "introduction": "Advice for applicants from Wagtail Core Developer Sage Abdullah",
+      "category": 2,
+      "body": "[{\"id\": \"704c38b9-9895-4907-84a8-3bb199b24ee2\", \"type\": \"paragraph\", \"value\": \"<p data-block-key=\\\"qj86y\\\"><i>This is the time of the year when a lot of students and other folks hoping to contribute to open source start thinking about how they can put together strong applications for the Google Summer of Code program. We still haven't officially announced whether Wagtail is participating in Google Summer of Code 2026 (have patience with us!), but we thought it might be helpful to share some advice that one of our core team members shared during an interview a while back.</i></p><p data-block-key=\\\"coj08\\\"><i>Sage Abdullah participated in the Google Summer of Code program for Django and has successfully turned his experience into a career as a core developer for Wagtail CMS. Here are his tips for participating in Google Summer of Code:</i></p><p data-block-key=\\\"5l07o\\\"></p><h2 data-block-key=\\\"eh7u3\\\">1) Start early</h2><p data-block-key=\\\"25an3\\\">If you're looking to participate, I'd recommend starting early. Learn how people communicate in open source. Learn how things move in the project you're interested in: how issues are triaged, how pull requests are reviewed, how decisions are made. You can learn a lot just by reading discussions and exploring the documentation for the project you're interested in. Most projects have contributor guides \\u2013 <a href=\\\"https://docs.wagtail.org/en/stable/contributing/index.html\\\">Wagtail has one too</a> (in addition to our specific <a href=\\\"https://wagtail.org/gsoc-guide/\\\">guide for GSoC</a>). Definitely take time to read what the maintainers have to say in those guides. Maintainers really appreciate contributors who follow their instructions.</p><h2 data-block-key=\\\"fv93\\\">2) Start with just one issue, study it well and fix it if you can</h2><p data-block-key=\\\"burog\\\">It is <b>never</b> a good idea to start by spamming every single issue you find with \\\"I want to work on this, please assign me this issue\\\". It's often not how things work in open source, and it's not a good way to make a good first impression.</p><p data-block-key=\\\"265fh\\\">Instead, try to find an issue \\u2013not two, not three, but one\\u2013 that you can understand. If it's a bug report, make sure that it is \\\"confirmed\\\". Open source projects get bug reports daily, and not all of them are valid. It's not uncommon for a bug report to be \\\"unconfirmed\\\", meaning that no one has confirmed that they can replicate the issue. That's where you could step in. Try to replicate the issue, and if you can, leave a comment saying that you can replicate it. Attach screenshots or other details if necessary. If you can't, leave a comment saying that you can't, and maybe ask for more details to the reporter.</p><p data-block-key=\\\"c28sf\\\">Once you get a good understanding of the issue, you can start looking into the codebase. A simple code search on GitHub or your text editor can go a long way to help you find where the issue might be. Search for the error message, the function name, or the variable name, etc. If you're not sure where to start, you can ask for help. Don't expect people to give you the answer right away, but they might be able to give you some hints on where to look.</p><p data-block-key=\\\"816s\\\">If you're feeling confident, you can leave a comment on the issue you chose, stating your intention to fix it. Depending on the issue, sometimes the fix can be straightforward, and you can just go ahead and submit a pull request. Sometimes the fix can be more complex, and you might want to discuss your approach first. In any case, make sure to follow the project's contributing guidelines. They're there for a reason, and not following them can make your contribution harder to review, and it certainly does not demonstrate a good reading comprehension. That last point is especially important, as it's a common issue that I see with new contributors.</p><h2 data-block-key=\\\"a22to\\\">3) Learn the basics of Git and GitHub before making your first pull request (PR)</h2><p data-block-key=\\\"r4m\\\">Learn Git and GitHub (or the platform that the organization uses). Learn how to work with branches, how to write good commits and commit messages, how to rebase your changes, and how to resolve conflicts. Learn Markdown to make your written communication more effective. It's not uncommon for a pull request to have to go through several rounds of reviews, and you'll want to keep your changes up-to-date with the latest changes in the project so that they're easier to review.</p><p data-block-key=\\\"2dco1\\\">This is very painful for me to say, but if you're still struggling with the basics of Git \\u2013 which is a very common tool in open source \\u2013 you might want to work on that first before getting into Google Summer of Code. Some maintainers might be willing to help you with that, but it's not something you can expect from everyone. If your PR contains unrelated code from your other PRs, or if you commit your entire virtual environment to your branch \\u2013which are all easy mistakes to make when you're a beginner\\u2013 it's not a good look. GitHub and other platforms make it easy to review your changes before you submit them, so make sure to use that feature. Failure in doing so does not demonstrate that you know what you're doing. It's not the end of the world, but it's something you'll want to avoid, especially when there are other applicants who might be on their way to make their third or fourth PR.</p><h2 data-block-key=\\\"9d1ni\\\">4) Make your pull requests as thorough as possible</h2><p data-block-key=\\\"9qd4i\\\">When making pull requests, don't think of a pull request as a one-time thing. Before you hit submit, don't forget to review your changes. GitHub will show you a list of changes you've made, and you will want to ensure that they are what you intended. An excellent pull request is not just about the code changes, but also about the context. Make sure to link to the issue that you are fixing, how you fixed it, and <b>why</b> you fixed it that way. A good thing to do is to put yourself in the shoes of the reviewer. What would you want to know if you were reviewing the pull request? Do the changes make sense?</p><p data-block-key=\\\"2dhsa\\\">As a reviewer, I want to see the contributor's own understanding of the issue, the reasoning behind the chosen approach, and any alternatives they've tried or considered. Written in <i>their own</i> words. <b>I don't want an AI-generated summary of the PR in the description.</b> If I wanted that, I'd ask an AI directly.</p><p data-block-key=\\\"9v6qo\\\">Also, it's important to note that we value quality over quantity. We'd much rather have one really good pull request than five low-quality ones. It's even worse if the author does not understand the changes they are submitting.</p>\"}, {\"id\": \"f4092f7f-84f1-4142-a952-e8d7cded6210\", \"type\": \"paragraph\", \"value\": \"<h2 data-block-key=\\\"qj86y\\\">5) Think of ways to make your application stand out</h2><p data-block-key=\\\"brrq\\\">Did I mention how competitive GSoC has become? With so many applicants, the project maintainers don't have the time to hold your hand through the whole process. To stand a chance against the other applicants, you need to stand out. From what I've seen, the best applicants tend to be ones who can work independently, understand the context of what they are working on, and communicate their thoughts and opinions in their own words. If you can show that you're capable of those things, you're already ahead of the game.</p><p data-block-key=\\\"13i2t\\\">When you're writing your proposal, make sure to be clear and concise. Explain what you want to do, why you want to do it, and how you plan to do it. Show that you've done your homework, and that you're familiar with the project. If you're proposing your own project idea, explain why it's important, and how it fits into the project's goals. If you're proposing to work on an existing project idea, ensure you understand the project's goals, and demonstrate why you're the right person for the job.</p><p data-block-key=\\\"k5sc\\\"><b>Most importantly, use your own words.</b> It does not have to be perfect. We can tell when you have put a lot of effort in communicating your own thoughts. On the flip side, AI-generated proposals will stand out, too. Like a sore thumb. And we'll just reject them.</p><h2 data-block-key=\\\"2fmc4\\\">6) Ask for feedback early and revise your proposal</h2><p data-block-key=\\\"em81h\\\">Make a draft proposal, and ask for feedback as soon as you have something to show. People in the community will be able to give you feedback on your proposal, and you'll be able to iterate on it until it's ready to be submitted. You'll have a better chance of getting accepted this way, as opposed to submitting a half-baked proposal at the last minute.</p><h2 data-block-key=\\\"e58oj\\\">7) Don't give up if you don't get accepted</h2><p data-block-key=\\\"8kl5i\\\">Finally, it's not uncommon for a project to have more applicants than they can accept. If you're not accepted, don't be discouraged. By this point, you'll have learned a lot. There are many other ways to contribute to open source, and GSoC is just one of them. Check out other similar programs, like <a href=\\\"https://www.outreachy.org/\\\">Outreachy</a> and <a href=\\\"https://djangonaut.space/\\\">Djangonaut Space</a>.</p><p data-block-key=\\\"1u98m\\\">And if you still want to get into GSoC... your work this year didn't go to waste. You'll stand out next year!</p><p data-block-key=\\\"8ffh3\\\"><i>If you want to keep track of Wagtail's plans for Google Summer of Code 2026, we recommend you follow the instructions in our</i> <a href=\\\"https://github.com/wagtail/gsoc\\\"><i>Google Summer of Code repository</i></a><i> on GitHub. Also,</i> <a linktype=\\\"page\\\" id=\\\"871\\\"><i>sign up for our newsletter</i></a><i> so you can learn more about our software and community.</i></p>\"}]"
+    }
+  },
+  {
+    "model": "wagtailcore.site",
+    "pk": 1,
+    "fields": {
+      "hostname": "localhost",
+      "port": 8000,
+      "site_name": "Wagtail.org",
+      "root_page": ["/homepage/"],
+      "is_default_site": false
+    }
+  },
+  {
+    "model": "navigation.navigationsettings",
+    "pk": 1,
+    "fields": {
+      "site": ["localhost", 8000],
+      "get_started_menu": null,
+      "main_navigation": 1,
+      "footer_navigation": null,
+      "space_navigation": null
+    }
+  },
+  {
+    "model": "sitewide_alert.sitewidealertsettings",
+    "pk": 1,
+    "fields": {
+      "site": ["localhost", 8000],
+      "sitewide_alert_enabled": false,
+      "sitewide_alert_text": "",
+      "background_colour": "",
+      "text_colour": "",
+      "cta_button_text": "",
+      "cta_button_link": "",
+      "cta_button_page": null
+    }
+  }
+]
