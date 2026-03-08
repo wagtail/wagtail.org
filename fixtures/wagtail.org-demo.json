@@ -1484,6 +1484,41 @@
     }
   },
   {
+    "model": "showcase.sector",
+    "pk": 1,
+    "fields": {
+      "name": "Government agencies"
+    }
+  },
+  {
+    "model": "showcase.sector",
+    "pk": 2,
+    "fields": {
+      "name": "Corporations"
+    }
+  },
+  {
+    "model": "showcase.sector",
+    "pk": 3,
+    "fields": {
+      "name": "Education"
+    }
+  },
+  {
+    "model": "showcase.sector",
+    "pk": 4,
+    "fields": {
+      "name": "Cultural institutions"
+    }
+  },
+  {
+    "model": "showcase.sector",
+    "pk": 5,
+    "fields": {
+      "name": "Charities and nonprofits"
+    }
+  },
+  {
     "model": "wagtailcore.site",
     "pk": 1,
     "fields": {
