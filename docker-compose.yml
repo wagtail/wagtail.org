@@ -5,7 +5,7 @@ services:
       target: dev
     init: true
     # This command just starts the container and keeps it running.
-    # To run a command within the container run docker-compose exec web <command>
+    # To run a command within the container run docker compose exec web <command>
     # A Makefile task exists that starts a development server in the container: make runserver
     command: tail -f /dev/null
     environment:
