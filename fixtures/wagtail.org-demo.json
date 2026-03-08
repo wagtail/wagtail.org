@@ -1153,6 +1153,19 @@
     }
   },
   {
+    "model": "wagtaildocs.document",
+    "pk": 1,
+    "fields": {
+      "collection": ["Root"],
+      "title": "Test document",
+      "file": "documents/test_doc.pdf",
+      "created_at": "2026-03-08T09:28:48.134Z",
+      "uploaded_by_user": ["admin"],
+      "file_size": 3908,
+      "file_hash": "0fa3b594b6911c43827e0a59a80f75d7728b4e3b"
+    }
+  },
+  {
     "model": "wagtailusers.userprofile",
     "pk": 1,
     "fields": {
