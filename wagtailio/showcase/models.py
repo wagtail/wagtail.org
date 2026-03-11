@@ -113,6 +113,7 @@ class ShowcaseItem(Orderable):
         models.SET_NULL,
         null=True,
         related_name="+",
+        help_text="Image ratio: 3:2 (e.g., 600 X 400px)",
     )
     alt_text = models.CharField(max_length=255)
     logo = models.ForeignKey(
