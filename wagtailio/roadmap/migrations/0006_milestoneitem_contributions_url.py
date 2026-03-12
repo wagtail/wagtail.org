@@ -4,15 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('roadmap', '0005_add_new_imageblock'),
+        ("roadmap", "0005_add_new_imageblock"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='milestoneitem',
-            name='contributions_url',
-            field=models.URLField(blank=True, help_text="Custom URL to use for the 'Contribute' label", verbose_name='Contributions URL'),
+            model_name="milestoneitem",
+            name="contributions_url",
+            field=models.URLField(
+                blank=True,
+                help_text="Custom URL to use for the 'Contribute' label",
+                verbose_name="Contributions URL",
+            ),
         ),
     ]
