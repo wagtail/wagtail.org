@@ -153,7 +153,7 @@ class MilestoneItem(Orderable):
     @cached_property
     def sponsored(self):
         return self.SPONSORED_LABEL in self.labels_set
-    
+
     @cached_property
     def needs_contributions(self):
         return self.NEEDS_CONTRIBUTIONS_LABEL in self.labels_set
