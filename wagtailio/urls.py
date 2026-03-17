@@ -14,6 +14,7 @@ from wagtail.models import Page
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
 from wagtailio.blog.feeds import BlogFeed
+from wagtailio.core.views import SecurityView
 from wagtailio.newsletter.feeds import NewsLetterIssuesFeed
 from wagtailio.search.views import search
 from wagtailio.sitewide_alert import urls as sitewide_alert_urls
@@ -39,6 +40,7 @@ urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": Sitemap}}),
     path("favicon.ico", favicon),
     path("robots.txt", robots),
+    path(".well-known/security.txt", SecurityView.as_view(), name="security-txt"),
 ]
 
 

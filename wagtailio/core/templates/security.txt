@@ -1,0 +1,5 @@
+Contact: mailto:security@wagtail.org
+Policy: https://github.com/wagtail/wagtail/security/policy
+Canonical: {{ security_txt }}
+Expires: {{ expires }}
+Preferred-Languages: en
