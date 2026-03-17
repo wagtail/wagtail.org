@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: lint
     env:
-      DJANGO_SETTINGS_MODULE: wagtailio.settings.production
+      DJANGO_SETTINGS_MODULE: wagtailio.settings.test
       DATABASE_URL: postgres://postgres:postgres@localhost/postgres
       SECRET_KEY: iamnotsosecret
       ALLOWED_HOSTS: localhost
