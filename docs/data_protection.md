@@ -31,5 +31,5 @@ $ python manage.py shell
 
 If a request is received to purge or report the stored data for a given user:
 
--   For user account data, delete the user from the Wagtail admin
--   For form submissions, search the submissions and delete if necessary using the Django shell.
+- For user account data, delete the user from the Wagtail admin
+- For form submissions, search the submissions and delete if necessary using the Django shell.
