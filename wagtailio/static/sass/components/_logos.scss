@@ -49,6 +49,8 @@
         min-width: 100px;
         max-width: 100px;
         flex-basis: 100px;
+        background-color: $color--white;
+        forced-color-adjust: none;
 
         .theme-dark & {
             min-width: 120px;
@@ -68,6 +70,7 @@
             padding: 10px 20px;
             background-color: $color--white;
             border-radius: 3px;
+            forced-color-adjust: none;
         }
     }
 }
