@@ -1457,13 +1457,13 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "7.3"
+version = "7.3.1"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "wagtail-7.3-py3-none-any.whl", hash = "sha256:519c84c47bccc2e42182a3879c6efe9f34d7233239b2899a99139ae3e17c5266"},
-    {file = "wagtail-7.3.tar.gz", hash = "sha256:81c3449652b17341fc794d65bdd208ae9e15f21743e8a6ca6bc2ce2e7b7312ce"},
+    {file = "wagtail-7.3.1-py3-none-any.whl", hash = "sha256:eab131e15ab9edc7ed24143d44271e92af79239e105bc3e173d26c95d2b489b3"},
+    {file = "wagtail-7.3.1.tar.gz", hash = "sha256:2ce131d9a4e7d55fdb5b592d320a758a189174b2cc3966b70a34a1b3dc56f449"},
 ]
 
 [package.dependencies]
@@ -1474,12 +1474,12 @@ django-filter = ">=23.3"
 django-modelcluster = ">=6.4.1,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
 django-taggit = ">=5.0,<7"
-django-tasks = ">=0.9,<0.12"
+django-tasks = ">=0.9,<0.13"
 django-treebeard = ">=4.5.1,<5.0"
 djangorestframework = ">=3.15.1,<4.0"
 draftjs_exporter = ">=2.1.5,<6.0"
 laces = ">=0.1,<0.2"
-modelsearch = ">=1.1,<1.2"
+modelsearch = ">=1.1,<1.3"
 openpyxl = ">=3.0.10,<4.0"
 Pillow = ">=9.1.0"
 requests = ">=2.11.1,<3.0"
@@ -1488,7 +1488,7 @@ Willow = {version = ">=1.11.0,<2", extras = ["heif"]}
 
 [package.extras]
 docs = ["Sphinx (>=7.3)", "myst_parser (==2.0.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==6.5.0)", "sphinx_llm (>=0.2.1)", "sphinxcontrib-spelling (>=7,<8)"]
-testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "boto3 (>=1.28,<2)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7)", "djhtml (==3.0.6)", "doc8 (==1.1.2)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "responses (>=0.25,<1)", "ruff (==0.9.6)", "semgrep (==1.132.0)", "tblib (>=2.0,<3.0)"]
+testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "boto3 (>=1.28,<2)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7)", "djhtml (==3.0.6)", "doc8 (==1.1.2)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "responses (>=0.25,<1)", "ruff (==0.9.6)", "semgrep (==1.150.0)", "tblib (>=2.0,<3.0)"]
 
 [[package]]
 name = "wagtail-font-awesome-svg"
@@ -1653,4 +1653,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.14"
-content-hash = "c8fbed39e9e2845bc47825b9fcc9ff85beabe7e1031e6ec73949ef36e65d2f9a"
+content-hash = "94418d23beffec04e2a2a2232a4fb5f4f58e12fd316297d455d03b4836001f51"
