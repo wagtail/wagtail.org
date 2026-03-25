@@ -26,6 +26,15 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+
+<!-- Privacy-friendly analytics by Plausible -->
+        <script async src="https://plausible.io/js/pa-ngavQ28VQSDP3hrszIVgI.js"></script>
+        <script>
+            window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+            plausible.init()
+        </script>
+
+
     </head>
 
     <body class="app {% block body_class %}{% endblock %}">
