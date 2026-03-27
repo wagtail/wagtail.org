@@ -527,6 +527,9 @@ class ContentStoryBlock(blocks.StreamBlock):
     image = ImageBlock(
         icon="image", template="patterns/components/streamfields/image/image.html"
     )
+    wide_image = ImageBlock(
+        icon="image", template="patterns/components/streamfields/image/wide_image.html"
+    )
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
