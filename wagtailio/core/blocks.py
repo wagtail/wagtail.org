@@ -524,6 +524,16 @@ class ContentStoryBlock(blocks.StreamBlock):
     comparison_table = ComparisonTableBlock()
     logos = LogoBlock(group="Logos")
     video = VideoBlock()
+    image = ImageBlock(
+        icon="image",
+        help_text="Use image width ≥750px",
+        template="patterns/components/streamfields/image/image.html",
+    )
+    wide_image = ImageBlock(
+        icon="image",
+        help_text="Use image width ≥1400px",
+        template="patterns/components/streamfields/image/wide_image.html",
+    )
 
     class Meta:
         template = "patterns/components/streamfields/content_story_block.html"
