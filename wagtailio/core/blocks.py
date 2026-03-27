@@ -525,10 +525,14 @@ class ContentStoryBlock(blocks.StreamBlock):
     logos = LogoBlock(group="Logos")
     video = VideoBlock()
     image = ImageBlock(
-        icon="image", template="patterns/components/streamfields/image/image.html"
+        icon="image",
+        help_text="Use image width ≥750px",
+        template="patterns/components/streamfields/image/image.html",
     )
     wide_image = ImageBlock(
-        icon="image", template="patterns/components/streamfields/image/wide_image.html"
+        icon="image",
+        help_text="Use image width ≥1400px",
+        template="patterns/components/streamfields/image/wide_image.html",
     )
 
     class Meta:
