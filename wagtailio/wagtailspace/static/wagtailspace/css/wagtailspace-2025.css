@@ -508,20 +508,20 @@ template {
 
 @font-face {
     font-family: "Kumbh Sans";
-    src: url("../6cc37e36494160883d90.ef1a3b77769b.woff2") format("woff2");
+    src: url("../fonts/KumbhSans-Regular.woff2") format("woff2");
     font-weight: 400;
     font-display: block
 }
 
 @font-face {
     font-family: "Kumbh Sans";
-    src: url("../bba56664607262d143a2.49bce4cc3865.woff2") format("woff2");
+    src: url("../fonts/KumbhSans-SemiBold.woff2") format("woff2");
     font-weight: 600
 }
 
 @font-face {
     font-family: "Kumbh Sans";
-    src: url("../b0261a1f14d185dd8ec9.377af7d4af79.woff2") format("woff2");
+    src: url("../fonts/KumbhSans-Bold.woff2") format("woff2");
     font-weight: 700
 }
 
