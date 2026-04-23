@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
+from django.views.generic import RedirectView
 
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -29,6 +30,7 @@ from wagtailio.utils.views import error_404, error_500, favicon, robots
 # Private URLs are not meant to be cached.
 private_urlpatterns = [
     path("django-admin/", admin.site.urls),
+    path("cms/", RedirectView.as_view(url="/admin/")),
     path("admin/", include(wagtailadmin_urls)),
     path("search/", search, name="search"),
     path("sitewide_alert/", include(sitewide_alert_urls, namespace="sitewide_alert")),
