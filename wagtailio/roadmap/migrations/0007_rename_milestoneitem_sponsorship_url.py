@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("roadmap", "0005_add_new_imageblock"),
+        ("roadmap", "0006_add_wide_image_block"),
     ]
 
     operations = [
