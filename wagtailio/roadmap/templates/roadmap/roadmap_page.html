@@ -51,8 +51,8 @@
                                     <a
                                         class="milestone-item__sponsor-label mini-meta"
                                         aria-describedby="milestone-item-{{ item.number }}"
-                                        href="{% firstof item.sponsorship_url sponsor_url %}"
-                                        {% if item.sponsorship_url or not page.sponsorship_page %}
+                                        href="{% firstof item.cta_url sponsor_url %}"
+                                        {% if item.cta_url or not page.sponsorship_page %}
                                             target="_blank" rel="noreferrer"
                                         {% endif %}
                                     >
@@ -69,8 +69,10 @@
                                     <a
                                         class="milestone-item__sponsor-label mini-meta"
                                         aria-describedby="milestone-item-{{ item.number }}"
-                                        href="{% firstof item.contributions_url item.url %}"
-                                        target="_blank" rel="noreferrer"
+                                        href="{% firstof item.cta_url item.url %}"
+                                        {% if item.cta_url %}
+                                            target="_blank" rel="noreferrer"
+                                        {% endif %}
                                     >
                                         Contribute
                                         {% include "patterns/components/icon/icon.html" with icon="arrow" variant="simple" %}

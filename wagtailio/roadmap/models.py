@@ -78,15 +78,10 @@ class MilestoneItem(Orderable):
     SPONSORED_LABEL = "sponsored"
     NEEDS_CONTRIBUTIONS_LABEL = "needs contributions"
 
-    sponsorship_url = models.URLField(
+    cta_url = models.URLField(
         blank=True,
-        verbose_name="Sponsorship URL",
-        help_text="Custom URL to use for the 'Sponsor this' label",
-    )
-    contributions_url = models.URLField(
-        blank=True,
-        verbose_name="Contributions URL",
-        help_text="Custom URL to use for the 'Contribute' label",
+        verbose_name="Call to Action URL",
+        help_text="Custom URL to use for the 'Sponsor/Contribute' labels",
     )
     number = models.IntegerField(
         unique=True,
@@ -105,8 +100,7 @@ class MilestoneItem(Orderable):
     labels = models.TextField(help_text="Comma-separated list of labels", blank=True)
 
     panels = [
-        FieldPanel("sponsorship_url"),
-        FieldPanel("contributions_url"),
+        FieldPanel("cta_url"),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),
