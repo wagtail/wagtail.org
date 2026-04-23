@@ -76,17 +76,19 @@ class ShowcasePage(SocialMediaMixin, CrossPageMixin, Page):
             else:
                 sectors[sector] = ""
 
-        paginator = Paginator(
-            self._filtered_showcase_items(request.GET.get("sector")), 6
-        )  # Show 6
+        filtered = self._filtered_showcase_items(request.GET.get("sector"))
 
-        page = request.GET.get("page")
-        try:
-            showcase_items = paginator.page(page)
-        except PageNotAnInteger:
-            showcase_items = paginator.page(1)
-        except EmptyPage:
-            showcase_items = None
+        if request.is_preview:
+            showcase_items = filtered.all()
+        else:
+            paginator = Paginator(filtered, 6)
+            page = request.GET.get("page")
+            try:
+                showcase_items = paginator.page(page)
+            except PageNotAnInteger:
+                showcase_items = paginator.page(1)
+            except EmptyPage:
+                showcase_items = None
 
         context.update(
             {
