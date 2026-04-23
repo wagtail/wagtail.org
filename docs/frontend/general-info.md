@@ -16,15 +16,21 @@
 - To start the development environment, follow instruction in README.md in the project root
 - Source files for developing your project are in `static` and the distribution folder for the compiled assets is `static_compiled`. Don't make direct changes to the `static_compiled` directory as they will be overwritten.
 
-# Django Pattern Library
+## Django Pattern Library
 
 The site uses [Django Pattern Library](https://torchbox.github.io/django-pattern-library/) which can be found at http://localhost:8000/pattern-library. We encourage keeping this populated and up to date. Along with a Components and Pages directory there is also a Style Guide directory which contains templates that are intended to be used to showcase available patterns and styles.
 
-# Iconography
+## Iconography
 
 The site uses icons throughout the build, a comprehensive list can be found [in the Pattern Library](http://localhost:8000/pattern-library/pattern/patterns/styleguide/icons.html). SVG optimsation is encouraged before being added to build - one library for doing this is [SVGO](https://github.com/svg/svgo).
 
-# Grid
+## Images
+
+Prefer SVGs over raster images wherever possible. SVGs are easier to theme for dark mode support and scale without quality loss. For example, favicons should use SVG format where browser support allows.
+
+For any raster images that must be kept, optimise them manually using [Squoosh](https://squoosh.app/) or equivalent before committing.
+
+## Grid
 
 The site uses a grid system across 3 breakpoints:
 
