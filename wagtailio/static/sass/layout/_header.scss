@@ -85,7 +85,8 @@
             &.is-visible {
                 visibility: visible;
                 transform: translateZ(0);
-                overflow-y: scroll;
+                max-height: calc(100vh - #{$header-mobile-height});
+                overflow-y: auto;
             }
         }
     }

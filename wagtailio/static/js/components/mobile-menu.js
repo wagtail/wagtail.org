@@ -32,8 +32,8 @@ class MobileMenu {
     }
 
     bindEventListeners() {
-        // Use mousedown since click events are being prevented
-        this.node.addEventListener('mousedown', (e) => {
+        // Use pointerup for reliable mobile/touch interaction
+        this.node.addEventListener('pointerup', (e) => {
             e.preventDefault();
             e.stopPropagation();
             this.toggle();

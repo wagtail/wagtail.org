@@ -3,13 +3,13 @@ default_language_version:
   python: python3.14
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.14.8' # keep in sync with pyproject.toml
+    rev: 'v0.15.2' # keep in sync with pyproject.toml
     hooks:
-      - id: ruff
+      - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
-  - repo: https://github.com/pycontribs/mirrors-prettier
-    rev: v3.3.2
+  - repo: https://github.com/JoC0de/pre-commit-prettier
+    rev: v3.8.3
     hooks:
       - id: prettier
         types_or: [css, scss, javascript, ts, tsx, json, yaml]
@@ -24,15 +24,15 @@ repos:
           - eslint@8.20.0
           - '@wagtail/eslint-config-wagtail@0.4.0'
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: v15.11.0
+    rev: v17.4.0
     hooks:
       - id: stylelint
         files: \.scss$
         args: [--report-needless-disables]
         additional_dependencies:
-          - stylelint@15.11.0
-          - '@wagtail/stylelint-config-wagtail@0.8.0'
+          - stylelint@17.4.0
+          - '@wagtail/stylelint-config-wagtail@1.0.1'
   - repo: https://github.com/rtts/djhtml
-    rev: 3.0.9
+    rev: 3.0.10
     hooks:
       - id: djhtml

@@ -76,11 +76,12 @@ class RoadmapPage(Page, SocialMediaMixin):
 class MilestoneItem(Orderable):
     NEEDS_SPONSORSHIP_LABEL = "needs sponsorship"
     SPONSORED_LABEL = "sponsored"
+    NEEDS_CONTRIBUTIONS_LABEL = "needs contributions"
 
-    sponsorship_url = models.URLField(
+    cta_url = models.URLField(
         blank=True,
-        verbose_name="Sponsorship URL",
-        help_text="Custom URL to use for the 'Sponsor this' label",
+        verbose_name="Call to Action URL",
+        help_text="Custom URL to use for the 'Sponsor/Contribute' labels",
     )
     number = models.IntegerField(
         unique=True,
@@ -99,7 +100,7 @@ class MilestoneItem(Orderable):
     labels = models.TextField(help_text="Comma-separated list of labels", blank=True)
 
     panels = [
-        FieldPanel("sponsorship_url"),
+        FieldPanel("cta_url"),
         MultiFieldPanel(
             [
                 FieldPanel("title", widget=readonly),
@@ -130,7 +131,12 @@ class MilestoneItem(Orderable):
     @cached_property
     def labels_list(self):
         return sorted(
-            self.labels_set - {self.NEEDS_SPONSORSHIP_LABEL, self.SPONSORED_LABEL},
+            self.labels_set
+            - {
+                self.NEEDS_SPONSORSHIP_LABEL,
+                self.SPONSORED_LABEL,
+                self.NEEDS_CONTRIBUTIONS_LABEL,
+            },
             key=str.lower,
         )
 
@@ -141,6 +147,10 @@ class MilestoneItem(Orderable):
     @cached_property
     def sponsored(self):
         return self.SPONSORED_LABEL in self.labels_set
+
+    @cached_property
+    def needs_contributions(self):
+        return self.NEEDS_CONTRIBUTIONS_LABEL in self.labels_set
 
 
 class Milestone(ClusterableModel):
