@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('stylelint').Config} */
+export default {
     extends: '@wagtail/stylelint-config-wagtail',
     rules: {
         'scss/selector-no-union-class-name': null,

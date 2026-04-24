@@ -40,7 +40,7 @@
   ],
   "devDependencies": {
     "@wagtail/eslint-config-wagtail": "^0.4.0",
-    "@wagtail/stylelint-config-wagtail": "^1.0.1",
+    "@wagtail/stylelint-config-wagtail": "^2.0.0",
     "autoprefixer": "^10.4.7",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
