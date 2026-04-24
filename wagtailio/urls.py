@@ -25,6 +25,7 @@ from wagtailio.utils.cache import (
 )
 from wagtailio.utils.sitemap_generator import Sitemap
 from wagtailio.utils.views import error_404, error_500, favicon, robots
+from wagtailio.wagtailspace.views import WagtailSpace2025View
 
 
 # Private URLs are not meant to be cached.
@@ -39,6 +40,10 @@ private_urlpatterns = [
 urlpatterns = [
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
+    path(
+        "wagtail-space-2025/", WagtailSpace2025View.as_view(), name="wagtail-space-2025"
+    ),
+    path("wagtail-space-2025/<path:asset_path>", WagtailSpace2025View.as_view()),
     path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": Sitemap}}),
     path("favicon.ico", favicon),
     path("robots.txt", robots),
