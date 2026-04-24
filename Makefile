@@ -25,7 +25,7 @@ sh:	## Enter the web container
 	docker compose exec web bash
 
 runserver:	## 🏃 - Run Django server
-	docker compose exec web django-admin runserver 0.0.0.0:8000
+	docker compose exec web bash -c "DJANGO_RUNSERVER_HIDE_WARNING=true django-admin runserver 0.0.0.0:8000"
 
 superuser:	## 🔒 - Create superuser
 	docker compose run --rm web django-admin createsuperuser
