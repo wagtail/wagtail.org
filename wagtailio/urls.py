@@ -2,7 +2,7 @@ from django.apps import apps
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.generic import RedirectView
@@ -40,10 +40,11 @@ private_urlpatterns = [
 urlpatterns = [
     path("newsletter/feed/", NewsLetterIssuesFeed(), name="newsletter_feed"),
     path("blog/feed/", BlogFeed(), name="blog_feed"),
-    path(
-        "wagtail-space-2025/", WagtailSpace2025View.as_view(), name="wagtail-space-2025"
+    re_path(
+        r"^wagtail-space-2025(?:/(?P<asset_path>.*))?/$",
+        WagtailSpace2025View.as_view(),
+        name="wagtail-space-2025",
     ),
-    path("wagtail-space-2025/<path:asset_path>", WagtailSpace2025View.as_view()),
     path("sitemap.xml", sitemap, {"sitemaps": {"wagtail": Sitemap}}),
     path("favicon.ico", favicon),
     path("robots.txt", robots),

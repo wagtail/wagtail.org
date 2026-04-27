@@ -3,52 +3,53 @@
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
     <head>
         <meta charset="utf-8" />
 
 
 
-        <title>Wagtail Space 2025 | Wagtail CMS</title>
+        <title>Wagtail Space 2025 Speakers | Wagtail CMS</title>
 
 
-        <meta name="description" content="Wagtail Space is a a free, flexible, three-day virtual event for people who are improving the world through code and content." />
+        <meta name="description" content="Our phenomenal lineup of speakers for Wagtail Space 2025" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-        <link rel="canonical" href="https://wagtail.org/wagtail-space-2025/" />
+        <link rel="canonical" href="https://wagtail.org/wagtail-space-2025/speakers/" />
 
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wagtailcms" />
         <meta name="twitter:creator" content="@wagtailcms" />
-        <meta name="twitter:title" content="Wagtail Space 2025 | Wagtail CMS" />
-        <meta name="twitter:description" content="Wagtail Space is a a free, flexible, three-day virtual event for people who are improving the world through code and content." />
+        <meta name="twitter:title" content="Wagtail Space 2025 Speakers | Wagtail CMS" />
+        <meta name="twitter:description" content="Our phenomenal lineup of speakers for Wagtail Space 2025" />
 
 
 
 
 
 
-        <meta name="twitter:image" content="https://media.wagtail.org/images/generic_speaker_image.width-400.png" />
+        <meta name="twitter:image" content="{% static 'wagtailspace/img/wagtailspace-2025/generic_speaker_image.width-400.png' %}" />
         <meta name="twitter:image:alt" content="A starry background with a pink rocketship that says Wagtail Space 2025 behind it." />
 
 
         <meta property="fb:app_id" content="710333029076622" />
         <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://wagtail.org/wagtail-space-2025/" />
+        <meta property="og:url" content="https://wagtail.org/wagtail-space-2025/speakers/" />
 
-        <meta property="og:title" content="Wagtail Space 2025 | Wagtail CMS" />
-
-
+        <meta property="og:title" content="Wagtail Space 2025 Speakers | Wagtail CMS" />
 
 
 
-        <meta property="og:image" content="https://media.wagtail.org/images/generic_speaker_image.width-1200.height-627.png" />
+
+
+        <meta property="og:image" content="{% static 'wagtailspace/img/wagtailspace-2025/generic_speaker_image.width-1200.height-627.png' %}" />
         <meta property="og:image:width" content="627" />
         <meta property="og:image:height" content="627" />
 
-        <meta property="og:description" content="Wagtail Space is a a free, flexible, three-day virtual event for people who are improving the world through code and content." />
+        <meta property="og:description" content="Our phenomenal lineup of speakers for Wagtail Space 2025" />
         <meta property="og:site_name" content="Wagtail CMS" />
 
         <link title="The Wagtail CMS Blog" type="application/atom+xml" rel="alternate" href="https://wagtail.org/blog/feed/">
@@ -62,10 +63,9 @@
         <link rel="apple-touch-icon" href="{% static 'img/favicons/apple-touch-icon.png' %}">
         <link rel="manifest" href="{% static 'img/favicons/favicon.webmanifest' %}">
 
-        <meta name="theme-color" content="#2e1f5e"/>
+        <meta name="theme-color" content="#2e1f5e" />
 
         <meta name="google-site-verification" content="VvODzdadJFXP83bFsdQw3q909jhng_zodu6hvG_-4ws" />
-
 
         <!-- Google Tag Manager -->
         <script nonce="">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -260,7 +260,8 @@
 
     </head>
 
-    <body class="app template-wagtail-space-index-page ">
+
+    <body class="app template-wagtail-space-page ">
 
 
         <script src="{% manifest 'js/blocking.js' %}"></script>
@@ -286,13 +287,8 @@
 
             <div class="header__identity">
 
-                <a class="header__link" href="https://wagtail.org/" aria-label="Wagtail.org homepage">
-                    <svg class="header__logo header__logo--dark" aria-hidden="true">
-                        <use xlink:href="#wagtail-dark" />
-                    </svg>
-                    <svg class="header__logo header__logo--light" aria-hidden="true">
-                        <use xlink:href="#wagtail-dark" />
-                    </svg>
+                <a href="{% url 'wagtail-space-2025' %}" aria-label="Wagtail Space 2025 homepage">
+                    <img src="{% static 'wagtailspace/img/wagtailspace-2025/WagtailSpace2025Logo.png' %}" alt="Wagtail Space 2025">
                 </a>
 
             </div>
@@ -307,36 +303,31 @@
                         <ul class="primary-nav__container" data-primary-nav>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='about-wagtail-space-2025' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='about-wagtail-space-2025' %}">
                                     <span class="primary-nav__label">About</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="https://pretalx.com/wagtail-space-2025/schedule/">
+                                <a class="primary-nav__item-container" href="https://pretalx.com/wagtail-space-2025/schedule/">
                                     <span class="primary-nav__label">Schedule</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='speakers' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='speakers' %}">
                                     <span class="primary-nav__label">Speakers</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='sponsors' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='sponsors' %}">
                                     <span class="primary-nav__label">Sponsors</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='faq' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='faq' %}">
                                     <span class="primary-nav__label">FAQ</span>
                                 </a>
                             </li>
@@ -364,36 +355,31 @@
                         <ul class="primary-nav__container" data-primary-nav>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='about-wagtail-space-2025' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='about-wagtail-space-2025' %}">
                                     <span class="primary-nav__label">About</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="https://pretalx.com/wagtail-space-2025/schedule/">
+                                <a class="primary-nav__item-container" href="https://pretalx.com/wagtail-space-2025/schedule/">
                                     <span class="primary-nav__label">Schedule</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='speakers' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='speakers' %}">
                                     <span class="primary-nav__label">Speakers</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='sponsors' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='sponsors' %}">
                                     <span class="primary-nav__label">Sponsors</span>
                                 </a>
                             </li>
 
                             <li class="primary-nav__item">
-                                <a class="primary-nav__item-container"
-                                   href="{% url 'wagtail-space-2025' asset_path='faq' %}">
+                                <a class="primary-nav__item-container" href="{% url 'wagtail-space-2025' asset_path='faq' %}">
                                     <span class="primary-nav__label">FAQ</span>
                                 </a>
                             </li>
@@ -423,322 +409,343 @@
 
         <main id="main-content" class="app__content">
 
+            <div class="space-page-container">
+                <div class="space-body-container">
+                    <div class="space-heading-container">
+                        <div class="space-heading-2">
+                            <h1>Speakers</h1>
+                        </div>
+                    </div>
 
 
-            <div class="grid">
-                <div class="spacegrid ">
-                    <section class="hero-section">            <div class="hero-container">
-                        <div class="hero-parent">
-                            <div class="heading-container">
-
-                                <div class="space-heading">Wagtail Space</div>
-
-                                <div class="frame-wrapper">
-                                    <div class="frame-container">
-                                        <div class="date-container">
-
-                                            <b class="space-date">8-10 October</b>
 
 
-                                            <div class="space-tagline">A free virtual event for people who are improving the world through code and content</div>
+
+                    <div class="grid">
+                        <div class="spacegrid">
+                            <div class="space-speaker-parent">
+                                <div class="speaker-heading">
+
+                                </div>
+                                <div class="space-speaker-container">
+                                    <div class="speaker-card-container">
+
+                                        <div class="speaker-card">
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Agnès Haasser" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Agnes_Haasser.max-315x315.jpg' %}" width="313">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Agnès Haasser</h3>
+                                                    <p class="speaker-talk">Full-stack engineer, Hashbang</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="A smiling picture of Alex Morega" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/T0251UZRE-U05MD5E0MTM-0e98c0368cf3-512.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Alex Morega</h3>
+                                                    <p class="speaker-talk">Senior Engineer, Torchbox</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Alex Tomkins" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Alex_Tomkins_uE0xlD0.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Alex Tomkins</h3>
+                                                    <p class="speaker-talk">Technical Director, The Developer Society</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Annette Lewis" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Annette_Lewis-square.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Annette Lewis</h3>
+                                                    <p class="speaker-talk">Senior Software Developer, Six Feet Up</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Chiemezuo Akujobi" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Chiemezuo_wagtail.max-315x315.webp' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Chiemezuo Akujobi</h3>
+                                                    <p class="speaker-talk">Open Source Developer, Google Summer of Code Contributor</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Chrissy Wainwright" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Chrissy_Wainwright.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Chrissy Wainwright</h3>
+                                                    <p class="speaker-talk">Senior Developer, Six Feet Up</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Coen van der Kamp" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Coen_van_der_Kamp-square.max-315x315.png' %}" width="314">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Coen van der Kamp</h3>
+                                                    <p class="speaker-talk">Python Developer, Four Digits and Wagtail Core Team Member</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Doug Harris" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Doug_Harris.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Doug Harris</h3>
+                                                    <p class="speaker-talk">Vice President, Software Development at Truth Initiative</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="A starry background with a pink rocketship that says Wagtail Space 2025 behind it." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/generic_speaker_image.max-315x315.png' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Eric Sherman</h3>
+                                                    <p class="speaker-talk">Innovations Senior Software Engineer, Truth Initiative</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="A starry background with a pink rocketship that says Wagtail Space 2025 behind it." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/generic_speaker_image.max-315x315.png' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Erick Otenyo</h3>
+                                                    <p class="speaker-talk">Web and GIS Developer, World Meteorological Organization, Regional Office for Africa</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="A starry background with a pink rocketship that says Wagtail Space 2025 behind it." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/generic_speaker_image.max-315x315.png' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Grace Amondi</h3>
+                                                    <p class="speaker-talk">Web and GIS Developer, World Meteorological Organization, Regional Office for Africa</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Jon Chittenden" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Jon_Chittenden.max-315x315.png' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Jon Chittenden</h3>
+                                                    <p class="speaker-talk">Product Manager, Full Fact</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Laura Wissiak" class="speaker-image" height="313" src="{% static 'wagtailspace/images/wagtailspace-2025/Laura_Wissiak.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Laura Wissiak</h3>
+                                                    <p class="speaker-talk">Accessibility Specialist, Hope Tech Plus GmbH</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Lucie Laporte" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/lucie-laporte.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Lucie Laporte</h3>
+                                                    <p class="speaker-talk">Freelance web developer and Sites Facile contributor</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Maciej Baron" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Maciej_Baron.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Maciej Baron</h3>
+                                                    <p class="speaker-talk">Senior Developer, Torchbox</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Mariana Bedran Lesche" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Mariana_Bedran_Lesche.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Mariana Bedran Lesche</h3>
+                                                    <p class="speaker-talk">Full Stack Developer, Lincoln Loop</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Matt Westcott holding a laptop and smiling." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Matthew_Westcott.max-315x315.webp' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Matt Westcott</h3>
+                                                    <p class="speaker-talk">Senior Engineer and Wagtail Tech Lead</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Michael Trythall" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Michael_Trythall.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Michael Trythall</h3>
+                                                    <p class="speaker-talk">Director of Strategy, Lincoln Loop</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Pawel Masarczyk" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Pawel_Masarczyk-square.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Pawel Masarczyk</h3>
+                                                    <p class="speaker-talk">Accessibility Expert, WIENFLUSS</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Sage Abdullah smiling in front of a space shuttle." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Sage_Abdullah-square.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Sage Abdullah</h3>
+                                                    <p class="speaker-talk">Wagtail Engineer, Torchbox</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Sylvain Boissel" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Sylvain_Boissel.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Sylvain Boissel</h3>
+                                                    <p class="speaker-talk">Freelance web developer and Sites Facile contributor</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Sébastien Corbin" class="speaker-image" height="240" src="{% static 'wagtailspace/images/wagtailspace-2025/Sebastien_Corbin.max-315x315.jpg' %}" width="240">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Sébastien Corbin</h3>
+                                                    <p class="speaker-talk">Senior Full-stack Developer, RGOODs</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Thibaud Colas making a heart shape with his fingers in front of his face while wearing a Django Girls t-shirt." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Thibaud_Colas-square.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Thibaud Colas</h3>
+                                                    <p class="speaker-talk">Engineering manager and Wagtail Product Lead, Torchbox</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Tom Dyson wearing a suit and a microphone, speaking behind a podium." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Tom_Dyson-square.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class=" speaker-info">
+                                                    <h3 class="speaker-name">Tom Dyson</h3>
+                                                    <p class="speaker-talk">Former CTO of Torchbox and Wagtail Core Team Member</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Tom Usher standing outside in the English countryside with a hat and jumper on." class="speaker-image" height="300" src="{% static 'wagtailspace/images/wagtailspace-2025/tomusher.max-315x315.png' %}" width="300">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Tom Usher</h3>
+                                                    <p class="speaker-talk">Systems Engineer/DevOps Contractor, Torchbox</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Trish Thomas" class="speaker-image" height="286" src="{% static 'wagtailspace/images/wagtailspace-2025/Trish_Thomas.max-315x315.webp' %}" width="286">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Trish Thomas</h3>
+                                                    <p class="speaker-talk">Head of Digital Innovation, London Museum</p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="speaker-container">
+                                                <div>
+                                                    <img alt="Vince Salvino" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Vince_Salvino.max-315x315.jpg' %}" width="315">
+                                                </div>
+                                                <div class="speaker-info">
+                                                    <h3 class="speaker-name">Vince Salvino</h3>
+                                                    <p class="speaker-talk">CEO and Wagtail Core Team Member, CodeRed</p>
+                                                </div>
+                                            </div>
 
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="button-parent">
-
-
-
-                                <a href="https://events.zoom.us/ev/AtWesoZI_eMUAZtG3IN1jHe29h3D8ymQo_CtHXHif8OXHxce920A~AielXHL50GZGvIG0-uUTIkC-xTYXLKXKrdOoBVZZL2ySMd_QBTsd7-WZjVKwI4K4BQnxDRWmfRhdieoP554dQ0meLg" class="button button--space-button-secondary">
-                                    <p class="button__text">Register</p>
-
-                                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-
-                                </a>
-
-
-
-
-
-
-                                <a href="schedule/index.html" class="button button--space-button-primary">
-                                    <p class="button__text">Our schedule</p>
-
-                                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-
-                                </a>
-
-
-
-
-                            </div>
-
                         </div>
                     </div>
-                    </section>
+
+
                 </div>
-            </div>
-
-            <div class ="space-body-container">
-
-
-
-
-
-                <div class="grid">
-                    <div class = "spacegrid">
-                        <div class = "centered-space-container">
-                            <div class="centered-space-text">
-                                <h2 data-block-key="rrbdb">Why come to Wagtail Space?</h2><p data-block-key="87eht">Because you’ll find other awesome people like you who are looking to learn and level up their Wagtail skills. Whether those skills involve creating content, writing code, or hitting your quarterly targets, you’ll find inspiration and community at Wagtail Space.</p><p data-block-key="8c860">Come join educators, publishing professionals, developers, open source enthusiasts, and leaders from organizations around the globe for three days of talks and networking. You’ll leave with loads of ideas, new friends, and maybe a few random facts about birds.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid">
-                    <div class="spacegrid">
-                        <div class ="centered-space-container">
-                            <div class="spacecta-button-parent">
-
-                                <a href="schedule/index.html" class="button button--space-button-primary">
-                                    <p class="button__text">Explore the full schedule</p>
-
-                                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-
-                                </a>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="grid">
-                    <div class="spacegrid">
-                        <div class="space-speaker-parent">
-                            <div class="speaker-heading">
-
-                                <h2>
-                                    Check out a few of our fantastic speakers and their talks
-                                </h2>
-
-                            </div>
-                            <div class="space-speaker-container">
-                                <div class="speaker-card-container">
-
-                                    <div class ="speaker-card">
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="Thibaud Colas making a heart shape with his fingers in front of his face while wearing a Django Girls t-shirt." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Thibaud_Colas-square.max-315x315.jpg' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Thibaud Colas</h3>
-                                                <p class="speaker-talk">The State of Wagtail</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="Trish Thomas" class="speaker-image" height="286" src="{% static 'wagtailspace/images/wagtailspace-2025/Trish_Thomas.max-315x315.webp' %}" width="286">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Trish Thomas</h3>
-                                                <p class="speaker-talk">Creating connections between stories and objects using AI</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="Matt Westcott holding a laptop and smiling." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Matthew_Westcott.max-315x315.webp' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Matt Westcott</h3>
-                                                <p class="speaker-talk">Where next for Wagtail Search?</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="Juan Aguayo" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/Juan_Aguayo.max-315x315.jpg' %}" width="314">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Juan Aguayo</h3>
-                                                <p class="speaker-talk">The Bogotá Digital Library: A Wagtail Success Story</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="A combined image of co-speakers Sylvain Bosseil and Lucie Laporte" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/speaker_pair_one.max-315x315.png' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Sylvain Boissel &amp; Lucie Laporte</h3>
-                                                <p class="speaker-talk">Implementing the French Government Design System in Wagtail</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="A combined image of Sage Abdullah and Tom Usher." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/speaker_pair_three.max-315x315.png' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Sage Abdullah &amp; Tom Usher</h3>
-                                                <p class="speaker-talk">AI in Wagtail: responsible innovation for content editors</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="This is a combo image of a picture of John Chittendon smiling and the Wagtail Space logo because Craig Dawson hasn&#x27;t submitted his picture yet." class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/speaker_pair_two.max-315x315.png' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Jon Chittenden &amp; Craig Dawson</h3>
-                                                <p class="speaker-talk">Fact checking with Wagtail</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="speaker-container">
-                                            <div>
-                                                <img alt="A combo image of Doug Harris and Chrissy Wainwright" class="speaker-image" height="315" src="{% static 'wagtailspace/images/wagtailspace-2025/speaker_pair_four.max-315x315.png' %}" width="315">
-                                            </div>
-                                            <div class="speaker-info">
-                                                <h3 class="speaker-name">Doug Harris &amp; Chrissy Wainwright</h3>
-                                                <p class="speaker-talk">One URL to Rule Them All: Dynamic Landing Pages in Wagtail</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="sponsor-background">
-                    <div class="sponsor-rectangle">
-                        <div class="sponsor-fill">
-                            <div class="grid">
-                                <div class="spacegrid">
-                                    <div class="space-sponsor-container">
-                                        <div class="sponsor-heading">
-
-                                            <h2 class="centered-space-text">
-                                                Our Sponsors
-                                            </h2>
-
-                                        </div>
-                                        <div class="sponsor-container">
-
-
-
-
-                                            <div class="sponsor-card">
-                                                <p class="sponsor-type">Presenting Sponsor</p>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://torchbox.com"><img alt="This logo is the word Torchbox in blue lettering." height="87" src="{% static 'wagtailspace/images/wagtailspace-2025/tbx-logo-public-light-colored_1.width-500.png' %}" width="488"></a>
-                                                </div>
-
-
-
-                                            </div>
-
-
-
-                                            <div class="sponsor-card">
-                                                <p class="sponsor-type">Corporate Sponsors</p>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://cursive.works/"><img alt="A logo for the agency Cursive with the word cursive spelled out in blue cursive text." height="119" src="{% static 'wagtailspace/images/wagtailspace-2025/Logo3x.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://hactar.is/"><img alt="This the Hactar logo which is the word Hactar in blue letters next to an orange circle with a white symbol inside it." height="87" src="{% static 'wagtailspace/images/wagtailspace-2025/HACTAR_Logo_Coral-bigger.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://sixfeetup.com/"><img alt="This is the logo for the company Six Feet Up, which has a blue flag-like symbol the left and says Python and AI for good on the right." height="250" src="{% static 'wagtailspace/images/wagtailspace-2025/SFU-Logo-python__ai_for_good_FINAL-square-full.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://lincolnloop.com/"><img alt="This is the logo for the company Lincoln Loop. It has a green circle to the left with two mirrored Ls in it and the words Lincoln Loop on the right." height="240" src="{% static 'wagtailspace/images/wagtailspace-2025/lincolnloop.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://www.fourdigits.nl/"><img alt="This is the logo for the company Four Digits. It has four lines on a diagonal angle above the words Four Digits." height="248" src="{% static 'wagtailspace/images/wagtailspace-2025/FoDig_rgb_100-crop.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                            </div>
-
-
-
-                                            <div class="sponsor-card">
-                                                <p class="sponsor-type">Community Sponsors</p>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://www.defna.org/"><img alt="This logo says DEFNA in dark text and says Django Events Foundation North America in red text" height="75" src="{% static 'wagtailspace/images/wagtailspace-2025/defna.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                                <div class="sponsor-logo">
-                                                    <a href="https://www.djangoproject.com/"><img alt="This logo says Django in white text on a green background." height="227" src="{% static 'wagtailspace/images/wagtailspace-2025/django-logo-negative.width-500.png' %}" width="500"></a>
-                                                </div>
-
-
-
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
 
 
             <div class="grid">
                 <div class="spacegrid">
                     <div class="space-social-container">
-                        <div class ="social-heading">
+                        <div class="social-heading">
 
                             <h2>
                                 Got Questions?
@@ -748,13 +755,13 @@
                         <div class="social-subhead">
 
                             <p>
-                                <p data-block-key="hjj7l">Email us at <a href="https://wagtail.org/cdn-cgi/l/email-protection#89ecffece7fdfac9fee8eefde8e0e5a7e6fbee"><span class="__cf_email__" data-cfemail="acc9dac9c2d8dfecdbcdcbd8cdc5c082c3decb">[email&#160;protected]</span></a></p>
+                                <p data-block-key="hjj7l">Email us at <a href="https://wagtail.org/cdn-cgi/l/email-protection#563320333822251621373122373f3a78392431"><span class="__cf_email__" data-cfemail="d8bdaebdb6acab98afb9bfacb9b1b4f6b7aabf">[email&#160;protected]</span></a></p>
                             </p>
 
                         </div>
                         <div class="social-logo-container">
 
-                            <div class ="social-logo-link">
+                            <div class="social-logo-link">
 
                                 <a href="https://fosstodon.org/@wagtail">
                                     <img alt="A pink version of the Mastodon social network logo" class="social-logo" height="97" src="{% static 'wagtailspace/img/wagtailspace-2025/mastodon-brands_1.max-100x100.png' %}" width="85">
@@ -1184,11 +1191,13 @@
                                 <p class="sign-up-form__sub-heading">Sign up for events, features and adventures on Wagtail</p>
                                 <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u=fa038e191e9c77563d1c3bfa4&id=74d368d0d6" method="post">
                                     <div>
-                                        <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Email" required/>
+                                        <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Email" required />
                                     </div>
                                     <button class="button sign-up-form__button" type="submit">
                                         <span class="button__text">Sign up</span>
-                                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                                        <svg class="arrow" aria-hidden="true">
+                                            <use xlink:href="#arrow"></use>
+                                        </svg>
                                     </button>
                                 </form>
                             </div>
@@ -1226,10 +1235,12 @@
 
 
 
-        <script data-cfasync="false" src="https://wagtail.org/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{% manifest 'js/main.js' %}"></script>
+        <script data-cfasync="false" src="https://wagtail.org/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="{% manifest 'js/main.js' %}"></script>
 
 
 
 
     </body>
+
 </html>
