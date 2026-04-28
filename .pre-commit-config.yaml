@@ -31,7 +31,7 @@ repos:
         args: [--report-needless-disables]
         additional_dependencies:
           - stylelint@17.4.0
-          - '@wagtail/stylelint-config-wagtail@1.0.1'
+          - '@wagtail/stylelint-config-wagtail@2.0.0'
   - repo: https://github.com/rtts/djhtml
     rev: 3.0.10
     hooks:
