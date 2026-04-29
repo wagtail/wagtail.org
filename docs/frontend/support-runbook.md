@@ -28,13 +28,13 @@ Open the [Sentry project](https://torchbox.sentry.io/projects/wagtail-org/?proje
 
 - Review the stack trace and breadcrumbs to understand the cause.
 - Check whether a recent deployment triggered the issue:
-  ```bash
-  heroku releases -a wagtail-org-production
-  ```
+    ```bash
+    heroku releases -a wagtail-org-production
+    ```
 - Roll back if needed:
-  ```bash
-  heroku rollback -a wagtail-org-production
-  ```
+    ```bash
+    heroku rollback -a wagtail-org-production
+    ```
 
 ### 2. Check Heroku dynos and recent deployments
 
@@ -64,9 +64,9 @@ heroku pg:diagnose -a wagtail-org-production
 
 - Check Heroku Postgres status on the [Heroku status page](https://status.heroku.com/).
 - If connection limit is reached, restart the app to recycle connections:
-  ```bash
-  heroku restart -a wagtail-org-production
-  ```
+    ```bash
+    heroku restart -a wagtail-org-production
+    ```
 
 ### 4. Check Redis
 
@@ -96,9 +96,9 @@ Check Sentry or Heroku logs for `CloudflareBackend` errors at the time of publis
 
 - Manually purge the affected URL(s) via the Cloudflare dashboard.
 - Verify the environment variables are set correctly:
-  - `FRONTEND_CACHE_CLOUDFLARE_EMAIL`
-  - `FRONTEND_CACHE_CLOUDFLARE_TOKEN`
-  - `FRONTEND_CACHE_CLOUDFLARE_ZONEID`
+    - `FRONTEND_CACHE_CLOUDFLARE_EMAIL`
+    - `FRONTEND_CACHE_CLOUDFLARE_TOKEN`
+    - `FRONTEND_CACHE_CLOUDFLARE_ZONEID`
 
 ### 2. Check Cloudflare is not blocking legitimate traffic
 
@@ -130,9 +130,9 @@ heroku logs --tail -a wagtail-org-production | grep update_index
 **Action if the index is stale or the task failed**
 
 - Manually rebuild the index:
-  ```bash
-  heroku run python manage.py update_index -a wagtail-org-production
-  ```
+    ```bash
+    heroku run python manage.py update_index -a wagtail-org-production
+    ```
 
 ### 2. Check for missing or unpublished content
 
@@ -144,13 +144,13 @@ If specific pages are missing from search results, verify they are published and
 
 The following tasks are configured in Heroku Scheduler:
 
-| Task | Schedule |
-|---|---|
-| `django-admin update_index` | Daily at 4:00 AM UTC |
-| `django-admin publish_scheduled_pages` | Every 10 minutes |
-| `django-admin clearsessions` | Daily at 12:00 AM UTC |
-| `django-admin import_packages` | Daily at 3:00 AM UTC |
-| `django-admin fetch_headless_issues` | Daily at 11:00 AM UTC |
+| Task                                   | Schedule              |
+| -------------------------------------- | --------------------- |
+| `django-admin update_index`            | Daily at 4:00 AM UTC  |
+| `django-admin publish_scheduled_pages` | Every 10 minutes      |
+| `django-admin clearsessions`           | Daily at 12:00 AM UTC |
+| `django-admin import_packages`         | Daily at 3:00 AM UTC  |
+| `django-admin fetch_headless_issues`   | Daily at 11:00 AM UTC |
 
 ### 1. Verify the scheduler is configured
 
@@ -164,9 +164,9 @@ Open the Heroku Scheduler dashboard and confirm each task is listed with the cor
 
 - Re-add or correct the task via the Heroku Scheduler dashboard.
 - Manually trigger the missed task:
-  ```bash
-  heroku run python manage.py <command_name> -a wagtail-org-production
-  ```
+    ```bash
+    heroku run python manage.py <command_name> -a wagtail-org-production
+    ```
 
 ### 2. Check logs for task errors
 
@@ -225,9 +225,9 @@ curl -H "Authorization: Bearer <token>" \
 
 - Generate a new GitHub Personal Access Token with read-only access to the `wagtail/roadmap` repository.
 - Update the config var:
-  ```bash
-  heroku config:set GITHUB_ROADMAP_ACCESS_TOKEN=<new_token> -a wagtail-org-production
-  ```
+    ```bash
+    heroku config:set GITHUB_ROADMAP_ACCESS_TOKEN=<new_token> -a wagtail-org-production
+    ```
 
 ### 2. Check for GitHub API rate limiting
 
