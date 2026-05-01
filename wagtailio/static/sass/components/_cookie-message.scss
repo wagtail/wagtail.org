@@ -6,7 +6,7 @@
     $root: &;
     @include z-index(modal);
     margin: 0 10px 10px;
-    position: fixed;
+    position: sticky;
     right: auto;
     bottom: 0;
     left: auto;
