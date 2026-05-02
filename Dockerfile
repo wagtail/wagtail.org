@@ -11,7 +11,7 @@ RUN npm run build:prod
 
 
 # Build Python app - this stage is a common base for the prod and dev stages
-FROM python:3.14-bookworm AS backend
+FROM python:3.14-trixie AS backend
 
 ARG POETRY_VERSION=1.8.5
 ARG UID=1000
@@ -27,7 +27,7 @@ ENV DJANGO_SETTINGS_MODULE=wagtailio.settings.production \
 
 # Install operating system dependencies.
 RUN apt-get update --yes --quiet && \
-    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-15 \
+    apt-get install -y apt-transport-https rsync libmagickwand-dev unzip postgresql-client-17 \
     jpegoptim pngquant gifsicle libjpeg-progs webp && \
     rm -rf /var/lib/apt/lists/*
 
@@ -64,7 +64,7 @@ COPY --chown=wagtailio --from=frontend ./wagtailio/static_compiled ./wagtailio/s
 RUN SECRET_KEY=none django-admin collectstatic --noinput --clear
 
 # Run application
-CMD gunicorn wagtailio.wsgi:application
+CMD ["gunicorn", "wagtailio.wsgi:application"]
 
 
 # This stage builds the image that we use for development
