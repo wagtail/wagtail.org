@@ -34,6 +34,7 @@ wagtail-font-awesome-svg = "~2.0"
 wagtailmedia = "~0.17"
 whitenoise = "~6.11"
 django-redis = "~6.0"
+tzdata = "^2026.2"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.5.0"
