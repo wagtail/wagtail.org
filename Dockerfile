@@ -72,7 +72,7 @@ FROM backend AS dev
 
 # Install Node.js because newer versions of Heroku CLI have a node binary dependency
 RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
-RUN apt-get install -y nodejs
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs tzdata
 
 # Switch to the application user
 USER wagtailio
