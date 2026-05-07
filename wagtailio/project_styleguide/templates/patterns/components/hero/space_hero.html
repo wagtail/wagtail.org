@@ -1,39 +1,49 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags static %}
 
 <div class="grid">
     <div class="spacegrid {% if classes %}{{ classes }}{% endif %}">
-        <section class="hero-section">            <div class="hero-container">
-            <div class="hero-parent">
-                <div class="heading-container">
-                    {% if value.heading %}
-                        <div class="space-heading">{{ value.heading }}</div>
-                    {% endif %}
-                    <div class="frame-wrapper">
-                        <div class="frame-container">
-                            <div class="date-container">
-                                {% if value.event_date_subhead %}
-                                    <b class="space-date">{{ value.event_date_subhead }}</b>
-                                {% endif %}
-                                {% if value.tagline %}
-                                    <div class="space-tagline">{{ value.tagline }}</div>
-                                {% endif %}
+        <section class="hero-section hero-section--2026">
+            <div class="hero-2026-bg" aria-hidden="true">
+                <img class="hero-2026-bg__sphere" src="{% static 'img/space-2026-hero-galaxy-sphere.svg' %}" alt="">
+            </div>
+            <div class="hero-2026-logo-group" aria-hidden="true">
+                <img class="hero-2026-logo-group__combined" src="{% static 'img/space-2026-hero-logo-group.png' %}" alt="">
+            </div>
+            <div class="hero-container">
+                <div class="hero-parent">
+                    <div class="heading-container">
+                        {% if value.heading %}
+                            <div class="space-heading space-heading--2026">{{ value.heading }}</div>
+                        {% endif %}
+                        <div class="frame-wrapper frame-wrapper--2026">
+                            <div class="frame-container">
+                                <div class="date-container date-container--2026">
+                                    {% if value.event_date_subhead %}
+                                        <b class="space-date space-date--2026">{{ value.event_date_subhead }}</b>
+                                    {% endif %}
+                                    {% if value.tagline %}
+                                        <div class="space-tagline space-tagline--2026">{{ value.tagline }}</div>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% if value.cta %}
+                        <div class="button-parent">
+                            {% for block in value.cta %}
+                                {% if forloop.first %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+                                {% else %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                {% if value.cta %}
-                    <div class="button-parent">
-                        {% for block in value.cta %}
-                            {% if forloop.first %}
-                                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
-                            {% else %}
-                                {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                {% endif %}
             </div>
-        </div>
+            <div class="hero-2026-horizon" aria-hidden="true">
+                <img src="{% static 'img/space-2026-hero-section-break.png' %}" alt="">
+            </div>
         </section>
     </div>
 </div>

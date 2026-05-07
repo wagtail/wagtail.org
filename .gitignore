@@ -18,3 +18,4 @@ node_modules
 /.python-version
 /database_dumps
 .claudeignore
+.claude/

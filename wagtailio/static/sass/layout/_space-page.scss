@@ -29,17 +29,95 @@
     color: $color--white;
 }
 
-.space-stars{
-  width: 100%;
-  position: absolute;
-  margin: 0;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-  object-fit: cover;
+// Wagtail Space 2026 — page-level background
+.template-wagtail-space-index-page {
+    background-color: $color-space-2026-bg;
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/space-2026-hero-noise.png');
+        background-size: 1024px 1024px;
+        background-repeat: repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -2;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1658px;
+        height: 932px;
+        transform: translateX(-50%);
+        background-image: url('../img/space-2026-hero-galaxy-bg.jpg');
+        background-size: cover;
+        mix-blend-mode: screen;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    // Remove 2025-era section backgrounds so the page background shows through
+    .space-sponsor-container,
+    .sponsor-background,
+    .sponsor-fill {
+        background-color: transparent;
+    }
+
+    .sponsor-rectangle::before {
+        background: transparent;
+    }
+
+    // 2026 button styles
+    .button--space-button-primary {
+        background-color: $color-space-2026-btn-primary;
+        border-color: $color-space-2026-btn-primary;
+        color: $color--off-black;
+
+        > svg {
+            fill: $color--off-black;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: $color--white;
+            color: $color--off-black;
+
+            > svg {
+                fill: $color--off-black;
+            }
+        }
+    }
+
+    .button--space-button-secondary {
+        background-color: $color-space-2026-btn-secondary;
+        border-color: $color--white;
+        color: $color--white;
+
+        > svg {
+            fill: $color--white;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: $color--white;
+            color: $color--off-black;
+
+            > svg {
+                fill: $color--off-black;
+            }
+        }
+    }
 }
+
 
 .hero-section {
   color: $color--white;
@@ -578,6 +656,175 @@
   color: $color-spacetext-light;
   padding-bottom: 40px;
 }
+
+// =============================================================================
+// Wagtail Space 2026
+// =============================================================================
+.hero-section--2026 {
+    align-items: flex-start;
+    padding-top: 409px;
+    padding-bottom: 120px;
+    min-height: 920px;
+
+    .hero-container {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+}
+
+.hero-2026-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+
+    &__sphere {
+        position: absolute;
+        width: 573px;
+        height: 573px;
+        left: calc(50% - 13.5px);
+        top: 35px;
+        transform: translateX(-50%);
+        object-fit: cover;
+    }
+
+}
+
+.hero-2026-logo-group {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    &__combined {
+        position: absolute;
+        left: calc(50% - 391px);
+        top: 59px;
+        width: 938px;
+    }
+}
+
+.hero-2026-horizon {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2547px;
+    pointer-events: none;
+    line-height: 0;
+    z-index: 1;
+
+    img {
+        width: 100%;
+    }
+}
+
+.space-heading--2026 {
+    font-size: 76px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: $color--white;
+    -webkit-text-stroke: 0;
+
+    &::before {
+        display: none;
+    }
+}
+
+.frame-wrapper--2026 {
+    padding: 0;
+    font-size: inherit;
+    color: $color--white;
+    align-items: center;
+}
+
+.date-container--2026 {
+    align-items: center;
+    gap: 6px;
+}
+
+.space-date--2026 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: $color--white;
+    text-align: center;
+}
+
+.space-tagline--2026 {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: $color--white;
+    width: 606px;
+    max-width: 100%;
+    text-align: center;
+}
+
+@include media-query(smallonly) {
+    .hero-section--2026 {
+        padding-top: 246px;
+        padding-bottom: 80px;
+        min-height: 600px;
+    }
+
+    .hero-2026-logo-group {
+        &__combined {
+            left: calc(50% - 235px);
+            top: 35px;
+            width: 563px;
+        }
+    }
+
+    .space-heading--2026 {
+        font-size: 42px;
+    }
+
+    .space-date--2026 {
+        font-size: 22px;
+    }
+
+    .space-tagline--2026 {
+        font-size: 18px;
+        width: 100%;
+    }
+}
+
+@include media-query(mediumlarge) {
+    .hero-section--2026 {
+        padding-top: 307px;
+        min-height: 750px;
+    }
+
+    .hero-2026-logo-group {
+        &__combined {
+            left: calc(50% - 293px);
+            top: 44px;
+            width: 703px;
+        }
+    }
+
+    .space-heading--2026 {
+        font-size: 56px;
+    }
+
+    .space-date--2026 {
+        font-size: 26px;
+    }
+
+    .space-tagline--2026 {
+        font-size: 20px;
+        width: 100%;
+    }
+}
+
+// End Wagtail Space 2026
+// =============================================================================
 
 @include media-query(smallonly) {
   .sponsor-rectangle{
