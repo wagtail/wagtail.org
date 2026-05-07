@@ -34,6 +34,11 @@ class SpeakerBlock(blocks.StructBlock):
     )
     speaker_name = blocks.CharBlock(max_length=255, required=True)
     speaker_talk = blocks.TextBlock(max_length=255, required=False)
+    speaker_url = blocks.URLBlock(
+        label="Talk URL",
+        required=False,
+        help_text="Optional link for talk description.",
+    )
 
     class Meta:
         template = "patterns/components/streamfields/speaker_block/speaker_block.html"

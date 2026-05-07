@@ -386,111 +386,140 @@
   
 }
 
-.space-speaker-parent{
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 140px 0 80px 0;
-  box-sizing: border-box;
+.space-speaker-parent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 96px 0;
+    box-sizing: border-box;
+    gap: 48px;
 }
 
-.space-speaker-container{
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+.speaker-heading {
+    width: 100%;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    font-family: $font--primary;
+    color: $color-space-2026-heading;
+    text-align: start;
 }
 
-.speaker-heading{
-  width: 100%;
-  font-size: 50px;
-  letter-spacing: -0.01em;
-  line-height: 150%;
-  font-family: $font--primary;
-  color: $color-spacetext-light;
-  text-align: center;
+.talk-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
 }
 
-.speaker-card-container {
-  padding: 70px 100px 140px;
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  z-index: 0;
-  align-self: stretch;
-  box-sizing: border-box;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: center;
-  position: relative;
-  gap: 20px;
-}
+.talk-card {
+    display: flex;
+    flex-direction: column;
+    width: 397px;
+    min-height: 515px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
 
-.speaker-card {
-  overflow: hidden;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  z-index: 0;
-  gap: 20px;
-  max-width: 1400px;
-  width: 100%;
-}
+    &__image {
+        height: 313px;
+        flex-shrink: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
 
-.speaker-container {
-  min-height: 450px;
-  background-color: rgba(255, 143, 234, 0.05);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  width: calc(25% - 15px);
-  flex: 0 0 calc(25% - 15px);
-  max-width: 320px;
-}
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
 
-.speaker-image {
-  width: 100%;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  flex-shrink: 0;
-  object-fit: cover;
-  border-radius: 10px 10px 0 0;
-}
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 30px;
+        flex: 1;
+        position: relative;
+        border-radius: 0 0 6px 6px;
 
-.speaker-talk {
-  width: 100%;
-  position: relative;
-  font-size: 16px;
-  letter-spacing: -0.01em;
-  line-height: 130%;
-  display: inline-block;
-  font-family: $font--primary;
-  color: $color--white;
-  text-align: start;
-}
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: $color-space-2026-glow-blue;
+            opacity: 0.2;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+    }
 
-.speaker-name{
-  width: 100%;
-  position: relative;
-  font-size: 25px;
-  letter-spacing: -0.01em;
-  line-height: 140%;
-  font-family: $font--primary;
-  color: $color-spacetext-light;
-  text-align: start;
-}
+    &__about {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: relative;
+        z-index: 1;
+    }
 
-.speaker-info {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
+    &__speaker-name {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        color: $color--white;
+        font-family: $font--primary;
+    }
+
+    &__speaker-talk {
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        color: $color-space-2026-heading;
+        font-family: $font--primary;
+    }
+
+    &__cta {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding-top: 10px;
+        font-size: 15px;
+        line-height: 1.5;
+        color: $color-space-2026-btn-primary;
+        text-decoration: none;
+        font-family: $font--primary;
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+    }
+
+    &__cta-icon {
+        flex-shrink: 0;
+    }
+
+    &:hover,
+    &:focus-within {
+        .talk-card__img {
+            transform: scale(1.08);
+        }
+
+        .talk-card__details::before {
+            opacity: 0.3;
+        }
+
+        .talk-card__cta {
+            color: $color-space-2026-cta-hover;
+        }
+    }
 }
 
 .space-sponsor-container{
@@ -921,49 +950,21 @@
   }
   
   .space-speaker-parent {
-    padding: 40px 0 30px 0;
+    padding: 48px 0;
+    gap: 32px;
   }
-  
+
   .speaker-heading {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 24px;
   }
-  
-  .speaker-card-container {
-    padding: 30px 15px 40px;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .speaker-card {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .speaker-container {
+
+  .talk-card {
+    width: 100%;
     min-height: auto;
-    width: 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
   }
-  
-  .speaker-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-  
-  .speaker-info {
-    padding: 20px;
-  }
-  
-  .speaker-name {
-    font-size: 22px;
-  }
-  
-  .speaker-talk {
-    font-size: 15px;
+
+  .talk-card__image {
+    height: 220px;
   }
   
   .space-text {
@@ -1072,49 +1073,16 @@
   }
   
   .space-speaker-parent {
-    padding: 60px 0 40px 0;
+    padding: 64px 0;
+    gap: 40px;
   }
-  
+
   .speaker-heading {
-    font-size: 40px;
-    margin-bottom: 40px;
+    font-size: 28px;
   }
-  
-  .speaker-card-container {
-    padding: 40px 20px 60px;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-  
-  .speaker-card {
-    gap: 25px;
-    justify-content: center;
-  }
-  
-  .speaker-container {
-    min-height: auto;
-    width: calc(50% - 12.5px);
-    flex: 0 0 calc(50% - 12.5px);
-    max-width: 400px;
-  }
-  
-  .speaker-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  .speaker-info {
-    padding: 25px;
-  }
-  
-  .speaker-name {
-    font-size: 24px;
-  }
-  
-  .speaker-talk {
-    font-size: 16px;
+
+  .talk-card {
+    width: calc(50% - 12px);
   }
   
   .space-text {
