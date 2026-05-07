@@ -292,18 +292,18 @@
 .centered-space-text {
   margin-bottom: 40px;
   font-family: $font--primary;
-  max-width: 800px;
+  max-width: 818px;
 
   h2 {
-    font-size: 50px;
-    align-self: stretch;
-    position: relative;
+    font-size: 34px;
+    font-weight: 700;
     letter-spacing: -0.01em;
-    line-height: 150%;
-    text-align: center;
+    line-height: 1.3;
+    text-align: start;
+    color: $color-space-2026-heading;
     width: 100%;
     display: inline-block;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 
   h3 {
@@ -312,19 +312,18 @@
     position: relative;
     letter-spacing: -0.01em;
     line-height: 150%;
-    text-align: center;
+    text-align: start;
     width: 100%;
     display: inline-block;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 
   p {
-    width: 744px;
-    position: relative;
+    width: 100%;
     font-size: 20px;
-    line-height: 160%;
+    line-height: 1.6;
     text-align: start;
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -1057,15 +1056,14 @@
   
   .centered-space-text {
     h2 {
-      font-size: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    
+
     h3 {
       font-size: 26px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-    
+
     p {
       width: 100%;
       font-size: 19px;
