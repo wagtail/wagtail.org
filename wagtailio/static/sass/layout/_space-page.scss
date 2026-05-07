@@ -80,6 +80,72 @@
         background: transparent;
     }
 
+    // 2026 sponsor section styles
+    .space-sponsor-container {
+        align-items: center;
+        gap: 72px;
+    }
+
+    .sponsor-heading {
+        color: $color-space-2026-heading;
+
+        h2 {
+            font-size: 58px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: $color-space-2026-heading;
+            text-align: center;
+            max-width: none;
+            margin-bottom: 0;
+        }
+    }
+
+    .sponsor-type {
+        color: $color-space-2026-heading;
+    }
+
+    .sponsor-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .sponsor-card {
+        padding: 0 0 48px;
+        gap: 24px;
+
+        &:first-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .sponsor-logos-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 72px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sponsor-logo__item {
+        a {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            height: 72px;
+            width: auto;
+            display: block;
+        }
+    }
+
     // 2026 button styles
     .button--space-button-primary {
         background-color: $color-space-2026-btn-primary;
