@@ -1,7 +1,7 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageBlock
 
-from wagtailio.core.blocks import CTALinkMixin, RichTextBlock
+from wagtailio.core.blocks import CTALinkMixin, RichTextBlock, VideoBlock
 
 
 class SpaceTextBlock(RichTextBlock):
@@ -86,11 +86,21 @@ class SponsorHighlightBlock(blocks.StructBlock):
         label = "Sponsor Highlight"
 
 
+class SpaceVideoBlock(VideoBlock):
+    class Meta:
+        icon = "media"
+        template = (
+            "patterns/components/streamfields/space_video_block/space_video_block.html"
+        )
+        label = "Video"
+
+
 class SpaceStoryBlock(blocks.StreamBlock):
     rich_text = SpaceTextBlock()
     centered_text = CenteredSpaceTextBlock()
     image = ImageBlock(required=False)
     cta_button = SpaceCTABlock()
+    video = SpaceVideoBlock()
     speaker_highlight = SpeakerHighlightBlock()
     sponsor_highlight = SponsorHighlightBlock()
 
