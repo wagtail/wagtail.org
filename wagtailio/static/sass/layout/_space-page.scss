@@ -398,60 +398,67 @@
 .space-text {
   margin-bottom: 40px;
   font-family: $font--primary;
-  max-width: 800px;
+  max-width: 818px;
 
   h2 {
     position: relative;
-    font-size: 40px;
+    font-size: 34px;
+    font-weight: 700;
     letter-spacing: -0.01em;
-    line-height: 150%;
+    line-height: 1.3;
     font-family: $font--primary;
-    color: $color-cosmic-pink;
+    color: $color-space-2026-heading;
     text-align: start;
-    padding-top: 100px;
-    padding-bottom:30px;
+    margin-bottom: 24px;
   }
 
   h3 {
     position: relative;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 150%;
+    line-height: 1.5;
     font-family: $font--primary;
-    color: $color-cosmic-pink;
+    color: $color-space-2026-heading;
     text-align: start;
-    padding-top: 100px;
-    padding-bottom:30px;
+    margin-bottom: 24px;
   }
 
   p {
     position: relative;
     font-size: 20px;
-    line-height: 160%;
+    line-height: 1.6;
     text-align: start;
-    margin-bottom:20px;
-    max-width: 744px;
+    margin-bottom: 20px;
+    color: $color-space-2026-body;
   }
 
   a {
-    color:$color-spacetext-light;
+    color: $color-space-2026-btn-primary;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
 
     &:hover,
-    &:active,
-    &:visited,{
-      color:$color-spacetext-light;
+    &:focus {
+      color: $color-space-2026-cta-hover;
+    }
+
+    &:visited {
+      color: $color-space-2026-btn-primary;
     }
   }
 
-  ul{
-    padding: 0 50px 20px;
-    max-width: 744px;
+  ul {
+    list-style-type: disc;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    color: $color-space-2026-body;
   }
 
-  li{
+  li {
     text-align: start;
   }
-  
+
 }
 
 .space-speaker-parent {
@@ -819,12 +826,15 @@
 }
 
 .space-heading-2 {
-  width: 744px;
-  font-size: 76px;
+  max-width: 818px;
+  width: 100%;
+  font-size: 58px;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  line-height: 120%;
+  line-height: 1.2;
   font-family: $font--primary;
-  color: $color-spacetext-light;
+  color: $color--white;
+  text-align: start;
   padding-bottom: 40px;
 }
 
@@ -1107,24 +1117,23 @@
   .space-text {
     h2 {
       font-size: 28px;
-      padding-top: 40px;
-      padding-bottom: 20px;
+      margin-bottom: 20px;
     }
-    
+
     h3 {
-      font-size: 20px;
-      padding-top: 40px;
-      padding-bottom: 20px;
+      font-size: 22px;
+      margin-bottom: 20px;
     }
-    
+
     p {
       width: 100%;
       font-size: 18px;
       margin-bottom: 15px;
     }
-    
+
     ul {
-      padding: 0 30px 15px;
+      padding-left: 24px;
+      padding-bottom: 15px;
     }
   }
 
@@ -1247,24 +1256,23 @@
   .space-text {
     h2 {
       font-size: 32px;
-      padding-top: 60px;
-      padding-bottom: 25px;
+      margin-bottom: 20px;
     }
-    
+
     h3 {
-      font-size: 22px;
-      padding-top: 60px;
-      padding-bottom: 25px;
+      font-size: 26px;
+      margin-bottom: 20px;
     }
-    
+
     p {
       width: 100%;
       font-size: 19px;
       margin-bottom: 18px;
     }
-    
+
     ul {
-      padding: 0 40px 18px;
+      padding-left: 28px;
+      padding-bottom: 18px;
     }
   }
 
