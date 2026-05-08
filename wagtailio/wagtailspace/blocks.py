@@ -86,6 +86,19 @@ class SponsorHighlightBlock(blocks.StructBlock):
         label = "Sponsor Highlight"
 
 
+class SpaceExtendedCTABlock(CTALinkMixin):
+    heading = blocks.CharBlock(label="Heading", max_length=255)
+    description = blocks.TextBlock(label="Description")
+    text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    class Meta:
+        icon = "bullhorn"
+        template = "patterns/components/streamfields/space_extended_cta/space_extended_cta_block.html"
+        label = "Extended CTA"
+
+
 class SpaceVideoBlock(VideoBlock):
     class Meta:
         icon = "media"
@@ -100,6 +113,7 @@ class SpaceStoryBlock(blocks.StreamBlock):
     centered_text = CenteredSpaceTextBlock()
     image = ImageBlock(required=False)
     cta_button = SpaceCTABlock()
+    extended_cta = SpaceExtendedCTABlock()
     video = SpaceVideoBlock()
     speaker_highlight = SpeakerHighlightBlock()
     sponsor_highlight = SponsorHighlightBlock()
