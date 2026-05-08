@@ -31,22 +31,6 @@
 
 // Wagtail Space 2026 — page-level background
 .template-wagtail-space-index-page {
-    background-color: $color-space-2026-bg;
-    position: relative;
-    isolation: isolate;
-
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: url('../img/space-2026-hero-noise.png');
-        background-size: 1024px 1024px;
-        background-repeat: repeat;
-        opacity: 0.08;
-        pointer-events: none;
-        z-index: -2;
-    }
-
     &::after {
         content: '';
         position: absolute;
@@ -61,6 +45,24 @@
         opacity: 0.3;
         pointer-events: none;
         z-index: -1;
+    }
+}
+
+.template-wagtail-space-index-page, .template-wagtail-space-page {
+    background-color: $color-space-2026-bg;
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/space-2026-hero-noise.png');
+        background-size: 1024px 1024px;
+        background-repeat: repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -2;
     }
 
     // Lift spacegrid above the full-bleed background element in the same grid row
