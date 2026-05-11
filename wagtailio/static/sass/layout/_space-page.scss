@@ -972,6 +972,10 @@
 }
 
 @include media-query(smallonly) {
+    .spacegrid:has(.hero-section--2026) {
+        grid-column: 1 / -1;
+    }
+
     .hero-section--2026 {
         padding-top: 246px;
         padding-bottom: 80px;
@@ -996,6 +1000,12 @@
     .space-tagline--2026 {
         font-size: 18px;
         width: 100%;
+    }
+}
+
+@include media-query(mediumsmall) {
+    .spacegrid:has(.hero-section--2026) {
+        grid-column: 1 / -1;
     }
 }
 
