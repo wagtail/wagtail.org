@@ -885,6 +885,21 @@
         transform: translateX(-50%);
         top: 59px;
         width: 938px;
+        transition: opacity 0.2s ease;
+
+        &--blink {
+            opacity: 0;
+        }
+    }
+}
+
+.hero-section--2026:hover {
+    .hero-2026-logo-group__combined {
+        opacity: 0;
+    }
+
+    .hero-2026-logo-group__combined--blink {
+        opacity: 1;
     }
 }
 
