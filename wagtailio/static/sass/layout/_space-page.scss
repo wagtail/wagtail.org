@@ -881,7 +881,8 @@
 
     &__combined {
         position: absolute;
-        left: calc(50% - 391px);
+        left: 50%;
+        transform: translateX(-50%);
         top: 59px;
         width: 938px;
     }
@@ -941,7 +942,6 @@
 
     .hero-2026-logo-group {
         &__combined {
-            left: calc(50% - 235px);
             top: 35px;
             width: 563px;
         }
@@ -969,7 +969,6 @@
 
     .hero-2026-logo-group {
         &__combined {
-            left: calc(50% - 293px);
             top: 44px;
             width: 703px;
         }
