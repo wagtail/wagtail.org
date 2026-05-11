@@ -898,7 +898,13 @@
         inset: 0;
         width: 100%;
         height: 100%;
+        pointer-events: none;
     }
+}
+
+.hero-porthole-circle {
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .hero-bird-eye {
@@ -910,12 +916,12 @@
     transition: opacity 0.2s ease;
 }
 
-.hero-section--2026:hover {
-    .hero-bird-eye {
+.hero-porthole-circle:hover {
+    ~ .hero-bird-eye {
         opacity: 0;
     }
 
-    .hero-bird-eye-wink {
+    ~ .hero-bird-eye-wink {
         opacity: 1;
     }
 }
