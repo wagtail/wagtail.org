@@ -885,20 +885,37 @@
         transform: translateX(-50%);
         top: 59px;
         width: 938px;
-        transition: opacity 0.2s ease;
+        aspect-ratio: 938 / 780;
+    }
 
-        &--blink {
-            opacity: 0;
-        }
+    &__bg {
+        width: 100%;
+        display: block;
+    }
+
+    &__porthole {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
     }
 }
 
+.hero-bird-eye {
+    transition: opacity 0.2s ease;
+}
+
+.hero-bird-eye-wink {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
 .hero-section--2026:hover {
-    .hero-2026-logo-group__combined {
+    .hero-bird-eye {
         opacity: 0;
     }
 
-    .hero-2026-logo-group__combined--blink {
+    .hero-bird-eye-wink {
         opacity: 1;
     }
 }
