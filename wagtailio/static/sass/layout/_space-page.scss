@@ -1313,7 +1313,7 @@
     padding: 20px 15px;
   }
 
-  .hero-section {
+  .hero-section:not(.hero-section--2026) {
     padding: 40px 15px 20px;
   }
   
@@ -1459,12 +1459,12 @@
   .sponsor-rectangle{
     padding: 55px 0 140px 0;
   }
-  
+
   .centered-space-container{
     padding: 20px 15px;
   }
 
-  .hero-section {
+  .hero-section:not(.hero-section--2026) {
     padding: 60px 20px 30px;
   }
   
