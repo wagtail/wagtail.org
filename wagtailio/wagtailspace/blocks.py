@@ -4,6 +4,16 @@ from wagtail.images.blocks import ImageBlock
 from wagtailio.core.blocks import CTALinkMixin, RichTextBlock, VideoBlock
 
 
+class SpaceDropdownItemValue(blocks.StructValue):
+    @property
+    def cta_resolved_url(self):
+        if url := self.get("cta_url"):
+            return url
+        if page := self.get("cta_page"):
+            return page.url
+        return ""
+
+
 class SpaceTextBlock(RichTextBlock):
     class Meta:
         template = "patterns/components/streamfields/space_text_block.html"
@@ -99,6 +109,29 @@ class SpaceExtendedCTABlock(CTALinkMixin):
         label = "Extended CTA"
 
 
+class SpaceDropdownItemBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    text = blocks.TextBlock(required=False)
+    cta_text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    class Meta:
+        icon = "collapse-down"
+        label = "Dropdown item"
+        value_class = SpaceDropdownItemValue
+
+
+class SpaceDropdownBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255, required=False)
+    items = blocks.ListBlock(SpaceDropdownItemBlock())
+
+    class Meta:
+        icon = "list-ul"
+        template = "patterns/components/streamfields/space_dropdown_block/space_dropdown_block.html"
+        label = "Dropdown"
+
+
 class SpaceVideoBlock(VideoBlock):
     class Meta:
         icon = "media"
@@ -117,6 +150,7 @@ class SpaceStoryBlock(blocks.StreamBlock):
     video = SpaceVideoBlock()
     speaker_highlight = SpeakerHighlightBlock()
     sponsor_highlight = SponsorHighlightBlock()
+    dropdown = SpaceDropdownBlock()
 
     class Meta:
         template = "patterns/components/streamfields/space_story_block.html"
