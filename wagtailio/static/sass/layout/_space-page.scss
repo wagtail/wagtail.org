@@ -68,25 +68,22 @@
         z-index: 1;
     }
 
-    // Remove 2025-era section backgrounds so the page background shows through
-    .space-sponsor-container,
-    .sponsor-background,
-    .sponsor-fill {
-        background-color: transparent;
-    }
-
-    .sponsor-rectangle::before {
-        background: transparent;
-    }
-
-    // 2026 sponsor section styles
+    // Sponsor section
     .space-sponsor-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
         gap: 72px;
     }
 
     .sponsor-heading {
-        color: $color-space-2026-heading;
+        width: 100%;
+        font-family: $font--primary;
+        display: flex;
+        justify-content: center;
 
         h2 {
             font-size: 58px;
@@ -100,10 +97,18 @@
     }
 
     .sponsor-type {
+        width: 100%;
+        position: relative;
+        font-size: 20px;
+        line-height: 160%;
+        font-family: $font--primary;
         color: $color-space-2026-heading;
+        text-align: center;
+        display: inline-block;
     }
 
     .sponsor-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -111,8 +116,16 @@
     }
 
     .sponsor-card {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 0 0 48px;
         gap: 24px;
+        font-size: 20px;
 
         &:first-child {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -605,83 +618,6 @@
     }
 }
 
-.space-sponsor-container{
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background-color: $color-sponsor-pink;
-}
-
-.sponsor-background {
-  width: 100%;
-  background-color: $color-sponsor-pink;
-}
-
-.sponsor-fill {
-  background-color: $color-sponsor-pink;
-  padding: 0 100px;
-}
-
-.sponsor-rectangle {
-  padding: 110px 0 140px 0;
-  position: relative;
-    z-index: 2;
-    
-    &::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        width: calc(100% + 40px);
-        height: calc(100% + 40px);
-        background: $color-sponsor-pink;
-        transform: rotate(-1.4deg);
-        z-index: -1;
-    }
-}
-
-.sponsor-heading {
-  width: 100%;
-  font-size: 50px;
-  letter-spacing: -0.01em;
-  line-height: 150%;
-  font-family: $font--primary;
-  color: $color--off-black;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-}
-
-.sponsor-type {
-  width: 100%;
-  position: relative;
-  font-size: 20px;
-  line-height: 160%;
-  font-family: $font--primary;
-  color: $color--off-black;
-  text-align: center;
-  display: inline-block;
-}
-
-.sponsor-card {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0 30px;
-  gap: 30px;
-  font-size: 20px;
-}
-
-.sponsor-container {
-  width: 100%;
-}
 
 .space-social-container {
     position: relative;
@@ -1332,10 +1268,6 @@
 // =============================================================================
 
 @include media-query(smallonly) {
-  .sponsor-rectangle{
-    padding: 55px 0 140px 0;
-  }
-
   .centered-space-container {
     padding: 20px 15px;
   }
@@ -1483,10 +1415,6 @@
 }
 
 @include media-query(mediumlarge) {
-  .sponsor-rectangle{
-    padding: 55px 0 140px 0;
-  }
-
   .centered-space-container{
     padding: 20px 15px;
   }
