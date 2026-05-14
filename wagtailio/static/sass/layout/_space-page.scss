@@ -16,14 +16,6 @@
   -webkit-text-stroke: $width $color;
 }
 
-@mixin absolute-full {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .template-wagtail-space-index-page, .template-wagtail-space-page, .template-wagtail-space-schedule-page {
     background-color: $color-darkspace-bg;
     color: $color--white;
@@ -335,11 +327,6 @@
   font-size: 16px;
   color: $color--off-black;
   padding: 15px 0 15px 0;
-}
-
-.call-to-action {
-  position: relative;
-  z-index: 0;
 }
 
 .space-body-container {
@@ -696,15 +683,6 @@
   width: 100%;
 }
 
-.sponsor-logo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0 30px;
-}
-
 .space-social-container {
     position: relative;
     width: 100%;
@@ -873,25 +851,6 @@
         z-index: 2;
         width: 100%;
     }
-}
-
-.hero-2026-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-
-    &__sphere {
-        position: absolute;
-        width: 573px;
-        height: 573px;
-        left: calc(50% - 13.5px);
-        top: 35px;
-        transform: translateX(-50%);
-        object-fit: cover;
-    }
-
 }
 
 .hero-2026-logo-group {
