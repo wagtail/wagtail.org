@@ -50,7 +50,7 @@ substitutions using my text editor. Those included:
 
 1. Replacing the evaluated favicons with their equivalent code from base_page.html
  <link rel="icon" href="{% static 'img/favicons/favicon.ico' %}" sizes="32x32">
- <link rel="icon" href="{% static 'img/favicons/favicon.sgv' %}" type="image/svg+xml">
+ <link rel="icon" href="{% static 'img/favicons/favicon.svg' %}" type="image/svg+xml">
  <link rel="apple-touch-icon" href="{% static 'img/favicons/apple-touch-icon.png' %}">
  <link rel="manifest" href="{% static 'img/favicons/favicon.webmanifest' %}">
 
