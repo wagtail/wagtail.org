@@ -5,8 +5,11 @@
 
     <div class="header__identity">
         {% if page.get_verbose_name == 'Wagtail Space Page' or page.get_verbose_name == 'Wagtail Space Schedule Page' %}
-            <a href="{% pageurl page.get_parent %}" aria-label="Wagtail.org homepage">
-                <img src="{% static 'img/WagtailSpace2025Logo.png' %}" alt="Wagtail Space 2025">
+            <a class="header__space-logo-link" href="{% pageurl page.get_parent %}" aria-label="Wagtail Space 2026 homepage">
+                <span class="space-logo" aria-hidden="true">
+                    <img class="space-logo__text" src="{% static 'img/wagtail-space-2026-logo-text.svg' %}" alt="">
+                    <img class="space-logo__rocket" src="{% static 'img/small-rocket-2026.png' %}" alt="">
+                </span>
             </a>
         {% else %}
             <a class="header__link" href="/" aria-label="Wagtail.org homepage">

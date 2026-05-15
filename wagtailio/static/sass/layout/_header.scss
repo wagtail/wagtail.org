@@ -232,6 +232,15 @@
         }
     }
 
+    &__space-logo-link {
+        display: block;
+
+        &:hover .space-logo__rocket,
+        &:focus .space-logo__rocket {
+            animation: rocket-bounce 0.7s ease-in-out infinite;
+        }
+    }
+
     .theme-dark & {
 
         #{$root}__logo {
@@ -244,4 +253,41 @@
 
     }
 
+}
+
+.space-logo {
+    display: block;
+    position: relative;
+    width: 165px;
+    height: 65px;
+    overflow: visible;
+}
+
+.space-logo__text {
+    position: absolute;
+    left: 0;
+    top: 3.67px;
+    width: 78.82px;
+    height: 61.32px;
+}
+
+.space-logo__rocket {
+    position: absolute;
+    left: 59.58px;
+    top: -16.56px;
+    width: 113px;
+    height: 92px;
+}
+
+@keyframes rocket-bounce {
+    0%, 100% { transform: translateY(0); }
+
+    50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header__space-logo-link:hover .space-logo__rocket,
+    .header__space-logo-link:focus .space-logo__rocket {
+        animation: none;
+    }
 }

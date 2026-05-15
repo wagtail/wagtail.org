@@ -1,0 +1,31 @@
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-dropdown-block">
+            {% if value.heading %}
+                <h2 class="space-dropdown-block__heading">{{ value.heading }}</h2>
+            {% endif %}
+            <div class="space-dropdown-block__items">
+                {% for item in value.items %}
+                    <details class="space-dropdown-block__item">
+                        <summary class="space-dropdown-block__item-trigger">
+                            <span class="space-dropdown-block__item-heading">{{ item.heading }}</span>
+                            <span class="space-dropdown-block__item-icon" aria-hidden="true">
+                                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="space-dropdown-block__item-content">
+                            {% if item.text %}
+                                <p class="space-dropdown-block__item-text">{{ item.text }}</p>
+                            {% endif %}
+                            {% if item.cta_text and item.cta_resolved_url %}
+                                {% include "patterns/components/buttons/button.html" with url=item.cta_resolved_url title=item.cta_text arrow=True classes="button--space-button-primary" %}
+                            {% endif %}
+                        </div>
+                    </details>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
