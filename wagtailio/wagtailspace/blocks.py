@@ -111,7 +111,7 @@ class SpaceExtendedCTABlock(CTALinkMixin):
 
 class SpaceDropdownItemBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
-    text = blocks.TextBlock(required=False)
+    text = blocks.RichTextBlock(required=False)
     cta_text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
     cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
     cta_url = blocks.URLBlock(label="CTA URL", required=False)
