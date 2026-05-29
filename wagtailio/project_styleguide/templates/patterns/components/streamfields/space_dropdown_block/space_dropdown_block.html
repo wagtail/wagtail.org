@@ -17,7 +17,7 @@
                         </summary>
                         <div class="space-dropdown-block__item-content">
                             {% if item.text %}
-                                <p class="space-dropdown-block__item-text">{{ item.text }}</p>
+                                <div class="space-dropdown-block__item-text">{{ item.text }}</div>
                             {% endif %}
                             {% if item.cta_text and item.cta_resolved_url %}
                                 {% include "patterns/components/buttons/button.html" with url=item.cta_resolved_url title=item.cta_text arrow=True classes="button--space-button-primary" %}
