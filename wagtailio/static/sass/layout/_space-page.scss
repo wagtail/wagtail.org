@@ -574,6 +574,18 @@
         font-family: $font--primary;
     }
 
+    &--no-talk &__speaker-name {
+        font-size: 25px;
+    }
+
+    &--no-talk {
+        min-height: 0;
+    }
+
+    &--no-talk &__details {
+        flex: none;
+    }
+
     &__speaker-talk {
         font-size: 25px;
         font-weight: 400;

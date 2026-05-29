@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<div class="talk-card">
+<div class="talk-card{% if not value.speaker_talk %} talk-card--no-talk{% endif %}">
     <div class="talk-card__image">
         {% image value.speaker_image fill-397x313 class="talk-card__img" %}
     </div>
