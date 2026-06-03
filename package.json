@@ -39,32 +39,32 @@
     "not ie 11"
   ],
   "devDependencies": {
-    "@wagtail/eslint-config-wagtail": "^0.4.0",
+    "@wagtail/eslint-config-wagtail": "^0.5.0",
     "@wagtail/stylelint-config-wagtail": "^2.0.0",
     "autoprefixer": "^10.4.7",
     "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.1",
-    "cssnano": "^7.0.6",
+    "copy-webpack-plugin": "^14.0.0",
+    "css-loader": "^7.0.0",
+    "cssnano": "^8.0.0",
     "eslint": "^8.20.0",
-    "eslint-webpack-plugin": "^3.2.0",
+    "eslint-webpack-plugin": "^5.0.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "postcss-loader": "^7.0.1",
+    "postcss-loader": "^8.2.1",
     "prettier": "^3.8.3",
     "sass": "^1.53.0",
-    "sass-loader": "^16.0.2",
+    "sass-loader": "^17.0.0",
     "stylelint": "^17.4.0",
     "stylelint-webpack-plugin": "^5.1.0",
     "ts-loader": "^9.3.1",
-    "typescript": "^5.6.3",
+    "typescript": "^6.0.0",
     "webpack": "^5.73.0",
-    "webpack-cli": "^5.1.2",
+    "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.0.2",
-    "webpack-manifest-plugin": "^5.0.0"
+    "webpack-manifest-plugin": "^6.0.0"
   },
   "dependencies": {
-    "focus-trap": "^7.0.0",
+    "focus-trap": "^8.0.0",
     "js-cookie": "^3.0.5",
-    "micromodal": "^0.4.10"
+    "micromodal": "^0.7.0"
   }
 }
