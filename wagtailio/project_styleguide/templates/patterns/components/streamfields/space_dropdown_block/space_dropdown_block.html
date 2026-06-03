@@ -10,9 +10,7 @@
                         <summary class="space-dropdown-block__item-trigger">
                             <span class="space-dropdown-block__item-heading">{{ item.heading }}</span>
                             <span class="space-dropdown-block__item-icon" aria-hidden="true">
-                                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                                {% include "patterns/components/icon/icon.html" with icon="chevron" variant="simple" classes="space-dropdown-block__item-icon-svg" %}
                             </span>
                         </summary>
                         <div class="space-dropdown-block__item-content">
