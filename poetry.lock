@@ -369,14 +369,14 @@ django = "*"
 
 [[package]]
 name = "django-modelcluster"
-version = "6.4.1"
+version = "6.5"
 description = "Django extension to allow working with 'clusters' of models as a single unit, independently of the database"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "django_modelcluster-6.4.1-py2.py3-none-any.whl", hash = "sha256:ccc190cd9e22c24900ea2410bff64d444d48f43f0f4aedeed0f6cd94e2536698"},
-    {file = "django_modelcluster-6.4.1.tar.gz", hash = "sha256:e736fcee925f83b63218dbf9c869ab50618b0f5e98869a5aa497f7a5331aa263"},
+    {file = "django_modelcluster-6.5-py3-none-any.whl", hash = "sha256:469b380a294027d5211d0e5d5746e0381f445b058d2229977a58fe0f1c58a596"},
+    {file = "django_modelcluster-6.5.tar.gz", hash = "sha256:459cbf0fb3bbc8c15ea9a2a062abc0d1ef935a38e04aa8ac3cb241c826bbc6dd"},
 ]
 
 [package.dependencies]
@@ -735,19 +735,19 @@ testing = ["coverage", "pyyaml"]
 
 [[package]]
 name = "modelsearch"
-version = "1.1.1"
+version = "1.3.1"
 description = "A library for indexing Django models with Elasicsearch, OpenSearch or database and searching them with the Django ORM."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "modelsearch-1.1.1-py3-none-any.whl", hash = "sha256:d2580790af76c3a6404f651c9d8ca8695b284551583bb8ca6ddeb17eca0cfb52"},
-    {file = "modelsearch-1.1.1.tar.gz", hash = "sha256:25f329c4d93572729c931f65c46cedb5cfc32d368690ebdabc223aa6205251d6"},
+    {file = "modelsearch-1.3.1-py3-none-any.whl", hash = "sha256:a92847f01788d0d615e8715fabb8e823029288840297fb9e7235ee03ad49b6a8"},
+    {file = "modelsearch-1.3.1.tar.gz", hash = "sha256:f3b2e304dbef9f7c838423f591cfe0c60f4cef584bae8793d2aa8ac35a3c46e0"},
 ]
 
 [package.dependencies]
 Django = ">=4.2"
-django-tasks = ">=0.7,<0.10"
+django-tasks = ">=0.7,<0.13"
 
 [package.extras]
 dev = ["pre-commit (==3.4.0)", "ruff (==0.13.0)"]
@@ -1521,30 +1521,30 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "wagtail"
-version = "7.3.1"
+version = "7.4.1"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "wagtail-7.3.1-py3-none-any.whl", hash = "sha256:eab131e15ab9edc7ed24143d44271e92af79239e105bc3e173d26c95d2b489b3"},
-    {file = "wagtail-7.3.1.tar.gz", hash = "sha256:2ce131d9a4e7d55fdb5b592d320a758a189174b2cc3966b70a34a1b3dc56f449"},
+    {file = "wagtail-7.4.1-py3-none-any.whl", hash = "sha256:a42dc18b0fb818649c0d704ea50a2dea06d1b75614abdf837e90766263645c76"},
+    {file = "wagtail-7.4.1.tar.gz", hash = "sha256:c7232cbe16afa5842c236e069b2baead3b3e87e9dc90a7493330b54b69e18b83"},
 ]
 
 [package.dependencies]
 anyascii = ">=0.1.5"
-beautifulsoup4 = ">=4.8,<5"
-Django = ">=4.2"
+beautifulsoup4 = ">=4.13.3,<5"
+Django = ">=5.2"
 django-filter = ">=23.3"
-django-modelcluster = ">=6.4.1,<7.0"
+django-modelcluster = ">=6.5,<7.0"
 django-permissionedforms = ">=0.1,<1.0"
 django-taggit = ">=5.0,<7"
 django-tasks = ">=0.9,<0.13"
-django-treebeard = ">=4.5.1,<5.0"
+django-treebeard = ">=4.8,<6.0"
 djangorestframework = ">=3.15.1,<4.0"
 draftjs_exporter = ">=2.1.5,<6.0"
 laces = ">=0.1,<0.2"
-modelsearch = ">=1.1,<1.3"
+modelsearch = ">=1.3,<1.4"
 openpyxl = ">=3.0.10,<4.0"
 Pillow = ">=9.1.0"
 requests = ">=2.11.1,<3.0"
@@ -1552,8 +1552,8 @@ telepath = ">=0.3.1,<1"
 Willow = {version = ">=1.11.0,<2", extras = ["heif"]}
 
 [package.extras]
-docs = ["Sphinx (>=7.3)", "myst_parser (==2.0.0)", "pyenchant (>=3.1.1,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (==6.5.0)", "sphinx_llm (>=0.2.1)", "sphinxcontrib-spelling (>=7,<8)"]
-testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "boto3 (>=1.28,<2)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7)", "djhtml (==3.0.6)", "doc8 (==1.1.2)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "responses (>=0.25,<1)", "ruff (==0.9.6)", "semgrep (==1.150.0)", "tblib (>=2.0,<3.0)"]
+docs = ["Sphinx (>=7.3)", "myst_parser (>=4.0.0,<6)", "pyenchant (>=3.3.0,<4)", "sphinx-autobuild (>=0.6.0)", "sphinx-wagtail-theme (>=6.5.0,<7)", "sphinx_llm (>=0.2.1)", "sphinxcontrib-spelling (>=8,<9)"]
+testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "boto3 (>=1.28,<2)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7)", "djhtml (==3.0.10)", "doc8 (==2.0.0)", "factory-boy (>=3.2)", "freezegun (>=0.3.8)", "polib (>=1.1,<2.0)", "responses (>=0.25,<1)", "ruff (==0.15.2)", "semgrep (==1.152.0)", "tblib (>=3.0,<4.0)"]
 
 [[package]]
 name = "wagtail-font-awesome-svg"
@@ -1723,4 +1723,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.14"
-content-hash = "753809438560ffe4139fbb94c9cb91a7c4039cfcfde0f521c5d3054897415eba"
+content-hash = "4a0c180edf6b62802b0a65a6c719870b1b0bd0c9345d37f328203eef80448b97"
