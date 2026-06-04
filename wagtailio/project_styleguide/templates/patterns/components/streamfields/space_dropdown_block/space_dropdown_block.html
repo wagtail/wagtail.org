@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 <div class="grid">
     <div class="spacegrid">
         <div class="space-dropdown-block">
@@ -15,7 +16,7 @@
                         </summary>
                         <div class="space-dropdown-block__item-content">
                             {% if item.text %}
-                                <div class="space-dropdown-block__item-text">{{ item.text }}</div>
+                                <div class="space-dropdown-block__item-text">{{ item.text|richtext }}</div>
                             {% endif %}
                             {% if item.cta_text and item.cta_resolved_url %}
                                 {% include "patterns/components/buttons/button.html" with url=item.cta_resolved_url title=item.cta_text arrow=True classes="button--space-button-primary" %}

@@ -15,8 +15,8 @@
                 <div class="social-logo-container">
                     <div class="social-logo-link">
                         {% for social in value.social %}
-                            <a href="{{ social.value.url }}">
-                                {% image social.value.logo max-100x100 class="social-logo" %}
+                            <a href="{{ social.value.url }}" aria-label="{{ social.value.name}}">
+                                {% image social.value.logo max-100x100 format-webp class="social-logo" %}
                             </a>
                         {% endfor %}
                     </div>

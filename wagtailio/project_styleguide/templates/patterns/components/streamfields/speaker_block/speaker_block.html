@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div class="talk-card{% if not value.speaker_talk %} talk-card--no-talk{% endif %}">
     <div class="talk-card__image">
-        {% image value.speaker_image fill-397x313 class="talk-card__img" %}
+        {% image value.speaker_image format-webp fill-397x313 class="talk-card__img" %}
     </div>
     <div class="talk-card__details">
         <div class="talk-card__about">
@@ -11,10 +11,8 @@
         {% if value.speaker_url %}
             <a href="{{ value.speaker_url }}" class="talk-card__cta" target="_blank" rel="noopener noreferrer">
                 Read summary
-                <svg class="talk-card__cta-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="13" height="13" fill="currentColor">
-                    <path d="M6.5 1.75a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 .75.75v7a.75.75 0 0 1-1.5 0V3.56L6.03 11.03a.75.75 0 0 1-1.06-1.06L12.44 2.5H7.25a.75.75 0 0 1-.75-.75Z"/>
-                    <path d="M1.75 3.5A.25.25 0 0 0 1.5 3.75v10c0 .138.112.25.25.25h10a.25.25 0 0 0 .25-.25v-4.5a.75.75 0 0 1 1.5 0v4.5A1.75 1.75 0 0 1 11.75 15.5h-10A1.75 1.75 0 0 1 0 13.75v-10A1.75 1.75 0 0 1 1.75 2H6.5a.75.75 0 0 1 0 1.5H1.75Z"/>
-                </svg>
+                <span class="u-sr-only">(opens in a new tab)</span>
+                {% include "patterns/components/icon/icon.html" with icon="open-link" variant="simple" classes="talk-card__cta-icon" %}
             </a>
         {% endif %}
     </div>

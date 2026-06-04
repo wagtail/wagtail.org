@@ -55,7 +55,7 @@
         position: absolute;
         inset: 0;
         background-image: url('../img/space-2026-hero-noise.png');
-        background-size: 1024px 1024px;
+        background-size: 60px;
         background-repeat: repeat;
         opacity: 0.08;
         pointer-events: none;
@@ -354,16 +354,16 @@
   background-color: $color-space-2026-bg;
 
   &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('../img/space-2026-hero-noise.png');
-    background-size: 1024px 1024px;
-    background-repeat: repeat;
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: -1;
-  }
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/space-2026-hero-noise.png');
+        background-size: 60px;
+        background-repeat: repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: -2;
+    }
 }
 
 .centered-space-container {
@@ -612,6 +612,8 @@
 
     &__cta-icon {
         flex-shrink: 0;
+        width: 15px;
+        height: 15px;
     }
 
     &:hover,
@@ -861,6 +863,7 @@
     letter-spacing: -0.01em;
     color: $color--white;
     -webkit-text-stroke: 0;
+    margin: 0;
 
     &::before {
         display: none;
