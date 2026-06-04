@@ -1252,6 +1252,21 @@
         text-align: start;
         width: 100%;
         margin: 0;
+
+        a {
+            color: $color-space-2026-btn-primary;
+            text-decoration: underline;
+            text-decoration-skip-ink: none;
+
+            &:hover,
+            &:focus {
+            color: $color-space-2026-cta-hover;
+            }
+
+            &:visited {
+            color: $color-space-2026-btn-primary;
+            }
+        }
     }
 
     @include media-query(smallonly) {
