@@ -1,0 +1,30 @@
+{% load wagtailcore_tags %}
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-dropdown-block">
+            {% if value.heading %}
+                <h2 class="space-dropdown-block__heading">{{ value.heading }}</h2>
+            {% endif %}
+            <div class="space-dropdown-block__items">
+                {% for item in value.items %}
+                    <details class="space-dropdown-block__item">
+                        <summary class="space-dropdown-block__item-trigger">
+                            <span class="space-dropdown-block__item-heading">{{ item.heading }}</span>
+                            <span class="space-dropdown-block__item-icon" aria-hidden="true">
+                                {% include "patterns/components/icon/icon.html" with icon="chevron" variant="simple" classes="space-dropdown-block__item-icon-svg" %}
+                            </span>
+                        </summary>
+                        <div class="space-dropdown-block__item-content">
+                            {% if item.text %}
+                                <div class="space-dropdown-block__item-text">{{ item.text|richtext }}</div>
+                            {% endif %}
+                            {% if item.cta_text and item.cta_resolved_url %}
+                                {% include "patterns/components/buttons/button.html" with url=item.cta_resolved_url title=item.cta_text arrow=True classes="button--space-button-primary" %}
+                            {% endif %}
+                        </div>
+                    </details>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

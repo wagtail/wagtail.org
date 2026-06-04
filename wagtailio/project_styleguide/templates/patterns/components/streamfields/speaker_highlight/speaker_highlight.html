@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-speaker-parent">
+            {% if value.heading %}
+                <h2 class="speaker-heading">{{ value.heading }}</h2>
+            {% endif %}
+            {% if value.speaker %}
+                <div class="talk-card-grid">
+                    {% for speaker in value.speaker %}
+                        {% include_block speaker %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

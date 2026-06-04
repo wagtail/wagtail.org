@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<div class="sponsor-card">
+    <p class="sponsor-type">{{ value.sponsor_type }}</p>
+    {% if value.sponsors %}
+        <div class="sponsor-logos-row">
+            {% for sponsor_logo in value.sponsors %}
+                {% include_block sponsor_logo %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

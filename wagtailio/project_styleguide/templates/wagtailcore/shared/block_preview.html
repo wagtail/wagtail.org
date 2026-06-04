@@ -1,0 +1,24 @@
+{% extends "wagtailcore/shared/block_preview.html" %}
+
+{% load static manifest %}
+
+{% block head %}
+    {{ block.super }}
+    <script src="{% manifest 'js/blocking.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="block-preview">
+        {{ block.super }}
+    </div>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% manifest "css/main.css" %}">
+    {% include "patterns/includes/svg_sprites.html" %}
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    {# We don't need the main.js for now, so don't include it to keep it light. #}
+{% endblock %}

@@ -84,6 +84,51 @@
         }
     }
 
+    &--space-button-primary {
+        background-color: $color-cosmic-pink;
+        color: $color--off-black;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: var(--color--highlight);
+            color: var(--color--highlight);
+        }
+    }
+
+    &--space-button-secondary {
+        background-color: $color-cosmic-green;
+        color: $color--off-black;
+
+        &:hover,
+        &:focus {
+            background-color: $color--white;
+            border-color: var(--color--highlight);
+            color: var(--color--highlight);
+        }
+    }
+
+    &--space-button-outline {
+        background-color: transparent;
+        border-color: $color-space-2026-heading;
+        color: $color-space-2026-heading;
+
+        > svg {
+            fill: $color-space-2026-heading;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color-space-2026-heading;
+            border-color: $color-space-2026-heading;
+            color: $color--off-black;
+
+            > svg {
+                fill: $color--off-black;
+            }
+        }
+    }
+
     &--form {
         &:hover,
         &:focus {

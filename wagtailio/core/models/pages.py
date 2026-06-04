@@ -26,6 +26,7 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         "packages.PackagesPage",
         "roadmap.RoadmapPage",
         "services.ServicesPage",
+        "wagtailspace.WagtailSpaceIndexPage",
     ]
 
     # ----------------- Hero -----------------

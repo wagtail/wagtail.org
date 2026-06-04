@@ -1,5 +1,4 @@
 
-
 class MobileSubMenu {
     static selector() {
         return '[data-mobile-menu] [data-open-subnav]';
@@ -8,21 +7,35 @@ class MobileSubMenu {
     constructor(node) {
         this.node = node;
         this.subnav = this.node.nextElementSibling;
+        
+        // Only proceed if subnav exists
+        if (!this.subnav) {
+            return;
+        }
+        
         this.backLink = this.subnav.querySelector('[data-subnav-back]');
         this.bindEventListeners();
     }
 
     bindEventListeners() {
+        // Only bind event listeners if subnav exists
+        if (!this.subnav) {
+            return;
+        }
+        
         // Open submenu
         this.node.addEventListener('click', (e) => {
             e.preventDefault();
             this.open();
         });
+        
         // Click back button to close it
-        this.backLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.close();
-        });
+        if (this.backLink) {
+            this.backLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.close();
+            });
+        }
 
         // Allow pressing Escape to close
         this.subnav.addEventListener('keydown', (e) => {
@@ -32,19 +45,21 @@ class MobileSubMenu {
     }
 
     open() {
+        if (!this.subnav) {
+            return;
+        }
+        
         this.subnav.classList.add('is-visible');
         this.node.setAttribute('aria-expanded', 'true');
-
-        // Wait for elements to become visible before activating focus trap
-        setTimeout(() => {
-            this.focusTrap.activate();
-        }, 300);
     }
 
     close() {
+        if (!this.subnav) {
+            return;
+        }
+        
         this.subnav.classList.remove('is-visible');
         this.node.setAttribute('aria-expanded', 'false');
-        this.focusTrap.deactivate();
     }
 }
 

@@ -1,5 +1,5 @@
 # (Keep the version in sync with the node install below)
-FROM node:22 as frontend
+FROM node:24 AS frontend
 
 # Install front-end dependencies.
 COPY package.json package-lock.json tsconfig.json webpack.config.js ./
@@ -11,7 +11,7 @@ RUN npm run build:prod
 
 
 # Build Python app - this stage is a common base for the prod and dev stages
-FROM python:3.13-bookworm AS backend
+FROM python:3.14-bookworm AS backend
 
 ARG POETRY_VERSION=1.8.5
 ARG UID=1000
@@ -46,7 +46,7 @@ RUN chown --recursive $UID:$GID /app /venv
 
 
 # This stage builds the image that will run in production
-FROM backend as prod
+FROM backend AS prod
 
 # Switch to application user
 USER wagtailio

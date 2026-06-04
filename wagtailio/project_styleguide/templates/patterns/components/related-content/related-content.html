@@ -5,7 +5,7 @@
         <div class="related-content__items">
             {% for related in related_pages %}
                 <article class="related-content__item">
-                    {% include "patterns/components/streamfields/cards/related_page_card_block.html" with value=related.page classes="logo-card--article" %}
+                    {% include "patterns/components/streamfields/cards/related_page_card_block.html" with value=related.page.specific classes="logo-card--article" %}
                 </article>
             {% endfor %}
         </div>

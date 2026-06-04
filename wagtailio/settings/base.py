@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.sitemaps",
+    "django.contrib.postgres",
     "whitenoise.runserver_nostatic",  # Must be before `django.contrib.staticfiles`
     "django.contrib.staticfiles",
     "taggit",
@@ -70,6 +71,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
+    "wagtailio.wagtailspace",
     "wagtailio.utils",
     "wagtailio.core",
     "wagtailio.images",
@@ -84,7 +86,6 @@ INSTALLED_APPS = [
     "wagtailio.roadmap",
     "wagtailio.services",
     "wagtailio.showcase",
-    "wagtailio.areweheadlessyet",
     "wagtailio.sitewide_alert",
     "wagtailmedia",
     "pattern_library",
@@ -456,7 +457,7 @@ PERMISSIONS_POLICY = {
 # Referrer-policy header settings
 # https://django-referrer-policy.readthedocs.io/en/1.0/
 
-REFERRER_POLICY = env.get(
+SECURE_REFERRER_POLICY = env.get(
     "SECURE_REFERRER_POLICY", "no-referrer-when-downgrade"
 ).strip()
 
@@ -513,7 +514,7 @@ WAGTAIL_SITE_NAME = "wagtail.org"
 
 WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
-WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "png", "webp"]
+WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "jpeg", "png", "webp"]
 
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
     "avif": "avif",

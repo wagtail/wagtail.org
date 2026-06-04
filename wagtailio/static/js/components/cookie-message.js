@@ -1,39 +1,63 @@
+import Cookies from 'js-cookie';
+
 class CookieMessage {
     static selector() {
         return '[data-cookie-message]';
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    getCookie(name) {
-        const value = `; ${document.cookie}`;
-	    const parts = value.split(`; ${name}=`);
-	    if (parts.length === 2) {
-            return parts.pop().split(';').shift();
-        }
-        return false;
+    constructor(node) {
+        this.messageContainer = node;
+        this.optInButton = this.messageContainer.querySelector(
+            '[data-cookie-opt-in]',
+        );
+        this.optOutButton = this.messageContainer.querySelector(
+            '[data-cookie-opt-out]',
+        );
+        this.cookieName = 'wagtail_cookie';
+        this.cookieDuration = 365;
+        this.activeClass = 'active';
+        this.inactiveClass = 'inactive';
+
+        this.checkCookie();
+        this.bindEvents();
     }
 
-    constructor(node) {
-        this.node = node;
-
-        if (this.node) {
-            this.dismissButton = this.node.querySelector('[data-cookie-dismiss]');
-
-            // If cookie doesn't exists
-            if (!this.getCookie('client-cookie')) {
-                this.node.classList.add('active');
-            }
-            this.bindEvents();
+    checkCookie() {
+        if (!this.messageContainer) {
+            return;
         }
+
+        // If cookie doesn't exist
+        if (!Cookies.get(this.cookieName)) {
+            this.messageContainer.classList.add(this.activeClass);
+        }
+    }
+
+    applyCookie(event, cookieValue) {
+        // prevent default link action
+        event.preventDefault();
+        // Add classes
+        this.messageContainer.classList.remove(this.activeClass);
+        this.messageContainer.classList.add(this.inactiveClass);
+        // Set cookie
+        Cookies.set(this.cookieName, cookieValue, {
+            expires: this.cookieDuration,
+        });
+    
     }
 
     bindEvents() {
-        this.dismissButton.addEventListener('click' , (event) => {
-            event.preventDefault(); // ensure the href is not used (scrolls user to the top)
-            document.cookie = 'client-cookie=agree to cookies;max-age=' + 60*60*24*365;
-            this.node.classList.remove('active');
-            this.node.classList.add('inactive');
-        })
+        if (!this.optInButton) {
+            return;
+        }
+
+        this.optInButton.addEventListener('click', (event) => {
+            this.applyCookie(event, true);
+        });
+
+        this.optOutButton.addEventListener('click', (event) =>
+            this.applyCookie(event, false),
+        );
     }
 }
 

@@ -85,7 +85,8 @@
             &.is-visible {
                 visibility: visible;
                 transform: translateZ(0);
-                overflow-y: scroll;
+                max-height: calc(100vh - #{$header-mobile-height});
+                overflow-y: auto;
             }
         }
     }
@@ -228,6 +229,15 @@
 
         @media only screen and (min-width: $header-desktop) {
             display: none;
+        }
+    }
+
+    &__space-logo-link {
+        display: block;
+
+        &:hover .space-logo__rocket,
+        &:focus .space-logo__rocket {
+            animation: rocket-bounce 0.7s ease-in-out infinite;
         }
     }
 

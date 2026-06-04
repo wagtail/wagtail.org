@@ -1,0 +1,21 @@
+{% load wagtailimages_tags %}
+
+<ul class="authors{% if authors_class %} {{ authors_class }}{% endif %}">
+    {% for author_content in authors %}
+        <li>
+
+            <div class="author{% if author_class %} {{ author_class }}{% endif %}">
+                {% if author_content.author.image %}
+                    {% image author_content.author.image fill-90x90 class="author__image" %}
+                {% endif %}
+                <div class="author__content">
+                    <p class="author__name mini-meta mini-meta--bold">{{ author_content.author.name }}</p>
+                    {% if author_content.author.job_title %}
+                        <p class="author__meta mini-meta">{{ author_content.author.job_title }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>

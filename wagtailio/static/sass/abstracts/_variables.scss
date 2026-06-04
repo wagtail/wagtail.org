@@ -16,6 +16,22 @@ $color--light-grey-100: #f3f5f8;
 $color--white:#fff;
 $color--pink: #f9cbce;
 $color--off-black-30: #2626264d;
+$color-darkspace-bg: #2a2a2a;
+$color-space-2026-bg: #101010;
+$color-space-2026-btn-primary: #e58dbe;
+$color-space-2026-btn-secondary: #1a1a1a;
+$color-space-2026-heading: #d9ece9;
+$color-space-2026-body: #c9c9c9;
+$color-space-2026-glow-blue: #4975fe;
+$color-space-2026-cta-hover: #8fa7ff;
+$color-space-2026-card-bg: #000;
+$color-space-2026-navy: #050a4a;
+$color-cosmic-pink: #ff8fea;
+$color-cosmic-green: #77fcff;
+$color-spacetext-light: #f5f3f8;
+$color-spacetext-dark: #2b2833;
+$color-spacedropdown-bg: #1c2440;
+$color-spacecta-border: #a5b9ff;
 
 // Mapping colours
 :root {
@@ -76,7 +92,9 @@ $weight--regular: 400;
 // Breakpoints
 $breakpoints: (
     'smallonly' '(max-width: 599px)',
+    'mediumsmall' '(max-width: 799px)',
     'medium' '(min-width: 599px)',
+    'mediumlarge' '(min-width: 599px) and (max-width: 1022px)',
     'large' '(min-width: 1023px)',
     'extra-large' '(min-width: 1279px)'
 );
@@ -84,6 +102,7 @@ $breakpoints: (
 // One off breakpoints
 $header-desktop: 1200px; // point at which we move to burger menu
 $header-github: 1350px; // point at which we show github badge
+$pagination-row-view: 900px; // point at which we display pagination in a row
 
 // Header vars
 $header-mobile-height: 76px;

@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-social-container">
+            <div class="space-social-card">
+                {% if value.heading %}
+                    <h2 class="space-social-card__heading">{{ value.heading }}</h2>
+                {% endif %}
+                {% if value.subheading %}
+                    <div class="space-social-card__subhead">{{ value.subheading|richtext }}</div>
+                {% endif %}
+            </div>
+            {% if value.social %}
+                <div class="social-logo-container">
+                    <div class="social-logo-link">
+                        {% for social in value.social %}
+                            <a href="{{ social.value.url }}" aria-label="{{ social.value.name}}">
+                                {% image social.value.logo max-100x100 format-webp class="social-logo" %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

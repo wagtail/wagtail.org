@@ -31,7 +31,7 @@ default_about_text = " ".join(
         <p>This page collects girds and packages from djangopackages.org.<br/>
         Please add or update Wagtail grids and Wagtail packages on djangopackages.org.
     </p>
-""".split()
+""".split()  # noqa: SIM905
 )  # Split/join to normalise whitespace
 
 

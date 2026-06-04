@@ -1,0 +1,49 @@
+{% load wagtailcore_tags static %}
+
+<div class="grid">
+    <div class="spacegrid {% if classes %}{{ classes }}{% endif %}">
+        <section class="hero-section hero-section--2026">
+            <div class="hero-2026-logo-group" aria-hidden="true">
+                <div class="hero-2026-logo-group__combined">
+                    <img class="hero-2026-logo-group__bg" src="{% static 'img/space-2026-hero-logo-group.webp' %}" alt="">
+                    {% include "patterns/includes/space_porthole.html" %}
+                </div>
+            </div>
+            <div class="hero-container">
+                <div class="hero-parent">
+                    <div class="heading-container">
+                        {% if value.heading %}
+                            <h1 class="space-heading space-heading--2026">{{ value.heading }}</h1>
+                        {% endif %}
+                        <div class="frame-wrapper frame-wrapper--2026">
+                            <div class="frame-container">
+                                <div class="date-container date-container--2026">
+                                    {% if value.event_date_subhead %}
+                                        <span class="space-date space-date--2026">{{ value.event_date_subhead }}</span>
+                                    {% endif %}
+                                    {% if value.tagline %}
+                                        <div class="space-tagline space-tagline--2026">{{ value.tagline }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if value.cta %}
+                        <div class="button-parent">
+                            {% for block in value.cta %}
+                                {% if forloop.first %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-primary" %}
+                                {% else %}
+                                    {% include "patterns/components/buttons/button.html" with arrow=True url=block.value.url title=block.value.text classes="button--space-button-secondary" %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="main-section-break-2026" aria-hidden="true">
+        <img src="{% static 'img/space-2026-horizon.png' %}" alt="">
+    </div>
+</div>

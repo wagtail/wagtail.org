@@ -11,4 +11,10 @@
     @include media-query(large) {
         grid-column: 3 / span 3;
     }
+
+    &--wide {
+        @include media-query(large) {
+            grid-column: 1 / -1;
+        }
+    }
 }

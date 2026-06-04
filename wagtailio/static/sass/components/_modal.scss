@@ -120,12 +120,10 @@
             }
         }
 
-        .theme-dark & {
-            &:hover,
-            &:focus {
-                #{$root}__close-icon {
-                    fill: $color--teal-100;
-                }
+        &:hover,
+        &:focus {
+            #{$root}__close-icon {
+               fill: $color--teal-100;
             }
         }
     }
