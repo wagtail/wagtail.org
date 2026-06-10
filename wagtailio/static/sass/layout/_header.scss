@@ -232,6 +232,15 @@
         }
     }
 
+    &__space-logo-link {
+        display: block;
+
+        &:hover .space-logo__rocket,
+        &:focus .space-logo__rocket {
+            animation: rocket-bounce 0.7s ease-in-out infinite;
+        }
+    }
+
     .theme-dark & {
 
         #{$root}__logo {

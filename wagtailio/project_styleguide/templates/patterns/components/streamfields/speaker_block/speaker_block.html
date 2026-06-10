@@ -1,10 +1,19 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<div class="speaker-container">
-    <div>
-        {% image value.speaker_image max-315x315 class="speaker-image" %}
+<div class="talk-card{% if not value.speaker_talk %} talk-card--no-talk{% endif %}">
+    <div class="talk-card__image">
+        {% image value.speaker_image format-webp fill-397x313 class="talk-card__img" %}
     </div>
-    <div class="speaker-info">
-        <h3 class="speaker-name">{{ value.speaker_name }}</h3>
-        <p class="speaker-talk">{{ value.speaker_talk }}</p>
+    <div class="talk-card__details">
+        <div class="talk-card__about">
+            <p class="talk-card__speaker-name">{{ value.speaker_name }}</p>
+            {% if value.speaker_talk %}<p class="talk-card__speaker-talk">{{ value.speaker_talk }}</p>{% endif %}
+        </div>
+        {% if value.speaker_url %}
+            <a href="{{ value.speaker_url }}" class="talk-card__cta" target="_blank" rel="noopener noreferrer">
+                Read summary
+                <span class="u-sr-only">(opens in a new tab)</span>
+                {% include "patterns/components/icon/icon.html" with icon="open-link" variant="simple" classes="talk-card__cta-icon" %}
+            </a>
+        {% endif %}
     </div>
 </div>

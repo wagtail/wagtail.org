@@ -3,31 +3,25 @@
 <div class="grid">
     <div class="spacegrid">
         <div class="space-social-container">
-            <div class ="social-heading">
+            <div class="space-social-card">
                 {% if value.heading %}
-                    <h2>
-                        {{ value.heading }}
-                    </h2>
+                    <h2 class="space-social-card__heading">{{ value.heading }}</h2>
                 {% endif %}
-            </div>
-            <div class="social-subhead">
                 {% if value.subheading %}
-                    <p>
-                        {{ value.subheading|richtext }}
-                    </p>
+                    <div class="space-social-card__subhead">{{ value.subheading|richtext }}</div>
                 {% endif %}
             </div>
-            <div class="social-logo-container">
-                {% if value.social %}
-                    <div class ="social-logo-link">
+            {% if value.social %}
+                <div class="social-logo-container">
+                    <div class="social-logo-link">
                         {% for social in value.social %}
-                            <a href="{{ social.value.url}}">
-                                {% image social.value.logo max-100x100 class="social-logo" %}
+                            <a href="{{ social.value.url }}" aria-label="{{ social.value.name}}">
+                                {% image social.value.logo max-100x100 format-webp class="social-logo" %}
                             </a>
                         {% endfor %}
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

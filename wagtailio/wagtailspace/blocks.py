@@ -1,7 +1,17 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageBlock
 
-from wagtailio.core.blocks import CTALinkMixin, RichTextBlock
+from wagtailio.core.blocks import CTALinkMixin, RichTextBlock, VideoBlock
+
+
+class SpaceDropdownItemValue(blocks.StructValue):
+    @property
+    def cta_resolved_url(self):
+        if url := self.get("cta_url"):
+            return url
+        if page := self.get("cta_page"):
+            return page.url
+        return ""
 
 
 class SpaceTextBlock(RichTextBlock):
@@ -34,6 +44,11 @@ class SpeakerBlock(blocks.StructBlock):
     )
     speaker_name = blocks.CharBlock(max_length=255, required=True)
     speaker_talk = blocks.TextBlock(max_length=255, required=False)
+    speaker_url = blocks.URLBlock(
+        label="Talk URL",
+        required=False,
+        help_text="Optional link for talk description.",
+    )
 
     class Meta:
         template = "patterns/components/streamfields/speaker_block/speaker_block.html"
@@ -81,13 +96,61 @@ class SponsorHighlightBlock(blocks.StructBlock):
         label = "Sponsor Highlight"
 
 
+class SpaceExtendedCTABlock(CTALinkMixin):
+    heading = blocks.CharBlock(label="Heading", max_length=255)
+    description = blocks.TextBlock(label="Description")
+    text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    class Meta:
+        icon = "bullhorn"
+        template = "patterns/components/streamfields/space_extended_cta/space_extended_cta_block.html"
+        label = "Extended CTA"
+
+
+class SpaceDropdownItemBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    text = blocks.RichTextBlock(required=False)
+    cta_text = blocks.CharBlock(label="CTA text", max_length=255, required=False)
+    cta_page = blocks.PageChooserBlock(label="CTA page", required=False)
+    cta_url = blocks.URLBlock(label="CTA URL", required=False)
+
+    class Meta:
+        icon = "collapse-down"
+        label = "Dropdown item"
+        value_class = SpaceDropdownItemValue
+
+
+class SpaceDropdownBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255, required=False)
+    items = blocks.ListBlock(SpaceDropdownItemBlock())
+
+    class Meta:
+        icon = "list-ul"
+        template = "patterns/components/streamfields/space_dropdown_block/space_dropdown_block.html"
+        label = "Dropdown"
+
+
+class SpaceVideoBlock(VideoBlock):
+    class Meta:
+        icon = "media"
+        template = (
+            "patterns/components/streamfields/space_video_block/space_video_block.html"
+        )
+        label = "Video"
+
+
 class SpaceStoryBlock(blocks.StreamBlock):
     rich_text = SpaceTextBlock()
     centered_text = CenteredSpaceTextBlock()
     image = ImageBlock(required=False)
     cta_button = SpaceCTABlock()
+    extended_cta = SpaceExtendedCTABlock()
+    video = SpaceVideoBlock()
     speaker_highlight = SpeakerHighlightBlock()
     sponsor_highlight = SponsorHighlightBlock()
+    dropdown = SpaceDropdownBlock()
 
     class Meta:
         template = "patterns/components/streamfields/space_story_block.html"

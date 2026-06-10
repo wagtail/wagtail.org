@@ -1,0 +1,13 @@
+<div class="grid">
+    <div class="spacegrid">
+        <div class="space-extended-cta">
+            <div class="space-extended-cta__card">
+                <div class="space-extended-cta__content">
+                    <h2 class="space-extended-cta__heading">{{ value.heading }}</h2>
+                    <p class="space-extended-cta__description">{{ value.description }}</p>
+                </div>
+                {% include "patterns/components/buttons/button.html" with url=value.url title=value.text arrow=True classes="button--space-button-primary" %}
+            </div>
+        </div>
+    </div>
+</div>
