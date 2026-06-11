@@ -33,8 +33,9 @@ def space_navigation(context):
     "patterns/components/buttons/spacereg-button.html", takes_context=True
 )
 def get_reg_url(context):
-    if space_menu := SpaceMenu.objects.first():
+    url = SpaceMenu.objects.values_list("registration_url", flat=True).first()
+    if url:
         return {
-            "reg_url": space_menu,
+            "reg_url": url,
             "request": context["request"],
         }
