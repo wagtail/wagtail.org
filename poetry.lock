@@ -1554,14 +1554,14 @@ python-discovery = ">=1.4"
 
 [[package]]
 name = "wagtail"
-version = "7.4.1"
+version = "7.4.2"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "wagtail-7.4.1-py3-none-any.whl", hash = "sha256:a42dc18b0fb818649c0d704ea50a2dea06d1b75614abdf837e90766263645c76"},
-    {file = "wagtail-7.4.1.tar.gz", hash = "sha256:c7232cbe16afa5842c236e069b2baead3b3e87e9dc90a7493330b54b69e18b83"},
+    {file = "wagtail-7.4.2-py3-none-any.whl", hash = "sha256:ae80a6d536a4098f7c9d37e169ba0f14c29c9769b50b6d92546f41e5cad201d8"},
+    {file = "wagtail-7.4.2.tar.gz", hash = "sha256:6e261b50693abfbe2b738717bedc5bd0915e2e08efb9400102f4098c0c03aaab"},
 ]
 
 [package.dependencies]
