@@ -13,7 +13,9 @@
 
             <h2 class="teaser__heading">{{ value.page.title }}</h2>
 
-            {% if value.page.introduction %}
+            {% if value.page.listing_intro %}
+                <p class="teaser__intro">{{ value.page.listing_intro }}</p>
+            {% elif value.page.introduction %}
                 <p class="teaser__intro">{{ value.page.introduction }}</p>
             {% endif %}
 
