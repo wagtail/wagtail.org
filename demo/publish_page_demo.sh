@@ -35,18 +35,35 @@ step() { printf '\n\033[1m== %s ==\033[0m\n' "$1"; }
 step "1. Confirm the token works (whoami)"
 curl -sf "${auth[@]}" "$API_ROOT/whoami/" | jq .
 
-slug="rest-api-demo-$(date +%s)"
+slug="fun-facts-about-birds-$(date +%s)"
 today="$(date +%Y-%m-%d)"
+
+# Real StoryBlock content (h2/h3 headings + paragraph rich text), so the
+# demo page reads like an actual blog post rather than placeholder text.
+body=$(cat <<'EOF'
+[
+  {"type": "paragraph", "value": "<p>Birds have been quietly pulling off some of the animal kingdom's most outrageous feats for millions of years. Here are a few facts that might make you look twice at the next pigeon you see.</p>"},
+  {"type": "h2", "value": "Speed demons of the sky"},
+  {"type": "paragraph", "value": "<p>The peregrine falcon is the fastest animal on Earth, reaching over 240 mph (390 km/h) in a hunting dive. No bat, cheetah, or fighter jet pilot pulling a stunt comes close.</p>"},
+  {"type": "h2", "value": "Tiny but mighty"},
+  {"type": "paragraph", "value": "<p>The bee hummingbird, the smallest bird alive, weighs less than a penny. Its heart can beat over 1,200 times per minute mid-flight, and it can hover in place indefinitely thanks to a figure-eight wing motion.</p>"},
+  {"type": "h2", "value": "Brainy birds"},
+  {"type": "paragraph", "value": "<p>Crows and ravens can recognize individual human faces years later, hold grudges, and craft tools from twigs and wire to solve puzzles. Some corvids even appear to plan ahead, a trait once thought unique to great apes.</p>"},
+  {"type": "h3", "value": "One more quick fact"},
+  {"type": "paragraph", "value": "<p>Owls can rotate their necks up to 270 degrees because their eyes are fixed in their sockets and can't move on their own.</p>"}
+]
+EOF
+)
 
 if [[ "$ONE_STEP" == true ]]; then
   step "2. Create + publish blog.BlogPage in one call (meta.action=publish)"
-  create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" '{
+  create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" '{
     meta: {type: "blog.BlogPage", parent_id: $parent_id, action: "publish"},
-    title: "REST API one-step demo",
+    title: "Fun Facts About Birds",
     slug: $slug,
-    introduction: "Published in a single POST via the v3 API.",
+    introduction: "A quick dive into some of the strangest and most delightful things birds can do.",
     date: $date,
-    body: [{type: "paragraph", value: "<p>Hello from the REST API (one-step publish).</p>"}]
+    body: $body
   }')
   response=$(curl -sf "${auth[@]}" "${json[@]}" -X POST "$API_ROOT/pages/" -d "$create_body")
   echo "$response" | jq .
@@ -58,13 +75,13 @@ if [[ "$ONE_STEP" == true ]]; then
 fi
 
 step "2. Create a draft blog.BlogPage (no action = draft only)"
-create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" '{
+create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" '{
   meta: {type: "blog.BlogPage", parent_id: $parent_id},
-  title: "REST API demo post",
+  title: "Fun Facts About Birds",
   slug: $slug,
-  introduction: "Created as a draft via the v3 API, then published via actions/publish/.",
+  introduction: "A quick dive into some of the strangest and most delightful things birds can do.",
   date: $date,
-  body: [{type: "paragraph", value: "<p>Hello from the REST API!</p>"}]
+  body: $body
 }')
 response=$(curl -sf "${auth[@]}" "${json[@]}" -X POST "$API_ROOT/pages/" -d "$create_body")
 echo "$response" | jq .
