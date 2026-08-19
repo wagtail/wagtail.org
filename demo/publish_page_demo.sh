@@ -9,15 +9,19 @@
 #   TOKEN=wagtail_xxx PARENT_ID=5 ./publish_page_demo.sh
 #   TOKEN=wagtail_xxx PARENT_ID=5 ./publish_page_demo.sh --one-step
 #
-# TOKEN     API token from `./manage.py api_tokens create --user=<you> --name=demo`
-# PARENT_ID id of an existing blog.BlogIndexPage, e.g. from:
-#           curl -s -H "Authorization: Bearer $TOKEN" \
-#             "$API_ROOT/pages/?type=blog.BlogIndexPage&fields=id,title" | jq
+# TOKEN       API token from `./manage.py api_tokens create --user=<you> --name=demo`
+# PARENT_ID   id of an existing blog.BlogIndexPage, e.g. from:
+#             curl -s -H "Authorization: Bearer $TOKEN" \
+#               "$API_ROOT/pages/?type=blog.BlogIndexPage&fields=id,title" | jq
+# AUTHOR_ID   id of a blog.Author snippet (defaults to 131, "Meagen Voss")
+# CATEGORY_ID id of a taxonomy.Category (defaults to 1, "News")
 
 set -euo pipefail
 
 API_ROOT="${API_ROOT:-http://localhost:8000/api/v3-preview}"
 SITE_ROOT="${SITE_ROOT:-http://localhost:8000}"
+AUTHOR_ID="${AUTHOR_ID:-131}"  # blog.Author "Meagen Voss"
+CATEGORY_ID="${CATEGORY_ID:-1}"  # taxonomy.Category "News"
 ONE_STEP=false
 
 if [[ "${1:-}" == "--one-step" ]]; then
@@ -57,12 +61,14 @@ EOF
 
 if [[ "$ONE_STEP" == true ]]; then
   step "2. Create + publish blog.BlogPage in one call (meta.action=publish)"
-  create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" '{
+  create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" --argjson author_id "$AUTHOR_ID" --argjson category_id "$CATEGORY_ID" '{
     meta: {type: "blog.BlogPage", parent_id: $parent_id, action: "publish"},
     title: "Fun Facts About Birds",
     slug: $slug,
     introduction: "A quick dive into some of the strangest and most delightful things birds can do.",
     date: $date,
+    category_id: $category_id,
+    authors: [{author_id: $author_id}],
     body: $body
   }')
   response=$(curl -sf "${auth[@]}" "${json[@]}" -X POST "$API_ROOT/pages/" -d "$create_body")
@@ -75,12 +81,14 @@ if [[ "$ONE_STEP" == true ]]; then
 fi
 
 step "2. Create a draft blog.BlogPage (no action = draft only)"
-create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" '{
+create_body=$(jq -n --argjson parent_id "$PARENT_ID" --arg slug "$slug" --arg date "$today" --argjson body "$body" --argjson author_id "$AUTHOR_ID" --argjson category_id "$CATEGORY_ID" '{
   meta: {type: "blog.BlogPage", parent_id: $parent_id},
   title: "Fun Facts About Birds",
   slug: $slug,
   introduction: "A quick dive into some of the strangest and most delightful things birds can do.",
   date: $date,
+  category_id: $category_id,
+  authors: [{author_id: $author_id}],
   body: $body
 }')
 response=$(curl -sf "${auth[@]}" "${json[@]}" -X POST "$API_ROOT/pages/" -d "$create_body")
