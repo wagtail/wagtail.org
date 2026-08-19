@@ -61,6 +61,11 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG and apps.is_installed("wagtail.api.v3"):
+    from wagtail.api.v3.urls import api as wagtail_api_v3
+
+    urlpatterns += [path("api/v3-preview/", wagtail_api_v3.urls)]
+
 if getattr(settings, "PATTERN_LIBRARY_ENABLED", False) and apps.is_installed(
     "pattern_library"
 ):

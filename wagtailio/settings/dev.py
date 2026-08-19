@@ -4,6 +4,9 @@ from .base import *  # noqa: F403
 # Debugging to be enabled locally only
 DEBUG = True
 
+# REST API v3 preview, for local demo purposes only
+INSTALLED_APPS += ["wagtail.api.v3"]  # noqa: F405
+
 # This key to be used locally only.
 SECRET_KEY = "not-a-secret"  # noqa: S105
 
