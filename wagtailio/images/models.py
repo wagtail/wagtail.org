@@ -11,6 +11,7 @@ class WagtailIOImage(AbstractImage):
         "description",
         "file",
         "tags",
+        "collection",
         "focal_point_x",
         "focal_point_y",
         "focal_point_width",
