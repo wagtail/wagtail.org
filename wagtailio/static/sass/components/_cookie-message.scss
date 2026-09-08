@@ -14,8 +14,7 @@
     width: 100%;
 
     &.inactive {
-        display: block;
-        transform: translateY(200%);
+        display: none;
     }
 
     &.active {
