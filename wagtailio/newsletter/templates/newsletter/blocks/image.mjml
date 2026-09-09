@@ -1,0 +1,11 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<mj-section padding="21px 49px 5px">
+    <mj-column>
+        {% image value width-600 as rendition %}
+        <mj-image
+            src="{{ rendition.full_url }}"
+            width="600px"
+        />
+    </mj-column>
+</mj-section>

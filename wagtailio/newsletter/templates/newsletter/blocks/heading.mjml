@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+<mj-section padding="50px 52px 5px">
+    <mj-column>
+        <mj-text padding="0">
+            <h2>{{ value }}</h2>
+        </mj-text>
+    </mj-column>
+</mj-section>

@@ -1,0 +1,120 @@
+{% load wagtailcore_tags wagtail_newsletter %}
+
+{% mrml %}
+    <mjml>
+        <mj-head>
+            <mj-attributes>
+                <mj-all font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" padding="0" />
+                <mj-section background-color="#fff" />
+                <mj-text font-size="17px" line-height="1.5" />
+            </mj-attributes>
+
+            <mj-style>
+                .rich-text p { margin-top: 1.5em }
+                .rich-text a { color: #007d7e }
+                h2 { margin: 0; padding: 0; line-height: 1.25; font-weight: bold; font-size: 31px }
+                .rich-text.rich-text--accent h2 { margin-bottom: 42px }
+                .rich-text.rich-text--accent a { color: #fff }
+                .rich-text.rich-text--accent p { margin: 0 }
+            </mj-style>
+
+            {% if page.preview %}
+                <mj-preview>{{ page.preview }}</mj-preview>
+            {% endif %}
+        </mj-head>
+
+        <mj-body width="660px" background-color="#f4f4f4">
+            <mj-section padding="13px 0" background-color="">
+                <mj-column>
+                    <mj-text align="center" css-class="rich-text">
+                        {% if rendering_for_web %}
+                            <!-- this whitespace intentionally left blank -->
+                        {% else %}
+                            <a href="{{ page.full_url }}">View this email online</a>
+                        {% endif %}
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            <mj-section background-color="">
+                <mj-column>
+                    <mj-image
+                        src="{% newsletter_static 'img/newsletter/twiw-hero.png' %}"
+                    />
+                </mj-column>
+            </mj-section>
+
+            <mj-section padding="52px 52px 0">
+                <mj-column>
+                    <mj-text font-size="14px" font-weight="bold">
+                        {{ page.date|date:"d F Y" }}
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            {% for block in page.body %}
+                {% include_block block %}
+            {% endfor %}
+
+            <mj-section padding="10px 0">
+            </mj-section>
+
+            {% for block in newsletter_settings.footer %}
+                {% include_block block %}
+            {% endfor %}
+
+            <mj-section padding="40px 0 0">
+                <mj-column>
+                    <mj-social icon-size="32px">
+                        <mj-social-element
+                            href="https://www.linkedin.com/company/wagtail-cms/"
+                            src="{% newsletter_static 'img/newsletter/linkedin.png' %}"
+                            alt="LinkedIn"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://www.youtube.com/@wagtailcms"
+                            src="{% newsletter_static 'img/newsletter/youtube.png' %}"
+                            alt="YouTube"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://fosstodon.org/@wagtail"
+                            src="{% newsletter_static 'img/newsletter/mastodon.png' %}"
+                            alt="Mastodon"
+                            padding="0px 12px"
+                        />
+                        <mj-social-element
+                            href="https://bsky.app/profile/wagtail.org"
+                            src="{% newsletter_static 'img/newsletter/bluesky.png' %}"
+                            alt="Bluesky"
+                            padding="0px 12px"
+                        />
+                    </mj-social>
+                </mj-column>
+            </mj-section>
+
+            <mj-section padding="6px 52px 30px">
+                <mj-column>
+                    <mj-text css-class="rich-text">
+                        <p>
+                            {% if rendering_for_web %}
+                                <!-- this whitespace intentionally left blank -->
+                            {% else %}
+                                Want to change how you receive these emails? You can
+                                <a href="*|UPDATE_PROFILE|*">update your preferences</a> or
+                                <a href="*|UNSUB|*">unsubscribe from this list</a>.
+                            {% endif %}
+                        </p>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+            <mj-section background-color="">
+                <mj-column>
+                    <mj-spacer height="157px" />
+                </mj-column>
+            </mj-section>
+        </mj-body>
+    </mjml>
+{% endmrml %}

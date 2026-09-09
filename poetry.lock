@@ -729,6 +729,24 @@ dev = ["black (==24.1.1)", "blacken-docs (==1.16.0)", "coverage (==7.3.4)", "dja
 testing = ["coverage (==7.3.4)", "dj-database-url (==2.1.0)"]
 
 [[package]]
+name = "mailchimp-marketing"
+version = "3.0.80"
+description = "Mailchimp Marketing API"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "mailchimp_marketing-3.0.80-py3-none-any.whl", hash = "sha256:a5bcb3ebd3be60908c65af765f8195724e6fd2d61ecf6da667a794c5bc7b84d3"},
+]
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+python-dateutil = ">=2.1"
+requests = ">=2.23"
+six = ">=1.10"
+urllib3 = ">=1.23"
+
+[[package]]
 name = "markdown"
 version = "3.10.2"
 description = "Python implementation of John Gruber's Markdown."
@@ -764,6 +782,91 @@ django-tasks = ">=0.7,<0.13"
 dev = ["pre-commit (==3.4.0)", "ruff (==0.13.0)"]
 docs = ["myst-parser (>=4.0.1,<5)", "sphinx (>=8.2.3,<9)", "sphinx-rtd-theme (>=3.0.2,<4.0)"]
 test = ["coverage (>=7.10.6,<8)", "dj-database-url (>=2.3.0,<3)", "django-modelcluster (>=6.4,<7)", "django-taggit (>=6.1.0,<7)", "django-tasks (>=0.6.1,<1)", "mysqlclient (>=2.2.0,<3)", "psycopg (>=3.2.6,<4)"]
+
+[[package]]
+name = "mrml"
+version = "0.2.4"
+description = "A Python wrapper for MRML (Rust port of MJML)."
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:06ba5058fd05de5d4cb4e767615a0d1354c5fc058f0ffccba0a06c6ab4f60279"},
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:8ec906c16c831cfebaada2f0ab0d5c9d20b6b9c086cf88db829032cbfb7c3761"},
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:340deaa0725fa48debb04d1b3adb2d658d08275f8b12f9982a4340f4b8314c9b"},
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:d78343b5f49a1de50a86e4f0a912dcc1b61bb10b9541b1d9124daaeec04a5961"},
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0195afb105c09206481c86a89cad69ee77a2f6a91ef360481299c54036c5283a"},
+    {file = "mrml-0.2.4-cp310-cp310-manylinux_2_28_aarch64.whl", hash = "sha256:3ac4d5bbc671643bebd210c8ded1d017749e8899e2507ef445dce581fb1547b4"},
+    {file = "mrml-0.2.4-cp310-cp310-win_amd64.whl", hash = "sha256:c33a59c16fcac4747698ea42047841dae6eae3dc74b3d174454d7d9beb908eab"},
+    {file = "mrml-0.2.4-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:96e237a3648c30b466050a4b512f05f45e30dd2a14f3bf9ac835deb32238e396"},
+    {file = "mrml-0.2.4-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:684ab0ba2c99f9dd3fba88fd55bc404b39ebd0e043fbab7472b956d210858f03"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:a985ef847e45e70eaccc227b8a93a2f954e2f664cf8303da58ec386310dcd5e0"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d4e2bbfaa29b2728930c5eaa7dfd3ae25763bd2f442aa76f1c4dbcb46acb6d88"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:6df1627594b1709c1e5d07388fce5e15030ad3fe10e9fa2dd9720677b7462de6"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:a6c694a3790e56c47ce8bfe974a1563276427cd5433ef12246f3a7e27e8a2657"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5e522deeca747a9376cf1644b92cd20129b8e9bf8d0ae1a8f7f4fbde94a777c0"},
+    {file = "mrml-0.2.4-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:9e6872d8c9ea10b63071e953e0d76c939205d286f75e03035daeef28854835af"},
+    {file = "mrml-0.2.4-cp311-cp311-win_amd64.whl", hash = "sha256:b73e9783aabd030109caa6ab1515653c69b742732e7df90ce05786f68196f1ef"},
+    {file = "mrml-0.2.4-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:2d9464607030327e229e44b451b1e22896b395395045c30bf34eaa160a4993d9"},
+    {file = "mrml-0.2.4-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:be2170e271a25e4c528d9847df77dd23cca832f0ee3e4b11ec1ebc430ad69c93"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:bd95e0f862ca5decc156a58c6bf39aab94e3a256d4cca6c4d17059db9d14e550"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:08d2301641cf4cb4bf9c13ae37c731f8230020e394eec2aa8ef5012bc6e97cad"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:573f275e51a1b4ec10b0e10b830b630c66cf64e5e1fc5a218fce6af1307d2f81"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:38e440c040839a316f3c680767c082d1e08a576790bc37e64f294627c0beda28"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c9415b60e15a050cf1505e884222ad4668018c8d970a6ca1cc6f0aa6b464d39c"},
+    {file = "mrml-0.2.4-cp312-cp312-manylinux_2_28_aarch64.whl", hash = "sha256:2376db5aaf566b9cab4a2544b25e44452cf0bd0f5b78d845d0c16803c56b85f4"},
+    {file = "mrml-0.2.4-cp312-cp312-win_amd64.whl", hash = "sha256:ef08a0060e9449acce1d1164bb559108a3a934ce61a4494631ef33202a024e06"},
+    {file = "mrml-0.2.4-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:8b9e15759e6104e8992d6d03843269b8742d447b10d147de58e19edea68c36e5"},
+    {file = "mrml-0.2.4-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:de7801d522c0b7622c80413eff58b0ca0bc19993b53e047d412873a5bf765182"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:41d94895ea636222bc2d190185510c4c95f1feef9f30d8deb94940f98a5c1fed"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d4eecccf4d83afb61282bba7959d077ca367dca194ea4f466e1d14fc2dc31f46"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:6b240fd081fc4beff25e290ffd5386f44cfefb1f84090d3f9c6bc7a7a12a02db"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c3bfbb9ceb8a12548d043870a31ceb52894a7a0fe5403e91b159b79153b0a0e1"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:18a65a68930e1f1e91189ff4606d9cbf4e1b1ad72ed9594d50cf178791e5b38a"},
+    {file = "mrml-0.2.4-cp313-cp313-manylinux_2_28_aarch64.whl", hash = "sha256:0d24c7f1fc943605a746c41e6f6316ab16c7c92aa0f47e20d6bc4920c8f33e48"},
+    {file = "mrml-0.2.4-cp313-cp313-win32.whl", hash = "sha256:1e61b1ae45ffe1410b009365c5b2f762ad72bf46c388347f09e527c8231daf47"},
+    {file = "mrml-0.2.4-cp313-cp313-win_amd64.whl", hash = "sha256:370187af77e352a88b258fecc58811b3f3c6b4ff60d07429f37612a2b218274b"},
+    {file = "mrml-0.2.4-cp313-cp313t-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:cf72ee289648a5b21cfbd5afef2c32e7d1fc827e07fb493f6750b5ecb89bb711"},
+    {file = "mrml-0.2.4-cp313-cp313t-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:d9d4ee47ddb22715dad265d190c023b6d22a423fca834e16e6fd798401fcb6a6"},
+    {file = "mrml-0.2.4-cp313-cp313t-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:574c7c9b152117b348986acfec1237d7370b4f456505f09fd8e0927d15388507"},
+    {file = "mrml-0.2.4-cp313-cp313t-manylinux_2_28_aarch64.whl", hash = "sha256:45ad1d1fa56c2725848cbf1ede430fd84529e47c477d7a0110a760d33592a911"},
+    {file = "mrml-0.2.4-cp314-cp314-macosx_10_12_x86_64.whl", hash = "sha256:0536b084014fd24f1725d7885b649f76b3ac3182b08b1e222c37950ab67c2411"},
+    {file = "mrml-0.2.4-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:9aaef2bff7e89b37844ab6c7d0f5baf577e83f92a0d7d2f38dfc4af735163b21"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:4221de23035c0a40930071aaae24f1fa963c13d506828000b44ecbd742e508e5"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b8933b830e63726704fd2020aa90953440ba4a80727765a615b90cfa6c77f2ab"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:002f035a9f5c343bf7dea9185176c01cfa27bf1efa3ffc3a0820828c78add2ea"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c453f90fff3a1f7df73390e590ad3e04252b2b1f774e52679bf0273144e19f40"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0005c2d1e81bc81def0531ab56c0abd6109110f1fcb63e009b121f1b0522365c"},
+    {file = "mrml-0.2.4-cp314-cp314-manylinux_2_28_aarch64.whl", hash = "sha256:00ae926bc17516098bd6e58b6b7ea16cce2682055615b850e4431ebddad9acd7"},
+    {file = "mrml-0.2.4-cp314-cp314-win_amd64.whl", hash = "sha256:a99d063ea1ec333b423f9cb5d5b3066b96391dbdf32ee1e7376dac5bb414a02c"},
+    {file = "mrml-0.2.4-cp314-cp314t-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:9d5976d3bebada4167cde971f7c3661eb78d6ea644778750bbf22e31e1286de9"},
+    {file = "mrml-0.2.4-cp314-cp314t-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:a4100bcd3d0799c647d4e0cd5dfda3dca974e06575149f11de195d8b44f017f8"},
+    {file = "mrml-0.2.4-cp314-cp314t-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:f846c18717a62d4fe22c08fc0e3ba036c1220e1c1f4744c49e80f5dd6d952f57"},
+    {file = "mrml-0.2.4-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:789c1939617e1bac99fc1b1cc6006a32d2aefd48d9d5a882517849dc1f2cb62d"},
+    {file = "mrml-0.2.4-cp37-cp37m-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:ccf9a54e2857a4f038e4eb2ed47a0f81bff7c9eccb2d03a1d84531192d32e2e9"},
+    {file = "mrml-0.2.4-cp37-cp37m-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:48f6e7da0730958815cf254b07063299bfb78ca1e5f728de5592a73148871ac1"},
+    {file = "mrml-0.2.4-cp37-cp37m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c48c51875ccdf0d84fb0b472c86f42667b4be5f245b7fdcf179f9cac1dc00373"},
+    {file = "mrml-0.2.4-cp37-cp37m-manylinux_2_28_aarch64.whl", hash = "sha256:1c5e60e46b4c03366dcee69cdfdf202cbded9c8620cbc82c912f0f7af1f175e7"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:1b7d5ec85672147917df4dad1f620fbd62edaa26b260a745425fe795e75ec86a"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:f19202d98b4e268a61ba4ac3d4c3814e660c99440aecdde1f51a51ce642845c9"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:45147f3240090b1a3784c59987f35006f8e7646b4a86770d011c2a8b789952f9"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:f86194314f5294fee33cc6460294dad15353b575fedb1199a6d719d9c13a5490"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9588cd6b3d8ac1a89f057369dc3a309a162a8580de7e762a4f401b825fdba6d8"},
+    {file = "mrml-0.2.4-cp38-cp38-manylinux_2_28_aarch64.whl", hash = "sha256:c450a4bc7c3cfd401c2e9fe3b41063fab65ad1081983ccb1bfd588b2f5ff2808"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:8358a25fa21441ff8c6cbbdfe56fa66e088be7d8a9af05f06d53d1ee11676b6f"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:bcc6ed3758707df08733c6377076123aa3f8bbc259c784467b0f46bc8371db04"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:147c8434ebbe9cf90519f068023c543b299df511b9a328f270160670b8083470"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:6b23e051b5b29d0f536ebdecf65a6f65490f7d37dc7600cb8dae88d61428bc8a"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8c1cf67422c60228f30f23ce5d1e7bd0261cd7fef03d33593049bc11369b6407"},
+    {file = "mrml-0.2.4-cp39-cp39-manylinux_2_28_aarch64.whl", hash = "sha256:f29d60ff831292e8bd39fe5a756614a6bf728c77c2e8e20527a17e8e91f420e8"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:4f3e2d6be2791f7da4a560d6e5945365e386773c1845f1d82cda6db2440bd4f0"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:c6188e0610e977f7f6de3f254854b53bac165c5776c49b55446ab710c7f4ea0e"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:11dca2491a4c1a0af692cebead6da6576d93e4eae5281fdefe8c50562ab6238e"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:00e90af1a06097b2aa0641138bb42354a96ed1e238e6eec69916218abecd28f7"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6d4aedb3d29d30586b03a17d27dbe736861e92ec0396aed8965bd97a2521a00d"},
+    {file = "mrml-0.2.4-pp311-pypy311_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:d17b0bd0999c6445e6ce840d260e3883c68c88b648fbefbcba7711416c3a0db8"},
+    {file = "mrml-0.2.4.tar.gz", hash = "sha256:e61d6f95b07c1aa88052534de8a09e4eed7c08c489360a21ec24dd1a90b7bb39"},
+]
 
 [[package]]
 name = "nodeenv"
@@ -1203,6 +1306,24 @@ files = [
 ]
 
 [[package]]
+name = "queryish"
+version = "0.3"
+description = "A library for constructing queries on arbitrary data sources following Django's QuerySet API"
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "queryish-0.3-py3-none-any.whl", hash = "sha256:1e8c01b9372c2f715f6015c72424bb76514779fead71a7980343368c028965e1"},
+    {file = "queryish-0.3.tar.gz", hash = "sha256:7f5e32cb466b4c87d8e8e1b8272da68ba43c413155a868453558e4ad6a4dc8d5"},
+]
+
+[package.dependencies]
+requests = ">=2.28,<3.0"
+
+[package.extras]
+testing = ["django (>=4.2)", "responses (>=0.23,<1.0)"]
+
+[[package]]
 name = "redis"
 version = "8.0.0"
 description = "Python client for Redis database and key-value store"
@@ -1604,6 +1725,32 @@ files = [
 wagtail = "*"
 
 [[package]]
+name = "wagtail-newsletter"
+version = "0.2.4"
+description = "Turn Wagtail pages into newsletters."
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "wagtail_newsletter-0.2.4-py3-none-any.whl", hash = "sha256:a19789be23bb1d5dcf9ade798dde1a36b598751d9f31ba6e4e94bf50488f0aa4"},
+    {file = "wagtail_newsletter-0.2.4.tar.gz", hash = "sha256:cacf44ff81c2429134e6615914fb8c8a3ff3d5220e43f567fb63df2083762b03"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+mailchimp-marketing = {version = ">=3.0.80", optional = true, markers = "extra == \"mailchimp\""}
+mrml = {version = ">=0.2", optional = true, markers = "extra == \"mrml\""}
+queryish = ">=0.2"
+Wagtail = ">=6.3"
+
+[package.extras]
+dev = ["flit", "psycopg", "wagtail-newsletter[docs,mailchimp,mrml,testing]"]
+docs = ["sphinx", "sphinx-autobuild", "sphinx-wagtail-theme"]
+mailchimp = ["mailchimp-marketing (>=3.0.80)"]
+mrml = ["mrml (>=0.2)"]
+testing = ["dj-database-url", "django-debug-toolbar", "django-stubs", "pyright", "pytest", "pytest-cov", "pytest-django"]
+
+[[package]]
 name = "wagtailmedia"
 version = "0.17.2"
 description = "A Wagtail module for audio and video files."
@@ -1756,4 +1903,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.14"
-content-hash = "3850289087562fe49c777b15a9445259df624d270ffab65971b0d650a6bf4efd"
+content-hash = "43cc0d1dc55b1188db9eb088f6b2319fe85a3a4d081e1dbb62e61e1a026e63cd"
