@@ -8,6 +8,7 @@
 # Usage:
 #   TOKEN=wagtail_xxx PARENT_ID=5 ./publish_page_demo.sh
 #   TOKEN=wagtail_xxx PARENT_ID=5 ./publish_page_demo.sh --one-step
+#   TOKEN=wagtail_xxx PARENT_ID=5 ./publish_page_demo.sh --draft-only
 #
 # TOKEN       API token from `./manage.py api_tokens create --user=<you> --name=demo`
 # PARENT_ID   id of an existing blog.BlogIndexPage, e.g. from:
@@ -32,10 +33,12 @@ MAIN_IMAGE_FILE="${MAIN_IMAGE_FILE:-./demo/wagtail.webp}"
 BODY_IMAGE_FILE="${BODY_IMAGE_FILE:-./demo/peregrinefalcon.webp}"
 COLLECTION_ID="${COLLECTION_ID:-1}"  # wagtailcore.Collection to upload into
 ONE_STEP=false
+DRAFT_ONLY=false
 
-if [[ "${1:-}" == "--one-step" ]]; then
-  ONE_STEP=true
-fi
+case "${1:-}" in
+  --one-step) ONE_STEP=true ;;
+  --draft-only) DRAFT_ONLY=true ;;
+esac
 
 : "${TOKEN:?Set TOKEN to an API token (see: ./manage.py api_tokens create --user=<you> --name=demo)}"
 : "${PARENT_ID:?Set PARENT_ID to the id of a blog.BlogIndexPage}"
@@ -120,6 +123,11 @@ echo "Created draft page id=$page_id, slug=$slug"
 step "4. Confirm it isn't live yet"
 echo "Requesting front end URL (expect a 404): $SITE_ROOT/blog/$slug/"
 curl -s -o /dev/null -w 'HTTP %{http_code}\n' "$SITE_ROOT/blog/$slug/"
+
+if [[ "$DRAFT_ONLY" == true ]]; then
+  echo "Leaving it as a draft (--draft-only). Edit it in the admin: $SITE_ROOT/admin/pages/$page_id/edit/"
+  exit 0
+fi
 
 step "5. Publish it"
 curl -sf "${auth[@]}" -X POST "$API_ROOT/pages/$page_id/actions/publish/" | jq .
