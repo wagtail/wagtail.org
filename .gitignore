@@ -19,3 +19,4 @@ node_modules
 /database_dumps
 .claudeignore
 .claude/
+/skills
