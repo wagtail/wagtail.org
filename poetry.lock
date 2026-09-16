@@ -306,14 +306,14 @@ Django = ">=4.2"
 
 [[package]]
 name = "django"
-version = "6.0.6"
+version = "6.1.1"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "django-6.0.6-py3-none-any.whl", hash = "sha256:25148b1194c47c2e685e5f5e9c5d59c78b075dfd282cb9618861ba6c1708f4d2"},
-    {file = "django-6.0.6.tar.gz", hash = "sha256:ad03916ba59523d781ae5c3f631960c23d69a9d9c43cecda52fc23b47e953713"},
+    {file = "django-6.1.1-py3-none-any.whl", hash = "sha256:585fb82bf15053c42cf52e67c2f1b54a032dca384759315fd6678ab1870d1d72"},
+    {file = "django-6.1.1.tar.gz", hash = "sha256:7ab93536d8e677aa14554c56426290c69480bf2ee68d7513d4a22f57d6bfeb84"},
 ]
 
 [package.dependencies]
@@ -436,20 +436,20 @@ test = ["django-stubs", "mypy (==1.7.1)", "psycopg2-binary", "pytest", "pytest-a
 
 [[package]]
 name = "django-pattern-library"
-version = "1.5.0"
+version = "1.6.0"
 description = "A module for Django that allows to build pattern libraries for your projects."
 optional = false
-python-versions = "<4.0,>=3.9"
+python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "django_pattern_library-1.5.0-py3-none-any.whl", hash = "sha256:7d133eca05b06bc7097f5709d967d503a09e0dc6aa37aea68dc29dc934400b01"},
-    {file = "django_pattern_library-1.5.0.tar.gz", hash = "sha256:ce84a2d8c7e35eda58d86714d76da7850250db7fdde07160669739585b7ea7f3"},
+    {file = "django_pattern_library-1.6.0-py3-none-any.whl", hash = "sha256:066fdcd9cbd38b3d691362007677f58711484dc246ce514142a967a353033fa6"},
+    {file = "django_pattern_library-1.6.0.tar.gz", hash = "sha256:90106acfc3c9820f9c1d64c2719be882aaf47079dff172253a7f3a7a31e26142"},
 ]
 
 [package.dependencies]
 Django = ">=4.2"
-Markdown = ">=3.1,<4.0"
-PyYAML = ">=5.1,<7.0"
+Markdown = ">=3.1"
+PyYAML = ">=5.1"
 
 [[package]]
 name = "django-permissionedforms"
@@ -1974,4 +1974,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.14"
-content-hash = "deab1bdec39de8555e22ebb31619c023d287318a3451314b9343796e10871e2e"
+content-hash = "96aa6f39aef7d0f9a10f5f5fd6fd512d7b4eb999862e1c932829d435fa7adee5"
