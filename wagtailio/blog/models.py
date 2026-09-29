@@ -236,7 +236,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         url = self.get_full_url(request)
 
         authors = []
-        for blog_author in self.authors.all():
+        for blog_author in self.authors.all().select_related("author"):
             author = blog_author.author
             person = {
                 "@type": "Person",
