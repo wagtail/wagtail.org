@@ -93,6 +93,7 @@ INSTALLED_APPS = [
     "pattern_library",
     "wagtailio.project_styleguide.apps.ProjectStyleguideConfig",
     "wagtailfontawesomesvg",
+    "wagtailschemaorg",
 ]
 
 MIDDLEWARE = [
