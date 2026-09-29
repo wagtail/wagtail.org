@@ -19,7 +19,7 @@
     {% endif %}
 
     <meta property="og:title" content="{% if page %}{% firstof page.seo_title page.title %} | {% endif %}Wagtail CMS" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
     {% if page %}
         <meta property="og:url" content="{% fullpageurl page %}" />
     {% endif %}
