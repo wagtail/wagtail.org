@@ -9,11 +9,12 @@ from wagtailmedia.edit_handlers import MediaChooserPanel
 
 from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBlock
 from wagtailio.core.choices import SVGIcon
-from wagtailio.core.models import HeroMixin
+from wagtailio.core.models import HeroMixin, SchemaOrgMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.utils.schema_org import get_organisation_schema
 
 
-class HomePage(SocialMediaMixin, CrossPageMixin, Page):
+class HomePage(SchemaOrgMixin, SocialMediaMixin, CrossPageMixin, Page):
     template = "patterns/pages/home/home_page.html"
     parent_page_types = ["wagtailcore.Page"]
     subpage_types = [
@@ -109,6 +110,9 @@ class HomePage(SocialMediaMixin, CrossPageMixin, Page):
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
+
+    def page_ld_entity(self, request=None) -> dict:
+        return get_organisation_schema() or {}
 
 
 class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
