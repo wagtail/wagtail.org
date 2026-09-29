@@ -1,4 +1,4 @@
-{% load static manifest wagtailcore_tags wagtailuserbar wagtailspace_tags %}
+{% load static manifest wagtailcore_tags wagtailuserbar wagtailspace_tags wagtailschemaorg_tags %}
 {% wagtail_site as current_site %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -16,6 +16,8 @@
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="google-site-verification" content="VvODzdadJFXP83bFsdQw3q909jhng_zodu6hvG_-4ws" />
         {% endblock %}
+
+        {% ld_for_site %}
 
         {# Global stylesheets #}
         <link rel="stylesheet" href="{% manifest "css/main.css" %}">
