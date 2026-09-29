@@ -11,7 +11,7 @@ INSTALLED_APPS += ["wagtail.api.v3"]  # noqa: F405
 SECRET_KEY = "not-a-secret"  # noqa: S105
 
 # Display sent emails in the console while developing locally.
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+MAILERS["default"]["BACKEND"] = "django.core.mail.backends.console.EmailBackend"  # noqa: F405
 
 # Use dummy app ID for development
 FB_APP_ID = 0
