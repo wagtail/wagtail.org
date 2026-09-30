@@ -325,33 +325,24 @@ else:
 
 # Email
 
-mailer_options = {}
-
 if "EMAIL_HOST" in env:
-    mailer_options["host"] = env["EMAIL_HOST"]
+    EMAIL_HOST = env["EMAIL_HOST"]
 
 if "EMAIL_PORT" in env:
     with contextlib.suppress(ValueError):
-        mailer_options["port"] = int(env["EMAIL_PORT"])
+        EMAIL_PORT = int(env["EMAIL_PORT"])
 
 if "EMAIL_HOST_USER" in env:
-    mailer_options["username"] = env["EMAIL_HOST_USER"]
+    EMAIL_HOST_USER = env["EMAIL_HOST_USER"]
 
 if "EMAIL_HOST_PASSWORD" in env:
-    mailer_options["password"] = env["EMAIL_HOST_PASSWORD"]
+    EMAIL_HOST_PASSWORD = env["EMAIL_HOST_PASSWORD"]
 
 if env.get("EMAIL_USE_TLS", "false") == "true":
-    mailer_options["use_tls"] = True
+    EMAIL_USE_TLS = True
 
 if env.get("EMAIL_USE_SSL", "false") == "true":
-    mailer_options["use_ssl"] = True
-
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        "OPTIONS": mailer_options,
-    },
-}
+    EMAIL_USE_SSL = True
 
 if "EMAIL_SUBJECT_PREFIX" in env:
     EMAIL_SUBJECT_PREFIX = env["EMAIL_SUBJECT_PREFIX"]
