@@ -243,6 +243,7 @@ class EventHighlightBlock(blocks.StructBlock):
         icon = "date"
         label = "Event highlight"
         description = "A banner promoting an event or milestone"
+        template = "patterns/components/streamfields/event_highlight/event_highlight_block.html"
 
 
 class IconBulletBlock(blocks.StructBlock):
