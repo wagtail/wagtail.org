@@ -64,12 +64,10 @@
         }
 
         .blog-post__content {
-            background: transparent;
-            left: 0;
-            padding: 0;
-
+            background: var(--color--footer-bg);
+            
             &::after {
-                display: none;
+                background-color: var(--color--enhancers);
             }
         }
     }
