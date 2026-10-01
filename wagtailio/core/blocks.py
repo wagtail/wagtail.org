@@ -540,7 +540,7 @@ class ContentStoryBlock(blocks.StreamBlock):
 
 
 class HomePageStoryBlock(blocks.StreamBlock):
-    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="list-ul")
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     icon_bullets = IconBulletsBlock(icon="rectangle-list")
