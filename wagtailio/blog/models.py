@@ -36,8 +36,8 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         return (
             BlogPage.objects.live()
             .descendant_of(self)
-            .select_related("category")
-            .prefetch_related("authors__author")
+            .select_related("category", "main_image")
+            .prefetch_related("authors__author__image")
             .order_by("-date", "pk")
         )
 

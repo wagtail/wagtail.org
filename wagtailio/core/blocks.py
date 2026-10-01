@@ -410,6 +410,39 @@ class TextAndMediaBlock(blocks.StructBlock):
         template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
 
 
+class BlogHighlightsBlock(blocks.StructBlock):
+    heading = blocks.TextBlock(required=True)
+    description = blocks.TextBlock(required=False)
+    featured_post = blocks.PageChooserBlock(page_type=["blog.BlogPage"])
+    cta = OptionalCTABlock(
+        label="CTA",
+        help_text="Defaults to a link to the blog index page if left empty",
+    )
+
+    def get_context(self, value, parent_context=None):
+        from wagtailio.blog.models import BlogIndexPage
+
+        context = super().get_context(value, parent_context=parent_context)
+
+        context["blog_index"] = blog_index = BlogIndexPage.objects.live().first()
+        if not blog_index:
+            return context
+
+        featured_post = None
+        if chosen_post := value["featured_post"]:
+            featured_post = blog_index.posts.filter(pk=chosen_post.pk).first()
+
+        if featured_post:
+            context["featured_post"] = featured_post
+            context["latest_posts"] = blog_index.posts.exclude(pk=featured_post.pk)[:4]
+        return context
+
+    class Meta:
+        icon = "doc-full"
+        label = "Blog highlights"
+        description = "A featured blog post followed by the latest blog posts"
+
+
 class GetStartedItem(blocks.StructBlock):
     """This is meant to be used as part of GetStartedBlock"""
 
@@ -549,6 +582,7 @@ class HomePageStoryBlock(blocks.StreamBlock):
     standalone_cta = StandaloneCTABlock()
     teaser = TeaserBlock()
     video = VideoBlock()
+    blog_highlights = BlogHighlightsBlock()
 
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"
