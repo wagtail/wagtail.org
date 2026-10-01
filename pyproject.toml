@@ -35,6 +35,7 @@ wagtailmedia = "~0.19.1"
 whitenoise = "~6.11"
 django-redis = "~6.0"
 tzdata = "^2026.2"
+wagtail-schema-org = "~5.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "4.5.0"
