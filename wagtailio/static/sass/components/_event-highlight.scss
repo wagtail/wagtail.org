@@ -1,0 +1,79 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.event-highlight {
+    $root: &;
+    margin: 80px 0;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: 480px;
+    padding: 80px 0;
+    clip-path: polygon(
+        0 12px,
+        100% 0,
+        100% calc(100% - 12px),
+        0 100%
+    );
+
+    @include media-query(medium) {
+        clip-path: polygon(
+            0 24px,
+            100% 0,
+            100% calc(100% - 24px),
+            0 100%
+        );
+        min-height: 560px;
+        margin: 180px 0 0;
+        padding: 140px 0;
+    }
+
+    @include media-query(large) {
+        clip-path: polygon(
+            0 34px,
+            100% 0,
+            100% calc(100% - 34px),
+            0 100%
+        );
+        min-height: 640px;
+        padding: 220px 0;
+    }
+
+    &__image {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &--light {
+        color: $color--white;
+    }
+
+    &--dark {
+        color: $color--black;
+    }
+
+    &__content {
+        grid-column: 2 / span 2;
+
+        @include media-query(large) {
+            grid-column: 2 / span 3;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 10px;
+    }
+
+    &__description {
+        margin-bottom: $gutter;
+
+        @include media-query(large) {
+            max-width: 70%;
+        }
+    }
+}

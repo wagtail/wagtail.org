@@ -5,11 +5,13 @@
 
     <div class="event-highlight__grid grid">
         <div class="event-highlight__content">
-            <h2 class="event-highlight__heading heading-one">{{ value.heading }}</h2>
+            <hgroup>
+                <h2 class="event-highlight__heading heading-one">{{ value.heading }}</h2>
 
-            {% if value.sub_heading %}
-                <p class="event-highlight__sub-heading">{{ value.sub_heading }}</p>
-            {% endif %}
+                {% if value.sub_heading %}
+                    <p class="event-highlight__sub-heading intro-big">{{ value.sub_heading }}</p>
+                {% endif %}
+            </hgroup>
 
             {% if value.description %}
                 <p class="event-highlight__description">{{ value.description }}</p>
