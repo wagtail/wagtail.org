@@ -4,6 +4,7 @@ from django.db import models
 from modelcluster.models import ClusterableModel
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.api import APIField
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.snippets.models import register_snippet
@@ -160,6 +161,13 @@ class WagtailSpacePage(SocialMediaMixin, CrossPageMixin, Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+
+    api_fields = [
+        APIField("heading", writable=True),
+        APIField("sub_heading", writable=True),
+        APIField("body", writable=True),
+        APIField("space_social", writable=True),
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel("body"),

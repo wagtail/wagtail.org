@@ -5,6 +5,7 @@ from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.api import APIField
 from wagtail.fields import StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
@@ -148,6 +149,10 @@ class BlogPageAuthor(Orderable):
         FieldPanel("author"),
     ]
 
+    api_fields = [
+        APIField("author", writable=True),
+    ]
+
 
 class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_page.html"
@@ -170,6 +175,16 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
         related_name="+",
     )
     body = StreamField(BlogStoryBlock())
+
+    api_fields = [
+        APIField("canonical_url", writable=True),
+        APIField("main_image", writable=True),
+        APIField("date", writable=True),
+        APIField("introduction", writable=True),
+        APIField("category", writable=True),
+        APIField("body", writable=True),
+        APIField("authors", writable=True),
+    ]
 
     @property
     def siblings(self):
