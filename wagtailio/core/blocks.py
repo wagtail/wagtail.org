@@ -441,6 +441,9 @@ class BlogHighlightsBlock(blocks.StructBlock):
         icon = "doc-full"
         label = "Blog highlights"
         description = "A featured blog post followed by the latest blog posts"
+        template = (
+            "patterns/components/streamfields/blog_highlights/blog_highlights_block.html"
+        )
 
 
 class GetStartedItem(blocks.StructBlock):
