@@ -1,16 +1,28 @@
-{% if featured_post %}
-    <section class="blog-highlights">
-        <div class="blog-highlights__grid grid">
-            <h2 class="blog-highlights__heading heading-one">{{ value.heading }}</h2>
-            {% if value.description %}
-                <p class="blog-highlights__description intro-big">{{ value.description }}</p>
+<section class="blog-highlights">
+    <div class="grid">
+        <div class="blog-highlights__inner">
+            <div class="blog-highlights__header">
+                <h2 class="blog-highlights__heading heading-one">{{ value.heading }}</h2>
+                {% if value.description %}
+                    <p class="blog-highlights__description intro-big">{{ value.description }}</p>
+                {% endif %}
+            </div>
+
+            <div class="blog-highlights__featured">
+                {% if featured_post %}
+                    {% include "patterns/pages/blog/includes/blog_post.html" with post=featured_post featured=True %}
+                {% else %}
+                    {% include "patterns/pages/blog/includes/blog_post.html" with post=featured_post %}
+                {% endif %}
+            </div>
+
+            {% if latest_posts %}
+                <div class="blog-highlights__posts">
+                    {% for post in latest_posts %}
+                        {% include "patterns/pages/blog/includes/blog_post.html" with post=post %}
+                    {% endfor %}
+                </div>
             {% endif %}
-
-            {% include "patterns/pages/blog/includes/blog_post.html" with post=featured_post featured=True %}
-
-            {% for post in latest_posts %}
-                {% include "patterns/pages/blog/includes/blog_post.html" with post=post %}
-            {% endfor %}
 
             {% if value.cta.url %}
                 {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta.url title=value.cta.text %}
@@ -18,5 +30,5 @@
                 {% include "patterns/components/buttons/button.html" with arrow=True url=blog_index.url title="More from the Wagtail blog" %}
             {% endif %}
         </div>
-    </section>
-{% endif %}
+    </div>
+</section>
