@@ -28,7 +28,9 @@
         </div>
 
         <h2 class="blog-post__title {% if featured %}heading-two{% endif %}">{{ post.title }}</h2>
-        <p class="blog-post__listing-text">{% firstof post.listing_text post.introduction %}</p>
+        <div class="blog-post__listing-text rich-text">
+            {% firstof post.listing_text post.introduction %}
+        </div>
 
         {% if post.authors.all %}
             {% include "patterns/components/authors/authors.html" with authors=post.authors.all %}
