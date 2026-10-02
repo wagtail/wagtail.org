@@ -413,7 +413,7 @@ class TextAndMediaBlock(blocks.StructBlock):
 class BlogHighlightsBlock(blocks.StructBlock):
     heading = blocks.TextBlock(required=True)
     description = blocks.TextBlock(required=False)
-    featured_post = blocks.PageChooserBlock(page_type=["blog.BlogPage"])
+    featured_post = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
     cta = OptionalCTABlock(
         label="CTA",
         help_text="Defaults to a link to the blog index page if left empty",
@@ -428,13 +428,14 @@ class BlogHighlightsBlock(blocks.StructBlock):
         if not blog_index:
             return context
 
-        featured_post = None
+        latest_posts = blog_index.posts
         if chosen_post := value["featured_post"]:
             featured_post = blog_index.posts.filter(pk=chosen_post.pk).first()
+            if featured_post:
+                context["featured_post"] = featured_post
+                latest_posts = latest_posts.exclude(pk=featured_post.pk)
 
-        if featured_post:
-            context["featured_post"] = featured_post
-            context["latest_posts"] = blog_index.posts.exclude(pk=featured_post.pk)[:4]
+        context["latest_posts"] = latest_posts[:4]
         return context
 
     class Meta:

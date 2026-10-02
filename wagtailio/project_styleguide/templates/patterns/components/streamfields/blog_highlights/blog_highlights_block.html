@@ -8,11 +8,11 @@
                 {% endif %}
             </div>
 
-            <div class="blog-highlights__featured">
-                {% if featured_post %}
+            {% if featured_post %}
+                <div class="blog-highlights__featured">
                     {% include "patterns/pages/blog/includes/blog_post.html" with post=featured_post featured=True %}
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
 
             {% if latest_posts %}
                 <div class="blog-highlights__posts">
