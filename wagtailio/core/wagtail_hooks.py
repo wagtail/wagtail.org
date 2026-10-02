@@ -66,3 +66,12 @@ def serve_document_from_s3(document, request):
     del response["Cache-control"]
     add_never_cache_headers(response)
     return response
+
+
+@hooks.register("construct_page_chooser_queryset")
+def apply_chooser_ordering(pages, request):
+    """Order the children of pages that set `chooser_ordering`."""
+    first_page = pages.first()
+    parent = first_page and first_page.get_parent()
+    ordering = parent and getattr(parent.specific_class, "chooser_ordering", None)
+    return pages.order_by(*ordering) if ordering else pages
