@@ -3,6 +3,7 @@ context:
     heading: Wagtail Space 2026
     sub_heading: 18-20 November
     description: A free virtual event for people who are improving the world through code and content
+    background_image: true
     text_color: light
     cta:
       text: Event details
@@ -10,6 +11,6 @@ context:
 
 tags:
   image:
-    value.background_image width-1600 class="event-highlight__image" loading="lazy":
+    value.background_image width-2400 class="event-highlight__image" loading="lazy":
       raw: |
         <img src="https://placehold.co/1600x700/0a0a2a/ffffff" alt="Some alt" class="event-highlight__image">

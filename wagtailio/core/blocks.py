@@ -231,7 +231,7 @@ class EventHighlightBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
     sub_heading = blocks.TextBlock(required=False)
     description = blocks.TextBlock(required=False)
-    background_image = ImageBlock()
+    background_image = ImageBlock(required=False)
     text_color = blocks.ChoiceBlock(
         choices=[("light", "Light"), ("dark", "Dark")],
         default="light",

@@ -1,15 +1,17 @@
 {% load wagtailimages_tags %}
 
-<section class="event-highlight event-highlight--{{ value.text_color }}">
-    {% image value.background_image width-1600 class="event-highlight__image" loading="lazy" %}
+<section class="event-highlight event-highlight--{{ value.text_color }}{% if not value.background_image %} event-highlight--no-image{% endif %}">
+    {% if value.background_image %}
+        {% image value.background_image width-2400 class="event-highlight__image" loading="lazy" %}
+    {% endif %}
 
     <div class="event-highlight__grid grid">
         <div class="event-highlight__content">
             <hgroup>
-                <h2 class="event-highlight__heading heading-one">{{ value.heading }}</h2>
+                <h2 class="event-highlight__heading">{{ value.heading }}</h2>
 
                 {% if value.sub_heading %}
-                    <p class="event-highlight__sub-heading intro-big">{{ value.sub_heading }}</p>
+                    <p class="intro-big">{{ value.sub_heading }}</p>
                 {% endif %}
             </hgroup>
 
