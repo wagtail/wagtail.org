@@ -25,6 +25,8 @@
             {% if page.authors.all %}
                 {% include "patterns/components/authors/authors.html" with authors=page.authors.all author_class="author--blog" authors_class="blog__authors"%}
             {% endif %}
+
+            {% include "patterns/components/next-prev-post/next-prev-post.html" with next_post=page.next_post previous_post=page.previous_post %}
         </header>
 
         {% if page.main_image %}
