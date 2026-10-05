@@ -13,6 +13,8 @@ import os
 from os.path import abspath, dirname, join
 import sys
 
+from django.utils.csp import CSP
+
 import dj_database_url
 
 
@@ -257,6 +259,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.csp",
                 "wagtail.contrib.settings.context_processors.settings",
                 "wagtailio.context_processors.global_pages",
             ],
@@ -396,38 +399,48 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
 # Content Security policy settings
-# http://django-csp.readthedocs.io/en/latest/configuration.html
+# https://docs.djangoproject.com/en/stable/howto/csp/
 if "CSP_DEFAULT_SRC" in env:
-    MIDDLEWARE.append("csp.middleware.CSPMiddleware")
+    MIDDLEWARE.append("django.middleware.csp.ContentSecurityPolicyMiddleware")
 
-    CSP_INCLUDE_NONCE_IN = ["script-src", "style-src"]
+    # Gravatar images are not compatible with a strict CSP, so disable them.
+    WAGTAIL_GRAVATAR_PROVIDER_URL = None
 
-    CSP_REPORT_ONLY = env.get("CSP_REPORT_ONLY", "false").lower() == "true"
+    def get_csp_sources(env_var_name):
+        # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval',
+        # and 'none' must be quoted, e.g. CSP_DEFAULT_SRC="'self'".
+        return [source.strip() for source in env[env_var_name].split(",")]
 
-    # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval', and 'none' must be quoted!
-    # e.g.: CSP_DEFAULT_SRC = "'self'" Without quotes they will not work as intended.
+    # Map the CSP_ environment variables to Django's CSP directives.
+    CSP_ENV_VARS = {
+        "default-src": "CSP_DEFAULT_SRC",
+        "script-src": "CSP_SCRIPT_SRC",
+        "style-src": "CSP_STYLE_SRC",
+        "img-src": "CSP_IMG_SRC",
+        "media-src": "CSP_MEDIA_SRC",
+        "connect-src": "CSP_CONNECT_SRC",
+        "font-src": "CSP_FONT_SRC",
+        "base-uri": "CSP_BASE_URI",
+        "object-src": "CSP_OBJECT_SRC",
+        "manifest-src": "CSP_MANIFEST_SRC",
+        "report-uri": "CSP_REPORT_URI",
+    }
 
-    CSP_DEFAULT_SRC = env["CSP_DEFAULT_SRC"].split(",")
-    if "CSP_SCRIPT_SRC" in env:
-        CSP_SCRIPT_SRC = env["CSP_SCRIPT_SRC"].split(",")
-    if "CSP_STYLE_SRC" in env:
-        CSP_STYLE_SRC = env["CSP_STYLE_SRC"].split(",")
-    if "CSP_IMG_SRC" in env:
-        CSP_IMG_SRC = env["CSP_IMG_SRC"].split(",")
-    if "CSP_MEDIA_SRC" in env:
-        CSP_MEDIA_SRC = env["CSP_MEDIA_SRC"].split(",")
-    if "CSP_CONNECT_SRC" in env:
-        CSP_CONNECT_SRC = env["CSP_CONNECT_SRC"].split(",")
-    if "CSP_FONT_SRC" in env:
-        CSP_FONT_SRC = env["CSP_FONT_SRC"].split(",")
-    if "CSP_BASE_URI" in env:
-        CSP_BASE_URI = env["CSP_BASE_URI"].split(",")
-    if "CSP_OBJECT_SRC" in env:
-        CSP_OBJECT_SRC = env["CSP_OBJECT_SRC"].split(",")
-    if "CSP_MANIFEST_SRC" in env:
-        CSP_MANIFEST_SRC = env["CSP_MANIFEST_SRC"].split(",")
-    if "CSP_REPORT_URI" in env:
-        CSP_REPORT_URI = env["CSP_REPORT_URI"].split(",")
+    csp_config = {
+        directive: get_csp_sources(env_var_name)
+        for directive, env_var_name in CSP_ENV_VARS.items()
+        if env_var_name in env
+    }
+
+    # Include the nonce in script and style directives so inline scripts and
+    # styles rendered with the matching nonce are allowed.
+    for directive in ("script-src", "style-src"):
+        csp_config.setdefault(directive, []).append(CSP.NONCE)
+
+    if env.get("CSP_REPORT_ONLY", "false").lower() == "true":
+        SECURE_CSP_REPORT_ONLY = csp_config
+    else:
+        SECURE_CSP = csp_config
 
 
 # Permissions policy settings
