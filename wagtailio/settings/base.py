@@ -403,9 +403,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 if "CSP_DEFAULT_SRC" in env:
     MIDDLEWARE.append("django.middleware.csp.ContentSecurityPolicyMiddleware")
 
-    # Gravatar images are not compatible with a strict CSP, so disable them.
-    WAGTAIL_GRAVATAR_PROVIDER_URL = None
-
     def get_csp_sources(env_var_name):
         # The “special” source values of 'self', 'unsafe-inline', 'unsafe-eval',
         # and 'none' must be quoted, e.g. CSP_DEFAULT_SRC="'self'".
