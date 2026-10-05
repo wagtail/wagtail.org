@@ -170,7 +170,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    date = models.DateField(null=True)
+    date = models.DateField()
     introduction = models.CharField(max_length=511)
     category = models.ForeignKey(
         "taxonomy.Category",
@@ -190,10 +190,6 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         APIField("body", writable=True),
         APIField("authors", writable=True),
     ]
-
-    @property
-    def siblings(self):
-        return self.__class__.objects.live().sibling_of(self).order_by("-date")
 
     content_panels = Page.content_panels + [
         InlinePanel(
@@ -226,6 +222,20 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index.SearchField("introduction"),
         index.SearchField("body"),
     ]
+
+    def get_adjacent_post(self, get_by_date):
+        try:
+            return get_by_date(live=True)
+        except BlogPage.DoesNotExist:
+            return None
+
+    @cached_property
+    def next_post(self):
+        return self.get_adjacent_post(self.get_next_by_date)
+
+    @cached_property
+    def previous_post(self):
+        return self.get_adjacent_post(self.get_previous_by_date)
 
     @cached_property
     def related_pages(self):
