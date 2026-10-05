@@ -227,6 +227,25 @@ class HighlightBlock(blocks.StructBlock):
         )
 
 
+class EventHighlightBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    sub_heading = blocks.TextBlock(required=False)
+    description = blocks.TextBlock(required=False)
+    background_image = ImageBlock(required=False)
+    text_color = blocks.ChoiceBlock(
+        choices=[("light", "Light"), ("dark", "Dark")],
+        default="light",
+        help_text="Choose the text colour with the most contrast against the background",
+    )
+    cta = OptionalCTABlock()
+
+    class Meta:
+        icon = "date"
+        label = "Event highlight"
+        description = "A banner promoting an event or milestone"
+        template = "patterns/components/streamfields/event_highlight/event_highlight_block.html"
+
+
 class IconBulletBlock(blocks.StructBlock):
     icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     heading = blocks.CharBlock(max_length=255)
@@ -575,7 +594,8 @@ class ContentStoryBlock(blocks.StreamBlock):
 
 
 class HomePageStoryBlock(blocks.StreamBlock):
-    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="list-ul")
+    event_highlight = EventHighlightBlock()
+    get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
     headline = HeadlineBlock()
     highlight = HighlightBlock()
     icon_bullets = IconBulletsBlock(icon="rectangle-list")

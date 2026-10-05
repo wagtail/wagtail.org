@@ -1,0 +1,31 @@
+{% load wagtailimages_tags %}
+
+<section class="event-highlight event-highlight--{{ value.text_color }}{% if not value.background_image %} event-highlight--no-image{% endif %}">
+    {% if value.background_image %}
+        {% image value.background_image width-2400 class="event-highlight__image" loading="lazy" %}
+    {% endif %}
+
+    <div class="event-highlight__grid grid">
+        <div class="event-highlight__content">
+            <hgroup>
+                <h2 class="event-highlight__heading">{{ value.heading }}</h2>
+
+                {% if value.sub_heading %}
+                    <p class="intro-big">{{ value.sub_heading }}</p>
+                {% endif %}
+            </hgroup>
+
+            {% if value.description %}
+                <p class="event-highlight__description">{{ value.description }}</p>
+            {% endif %}
+
+            {% if value.cta.url %}
+                {% if value.text_color == "light" %}
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta.url title=value.cta.text classes="button--dark" %}
+                {% else %}
+                    {% include "patterns/components/buttons/button.html" with arrow=True url=value.cta.url title=value.cta.text %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</section>
