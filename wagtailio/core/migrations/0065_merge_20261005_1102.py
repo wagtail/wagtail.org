@@ -4,11 +4,9 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0064_add_blog_highlights_block'),
-        ('core', '0064_add_event_highlight_block'),
+        ("core", "0064_add_blog_highlights_block"),
+        ("core", "0064_add_event_highlight_block"),
     ]
 
-    operations = [
-    ]
+    operations = []
