@@ -526,11 +526,6 @@ WAGTAILIMAGES_IMAGE_MODEL = "images.WagtailioImage"
 
 WAGTAILIMAGES_EXTENSIONS = ["avif", "jpg", "jpeg", "png", "webp"]
 
-WAGTAILIMAGES_FORMAT_CONVERSIONS = {
-    "avif": "avif",
-    "webp": "webp",
-}
-
 WILLOW_OPTIMIZERS = True
 
 if "PRIMARY_HOST" in env:
