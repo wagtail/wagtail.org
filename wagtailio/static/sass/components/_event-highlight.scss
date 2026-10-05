@@ -1,0 +1,122 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.event-highlight {
+    $root: &;
+    margin: 80px 0;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    clip-path: polygon(
+        0 12px,
+        100% 0,
+        100% calc(100% - 12px),
+        0 100%
+    );
+
+    @include media-query(medium) {
+        flex-direction: row;
+        align-items: center;
+        min-height: 560px;
+        margin: 180px 0 0;
+        padding: 140px 0;
+        clip-path: polygon(
+            0 24px,
+            100% 0,
+            100% calc(100% - 24px),
+            0 100%
+        );
+    }
+
+    @include media-query(large) {
+        min-height: 640px;
+        padding: 220px 0;
+        clip-path: polygon(
+            0 34px,
+            100% 0,
+            100% calc(100% - 34px),
+            0 100%
+        );
+    }
+
+    &__image {
+        order: 1;
+        width: 100%;
+        height: auto;
+        max-height: 580px;
+        object-fit: cover;
+
+        @include media-query(medium) {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            height: 100%;
+            max-height: none;
+        }
+    }
+
+    &--light {
+        background-color: var(--color--highlight);
+        color: $color--white;
+    }
+
+    &--dark {
+        background-color: var(--color--footer-bg);
+        color: $color--black;
+
+        .theme-dark & {
+            @include media-query(smallonly) {
+                background-color: var(--color--highlight);
+                color: $color--white;
+            }
+        }
+
+        .theme-dark &#{$root}--no-image {
+            background-color: var(--color--highlight);
+            color: $color--white;
+        }
+    }
+
+    &__grid {
+        width: 100%;
+
+        @include media-query(medium) {
+            width: auto;
+        }
+    }
+
+    &__content {
+        grid-column: 2 / span 2;
+        padding-bottom: $gutter-lg;
+
+        @include media-query(medium) {
+            padding-bottom: 0;
+        }
+
+        @include media-query(large) {
+            grid-column: 2 / span 3;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 20px;
+        font-size: 2.25rem;
+        line-height: 2.9rem;
+        letter-spacing: -0.01em;
+
+        @include media-query(large) {
+            font-size: 3.8rem;
+            line-height: 4.8rem;
+        }
+    }
+
+    &__description {
+        margin-bottom: 40px;
+
+        @include media-query(large) {
+            max-width: 70%;
+        }
+    }
+}
