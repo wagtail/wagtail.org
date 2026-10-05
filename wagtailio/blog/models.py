@@ -1,5 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models import F
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
@@ -29,6 +30,8 @@ class FeaturedPost(Orderable):
 class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_index_page.html"
     subpage_types = ["blog.BlogPage"]
+    # List blog pages newest first in page choosers
+    chooser_ordering = (F("blogpage__date").desc(nulls_last=True), "-pk")
 
     @property
     def posts(self):
@@ -36,8 +39,8 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         return (
             BlogPage.objects.live()
             .descendant_of(self)
-            .select_related("category")
-            .prefetch_related("authors__author")
+            .select_related("category", "main_image")
+            .prefetch_related("authors__author__image")
             .order_by("-date", "pk")
         )
 
