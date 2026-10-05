@@ -51,7 +51,8 @@
         border-top: 1px solid var(--color--border);
 
         @include media-query(large) {
-            grid-column: 2 / span 3;
+            grid-column: 2 / span 4;
+            padding: $gutter $gutter-xl $gutter 0;
         }
 
         @include media-query(extra-large) {

@@ -3,6 +3,11 @@
 
 .next-prev-post {
     $root: &;
+    max-width: 350px;
+
+    @include media-query(large) {
+        max-width: 650px;
+    }
 
     &__list {
         display: flex;
@@ -13,7 +18,13 @@
         list-style: none;
 
         @include media-query(large) {
-            gap: $gutter-lg;
+            flex-direction: row;
+            gap: $gutter-xl;
+        }
+
+        @include media-query(extra-large) {
+            flex-direction: column;
+            gap: 50px;
         }
     }
 
@@ -34,15 +45,11 @@
                 text-decoration: underline;
             }
         }
-
-        &:focus-visible {
-            outline-offset: 4px;
-        }
     }
 
     &__arrow {
-        width: 16px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
         color: var(--color--link);
 
         &--previous {
@@ -51,8 +58,9 @@
     }
 
     &__label {
-        color: var(--color--link);
+        font-weight: $weight--regular;
         font-size: 18px;
+        color: var(--color--link);
     }
 
     &__title {
