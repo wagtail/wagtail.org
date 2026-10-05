@@ -11,28 +11,28 @@ context:
     category: Community
     date: !!timestamp '2022-04-27'
     title: Wagtail CMS projects for Google Summer of Code 2022
-    listing_text: We have some great projects and contributors lined up for Google Summer of Code this year
+    listing_intro: We have some great projects and contributors lined up for Google Summer of Code this year
   latest_posts:
     - url: '#'
       category: Community
       date: !!timestamp '2022-04-27'
       title: Preparations for Wagtail Space NL are in full swing
-      listing_text: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
+      listing_intro: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
     - url: '#'
       category: Resources
       date: !!timestamp '2022-04-27'
       title: How to try Wagtail CMS without coding
-      listing_text: How to setup Wagtail and explore the content management system without any coding.
+      listing_intro: How to setup Wagtail and explore the content management system without any coding.
     - url: '#'
       category: Community
       date: !!timestamp '2022-04-27'
       title: What's new in Wagtail? Join us to find out.
-      listing_text: With live demos of new functionality and features in Wagtail 3.0 and more.
+      listing_intro: With live demos of new functionality and features in Wagtail 3.0 and more.
     - url: '#'
       category: Adventures
       date: !!timestamp '2022-04-27'
       title: How we came to love Wagtail at Berkeley
-      listing_text: When developers at University of California, Berkeley went looking for a Drupal replacement, they found Wagtail and fell in love with it.
+      listing_intro: When developers at University of California, Berkeley went looking for a Drupal replacement, they found Wagtail and fell in love with it.
 
 tags:
   image:
