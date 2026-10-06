@@ -18,6 +18,17 @@
         }
     }
 
+    &__pill {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 12px 5px 8px;
+        border: 1px solid $color--cool-grey;
+        border-radius: 7px;
+        color: var(--color--text);
+        text-decoration: none;
+    }
+
     &--offset-icon {
         .icon__svg-bg {
             transform: rotate(-10deg);
