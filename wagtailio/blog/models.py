@@ -1,7 +1,9 @@
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.exceptions import ValidationError
+from django.core.paginator import InvalidPage, Paginator
 from django.db import models
 from django.db.models import F
-from django.shortcuts import render
+from django.forms import ModelMultipleChoiceField
+from django.http import Http404
 from django.utils.functional import cached_property
 
 from modelcluster.fields import ParentalKey
@@ -46,46 +48,48 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             .order_by("-date", "pk")
         )
 
-    def serve(self, request):
-        if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+    @cached_property
+    def categories(self):
+        return Category.objects.filter(
+            pk__in=self.posts.order_by().values("category")
+        ).order_by("title")
 
-        # Pagination
-        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
-
-        page = request.GET.get("page")
+    def get_selected_categories(self, request):
+        category_ids = [value for value in request.GET.getlist("category") if value]
+        field = ModelMultipleChoiceField(self.categories, required=False)
         try:
-            posts = paginator.page(page)
-            current_page = posts.number
-        except PageNotAnInteger:
-            posts = paginator.page(1)
-            current_page = 1
-        except EmptyPage:
-            posts = None
-            current_page = 1
+            return field.clean(category_ids)
+        except ValidationError:
+            raise Http404 from None
 
-        pagination_sequence = paginator.get_elided_page_range(
-            number=current_page, on_each_side=2, on_ends=1
-        )
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        selected_categories = self.get_selected_categories(request)
 
-        return render(
-            request,
-            self.template,
-            {
-                "page": self,
-                "posts": posts,
-                "pagination_sequence": pagination_sequence,
-                "featured_posts": [post.page for post in self.featured_posts.all()],
-                "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
-                )
-                .values_list("pk", "title")
-                .distinct()
-                .order_by("title"),
-            },
+        posts = self.posts
+        if selected_categories:
+            posts = posts.filter(category__in=selected_categories)
+
+        paginator = Paginator(posts, 10)
+        try:
+            page = paginator.page(request.GET.get("page", 1))
+        except InvalidPage:
+            raise Http404 from None
+
+        context.update(
+            posts=page,
+            pagination_sequence=paginator.get_elided_page_range(
+                page.number, on_each_side=2, on_ends=1
+            ),
+            categories=self.categories,
+            selected_categories=selected_categories,
+            featured_posts=(
+                []
+                if selected_categories
+                else [featured.page for featured in self.featured_posts.all()]
+            ),
         )
+        return context
 
     content_panels = Page.content_panels + [
         InlinePanel(
