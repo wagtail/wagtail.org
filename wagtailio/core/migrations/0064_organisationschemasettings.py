@@ -6,7 +6,7 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("core", "0063_add_wide_image_block"),
+        ("core", "0066_alter_homepage_body"),
         ("images", "0017_drop_obsolete_alternative_text"),
         ("wagtailcore", "0098_apitoken"),
     ]
