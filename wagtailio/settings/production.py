@@ -23,5 +23,7 @@ MANIFEST_LOADER["cache"] = True  # noqa: F405
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+WAGTAILAPI_DOCS_ENABLED = False
+
 with contextlib.suppress(ImportError):  # noqa: F405
     from .local import *  # noqa: F403

@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.redirects",
     "wagtail.contrib.forms",
     "wagtail.api.v2",
+    "wagtail.api.v3",
     "wagtail.contrib.settings",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
