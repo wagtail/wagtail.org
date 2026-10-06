@@ -20,7 +20,7 @@ class SchemaOrgMixin(PageLDMixin):
             "@context": "https://schema.org",
             "@type": "WebPage",
         }
-        if breadcrumb := breadcrumbs_schema(self):
+        if breadcrumb := breadcrumbs_schema(self, request):
             entity["breadcrumb"] = breadcrumb
         return {key: value for key, value in entity.items() if value}
 

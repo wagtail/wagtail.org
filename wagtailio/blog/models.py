@@ -257,7 +257,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
             "@type": "BlogPosting",
             "@id": f"{url}#blogposting",
             "mainEntityOfPage": url,
-            "headline": self.title,
+            "headline": self.seo_title or self.title,
             "description": self.social_text
             or self.search_description
             or self.introduction,
