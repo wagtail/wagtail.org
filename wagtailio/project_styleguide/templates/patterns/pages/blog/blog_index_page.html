@@ -1,16 +1,22 @@
 {% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
 
-    {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--with-filters" %}
+
+    <form class="grid" method="get" action="{% pageurl page %}" data-filter-form>
+        {% include "patterns/components/filters/filters.html" with legend="Filter posts by category" options=categories selected=selected_categories name="category" id_prefix="category" %}
+        <noscript><button class="button" type="submit">Apply filters</button></noscript>
+    </form>
 
     <div class="grid">
         <section class="blog-listing">
             {% for post in posts %}
                 {# only show featured posts on the first pagination page, no filters #}
-                {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
+                {% if featured_posts and posts.number == 1 %}
                     {% comment %}
                         With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
                         follows the pattern shown in the table below, which can be summarized as follows:
