@@ -6,9 +6,9 @@ class FeatureIndex {
     constructor(node) {
         this.node = node;
         // 'all' checkbox input
-        this.allFilterCheckbox = this.node.querySelector('[data-feature-filter-all]');
+        this.allFilterCheckbox = this.node.querySelector('[data-filter-all]');
         // other checkbox inputs not including 'all'
-        this.filterCheckboxes = [...this.node.querySelectorAll('[data-feature-filter]')];
+        this.filterCheckboxes = [...this.node.querySelectorAll('[data-filter]')];
         this.allFeatureGroups = [...this.node.querySelectorAll('[data-feature-group]')];
         this.hiddenClass = 'is-hidden';
 
@@ -45,12 +45,12 @@ class FeatureIndex {
 
     // Show an individual group
     handleShowGroup(item) {
-        this.node.querySelector(`[data-feature-group="${item.id}"]`).classList.remove(this.hiddenClass);
+        this.node.querySelector(`[data-feature-group="${item.dataset.filter}"]`).classList.remove(this.hiddenClass);
     }
 
     // Hide an individual group
     handleHideGroup(item) {
-        this.node.querySelector(`[data-feature-group="${item.id}"]`).classList.add(this.hiddenClass);
+        this.node.querySelector(`[data-feature-group="${item.dataset.filter}"]`).classList.add(this.hiddenClass);
     }
 
     // Loop over filters and hide or show group depending on if checkbox is 'checked'
@@ -59,7 +59,7 @@ class FeatureIndex {
         const uncheckedFilters = this.filterCheckboxes.filter(filter => filter.checked === true);
 
         checkedFilters.forEach(filterGroup => {
-            this.node.querySelector(`[data-feature-group="${filterGroup.id}"]`).classList.add(this.hiddenClass);
+            this.node.querySelector(`[data-feature-group="${filterGroup.dataset.filter}"]`).classList.add(this.hiddenClass);
         })
 
         if (uncheckedFilters.length === 0) {
