@@ -1803,6 +1803,24 @@ files = [
 wagtail = "*"
 
 [[package]]
+name = "wagtail-schema-org"
+version = "5.0.0"
+description = "Add Schema.org JSON-LD to your website"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "wagtail_schema_org-5.0.0-py2.py3-none-any.whl", hash = "sha256:1397f9b73399a975fbc10f1f8285a9d81e6308a4b93aecce5d99c58c25cb8d13"},
+    {file = "wagtail_schema_org-5.0.0.tar.gz", hash = "sha256:e7cac7b422021bdbb986db8e305132cbb98c676091598c2df171ac898752b651"},
+]
+
+[package.dependencies]
+wagtail = ">=6.3"
+
+[package.extras]
+testing = ["jinja2 (>=2.10,<4.0)", "markupsafe (==2.1.5)"]
+
+[[package]]
 name = "wagtailmedia"
 version = "0.19.1"
 description = "A Wagtail module for audio and video files."
@@ -1955,4 +1973,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.14"
-content-hash = "6647a014cc8014b0945145d73fbe94e8a299c0a47afcae8bd9c481a9e68bd55e"
+content-hash = "c234a81a63ed76a06fa9e622f68c3a102f1d0ad8c61579db3f4b6ceeb9c87909"

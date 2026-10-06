@@ -12,8 +12,10 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.blog.blocks import BlogStoryBlock
+from wagtailio.core.models import SchemaOrgMixin
 from wagtailio.taxonomy.models import Category
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.utils.schema_org import get_organisation_schema
 
 
 class FeaturedPost(Orderable):
@@ -152,7 +154,7 @@ class BlogPageAuthor(Orderable):
     ]
 
 
-class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
+class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/blog/blog_page.html"
     subpage_types = []
     canonical_url = models.URLField(blank=True)
@@ -229,3 +231,43 @@ class BlogPage(Page, SocialMediaMixin, CrossPageMixin):
     @property
     def publication_date(self):
         return self.date
+
+    def page_ld_entity(self, request=None) -> dict:
+        url = self.get_full_url(request)
+
+        authors = []
+        for blog_author in self.authors.all().select_related("author"):
+            author = blog_author.author
+            person = {
+                "@type": "Person",
+                "name": author.name,
+                "jobTitle": author.job_title,
+                "url": author.url,
+            }
+            authors.append({key: value for key, value in person.items() if value})
+
+        image = self.social_image or self.main_image
+
+        publisher = get_organisation_schema()
+        if publisher:
+            publisher = {k: v for k, v in publisher.items() if k != "@context"}
+
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "@id": f"{url}#blogposting",
+            "mainEntityOfPage": url,
+            "headline": self.seo_title or self.title,
+            "description": self.social_text
+            or self.search_description
+            or self.introduction,
+            "datePublished": self.date.isoformat() if self.date else None,
+            "dateModified": (
+                self.last_published_at.isoformat() if self.last_published_at else None
+            ),
+            "articleSection": self.category.title if self.category else None,
+            "author": authors,
+            "image": (image.get_rendition("min-1200x630").full_url if image else None),
+            "publisher": publisher,
+        }
+        return {key: value for key, value in schema.items() if value}

@@ -14,7 +14,15 @@ def favicon(request):
 
 
 def robots(request):
-    content = "\n".join(["User-Agent: *", "Disallow: /search/", "Allow: /"])
+    content = "\n".join(
+        [
+            "User-Agent: *",
+            "Disallow: /search/",
+            "Allow: /",
+            "",
+            f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+        ]
+    )
     return HttpResponse(content, content_type="text/plain")
 
 
