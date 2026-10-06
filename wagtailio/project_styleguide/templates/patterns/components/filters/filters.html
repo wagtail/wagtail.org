@@ -2,7 +2,7 @@
 <fieldset class="filters{% if classes %} {{ classes }}{% endif %}">
     <legend class="u-sr-only">{{ legend }}</legend>
     <div class="filters__item">
-        <input class="filters__input" type="checkbox" id="{{ id_prefix }}-all" data-filter-all{% if not selected %} checked{% endif %}>
+        <input class="filters__input" type="checkbox" id="{{ id_prefix }}-all" data-filter-all{% if not selected and not extra_value %} checked{% endif %}>
         <label class="filters__label mini-meta" for="{{ id_prefix }}-all">{% trans 'All' %}</label>
     </div>
     {% for option in options %}
@@ -11,4 +11,10 @@
             <label class="filters__label mini-meta" for="{{ id_prefix }}-{{ option|slugify }}">{{ option }}</label>
         </div>
     {% endfor %}
+    {% if extra_value %}
+        <div class="filters__item">
+            <input class="filters__input" type="checkbox" id="{{ id_prefix }}-extra" name="{{ extra_name }}" value="{{ extra_value }}" checked>
+            <label class="filters__label mini-meta" for="{{ id_prefix }}-extra">{{ extra_value }}</label>
+        </div>
+    {% endif %}
 </fieldset>

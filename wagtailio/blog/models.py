@@ -1,10 +1,9 @@
-from django.core.exceptions import ValidationError
 from django.core.paginator import InvalidPage, Paginator
 from django.db import models
 from django.db.models import F
-from django.forms import ModelMultipleChoiceField
 from django.http import Http404
 from django.utils.functional import cached_property
+from django.utils.http import urlencode
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -15,7 +14,6 @@ from wagtail.snippets.models import register_snippet
 
 from wagtailio.blog.blocks import BlogStoryBlock
 from wagtailio.core.models import SchemaOrgMixin
-from wagtailio.taxonomy.models import Category
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 from wagtailio.utils.schema_org import get_organisation_schema
 
@@ -48,44 +46,31 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             .order_by("-date", "pk")
         )
 
-    @cached_property
-    def categories(self):
-        return Category.objects.filter(
-            pk__in=self.posts.order_by().values("category")
-        ).order_by("title")
-
-    def get_selected_categories(self, request):
-        category_ids = [value for value in request.GET.getlist("category") if value]
-        field = ModelMultipleChoiceField(self.categories, required=False)
-        try:
-            return field.clean(category_ids)
-        except ValidationError:
-            raise Http404 from None
-
     def get_context(self, request, *args, **kwargs):
+        from wagtailio.blog.filters import BlogPostFilterSet
+
         context = super().get_context(request, *args, **kwargs)
-        selected_categories = self.get_selected_categories(request)
 
-        posts = self.posts
-        if selected_categories:
-            posts = posts.filter(category__in=selected_categories)
+        filterset = BlogPostFilterSet(request.GET, queryset=self.posts)
+        if not filterset.is_valid():
+            raise Http404
 
-        paginator = Paginator(posts, 10)
+        paginator = Paginator(filterset.qs, 10)
         try:
             page = paginator.page(request.GET.get("page", 1))
         except InvalidPage:
             raise Http404 from None
 
+        is_filtered = any(filterset.form.cleaned_data.values())
         context.update(
-            posts=page,
+            filterset=filterset,
+            paginator_page=page,
             pagination_sequence=paginator.get_elided_page_range(
                 page.number, on_each_side=2, on_ends=1
             ),
-            categories=self.categories,
-            selected_categories=selected_categories,
             featured_posts=(
                 []
-                if selected_categories
+                if is_filtered
                 else [featured.page for featured in self.featured_posts.all()]
             ),
         )
@@ -224,6 +209,14 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
     def meta_text(self):
         if self.category:
             return self.category.title
+        return None
+
+    @cached_property
+    def meta_url(self):
+        if self.category:
+            return (
+                f"{self.get_parent().url}?{urlencode({'category': self.category.pk})}"
+            )
         return None
 
     @cached_property
