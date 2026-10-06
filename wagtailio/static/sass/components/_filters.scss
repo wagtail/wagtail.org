@@ -1,0 +1,83 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.filters {
+    $root: &;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 30px 10px;
+    grid-column: 2 / span 2;
+    margin: 0 0 40px;
+    padding: 0;
+    border: 0;
+    list-style: none;
+
+    @include media-query(medium) {
+        grid-column: 2 / span 3;
+    }
+
+    @include media-query(large) {
+        margin-bottom: 100px;
+        grid-column: 2 / span 4;
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__label {
+        position: relative;
+        padding: 10px 10px 10px 40px;
+        border: 2px solid var(--color--card);
+        border-radius: 6px;
+        background-color: var(--color--light-dark);
+        color: var(--color--text);
+        font-weight: $weight--bold;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color--text);
+            border-radius: 3px;
+            background-color: var(--color--light-dark);
+        }
+    }
+
+    &__input {
+        position: absolute;
+        opacity: 0;
+
+        &:focus + #{$root}__label {
+            border-color: var(--color--active);
+        }
+
+        &:checked + #{$root}__label {
+            border-color: var(--color--active);
+            background-color: var(--color--active);
+            color: $color--white;
+
+            &::before {
+                border-color: var(--color--active);
+                background-color: var(--color--active);
+                background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5.375c1.23 0 2.25 1.02 2.25 2.25v11.25c0 1.266-1.02 2.25-2.25 2.25H2.25A2.221 2.221 0 010 13.875V2.625C0 1.395.984.375 2.25.375H13.5zm-1.582 6.328a.955.955 0 000-1.371.955.955 0 00-1.371 0L6.75 9.129 5.168 7.582a.955.955 0 00-1.371 0 .955.955 0 000 1.371l2.25 2.25a.955.955 0 001.371 0l4.5-4.5z' fill='%23fff'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+            }
+
+            @media (forced-colors: active) {
+                text-decoration: underline;
+            }
+        }
+
+        // stylelint-disable-next-line selector-max-specificity
+        &:checked:focus + #{$root}__label {
+            border-color: var(--color--card);
+        }
+    }
+}
