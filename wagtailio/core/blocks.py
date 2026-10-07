@@ -227,6 +227,25 @@ class HighlightBlock(blocks.StructBlock):
         )
 
 
+class EventHighlightBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(max_length=255)
+    sub_heading = blocks.TextBlock(required=False)
+    description = blocks.TextBlock(required=False)
+    background_image = ImageBlock(required=False)
+    text_color = blocks.ChoiceBlock(
+        choices=[("light", "Light"), ("dark", "Dark")],
+        default="light",
+        help_text="Choose the text colour with the most contrast against the background",
+    )
+    cta = OptionalCTABlock()
+
+    class Meta:
+        icon = "date"
+        label = "Event highlight"
+        description = "A banner promoting an event or milestone"
+        template = "patterns/components/streamfields/event_highlight/event_highlight_block.html"
+
+
 class IconBulletBlock(blocks.StructBlock):
     icon = blocks.ChoiceBlock(choices=SVGIcon.choices)
     heading = blocks.CharBlock(max_length=255)
@@ -410,6 +429,41 @@ class TextAndMediaBlock(blocks.StructBlock):
         template = "patterns/components/streamfields/text_and_media_block/text_and_media_block.html"
 
 
+class BlogHighlightsBlock(blocks.StructBlock):
+    heading = blocks.TextBlock(required=True)
+    description = blocks.TextBlock(required=False)
+    featured_post = blocks.PageChooserBlock(required=False, page_type=["blog.BlogPage"])
+    cta = OptionalCTABlock(
+        label="CTA",
+        help_text="Defaults to a link to the blog index page if left empty",
+    )
+
+    def get_context(self, value, parent_context=None):
+        from wagtailio.blog.models import BlogIndexPage
+
+        context = super().get_context(value, parent_context=parent_context)
+
+        context["blog_index"] = blog_index = BlogIndexPage.objects.live().first()
+        if not blog_index:
+            return context
+
+        latest_posts = blog_index.posts
+        if chosen_post := value["featured_post"]:
+            featured_post = blog_index.posts.filter(pk=chosen_post.pk).first()
+            if featured_post:
+                context["featured_post"] = featured_post
+                latest_posts = latest_posts.exclude(pk=featured_post.pk)
+
+        context["latest_posts"] = latest_posts[:4]
+        return context
+
+    class Meta:
+        icon = "doc-full"
+        label = "Blog highlights"
+        description = "A featured blog post followed by the latest blog posts"
+        template = "patterns/components/streamfields/blog_highlights/blog_highlights_block.html"
+
+
 class GetStartedItem(blocks.StructBlock):
     """This is meant to be used as part of GetStartedBlock"""
 
@@ -540,6 +594,7 @@ class ContentStoryBlock(blocks.StreamBlock):
 
 
 class HomePageStoryBlock(blocks.StreamBlock):
+    event_highlight = EventHighlightBlock()
     get_started_block = SnippetChooserBlock("core.GetStartedSnippet", icon="th-list")
     headline = HeadlineBlock()
     highlight = HighlightBlock()
@@ -549,6 +604,7 @@ class HomePageStoryBlock(blocks.StreamBlock):
     standalone_cta = StandaloneCTABlock()
     teaser = TeaserBlock()
     video = VideoBlock()
+    blog_highlights = BlogHighlightsBlock()
 
     class Meta:
         template = "patterns/components/streamfields/home_page_story_block.html"

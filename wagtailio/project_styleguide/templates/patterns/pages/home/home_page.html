@@ -1,11 +1,18 @@
 {% extends "patterns/base_page.html" %}
 
-{% load static i18n wagtailcore_tags wagtailembeds_tags %}
+{% load static i18n wagtailcore_tags wagtailembeds_tags wagtailschemaorg_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block title %}Wagtail CMS - {% firstof page.seo_title page.title %}{% endblock %}
 {% block title_suffix %}{% endblock %}
+
+{% block meta_tags %}
+    {{ block.super }}
+    {% if not is_pattern_library %}
+        {% ld_for_object %}
+    {% endif %}
+{% endblock meta_tags %}
 
 {% block content %}
 

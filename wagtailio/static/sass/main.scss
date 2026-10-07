@@ -24,6 +24,7 @@
 @use 'components/block-preview';
 @use 'components/blog';
 @use 'components/blog-post';
+@use 'components/blog-highlights';
 @use 'components/button-align';
 @use 'components/buttons';
 @use 'components/card';
@@ -37,6 +38,7 @@
 @use 'components/document';
 @use 'components/error-404';
 @use 'components/embed';
+@use 'components/event-highlight';
 @use 'components/feature.scss';
 @use 'components/features.scss';
 @use 'components/form.scss';

@@ -133,7 +133,7 @@ We use [DebugBear](https://www.debugbear.com/)’s lab tests to keep tabs on the
 ## Content Security Policy
 
 The site supports enforcing a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), to block a range of attacks including cross-site scripting (XSS) and clickjacking.
-The policy is experimental as not all aspects of the site are currently compatible. To test and make incremental improvements, manually turn on the CSP by setting the relevant `CSP_` environment variables. Their presence will enable [django-csp](https://django-csp.readthedocs.io/en/3.8/configuration.html).
+The policy is experimental as not all aspects of the site are currently compatible. To test and make incremental improvements, manually turn on the CSP by setting the relevant `CSP_` environment variables. Their presence will enable [Django’s built-in CSP support](https://docs.djangoproject.com/en/stable/howto/csp/).
 
 Here are the CSP values currently trialed in production:
 

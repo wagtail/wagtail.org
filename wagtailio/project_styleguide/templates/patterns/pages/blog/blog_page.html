@@ -1,5 +1,14 @@
 {% extends "patterns/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailschemaorg_tags %}
+
+{% block meta_tags %}
+    {{ block.super }}
+    {% if not is_pattern_library %}
+        {% ld_for_object %}
+    {% endif %}
+{% endblock meta_tags %}
+
+{% block og_type %}article{% endblock %}
 
 {% block content %}
     <article class="blog">

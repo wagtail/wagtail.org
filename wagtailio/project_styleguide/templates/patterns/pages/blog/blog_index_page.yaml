@@ -5,7 +5,7 @@ context:
       category: Adventures on Wagtail
       date: !!timestamp '2022-07-29'
       title: Sending robots into space with Wagtail Localise
-      listing_text: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+      listing_intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
       author:
         name: John Smith
         image: true
@@ -14,7 +14,7 @@ context:
       category: Adventures on Wagtail
       date: !!timestamp '2022-07-29'
       title: Sending robots into space with Wagtail Localise
-      listing_text: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+      listing_intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
       author:
         name: John Smith
         image: true
@@ -23,7 +23,7 @@ context:
       category: Adventures on Wagtail
       date: !!timestamp '2022-07-29'
       title: Sending robots into space with Wagtail Localise
-      listing_text: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+      listing_intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
       author:
         name: John Smith
         image: true
@@ -32,7 +32,7 @@ context:
       category: Adventures on Wagtail
       date: !!timestamp '2022-07-29'
       title: Sending robots into space with Wagtail Localise
-      listing_text: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+      listing_intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
       author:
         name: John Smith
         image: true
@@ -41,7 +41,7 @@ context:
       category: Adventures on Wagtail
       date: !!timestamp '2022-07-29'
       title: Sending robots into space with Wagtail Localise
-      listing_text: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
+      listing_intro: The multilingual, multi-currency donations platform that handles millions of transactions per year, powered by Wagtail.
       author:
         name: John Smith
         image: true

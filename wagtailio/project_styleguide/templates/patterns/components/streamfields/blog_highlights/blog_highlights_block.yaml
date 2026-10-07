@@ -1,0 +1,41 @@
+context:
+  value:
+    heading: The latest from Wagtail
+    description: Recently chirps on the Wagtail blog
+  blog_index:
+    url: '#'
+  featured_post:
+    url: '#'
+    main_image: true
+    listing_image: true
+    category: Community
+    date: !!timestamp '2022-04-27'
+    title: Wagtail CMS projects for Google Summer of Code 2022
+    listing_intro: We have some great projects and contributors lined up for Google Summer of Code this year
+  latest_posts:
+    - url: '#'
+      category: Community
+      date: !!timestamp '2022-04-27'
+      title: Preparations for Wagtail Space NL are in full swing
+      listing_intro: The preparations for Wagtail Space NL are going great. I want to inform you about the latest developments.
+    - url: '#'
+      category: Resources
+      date: !!timestamp '2022-04-27'
+      title: How to try Wagtail CMS without coding
+      listing_intro: How to setup Wagtail and explore the content management system without any coding.
+    - url: '#'
+      category: Community
+      date: !!timestamp '2022-04-27'
+      title: What's new in Wagtail? Join us to find out.
+      listing_intro: With live demos of new functionality and features in Wagtail 3.0 and more.
+    - url: '#'
+      category: Adventures
+      date: !!timestamp '2022-04-27'
+      title: How we came to love Wagtail at Berkeley
+      listing_intro: When developers at University of California, Berkeley went looking for a Drupal replacement, they found Wagtail and fell in love with it.
+
+tags:
+  image:
+    post.listing_image fill-500x500 class='blog-post__image':
+      raw: |
+        <img src="https://placehold.co/500" alt="Some alt" class="blog-post__image">

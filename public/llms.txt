@@ -1,0 +1,28 @@
+# Wagtail CMS
+
+> Wagtail is a free, open source content management system written in Python and built on the Django web framework. It is released under the BSD-3-Clause license and developed as an open source project by Torchbox. Used by Google, NASA, MIT, NHS and Mozilla, among others.
+
+Install with `pip install wagtail`.
+
+## Start here
+- [Get started](https://wagtail.org/get-started/): Install Wagtail and build a first site.
+- [Documentation](https://docs.wagtail.org/): Official docs for developers and editors.
+- [Documentation index for agents](https://docs.wagtail.org/llms.txt): Every docs page, each with a Markdown version.
+- [GitHub](https://github.com/wagtail/wagtail): Source code and issue tracker.
+
+## About Wagtail
+- [Features](https://wagtail.org/features/): What Wagtail offers editors and developers.
+- [Wagtail AI](https://wagtail.org/wagtail-ai/): Optional AI features for content editing.
+- [Headless CMS](https://wagtail.org/headless/): Using Wagtail as a headless CMS.
+- [Packages](https://wagtail.org/packages/): Third-party packages that extend Wagtail.
+- [Blog](https://wagtail.org/blog/): Release notes, community news and perspectives.
+
+## Optional
+- [Wagtail vs WordPress](https://wagtail.org/wagtail-vs-wordpress/): Comparison for teams weighing the two.
+- [Wagtail vs Drupal](https://wagtail.org/wagtail-vs-drupal/): Comparison for teams weighing the two.
+- [Showcase](https://wagtail.org/showcase/): Sites built with Wagtail.
+- [Accessibility](https://wagtail.org/accessibility/): Wagtail's accessibility work.
+- [Security](https://wagtail.org/security/): Security policy and reporting.
+- [FAQs](https://wagtail.org/faqs/): Common questions about Wagtail.
+- [Roadmap](https://wagtail.org/roadmap/): Planned work.
+- [Community resources](https://wagtail.org/community-resources/): Where to get help and meet people.
