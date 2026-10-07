@@ -1,12 +1,12 @@
 {% if value.meta_text %}
     <div class="meta{% if classes %} {{ classes }}{% endif %}">
-        {% if linked and value.meta_url %}<a class="meta__pill" href="{{ value.meta_url }}">{% endif %}
+        {% if meta_url %}<a class="meta__pill" href="{{ meta_url }}">{% endif %}
         {% if value.meta_icon %}
             {% include "patterns/components/icon/icon.html" with icon=value.meta_icon classes="meta__icon" %}
         {% endif %}
 
         <p class="meta__text mini-meta mini-meta--bold">{{ value.meta_text }}</p>
-        {% if linked and value.meta_url %}</a>{% endif %}
+        {% if meta_url %}</a>{% endif %}
 
         {% if value.publication_date %}
             <p class="meta__date mini-meta mini-meta">{{ value.publication_date|date:"j M Y" }}</p>

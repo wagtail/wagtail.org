@@ -14,7 +14,7 @@
     <article class="blog">
         {# Header #}
         <header class="blog__header grid">
-            {% include "patterns/components/meta/meta.html" with value=page classes="blog__meta" linked=True %}
+            {% include "patterns/components/meta/meta.html" with value=page classes="blog__meta" meta_url=category_url %}
 
             <h1 class="blog__heading article-heading">{{ page.title }}</h1>
 
@@ -23,7 +23,7 @@
             {% endif %}
 
             {% if page.authors.all %}
-                {% include "patterns/components/authors/authors.html" with authors=page.authors.all author_class="author--blog" authors_class="blog__authors" filter_url=page.get_parent.url %}
+                {% include "patterns/components/authors/authors.html" with authors=page.authors.all author_class="author--blog" authors_class="blog__authors" filter_url=blog_index_url %}
             {% endif %}
         </header>
 

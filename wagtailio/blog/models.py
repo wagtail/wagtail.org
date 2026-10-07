@@ -201,6 +201,15 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index.SearchField("body"),
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        index_url = self.get_parent().get_url(request)
+        context["blog_index_url"] = index_url
+        if self.category:
+            query = urlencode({"category": self.category.pk})
+            context["category_url"] = f"{index_url}?{query}"
+        return context
+
     @cached_property
     def related_pages(self):
         return self.related_posts.all()
@@ -209,14 +218,6 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
     def meta_text(self):
         if self.category:
             return self.category.title
-        return None
-
-    @cached_property
-    def meta_url(self):
-        if self.category:
-            return (
-                f"{self.get_parent().url}?{urlencode({'category': self.category.pk})}"
-            )
         return None
 
     @cached_property
