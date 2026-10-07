@@ -38,5 +38,6 @@
     </article>
 
     {# Related articles #}
+    {% pageurl page.get_parent as blog_index_url %}
     {% include "patterns/components/related-content/related-content.html" with related_pages=page.related_pages %}
 {% endblock %}
