@@ -211,7 +211,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
             "related_posts",
             heading="Related pages",
             label="Related page",
-            max_num=2,
+            max_num=3,
         ),
     ]
 
