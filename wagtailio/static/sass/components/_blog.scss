@@ -48,7 +48,7 @@
         grid-column: 2 / span 2;
         margin-top: 40px;
         padding-top: $gutter;
-        border-top: 1px solid var(--color--border);
+        border-top: 1px solid $color--cool-grey;
 
         @include media-query(large) {
             grid-column: 2 / span 4;
@@ -56,13 +56,13 @@
         }
 
         @include media-query(extra-large) {
-            grid-column: 13 / span 4;
+            grid-column: 13 / span 3;
             grid-row: 2 / span 3;
             align-self: end;
             margin-top: 0;
-            padding: $gutter 50px $gutter 50px;
+            padding: $gutter 0 $gutter 50px;
             border-top: 0;
-            border-left: 2px solid var(--color--border);
+            border-left: 1px solid $color--cool-grey;
         }
     }
 

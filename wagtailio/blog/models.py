@@ -1,6 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.db.models import F
+from django.db.models import F, Q
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
@@ -170,7 +170,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    date = models.DateField()
+    date = models.DateField(null=True)
     introduction = models.CharField(max_length=511)
     category = models.ForeignKey(
         "taxonomy.Category",
@@ -223,19 +223,28 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index.SearchField("body"),
     ]
 
-    def get_adjacent_post(self, get_by_date):
-        try:
-            return get_by_date(live=True)
-        except BlogPage.DoesNotExist:
+    def get_adjacent_post(self, newer):
+        if self.date is None:
             return None
+        lookup = "gt" if newer else "lt"
+        ordering = ("date", "pk") if newer else ("-date", "-pk")
+        return (
+            BlogPage.objects.live()
+            .filter(
+                Q(**{f"date__{lookup}": self.date})
+                | Q(date=self.date, **{f"pk__{lookup}": self.pk})
+            )
+            .order_by(*ordering)
+            .first()
+        )
 
     @cached_property
     def next_post(self):
-        return self.get_adjacent_post(self.get_next_by_date)
+        return self.get_adjacent_post(newer=True)
 
     @cached_property
     def previous_post(self):
-        return self.get_adjacent_post(self.get_previous_by_date)
+        return self.get_adjacent_post(newer=False)
 
     @cached_property
     def related_pages(self):

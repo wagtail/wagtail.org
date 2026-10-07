@@ -1,5 +1,7 @@
 context:
   next_post:
+    url: '#'
     title: Preparations for Wagtail Space NL are in full swing
   previous_post:
+    url: '#'
     title: A customizable page explorer and other quality improvements in Wagtail 7.4
