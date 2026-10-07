@@ -4,7 +4,8 @@
         <p class="sign-up-form__sub-heading">{{ sub_heading }}</p>
         <form class="sign-up-form__container" action="https://torchbox.us1.list-manage.com/subscribe/post?u={{ mailchimp_account_id }}&id={{ mailchimp_newsletter_id }}" method="post">
             <div>
-                <input class="sign-up-form__input" id="email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Email" required/>
+                {# prefix keeps the input id unique when the footer form and one or more StreamField signup blocks render on the same page. #}
+                <input class="sign-up-form__input" id="{% if prefix %}{{ prefix }}{% else %}signup{% endif %}_email" name="EMAIL" type="email" autocomplete="email" placeholder="Enter your email address" aria-label="Email" required/>
             </div>
             <button class="button sign-up-form__button" type="submit">
                 <span class="button__text">Sign up</span>
