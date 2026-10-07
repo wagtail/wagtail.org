@@ -1,10 +1,8 @@
-{% load wagtailcore_tags %}
-
 <nav class="next-prev-post" aria-label="Previous and next posts">
     <ul class="next-prev-post__list">
         {% if next_post %}
             <li class="next-prev-post__item">
-                <a class="next-prev-post__link" href="{% pageurl next_post %}">
+                <a class="next-prev-post__link" href="{{ next_post.url }}">
                     <svg class="next-prev-post__arrow" aria-hidden="true"><use xlink:href="#arrow-long"></use></svg>
                     <span class="next-prev-post__label">Next post</span>
                     <span class="next-prev-post__title">{{ next_post.title }}</span>
@@ -14,7 +12,7 @@
 
         {% if previous_post %}
             <li class="next-prev-post__item">
-                <a class="next-prev-post__link" href="{% pageurl previous_post %}">
+                <a class="next-prev-post__link" href="{{ previous_post.url }}">
                     <svg class="next-prev-post__arrow next-prev-post__arrow--previous" aria-hidden="true"><use xlink:href="#arrow-long"></use></svg>
                     <span class="next-prev-post__label">Previous post</span>
                     <span class="next-prev-post__title">{{ previous_post.title }}</span>

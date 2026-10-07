@@ -28,7 +28,7 @@
 
     &--blog-header {
         @include media-query(extra-large) {
-            grid-template-columns: calc($gutter * 3) repeat(14, 1fr) calc($gutter * 3);
+            grid-template-columns: calc($gutter * 3) repeat(14, 1fr) calc($gutter * 2);
         }
     }
 }
