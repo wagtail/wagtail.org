@@ -1,6 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.db.models import F
+from django.db.models import F, Q
 from django.shortcuts import render
 from django.utils.functional import cached_property
 
@@ -191,10 +191,6 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         APIField("authors", writable=True),
     ]
 
-    @property
-    def siblings(self):
-        return self.__class__.objects.live().sibling_of(self).order_by("-date")
-
     content_panels = Page.content_panels + [
         InlinePanel(
             "authors",
@@ -226,6 +222,29 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index.SearchField("introduction"),
         index.SearchField("body"),
     ]
+
+    def get_adjacent_post(self, newer):
+        if self.date is None:
+            return None
+        lookup = "gt" if newer else "lt"
+        ordering = ("date", "pk") if newer else ("-date", "-pk")
+        return (
+            BlogPage.objects.live()
+            .filter(
+                Q(**{f"date__{lookup}": self.date})
+                | Q(date=self.date, **{f"pk__{lookup}": self.pk})
+            )
+            .order_by(*ordering)
+            .first()
+        )
+
+    @cached_property
+    def next_post(self):
+        return self.get_adjacent_post(newer=True)
+
+    @cached_property
+    def previous_post(self):
+        return self.get_adjacent_post(newer=False)
 
     @cached_property
     def related_pages(self):

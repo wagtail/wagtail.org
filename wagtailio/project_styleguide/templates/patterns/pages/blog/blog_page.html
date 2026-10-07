@@ -13,10 +13,10 @@
 {% block content %}
     <article class="blog">
         {# Header #}
-        <header class="blog__header grid">
+        <header class="blog__header grid grid--blog-header">
             {% include "patterns/components/meta/meta.html" with value=page classes="blog__meta" %}
 
-            <h1 class="blog__heading article-heading">{{ page.title }}</h1>
+            <h1 class="blog__heading heading-one">{{ page.title }}</h1>
 
             {% if page.introduction %}
                 <h2 class="blog__intro intro-small">{{ page.introduction }}</h2>
@@ -24,6 +24,12 @@
 
             {% if page.authors.all %}
                 {% include "patterns/components/authors/authors.html" with authors=page.authors.all author_class="author--blog" authors_class="blog__authors"%}
+            {% endif %}
+
+            {% if page.next_post or page.previous_post %}
+                <div class="blog__next-prev-post">
+                    {% include "patterns/components/next-prev-post/next-prev-post.html" with next_post=page.next_post previous_post=page.previous_post %}
+                </div>
             {% endif %}
         </header>
 
