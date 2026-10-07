@@ -1,8 +1,9 @@
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import InvalidPage, Paginator
 from django.db import models
 from django.db.models import F
-from django.shortcuts import render
+from django.http import Http404
 from django.utils.functional import cached_property
+from django.utils.http import urlencode
 
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -14,7 +15,6 @@ from wagtail.snippets.models import register_snippet
 
 from wagtailio.blog.blocks import BlogStoryBlock
 from wagtailio.core.models import SchemaOrgMixin
-from wagtailio.taxonomy.models import Category
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 from wagtailio.utils.schema_org import get_organisation_schema
 
@@ -47,46 +47,35 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             .order_by("-date", "pk")
         )
 
-    def serve(self, request):
-        if request.GET.get("category"):
-            posts = self.posts.filter(category=request.GET.get("category"))
-        else:
-            posts = self.posts
+    def get_context(self, request, *args, **kwargs):
+        from wagtailio.blog.filters import BlogPostFilterSet
 
-        # Pagination
-        paginator = Paginator(posts, 10)  # Show 10 blog posts per page
+        context = super().get_context(request, *args, **kwargs)
 
-        page = request.GET.get("page")
+        filterset = BlogPostFilterSet(request.GET, queryset=self.posts)
+        if not filterset.is_valid():
+            raise Http404
+
+        paginator = Paginator(filterset.qs, 10)
         try:
-            posts = paginator.page(page)
-            current_page = posts.number
-        except PageNotAnInteger:
-            posts = paginator.page(1)
-            current_page = 1
-        except EmptyPage:
-            posts = None
-            current_page = 1
+            page = paginator.page(request.GET.get("page", 1))
+        except InvalidPage:
+            raise Http404 from None
 
-        pagination_sequence = paginator.get_elided_page_range(
-            number=current_page, on_each_side=2, on_ends=1
+        is_filtered = any(filterset.form.cleaned_data.values())
+        context.update(
+            filterset=filterset,
+            paginator_page=page,
+            pagination_sequence=paginator.get_elided_page_range(
+                page.number, on_each_side=2, on_ends=1
+            ),
+            featured_posts=(
+                []
+                if is_filtered
+                else [featured.page for featured in self.featured_posts.all()]
+            ),
         )
-
-        return render(
-            request,
-            self.template,
-            {
-                "page": self,
-                "posts": posts,
-                "pagination_sequence": pagination_sequence,
-                "featured_posts": [post.page for post in self.featured_posts.all()],
-                "categories": Category.objects.filter(
-                    pk__in=models.Subquery(self.posts.values("category"))
-                )
-                .values_list("pk", "title")
-                .distinct()
-                .order_by("title"),
-            },
-        )
+        return context
 
     content_panels = Page.content_panels + [
         InlinePanel(
@@ -226,6 +215,15 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index.SearchField("introduction"),
         index.SearchField("body"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        index_url = self.get_parent().get_url(request)
+        context["blog_index_url"] = index_url
+        if self.category:
+            query = urlencode({"category": self.category.pk})
+            context["category_url"] = f"{index_url}?{query}"
+        return context
 
     @cached_property
     def related_pages(self):

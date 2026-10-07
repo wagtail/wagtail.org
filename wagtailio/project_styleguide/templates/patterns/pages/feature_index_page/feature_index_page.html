@@ -6,7 +6,7 @@
 {% block content %}
 
     <div class="features" {% if page.features %}data-feature-index{% endif %}>
-        {% include "patterns/components/hero/hero.html" with value=page classes="hero--features" %}
+        {% include "patterns/components/hero/hero.html" with value=page classes="hero--with-filters" %}
 
         {% include_block page.features %}
     </div>

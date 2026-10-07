@@ -1,16 +1,22 @@
 {% extends "patterns/base_page.html" %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-blog{% endblock %}
 
 {% block content %}
 
-    {% include "patterns/components/hero/hero.html" with value=page classes="hero--small-margin" %}
+    {% include "patterns/components/hero/hero.html" with value=page classes="hero--with-filters" %}
+
+    <form class="grid" method="get" action="{% pageurl page %}" data-filter-form>
+        {% include "patterns/components/filters/filters.html" with legend="Filter posts by category" options=filterset.filters.category.queryset selected=filterset.form.cleaned_data.category name="category" id_prefix="category" extra_name="author" extra_value=filterset.form.cleaned_data.author %}
+        <noscript><button class="button" type="submit">Apply filters</button></noscript>
+    </form>
 
     <div class="grid">
         <section class="blog-listing">
-            {% for post in posts %}
+            {% for post in paginator_page %}
                 {# only show featured posts on the first pagination page, no filters #}
-                {% if featured_posts and posts.number == 1 and 'category' not in request.GET %}
+                {% if featured_posts and paginator_page.number == 1 %}
                     {% comment %}
                         With pagination set to 10 posts per page, the display of posts (p) and featured_posts (FP)
                         follows the pattern shown in the table below, which can be summarized as follows:
@@ -67,50 +73,54 @@
                 {% else %}
                     {% include 'patterns/pages/blog/includes/blog_post.html' with post=post %}
                 {% endif %}
+            {% empty %}
+                <p>No posts found</p>
             {% endfor %}
         </section>
     </div>
 
-    <div class="grid">
-        <nav class="pagination" aria-labelledby="pagination-label">
-            <span id="pagination-label" class="u-sr-only">Pagination</span>
-            {% if posts.has_previous %}
-                <a href="?page={{ posts.previous_page_number }}" class="pagination__previous button button--reverse">
-                    <p class="button__text">
-                        Previous
-                        <span class="u-sr-only">- Go to page {{ posts.previous_page_number}}</span>
-                    </p>
-                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-                </a>
-            {% endif %}
+    {% if paginator_page.paginator.num_pages > 1 %}
+        <div class="grid">
+            <nav class="pagination" aria-labelledby="pagination-label">
+                <span id="pagination-label" class="u-sr-only">Pagination</span>
+                {% if paginator_page.has_previous %}
+                    <a href="{% querystring page=paginator_page.previous_page_number %}" class="pagination__previous button button--reverse">
+                        <p class="button__text">
+                            Previous
+                            <span class="u-sr-only">- Go to page {{ paginator_page.previous_page_number}}</span>
+                        </p>
+                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                {% endif %}
 
-            <ul class="pagination__sequence">
-                {% for num in pagination_sequence %}
-                    {% if num == posts.paginator.ELLIPSIS %}
-                        <li>
-                            <span class="pagination__ellipsis" aria-hidden="true">{{ num }}</span>
-                        </li>
-                    {% elif num == posts.number %}
-                        <li>
-                            <a href="?page={{ num }}" class="pagination__page-number pagination__page-number--current" aria-current="page"><span class="u-sr-only">Page </span>{{ num }}</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="?page={{ num }}" class="pagination__page-number"><span class="u-sr-only">Page </span>{{ num }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                <ul class="pagination__sequence">
+                    {% for num in pagination_sequence %}
+                        {% if num == paginator_page.paginator.ELLIPSIS %}
+                            <li>
+                                <span class="pagination__ellipsis" aria-hidden="true">{{ num }}</span>
+                            </li>
+                        {% elif num == paginator_page.number %}
+                            <li>
+                                <a href="{% querystring page=num %}" class="pagination__page-number pagination__page-number--current" aria-current="page"><span class="u-sr-only">Page </span>{{ num }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% querystring page=num %}" class="pagination__page-number"><span class="u-sr-only">Page </span>{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
 
-            {% if posts.has_next %}
-                <a href="?page={{ posts.next_page_number }}" class="pagination__next button">
-                    <p class="button__text">
-                        Next
-                        <span class="u-sr-only">- Go to page {{ posts.next_page_number}}</span>
-                    </p>
-                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-                </a>
-            {% endif %}
-        </nav>
-    </div>
+                {% if paginator_page.has_next %}
+                    <a href="{% querystring page=paginator_page.next_page_number %}" class="pagination__next button">
+                        <p class="button__text">
+                            Next
+                            <span class="u-sr-only">- Go to page {{ paginator_page.next_page_number}}</span>
+                        </p>
+                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                    </a>
+                {% endif %}
+            </nav>
+        </div>
+    {% endif %}
 {% endblock %}

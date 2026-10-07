@@ -133,11 +133,11 @@
         }
     }
 
-    &--features {
+    &--with-filters {
         margin-bottom: 20px;
 
         @include media-query(large) {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         #{$root}__subheading {

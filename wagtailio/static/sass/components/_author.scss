@@ -2,6 +2,7 @@
 
 .author {
     $root: &;
+    position: relative;
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -19,20 +20,35 @@
         }
     }
 
-    &__name {
+    &__name,
+    &__link {
         font-weight: $weight--bold;
         font-size: 16px;
         margin-bottom: 0;
         line-height: 1;
 
-        a {
-            text-decoration: none;
-            color: $color--off-black;
-        }
-
         .blog-post__content & {
             font-size: 14px;
             font-weight: $weight--regular;
+        }
+    }
+
+    &__link {
+        color: var(--color--text);
+        text-decoration: none;
+        transition: color 0.3s;
+
+        // Stretch the link over the whole author
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        &:hover,
+        &:focus-visible,
+        #{$root}:hover & {
+            color: var(--color--interaction);
         }
     }
 
