@@ -115,7 +115,7 @@ class HomePage(SchemaOrgMixin, SocialMediaMixin, CrossPageMixin, Page):
         return get_organisation_schema() or {}
 
 
-class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
+class ContentPage(SchemaOrgMixin, Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     template = "patterns/pages/content_page/content_page.html"
 
     parent_page_types = ["core.HomePage", "core.ContentPage"]

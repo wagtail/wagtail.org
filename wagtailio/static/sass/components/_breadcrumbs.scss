@@ -1,0 +1,64 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.breadcrumbs {
+    margin-bottom: 70px;
+    background-color: var(--color--card);
+
+    @include media-query(medium) {
+        margin-bottom: 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px 10px;
+        max-width: $site-width;
+        margin: 0 auto;
+        padding: 12px 15px;
+        list-style: none;
+
+        @include media-query(medium) {
+            padding: 12px 50px;
+        }
+    }
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+
+        &--hidden {
+            display: none;
+
+            @include media-query(medium) {
+                display: inline-flex;
+            }
+        }
+    }
+
+    &__link {
+        font-size: 14px;
+        text-underline-offset: 2px;
+        transition: color 0.3s;
+        color: var(--color--text);
+
+        &:hover,
+        &:focus-visible {
+            color: var(--color--interaction);
+        }
+
+        @include media-query(large) {
+            font-size: 16px;
+        }
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 10px;
+        height: 10px;
+        fill: var(--color--link);
+        transform: rotate(-90deg);
+    }
+}

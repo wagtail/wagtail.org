@@ -1,0 +1,26 @@
+{% load wagtailcore_tags %}
+
+{# Only show breadcrumbs on pages below a section, not the homepage or the sections themselves #}
+{% if page.depth > 3 %}
+    {% with page_ancestors=page.get_ancestors %}
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumbs__list">
+                {% for ancestor_page in page_ancestors %}
+                    {% if not ancestor_page.is_root %}
+                        {# On small screens only show Home and the direct parent #}
+                        <li class="breadcrumbs__item{% if ancestor_page.depth != 2 and not forloop.last %} breadcrumbs__item--hidden{% endif %}">
+                            {% if ancestor_page.depth == 2 %}
+                                <a class="breadcrumbs__link" href="/">Home</a>
+                            {% else %}
+                                <a class="breadcrumbs__link" href="{% pageurl ancestor_page %}">{{ ancestor_page.title }}</a>
+                            {% endif %}
+                            {% if not forloop.last %}
+                                <svg class="breadcrumbs__icon" aria-hidden="true"><use xlink:href="#chevron"></use></svg>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    {% endwith %}
+{% endif %}
