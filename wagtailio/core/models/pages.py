@@ -11,6 +11,7 @@ from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBloc
 from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin, SchemaOrgMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.utils.page_tree import build_page_tree
 from wagtailio.utils.schema_org import get_organisation_schema
 
 
@@ -135,3 +136,15 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
+
+    def get_section_navigation(self):
+        if not self.numchild:
+            return []
+
+        pages = self.get_descendants().live().public().in_menu()
+        return build_page_tree(pages, self)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["section_navigation"] = self.get_section_navigation()
+        return context
