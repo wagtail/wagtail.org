@@ -1,0 +1,40 @@
+{% load wagtailcore_tags %}
+
+{% if items %}
+    <div class="grid">
+        <nav class="section-navigation" aria-labelledby="section-navigation-heading">
+            <h2 class="section-navigation__heading heading-three" id="section-navigation-heading">In this section</h2>
+
+            <ul class="section-navigation__list">
+                {% for item in items %}
+                    <li class="section-navigation__item">
+                        <a class="section-navigation__link" href="{% pageurl item.page %}">
+                            <svg class="section-navigation__icon" aria-hidden="true"><use xlink:href="#arrow-in-circle-flat"></use></svg>
+                            {{ item.page.title }}
+                        </a>
+
+                        {% if item.children %}
+                            <ul class="section-navigation__list section-navigation__list--nested">
+                                {% for child in item.children %}
+                                    <li class="section-navigation__item">
+                                        <a class="section-navigation__link" href="{% pageurl child.page %}">{{ child.page.title }}</a>
+
+                                        {% if child.children %}
+                                            <ul class="section-navigation__list section-navigation__list--nested">
+                                                {% for grandchild in child.children %}
+                                                    <li class="section-navigation__item">
+                                                        <a class="section-navigation__link" href="{% pageurl grandchild.page %}">{{ grandchild.page.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}
