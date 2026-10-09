@@ -1,0 +1,23 @@
+context:
+  items:
+    - page:
+        title: Audits and conformance reports
+      children:
+        - page:
+            title: Wagtail 7.4 ACR
+          children: []
+        - page:
+            title: Wagtail 7.0 ACR
+          children:
+            - page:
+                title: Executive summary
+              children: []
+    - page:
+        title: Impact reports
+      children: []
+    - page:
+        title: Accessibility considerations
+      children: []
+    - page:
+        title: ATAG2.0 audit report
+      children: []
