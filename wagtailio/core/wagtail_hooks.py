@@ -1,12 +1,18 @@
+from html import unescape
+
 from django.core.files.storage import default_storage
 from django.shortcuts import redirect
 from django.utils.cache import add_never_cache_headers
+from django.utils.html import strip_tags
+from django.utils.text import slugify
 
 from wagtail import hooks
+from wagtail.admin.rich_text.converters.html_to_contentstate import BlockElementHandler
 from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
 from wagtail.whitelist import allow_without_attributes
 
+from draftjs_exporter.dom import DOM
 from storages.backends.s3 import S3Storage
 
 
@@ -75,3 +81,35 @@ def apply_chooser_ordering(pages, request):
     parent = first_page and first_page.get_parent()
     ordering = parent and getattr(parent.specific_class, "chooser_ordering", None)
     return pages.order_by(*ordering) if ordering else pages
+
+
+def get_heading_text(children):
+    if isinstance(children, str):
+        return children
+    return unescape(strip_tags(DOM.render(children)))
+
+
+class AnchoredHeadingConverter:
+    def __init__(self, tag):
+        self.tag = tag
+
+    def __call__(self, props):
+        children = props["children"]
+        anchor = slugify(get_heading_text(children))
+        return DOM.create_element(self.tag, {"id": anchor} if anchor else {}, children)
+
+
+@hooks.register("register_rich_text_features")
+def register_heading_anchors(features):
+    """Give rich text headings an `id`, so that the in-page navigation can link to them."""
+    for tag, block_type in [("h2", "header-two"), ("h3", "header-three")]:
+        features.register_converter_rule(
+            "contentstate",
+            tag,
+            {
+                "from_database_format": {tag: BlockElementHandler(block_type)},
+                "to_database_format": {
+                    "block_map": {block_type: AnchoredHeadingConverter(tag)}
+                },
+            },
+        )
