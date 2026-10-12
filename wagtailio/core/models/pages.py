@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
@@ -137,14 +138,10 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
         index.SearchField("body"),
     ]
 
-    def get_section_navigation(self):
+    @cached_property
+    def section_navigation(self):
         if not self.numchild:
             return []
 
         pages = self.get_descendants().live().public().in_menu()
         return build_page_tree(pages, self)
-
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        context["section_navigation"] = self.get_section_navigation()
-        return context
