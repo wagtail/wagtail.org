@@ -1,0 +1,73 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.in-page-navigation {
+    $root: &;
+    grid-column: 2 / span 2;
+    padding-left: $gutter;
+    margin: $gutter 0 $gutter-lg;
+    border-left: 1px solid var(--color--text);
+
+    @include media-query(medium) {
+        margin: $gutter 0 $gutter-lg * 2;
+    }
+
+    @include media-query(large) {
+        grid-column: 2 / span 3;
+    }
+
+    &__heading {
+        margin-bottom: 25px;
+        font-weight: $weight--regular;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        // Lines up with the text above it (after the arrow and its gap)
+        &--nested {
+            margin: 8px 0 0 30px;
+        }
+    }
+
+    &__item + &__item {
+        margin-top: 15px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        width: fit-content;
+        color: var(--color--text);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        transition: color 0.3s;
+
+        &--parent {
+            font-weight: $weight--semibold;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: var(--color--interaction);
+
+            #{$root}__icon {
+                color: var(--color--interaction);
+            }
+        }
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: calc((1lh - 20px) / 2);
+        color: var(--color--link);
+        transform: rotate(90deg);
+        transition: color 0.3s;
+    }
+}
