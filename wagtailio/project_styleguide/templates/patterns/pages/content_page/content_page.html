@@ -3,10 +3,18 @@
 
 {% block content %}
     {% if page.has_hero %}
-        {% include "patterns/components/hero/hero.html" with value=page classes=page.section_navigation|yesno:"hero--no-margin," %}
+        {% if page.section_navigation or page.in_page_navigation %}
+            {% include "patterns/components/hero/hero.html" with value=page classes="hero--no-margin" %}
+        {% else %}
+            {% include "patterns/components/hero/hero.html" with value=page %}
+        {% endif %}
     {% endif %}
 
-    {% include "patterns/components/section-navigation/section-navigation.html" with items=page.section_navigation %}
+    {% if page.in_page_navigation %}
+        {% include "patterns/components/in-page-navigation/in-page-navigation.html" with items=page.in_page_navigation %}
+    {% else %}
+        {% include "patterns/components/section-navigation/section-navigation.html" with items=page.section_navigation %}
+    {% endif %}
 
     {% include_block page.body %}
 {% endblock %}
