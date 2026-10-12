@@ -5,14 +5,15 @@
     $root: &;
     @include offset-bg-right();
     grid-column: 2 / span 2;
-    padding: 0 0 $gutter $gutter;
+    padding: 0 0 0 $gutter;
     margin: $gutter 0 $gutter-lg;
     border-left: 1px solid var(--color--text);
     border-radius: 0 20px 20px 0;
-    background-color: var(--color--light-dark);
+    background-color: var(--color--background);
 
     @include media-query(medium) {
         margin: $gutter 0 $gutter-lg * 2;
+        padding: 0 0 $gutter $gutter;
     }
 
     @include media-query(large) {
