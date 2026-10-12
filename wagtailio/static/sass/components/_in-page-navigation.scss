@@ -13,7 +13,12 @@
     }
 
     @include media-query(large) {
+        padding-left: 40px;
         grid-column: 2 / span 3;
+    }
+
+    @include media-query(extra-large) {
+        padding: 0 $gutter-xl 0 50px;
     }
 
     &__heading {
@@ -46,10 +51,6 @@
         text-decoration-thickness: 1px;
         text-underline-offset: 2px;
         transition: color 0.3s;
-
-        &--parent {
-            font-weight: $weight--semibold;
-        }
 
         &:hover,
         &:focus-visible {

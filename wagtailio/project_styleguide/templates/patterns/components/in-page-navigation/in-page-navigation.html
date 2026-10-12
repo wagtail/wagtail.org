@@ -6,7 +6,7 @@
             <ul class="in-page-navigation__list">
                 {% for item in items %}
                     <li class="in-page-navigation__item">
-                        <a class="in-page-navigation__link{% if item.children %} in-page-navigation__link--parent{% endif %}" href="#{{ item.id }}">
+                        <a class="in-page-navigation__link" href="#{{ item.id }}">
                             <svg class="in-page-navigation__icon" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
                             {{ item.text }}
                         </a>
