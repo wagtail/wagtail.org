@@ -146,8 +146,9 @@ CSP_STYLE_SRC="'self', 'report-sample'"
 # Allows JS from:
 # - GitHub button
 # - Google Tag Manager and Google Analytics
+# - Plausible analytics
 # - YouTube embeds
-CSP_SCRIPT_SRC="'self', 'report-sample', buttons.github.io, *.googletagmanager.com, www.google-analytics.com, www.youtube.com"
+CSP_SCRIPT_SRC="'self', 'report-sample', buttons.github.io, *.googletagmanager.com, www.google-analytics.com, plausible.io, www.youtube.com"
 # Allows images from:
 # - Gravatar (for CMS user avatars)
 # - Media uploaded to the CMS
@@ -157,6 +158,10 @@ CSP_IMG_SRC="'self', data:, www.gravatar.com, media.wagtail.org, *.google-analyt
 CSP_MANIFEST_SRC='wagtail.org'
 # Allows loading user-uploaded video.
 CSP_MEDIA_SRC="'self', media.wagtail.org"
+# Allows embedding YouTube videos.
+CSP_FRAME_SRC="'self', www.youtube.com"
+# Allows submitting the newsletter sign-up forms to Mailchimp.
+CSP_FORM_ACTION="'self', torchbox.us1.list-manage.com"
 # Allows fetching from:
 # - Wagtail releases checker
 # - GitHub API

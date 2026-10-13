@@ -421,6 +421,8 @@ if "CSP_DEFAULT_SRC" in env:
         "font-src": "CSP_FONT_SRC",
         "base-uri": "CSP_BASE_URI",
         "object-src": "CSP_OBJECT_SRC",
+        "frame-src": "CSP_FRAME_SRC",
+        "form-action": "CSP_FORM_ACTION",
         "manifest-src": "CSP_MANIFEST_SRC",
         "report-uri": "CSP_REPORT_URI",
     }
