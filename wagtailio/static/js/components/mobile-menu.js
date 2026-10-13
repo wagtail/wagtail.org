@@ -23,7 +23,9 @@ class MobileMenu {
 
         // Only create focus trap if required elements exist
         if (this.mobileMenu) {
-            this.focusTrap = createFocusTrap(this.mobileMenu);
+            this.focusTrap = createFocusTrap(this.mobileMenu, {
+                allowOutsideClick: (e) => !!e.target.closest('[data-site-search-mobile]'),
+            });
         } else {
             this.focusTrap = null;
         }
