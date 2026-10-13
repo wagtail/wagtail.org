@@ -14,6 +14,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from wagtailio.blog.blocks import BlogStoryBlock
+from wagtailio.blog.filters import BlogPostFilterSet
 from wagtailio.core.models import SchemaOrgMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
 from wagtailio.utils.schema_org import get_organisation_schema
@@ -48,8 +49,6 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
         )
 
     def get_context(self, request, *args, **kwargs):
-        from wagtailio.blog.filters import BlogPostFilterSet
-
         context = super().get_context(request, *args, **kwargs)
 
         filterset = BlogPostFilterSet(request.GET, queryset=self.posts)
