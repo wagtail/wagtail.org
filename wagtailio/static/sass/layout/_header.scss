@@ -170,17 +170,12 @@
 
     &__search {
         position: relative;
-        top: -6px;
         display: flex;
         align-items: center;
         margin-right: 10px;
 
         @include media-query(medium) {
             margin-right: 20px;
-        }
-
-        @include media-query(large) {
-            top: -3px;
         }
 
         @media only screen and (min-width: $header-github) {
@@ -224,8 +219,8 @@
     }
 
     &__menu-toggle {
-        position: relative;
-        top: -7px;
+        display: flex;
+        align-items: center;
 
         @media only screen and (min-width: $header-desktop) {
             display: none;
