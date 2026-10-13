@@ -5,6 +5,8 @@
 /venv/
 /.venv/
 /env/
+.env
+.wagtail-cli.toml
 /static/
 /media/
 /.vagrant/
