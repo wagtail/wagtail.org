@@ -39,6 +39,11 @@ class MobileMenu {
             this.toggle();
         });
 
+        // Close the menu when the mobile search opens
+        document.addEventListener('onMobileSearchOpen', () => {
+            if (this.state.open) this.close();
+        });
+
         // Allow pressing Escape to close
         if (this.mobileMenu) {
             this.mobileMenu.addEventListener('keydown', (e) => {
