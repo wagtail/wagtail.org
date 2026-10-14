@@ -1,0 +1,44 @@
+{% if paginator_page.paginator.num_pages > 1 %}
+    <div class="grid">
+        <nav class="pagination" aria-labelledby="pagination-label">
+            <span id="pagination-label" class="u-sr-only">Pagination</span>
+            {% if paginator_page.has_previous %}
+                <a href="{% querystring page=paginator_page.previous_page_number %}" class="pagination__previous button button--reverse">
+                    <p class="button__text">
+                        Previous
+                        <span class="u-sr-only">- Go to page {{ paginator_page.previous_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+
+            <ul class="pagination__sequence">
+                {% for num in pagination_sequence %}
+                    {% if num == paginator_page.paginator.ELLIPSIS %}
+                        <li>
+                            <span class="pagination__ellipsis" aria-hidden="true">{{ num }}</span>
+                        </li>
+                    {% elif num == paginator_page.number %}
+                        <li>
+                            <a href="{% querystring page=num %}" class="pagination__page-number pagination__page-number--current" aria-current="page"><span class="u-sr-only">Page </span>{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% querystring page=num %}" class="pagination__page-number"><span class="u-sr-only">Page </span>{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            {% if paginator_page.has_next %}
+                <a href="{% querystring page=paginator_page.next_page_number %}" class="pagination__next button">
+                    <p class="button__text">
+                        Next
+                        <span class="u-sr-only">- Go to page {{ paginator_page.next_page_number}}</span>
+                    </p>
+                    <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
+                </a>
+            {% endif %}
+        </nav>
+    </div>
+{% endif %}
