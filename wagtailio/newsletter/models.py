@@ -9,6 +9,7 @@ from wagtail.search import index
 
 
 class NewsletterPage(Page):
+    meta_text = "Newsletter"
     date = models.DateField("Newsletter date")
     intro = RichTextField(blank=True)
     body = RichTextField()
@@ -23,6 +24,10 @@ class NewsletterPage(Page):
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
+
+    @property
+    def publication_date(self):
+        return self.date
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
