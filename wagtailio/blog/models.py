@@ -44,7 +44,7 @@ class BlogIndexPage(Page, SocialMediaMixin, CrossPageMixin):
             .descendant_of(self)
             .select_related("category", "main_image")
             .prefetch_related("authors__author__image")
-            .order_by("-date", "pk")
+            .order_by("-date", "-pk")
         )
 
     def serve(self, request):
