@@ -209,6 +209,11 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
     search_fields = Page.search_fields + [
         index.SearchField("introduction"),
         index.SearchField("body"),
+        index.SearchField("listing_intro"),
+        index.RelatedFields("category", [index.SearchField("title")]),
+        index.RelatedFields(
+            "authors", [index.RelatedFields("author", [index.SearchField("name")])]
+        ),
     ]
 
     def get_adjacent_post(self, newer):
