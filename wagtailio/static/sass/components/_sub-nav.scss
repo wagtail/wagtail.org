@@ -40,10 +40,10 @@
         visibility: visible;
         border-radius: $rounded-xl;
         box-shadow: 0 0 40px rgba($color--black, 0.2);
-    }
 
-    .theme-dark & {
-        border: 1px solid $color--black;
+        .theme-dark & {
+            border: 1px solid $color--black;
+        }
     }
 
     // mobile active state
