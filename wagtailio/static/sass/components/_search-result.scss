@@ -1,8 +1,19 @@
+@use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
 
 .search-result {
   padding-bottom: 40px;
-  border-bottom: 1px solid $color--black;
+  border-bottom: 1px solid $color--cool-grey;
+
+  &__inner {
+    @include media-query(medium) {
+      max-width: 85%;
+    }
+  }
+
+  &__meta {
+    margin-bottom: 10px;
+  }
 
   &__title {
     color: var(--color--heading);
