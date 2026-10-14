@@ -56,6 +56,9 @@ def search(request):
         {
             "search_query": search_query,
             "search_results": search_results,
+            "pagination_sequence": paginator.get_elided_page_range(
+                search_results.number, on_each_side=2, on_ends=1
+            ),
             "result_count": result_count,
         },
     )
