@@ -24,6 +24,7 @@ def search(request):
         # Exclude them from search results so they are not shown twice.
         search_results = (
             Page.objects.live()
+            .public()
             .exclude(pk__in=promoted_page_pks)
             .specific()
             .search(search_query, operator="and")
