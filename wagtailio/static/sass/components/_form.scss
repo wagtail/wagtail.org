@@ -21,21 +21,18 @@
   &__field {
     &--with-button {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      max-width: 500px;
 
-      @include media-query(medium) {
-        gap: 0;
+      #{$root}__input {
+        width: 100%;
+        min-width: 0;
+        border-radius: $rounded-md 0 0 $rounded-md;
+        border-right: 0;
+      }
 
-        // stylelint-disable max-nesting-depth
-        #{$root}__input {
-          border-radius: $rounded-md 0 0 $rounded-md;
-          border-right: 0;
-        }
-
-        .button {
-          border-radius: 0 $rounded-md $rounded-md 0;
-        }
+      .button {
+        flex-shrink: 0;
+        border-radius: 0 $rounded-md $rounded-md 0;
       }
     }
   }
