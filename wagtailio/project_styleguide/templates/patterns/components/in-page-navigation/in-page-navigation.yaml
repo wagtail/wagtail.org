@@ -1,0 +1,15 @@
+context:
+  items:
+    - id: overview
+      text: Overview
+    - id: anchored-section-on-this-page
+      text: Anchored section on this page
+      children:
+        - id: a-subsection
+          text: A subsection
+        - id: another-subsection
+          text: Another subsection
+    - id: another-one
+      text: Another one
+    - id: and-yes-theres-more
+      text: And yes there’s more

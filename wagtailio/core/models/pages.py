@@ -12,7 +12,7 @@ from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBloc
 from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin, SchemaOrgMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
-from wagtailio.utils.page_tree import build_page_tree
+from wagtailio.utils.navigation_trees import build_page_tree, get_headings
 from wagtailio.utils.schema_org import get_organisation_schema
 
 
@@ -124,8 +124,20 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
     subpage_types = ["core.ContentPage"]
 
     body = StreamField(ContentStoryBlock())
+    show_in_page_navigation = models.BooleanField(
+        "Show in-page navigation",
+        default=False,
+        help_text="Lists the headings in the rich text of this page. "
+        "Replaces the section navigation if this page has one.",
+    )
 
-    content_panels = Page.content_panels + HeroMixin.panels + [FieldPanel("body")]
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            HeroMixin.panels[0].children + [FieldPanel("show_in_page_navigation")],
+            "Hero",
+        ),
+        FieldPanel("body"),
+    ]
 
     promote_panels = (
         Page.promote_panels + SocialMediaMixin.panels + CrossPageMixin.panels
@@ -137,6 +149,17 @@ class ContentPage(Page, HeroMixin, SocialMediaMixin, CrossPageMixin):
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
+
+    @cached_property
+    def in_page_navigation(self):
+        if not self.show_in_page_navigation:
+            return []
+
+        return get_headings(
+            str(block.value["rich_text"].source)
+            for block in self.body
+            if block.block_type == "rich_text"
+        )
 
     @cached_property
     def section_navigation(self):
