@@ -49,6 +49,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
+      - run: npm test
       - run: npm run build:prod
   test_python:
     runs-on: ubuntu-latest
