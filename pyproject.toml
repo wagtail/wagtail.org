@@ -40,3 +40,5 @@ wagtail-schema-org = "~5.0"
 pre-commit = "4.5.0"
 djhtml = "3.0.10"
 ruff = "0.15.2"  # keep in sync with .pre-commit-config.yaml
+factory-boy = "3.3.3"
+wagtail-factories = "4.5.0"
