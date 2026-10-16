@@ -1,0 +1,14 @@
+context:
+  value:
+    table_caption: 'Wagtail compared with another CMS'
+    first_row_is_table_header: true
+    first_col_is_header: true
+    data:
+      - ['', 'Wagtail', 'Another CMS']
+      - ['Programming language', 'Python', 'PHP']
+      - [
+          'Ease of use',
+          'Requires a developer to set up.',
+          'Can be set up by anyone.',
+        ]
+      - ['Customization', 'No frontend restrictions.', 'Themes only.']
