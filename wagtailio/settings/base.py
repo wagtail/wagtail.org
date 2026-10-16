@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     "wagtail.api.v2",
     "wagtail.api.v3",
     "wagtail.contrib.settings",
+    "wagtail.contrib.table_block",
     "wagtail.contrib.typed_table_block",
     "wagtail.contrib.search_promotions",
     "wagtailio.wagtailspace",

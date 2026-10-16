@@ -1,0 +1,51 @@
+{% load wagtailcore_tags %}
+
+<div class="grid grid--table">
+    <div class="table-block">
+        <table>
+            {% if value.table_caption %}
+                <caption>{{ value.table_caption }}</caption>
+            {% endif %}
+            {% if value.first_row_is_table_header %}
+                <thead>
+                    <tr>
+                        {% for cell in value.data.0 %}
+                            {% if forloop.first and value.first_col_is_header %}
+                                <td></td>
+                            {% else %}
+                                <th scope="col">{{ cell }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in value.data|slice:"1:" %}
+                        <tr>
+                            {% for cell in row %}
+                                {% if forloop.first and value.first_col_is_header %}
+                                    <th scope="row">{{ cell }}</th>
+                                {% else %}
+                                    <td>{{ cell }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% else %}
+                <tbody>
+                    {% for row in value.data %}
+                        <tr>
+                            {% for cell in row %}
+                                {% if forloop.first and value.first_col_is_header %}
+                                    <th scope="row">{{ cell }}</th>
+                                {% else %}
+                                    <td>{{ cell }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+        </table>
+    </div>
+</div>
