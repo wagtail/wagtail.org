@@ -23,7 +23,7 @@ def space_navigation(context):
                     "menu_url": block.value.get("space_menu_url"),
                 }
             )
-    except (KeyError, AttributeError):
+    except KeyError, AttributeError:
         return {}
 
     return {"spacemenus": spacemenus}

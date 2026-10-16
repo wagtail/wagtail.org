@@ -10,6 +10,8 @@
     - With `css-loader`, `postcss-loader`, and `sass-loader` to process stylesheets.
 - CSS linting with `stylelint`
 - JS linting with `eslint`
+- JS testing with `jest`
+- Accessibility testing with [pa11y-ci](https://github.com/pa11y/pa11y-ci)
 
 ## Developing with it
 
