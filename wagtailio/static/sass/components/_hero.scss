@@ -19,6 +19,10 @@
         margin-bottom: 75px;
     }
 
+    &--no-margin {
+        margin-bottom: 0;
+    }
+
     &__inner {
         padding-top: 20px;
 
@@ -133,11 +137,11 @@
         }
     }
 
-    &--features {
+    &--with-filters {
         margin-bottom: 20px;
 
         @include media-query(large) {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         #{$root}__subheading {

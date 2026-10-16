@@ -24,6 +24,7 @@ def search(request):
         # Exclude them from search results so they are not shown twice.
         search_results = (
             Page.objects.live()
+            .public()
             .exclude(pk__in=promoted_page_pks)
             .specific()
             .search(search_query, operator="and")
@@ -55,6 +56,9 @@ def search(request):
         {
             "search_query": search_query,
             "search_results": search_results,
+            "pagination_sequence": paginator.get_elided_page_range(
+                search_results.number, on_each_side=2, on_ends=1
+            ),
             "result_count": result_count,
         },
     )

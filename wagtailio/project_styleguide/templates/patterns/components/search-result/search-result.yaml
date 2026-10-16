@@ -1,0 +1,7 @@
+context:
+  page:
+    title: Page title
+    url: '#'
+    meta_text: Category
+    publication_date: !!timestamp '2026-10-14'
+    listing_intro: Listing summary for the page

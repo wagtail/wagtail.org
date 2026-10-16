@@ -36,55 +36,27 @@
     <div class="grid">
         <div class="search-page__results">
             {% get_search_promotions search_query as search_picks %}
-            {% if search_picks %}
-                {% for pick in search_picks %}
-                    {% with page=pick.page %}
-                        <div class="search-result">
-                            <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                            <p>{% firstof page.listing_intro page.introduction %}</p>
-                        </div>
-                    {% endwith %}
-                {% endfor %}
+
+            {% if result_count %}
+                <div role="status">
+                    <h2 class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
+                        {{ search_query }}{% endif %}</h2>
+                </div>
             {% endif %}
 
-            {% if search_results %}
-                <p class="intro-small">{{ result_count }} Result{{ result_count|pluralize }} for{% if search_query %}
-                    {{ search_query }}{% endif %}</p>
+            {% for pick in search_picks %}
+                {% include "patterns/components/search-result/search-result.html" with page=pick.page.specific %}
+            {% endfor %}
 
-                {% for page in search_results %}
-                    <div class="search-result">
-                        <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
-                        <p>{% firstof page.listing_intro page.introduction %}</p>
-                    </div>
-                {% endfor %}
+            {% for page in search_results %}
+                {% include "patterns/components/search-result/search-result.html" %}
+            {% endfor %}
 
-            {% elif search_query and not search_picks %}
+            {% if search_query and not result_count %}
                 <p>No results found. Please try again.</p>
             {% endif %}
         </div>
     </div>
 
-    {% if search_results.paginator.num_pages > 1 %}
-        <div class="grid">
-            <div class="pagination">
-                {% if search_results.has_previous %}
-                    <a href="?page={{ search_results.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__previous button button--reverse">
-                        <p class="button__text">Previous</p>
-                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                {% endif %}
-
-                <span class="pagination__page-count mini-meta">
-                    Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}
-                </span>
-
-                {% if search_results.has_next %}
-                    <a href="?page={{ search_results.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&amp;{{ key }}={{ value }}{% endif %}{% endfor %}" class="pagination__next button">
-                        <p class="button__text">Next</p>
-                        <svg class="arrow" aria-hidden="true"><use xlink:href="#arrow"></use></svg>
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-    {% endif %}
+    {% include "patterns/components/pagination/pagination.html" with paginator_page=search_results %}
 {% endblock %}

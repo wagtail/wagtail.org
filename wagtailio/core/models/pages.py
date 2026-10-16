@@ -1,6 +1,8 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.api import APIField
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
@@ -11,6 +13,7 @@ from wagtailio.core.blocks import ContentStoryBlock, CTABlock, HomePageStoryBloc
 from wagtailio.core.choices import SVGIcon
 from wagtailio.core.models import HeroMixin, SchemaOrgMixin
 from wagtailio.utils.models import CrossPageMixin, SocialMediaMixin
+from wagtailio.utils.page_tree import build_page_tree
 from wagtailio.utils.schema_org import get_organisation_schema
 
 
@@ -123,6 +126,19 @@ class ContentPage(SchemaOrgMixin, Page, HeroMixin, SocialMediaMixin, CrossPageMi
 
     body = StreamField(ContentStoryBlock())
 
+    api_fields = [
+        APIField("heading", writable=True),
+        APIField("sub_heading", writable=True),
+        APIField("intro", writable=True),
+        APIField("icon", writable=True),
+        APIField("cta", writable=True),
+        APIField("body", writable=True),
+        APIField("listing_intro", writable=True),
+        APIField("listing_image", writable=True),
+        APIField("social_text", writable=True),
+        APIField("social_image", writable=True),
+    ]
+
     content_panels = Page.content_panels + HeroMixin.panels + [FieldPanel("body")]
 
     promote_panels = (
@@ -135,3 +151,11 @@ class ContentPage(SchemaOrgMixin, Page, HeroMixin, SocialMediaMixin, CrossPageMi
         index.SearchField("intro"),
         index.SearchField("body"),
     ]
+
+    @cached_property
+    def section_navigation(self):
+        if not self.numchild:
+            return []
+
+        pages = self.get_descendants().live().public().in_menu()
+        return build_page_tree(pages, self)

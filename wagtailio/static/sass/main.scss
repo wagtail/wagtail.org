@@ -42,6 +42,7 @@
 @use 'components/event-highlight';
 @use 'components/feature.scss';
 @use 'components/features.scss';
+@use 'components/filters';
 @use 'components/form.scss';
 @use 'components/footer-menu';
 @use 'components/get-started';
@@ -66,6 +67,7 @@
 @use 'components/modal';
 @use 'components/nav-cta';
 @use 'components/newsletter-cta';
+@use 'components/next-prev-post';
 @use 'components/overview';
 @use 'components/overview-item';
 @use 'components/pagination';
@@ -77,11 +79,13 @@
 @use 'components/sitewide-alert';
 @use 'components/search-result';
 @use 'components/search';
+@use 'components/section-navigation';
 @use 'components/sign-up-form';
 @use 'components/skip-link';
 @use 'components/spacegrid';
 @use 'components/standalone-quote';
 @use 'components/sub-nav';
+@use 'components/table-block';
 @use 'components/teaser';
 @use 'components/text-media';
 @use 'components/theme-toggle';

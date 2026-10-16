@@ -23,7 +23,9 @@ class MobileMenu {
 
         // Only create focus trap if required elements exist
         if (this.mobileMenu) {
-            this.focusTrap = createFocusTrap(this.mobileMenu);
+            this.focusTrap = createFocusTrap(this.mobileMenu, {
+                allowOutsideClick: (e) => !!e.target.closest('[data-site-search-mobile]'),
+            });
         } else {
             this.focusTrap = null;
         }
@@ -37,6 +39,11 @@ class MobileMenu {
             e.preventDefault();
             e.stopPropagation();
             this.toggle();
+        });
+
+        // Close the menu when the mobile search opens
+        document.addEventListener('onMobileSearchOpen', () => {
+            if (this.state.open) this.close();
         });
 
         // Allow pressing Escape to close

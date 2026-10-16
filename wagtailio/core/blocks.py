@@ -3,6 +3,7 @@ from django.forms.utils import ErrorList
 
 from wagtail import blocks
 from wagtail.blocks.struct_block import StructBlockValidationError
+from wagtail.contrib.table_block.blocks import TableBlock as WagtailTableBlock
 from wagtail.contrib.typed_table_block.blocks import TypedTableBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images import get_image_model
@@ -151,6 +152,16 @@ class ComparisonTableBlock(blocks.StructBlock):
     class Meta:
         icon = "table"
         template = "patterns/components/streamfields/comparison_table_block/comparison_table_block.html"
+
+
+class TableBlock(WagtailTableBlock):
+    """A plain table, with custom styles."""
+
+    class Meta:
+        icon = "table"
+        label = "Table"
+        template = "patterns/components/streamfields/table_block/table_block.html"
+        description = "A table with rows and columns of text"
 
 
 class HeadlineBlock(blocks.StructBlock):
@@ -576,6 +587,28 @@ class ContentStoryBlock(blocks.StreamBlock):
         template="patterns/components/streamfields/sign_up_form_block/sign_up_form_block.html",
     )
     comparison_table = ComparisonTableBlock()
+    table = TableBlock(
+        group="Tables",
+        preview_value={
+            "table_caption": "Wagtail compared with another CMS",
+            "first_row_is_table_header": True,
+            "first_col_is_header": True,
+            "data": [
+                ["", "Wagtail", "Other CMS"],
+                [
+                    "Programming language",
+                    "Python",
+                    "PHP",
+                ],
+                [
+                    "Ease of use",
+                    "Requires a developer to set up.",
+                    "Can be set up by anyone.",
+                ],
+                ["Customization", "No frontend restrictions.", "Themes only."],
+            ],
+        },
+    )
     logos = LogoBlock(group="Logos")
     video = VideoBlock()
     image = ImageBlock(

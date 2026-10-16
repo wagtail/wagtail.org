@@ -1,13 +1,21 @@
 {% if related_pages %}
     <div class="related-content grid">
+        <hr class="related-content__divider">
+
         <h3 class="related-content__heading">You might also like</h3>
 
-        <div class="related-content__items">
+        <div class="related-content__items{% if related_pages|length > 2 %} related-content__items--three{% endif %}">
             {% for related in related_pages %}
                 <article class="related-content__item">
                     {% include "patterns/components/streamfields/cards/related_page_card_block.html" with value=related.page.specific classes="logo-card--article" %}
                 </article>
             {% endfor %}
         </div>
+
+        {% if blog_index_url %}
+            <div class="related-content__cta">
+                {% include "patterns/components/buttons/button.html" with arrow=True url=blog_index_url title="More from the Wagtail blog" %}
+            </div>
+        {% endif %}
     </div>
 {% endif %}

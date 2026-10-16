@@ -10,8 +10,10 @@
 
 {% block content %}
     {% if page.has_hero %}
-        {% include "patterns/components/hero/hero.html" with value=page %}
+        {% include "patterns/components/hero/hero.html" with value=page classes=page.section_navigation|yesno:"hero--no-margin," %}
     {% endif %}
+
+    {% include "patterns/components/section-navigation/section-navigation.html" with items=page.section_navigation %}
 
     {% include_block page.body %}
 {% endblock %}

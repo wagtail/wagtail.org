@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<div class="search-result">
+    <div class="search-result__inner">
+        {% include "patterns/components/meta/meta.html" with value=page classes="search-result__meta" %}
+
+        <a class="search-result__title" href="{{ page.url }}"><h3>{{ page.title }}</h3></a>
+
+        {% firstof page.listing_intro page.introduction page.search_description page.intro|richtext|striptags page.sub_heading as summary %}
+        {% if summary %}
+            <p>{{ summary }}</p>
+        {% endif %}
+    </div>
+</div>
