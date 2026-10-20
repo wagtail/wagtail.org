@@ -31,8 +31,8 @@ class EventBannerSettings(BaseSiteSetting):
     THEME_WHATS_NEW = "whats_new"
 
     THEME_CHOICES = [
-        (THEME_WAGTAIL_SPACE, "Wagtail Space (dusty pink button)"),
-        (THEME_WHATS_NEW, "What's new (teal button)"),
+        (THEME_WAGTAIL_SPACE, "Space Indigo (pink button)"),
+        (THEME_WHATS_NEW, "Classic Teal (green button)"),
     ]
 
     enabled = models.BooleanField(

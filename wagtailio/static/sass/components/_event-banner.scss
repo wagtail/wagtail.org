@@ -124,6 +124,12 @@ $event-banner-cta-text: #192850;
 
         &:hover {
             filter: brightness(0.94);
+
+            // Re-assert the resting text colour. Without this the global
+            // `a:hover` rule in typography applies `var(--color--interaction)`,
+            // which resolves to indigo in light mode but teal in dark mode.
+            // Pinning it keeps the hover styles identical in both modes.
+            color: $event-banner-cta-text;
         }
 
         &:focus {
