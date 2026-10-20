@@ -244,7 +244,7 @@ class BlogPage(SchemaOrgMixin, Page, SocialMediaMixin, CrossPageMixin):
         index_url = self.get_parent().get_url(request)
         context["blog_index_url"] = index_url
         if self.category:
-            query = urlencode({"category": self.category.pk})
+            query = urlencode({"category": self.category.slug})
             context["category_url"] = f"{index_url}?{query}"
         return context
 
