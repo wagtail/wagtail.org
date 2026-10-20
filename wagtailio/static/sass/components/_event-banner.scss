@@ -165,13 +165,6 @@ $event-banner-cta-text: #192850;
 
         #{$root}__intro {
             display: block;
-            margin-right: 40px; // 60px total gap in the design (20px + 40px)
-        }
-
-        // Without an illustration there is no need for the extra spacing
-        // reserved for it, so the intro sits closer to the title.
-        #{$root}__content:not(:has(#{$root}__illustration)) #{$root}__intro {
-            margin-right: 0;
         }
 
         #{$root}__illustration {

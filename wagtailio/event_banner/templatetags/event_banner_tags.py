@@ -21,12 +21,27 @@ DEFAULT_CACHE_TIMEOUT = 60 * 60 * 24
 
 def get_banner_context(banner_settings):
     """Build the template context for the banner from the settings."""
+    illustration_url = ""
+    if banner_settings.illustration:
+        try:
+            # Wagtail images have no direct URL; use a cached rendition
+            # instead. Sized at 2x the desktop slot (73px) for retina.
+            illustration_url = banner_settings.illustration.get_rendition(
+                "max-160x160"
+            ).url
+        except (ValueError, OSError):
+            # The image record has no usable file (e.g. a broken upload).
+            # Fall back to the text-only banner rather than rendering an
+            # image with an empty or broken URL.
+            illustration_url = ""
+
     return {
         "theme_class": THEME_CLASSES.get(
             banner_settings.theme,
             THEME_CLASSES[EventBannerSettings.THEME_WAGTAIL_SPACE],
         ),
         "illustration": banner_settings.illustration,
+        "illustration_url": illustration_url,
         "intro_text": banner_settings.intro_text,
         "title": banner_settings.title,
         "date_text": banner_settings.date_text,
