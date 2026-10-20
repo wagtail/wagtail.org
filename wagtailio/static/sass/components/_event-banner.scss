@@ -1,0 +1,207 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+// Wagtail Space event banner
+// Full-width announcement banner shown above the site header. Two themes,
+// each with a horizontal (large screens) and stacked (small screens)
+// layout, based on the designs in the Wagtail.org Figma file.
+
+$event-banner-space-gradient-start: #344fa5;
+$event-banner-space-gradient-end: #121317;
+$event-banner-whats-new-gradient-start: #105c70;
+$event-banner-whats-new-gradient-end: #291d55;
+$event-banner-text: $color-spacetext-light; // #f5f3f8
+$event-banner-cta-text: #192850;
+
+.event-banner {
+    $root: &;
+
+    background-color: $event-banner-space-gradient-start;
+
+    &--wagtail-space {
+        background-image: linear-gradient(
+            90deg,
+            $event-banner-space-gradient-start 0%,
+            $event-banner-space-gradient-end 100%
+        );
+
+        #{$root}__cta {
+            background-color: $color-space-2026-btn-primary; // #e58dbe
+        }
+    }
+
+    &--whats-new {
+        background-image: linear-gradient(
+            90deg,
+            $event-banner-whats-new-gradient-start 0%,
+            $event-banner-whats-new-gradient-end 100%
+        );
+
+        #{$root}__cta {
+            background-color: $color--eggshell; // #b3e7e8
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__intro {
+        display: none;
+        color: $event-banner-text;
+        font-size: 1.5rem;
+        font-weight: $weight--regular;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+    }
+
+    &__illustration {
+        flex-shrink: 0;
+        width: 64px;
+        aspect-ratio: 1;
+        object-fit: contain;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        font-size: 1rem;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+
+    &__title {
+        color: $event-banner-text;
+        font-weight: $weight--bold;
+    }
+
+    &__divider {
+        display: none;
+    }
+
+    &__date {
+        color: $color--white;
+        font-weight: $weight--regular;
+        opacity: 0.7;
+    }
+
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: 40px;
+        padding: 0 14px;
+        border-radius: 6px;
+        color: $event-banner-cta-text;
+        font-size: 0.875rem;
+        font-weight: $weight--bold;
+        text-decoration: none;
+        transition: filter 0.15s ease-in-out;
+
+        &:hover {
+            filter: brightness(0.94);
+        }
+
+        &:focus {
+            @include focus-internal();
+        }
+    }
+
+    &__cta-text {
+        line-height: normal;
+    }
+
+    &__cta-arrow {
+        width: 14px;
+        height: 14px;
+        fill: $event-banner-cta-text;
+    }
+
+    @include media-query(medium) {
+        #{$root}__inner {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 37px;
+            padding-bottom: 38px;
+            text-align: start;
+        }
+
+        #{$root}__content {
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #{$root}__details {
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        #{$root}__intro {
+            display: block;
+            margin-right: 40px; // 60px total gap in the design (20px + 40px)
+        }
+
+        // Without an illustration there is no need for the extra spacing
+        // reserved for it, so the intro sits closer to the title.
+        #{$root}__content:not(:has(#{$root}__illustration)) #{$root}__intro {
+            margin-right: 0;
+        }
+
+        #{$root}__illustration {
+            width: 73px;
+        }
+
+        #{$root}__text {
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+
+        #{$root}__divider {
+            display: block;
+            width: 1px;
+            height: 50px;
+            background-color: $color--white;
+            opacity: 0.2;
+        }
+
+        #{$root}__cta {
+            height: 50px;
+            padding: 0 20px;
+            font-size: 1rem;
+        }
+
+        #{$root}__cta-arrow {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{# Pattern library demo for the event banner. The live version is rendered by the `event_banner` template tag using EventBannerSettings. Shows the two themes with an uploaded illustration, plus the text-only default (no illustration uploaded). #}
+{% load static %}
+
+<div class="event-banner event-banner--wagtail-space">
+    <div class="event-banner__inner container">
+        <div class="event-banner__content">
+            <p class="event-banner__intro">Join us for...</p>
+
+            <div class="event-banner__details">
+                <img class="event-banner__illustration" src="{% static 'img/event-banner/wagtail-space-logo.svg' %}" alt="" aria-hidden="true">
+
+                <div class="event-banner__text">
+                    <p class="event-banner__title">Wagtail Space 2026</p>
+                    <span class="event-banner__divider" aria-hidden="true"></span>
+                    <p class="event-banner__date">18-20 November</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="event-banner__cta" href="#">
+            <span class="event-banner__cta-text">Register</span>
+            <svg class="event-banner__cta-arrow" aria-hidden="true" focusable="false">
+                <use xlink:href="#arrow"></use>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div class="event-banner event-banner--whats-new">
+    <div class="event-banner__inner container">
+        <div class="event-banner__content">
+            <p class="event-banner__intro">Join us on Zoom for...</p>
+
+            <div class="event-banner__details">
+                <img class="event-banner__illustration" src="{% static 'img/event-banner/whats-new-illustration.svg' %}" alt="" aria-hidden="true">
+
+                <div class="event-banner__text">
+                    <p class="event-banner__title">What&rsquo;s new in Wagtail CMS?</p>
+                    <span class="event-banner__divider" aria-hidden="true"></span>
+                    <p class="event-banner__date">19/20 May 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="event-banner__cta" href="#">
+            <span class="event-banner__cta-text">Event details</span>
+            <svg class="event-banner__cta-arrow" aria-hidden="true" focusable="false">
+                <use xlink:href="#arrow"></use>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div class="event-banner event-banner--whats-new">
+    <div class="event-banner__inner container">
+        <div class="event-banner__content">
+            <div class="event-banner__details">
+                <div class="event-banner__text">
+                    <p class="event-banner__title">What&rsquo;s new in Wagtail CMS?</p>
+                    <span class="event-banner__divider" aria-hidden="true"></span>
+                    <p class="event-banner__date">19/20 May 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="event-banner__cta" href="#">
+            <span class="event-banner__cta-text">Event details</span>
+            <svg class="event-banner__cta-arrow" aria-hidden="true" focusable="false">
+                <use xlink:href="#arrow"></use>
+            </svg>
+        </a>
+    </div>
+</div>
