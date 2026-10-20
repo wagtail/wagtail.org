@@ -1,4 +1,4 @@
-{# Pattern library demo for the event banner. The live version is rendered by the `event_banner` template tag using EventBannerSettings. Shows the two themes with an uploaded illustration, plus the text-only default (no illustration uploaded). #}
+{# Pattern library demo for the event banner. The live version is rendered by the `event_banner` template tag using EventBannerSettings, where the illustration is an admin-uploaded image. These demos use an existing site asset as a stand-in. Shows the two themes with an uploaded illustration, plus the text-only default (no illustration uploaded). #}
 {% load static %}
 
 <div class="event-banner event-banner--wagtail-space">
@@ -7,7 +7,7 @@
             <p class="event-banner__intro">Join us for...</p>
 
             <div class="event-banner__details">
-                <img class="event-banner__illustration" src="{% static 'img/event-banner/wagtail-space-logo.svg' %}" alt="" aria-hidden="true">
+                <img class="event-banner__illustration" src="{% static 'img/wagtail-space-2026-logo-small.png' %}" alt="" aria-hidden="true">
 
                 <div class="event-banner__text">
                     <p class="event-banner__title">Wagtail Space 2026</p>
@@ -32,7 +32,7 @@
             <p class="event-banner__intro">Join us on Zoom for...</p>
 
             <div class="event-banner__details">
-                <img class="event-banner__illustration" src="{% static 'img/event-banner/whats-new-illustration.svg' %}" alt="" aria-hidden="true">
+                <img class="event-banner__illustration" src="{% static 'img/wagtail-space-2026-logo-small.png' %}" alt="" aria-hidden="true">
 
                 <div class="event-banner__text">
                     <p class="event-banner__title">What&rsquo;s new in Wagtail CMS?</p>
