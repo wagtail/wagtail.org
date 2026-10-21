@@ -1,7 +1,5 @@
 import operator
 
-from django.core.cache import cache
-from django.core.cache.utils import make_template_fragment_key
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.safestring import mark_safe
@@ -9,17 +7,6 @@ from django.utils.safestring import mark_safe
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.contrib.settings.models import BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
-
-
-# Vary list shared by the template fragment cache in the event_banner
-# template tag. Keep in sync with wagtailio/event_banner/templatetags.
-EVENT_BANNER_FRAGMENT_KEY = "event_banner"
-
-
-def purge_event_banner_cache(site_pk):
-    cache.delete(
-        make_template_fragment_key(EVENT_BANNER_FRAGMENT_KEY, vary_on=[site_pk])
-    )
 
 
 @register_setting(icon="megaphone")
@@ -228,7 +215,3 @@ class EventBannerSettings(BaseSiteSetting):
                         ),
                     }
                 )
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        purge_event_banner_cache(self.site.pk)
