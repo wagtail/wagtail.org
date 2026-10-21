@@ -9,7 +9,7 @@ from wagtail.contrib.settings.models import BaseSiteSetting
 from wagtail.contrib.settings.registry import register_setting
 
 
-@register_setting(icon="megaphone")
+@register_setting(icon="calendar-check")
 class EventBannerSettings(BaseSiteSetting):
     class Meta:
         verbose_name = "Event banner"
