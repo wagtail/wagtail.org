@@ -1,0 +1,11 @@
+# Sample context for the event banner pattern.
+# The live banner is rendered by the event_banner template tag using
+# EventBannerSettings; these values only feed the pattern library preview.
+context:
+  theme_class: event-banner--space-indigo
+  illustration_url: /static/img/wagtail-space-2026-logo-small.png
+  intro_text: Join us for...
+  title: Wagtail Space 2026
+  date_text: 18-20 November
+  cta_url: '#'
+  cta_text: Register

@@ -1,5 +1,5 @@
 {% extends "patterns/base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags event_banner_tags %}
 
 {% block title_suffix %} | Wagtail CMS{% endblock %}
 
@@ -84,12 +84,7 @@
 {% endblock body_top %}
 
 {% block header %}
-    <!-- Optional banner code for when we want a site banner -->
-    <!-- <div class="headline-banner">
-        <div class="banner-text">Banner Text</div>
-        <a href="#" class="banner-button">Button text</a>
-    </div>
-    </div> -->
+    {% event_banner %}
     {% include "patterns/includes/header.html" %}
 {% endblock header %}
 

@@ -90,6 +90,7 @@ INSTALLED_APPS = [
     "wagtailio.roadmap",
     "wagtailio.services",
     "wagtailio.showcase",
+    "wagtailio.event_banner",
     "wagtailio.sitewide_alert",
     "wagtailmedia",
     "pattern_library",
