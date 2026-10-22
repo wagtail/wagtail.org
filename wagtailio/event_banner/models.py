@@ -14,12 +14,12 @@ class EventBannerSettings(BaseSiteSetting):
     class Meta:
         verbose_name = "Event banner"
 
-    THEME_WAGTAIL_SPACE = "wagtail_space"
-    THEME_WHATS_NEW = "whats_new"
+    THEME_SPACE_INDIGO = "space_indigo"
+    THEME_CLASSIC_TEAL = "classic_teal"
 
     THEME_CHOICES = [
-        (THEME_WAGTAIL_SPACE, "Space Indigo (pink button)"),
-        (THEME_WHATS_NEW, "Classic Teal (green button)"),
+        (THEME_SPACE_INDIGO, "Space Indigo (pink button)"),
+        (THEME_CLASSIC_TEAL, "Classic Teal (green button)"),
     ]
 
     enabled = models.BooleanField(
@@ -29,7 +29,7 @@ class EventBannerSettings(BaseSiteSetting):
     theme = models.CharField(
         max_length=20,
         choices=THEME_CHOICES,
-        default=THEME_WAGTAIL_SPACE,
+        default=THEME_SPACE_INDIGO,
         help_text="Controls the background gradient and button colour.",
     )
     illustration = models.ForeignKey(

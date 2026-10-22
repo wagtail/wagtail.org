@@ -9,8 +9,8 @@ register = template.Library()
 
 # Mapping of EventBannerSettings.theme to template modifier classes.
 THEME_CLASSES = {
-    EventBannerSettings.THEME_WAGTAIL_SPACE: "event-banner--wagtail-space",
-    EventBannerSettings.THEME_WHATS_NEW: "event-banner--whats-new",
+    EventBannerSettings.THEME_SPACE_INDIGO: "event-banner--space-indigo",
+    EventBannerSettings.THEME_CLASSIC_TEAL: "event-banner--classic-teal",
 }
 
 
@@ -33,7 +33,7 @@ def get_banner_context(banner_settings):
     return {
         "theme_class": THEME_CLASSES.get(
             banner_settings.theme,
-            THEME_CLASSES[EventBannerSettings.THEME_WAGTAIL_SPACE],
+            THEME_CLASSES[EventBannerSettings.THEME_SPACE_INDIGO],
         ),
         "illustration": banner_settings.illustration,
         "illustration_url": illustration_url,

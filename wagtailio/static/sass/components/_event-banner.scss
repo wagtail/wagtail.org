@@ -6,23 +6,23 @@
 // each with a horizontal (large screens) and stacked (small screens)
 // layout, based on the designs in the Wagtail.org Figma file.
 
-$event-banner-space-gradient-start: #344fa5;
-$event-banner-space-gradient-end: #121317;
-$event-banner-whats-new-gradient-start: #105c70;
-$event-banner-whats-new-gradient-end: #291d55;
+$event-banner-space-indigo-gradient-start: #344fa5;
+$event-banner-space-indigo-gradient-end: #121317;
+$event-banner-classic-teal-gradient-start: #105c70;
+$event-banner-classic-teal-gradient-end: #291d55;
 $event-banner-text: $color-spacetext-light; // #f5f3f8
 $event-banner-cta-text: #192850;
 
 .event-banner {
     $root: &;
 
-    background-color: $event-banner-space-gradient-start;
+    background-color: $event-banner-space-indigo-gradient-start;
 
-    &--wagtail-space {
+    &--space-indigo {
         background-image: linear-gradient(
             90deg,
-            $event-banner-space-gradient-start 0%,
-            $event-banner-space-gradient-end 100%
+            $event-banner-space-indigo-gradient-start 0%,
+            $event-banner-space-indigo-gradient-end 100%
         );
 
         #{$root}__cta {
@@ -30,11 +30,11 @@ $event-banner-cta-text: #192850;
         }
     }
 
-    &--whats-new {
+    &--classic-teal {
         background-image: linear-gradient(
             90deg,
-            $event-banner-whats-new-gradient-start 0%,
-            $event-banner-whats-new-gradient-end 100%
+            $event-banner-classic-teal-gradient-start 0%,
+            $event-banner-classic-teal-gradient-end 100%
         );
 
         #{$root}__cta {

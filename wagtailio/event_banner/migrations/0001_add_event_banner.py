@@ -37,10 +37,10 @@ class Migration(migrations.Migration):
                     "theme",
                     models.CharField(
                         choices=[
-                            ("wagtail_space", "Space Indigo (pink button)"),
-                            ("whats_new", "Classic Teal (green button)"),
+                            ("space_indigo", "Space Indigo (pink button)"),
+                            ("classic_teal", "Classic Teal (green button)"),
                         ],
-                        default="wagtail_space",
+                        default="space_indigo",
                         help_text="Controls the background gradient and button colour.",
                         max_length=20,
                     ),

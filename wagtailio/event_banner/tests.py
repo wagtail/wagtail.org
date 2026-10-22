@@ -17,7 +17,7 @@ class EventBannerRenderTests(SimpleTestCase):
 
     def test_banner_renders(self):
         banner = MagicMock(spec=EventBannerSettings)
-        banner.theme = EventBannerSettings.THEME_WAGTAIL_SPACE
+        banner.theme = EventBannerSettings.THEME_SPACE_INDIGO
         banner.illustration = MagicMock()
         banner.illustration.get_rendition.return_value.url = (
             "/media/images/test.max-160x160.png"
@@ -33,7 +33,7 @@ class EventBannerRenderTests(SimpleTestCase):
         )
 
         # Banner container with the correct theme class
-        self.assertIn("event-banner event-banner--wagtail-space", html)
+        self.assertIn("event-banner event-banner--space-indigo", html)
         # All content elements present
         self.assertIn("Join us for...", html)
         self.assertIn("Wagtail Space 2026", html)
