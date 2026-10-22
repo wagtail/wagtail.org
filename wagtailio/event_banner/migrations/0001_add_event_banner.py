@@ -50,14 +50,12 @@ class Migration(migrations.Migration):
                     models.CharField(
                         blank=True,
                         help_text="Small line shown before the illustration on larger screens, e.g. 'Join us for...'",
-                        max_length=120,
                     ),
                 ),
                 (
                     "title",
                     models.CharField(
                         help_text="Main banner text, e.g. 'Wagtail Space 2026'",
-                        max_length=100,
                     ),
                 ),
                 (
@@ -65,7 +63,6 @@ class Migration(migrations.Migration):
                     models.CharField(
                         blank=True,
                         help_text="Date shown after the title, e.g. '18-20 November'. Leave blank to hide.",
-                        max_length=100,
                     ),
                 ),
                 (

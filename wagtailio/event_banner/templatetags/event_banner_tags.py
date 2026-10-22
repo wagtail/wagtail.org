@@ -19,8 +19,6 @@ def get_banner_context(banner_settings):
     illustration_url = ""
     if banner_settings.illustration:
         try:
-            # Wagtail images have no direct URL; use a cached rendition
-            # instead. Sized at 2x the desktop slot (73px) for retina.
             illustration_url = banner_settings.illustration.get_rendition(
                 "max-160x160"
             ).url
