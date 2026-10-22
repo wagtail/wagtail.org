@@ -1,5 +1,3 @@
-import operator
-
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.safestring import mark_safe
@@ -150,16 +148,6 @@ class EventBannerSettings(BaseSiteSetting):
         super().clean()
 
         # CTA validation
-        if self.cta_button_text and not operator.xor(
-            bool(self.cta_button_page), bool(self.cta_button_link)
-        ):
-            raise ValidationError(
-                {
-                    "cta_button_link": ValidationError(
-                        "Please provide either an internal page OR an external URL (but not both)."
-                    ),
-                }
-            )
 
         if self.cta_button_text:
             if not self.cta_button_page and not self.cta_button_link:
@@ -180,7 +168,7 @@ class EventBannerSettings(BaseSiteSetting):
                 )
 
         # Check if link is provided without button text
-        if (self.cta_button_page or self.cta_button_link) and not self.cta_button_text:
+        elif self.cta_button_page or self.cta_button_link:
             raise ValidationError(
                 {
                     "cta_button_text": ValidationError(
