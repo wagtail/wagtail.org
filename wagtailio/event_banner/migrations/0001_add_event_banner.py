@@ -79,11 +79,11 @@ class Migration(migrations.Migration):
                     models.URLField(blank=True, verbose_name="CTA Link"),
                 ),
                 (
-                    "excluded_urls",
+                    "excluded_paths",
                     models.TextField(
                         blank=True,
                         help_text="The banner is hidden on these pages and all their sub-pages. One URL path per line, starting with <code>/</code>. e.g. <code>/wagtail-space/</code>",
-                        verbose_name="Excluded URLs",
+                        verbose_name="Excluded Paths",
                     ),
                 ),
                 (
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
                     "illustration",
                     models.ForeignKey(
                         blank=True,
-                        help_text="Optional illustration shown next to the banner text. Ideal: a square image at least 256 x 256 px (e.g. 512 x 512), with a transparent background. If no image is uploaded, the banner shows text only.",
+                        help_text="Optional illustration shown next to the banner text. Ideal: a square image at least 150 x 150 px with a transparent background. If no image is uploaded, the banner shows text only.",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",

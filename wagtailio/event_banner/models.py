@@ -41,7 +41,7 @@ class EventBannerSettings(BaseSiteSetting):
         verbose_name="Illustration",
         help_text=(
             "Optional illustration shown next to the banner text. Ideal: a "
-            "square image at least 256 x 256 px (e.g. 512 x 512), with a "
+            "square image at least 150 x 150 px with a "
             "transparent background. If no image is uploaded, the banner "
             "shows text only."
         ),
@@ -78,9 +78,9 @@ class EventBannerSettings(BaseSiteSetting):
         verbose_name="CTA Page",
     )
 
-    excluded_urls = models.TextField(
+    excluded_paths = models.TextField(
         blank=True,
-        verbose_name="Excluded URLs",
+        verbose_name="Excluded Paths",
         help_text=mark_safe(
             "The banner is hidden on these pages and all their sub-pages. "
             "One URL path per line, starting with <code>/</code>. "
@@ -109,8 +109,8 @@ class EventBannerSettings(BaseSiteSetting):
             "CTA",
         ),
         MultiFieldPanel(
-            [FieldPanel("excluded_urls")],
-            "Excluded URLs",
+            [FieldPanel("excluded_paths")],
+            "Excluded Paths",
             classname="collapsible",
         ),
     ]
@@ -118,7 +118,7 @@ class EventBannerSettings(BaseSiteSetting):
     @property
     def excluded_url_prefixes(self):
         prefixes = []
-        for raw_line in self.excluded_urls.splitlines():
+        for raw_line in self.excluded_paths.splitlines():
             line = raw_line.strip()
             if not line or line.startswith("#"):
                 continue
@@ -201,15 +201,15 @@ class EventBannerSettings(BaseSiteSetting):
                 }
             )
 
-        # Excluded URLs validation
-        for raw_line in self.excluded_urls.splitlines():
+        # Excluded paths validation
+        for raw_line in self.excluded_paths.splitlines():
             line = raw_line.strip()
             if not line or line.startswith("#"):
                 continue
             if not line.startswith("/"):
                 raise ValidationError(
                     {
-                        "excluded_urls": ValidationError(
+                        "excluded_paths": ValidationError(
                             f"'{line}' does not look like a URL path. "
                             "Each line must start with '/', e.g. '/wagtail-space/'."
                         ),

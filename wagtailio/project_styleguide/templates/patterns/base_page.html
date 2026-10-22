@@ -1,5 +1,5 @@
 {% extends "patterns/base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags event_banner_tags %}
 
 {% block title_suffix %} | Wagtail CMS{% endblock %}
 
@@ -84,7 +84,6 @@
 {% endblock body_top %}
 
 {% block header %}
-    {% load event_banner_tags %}
     {% event_banner %}
     {% include "patterns/includes/header.html" %}
 {% endblock header %}
