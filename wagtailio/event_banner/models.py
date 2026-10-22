@@ -115,24 +115,28 @@ class EventBannerSettings(BaseSiteSetting):
         prefixes = []
         for raw_line in self.excluded_paths.splitlines():
             line = raw_line.strip()
-            if not line or line.startswith("#"):
+            if not line:
                 continue
             if not line.endswith("/"):
                 line += "/"
             prefixes.append(line)
         return prefixes
 
-    def is_url_excluded(self, page):
+    def is_url_excluded(self, page, request=None):
         """Return True if the banner should not be shown on this page.
 
         Matching is done by URL path prefix, so an entry of
         ``/wagtail-space/`` hides the banner on ``/wagtail-space/`` and
         every page below it.
+
+        Following Wagtail's URL guidance, the URL is resolved via
+        ``Page.get_url(request)`` so site-level URL information is reused
+        from the current request rather than re-fetched.
         """
         if page is None:
             return False
 
-        page_url = getattr(page, "url", None) or ""
+        page_url = page.get_url(request)
         if not page_url:
             return False
 
@@ -180,7 +184,7 @@ class EventBannerSettings(BaseSiteSetting):
         # Excluded paths validation
         for raw_line in self.excluded_paths.splitlines():
             line = raw_line.strip()
-            if not line or line.startswith("#"):
+            if not line:
                 continue
             if not line.startswith("/"):
                 raise ValidationError(

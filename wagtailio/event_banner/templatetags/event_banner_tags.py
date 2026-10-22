@@ -62,7 +62,7 @@ def event_banner(context):
         return ""
 
     page = context.get("page")
-    if banner_settings.is_url_excluded(page):
+    if banner_settings.is_url_excluded(page, request=request):
         return ""
 
     return render_to_string(
