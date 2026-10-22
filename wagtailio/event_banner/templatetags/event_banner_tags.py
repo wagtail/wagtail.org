@@ -1,6 +1,5 @@
 from django import template
 from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
 
 from wagtailio.event_banner.models import EventBannerSettings
 
@@ -66,12 +65,8 @@ def event_banner(context):
     if banner_settings.is_url_excluded(page):
         return ""
 
-    # The markup is produced entirely by our own event_banner.html template
-    # (autoescaped during render), not from untrusted input.
-    return mark_safe(  # noqa: S308
-        render_to_string(
-            "event_banner/event_banner.html",
-            get_banner_context(banner_settings),
-            request=request,
-        )
+    return render_to_string(
+        "event_banner/event_banner.html",
+        get_banner_context(banner_settings),
+        request=request,
     )

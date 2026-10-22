@@ -47,16 +47,13 @@ class EventBannerSettings(BaseSiteSetting):
         ),
     )
     intro_text = models.CharField(
-        max_length=120,
         blank=True,
         help_text="Small line shown before the illustration on larger screens, e.g. 'Join us for...'",
     )
     title = models.CharField(
-        max_length=100,
         help_text="Main banner text, e.g. 'Wagtail Space 2026'",
     )
     date_text = models.CharField(
-        max_length=100,
         blank=True,
         help_text="Date shown after the title, e.g. '18-20 November'. Leave blank to hide.",
     )
@@ -151,15 +148,6 @@ class EventBannerSettings(BaseSiteSetting):
 
     def clean(self):
         super().clean()
-
-        if self.enabled and not self.title:
-            raise ValidationError(
-                {
-                    "title": ValidationError(
-                        "Please provide a title for the event banner."
-                    ),
-                }
-            )
 
         # CTA validation
         if self.cta_button_text and not operator.xor(
