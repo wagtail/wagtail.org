@@ -1,0 +1,17 @@
+context:
+  page:
+    depth: 5
+    title: Current page title
+    get_ancestors:
+      - is_root: true
+        depth: 1
+        title: Root
+      - is_root: false
+        depth: 2
+        title: Homepage
+      - is_root: false
+        depth: 3
+        title: Latest chirps
+      - is_root: false
+        depth: 4
+        title: A section of the blog

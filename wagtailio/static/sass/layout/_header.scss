@@ -16,6 +16,11 @@
         margin: 0 auto;
     }
 
+    // If there are breadcrumbs under the header remove bottom margin
+    &:has(~ .app__content > .breadcrumbs) {
+        margin-bottom: 0;
+    }
+
     &__actions {
         display: flex;
         align-items: center;
