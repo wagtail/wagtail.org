@@ -11,7 +11,7 @@ RUN npm run build:prod
 
 
 # Build Python app - this stage is a common base for the prod and dev stages
-FROM python:3.14-trixie AS backend
+FROM python:3.15-trixie AS backend
 
 ARG POETRY_VERSION=2.4.0
 ARG UID=1000
