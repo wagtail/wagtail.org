@@ -68,7 +68,7 @@ jobs:
       ALLOWED_HOSTS: localhost
     services:
       postgres:
-        image: postgres:16
+        image: postgres:16@sha256:f9a7b9ebf6f56201f949db745e47bc423c0f0f8294bafe991cc10bf74b029657
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgress
