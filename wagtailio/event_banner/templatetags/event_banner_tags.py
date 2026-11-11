@@ -22,7 +22,7 @@ def get_banner_context(banner_settings):
             illustration_url = banner_settings.illustration.get_rendition(
                 "max-160x160"
             ).url
-        except (ValueError, OSError):
+        except ValueError, OSError:
             # The image record has no usable file (e.g. a broken upload).
             # Fall back to the text-only banner rather than rendering an
             # image with an empty or broken URL.

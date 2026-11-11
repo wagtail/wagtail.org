@@ -10,7 +10,7 @@ def footer_navigation(context):
         footer_navigation = context["settings"]["navigation"][
             "NavigationSettings"
         ].footer_navigation
-    except (KeyError, AttributeError):
+    except KeyError, AttributeError:
         footer_navigation = None
 
     return {
@@ -35,7 +35,7 @@ def main_navigation(context):
                     "call_to_action": block.value.get("call_to_action"),
                 }
             )
-    except (KeyError, AttributeError):
+    except KeyError, AttributeError:
         return {}
 
     return {"menus": menus}
@@ -47,7 +47,7 @@ def get_started_menu(context):
         get_started_menu = context["settings"]["navigation"][
             "NavigationSettings"
         ].get_started_menu
-    except (KeyError, AttributeError):
+    except KeyError, AttributeError:
         get_started_menu = None
 
     return {
