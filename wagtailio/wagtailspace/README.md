@@ -2,7 +2,7 @@
 
 Our goal is to archive Wagtail Space sites to sort of "static" versions so we can modify the color
 scheme and design each year without changing the pages for previous years. The scripts
-for this include mirror-wagtail-space.sh and rearrange-files.py
+for this include mirror-wagtail-space.sh and rearrange_files.py
 
 We start by pulling down all the assets using `wget` and its mirroring options. This will create a
 directory containing the content - but because we serve the pages as urls with trailing slashes,
@@ -15,7 +15,7 @@ found in wagtail.org/wagtailio/wagtailspace/views.py
 The wget mirroring process will have helpfully converted all the links to match the static directory
 structure, so we will need to converted them back to their trailing slash equivalents.
 
-Processing steps - in rearrange-files.py command:
+Processing steps - in rearrange_files.py command:
 
 Copy images from media.wagtail.org into
 wagtail.org/wagtailio/wagtailspace/static/wagtailspace/images/wagtailspace-2025 then move the ones
