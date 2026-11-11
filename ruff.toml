@@ -29,6 +29,7 @@ fixable = ["C4", "E", "F", "I", "UP"]
 
 [lint.per-file-ignores]
 "fabfile.py" = ["S101", "S603", "S607", "S608", "T201"]
+"**/tests.py" = ["S106"]  # dummy passwords and tokens in tests
 
 [lint.isort.sections]
 "django" = ["django"]
