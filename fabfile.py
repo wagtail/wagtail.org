@@ -10,7 +10,7 @@ from invoke.tasks import task
 # Process .env file
 if os.path.exists(".env"):
     with open(".env") as f:
-        for line in f.readlines():
+        for line in f:
             if not line or line.startswith("#") or "=" not in line:
                 continue
             var, value = line.strip().split("=", 1)
@@ -54,7 +54,7 @@ def psql(c, command=None):
     if command:
         cmd_list.extend(["-c", command])
 
-    subprocess.run(cmd_list)
+    subprocess.run(cmd_list, check=True)
 
 
 @task

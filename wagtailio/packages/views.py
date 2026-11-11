@@ -18,8 +18,8 @@ def process(url="https://djangopackages.org/api/v4/grids/?q=wagtail"):
             grid, _ = Grid.objects.update_or_create(
                 uid=item.get("id"), defaults=defaults
             )
-            for url in item.get("packages", []):
-                package_data = requests.get(url, timeout=10).json()
+            for package_url in item.get("packages", []):
+                package_data = requests.get(package_url, timeout=10).json()
                 defaults = {
                     key: package_data[key]
                     for key in [

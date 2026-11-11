@@ -13,6 +13,9 @@ from wagtail.contrib.settings.registry import register_setting
 from wagtail.fields import RichTextField
 
 
+logger = logging.getLogger(__name__)
+
+
 @register_setting
 class SiteWideAlertSettings(BaseSiteSetting):
     class Meta:
@@ -132,6 +135,6 @@ class SiteWideAlertSettings(BaseSiteSetting):
     def save(self, *args, **kwargs):
         alert_url = self.site.root_url + reverse("sitewide_alert:sitewide_alert")
         purge_url_from_cache(alert_url)
-        logging.info(f"Frontend cache purged for sitewide alert url ({alert_url})")
+        logger.info(f"Frontend cache purged for sitewide alert url ({alert_url})")
 
         super().save(*args, **kwargs)
