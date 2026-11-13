@@ -2,9 +2,9 @@ from django.db import transaction
 from django.shortcuts import render
 from django.views import View
 
-from wagtail.admin import messages
+lazy from wagtail.admin import messages
 
-import requests
+lazy import requests
 
 from .models import Grid, Package
 

@@ -17,10 +17,10 @@ from wagtail.images import get_image_model
 from wagtail.images.blocks import ImageBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
-from markdown import markdown
-from pygments import highlight
-from pygments.formatters import get_formatter_by_name
-from pygments.lexers import get_lexer_by_name
+lazy from markdown import markdown
+lazy from pygments import highlight
+lazy from pygments.formatters import get_formatter_by_name
+lazy from pygments.lexers import get_lexer_by_name
 
 from wagtailio.core.blocks import HighlightBlock, TeaserBlock
 

@@ -1,13 +1,13 @@
-from django.core.files.storage import default_storage
-from django.shortcuts import redirect
-from django.utils.cache import add_never_cache_headers
+lazy from django.core.files.storage import default_storage
+lazy from django.shortcuts import redirect
+lazy from django.utils.cache import add_never_cache_headers
 
 from wagtail import hooks
-from wagtail.documents import get_document_model
 from wagtail.documents.models import document_served
 from wagtail.whitelist import allow_without_attributes
+lazy from wagtail.documents import get_document_model
 
-from storages.backends.s3 import S3Storage
+lazy from storages.backends.s3 import S3Storage
 
 
 @hooks.register("construct_whitelister_element_rules")
