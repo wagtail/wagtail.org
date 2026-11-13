@@ -7,43 +7,46 @@ on:
   pull_request:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.15'
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version-file: '.nvmrc'
       - id: node-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v6.1.0
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
       - if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci --no-audit
-      - uses: actions/cache@v3
-        with:
-          path: ${{ env.HOME }}/.cache/pre-commit
-          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-      - uses: pre-commit/action@v3.0.1
+      - uses: j178/prek-action@v3.1.0
   test_js:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version-file: '.nvmrc'
       - id: node-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v6.1.0
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/.nvmrc') }}-${{ hashFiles('**/package-lock.json') }}
@@ -61,7 +64,7 @@ jobs:
       ALLOWED_HOSTS: localhost
     services:
       postgres:
-        image: postgres:16
+        image: postgres:16@sha256:f9a7b9ebf6f56201f949db745e47bc423c0f0f8294bafe991cc10bf74b029657
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgress
@@ -70,11 +73,13 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Install Poetry
-        run: pipx install poetry==2.4.0 # Make sure this matches POETRY_VERSION in the Dockerfile
+        run: pipx install poetry==2.5.1 # Make sure this matches POETRY_VERSION in the Dockerfile
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.15'
           cache: 'poetry'
