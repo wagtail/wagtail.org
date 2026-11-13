@@ -7,7 +7,7 @@ from django.views.generic import FormView
 
 from wagtail.admin import messages
 
-import requests
+lazy import requests
 
 from wagtailio.roadmap.forms import ImportForm
 from wagtailio.roadmap.models import Milestone, MilestoneItem
