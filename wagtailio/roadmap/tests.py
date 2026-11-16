@@ -1,6 +1,8 @@
 import copy
 import datetime
+from json import dumps
 from unittest import mock
+from urllib.parse import urlencode
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group, Permission
@@ -9,6 +11,9 @@ from django.urls import reverse
 
 from wagtail.models import APIToken
 
+from wagtailio.roadmap import github, sync
+from wagtailio.roadmap.client import RoadmapAPIClient
+from wagtailio.roadmap.github import RoadmapSyncError
 from wagtailio.roadmap.models import Milestone, MilestoneItem, State
 
 
@@ -62,7 +67,7 @@ GITHUB_DATA = {
 def mock_github(payload):
     response = mock.Mock()
     response.json.return_value = payload
-    return mock.patch("wagtailio.roadmap.sync.requests.post", return_value=response)
+    return mock.patch("wagtailio.roadmap.github.requests.post", return_value=response)
 
 
 @override_settings(GITHUB_ROADMAP_ACCESS_TOKEN="settings-token")
@@ -383,6 +388,173 @@ class MilestoneSnippetAPITest(TestCase):
         self.assertEqual(response.status_code, 204)
         self.assertFalse(Milestone.objects.exists())
         self.assertFalse(MilestoneItem.objects.exists())
+
+
+def github_milestones(payload=GITHUB_DATA):
+    return github.Repository.model_validate(payload["data"]["repository"]).milestones
+
+
+class GitHubSchemaTest(TestCase):
+    def test_dump_as_api_input(self):
+        payload = copy.deepcopy(GITHUB_DATA)
+        payload["data"]["repository"]["versions"]["nodes"][0]["dueOn"] = (
+            "2027-02-01T08:00:00Z"
+        )
+        future, version = github_milestones(payload)
+
+        self.assertIsNone(future.due_on)
+        self.assertEqual(
+            version.model_dump(mode="json"),
+            {
+                "number": 2,
+                "state": "OPEN",
+                "due_on": "2027-02-01",
+                "title": "v8.2",
+                "url": "https://github.com/wagtail/roadmap/milestone/2",
+                "items": [
+                    api_item(20, "Feature A", ["needs sponsorship"]),
+                    api_item(21, "Feature B", ["api", "sponsored"]),
+                ],
+            },
+        )
+
+    def test_unexpected_data(self):
+        with (
+            mock_github({"data": {"repository": {"future": None}}}),
+            self.assertRaisesMessage(RoadmapSyncError, "Unexpected data from GitHub"),
+        ):
+            github.fetch("token")
+
+
+class DjangoTestSession:
+    """Route the API client's requests through the Django test client."""
+
+    def __init__(self, client):
+        self.client = client
+
+    def request(self, method, url, headers=None, timeout=None, params=None, json=None):
+        if params:
+            url = f"{url}?{urlencode(params)}"
+        response = self.client.generic(
+            method,
+            url,
+            data=dumps(json) if json is not None else "",
+            content_type="application/json",
+            headers=headers,
+        )
+        response.text = response.content.decode()
+        return response
+
+
+class RoadmapAPIClientTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = get_user_model().objects.create_superuser(
+            username="admin", email="admin@example.com", password="password"
+        )
+
+    def setUp(self):
+        _, plaintext = APIToken.create_token(user=self.superuser, name="test")
+        self.api_client = RoadmapAPIClient(
+            "/api/v3-preview/", plaintext, session=DjangoTestSession(self.client)
+        )
+
+    def snapshot(self):
+        return [
+            (
+                milestone.number,
+                milestone.state,
+                milestone.due_on,
+                milestone.title,
+                milestone.url,
+                [
+                    (
+                        item.number,
+                        item.state,
+                        item.title,
+                        item.url,
+                        item.labels,
+                        item.cta_url,
+                    )
+                    for item in milestone.items.order_by("sort_order")
+                ],
+            )
+            for milestone in Milestone.objects.order_by("number")
+        ]
+
+    def test_initial_sync_matches_server_sync(self):
+        result = self.api_client.sync(github_milestones())
+
+        self.assertEqual(result, {"milestones": 2, "items": 3, "deleted_items": 0})
+        snapshot = self.snapshot()
+        self.assertEqual(len(snapshot), 2)
+        self.assertEqual([item[0] for item in snapshot[1][5]], [20, 21])
+
+        MilestoneItem.objects.all().delete()
+        Milestone.objects.all().delete()
+        sync.apply(github_milestones())
+        self.assertEqual(self.snapshot(), snapshot)
+
+    def test_sync_keeps_editor_changes(self):
+        self.api_client.sync(github_milestones())
+        # Editors reorder items and set a call to action URL
+        MilestoneItem.objects.filter(number=21).update(
+            sort_order=0, cta_url="https://example.com/b"
+        )
+        MilestoneItem.objects.filter(number=20).update(sort_order=1)
+
+        payload = copy.deepcopy(GITHUB_DATA)
+        issues = payload["data"]["repository"]["versions"]["nodes"][0]["issues"][
+            "nodes"
+        ]
+        issues[1]["title"] = "Feature B (renamed)"
+        issues.append(issue(22, "Feature E"))
+        result = self.api_client.sync(github_milestones(payload))
+
+        self.assertEqual(result, {"milestones": 2, "items": 4, "deleted_items": 0})
+        items = list(Milestone.objects.get(number=2).items.order_by("sort_order"))
+        self.assertEqual([item.number for item in items], [21, 20, 22])
+        self.assertEqual(items[0].title, "Feature B (renamed)")
+        self.assertEqual(items[0].cta_url, "https://example.com/b")
+
+    def test_sync_deletes_stale_items(self):
+        self.api_client.sync(github_milestones())
+
+        payload = copy.deepcopy(GITHUB_DATA)
+        payload["data"]["repository"]["versions"]["nodes"][0]["issues"]["nodes"].pop()
+        result = self.api_client.sync(github_milestones(payload))
+
+        self.assertEqual(result, {"milestones": 2, "items": 2, "deleted_items": 1})
+        self.assertFalse(MilestoneItem.objects.filter(number=21).exists())
+
+    def test_sync_moves_items(self):
+        self.api_client.sync(github_milestones())
+        MilestoneItem.objects.filter(number=21).update(cta_url="https://example.com/b")
+
+        payload = copy.deepcopy(GITHUB_DATA)
+        repository = payload["data"]["repository"]
+        moved = repository["versions"]["nodes"][0]["issues"]["nodes"].pop()
+        repository["future"]["nodes"][0]["issues"]["nodes"].append(moved)
+        result = self.api_client.sync(github_milestones(payload))
+
+        self.assertEqual(result, {"milestones": 2, "items": 3, "deleted_items": 0})
+        item = MilestoneItem.objects.get(number=21)
+        self.assertEqual(item.milestone.number, 1)
+        self.assertEqual(item.cta_url, "https://example.com/b")
+
+    def test_list_milestones_paginates(self):
+        Milestone.objects.bulk_create(
+            Milestone(number=i, state=State.OPEN, title=f"v{i}", url=f"https://x/{i}")
+            for i in range(25)
+        )
+
+        self.assertEqual(len(self.api_client.list_milestones()), 25)
+
+    def test_api_error(self):
+        self.api_client.headers = {"Authorization": "Bearer invalid"}
+
+        with self.assertRaisesMessage(RoadmapSyncError, "failed with 401"):
+            self.api_client.sync(github_milestones())
 
 
 @override_settings(GITHUB_ROADMAP_ACCESS_TOKEN="settings-token")
