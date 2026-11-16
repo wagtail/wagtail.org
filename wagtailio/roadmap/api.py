@@ -5,6 +5,7 @@ from wagtail.api.v3.permissions import require_any_permission
 
 from ninja import Router, Schema
 from ninja.errors import HttpError
+from pydantic import SecretStr
 
 from wagtailio.roadmap.models import Milestone
 from wagtailio.roadmap.sync import MissingTokenError, RoadmapSyncError, process
@@ -14,7 +15,7 @@ router = Router(tags=["roadmap"], auth=BearerTokenAuth())
 
 
 class RoadmapSyncInputSchema(Schema):
-    github_token: str = ""
+    github_token: SecretStr = SecretStr("")
 
 
 class RoadmapSyncResultSchema(Schema):
@@ -38,7 +39,7 @@ class RoadmapSyncResultSchema(Schema):
 @require_any_permission(Milestone, ("add", "change"))
 def sync_roadmap(request: HttpRequest, data: RoadmapSyncInputSchema | None = None):
     try:
-        return process(token=data.github_token if data else "")
+        return process(token=data.github_token.get_secret_value() if data else "")
     except MissingTokenError as e:
         raise HttpError(422, str(e)) from e
     except RoadmapSyncError as e:
