@@ -1,4 +1,5 @@
 import copy
+import datetime
 from unittest import mock
 
 from django.contrib.auth import get_user_model
@@ -190,6 +191,198 @@ class RoadmapSyncAPITest(TestCase):
             response = self.post()
 
         self.assertEqual(response.status_code, 200)
+
+
+def api_item(number, title, labels=()):
+    """A milestone item in the shape accepted by the snippets API."""
+    return {
+        "number": number,
+        "state": "OPEN",
+        "title": title,
+        "url": f"https://github.com/wagtail/roadmap/issues/{number}",
+        "labels": ",".join(labels),
+    }
+
+
+class MilestoneSnippetAPITest(TestCase):
+    url = "/api/v3-preview/snippets/roadmap.Milestone/"
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = get_user_model().objects.create_superuser(
+            username="admin", email="admin@example.com", password="password"
+        )
+        cls.milestone = Milestone.objects.create(
+            number=2,
+            state=State.OPEN,
+            due_on=datetime.date(2027, 2, 1),
+            title="v8.2",
+            url="https://github.com/wagtail/roadmap/milestone/2",
+        )
+        cls.item_a = MilestoneItem.objects.create(
+            number=20,
+            state=State.OPEN,
+            title="Feature A",
+            url="https://github.com/wagtail/roadmap/issues/20",
+            labels="needs sponsorship",
+            cta_url="https://example.com/sponsor",
+            milestone=cls.milestone,
+            sort_order=0,
+        )
+        cls.item_b = MilestoneItem.objects.create(
+            number=21,
+            state=State.OPEN,
+            title="Feature B",
+            url="https://github.com/wagtail/roadmap/issues/21",
+            milestone=cls.milestone,
+            sort_order=1,
+        )
+
+    def setUp(self):
+        _, plaintext = APIToken.create_token(user=self.superuser, name="test")
+        self.client.defaults["HTTP_AUTHORIZATION"] = f"Bearer {plaintext}"
+
+    def post(self, data):
+        return self.client.post(self.url, data, content_type="application/json")
+
+    def patch(self, milestone, data):
+        return self.client.patch(
+            f"{self.url}{milestone.pk}/", data, content_type="application/json"
+        )
+
+    def test_detail(self):
+        response = self.client.get(f"{self.url}{self.milestone.pk}/")
+
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data["number"], 2)
+        self.assertEqual(data["state"], "OPEN")
+        self.assertEqual(data["due_on"], "2027-02-01")
+        self.assertEqual(data["title"], "v8.2")
+        self.assertEqual(data["display_title"], "February 2027")
+        self.assertEqual(data["display_subtitle"], "v8.2")
+        self.assertEqual(
+            [(item["id"], item["number"]) for item in data["items"]],
+            [(self.item_a.pk, 20), (self.item_b.pk, 21)],
+        )
+        self.assertEqual(data["items"][0]["labels"], "needs sponsorship")
+        self.assertEqual(data["items"][0]["cta_url"], "https://example.com/sponsor")
+
+    def test_create(self):
+        response = self.post(
+            {
+                "number": 3,
+                "state": "OPEN",
+                "due_on": "2027-05-01",
+                "title": "v8.3",
+                "url": "https://github.com/wagtail/roadmap/milestone/3",
+                "items": [
+                    api_item(31, "Feature D", ["sponsored", "api"]),
+                    api_item(30, "Feature C"),
+                ],
+            }
+        )
+
+        self.assertEqual(response.status_code, 201, response.content)
+        milestone = Milestone.objects.get(number=3)
+        self.assertEqual(response.json()["id"], milestone.pk)
+        self.assertEqual(milestone.state, State.OPEN)
+        self.assertEqual(milestone.due_on, datetime.date(2027, 5, 1))
+        self.assertEqual(milestone.title, "v8.3")
+        items = list(milestone.items.order_by("sort_order"))
+        self.assertEqual([item.number for item in items], [31, 30])
+        self.assertEqual(items[0].title, "Feature D")
+        self.assertEqual(items[0].labels_set, {"sponsored", "api"})
+
+    def test_create_future_milestone_without_due_date(self):
+        response = self.post(
+            {
+                "number": 1,
+                "state": "OPEN",
+                "title": "Future",
+                "url": "https://github.com/wagtail/roadmap/milestone/1",
+            }
+        )
+
+        self.assertEqual(response.status_code, 201, response.content)
+        milestone = Milestone.objects.get(number=1)
+        self.assertIsNone(milestone.due_on)
+        self.assertEqual(response.json()["display_title"], "Future")
+
+    def test_create_duplicate_number(self):
+        response = self.post(
+            {
+                "number": 2,
+                "state": "OPEN",
+                "title": "v8.2",
+                "url": "https://github.com/wagtail/roadmap/milestone/2",
+            }
+        )
+
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(Milestone.objects.count(), 1)
+
+    def test_update(self):
+        response = self.patch(
+            self.milestone,
+            {
+                "state": "CLOSED",
+                "title": "v8.2 LTS",
+                "items": [
+                    # Reordered, updated, existing item B
+                    {
+                        "id": self.item_b.pk,
+                        **api_item(21, "Feature B (renamed)", ["api"]),
+                    },
+                    # New item
+                    api_item(22, "Feature E"),
+                    # Item A is left out, so it is deleted
+                ],
+            },
+        )
+
+        self.assertEqual(response.status_code, 200, response.content)
+        self.milestone.refresh_from_db()
+        self.assertEqual(self.milestone.state, State.CLOSED)
+        self.assertEqual(self.milestone.title, "v8.2 LTS")
+        # Fields not submitted are left untouched
+        self.assertEqual(self.milestone.due_on, datetime.date(2027, 2, 1))
+
+        items = list(self.milestone.items.order_by("sort_order"))
+        self.assertEqual([item.number for item in items], [21, 22])
+        self.assertEqual(items[0].pk, self.item_b.pk)
+        self.assertEqual(items[0].title, "Feature B (renamed)")
+        self.assertEqual(items[0].labels_set, {"api"})
+        self.assertFalse(MilestoneItem.objects.filter(number=20).exists())
+
+    def test_update_without_items_keeps_items(self):
+        response = self.patch(self.milestone, {"title": "v8.2 LTS"})
+
+        self.assertEqual(response.status_code, 200, response.content)
+        self.assertEqual(self.milestone.items.count(), 2)
+
+    def test_duplicate_item_number(self):
+        other = Milestone.objects.create(
+            number=3,
+            state=State.OPEN,
+            title="v8.3",
+            url="https://github.com/wagtail/roadmap/milestone/3",
+        )
+
+        # Item 20 still belongs to the v8.2 milestone, so it must be removed
+        # from there before it can be added to another milestone.
+        response = self.patch(other, {"items": [api_item(20, "Feature A")]})
+
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(self.item_a.milestone, self.milestone)
+        self.assertFalse(other.items.exists())
+
+    def test_delete(self):
+        response = self.client.delete(f"{self.url}{self.milestone.pk}/")
+
+        self.assertEqual(response.status_code, 204)
+        self.assertFalse(Milestone.objects.exists())
+        self.assertFalse(MilestoneItem.objects.exists())
 
 
 @override_settings(GITHUB_ROADMAP_ACCESS_TOKEN="settings-token")

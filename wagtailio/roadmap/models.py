@@ -8,6 +8,7 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from wagtail.admin.admin_url_finder import AdminURLFinder
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.api import APIField
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Orderable, Page
 from wagtail.search import index
@@ -85,10 +86,9 @@ class MilestoneItem(Orderable):
     )
     number = models.IntegerField(
         unique=True,
-        editable=False,
         help_text="GitHub issue number",
     )
-    state = models.CharField(choices=State, max_length=32, editable=False)
+    state = models.CharField(choices=State, max_length=32)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
     milestone = ParentalKey(
@@ -110,6 +110,15 @@ class MilestoneItem(Orderable):
             heading="GitHub data (read-only)",
             help_text=github_help,
         ),
+    ]
+
+    api_fields = [
+        APIField("number", writable=True),
+        APIField("state", writable=True),
+        APIField("title", writable=True),
+        APIField("url", writable=True),
+        APIField("labels", writable=True),
+        APIField("cta_url", writable=True),
     ]
 
     class Meta:
@@ -156,11 +165,10 @@ class MilestoneItem(Orderable):
 class Milestone(ClusterableModel):
     number = models.IntegerField(
         unique=True,
-        editable=False,
         help_text="GitHub milestone number",
     )
-    state = models.CharField(choices=State, max_length=32, editable=False)
-    due_on = models.DateField(null=True, blank=True, editable=False)
+    state = models.CharField(choices=State, max_length=32)
+    due_on = models.DateField(null=True, blank=True)
     title = models.CharField(max_length=255)
     url = models.URLField(verbose_name="URL")
 
@@ -174,6 +182,17 @@ class Milestone(ClusterableModel):
             help_text=github_help,
         ),
         InlinePanel("items", heading="Items", label="Item"),
+    ]
+
+    api_fields = [
+        APIField("number", writable=True),
+        APIField("state", writable=True),
+        APIField("due_on", writable=True),
+        APIField("title", writable=True),
+        APIField("url", writable=True),
+        APIField("display_title"),
+        APIField("display_subtitle"),
+        APIField("items", writable=True),
     ]
 
     class Meta:

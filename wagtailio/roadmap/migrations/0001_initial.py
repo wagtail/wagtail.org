@@ -38,18 +38,17 @@ class Migration(migrations.Migration):
                 (
                     "number",
                     models.IntegerField(
-                        editable=False, help_text="GitHub milestone number", unique=True
+                        help_text="GitHub milestone number", unique=True
                     ),
                 ),
                 (
                     "state",
                     models.CharField(
                         choices=[("OPEN", "Open"), ("CLOSED", "Closed")],
-                        editable=False,
                         max_length=32,
                     ),
                 ),
-                ("due_on", models.DateField(blank=True, editable=False, null=True)),
+                ("due_on", models.DateField(blank=True, null=True)),
                 ("title", models.CharField(max_length=255)),
                 ("url", models.URLField(verbose_name="URL")),
             ],
@@ -1421,15 +1420,12 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "number",
-                    models.IntegerField(
-                        editable=False, help_text="GitHub issue number", unique=True
-                    ),
+                    models.IntegerField(help_text="GitHub issue number", unique=True),
                 ),
                 (
                     "state",
                     models.CharField(
                         choices=[("OPEN", "Open"), ("CLOSED", "Closed")],
-                        editable=False,
                         max_length=32,
                     ),
                 ),
