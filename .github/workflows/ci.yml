@@ -89,5 +89,7 @@ jobs:
         run: poetry run ./manage.py check
       - name: Check for missing migrations
         run: poetry run ./manage.py makemigrations --check --noinput
+      - name: Collect static files
+        run: poetry run ./manage.py collectstatic --noinput
       - name: Test
         run: poetry run ./manage.py test
