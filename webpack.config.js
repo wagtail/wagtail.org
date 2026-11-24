@@ -54,6 +54,15 @@ const options = {
     module: {
         rules: [
             {
+                // Consume source maps shipped by dependencies (e.g. focus-trap)
+                // so their `sourceMappingURL` comments don't leak into the bundle.
+                // Otherwise, collectstatic with ManifestStaticFilesStorage fails
+                // because the referenced .map files don't exist in static_compiled.
+                test: /\.m?js$/,
+                include: /node_modules/,
+                extractSourceMap: true,
+            },
+            {
                 test: /\.(js|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
