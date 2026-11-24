@@ -156,7 +156,10 @@ class RoadmapSyncAPITest(TestCase):
 
     def test_github_error(self):
         self.authorize(self.superuser)
-        with mock_github({"message": "Bad credentials"}):
+        with (
+            mock_github({"message": "Bad credentials"}),
+            self.assertLogs("django.request", level="ERROR"),
+        ):
             response = self.post()
 
         self.assertEqual(response.status_code, 502)
