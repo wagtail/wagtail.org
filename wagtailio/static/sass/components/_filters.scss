@@ -50,6 +50,17 @@
         }
     }
 
+    // Inline SVG rather than a background-image, so the check follows the text
+    // color and stays visible in forced colors mode.
+    &__icon {
+        display: none;
+        position: absolute;
+        inset: 11px;
+        width: 16px;
+        height: 17px;
+        fill: currentColor;
+    }
+
     &__input {
         position: absolute;
         opacity: 0;
@@ -66,8 +77,10 @@
             &::before {
                 border-color: var(--color--active);
                 background-color: var(--color--active);
-                background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.5.375c1.23 0 2.25 1.02 2.25 2.25v11.25c0 1.266-1.02 2.25-2.25 2.25H2.25A2.221 2.221 0 010 13.875V2.625C0 1.395.984.375 2.25.375H13.5zm-1.582 6.328a.955.955 0 000-1.371.955.955 0 00-1.371 0L6.75 9.129 5.168 7.582a.955.955 0 00-1.371 0 .955.955 0 000 1.371l2.25 2.25a.955.955 0 001.371 0l4.5-4.5z' fill='%23fff'/%3E%3C/svg%3E");
-                background-repeat: no-repeat;
+            }
+
+            #{$root}__icon {
+                display: block;
             }
 
             @media (forced-colors: active) {
