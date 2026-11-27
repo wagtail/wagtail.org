@@ -5,7 +5,10 @@ from wagtailio.taxonomy.models import Category
 
 class BlogPostFilterSet(FilterSet):
     category = ModelMultipleChoiceFilter(
-        queryset=Category.objects.none(), label="Category"
+        field_name="category__slug",
+        to_field_name="slug",
+        queryset=Category.objects.none(),
+        label="Category",
     )
     author = CharFilter("authors__author__name", lookup_expr="iexact", label="Author")
 
