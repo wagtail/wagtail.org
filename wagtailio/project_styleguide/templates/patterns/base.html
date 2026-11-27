@@ -50,6 +50,10 @@
         {% block header %}{% endblock %}
 
         <main id="main-content" class="app__content">
+            {% block breadcrumbs %}
+                {% include "patterns/components/breadcrumbs/breadcrumbs.html" %}
+            {% endblock breadcrumbs %}
+
             {% block content %}
                 {{ pattern_library_rendered_pattern }}
             {% endblock %}
