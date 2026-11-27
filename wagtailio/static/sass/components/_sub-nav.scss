@@ -8,13 +8,11 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: calc(100% - #{$header-mobile-height});
-    position: absolute;
+    position: fixed;
     list-style: none;
-    inset: 0 auto auto 0;
+    inset: calc(#{$header-mobile-height} + var(--alert-height, 0px)) auto 0 0;
     padding: 0 20px;
     background-color: var(--color--background);
-    border-radius: $rounded-xl;
     // Extra border for high-contrast mode users.
     border: 1px solid transparent;
     opacity: 0;
@@ -22,30 +20,30 @@
     overflow: hidden scroll;
     // visible to invisible
     transition: visibility 0ms ease-out 250ms, opacity 250ms ease-out 0ms;
-    box-shadow: 0 0 40px rgba($color--black, 0.2);
 
     @include media-query(medium) {
         background-color: var(--color--background);
         padding: 0 50px;
-        height: calc(100% - #{$header-tablet-height});
+        top: calc(#{$header-tablet-height} + var(--alert-height, 0px));
     }
 
     @media only screen and (min-width: $header-desktop) {
         display: none;
         align-items: stretch;
+        position: absolute;
         width: auto;
         height: auto;
-        top: 120px;
-        right: 40px;
-        left: 40px;
+        inset: 120px 40px auto;
         padding: 0;
         opacity: 1;
         overflow: hidden;
         visibility: visible;
-    }
+        border-radius: $rounded-xl;
+        box-shadow: 0 0 40px rgba($color--black, 0.2);
 
-    .theme-dark & {
-        border: 1px solid $color--black;
+        .theme-dark & {
+            border: 1px solid $color--black;
+        }
     }
 
     // mobile active state
